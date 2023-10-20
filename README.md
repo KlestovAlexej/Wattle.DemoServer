@@ -39,4 +39,4 @@
 Из командной строки должен быть доступен запуск [PWSH.exe](https://learn.microsoft.com/ru-ru/powershell/module/microsoft.powershell.core/about/about_pwsh?view=powershell-7.3)
 
 - Примечание №2 :
-Для запуска тестов в классе (ShtrihM.DemoServer.Testing.BaseDbTests)[src/DemoServer.Testing/BaseDbTests.cs] надо определить параметры подключения к PostgreSQL.
+Для запуска тестов в классе [ShtrihM.DemoServer.Testing.BaseDbTests](src/DemoServer.Testing/BaseDbTests.cs) надо определить параметры подключения к PostgreSQL.
