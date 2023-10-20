@@ -19,6 +19,7 @@
 	<Import Project="$(SolutionDir)Tools\ShtrihM.Build\ShtrihM.MsBuild.Tasks.Targets" />
 
 	<Target Name="BuildAllProjects">
+                <!-- SVN
 		<GetSvnUrl Path="$(SolutionDir)">
 			<Output TaskParameter="Result" PropertyName="SvnProjectURLTxt"/>
 		</GetSvnUrl>
@@ -28,6 +29,7 @@
 		<GetSvnRevision Path="$(SolutionDir)">
 			<Output TaskParameter="Result" PropertyName="FileRevision"/>
 		</GetSvnRevision>
+                -->
 
 		<Message Text="BuildProfile: $(BuildProfile)" Importance="High" />
 
