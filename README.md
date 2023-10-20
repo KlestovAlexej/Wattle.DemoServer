@@ -5,11 +5,11 @@
 - Реализован паттерн [Unit of Work](https://martinfowler.com/eaaCatalog/unitOfWork.html)
 - Интеграция с [OpenTelemetry](https://opentelemetry.io/)
 - Реализация REST интерфейса
--- Тесты службы контроллера REST интерфейса
--- Swagger описание REST интерфейса
--- Созданы валидаторы DTO получаемых по REST интерфейсу
--- Реализация высокоуровневого клиент REST интерфейса на базе RestSharp
--- Интеграционные тесты REST интерфейса
+	- Тесты службы контроллера REST интерфейса
+	- Swagger описание REST интерфейса
+	- Созданы валидаторы DTO получаемых по REST интерфейсу
+	- Реализация высокоуровневого клиент REST интерфейса на базе RestSharp
+	- Интеграционные тесты REST интерфейса
 - Интеграция с Entity Framework в рамках Unit of Work c тестами
 
 - Создан доменный объект [DemoObject](src/DemoServer.Processing.Model/DomainObjects/DemoObject/DomainObjectDemoObject.cs) доступный по REST интерфейсу
