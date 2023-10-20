@@ -22,17 +22,17 @@
 
 - Создан доменный объект [DemoObjectX](src/DemoServer.Processing.Model/DomainObjects/DemoObject/DomainObjectDemoObject.cs)
 	- Реализован кэширующий маппер БД
-	- Пример использования столбца таблицы БД с именем в кавычках
+	- Пример использования столбца таблицы БД с [именем в кавычках](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/92ca77457c4f495fde82e4202aeaf3bc03067d74/src/DemoServer.Processing.Common/WellknownDomainObjectFields.cs#L280)
 	- Реализована оптимистическая конкуренция при обновлении на уровне БД
-	- Реализована критическая секция при обновлении и создании DemoObject
+	- Реализована критическая секция при обновлении и [создании DemoObject](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/92ca77457c4f495fde82e4202aeaf3bc03067d74/src/DemoServer.Processing.Model/DomainObjects/DemoObjectX/DomainObjectIntergratorDemoObjectX.cs#L44)
 	- При создании объекта показана стратегия определения успешности коммита Unit of Work 
-	- Показана реализация реестра идентити объектов
-	- Показано удаление объектов
+	- Показана реализация [реестра идентити объектов](src/DemoServer.Processing.Model/DomainObjects/DemoObjectX/DemoObjectXIdentitiesService.cs)
+	- Показано [удаление объектов](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/92ca77457c4f495fde82e4202aeaf3bc03067d74/src/DemoServer.Processing.Model/DomainObjects/DemoObjectX/DomainObjectDemoObjectX.cs#L141)
 	- Реализован составной альтернативный ключ на уровне БД и на уровне кода
-		- Реализовано создание объекта с проверкой уникальности альтернативного ключа на уровне кода (с минимальным и даже без обращения к БД)
-		- Создан интерфейс поиска по альтернативному ключу (с минимальным и даже без обращения к БД)
-	- Реализовано понятие группы объектов объединенных константным признаком
-		- Создан интерфейс поиска коллекции объектов по значению группы (с минимальным и даже без обращениея к БД)
+		- Реализовано создание объекта с [проверкой уникальности альтернативного ключа](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/92ca77457c4f495fde82e4202aeaf3bc03067d74/src/DemoServer.Processing.Model/DomainObjects/DemoObjectX/DomainObjectIntergratorDemoObjectX.cs#L52) на уровне кода (с минимальным и даже без обращения к БД)
+		- Создан интерфейс [поиска по альтернативному ключу](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/92ca77457c4f495fde82e4202aeaf3bc03067d74/src/DemoServer.Processing.Model/DomainObjects/DemoObjectX/DomainObjectRegisterDemoObjectX.cs#L15) (с минимальным и даже без обращения к БД)
+	- Реализовано понятие [группы объектов объединенных константным признаком](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/92ca77457c4f495fde82e4202aeaf3bc03067d74/src/DemoServer.Processing.Common/WellknownDomainObjectFields.cs#L225)
+		- Создан интерфейс [поиска коллекции объектов по значению группы](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/92ca77457c4f495fde82e4202aeaf3bc03067d74/src/DemoServer.Processing.Model/DomainObjects/DemoObjectX/DomainObjectRegisterDemoObjectX.cs#L15) (с минимальным и даже без обращениея к БД)
 
 - Примечание №1 :
 Проект [DemoServer.Processing.Application.csproj](src/DemoServer.Processing.Application/DemoServer.Processing.Application.csproj) при сборке использует [PowerShell](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell?view=powershell-7.3).
