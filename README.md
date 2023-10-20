@@ -2,9 +2,13 @@
 
 Сервер написан 100% на [C#](https://ru.wikipedia.org/wiki/C_Sharp) под [.NET 7](https://devblogs.microsoft.com/dotnet/announcing-dotnet-7/).
 
-В [Unit-тестах](https://nunit.org/) используется [PostgreSQL](https://www.postgresql.org/).
+Все примеры оформлены как [NUnit](https://nunit.org/)-тесты для запуска в ОС Windows из-под [Visual Studio 2022](https://visualstudio.microsoft.com/ru/vs/) (версии не ниже 17.6.5).
 
-В примере показаны :
+Все БД [PostgreSQL](https://www.postgresql.org/) в примерах создаются и уничтожаются автоматически при запуске теста.
+
+---
+
+**В примере показаны :**
 
 - [Реализован](src/DemoServer.Processing.Model/Implements/UnitOfWork.cs) паттерн [Unit of Work](https://martinfowler.com/eaaCatalog/unitOfWork.html)
 - Пример логирования с использованием [serilog](https://serilog.net/)
