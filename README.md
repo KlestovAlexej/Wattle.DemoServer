@@ -6,7 +6,7 @@
 
 Все примеры оформлены как [NUnit](https://nunit.org/)-тесты для запуска в ОС Windows из-под [Visual Studio 2022](https://visualstudio.microsoft.com/ru/vs/) (версии не ниже 17.6.5).
 
-Все БД [PostgreSQL](https://www.postgresql.org/) в примерах создаются и уничтожаются автоматически при запуске теста.
+Все БД [PostgreSQL](https://www.postgresql.org/) (версии не ниже 15) в примерах создаются и уничтожаются автоматически при запуске теста.
 
 ---
 
