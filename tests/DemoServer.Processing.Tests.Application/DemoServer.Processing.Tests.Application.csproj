@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net7.0-windows</TargetFramework>
+		<AssemblyName>ShtrihM.DemoServer.Processing.Tests.Application</AssemblyName>
+		<RootNamespace>ShtrihM.DemoServer.Processing.Tests.Application</RootNamespace>
+		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+		<UseWindowsForms>true</UseWindowsForms>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.7.2" />
+	  <PackageReference Include="ShtrihM.Wattle3.Infrastructures.Rest.Clients" Version="3.0.0.37339" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\src\DemoServer.Processing.Api.Clients\DemoServer.Processing.Api.Clients.csproj" />
+		<ProjectReference Include="..\..\src\DemoServer.Processing.Application\DemoServer.Processing.Application.csproj" />
+		<ProjectReference Include="..\..\src\DemoServer.Processing.Model\DemoServer.Processing.Model.csproj" />
+		<ProjectReference Include="..\..\src\DemoServer.Testing\DemoServer.Testing.csproj" />
+		<ProjectReference Include="..\DemoServer.Processing.Tests.Model\DemoServer.Processing.Tests.Model.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="AppSettings.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+</Project>

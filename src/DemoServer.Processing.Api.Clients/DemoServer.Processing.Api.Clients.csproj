@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<Import Project="..\..\Tools\MSBuild\ShtrihM.MSBuild.Common.targets" />
+
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>		
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+		<AnalysisLevel>latest</AnalysisLevel>
+		<AssemblyName>ShtrihM.DemoServer.Processing.Api.Clients</AssemblyName>
+		<RootNamespace>ShtrihM.DemoServer.Processing.Api.Clients</RootNamespace>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageTags>ShtrihM DemoServer Processing Api Clients</PackageTags>
+		<DocumentationFile>$(AssemblyName).xml</DocumentationFile>
+		<NoWarn>$(NoWarn);1701;1702;CS1591;CS8032;CS8784</NoWarn>
+		<DocumentationFile>$(AssemblyName).xml</DocumentationFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="RestSharp" Version="110.2.0" />
+	  <PackageReference Include="RestSharp.Serializers.NewtonsoftJson" Version="110.2.0" />
+	  <PackageReference Include="ShtrihM.Wattle3.Common" Version="3.0.0.37339" />
+	  <PackageReference Include="ShtrihM.Wattle3.Json" Version="3.0.0.37339" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\DemoServer.Processing.Api.Common\DemoServer.Processing.Api.Common.csproj" />
+	</ItemGroup>
+</Project>

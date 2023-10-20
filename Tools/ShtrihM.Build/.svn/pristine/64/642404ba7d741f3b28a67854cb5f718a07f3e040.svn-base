@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+    <PropertyGroup>
+	    <ShtrihMMsBuildTasksLib>$(MSBuildThisFileDirectory)bin64\ShtrihM.MsBuild.Tasks.X64.dll</ShtrihMMsBuildTasksLib>
+    </PropertyGroup>
+
+	<UsingTask AssemblyFile="$(ShtrihMMsBuildTasksLib)" TaskName="ShtrihM.MsBuild.Tasks.GetSvnRevision" Runtime="*" Architecture="x64">
+		<!--
+		Получение ревизии папки в SVN.
+        
+		Входной аргумент : string Path
+        Выходной аргумент : string Result
+		
+		<GetSvnRevision Path="Full Path">
+			<Output TaskParameter="Result" PropertyName="Property Name"/>
+		</GetSvnRevision>
+		-->
+	</UsingTask>
+
+	<UsingTask AssemblyFile="$(ShtrihMMsBuildTasksLib)" TaskName="ShtrihM.MsBuild.Tasks.GetSvnUrl" Runtime="*" Architecture="x64">
+		<!--
+		Получение URL папки в SVN.
+        
+		Входной аргумент : string Path
+        Выходной аргумент : string Result
+		
+		<GetSvnUrl Path="Full Path">
+			<Output TaskParameter="Result" PropertyName="Property Name"/>
+		</GetSvnUrl>
+		-->
+	 </UsingTask>
+
+	<UsingTask AssemblyFile="$(ShtrihMMsBuildTasksLib)" TaskName="ShtrihM.MsBuild.Tasks.WriteProductDescriptionXml" Runtime="*" Architecture="x64">
+		<!--
+		Записать файл с описанием продукта.
+        
+		Входной аргумент : string AssemblyVersion
+		Входной аргумент : string AssemblyFileVersion
+		Входной аргумент : bool IsReleased
+		Входной аргумент : string BuildDate
+		Входной аргумент : string SvnUrl
+		Входной аргумент : string Path
+		Входной аргумент : string Comment
+		
+		<WriteProductDescriptionXml 
+			AssemblyVersion="1.0.0.0"
+			AssemblyFileVersion="1.0.0.0"
+			IsReleased="False"
+			BuildDate="2020.01.01"
+			SvnUrl="URL"
+			Path="Full Path"
+			Comment="Comment" />
+		-->
+	</UsingTask>
+
+</Project>

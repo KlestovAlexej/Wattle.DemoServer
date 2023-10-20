@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<Import Project="..\..\Tools\MSBuild\ShtrihM.MSBuild.Common.targets" />
+
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+		<AnalysisLevel>latest</AnalysisLevel>
+		<AssemblyName>ShtrihM.DemoServer.Processing.Api</AssemblyName>
+		<RootNamespace>ShtrihM.DemoServer.Processing.Api</RootNamespace>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageTags>ShtrihM DemoServer Processing Api</PackageTags>
+		<OutputType>Library</OutputType>
+		<IsPackable>true</IsPackable>
+		<NoWarn>$(NoWarn);1701;1702;CS1591;NU5104</NoWarn>
+		<DocumentationFile>$(AssemblyName).xml</DocumentationFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.1.0" />
+		<PackageReference Include="ShtrihM.Wattle3.DomainObjects" Version="3.0.0.37339" />
+		<PackageReference Include="ShtrihM.Wattle3.QueueProcessors" Version="3.0.0.37339" />
+		<PackageReference Include="ShtrihM.Wattle3.Services" Version="3.0.0.37339" />
+		<PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="7.0.11" />
+		<PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.5.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\DemoServer.Processing.Api.Common\DemoServer.Processing.Api.Common.csproj" />
+	  <ProjectReference Include="..\DemoServer.Processing.Model\DemoServer.Processing.Model.csproj" />
+	</ItemGroup>
+
+</Project>

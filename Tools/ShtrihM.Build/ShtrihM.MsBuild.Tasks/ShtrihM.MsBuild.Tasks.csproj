@@ -1,0 +1,116 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+		<AnalysisLevel>latest</AnalysisLevel>
+		<RootNamespace>ShtrihM.MsBuild.Tasks</RootNamespace>
+		<TargetPlatform>x64</TargetPlatform>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(TargetPlatform)'=='x64'">
+		<AssemblyName>ShtrihM.MsBuild.Tasks.X64</AssemblyName>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(TargetPlatform)'=='x32'">
+		<AssemblyName>ShtrihM.MsBuild.Tasks.X32</AssemblyName>
+	</PropertyGroup>
+
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<Message Text="+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++' " Importance="High" />
+		<Message Text="Copy '$(TargetDir)' to '$(TargetDir)..\..\..\..\bin32' " Importance="High" Condition="'$(TargetPlatform)'=='x32'"/>
+		<Message Text="Copy '$(TargetDir)' to '$(TargetDir)..\..\..\..\bin64' " Importance="High" Condition="'$(TargetPlatform)'=='x64'"/>
+
+		<Exec Command="del /q &quot;$(TargetDir)..\..\..\..\bin64\*.*&quot;&#xD;&#xA;xcopy &quot;$(TargetDir)*.*&quot; &quot;$(TargetDir)..\..\..\..\bin64&quot; /S /E /K /D /H /Y&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;" Condition="'$(TargetPlatform)'=='x64'"/>
+		<Exec Command="del /q &quot;$(TargetDir)..\..\..\..\bin32\*.*&quot;&#xD;&#xA;xcopy &quot;$(TargetDir)*.*&quot; &quot;$(TargetDir)..\..\..\..\bin32&quot; /S /E /K /D /H /Y&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;" Condition="'$(TargetPlatform)'=='x32'"/>
+	</Target>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Build.Utilities.Core" Version="17.5.0" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.5.0" />
+		<PackageReference Include="NUnit" Version="3.13.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="svn\libapr-1.dll">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="svn\libaprutil-1.dll">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="svn\libsvn_client-1.dll">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="svn\libsvn_delta-1.dll">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="svn\libsvn_diff-1.dll">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="svn\libsvn_fs-1.dll">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="svn\libsvn_fs_fs-1.dll">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="svn\libsvn_fs_util-1.dll">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="svn\libsvn_fs_x-1.dll">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="svn\libsvn_ra-1.dll">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="svn\libsvn_repos-1.dll">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="svn\libsvn_subr-1.dll">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="svn\libsvn_wc-1.dll">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="svn\msvcp100.dll">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="svn\msvcr100.dll">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="svn\svn.exe">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="svn\svnadmin.exe">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="svn\svnbench.exe">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="svn\svndumpfilter.exe">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="svn\svnfsfs.exe">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="svn\svnlook.exe">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="svn\svnmucc.exe">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="svn\svnrdump.exe">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="svn\svnserve.exe">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="svn\svnsync.exe">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="svn\svnversion.exe">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+
+</Project>

@@ -1,0 +1,20 @@
+Установка Windows Service.
+
+Путь : [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ШТРИХ-М : DemoServer.Processing]
+
+Параметр : Environment
+Тип параметра : REG_MULTI_SZ
+
+- Тестовый стенд --------------------------------------
+LOGS_DIR=C:\DemoServer\logs
+
+- Боевой --------------------------------------
+LOGS_DIR=C:\Prod_DemoServer\logs
+
+- Тестовый стенд --------------------------------------
+sc.exe create "ШТРИХ-М : DemoServer.Processing" binpath="C:\DemoServer\Processing\bin\Debug\ShtrihM.DemoServer.Processing.Application.exe -Service"
+sc.exe delete "ШТРИХ-М : DemoServer.Processing"
+
+- Боевой --------------------------------------
+sc.exe create "ШТРИХ-М : DemoServer.Processing" binpath="C:\Prod_DemoServer\Processing\bin\Release\ShtrihM.DemoServer.Processing.Application.exe -Service"
+sc.exe delete "ШТРИХ-М : DemoServer.Processing"

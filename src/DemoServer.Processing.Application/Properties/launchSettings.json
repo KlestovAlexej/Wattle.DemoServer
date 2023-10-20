@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "DemoServer.Processing.Application": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "http://localhost:57975"
+    }
+  }
+}

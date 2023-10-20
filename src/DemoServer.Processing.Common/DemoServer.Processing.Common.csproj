@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<Import Project="..\..\Tools\MSBuild\ShtrihM.MSBuild.Common.targets" />
+
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>		
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+		<AnalysisLevel>latest</AnalysisLevel>
+		<AssemblyName>ShtrihM.DemoServer.Processing.Common</AssemblyName>
+		<RootNamespace>ShtrihM.DemoServer.Processing.Common</RootNamespace>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageTags>ShtrihM DemoServer Processing Common</PackageTags>
+		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+		<CompilerGeneratedFilesOutputPath>Generated</CompilerGeneratedFilesOutputPath>
+		<NoWarn>$(NoWarn);1701;1702;CS1591</NoWarn>
+		<DocumentationFile>$(AssemblyName).xml</DocumentationFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Compile Remove="$(CompilerGeneratedFilesOutputPath)/*/**/*.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <AdditionalFiles Include="..\DemoServer.Processing.Model\DbMappers.Schema.xml" Link="DbMappers.Schema.xml" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Npgsql" Version="7.0.6" />
+		<PackageReference Include="ShtrihM.Wattle3.CodeGeneration.Common" Version="3.0.0.37339" />
+		<PackageReference Include="ShtrihM.Wattle3.CodeGeneration.Generator.Common" Version="3.0.0.37339">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="ShtrihM.Wattle3.Common" Version="3.0.0.37339" />
+		<PackageReference Include="ShtrihM.Wattle3.DomainObjects.Interfaces" Version="3.0.0.37339" />
+		<PackageReference Include="ShtrihM.Wattle3.Utils" Version="3.0.0.37339" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\DemoServer.Common\DemoServer.Common.csproj" />
+	  <ProjectReference Include="..\DemoServer.Processing.Api.Common\DemoServer.Processing.Api.Common.csproj" />
+	</ItemGroup>
+
+</Project>

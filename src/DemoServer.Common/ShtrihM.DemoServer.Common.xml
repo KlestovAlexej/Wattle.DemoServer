@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ShtrihM.DemoServer.Common</name>
+    </assembly>
+    <members>
+        <member name="T:ShtrihM.DemoServer.Common.Constants">
+            <summary>
+            Общие константы.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Common.Constants.VersionComparePrecision">
+            <summary>
+            Точность Сравнения Версий.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Common.Constants.ProductVersion">
+            <summary>
+            Версия продукта.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Common.Constants.ProductBuildVersion">
+            <summary>
+            Версия сборки продукта.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Common.Constants.DefaultPortApiProcessingMonitoring">
+            <summary>
+            Порт API мониторинга.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Common.Constants.DefaultPortApiProcessing">
+            <summary>
+            Порт API прогцессинга.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Common.Constants.ProductTag">
+            <summary>
+            Имя проекта.
+            </summary>
+        </member>
+        <member name="T:ShtrihM.DemoServer.Common.WellknownCommonSystemSettings">
+            <summary>
+            Идентификаторы стандартных, общих для всех систем настроек.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Common.WellknownCommonSystemSettings.DisplayNames">
+            <summary>
+            Все идентификаторы стандартных, общих для всех систем настроек и их описания.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Common.WellknownCommonSystemSettings.ProductId">
+            <summary>
+            Код продукта.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Common.WellknownCommonSystemSettings.ProductVersion">
+            <summary>
+            Версия продукта.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Common.WellknownCommonSystemSettings.InstallationName">
+            <summary>
+            Имя инсталляции.
+            </summary>
+        </member>
+        <member name="T:ShtrihM.DemoServer.Common.WellknownSytemLogTypes">
+            <summary>
+            Типы событий системного лога.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Common.WellknownSytemLogTypes.DisplayNames">
+            <summary>
+            Все типы событий системного лога и их описание.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Common.WellknownSytemLogTypes.Information">
+            <summary>
+            Информация.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Common.WellknownSytemLogTypes.Warning">
+            <summary>
+            Предупреждение.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Common.WellknownSytemLogTypes.Error">
+            <summary>
+            Ошибка.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Common.WellknownSytemLogTypes.Fatal">
+            <summary>
+            Критическое.
+            </summary>
+        </member>
+    </members>
+</doc>

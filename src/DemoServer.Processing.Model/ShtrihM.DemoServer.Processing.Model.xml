@@ -1,0 +1,405 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ShtrihM.DemoServer.Processing.Model</name>
+    </assembly>
+    <members>
+        <member name="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX.DemoObjectXAlternativeKey">
+            <summary>
+            Альтернативный ключ объекта X.
+            </summary>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX.DemoObjectXAlternativeKey.#ctor(System.Guid,System.String)">
+            <summary>
+            Альтернативный ключ объекта X.
+            </summary>
+        </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.DomainObjectMutable`1">
+            <summary>
+            Базовая реализация доменного объекта с поддержкой изменения.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.DomainObjects.DomainObjectMutable`1.Version">
+            <summary>
+            Версия состояния доменного объекта.
+            </summary>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Model.DomainObjects.DomainObjectMutable`1.DoUpdate">
+            <summary>
+            Фиксация в <see cref="T:ShtrihM.Wattle3.DomainObjects.Interfaces.IUnitOfWork"/> изменений доменного объекта.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Model.Implements.Metrics.RequestsIncoming">
+            <summary>
+            Количество входящих запросов.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Model.Implements.Metrics.RequestsIncomingSuccessful">
+            <summary>
+            Количество входящих запросов - успешных.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Model.Implements.Metrics.ExceptionsWorkflow">
+            <summary>
+            Количество штатных исключений.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Model.Implements.Metrics.ExceptionsUnexpected">
+            <summary>
+            Количество неожиданных исключений.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Model.Implements.Metrics.RequestsHealthCheck">
+            <summary>
+            Количество входящих запросов проверки работоспособности.
+            </summary>
+        </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.DomainObjectRegistersSettings">
+            <summary>
+            Настройки реестров доменных объектов.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.DomainObjectRegistersSettings.InitializeEmergencyTimeout">
+            <summary>
+            Аварийный интервал ожидания инициализации реестра доменных объектов.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.DomainObjectRegistersSettings.MemoryCacheDemoObjectX">
+            <summary>
+            Настройки кэширования реестра доменных объектов - Объект X.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.DomainObjectRegistersSettings.UseIdentitiesServices">
+            <summary>
+            Использовать реестры идентити объектов.
+            </summary>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.DomainObjectRegistersSettings.GetDefault">
+            <summary>
+            Настройки по умолчанию.
+            </summary>
+        </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.ExceptionPolicySettings">
+            <summary>
+            Настройки уведомления об исключениях системы.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.ExceptionPolicySettings.ControllersEnabledUnexpectedException">
+            <summary>
+            Разрешение контроллерам уведомлять о неожиданных исключениях.
+            </summary>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.ExceptionPolicySettings.GetDefault">
+            <summary>
+            Настройки по умолчанию.
+            </summary>
+        </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.IdentityCachesSettings">
+            <summary>
+            Настройки кэширующих провайдеров идентити объектов.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.IdentityCachesSettings.SystemLog">
+            <summary>
+            Настройки маппера - Системный лог.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.IdentityCachesSettings.ChangeTracker">
+            <summary>
+            Настройки маппера - Контроль изменений.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.IdentityCachesSettings.DemoObject">
+            <summary>
+            Настройки маппера - Объект.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.IdentityCachesSettings.DemoObjectX">
+            <summary>
+            Настройки маппера - Объект X.
+            </summary>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.IdentityCachesSettings.GetDefault">
+            <summary>
+            Настройки по умолчанию.
+            </summary>
+        </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.LocksPoolSettings">
+            <summary>
+            Настройки пулов лок-объектов.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.LocksPoolSettings.UpdateDemoObject">
+            <summary>
+            Интервал ожидания получение объекта из пула лок-объектов сценария обновления объекта 'Объект'.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.LocksPoolSettings.UpdateDemoObjectX">
+            <summary>
+            Интервал ожидания получение объекта из пула лок-объектов сценария обновления объекта 'Объект X'.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.LocksPoolSettings.CreateDemoObjectX">
+            <summary>
+            Интервал ожидания получение объекта из пула лок-объектов сценария создания объекта 'Объект X'.
+            </summary>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.LocksPoolSettings.GetDefault">
+            <summary>
+            Настройки по умолчанию.
+            </summary>
+        </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.PartitionsSponsorSettings">
+            <summary>
+            Настройки создателя партиций БД.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.PartitionsSponsorSettings.ActivateTimeout">
+            <summary>
+            Интервал активации.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.PartitionsSponsorSettings.TablespaceNames">
+            <summary>
+            Карта имён табличных пространств БД для партиций БД.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.PartitionsSponsorSettings.DomainObjectsTablespaceNames">
+            <summary>
+            Карта имён табличных пространств БД для партиций БД для конкретных доменных объектов.
+            </summary>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.PartitionsSponsorSettings.GetDefault">
+            <summary>
+            Настройки по умолчанию.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.DomainObjectRegistersSettings">
+            <summary>
+            Настройки реестров доменных объектов.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.PartitionsSponsorSettings">
+            <summary>
+            Настройки создателя партиций БД.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.InstanceId">
+            <summary>
+            Идентификатор экземпляра сервера.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.InstanceName">
+            <summary>
+            Текстовый идентификатор экземпляра сервера.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.LocksPoolSettings">
+            <summary>
+            Настройки пулов лок-объектов.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.ExceptionPolicySettings">
+            <summary>
+            Настройки уведомления об исключениях системы.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.MappersCacheActualStateDtoSettings">
+            <summary>
+            Настройки кэшей актуальных данных состояний доменнй объектов в БД.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.QueueThreadsSizeEmergencyDomainBehaviour">
+            <summary>
+            Очередь обработки аварийных ситуаций доменного поведения - количество потоков обработки.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.QueueEmergencyTimeoutEmergencyDomainBehaviour">
+            <summary>
+            Очередь обработки аварийных ситуаций доменного поведения - интервал аварийного ожидания повторной обработки.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.IdentityCachesSettings">
+            <summary>
+            Настройки кэширующих провайдеров идентити объектов.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.ConnectionString">
+            <summary>
+            Строка подключения к БД.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.SqlCommandTimeout">
+            <summary>
+            Интервал ожидания исполнения SQL-команд.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.MappersFeaturesValidateUpdateResults">
+            <summary>
+            Проверять каждое обновление БД на корректность брутальным способом.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.DebugMode">
+            <summary>
+            Отладочный режим.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.TimeStatisticsStep">
+            <summary>
+            Интервал аккумуляции статистики.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettingsLocal.ProductId">
+            <summary>
+            Код продукта <seealso cref="F:ShtrihM.DemoServer.Common.WellknownCommonSystemSettings.ProductId"/>.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettingsLocal.ProductVersion">
+            <summary>
+            Версия продукта <seealso cref="F:ShtrihM.DemoServer.Common.WellknownCommonSystemSettings.ProductVersion"/>.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettingsLocal.InstallationName">
+            <summary>
+            Имя инсталляции <seealso cref="F:ShtrihM.DemoServer.Common.WellknownCommonSystemSettings.InstallationName"/>.
+            </summary>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Model.Interfaces.IDemoObjectControllerService.CreateAsync(ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.DemoObjectCreate,System.Threading.CancellationToken)">
+            <summary>
+            Создание объекта.
+            </summary>
+            <param name="parameters">Параметры создание объекта.</param>
+            <param name="cancellationToken">Токен отмены.</param>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Model.Interfaces.IDemoObjectControllerService.ReadAsync(System.Int64,System.Threading.CancellationToken)">
+            <summary>
+            Чтение объекта.
+            </summary>
+            <param name="id">Идентификатор объекта.</param>
+            <param name="cancellationToken">Токен отмены.</param>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Model.Interfaces.IDemoObjectControllerService.UpdateAsync(ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update.DemoObjectUpdate,System.Threading.CancellationToken)">
+            <summary>
+            Обновление объекта.
+            </summary>
+            <param name="parameters">Параметры обновления объекта.</param>
+            <param name="cancellationToken">Токен отмены.</param>
+        </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectChangeTracker">
+            <summary>
+            Контроль изменений.
+            </summary>
+        </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoObject">
+            <summary>
+            Объект.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoObject.CreateDate">
+            <summary>
+            Дата создания.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoObject.ModificationDate">
+            <summary>
+            Дата модификации.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoObject.Name">
+            <summary>
+            Название.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoObject.Enabled">
+            <summary>
+            Признак разрешения работы.
+            </summary>
+        </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoObjectX">
+            <summary>
+            Объект.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoObjectX.CreateDate">
+            <summary>
+            Дата создания.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoObjectX.ModificationDate">
+            <summary>
+            Дата модификации.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoObjectX.Name">
+            <summary>
+            Название.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoObjectX.Enabled">
+            <summary>
+            Признак разрешения работы.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoObjectX.Key1">
+            <summary>
+            Альтернативный ключ - часть №1.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoObjectX.Key2">
+            <summary>
+            Альтернативный ключ - часть №2.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoObjectX.Group">
+            <summary>
+            Номер группы.
+            </summary>
+        </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectSystemLog">
+            <summary>
+            Системный лог.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectSystemLog.Code">
+            <summary>
+            Код записи <seealso cref="T:ShtrihM.DemoServer.Processing.Common.WellknownSytemLogCodes"/>.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectSystemLog.CreateDate">
+            <summary>
+            Дата создания.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectSystemLog.Data">
+            <summary>
+            Данные.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectSystemLog.Message">
+            <summary>
+            Сообщение.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectSystemLog.Type">
+            <summary>
+            Тип записи <seealso cref="T:ShtrihM.DemoServer.Common.WellknownSytemLogTypes"/>.
+            </summary>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Model.Interfaces.IInfrastructureMonitorCustomEntryPoint.GetSnapShot">
+            <summary>
+            Получить текущий снимок стостояния.
+            </summary>
+            <returns>Состояние.</returns>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Interfaces.ISnapShotInfrastructureMonitorCustomEntryPoint.ProcessId">
+            <summary>
+            Идентификатор процесса сервера.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Interfaces.ISnapShotInfrastructureMonitorCustomEntryPoint.DebugMode">
+            <summary>
+            Признак работы сервера в отладочном режиме.
+            </summary>
+        </member>
+    </members>
+</doc>

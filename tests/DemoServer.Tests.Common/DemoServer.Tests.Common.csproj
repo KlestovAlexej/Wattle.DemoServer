@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net7.0-windows</TargetFramework>
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+		<AssemblyName>ShtrihM.DemoServer.Tests.Common</AssemblyName>
+		<RootNamespace>ShtrihM.DemoServer.Tests.Common</RootNamespace>
+		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+		<NoWarn>$(NoWarn);CS8032;CS8784</NoWarn>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
+	</ItemGroup>
+
+</Project>

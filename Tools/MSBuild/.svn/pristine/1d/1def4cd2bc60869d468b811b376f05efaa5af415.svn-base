@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+	<PropertyGroup>
+		<LangVersion>preview</LangVersion>
+		<WarningLevel>9999</WarningLevel>
+		<SolutionDir>$(MSBuildThisFileDirectory)..\..\</SolutionDir>
+		<SvnProjectURLTxt>URL</SvnProjectURLTxt>
+		<CoreCompileDependsOn>BeforeCoreCompile;$(CoreCompileDependsOn)</CoreCompileDependsOn>
+		<NuGetPublishPath/>
+	</PropertyGroup>
+
+	<Import Project="..\Product.targets" />
+
+	<PropertyGroup>
+		<Version>$(MajorVersion).$(MinorVersion).$(Build).$(Revision)</Version>
+	</PropertyGroup>
+
+	<Import Project="$(SolutionDir)Tools\ShtrihM.Build\ShtrihM.MsBuild.Tasks.Targets" />
+
+	<Target Name="BuildAllProjects">
+		<GetSvnUrl Path="$(SolutionDir)">
+			<Output TaskParameter="Result" PropertyName="SvnProjectURLTxt"/>
+		</GetSvnUrl>
+		<GetSvnRevision Path="$(SolutionDir)" Condition="'$(IsReleased)'=='false'">
+			<Output TaskParameter="Result" PropertyName="Revision"/>
+		</GetSvnRevision>
+		<GetSvnRevision Path="$(SolutionDir)">
+			<Output TaskParameter="Result" PropertyName="FileRevision"/>
+		</GetSvnRevision>
+
+		<Message Text="BuildProfile: $(BuildProfile)" Importance="High" />
+
+		<Exec Command="dotnet restore &quot;$(SolutionDir)All.sln&quot;" />
+		<Exec Command="dotnet build &quot;$(SolutionDir)All.sln&quot; --force --configuration Debug /p:SvnRevision=$(FileRevision) /p:FileVersion=$(MajorVersion).$(MinorVersion).$(Build).$(FileRevision) /p:Version=$(MajorVersion).$(MinorVersion).$(Build).$(Revision) /p:SvnProjectURLTxt=$(SvnProjectURLTxt) $(BuildProfile)" />
+		<Exec Command="dotnet build &quot;$(SolutionDir)All.sln&quot; --force --configuration Release /p:SvnRevision=$(FileRevision) /p:FileVersion=$(MajorVersion).$(MinorVersion).$(Build).$(FileRevision) /p:Version=$(MajorVersion).$(MinorVersion).$(Build).$(Revision) /p:SvnProjectURLTxt=$(SvnProjectURLTxt) &quot;/p:NuGetPublishPath=$(NuGetPublishPath)&quot; $(BuildProfile)" />
+	</Target>
+
+	<Target Name="BeforeCoreCompile">
+		<PropertyGroup>
+			<PackageVersion>$(AssemblyVersion)</PackageVersion>
+			<RepositoryUrl>$(SvnProjectURLTxt)</RepositoryUrl>
+			<RepositoryType>svn</RepositoryType>
+			<PackageIcon>Product.png</PackageIcon>
+			<PackageId>$(AssemblyName)</PackageId>
+			<IncludeSymbols>true</IncludeSymbols>
+			<RepositoryCommit>$(SvnRevision)</RepositoryCommit>
+		</PropertyGroup>
+	</Target>
+
+	<Target Name="CopyNuGetPublish" AfterTargets="GenerateNuspec" Condition="'$(NuGetPublishPath)'!=''">
+		<Exec Command="xcopy /Y &quot;$(ProjectDir)bin\$(ConfigurationName)\$(PackageId).*.nupkg&quot; &quot;$(NuGetPublishPath)&quot;" />
+	</Target>
+
+	<Target Name="ClearNuGet" BeforeTargets="GenerateNuspec">
+		<Exec Command="del /s &quot;$(ProjectDir)bin\$(ConfigurationName)\*.nupkg&quot;" />
+	</Target>
+
+	<ItemGroup>
+		<None Include="$(SolutionDir)Tools\Product.png">
+			<Pack>True</Pack>
+			<PackagePath/>
+		</None>
+	</ItemGroup>
+
+	<Target Name="CopyReferenceFiles" BeforeTargets="Build">
+		<ItemGroup>
+			<ReferenceFiles Include="%(Reference.RelativeDir)%(Reference.Filename).xml;%(Reference.RelativeDir)%(Reference.Filename).pdb" />
+		</ItemGroup>
+
+		<Message Text="Copying reference files to $(OutputPath)" Importance="High" />
+		<Copy SourceFiles="@(ReferenceFiles)" DestinationFolder="$(OutputPath)" Condition="Exists('%(RootDir)%(Directory)%(Filename)%(Extension)')" />
+	</Target>
+
+</Project>

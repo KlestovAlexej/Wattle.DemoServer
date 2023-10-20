@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<Import Project="..\..\Tools\MSBuild\ShtrihM.MSBuild.Common.targets" />
+
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+		<AnalysisLevel>latest</AnalysisLevel>
+		<AssemblyName>ShtrihM.DemoServer.Common</AssemblyName>
+		<RootNamespace>ShtrihM.DemoServer.Common</RootNamespace>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageTags>ShtrihM DemoServer Common</PackageTags>
+		<NoWarn>$(NoWarn);1701;1702;CS1591;CS8784</NoWarn>
+		<DocumentationFile>$(AssemblyName).xml</DocumentationFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="ShtrihM.Wattle3.Primitives" Version="3.0.0.37339" />
+	</ItemGroup>
+
+</Project>

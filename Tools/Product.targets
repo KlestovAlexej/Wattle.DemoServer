@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+	<PropertyGroup>
+		<Description>Демонстрационный сервер.</Description>
+		<MajorVersion>1</MajorVersion>
+		<MinorVersion>0</MinorVersion>
+		<Build>0</Build>
+		<Revision>0</Revision>
+		<IsReleased>false</IsReleased>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageProjectUrl>https://github.com/KlestovAlexej/Wattle.DemoServer</PackageProjectUrl>
+                <PackageIcon>..\Product.png</PackageIcon>
+        <ProductComment>$(Description)</ProductComment>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(DefineConstants.Contains(BUILD_PROD))'">
+        <ProductComment>Боевая сборка - $(Description)</ProductComment>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(DefineConstants.Contains(BUILD_TEST))'">
+        <ProductComment>Тестовая сборка - $(Description)</ProductComment>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="..\..\README.md" Link="README.md" Pack="true" PackagePath="\"/>
+	</ItemGroup>
+
+  <Target Name="CustomPublish" AfterTargets="CreatePublish">
+    <MakeDir Directories="$(PublishPath)\DemoServer.Processing.Application" />
+    <Exec Command="xcopy /Y /E &quot;$(SolutionDir)src\DemoServer.Processing.Application\bin\Release\net7.0-windows\win-x64&quot; &quot;$(PublishPath)\DemoServer.Processing.Application\&quot;"/>
+  </Target>
+
+</Project>

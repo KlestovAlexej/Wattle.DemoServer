@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net7.0-windows</TargetFramework>
+		<AssemblyName>ShtrihM.DemoServer.Processing.Tests.Model</AssemblyName>
+		<RootNamespace>ShtrihM.DemoServer.Processing.Tests.Model</RootNamespace>
+		<UseWpf>true</UseWpf>
+		<UseWindowsForms>true</UseWindowsForms>
+		<NoWarn>$(NoWarn);MSB3270</NoWarn>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Compile Remove="Helpers\**" />
+		<EmbeddedResource Remove="Helpers\**" />
+		<None Remove="Helpers\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.7.2" />
+		<PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
+		<PackageReference Include="ShtrihM.Wattle3.Testing.DomainObjects" Version="3.0.0.37339" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\src\DemoServer.Processing.Api.Common\DemoServer.Processing.Api.Common.csproj" />
+		<ProjectReference Include="..\..\src\DemoServer.Processing.Application\DemoServer.Processing.Application.csproj" />
+		<ProjectReference Include="..\..\src\DemoServer.Processing.Model\DemoServer.Processing.Model.csproj" />
+		<ProjectReference Include="..\..\src\DemoServer.Testing\DemoServer.Testing.csproj" />
+		<ProjectReference Include="..\DemoServer.Processing.Tests\DemoServer.Processing.Tests.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="AppSettings.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+</Project>

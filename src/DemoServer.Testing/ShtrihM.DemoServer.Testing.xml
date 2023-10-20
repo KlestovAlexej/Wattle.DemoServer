@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ShtrihM.DemoServer.Testing</name>
+    </assembly>
+    <members>
+        <member name="F:ShtrihM.DemoServer.Testing.Loggers.LoggerSerilog.EnvironmentVariableAsLogsDir">
+            <summary>
+            Путь хранения логов приложения.
+            </summary>
+        </member>
+    </members>
+</doc>

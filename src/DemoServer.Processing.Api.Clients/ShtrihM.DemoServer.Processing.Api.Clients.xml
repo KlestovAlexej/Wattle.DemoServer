@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ShtrihM.DemoServer.Processing.Api.Clients</name>
+    </assembly>
+    <members>
+        <member name="M:ShtrihM.DemoServer.Processing.Api.Clients.IProcessingClient.GetDescriptionAsync(System.Threading.CancellationToken)">
+            <summary>
+            Получить описание сервера.
+            </summary>
+            <param name="cancellationToken">Токен отмены.</param>
+            <exception cref="T:System.InvalidOperationException">Если не удается прочитать ответ сервера.</exception>
+            <exception cref="T:ShtrihM.Wattle3.Common.Exceptions.WorkflowException">Отказ сервера <seealso cref="T:ShtrihM.DemoServer.Processing.Api.Common.WorkflowErrorCodes"/>.</exception>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Api.Clients.IProcessingClient.DemoObjectCreateAsync(ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.DemoObjectCreate,System.Threading.CancellationToken)">
+            <summary>
+            Создание объекта.
+            </summary>
+            <param name="parameters">Параметры создание объекта.</param>
+            <param name="cancellationToken">Токен отмены.</param>
+            <exception cref="T:System.InvalidOperationException">Если не удается прочитать ответ сервера.</exception>
+            <exception cref="T:ShtrihM.Wattle3.Common.Exceptions.WorkflowException">Отказ сервера <seealso cref="T:ShtrihM.DemoServer.Processing.Api.Common.WorkflowErrorCodes"/>.</exception>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Api.Clients.IProcessingClient.DemoObjectReadAsync(System.Int64,System.Threading.CancellationToken)">
+            <summary>
+            Чтение объекта.
+            </summary>
+            <param name="id">Идентификатор объекта.</param>
+            <param name="cancellationToken">Токен отмены.</param>
+            <exception cref="T:System.InvalidOperationException">Если не удается прочитать ответ сервера.</exception>
+            <exception cref="T:ShtrihM.Wattle3.Common.Exceptions.WorkflowException">Отказ сервера <seealso cref="T:ShtrihM.DemoServer.Processing.Api.Common.WorkflowErrorCodes"/>.</exception>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Api.Clients.IProcessingClient.DemoObjectUpdateAsync(ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update.DemoObjectUpdate,System.Threading.CancellationToken)">
+            <summary>
+            Обновление объекта.
+            </summary>
+            <param name="parameters">Параметры обновления объекта.</param>
+            <param name="cancellationToken">Токен отмены.</param>
+            <exception cref="T:System.InvalidOperationException">Если не удается прочитать ответ сервера.</exception>
+            <exception cref="T:ShtrihM.Wattle3.Common.Exceptions.WorkflowException">Отказ сервера <seealso cref="T:ShtrihM.DemoServer.Processing.Api.Common.WorkflowErrorCodes"/>.</exception>
+        </member>
+    </members>
+</doc>

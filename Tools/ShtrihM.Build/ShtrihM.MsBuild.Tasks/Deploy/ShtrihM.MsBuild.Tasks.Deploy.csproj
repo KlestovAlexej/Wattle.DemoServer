@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk" DefaultTargets="Deploy">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <Target Name="Deploy">
+    <Exec Command="dotnet restore &quot;..\ShtrihM.MsBuild.Tasks.csproj&quot; /p:TargetPlatform=x64" />
+    <Exec Command="msbuild &quot;..\ShtrihM.MsBuild.Tasks.csproj&quot; /p:configuration=Release /p:TargetPlatform=x64" />
+
+    <Exec Command="dotnet restore &quot;..\ShtrihM.MsBuild.Tasks.csproj&quot; /p:TargetPlatform=x32" />
+    <Exec Command="msbuild &quot;..\ShtrihM.MsBuild.Tasks.csproj&quot; /p:configuration=Release /p:TargetPlatform=x32" />
+  </Target>
+</Project>

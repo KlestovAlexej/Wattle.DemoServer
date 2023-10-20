@@ -1,0 +1,51 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<Import Project="..\..\Tools\MSBuild\ShtrihM.MSBuild.Common.targets" />
+
+	<PropertyGroup>
+		<TargetFrameworks>net7.0-windows</TargetFrameworks>
+		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+		<AnalysisLevel>latest</AnalysisLevel>
+		<AssemblyName>ShtrihM.DemoServer.Processing.Application</AssemblyName>
+		<RootNamespace>ShtrihM.DemoServer.Processing.Application</RootNamespace>
+		<StartupObject>ShtrihM.DemoServer.Processing.Application.Program</StartupObject>
+		<OutputType>Exe</OutputType>
+		<RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+		<ApplicationIcon>..\..\Tools\Product.ico</ApplicationIcon>
+		<DocumentationFile>$(AssemblyName).xml</DocumentationFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.1.0" />
+		<PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="7.0.1" />
+		<PackageReference Include="Serilog.AspNetCore" Version="7.0.0" />
+		<PackageReference Include="Serilog.Enrichers.Thread" Version="3.2.0-dev-00752" />
+		<PackageReference Include="Serilog.Sinks.Logz.Io" Version="7.2.0" />
+		<PackageReference Include="ShtrihM.Wattle3.Infrastructures.Rest.Controllers" Version="3.0.0.37339" />
+		<PackageReference Include="ShtrihM.Wattle3.OpenTelemetry" Version="3.0.0.37339" />
+		<PackageReference Include="ShtrihM.Wattle3.Swashbuckle.AspNetCore" Version="3.0.0.37339" />
+		<PackageReference Include="ShtrihM.Wattle3.Testing" Version="3.0.0.37339" />
+		<PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="7.0.11" />
+		<PackageReference Include="Swashbuckle.AspNetCore.ReDoc" Version="6.5.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\DemoServer.Processing.Api.Common\DemoServer.Processing.Api.Common.csproj" />
+	  <ProjectReference Include="..\DemoServer.Processing.Api\DemoServer.Processing.Api.csproj" />
+	  <ProjectReference Include="..\DemoServer.Processing.Model\DemoServer.Processing.Model.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="appsettings.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="WindowsRegister.txt">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+	  <Exec Command="PWSH.exe -File &quot;$(MSBuildProjectDirectory)\AppSettings.Auto.ps1&quot; -projectPath &quot;$(TargetDir)\&quot;" />
+	</Target>
+</Project>

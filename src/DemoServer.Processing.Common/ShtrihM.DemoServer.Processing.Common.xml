@@ -1,0 +1,603 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ShtrihM.DemoServer.Processing.Common</name>
+    </assembly>
+    <members>
+        <member name="T:ShtrihM.DemoServer.Processing.Common.Constants">
+            <summary>
+            Общие константы.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.Constants.ProductId">
+            <summary>
+            Код продукта.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.Constants.MappersComplexIdentityLevel">
+            <summary>
+            Уровень кодирования идентификатор групп идентити мапперов.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.Constants.SystemLogFieldMaxSizeMessage">
+            <summary>
+            Объект - Системный лог.
+            Максимальный размер поля Message.
+            </summary>
+        </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Common.WellknownCommonInfrastructureMonitors">
+            <summary>
+            Идентификаторы интерфейсов мониторинга инфраструктуры.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownCommonInfrastructureMonitors.ActivatePartitionsSponsor">
+            <summary>
+            Расписание создания партиций БД.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownCommonInfrastructureMonitors.QueueEmergencyDomainBehaviour">
+            <summary>
+            Очередь обработки аварийных ситуаций доменного поведения.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownCommonInfrastructureMonitors.PartitionsSponsor">
+            <summary>
+            Создатель партиций БД.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownCommonInfrastructureMonitors.LocksCreateDemoObjectX">
+            <summary>
+            Пул лок-объектов сценария создания объекта 'Объект X'.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownCommonInfrastructureMonitors.LocksUpdateDemoObject">
+            <summary>
+            Пул лок-объектов сценария обновления объекта 'Объект'.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownCommonInfrastructureMonitors.MapperDemoObject">
+            <summary>
+            Маппер данных состояния доменного объекта 'Объект' в БД.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownCommonInfrastructureMonitors.MapperDemoObjectCacheActualStateDto">
+            <summary>
+            Кэш актуальных данных состояния доменного объекта 'Объект' в БД.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownCommonInfrastructureMonitors.LocksUpdateDemoObjectX">
+            <summary>
+            Пул лок-объектов сценария обновления объекта 'Объект X'.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownCommonInfrastructureMonitors.MapperDemoObjectX">
+            <summary>
+            Маппер данных состояния доменного объекта 'Объект X' в БД.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownCommonInfrastructureMonitors.MapperDemoObjectXCacheActualStateDto">
+            <summary>
+            Кэш актуальных данных состояния доменного объекта 'Объект X' в БД.
+            </summary>
+        </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Common.WellknownCommonSnapShotInfrastructureMonitorValues">
+            <summary>
+            Общие значения снимка состояния мониторинга инфраструктуры.
+            </summary>
+        </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Common.WellknownCommonSnapShotInfrastructureMonitorValues.CustomEntryPoint">
+            <summary>
+            Точка входа.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownCommonSnapShotInfrastructureMonitorValues.CustomEntryPoint.ProcessId">
+            <summary>
+            Идентификатор процесса сервера.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownCommonSnapShotInfrastructureMonitorValues.CustomEntryPoint.DebugMode">
+            <summary>
+            Признак работы сервера в отладочном режиме.
+            </summary>
+        </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjectFields">
+            <summary>
+            Поля доменных объектов.
+            <remarks>
+            При изменении руками запутить тест <code>ShtrihM.DemoServer.Processing.Tests.DbMappersSchemaXmlBuilder.Test</code>
+            Для пересоздания XML схемы мапперов <code>src\DemoServer.Processing.Model\DbMappers.Schema.xml</code>.
+            </remarks>
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjectFields.DisplayNames">
+            <summary>
+            Все поля доменных объектов и их описание.
+            </summary>
+        </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjectFields.ChangeTracker">
+            <summary>
+            Контроль изменений.
+            </summary>
+        </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjectFields.SystemLog">
+            <summary>
+            Системный лог.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjectFields.SystemLog.CreateDate">
+            <summary>
+            Дата создания.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjectFields.SystemLog.Code">
+            <summary>
+            Код записи <seealso cref="T:ShtrihM.DemoServer.Processing.Common.WellknownSytemLogCodes"/>.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjectFields.SystemLog.Type">
+            <summary>
+            Тип записи <seealso cref="T:ShtrihM.DemoServer.Common.WellknownSytemLogTypes"/>.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjectFields.SystemLog.Message">
+            <summary>
+            Сообщение.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjectFields.SystemLog.Data">
+            <summary>
+            Данные.
+            </summary>
+        </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjectFields.TablePartition">
+            <summary>
+            Партиция таблицы БД.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjectFields.TablePartition.CreateDate">
+            <summary>
+            Дата создания.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjectFields.TablePartition.TableName">
+            <summary>
+            Имя таблицы БД.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjectFields.TablePartition.PartitionName">
+            <summary>
+            Имя партиции таблицы БД.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjectFields.TablePartition.Day">
+            <summary>
+            День партиции таблицы БД.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjectFields.TablePartition.MinGroupId">
+            <summary>
+            Минимальный идентификатор группы идентити хранимый в партиции.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjectFields.TablePartition.MaxNotIncludeGroupId">
+            <summary>
+            Максимальный идентификатор группы идентити не хранимый в партиции.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjectFields.TablePartition.MinId">
+            <summary>
+            Минимальный идентити хранимый в партиции.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjectFields.TablePartition.MaxNotIncludeId">
+            <summary>
+            Максимальный идентити не хранимый в партиции.
+            </summary>
+        </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjectFields.DemoObject">
+            <summary>
+            Объект.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjectFields.DemoObject.CreateDate">
+            <summary>
+            Дата создания.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjectFields.DemoObject.ModificationDate">
+            <summary>
+            Дата модификации.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjectFields.DemoObject.Name">
+            <summary>
+            Название.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjectFields.DemoObject.Enabled">
+            <summary>
+            Признак разрешения работы.
+            </summary>
+        </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjectFields.DemoObjectX">
+            <summary>
+            Объект X.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjectFields.DemoObjectX.CreateDate">
+            <summary>
+            Дата создания.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjectFields.DemoObjectX.ModificationDate">
+            <summary>
+            Дата модификации.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjectFields.DemoObjectX.Name">
+            <summary>
+            Название.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjectFields.DemoObjectX.Enabled">
+            <summary>
+            Признак разрешения работы.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjectFields.DemoObjectX.Key1">
+            <summary>
+            Альтернативный ключ - часть №1.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjectFields.DemoObjectX.Key2">
+            <summary>
+            Альтернативный ключ - часть №2.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjectFields.DemoObjectX.Group">
+            <summary>
+            Номер группы.
+            </summary>
+        </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjects">
+            <summary>
+            Идентификаторы объектов.
+            </summary>
+        </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjects.Text">
+            <summary>
+            Идентификаторы объектов в текстовом виде.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjects.Text.SystemLog">
+            <summary>
+            Системный лог.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjects.Text.TablePartition">
+            <summary>
+            Партиция таблицы БД.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjects.Text.ChangeTracker">
+            <summary>
+            Контроль изменений.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjects.Text.DemoObject">
+            <summary>
+            Объект.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjects.Text.DemoObjectX">
+            <summary>
+            Объект X.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjects.DisplayNames">
+            <summary>
+            Все идентификаторы объектов и их описание.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjects.SystemLog">
+            <summary>
+            Системный лог.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjects.ChangeTracker">
+            <summary>
+            Контроль изменений.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjects.TablePartition">
+            <summary>
+            Партиция таблицы БД.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjects.DemoObject">
+            <summary>
+            Объект.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjects.DemoObjectX">
+            <summary>
+            Объект X.
+            </summary>
+        </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Common.WellknownSytemLogCodes">
+            <summary>
+            Коды событий системного лога.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownSytemLogCodes.DisplayNames">
+            <summary>
+            Все коды событий системного лога и их описание.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownSytemLogCodes.InternalException">
+            <summary>
+            Не предвиденная ошибка поведения доменных объектов.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownSytemLogCodes.UnexpectedException">
+            <summary>
+            Не предвиденная ошибка.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownSytemLogCodes.MappersException">
+            <summary>
+            Не предвиденная ошибка мапперов БД.
+            </summary>
+        </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.ChangeTracker">
+            <summary>
+            Контроль изменений
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.ChangeTracker.ObjectId">
+            <summary>
+            Идентификатр объекта.
+            </summary>
+        </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.ChangeTracker.Fields">
+            <summary>
+            Идентификатр полей объекта доступные для формирования фильтра.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.ChangeTracker.Fields.Id">
+            <summary>
+            Идентити.
+            </summary>
+        </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.SystemLog">
+            <summary>
+            Системный лог
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.SystemLog.ObjectId">
+            <summary>
+            Идентификатр объекта.
+            </summary>
+        </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.SystemLog.Fields">
+            <summary>
+            Идентификатр полей объекта доступные для формирования фильтра.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.SystemLog.Fields.CreateDate">
+            <summary>
+            Дата создания
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.SystemLog.Fields.Code">
+            <summary>
+            Код записи
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.SystemLog.Fields.Type">
+            <summary>
+            Тип записи
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.SystemLog.Fields.Message">
+            <summary>
+            Сообщение
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.SystemLog.Fields.Data">
+            <summary>
+            Данные
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.SystemLog.Fields.Id">
+            <summary>
+            Идентити.
+            </summary>
+        </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.TablePartition">
+            <summary>
+            Партиция таблицы БД
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.TablePartition.ObjectId">
+            <summary>
+            Идентификатр объекта.
+            </summary>
+        </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.TablePartition.Fields">
+            <summary>
+            Идентификатр полей объекта доступные для формирования фильтра.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.TablePartition.Fields.CreateDate">
+            <summary>
+            Дата создания
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.TablePartition.Fields.TableName">
+            <summary>
+            Имя таблицы БД
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.TablePartition.Fields.PartitionName">
+            <summary>
+            Имя партиции таблицы БД
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.TablePartition.Fields.Day">
+            <summary>
+            День партиции таблицы БД
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.TablePartition.Fields.MinGroupId">
+            <summary>
+            Минимальный идентификатор группы идентити хранимый в партиции
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.TablePartition.Fields.MaxNotIncludeGroupId">
+            <summary>
+            Максимальный идентификатор группы идентити не хранимый в партиции
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.TablePartition.Fields.MinId">
+            <summary>
+            Минимальный идентити хранимый в партиции
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.TablePartition.Fields.MaxNotIncludeId">
+            <summary>
+            Максимальный идентити не хранимый в партиции
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.TablePartition.Fields.Id">
+            <summary>
+            Идентити.
+            </summary>
+        </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.DemoObject">
+            <summary>
+            Объект
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.DemoObject.ObjectId">
+            <summary>
+            Идентификатр объекта.
+            </summary>
+        </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.DemoObject.Fields">
+            <summary>
+            Идентификатр полей объекта доступные для формирования фильтра.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.DemoObject.Fields.CreateDate">
+            <summary>
+            Дата создания
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.DemoObject.Fields.ModificationDate">
+            <summary>
+            Дата модификации
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.DemoObject.Fields.Name">
+            <summary>
+            Название
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.DemoObject.Fields.Enabled">
+            <summary>
+            Признак разрешения работы
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.DemoObject.Fields.Id">
+            <summary>
+            Идентити.
+            </summary>
+        </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.DemoObjectX">
+            <summary>
+            Объект X
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.DemoObjectX.ObjectId">
+            <summary>
+            Идентификатр объекта.
+            </summary>
+        </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.DemoObjectX.Fields">
+            <summary>
+            Идентификатр полей объекта доступные для формирования фильтра.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.DemoObjectX.Fields.CreateDate">
+            <summary>
+            Дата создания
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.DemoObjectX.Fields.ModificationDate">
+            <summary>
+            Дата модификации
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.DemoObjectX.Fields.Name">
+            <summary>
+            Название
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.DemoObjectX.Fields.Enabled">
+            <summary>
+            Признак разрешения работы
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.DemoObjectX.Fields.Key1">
+            <summary>
+            Альтернативный ключ - часть №1
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.DemoObjectX.Fields.Key2">
+            <summary>
+            Альтернативный ключ - часть №2
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.DemoObjectX.Fields.Group">
+            <summary>
+            Номер группы
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.DemoObjectX.Fields.Id">
+            <summary>
+            Идентити.
+            </summary>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.Common.SchemaQueriesProvider.QueryForChangeTracker(System.String)">
+            <summary>
+            Создание конструктора текста запроса доменных объектов ChangeTracker.
+            </summary>
+            <param name="query">Запрос.</param>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.Common.SchemaQueriesProvider.QueryForSystemLog(System.String)">
+            <summary>
+            Создание конструктора текста запроса доменных объектов SystemLog.
+            </summary>
+            <param name="query">Запрос.</param>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.Common.SchemaQueriesProvider.QueryForTablePartition(System.String)">
+            <summary>
+            Создание конструктора текста запроса доменных объектов TablePartition.
+            </summary>
+            <param name="query">Запрос.</param>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.Common.SchemaQueriesProvider.QueryForDemoObject(System.String)">
+            <summary>
+            Создание конструктора текста запроса доменных объектов DemoObject.
+            </summary>
+            <param name="query">Запрос.</param>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.Common.SchemaQueriesProvider.QueryForDemoObjectX(System.String)">
+            <summary>
+            Создание конструктора текста запроса доменных объектов DemoObjectX.
+            </summary>
+            <param name="query">Запрос.</param>
+        </member>
+    </members>
+</doc>

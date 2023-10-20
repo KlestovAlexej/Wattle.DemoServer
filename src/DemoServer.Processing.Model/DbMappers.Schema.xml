@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-16" standalone="yes"?>
+<Model Version="1.0.0.0" Description="Мапперы">
+  <Mappers>
+    <Mappers Storage="PostgreSql">
+      <Mappers>
+        <Mapper Id="cff5c7be-9f43-4c15-9038-55ce28e2c810" DeleteMode="Disabled" MaxPageSize="1000" IsCached="false" UpdateCacheOnEnumerator="false" IsPrepared="false" IsOverrideTableName="false" Description="Контроль изменений" Name="ChangeTracker">
+          <Storage Name="%ObjectName%" IsQuotedName="false" IsGenerateMapperTestsNewGet="true" IsGenerateMapperTestsGetNextId="true" IsGenerateMapperTestsBulkInsert="true" />
+          <Identity Name="Id" Type="long" Description="Идентити.">
+            <Storage Name="%FieldName%" Type="Bigint" IsQuotedName="false" SequenceName="Sequence_%ObjectName%">
+              <Partitions Level="L2" PartitionsExpandInterface="True" />
+            </Storage>
+            <Query Id="4f414fbb-4b25-4691-80c3-9897fc5be61b" Order="true" Where="true" />
+          </Identity>
+          <Fields />
+        </Mapper>
+        <Mapper Id="4f3f6ccb-47c7-4ad8-b0ff-c8cbc1af003f" DeleteMode="Disabled" MaxPageSize="1000" IsCached="false" UpdateCacheOnEnumerator="false" IsPrepared="false" IsOverrideTableName="false" Description="Системный лог" Name="SystemLog">
+          <Storage Name="%ObjectName%" IsQuotedName="false" IsGenerateMapperTestsNewGet="true" IsGenerateMapperTestsGetNextId="true" IsGenerateMapperTestsBulkInsert="true" />
+          <Identity Name="Id" Type="long" Description="Идентити.">
+            <Storage Name="%FieldName%" Type="Bigint" IsQuotedName="false" SequenceName="Sequence_%ObjectName%">
+              <Partitions Level="L2" PartitionsExpandInterface="True" />
+            </Storage>
+            <Query Id="4f414fbb-4b25-4691-80c3-9897fc5be61b" Order="true" Where="true" />
+          </Identity>
+          <Fields>
+            <Field Name="CreateDate" Type="DateTime" Description="Дата создания" UseHide="false" UpdateMode="NotUpdate" NotUseNew="false">
+              <Storage Name="%FieldName%" IsNull="false" Type="Timestamp" IsQuotedName="false" />
+              <Query Id="fabb42ed-5c3a-4234-8bf6-0cffa10baa18" Order="true" Where="true" />
+            </Field>
+            <Field Name="Code" Type="int" Description="Код записи" UseHide="false" UpdateMode="NotUpdate" NotUseNew="false">
+              <Storage Name="%FieldName%" IsNull="false" Type="Integer" IsQuotedName="false" />
+              <Query Id="e3d3d0f8-7e96-4979-bf73-b0b527e6f76c" Order="true" Where="true" />
+            </Field>
+            <Field Name="Type" Type="int" Description="Тип записи" UseHide="false" UpdateMode="NotUpdate" NotUseNew="false">
+              <Storage Name="%FieldName%" IsNull="false" Type="Integer" IsQuotedName="false" />
+              <Query Id="ff1c3d22-44de-4488-8fd3-1e5925ffa40a" Order="true" Where="true" />
+            </Field>
+            <Field Name="Message" Type="string" Description="Сообщение" UseHide="false" UpdateMode="NotUpdate" NotUseNew="false">
+              <Storage Name="%FieldName%" IsNull="false" Type="Varchar" IsQuotedName="false" Size="1024" />
+              <Query Id="b446c595-7046-42ec-8b51-d67ac42328be" Order="true" Where="true" />
+            </Field>
+            <Field Name="Data" Type="string" Description="Данные" UseHide="false" UpdateMode="NotUpdate" NotUseNew="false">
+              <Storage Name="%FieldName%" IsNull="false" Type="Text" IsQuotedName="false" />
+              <Query Id="e4e2c27a-124d-44de-93e7-62b411c24d6a" Order="false" Where="true" />
+            </Field>
+          </Fields>
+        </Mapper>
+        <Mapper Id="b426ed4e-b645-4c26-8edd-63b1e89e899c" DeleteMode="Disabled" MaxPageSize="1000" IsCached="false" UpdateCacheOnEnumerator="false" IsPrepared="false" IsOverrideTableName="false" Description="Партиция таблицы БД" Name="TablePartition">
+          <Storage Name="%ObjectName%" IsQuotedName="false" IsGenerateMapperTestsNewGet="true" IsGenerateMapperTestsGetNextId="true" IsGenerateMapperTestsBulkInsert="true" />
+          <Identity Name="Id" Type="long" Description="Идентити.">
+            <Storage Name="%FieldName%" Type="Bigint" IsQuotedName="false" SequenceName="Sequence_%ObjectName%">
+              <Partitions Level="L2" PartitionsExpandInterface="True" />
+            </Storage>
+            <Query Id="4f414fbb-4b25-4691-80c3-9897fc5be61b" Order="true" Where="true" />
+          </Identity>
+          <Fields>
+            <Field Name="CreateDate" Type="DateTime" Description="Дата создания" UseHide="false" UpdateMode="NotUpdate" NotUseNew="false">
+              <Storage Name="%FieldName%" IsNull="false" Type="Timestamp" IsQuotedName="false" />
+              <Query Id="e2b3ecf0-17b5-4212-9da0-3c05f17e5c3f" Order="true" Where="true" />
+            </Field>
+            <Field Name="TableName" Type="string" Description="Имя таблицы БД" UseHide="false" UpdateMode="NotUpdate" NotUseNew="false">
+              <Storage Name="%FieldName%" IsNull="false" Type="Text" IsQuotedName="false" />
+              <Query Id="0617eeaf-95c0-4e62-abc8-4f32fc81c0ef" Order="true" Where="true" />
+            </Field>
+            <Field Name="PartitionName" Type="string" Description="Имя партиции таблицы БД" UseHide="false" UpdateMode="NotUpdate" NotUseNew="false">
+              <Storage Name="%FieldName%" IsNull="false" Type="Text" IsQuotedName="false" />
+              <Query Id="1a062039-4a49-4d63-80c0-bcd0ac79b200" Order="true" Where="true" />
+            </Field>
+            <Field Name="Day" Type="DateTime" Description="День партиции таблицы БД" UseHide="false" UpdateMode="NotUpdate" NotUseNew="false">
+              <Storage Name="%FieldName%" IsNull="false" Type="Date" IsQuotedName="false" />
+              <Query Id="840edb69-c08f-4d64-a05a-440888cc7398" Order="true" Where="true" />
+            </Field>
+            <Field Name="MinGroupId" Type="long" Description="Минимальный идентификатор группы идентити хранимый в партиции" UseHide="false" UpdateMode="NotUpdate" NotUseNew="false">
+              <Storage Name="%FieldName%" IsNull="false" Type="Bigint" IsQuotedName="false" />
+              <Query Id="72889c90-73c2-4d41-82c1-c36c27ffd0a8" Order="true" Where="true" />
+            </Field>
+            <Field Name="MaxNotIncludeGroupId" Type="long" Description="Максимальный идентификатор группы идентити не хранимый в партиции" UseHide="false" UpdateMode="NotUpdate" NotUseNew="false">
+              <Storage Name="%FieldName%" IsNull="false" Type="Bigint" IsQuotedName="false" />
+              <Query Id="408730b7-2fa1-4b3e-a6a8-74e7efa0397b" Order="true" Where="true" />
+            </Field>
+            <Field Name="MinId" Type="long" Description="Минимальный идентити хранимый в партиции" UseHide="false" UpdateMode="NotUpdate" NotUseNew="false">
+              <Storage Name="%FieldName%" IsNull="false" Type="Bigint" IsQuotedName="false" />
+              <Query Id="087d9636-4846-400b-8882-8d10b22339fb" Order="true" Where="true" />
+            </Field>
+            <Field Name="MaxNotIncludeId" Type="long" Description="Максимальный идентити не хранимый в партиции" UseHide="false" UpdateMode="NotUpdate" NotUseNew="false">
+              <Storage Name="%FieldName%" IsNull="false" Type="Bigint" IsQuotedName="false" />
+              <Query Id="621e6e67-b436-4767-b933-e4313b6cc80c" Order="true" Where="true" />
+            </Field>
+          </Fields>
+        </Mapper>
+        <Mapper Id="86347ca3-b1ef-4c32-a9c0-e38e3b1d1c5d" DeleteMode="Disabled" MaxPageSize="1000" IsCached="true" UpdateCacheOnEnumerator="true" IsPrepared="false" IsOverrideTableName="false" Description="Объект" Name="DemoObject">
+          <Storage Name="%ObjectName%" IsQuotedName="false" IsGenerateMapperTestsNewGet="true" IsGenerateMapperTestsGetNextId="true" IsGenerateMapperTestsBulkInsert="true" />
+          <Identity Name="Id" Type="long" Description="Идентити.">
+            <Storage Name="%FieldName%" Type="Bigint" IsQuotedName="false" SequenceName="Sequence_%ObjectName%">
+              <Partitions Level="L2" PartitionsExpandInterface="True" />
+            </Storage>
+            <Query Id="4f414fbb-4b25-4691-80c3-9897fc5be61b" Order="true" Where="true" />
+          </Identity>
+          <Revision Name="Revision" Type="long" Description="Номер ревизии." IsVersion="true">
+            <Storage Name="%FieldName%" Type="Bigint" IsQuotedName="false" />
+          </Revision>
+          <Fields>
+            <Field Name="CreateDate" Type="DateTime" Description="Дата создания" UseHide="false" UpdateMode="NotUpdate" NotUseNew="false">
+              <Storage Name="%FieldName%" IsNull="false" Type="Timestamp" IsQuotedName="false" />
+              <Query Id="19d14b24-d899-4ad9-b97b-ae7a7b12fff8" Order="true" Where="true" />
+            </Field>
+            <Field Name="ModificationDate" Type="DateTime" Description="Дата модификации" UseHide="false" UpdateMode="UpdateDirect" NotUseNew="false">
+              <Storage Name="%FieldName%" IsNull="false" Type="Timestamp" IsQuotedName="false" />
+              <Query Id="f69bae78-0fbd-426a-971c-63dcc6d7f4f7" Order="true" Where="true" />
+            </Field>
+            <Field Name="Name" Type="string" Description="Название" UseHide="false" UpdateMode="Update" NotUseNew="false">
+              <Storage Name="%FieldName%" IsNull="false" Type="Varchar" IsQuotedName="false" Size="1024" />
+              <Query Id="c1dd6a57-d661-4487-9610-f6f35d78744f" Order="true" Where="true" />
+            </Field>
+            <Field Name="Enabled" Type="bool" Description="Признак разрешения работы" UseHide="false" UpdateMode="Update" NotUseNew="false">
+              <Storage Name="%FieldName%" IsNull="false" Type="Boolean" IsQuotedName="false" />
+              <Query Id="51dbedef-4206-473d-85d2-b189426f5456" Order="true" Where="true" />
+            </Field>
+          </Fields>
+        </Mapper>
+        <Mapper Id="322d2242-c942-4643-ba8c-9e2e1e8a7828" DeleteMode="Delete" MaxPageSize="1000" IsCached="true" UpdateCacheOnEnumerator="true" IsPrepared="false" IsOverrideTableName="false" Description="Объект X" Name="DemoObjectX">
+          <Storage Name="%ObjectName%" IsQuotedName="false" IsGenerateMapperTestsNewGet="true" IsGenerateMapperTestsGetNextId="true" IsGenerateMapperTestsBulkInsert="true" />
+          <Identity Name="Id" Type="long" Description="Идентити.">
+            <Storage Name="%FieldName%" Type="Bigint" IsQuotedName="false" SequenceName="Sequence_%ObjectName%" />
+            <Query Id="4f414fbb-4b25-4691-80c3-9897fc5be61b" Order="true" Where="true" />
+          </Identity>
+          <Revision Name="Revision" Type="long" Description="Номер ревизии." IsVersion="true">
+            <Storage Name="%FieldName%" Type="Bigint" IsQuotedName="false" />
+          </Revision>
+          <Fields>
+            <Field Name="CreateDate" Type="DateTime" Description="Дата создания" UseHide="false" UpdateMode="NotUpdate" NotUseNew="false">
+              <Storage Name="%FieldName%" IsNull="false" Type="Timestamp" IsQuotedName="false" />
+              <Query Id="cd109655-1dc8-4e88-aa24-5c27e3ef778f" Order="true" Where="true" />
+            </Field>
+            <Field Name="ModificationDate" Type="DateTime" Description="Дата модификации" UseHide="false" UpdateMode="UpdateDirect" NotUseNew="false">
+              <Storage Name="%FieldName%" IsNull="false" Type="Timestamp" IsQuotedName="false" />
+              <Query Id="6862d6bb-3405-48c1-864c-46601da5726b" Order="true" Where="true" />
+            </Field>
+            <Field Name="Name" Type="string" Description="Название" UseHide="false" UpdateMode="Update" NotUseNew="false">
+              <Storage Name="%FieldName%" IsNull="false" Type="Varchar" IsQuotedName="false" Size="1024" />
+              <Query Id="0c54e3f8-3754-4b99-a144-a8c3d5e15958" Order="true" Where="true" />
+            </Field>
+            <Field Name="Enabled" Type="bool" Description="Признак разрешения работы" UseHide="false" UpdateMode="Update" NotUseNew="false">
+              <Storage Name="%FieldName%" IsNull="false" Type="Boolean" IsQuotedName="false" />
+              <Query Id="070ef35a-908f-450e-92b6-508e52dc5306" Order="true" Where="true" />
+            </Field>
+            <Field Name="Key1" Type="Guid" Description="Альтернативный ключ - часть №1" UseHide="false" UpdateMode="NotUpdate" NotUseNew="false">
+              <Storage Name="%FieldName%" IsNull="false" Type="Uuid" IsQuotedName="false" />
+              <Query Id="14367e40-cc94-47a7-8fbd-47e81c62b9bd" Order="true" Where="true" />
+              <AlternateKeys>
+                <AlternateKey Name="Key" Index="1" IgnoreDbSize="true" />
+              </AlternateKeys>
+            </Field>
+            <Field Name="Key2" Type="string" Description="Альтернативный ключ - часть №2" UseHide="false" UpdateMode="NotUpdate" NotUseNew="false">
+              <Storage Name="%FieldName%" IsNull="false" Type="Varchar" IsQuotedName="false" Size="10" />
+              <Query Id="95d0bdf7-5420-4b5c-b89b-7c7979a05f99" Order="true" Where="true" />
+              <AlternateKeys>
+                <AlternateKey Name="Key" Index="2" IgnoreDbSize="true" />
+              </AlternateKeys>
+            </Field>
+            <Field Name="group" Type="long" Description="Номер группы" UseHide="false" UpdateMode="NotUpdate" NotUseNew="false">
+              <Storage Name="%FieldName%" IsNull="false" Type="Bigint" IsQuotedName="true" />
+              <Query Id="f8b8b8ce-11b8-4108-b811-a5fc7255238a" Order="true" Where="true" />
+              <Collections>
+                <Collectiony Name="Group" Index="1" IgnoreDbSize="true" />
+              </Collections>
+            </Field>
+          </Fields>
+          <AlternateKeys>
+            <AlternateKey Name="Key" Description="Уникальность по 'Альтернативный ключ - часть №1 и №2'" />
+          </AlternateKeys>
+          <Collections>
+            <Collectiony Name="Group" Description="Группировка по 'Номер группы'" />
+          </Collections>
+        </Mapper>
+      </Mappers>
+      <CodeGeneration IntefacesNamespaceName="ShtrihM.DemoServer.Processing.Generated.Interface" ImplementsNamespaceName="ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements" CommonNamespaceName="ShtrihM.DemoServer.Processing.Generated.Common" TestsNamespaceName="ShtrihM.DemoServer.Processing.Generated.Tests" UnitTestCategory="Unit" UnitTestTimeout="300000" />
+    </Mappers>
+  </Mappers>
+</Model>
