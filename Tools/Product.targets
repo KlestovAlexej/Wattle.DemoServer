@@ -9,7 +9,7 @@
 		<Revision>0</Revision>
 		<IsReleased>false</IsReleased>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
-		<PackageProjectUrl>https://github.com/KlestovAlexej/Wattle.DemoServer</PackageProjectUrl>
+		<PackageProjectUrl>https://github.com/KlestovAlexej/Wattle3.DemoServer</PackageProjectUrl>
                 <PackageIcon>..\Product.png</PackageIcon>
         <ProductComment>$(Description)</ProductComment>
 	</PropertyGroup>
