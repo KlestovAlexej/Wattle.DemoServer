@@ -20,7 +20,7 @@
 	- Реализована критическая секция при обновлении DemoObject
 	- При создании объекта показана стратегия определения успешности коммита Unit of Work 
 
-- Создан доменный объект [DemoObjectX](src/DemoServer.Processing.Model/DomainObjects/DemoObject/DomainObjectDemoObjectX.cs)
+- Создан доменный объект [DemoObjectX](src/DemoServer.Processing.Model/DomainObjects/DemoObject/DomainObjectDemoObject.cs)
 	- Реализован кэширующий маппер БД
 	- Пример использования столбца таблицы БД с именем в кавычках
 	- Реализована оптимистическая конкуренция при обновлении на уровне БД
