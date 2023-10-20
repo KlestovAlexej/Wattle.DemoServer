@@ -13,12 +13,12 @@
 - Интеграция с [Entity Framework](https://learn.microsoft.com/ru-ru/ef/core/get-started/overview/first-app?tabs=netcore-cli) в рамках Unit of Work [c тестами](tests/DemoServer.Processing.Tests.Model/TestsUnitOfWork.cs)
 
 - Создан доменный объект [DemoObject](src/DemoServer.Processing.Model/DomainObjects/DemoObject/DomainObjectDemoObject.cs) доступный по REST интерфейсу
-	- Реализован кэширующий маппер БД
-	- Данные в БД хранится в партиционированных таблицах
-	- Партиции БД создаются автоматически для каждого календарного дня
-	- Реализована оптимистическая конкуренция при обновлении на уровне БД
-	- Реализована критическая секция при обновлении DemoObject
-	- При создании объекта показана стратегия определения успешности коммита Unit of Work 
+	- Реализован [кэширующий маппер](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/061c419225f81fbdecfec4bce193b8e396812456/src/DemoServer.Processing.Common/WellknownDomainObjectFields.cs#L180) БД
+	- Данные в БД хранится [в партиционированных таблицах](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/061c419225f81fbdecfec4bce193b8e396812456/src/DemoServer.Processing.Common/WellknownDomainObjectFields.cs#L181)
+	- Партиции БД [создаются автоматически](src/DemoServer.Processing.Model/Implements/PartitionsSponsor.cs) для каждого календарного дня
+	- Реализована [оптимистическая конкуренция при обновлении](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/061c419225f81fbdecfec4bce193b8e396812456/src/DemoServer.Processing.Common/WellknownDomainObjectFields.cs#L183) на уровне БД
+	- Реализована [критическая секция](src/DemoServer.Processing.Model/Implements/UnitOfWorkLocks/UnitOfWorkLocksHubTyped.cs) при [обновлении DemoObject](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/061c419225f81fbdecfec4bce193b8e396812456/src/DemoServer.Processing.Model/DomainObjects/DemoObject/DomainObjectDemoObject.cs#L95)
+	- При создании объекта показана [стратегия определения успешности коммита](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/061c419225f81fbdecfec4bce193b8e396812456/src/DemoServer.Processing.Model/DomainObjects/DemoObject/DomainObjectDemoObject.cs#L152) Unit of Work 
 
 - Создан доменный объект [DemoObjectX](src/DemoServer.Processing.Model/DomainObjects/DemoObject/DomainObjectDemoObject.cs)
 	- Реализован кэширующий маппер БД
