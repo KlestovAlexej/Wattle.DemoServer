@@ -6,9 +6,9 @@
 
 - [Реализован](src/DemoServer.Processing.Model/Implements/UnitOfWork.cs) паттерн [Unit of Work](https://martinfowler.com/eaaCatalog/unitOfWork.html)
 - Пример логирования с использованием [serilog](https://serilog.net/)
-	- Для просморра логов в онлайне укажите [токен](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/76abbcacc47f599b4731c22b0acb9f201e2efc32/src/DemoServer.Processing.Application/appsettings.json#L36) сайта [logz.io](https://logz.io/) с бесплатным доступом.
+	- К примеру, для просмотра логов в онлайне укажите [токен](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/76abbcacc47f599b4731c22b0acb9f201e2efc32/src/DemoServer.Processing.Application/appsettings.json#L36) сайта [logz.io](https://logz.io/) с бесплатным доступом.
 - [Интеграция](src/DemoServer.Processing.Model/Implements/Metrics.cs) с [OpenTelemetry](https://opentelemetry.io/)
-	- К примеру, для получения и просмотра телементрии укажите [токен](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/59b7edeb70966acca443b4a8c4afc3fb133d688e/src/DemoServer.Processing.Application/Program.cs#L89) сайта [lightstep.com](https://app.lightstep.com/signin?redirect=%2F) с бесплатным доступом.
+	- К примеру, для просмотра телементрии в онлайне укажите [токен](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/59b7edeb70966acca443b4a8c4afc3fb133d688e/src/DemoServer.Processing.Application/Program.cs#L89) сайта [lightstep.com](https://app.lightstep.com/signin?redirect=%2F) с бесплатным доступом.
 - Реализация [REST](https://learn.microsoft.com/ru-ru/aspnet/core/tutorials/first-web-api?view=aspnetcore-7.0&tabs=visual-studio) интерфейса
 	- [Тесты](tests/DemoServer.Processing.Tests.Model/TestsDemoObjectControllerService.cs) службы [контроллера](src/DemoServer.Processing.Api/DemoObjectController.cs) REST интерфейса
 	- [Swagger](https://learn.microsoft.com/ru-ru/aspnet/core/tutorials/getting-started-with-swashbuckle?view=aspnetcore-7.0&tabs=visual-studio) описание REST интерфейса
