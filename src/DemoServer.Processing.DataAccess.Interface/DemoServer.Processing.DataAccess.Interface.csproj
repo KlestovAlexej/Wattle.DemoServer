@@ -21,20 +21,21 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <AdditionalFiles Include="..\DemoServer.Processing.Model\DbMappers.Schema.xml" Link="DbMappers.Schema.xml" />
+		<AdditionalFiles Include="..\DemoServer.Processing.Model\DbMappers.Schema.xml" Link="DbMappers.Schema.xml" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="ShtrihM.Wattle3.CodeGeneration.Generator.Interfaces" Version="3.0.0.37341">
-		  <PrivateAssets>all</PrivateAssets>
-		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+			<TreatAsUsed>true</TreatAsUsed>
 		</PackageReference>
 		<PackageReference Include="ShtrihM.Wattle3.Mappers.Interfaces" Version="3.0.0.37341" />
 		<PackageReference Include="ShtrihM.Wattle3.Mappers.PostgreSql" Version="3.0.0.37341" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\DemoServer.Processing.Common\DemoServer.Processing.Common.csproj" />
+		<ProjectReference Include="..\DemoServer.Processing.Common\DemoServer.Processing.Common.csproj" />
 	</ItemGroup>
 
 </Project>

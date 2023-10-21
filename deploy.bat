@@ -4,9 +4,6 @@ IF %ERRORLEVEL% NEQ 0 EXIT 1
 mkdir Deploy\Prod\logs
 IF %ERRORLEVEL% NEQ 0 EXIT 1
 
-mkdir Deploy\Prod\data
-IF %ERRORLEVEL% NEQ 0 EXIT 1
-
 mkdir Deploy\Prod\Processing\bin\Release
 IF %ERRORLEVEL% NEQ 0 EXIT 1
 
@@ -14,9 +11,6 @@ mkdir Deploy\Prod\Processing\bin\Debug
 IF %ERRORLEVEL% NEQ 0 EXIT 1
 
 mkdir Deploy\Test\logs
-IF %ERRORLEVEL% NEQ 0 EXIT 1
-
-mkdir Deploy\Test\data
 IF %ERRORLEVEL% NEQ 0 EXIT 1
 
 mkdir Deploy\Test\Processing\bin\Release
