@@ -15,7 +15,7 @@ public static class WellknownCommonSystemSettings
     /// <summary>
     /// Все идентификаторы стандартных, общих для всех систем настроек и их описания.
     /// </summary>
-    public static readonly IReadOnlyDictionary<Guid, string> DisplayNames;
+    private static readonly IReadOnlyDictionary<Guid, string> DisplayNames;
 
     static WellknownCommonSystemSettings()
     {

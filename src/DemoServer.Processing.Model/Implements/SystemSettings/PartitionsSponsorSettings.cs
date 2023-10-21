@@ -20,25 +20,25 @@ public class PartitionsSponsorSettings
 {
     public class TablespaceEntry
     {
-        public int Index { get; set; }
-        public string TablespaceName { get; set; }
+        public int Index { get; init; }
+        public string TablespaceName { get; init; }
     }
 
     public class DomainObjectTablespaceEntry
     {
-        public Guid DomainObjectType { get; set; }
+        public Guid DomainObjectType { get; init; }
         public string Comment { get; set; }
-        public List<TablespaceEntry> Tablespaces { get; set; } = new();
+        public List<TablespaceEntry> Tablespaces { get; init; } = new();
     }
 
     public class TablespacesEntry
     {
-        public List<TablespaceEntry> Tablespaces { get; set; } = new();
+        public List<TablespaceEntry> Tablespaces { get; init; } = new();
     }
 
     public class DomainObjectsEntry
     {
-        public List<DomainObjectTablespaceEntry> DomainObjects { get; set; } = new();
+        public List<DomainObjectTablespaceEntry> DomainObjects { get; init; } = new();
     }
 
     public PartitionsSponsorSettings()

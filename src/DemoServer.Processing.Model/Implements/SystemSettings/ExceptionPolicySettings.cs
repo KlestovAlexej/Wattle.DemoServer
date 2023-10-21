@@ -1,6 +1,5 @@
 ﻿using ShtrihM.Wattle3.Json;
 using System.ComponentModel;
-using System.Diagnostics.CodeAnalysis;
 
 namespace ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
 
@@ -8,7 +7,6 @@ namespace ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
 /// Настройки уведомления об исключениях системы.
 /// </summary>
 [Description("Настройки уведомления об исключениях системы")]
-[SuppressMessage("ReSharper", "AutoPropertyCanBeMadeGetOnly.Global")]
 public class ExceptionPolicySettings
 {
     public ExceptionPolicySettings()

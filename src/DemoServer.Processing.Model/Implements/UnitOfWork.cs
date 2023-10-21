@@ -25,12 +25,6 @@ public sealed class UnitOfWork(
         registersFactory,
         visitor)
 {
-    public new ICustomEntryPoint EntryPoint
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => (ICustomEntryPoint)m_context.EntryPoint;
-    }
-
     public UnitOfWorkLocks.UnitOfWorkLocks CurrentLocks
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -113,6 +107,6 @@ public sealed class UnitOfWork(
 
     protected override IUnitOfWorkLocks DoCreateLocks()
         => new UnitOfWorkLocks.UnitOfWorkLocks(
-            EntryPoint.WorkflowExceptionPolicy,
+            ((ICustomEntryPoint)m_context.EntryPoint).WorkflowExceptionPolicy,
             ((CustomUnitOfWorkContext)m_context).UnitOfWorkLocksHub);
 }

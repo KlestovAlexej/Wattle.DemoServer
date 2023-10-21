@@ -6,7 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 #pragma warning disable IDE0290
-#pragma warning disable CS1591
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
 namespace ShtrihM.DemoServer.Processing.Application.Startups;
 

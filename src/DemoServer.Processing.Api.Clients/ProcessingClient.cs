@@ -169,38 +169,6 @@ public sealed class ProcessingClient : IProcessingClient
         return default;
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    // ReSharper disable once UnusedMember.Local
-    private void ReadResponse(RestResponse response)
-    {
-        if (response.StatusCode == HttpStatusCode.OK)
-        {
-            return;
-        }
-
-        if (response.StatusCode == HttpStatusCode.Conflict)
-        {
-            var workflowExceptionData = m_restClient.Serializers.DeserializeContent<WorkflowExceptionData>(response);
-
-            if (workflowExceptionData == null)
-            {
-                ThrowsHelper.ThrowInvalidOperationException("Не удалось прочитать ошибку в ответе.");
-            }
-
-            workflowExceptionData!.Throw();
-        }
-
-        if (response.StatusCode == HttpStatusCode.BadRequest)
-        {
-            ThrowsHelper.ThrowInvalidOperationException($@"Ошибка '{response.StatusCode}'
-{response.Content}");
-        }
-
-        response.ThrowIfError();
-
-        ThrowsHelper.ThrowInvalidOperationException($"Ошибка '{response.StatusCode}'.");
-    }
-
     #endregion
 
     public void Dispose()

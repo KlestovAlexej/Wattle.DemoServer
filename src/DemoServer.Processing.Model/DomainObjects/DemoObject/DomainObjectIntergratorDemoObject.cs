@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
 using ShtrihM.DemoServer.Processing.Common;
-using ShtrihM.DemoServer.Processing.DataAccess.Interface;
 using ShtrihM.DemoServer.Processing.Model.Interfaces;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectActivators;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectDataMappers;
@@ -13,6 +12,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using ShtrihM.DemoServer.Processing.Generated.Interface;
 using Unity;
+
+#pragma warning disable IDE0290
 
 namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObject;
 
@@ -84,9 +85,7 @@ public class DomainObjectIntergratorDemoObject : BaseDomainObjectIntergrator<IUn
     protected override void DoRun(IUnityContainer container)
     {
         var entryPoint = container.Resolve<ICustomEntryPoint>();
-        var mappers = container.Resolve<ICustomMappers>();
-        var loggerFactory = container.Resolve<ILoggerFactory>();
-        var mapper = mappers.GetMapper<IMapperDemoObject>();
+        var mapper = entryPoint.Mappers.GetMapper<IMapperDemoObject>();
         var identityCache =
             new IdentityCache<IMapperDemoObject>(
                 GuidGenerator.New($"{mapper.MapperId} {nameof(IMapperDemoObject)}"),
@@ -98,7 +97,7 @@ public class DomainObjectIntergratorDemoObject : BaseDomainObjectIntergrator<IUn
                 entryPoint.SystemSettings.TimeStatisticsStep.Value,
                 mapper,
                 entryPoint.SystemSettings.IdentityCachesSettings.Value.DemoObject.Value,
-                loggerFactory.CreateLogger<IdentityCache<IMapperDemoObject>>());
+                entryPoint.LoggerFactory.CreateLogger<IdentityCache<IMapperDemoObject>>());
 
         var partitionsLevel = mapper.Partitions.Level;
         var partitionsDay = entryPoint.PartitionsDay;
@@ -133,6 +132,6 @@ public class DomainObjectIntergratorDemoObject : BaseDomainObjectIntergrator<IUn
                 entryPoint.WorkflowExceptionPolicy,
                 entryPoint.ExceptionPolicy,
                 entryPoint.UnitOfWorkProvider,
-                loggerFactory.CreateLogger<DomainObjectRegisterStateless>()));
+                entryPoint.LoggerFactory.CreateLogger<DomainObjectRegisterStateless>()));
     }
 }

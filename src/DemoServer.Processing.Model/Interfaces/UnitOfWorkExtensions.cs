@@ -10,37 +10,6 @@ namespace ShtrihM.DemoServer.Processing.Model.Interfaces;
 public static class UnitOfWorkExtensions
 {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static ValueTask<T> FindAsync<T>(
-        this ICustomEntryPoint entryPoint,
-        long id,
-        CancellationToken cancellationToken = default)
-        where T : IDomainObject
-    {
-        if (entryPoint == null)
-        {
-            ThrowsHelper.ThrowArgumentNullException(nameof(entryPoint));
-        }
-
-        return entryPoint!.UnitOfWorkProvider.Instance.FindAsync<T>(id, cancellationToken);
-    }
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static T Find<T>(
-        this ICustomEntryPoint entryPoint,
-        long id)
-        where T : IDomainObject
-    {
-        if (entryPoint == null)
-        {
-            ThrowsHelper.ThrowArgumentNullException(nameof(entryPoint));
-        }
-
-        var result = entryPoint!.UnitOfWorkProvider.Instance.Find<T>(id);
-
-        return result;
-    }
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static ValueTask<T> NewAsync<T>(
         this ICustomEntryPoint entryPoint,
         IDomainObjectTemplate template,

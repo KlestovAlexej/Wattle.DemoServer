@@ -4,7 +4,7 @@ using System;
 
 namespace ShtrihM.DemoServer.Testing.Loggers;
 
-#pragma warning disable CS1591
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
 public class NUnitConsoleLogger : ILogger
 {

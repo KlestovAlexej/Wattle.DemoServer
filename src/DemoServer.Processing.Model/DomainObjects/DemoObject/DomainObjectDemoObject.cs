@@ -17,7 +17,6 @@ using ShtrihM.Wattle3.DomainObjects.DomainObjectActivators;
 using ShtrihM.Wattle3.Primitives;
 
 #pragma warning disable CA2254
-#pragma warning disable IDE0052
 
 namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObject;
 

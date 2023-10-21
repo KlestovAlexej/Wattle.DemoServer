@@ -41,7 +41,7 @@ using System.Xml.XPath;
 using Constants = ShtrihM.DemoServer.Common.Constants;
 using ILogger = Microsoft.Extensions.Logging.ILogger;
 
-#pragma warning disable CS1591
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
 namespace ShtrihM.DemoServer.Processing.Application.Startups;
 
@@ -370,8 +370,7 @@ public static class WebApplicationBuilderExtensions
                     options.InputFormatters.OfType<NewtonsoftJsonInputFormatter>()
                         .First(i => i.SupportedMediaTypes.Contains(MediaTypeNames.Application.Json));
                 options.InputFormatters.Clear();
-                options.InputFormatters.Insert(0, formatter);
-                options.InputFormatters.Insert(0, new TextPlainInputFormatter());
+                options.InputFormatters.Add(formatter);
             });
 
         builder.Services.Replace(

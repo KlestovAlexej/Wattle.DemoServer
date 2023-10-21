@@ -1,14 +1,12 @@
 ﻿using NUnit.Framework;
 using ShtrihM.Wattle3.Testing;
-using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Text;
 
 namespace ShtrihM.DemoServer.Testing;
 
-#pragma warning disable CS1591
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
-[SuppressMessage("ReSharper", "InconsistentNaming")]
 public class BaseTests : Wattle3.Testing.BaseTests
 {
     public static readonly string Configuration =

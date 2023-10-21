@@ -37,7 +37,6 @@ using ShtrihM.Wattle3.Utils;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Runtime.ExceptionServices;
 using System.Text;
 using System.Threading;
@@ -75,7 +74,6 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
             AddCustomWellknownValue(WellknownCommonSnapShotInfrastructureMonitorValues.CustomEntryPoint.DebugMode, DebugMode);
         }
 
-        [SuppressMessage("ReSharper", "MemberHidesStaticFromOuterClass")]
         public string ProcessId { get; }
 
         public bool DebugMode { get; }

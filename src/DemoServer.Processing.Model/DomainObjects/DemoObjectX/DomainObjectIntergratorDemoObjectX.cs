@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
 using ShtrihM.DemoServer.Processing.Common;
-using ShtrihM.DemoServer.Processing.DataAccess.Interface;
 using ShtrihM.DemoServer.Processing.Model.Interfaces;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectActivators;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectDataMappers;
@@ -118,9 +117,7 @@ public class DomainObjectIntergratorDemoObjectX : BaseDomainObjectIntergrator<IU
     protected override void DoRun(IUnityContainer container)
     {
         var entryPoint = container.Resolve<ICustomEntryPoint>();
-        var mappers = container.Resolve<ICustomMappers>();
-        var loggerFactory = container.Resolve<ILoggerFactory>();
-        var mapper = mappers.GetMapper<IMapperDemoObjectX>();
+        var mapper = entryPoint.Mappers.GetMapper<IMapperDemoObjectX>();
         var identityCache =
             new IdentityCache<IMapperDemoObjectX>(
                 GuidGenerator.New($"{mapper.MapperId} {nameof(IMapperDemoObjectX)}"),
@@ -132,7 +129,7 @@ public class DomainObjectIntergratorDemoObjectX : BaseDomainObjectIntergrator<IU
                 entryPoint.SystemSettings.TimeStatisticsStep.Value,
                 mapper,
                 entryPoint.SystemSettings.IdentityCachesSettings.Value.DemoObjectX.Value,
-                loggerFactory.CreateLogger<IdentityCache<IMapperDemoObjectX>>());
+                entryPoint.LoggerFactory.CreateLogger<IdentityCache<IMapperDemoObjectX>>());
         var dataMapper =
             new DomainObjectDataMapperFullDefault
             <IMapperDemoObjectX, DemoObjectXDtoNew, DemoObjectXDtoActual, DemoObjectXDtoChanged,
@@ -145,14 +142,9 @@ public class DomainObjectIntergratorDemoObjectX : BaseDomainObjectIntergrator<IU
 
         container.Resolve<DomainObjectRegisters>().AddRegister(
             new DomainObjectRegisterDemoObjectX(
-                WellknownDomainObjects.DemoObjectX,
-                WellknownDomainObjects.GetDisplayName(WellknownDomainObjects.DemoObjectX),
                 dataMapper,
                 new DomainObjectDataActivatorDemoObjectX(entryPoint),
                 new DomainObjectActivatorDemoObjectX(entryPoint),
-                entryPoint.SystemSettings.DomainObjectRegistersSettings.Value.InitializeEmergencyTimeout.Value,
-                null,
-                entryPoint,
-                loggerFactory));
+                entryPoint));
     }
 }

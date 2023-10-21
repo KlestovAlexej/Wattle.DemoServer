@@ -3,10 +3,11 @@ using ShtrihM.DemoServer.Processing.Api;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Collections.Generic;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+
 namespace ShtrihM.DemoServer.Processing.Application.Startups;
 
-#pragma warning disable CS1591
-
+// ReSharper disable once ClassNeverInstantiated.Global
 public class DocumentFilterHealthCheck : IDocumentFilter
 {
     public void Apply(OpenApiDocument swaggerDoc, DocumentFilterContext context)

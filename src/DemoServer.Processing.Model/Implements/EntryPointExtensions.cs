@@ -8,13 +8,11 @@ using ShtrihM.DemoServer.Processing.Model.Interfaces;
 using ShtrihM.Wattle3.DomainObjects.Interfaces;
 using ShtrihM.Wattle3.Primitives;
 using System;
-using System.Diagnostics.CodeAnalysis;
 
 namespace ShtrihM.DemoServer.Processing.Model.Implements;
 
 public static class EntryPointExtensions
 {
-    [SuppressMessage("ReSharper", "UnusedVariable")]
     public static void RegisterGlobals()
     {
         /* NONE */

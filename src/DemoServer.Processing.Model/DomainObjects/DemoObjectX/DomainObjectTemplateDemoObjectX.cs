@@ -3,8 +3,6 @@ using ShtrihM.Wattle3.DomainObjects.Interfaces;
 using ShtrihM.Wattle3.Primitives;
 using System;
 using System.Runtime.CompilerServices;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
 
@@ -38,19 +36,6 @@ public class DomainObjectTemplateDemoObjectX : IDomainObjectTemplate
         var result = new DemoObjectXAlternativeKey(Key1, Key2);
 
         return result;
-    }
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public ValueTask<IDomainObjectDemoObjectX> NewAsync(
-        ICustomEntryPoint entryPoint,
-        CancellationToken cancellationToken = default)
-    {
-        if (entryPoint == null)
-        {
-            ThrowsHelper.ThrowArgumentNullException(nameof(entryPoint));
-        }
-
-        return entryPoint!.NewAsync<IDomainObjectDemoObjectX>(this, cancellationToken);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]

@@ -19,11 +19,6 @@
             Базовая реализация доменного объекта с поддержкой изменения.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.DomainObjects.DomainObjectMutable`1.Version">
-            <summary>
-            Версия состояния доменного объекта.
-            </summary>
-        </member>
         <member name="M:ShtrihM.DemoServer.Processing.Model.DomainObjects.DomainObjectMutable`1.DoUpdate">
             <summary>
             Фиксация в <see cref="T:ShtrihM.Wattle3.DomainObjects.Interfaces.IUnitOfWork"/> изменений доменного объекта.

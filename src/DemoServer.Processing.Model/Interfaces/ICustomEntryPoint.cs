@@ -11,12 +11,9 @@ using ShtrihM.Wattle3.Mappers.Interfaces;
 using ShtrihM.Wattle3.Mappers.PostgreSql;
 using System;
 using System.Collections.Concurrent;
-using System.Diagnostics.CodeAnalysis;
 
 namespace ShtrihM.DemoServer.Processing.Model.Interfaces;
 
-[SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
-[SuppressMessage("ReSharper", "UnusedMember.Global")]
 public interface ICustomEntryPoint : IEntryPoint
 {
     DomainBehaviourWithСonfirmation CreateDomainBehaviourWithСonfirmation<TMapper>(long identity) where TMapper : IMapper;

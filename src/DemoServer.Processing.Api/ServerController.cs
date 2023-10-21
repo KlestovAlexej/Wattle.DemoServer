@@ -12,9 +12,6 @@ using ShtrihM.Wattle3.Primitives;
 using Swashbuckle.AspNetCore.Annotations;
 using Swashbuckle.AspNetCore.Filters;
 using System.Net.Mime;
-using System.Threading.Tasks;
-
-#pragma warning disable CS1998
 
 namespace ShtrihM.DemoServer.Processing.Api;
 
@@ -54,7 +51,7 @@ public class ServerController : BaseProcessingController
         Tags = new[] { Tag })]
     [SwaggerResponseExample(StatusCodes.Status200OK, typeof(ExamplesMetaServerDescription))]
     [SwaggerResponse(StatusCodes.Status200OK, "Описание сервера", typeof(MetaServerDescription))]
-    public async Task<IActionResult> Description()
+    public IActionResult Description()
     {
         using var mainSpan = m_tracer?.StartActiveSpan(nameof(Description), initialAttributes: SpanAttributes, kind: SpanKind.Server);
 

@@ -14,7 +14,7 @@ public static class WellknownWorkflowExceptionDataKeys
     /// <summary>
     /// Все ключи с описаниями.
     /// </summary>
-    public static readonly IReadOnlyDictionary<string, string> DisplayNames;
+    private static readonly IReadOnlyDictionary<string, string> DisplayNames;
 
     static WellknownWorkflowExceptionDataKeys()
     {

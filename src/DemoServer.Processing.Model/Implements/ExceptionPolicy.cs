@@ -13,7 +13,6 @@ using ShtrihM.Wattle3.Mappers;
 using ShtrihM.Wattle3.OpenTelemetry;
 using ShtrihM.Wattle3.Primitives;
 using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 
 namespace ShtrihM.DemoServer.Processing.Model.Implements;
@@ -25,7 +24,7 @@ public class ExceptionPolicy : BaseExceptionPolicy
 
     private static readonly SpanAttributes SpanAttributes;
 
-    [SuppressMessage("ReSharper", "NotAccessedField.Local")]
+    // ReSharper disable once NotAccessedField.Local
     private readonly bool m_debugMode;
 
     private readonly IWorkflowExceptionPolicy m_workflowExceptionPolicy;

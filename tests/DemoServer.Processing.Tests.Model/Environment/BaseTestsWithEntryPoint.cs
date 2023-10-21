@@ -17,7 +17,6 @@ using ShtrihM.Wattle3.Utils;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Runtime.ExceptionServices;
@@ -30,7 +29,6 @@ using Constants = ShtrihM.DemoServer.Common.Constants;
 
 namespace ShtrihM.DemoServer.Processing.Tests.Model.Environment;
 
-[SuppressMessage("ReSharper", "InconsistentNaming")]
 public abstract class BaseTestsWithEntryPoint : BaseDbTests
 {
     protected static readonly TimeSpan WaitTimeout = TimeSpan.FromMinutes(1);

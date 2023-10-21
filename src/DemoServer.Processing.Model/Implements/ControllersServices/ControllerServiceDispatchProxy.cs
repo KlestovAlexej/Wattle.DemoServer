@@ -11,6 +11,8 @@ using System.Runtime.CompilerServices;
 using System.Runtime.ExceptionServices;
 using System.Threading;
 
+#pragma warning disable CA2254
+
 namespace ShtrihM.DemoServer.Processing.Model.Implements.ControllersServices;
 
 public class ControllerServiceDispatchProxy<TService> : DispatchProxy

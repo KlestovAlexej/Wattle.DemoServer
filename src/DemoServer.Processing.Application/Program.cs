@@ -28,7 +28,7 @@ using WebApplicationBuilderExtensions = ShtrihM.DemoServer.Processing.Applicatio
 
 namespace ShtrihM.DemoServer.Processing.Application;
 
-#pragma warning disable CS1591
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
 public class Program
 {
@@ -47,8 +47,6 @@ public class Program
             // Для сохранения явной ссылки на пакет.
             _ = typeof(Serilog.Sinks.Logz.Io.LogzIoSerializer);
 
-            // sc.exe create "ШТРИХ-М : ShtrihM.DemoServer.Processing" binpath="C:\Dev\DemoServer\src\DemoServer.Processing.Application\bin\Debug\net7.0-windows\win-x64\ShtrihM.DemoServer.Processing.Application.exe -Service LOGS_DIR:Logs"
-            // sc.exe delete "ШТРИХ-М : ShtrihM.DemoServer.Processing"
             IsWindowsService = (args.Length > 0) && (string.Equals(args[0], "-Service", StringComparison.CurrentCultureIgnoreCase));
 
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);

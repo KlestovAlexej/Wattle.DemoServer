@@ -2,15 +2,13 @@
 using Serilog.Events;
 using System;
 
-#pragma warning disable CS1591
-
 namespace ShtrihM.DemoServer.Common;
 
 public class ServiceEnricher : ILogEventEnricher
 {
-    public const string PropertyName = "Service.Name";
-    public const string PropertyVersion = "Service.Version";
-    public const string PropertyInstanceId = "Service.InstanceId";
+    private const string PropertyName = "Service.Name";
+    private const string PropertyVersion = "Service.Version";
+    private const string PropertyInstanceId = "Service.InstanceId";
 
     private readonly LogEventProperty m_propertyName;
     private readonly LogEventProperty m_propertyVersion;

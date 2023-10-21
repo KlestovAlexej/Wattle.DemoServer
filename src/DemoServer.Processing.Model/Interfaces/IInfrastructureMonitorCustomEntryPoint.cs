@@ -1,9 +1,7 @@
 ﻿using ShtrihM.Wattle3.Infrastructures.Interfaces.Monitors;
-using System.Diagnostics.CodeAnalysis;
 
 namespace ShtrihM.DemoServer.Processing.Model.Interfaces;
 
-[SuppressMessage("ReSharper", "UnusedMember.Global")]
 public interface IInfrastructureMonitorCustomEntryPoint : IInfrastructureMonitorEntryPoint
 {
     /// <summary>

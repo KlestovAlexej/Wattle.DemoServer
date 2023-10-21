@@ -2,11 +2,9 @@ using ShtrihM.DemoServer.Common;
 using ShtrihM.Wattle3.Common.Exceptions;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 
 namespace ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
 
-[SuppressMessage("ReSharper", "AutoPropertyCanBeMadeGetOnly.Global")]
 public sealed class SystemSettingsLocal
 {
     public SystemSettingsLocal(IDictionary<Guid, string> values)

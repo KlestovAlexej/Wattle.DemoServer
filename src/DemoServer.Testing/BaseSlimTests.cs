@@ -5,16 +5,13 @@ using NUnit.Framework;
 using Serilog;
 using ShtrihM.DemoServer.Testing.Loggers;
 using ShtrihM.Wattle3.Utils;
-using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using ILogger = Microsoft.Extensions.Logging.ILogger;
 
 namespace ShtrihM.DemoServer.Testing;
 
-#pragma warning disable CS1591
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
-[SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
-[SuppressMessage("ReSharper", "InconsistentNaming")]
 public abstract class BaseSlimTests : BaseTests
 {
     protected ILoggerFactory m_loggerFactory;

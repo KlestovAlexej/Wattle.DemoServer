@@ -7,14 +7,12 @@ using ShtrihM.Wattle3.Testing;
 using ShtrihM.Wattle3.Utils;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace ShtrihM.DemoServer.Processing.Tests.Application;
 
 [TestFixture]
-[SuppressMessage("ReSharper", "RedundantArgumentDefaultValue")]
 public class TestsApiServer : BaseSlimTests
 {
     private AppHost m_appHost;

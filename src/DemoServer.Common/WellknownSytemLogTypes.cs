@@ -14,7 +14,7 @@ public static class WellknownSytemLogTypes
     /// <summary>
     /// Все типы событий системного лога и их описание.
     /// </summary>
-    public static readonly IReadOnlyDictionary<int, string> DisplayNames;
+    private static readonly IReadOnlyDictionary<int, string> DisplayNames;
 
     static WellknownSytemLogTypes()
     {

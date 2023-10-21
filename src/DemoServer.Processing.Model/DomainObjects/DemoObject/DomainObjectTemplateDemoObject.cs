@@ -36,15 +36,4 @@ public class DomainObjectTemplateDemoObject : IDomainObjectTemplate
 
         return entryPoint!.NewAsync<IDomainObjectDemoObject>(this, cancellationToken);
     }
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public IDomainObjectDemoObject New(ICustomEntryPoint entryPoint)
-    {
-        if (entryPoint == null)
-        {
-            ThrowsHelper.ThrowArgumentNullException(nameof(entryPoint));
-        }
-
-        return entryPoint!.New<IDomainObjectDemoObject>(this);
-    }
 }

@@ -49,6 +49,7 @@ public class TestsBuildEnviroment : BaseSlimTests
     [Test]
     [Timeout(TestTimeout.Short)]
     [Explicit]
+    [Description("Создать среду для ручного запуска сервера")]
     public void Test()
     {
     }

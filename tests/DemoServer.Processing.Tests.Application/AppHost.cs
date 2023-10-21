@@ -29,19 +29,19 @@ public class AppHost : IDisposable
 {
     private bool m_freeAll;
     private StreamReader m_output;
+    private readonly string m_dbName;
+    private readonly string m_dbConnectionString;
+    private readonly string m_serverConnectionString;
+    private readonly TestDirectory m_directoryLogs;
+    private readonly bool m_dropDb;
+    private readonly bool m_buildEnviroment;
+    private readonly bool m_buildDb;
+    private readonly string m_tag;
+    private readonly string m_appPath;
+    private Process m_process;
+    private readonly int m_portApiProcessing;
+    private readonly int m_portApiMonitoring;
 
-    public readonly string DbName;
-    public readonly string DbConnectionString;
-    public readonly string ServerConnectionString;
-    public readonly TestDirectory DirectoryLogs;
-    public readonly bool DropDb;
-    public readonly bool BuildEnviroment;
-    public readonly bool BuildDb;
-    public readonly string Tag;
-    public readonly string AppPath;
-    public Process Process { get; private set; }
-    public readonly int PortApiProcessing;
-    public readonly int PortApiMonitoring;
     public readonly Uri UrlApiProcessing;
 
     public AppHost(
@@ -54,31 +54,31 @@ public class AppHost : IDisposable
     {
         m_freeAll = true;
 
-        DropDb = dropDb;
-        BuildEnviroment = buildEnviroment;
-        BuildDb = buildDb;
-        DbName = dbName ?? $"test_{Constants.ProductTag.ToLower()}_" + DateTime.Now.ToString("yyyMMddhhmmss") + "_" + Guid.NewGuid().ToString("N");
-        Tag = tag ?? Environment.StackTrace;
+        m_dropDb = dropDb;
+        m_buildEnviroment = buildEnviroment;
+        m_buildDb = buildDb;
+        m_dbName = dbName ?? $"test_{Constants.ProductTag.ToLower()}_" + DateTime.Now.ToString("yyyMMddhhmmss") + "_" + Guid.NewGuid().ToString("N");
+        m_tag = tag ?? Environment.StackTrace;
         configuration ??= Testing.BaseTests.Configuration;
-        AppPath = ProviderProjectBasePath.GetFullPath($@"src\DemoServer.Processing.Application\bin\{configuration}\net7.0-windows\win-x64");
-        DirectoryLogs = new TestDirectory(Path.Combine(AppPath, "Logs"), BuildEnviroment == false);
-        PortApiProcessing = Constants.DefaultPortApiProcessing;
-        PortApiMonitoring = Constants.DefaultPortApiProcessingMonitoring;
-        UrlApiProcessing = new Uri($"http://localhost:{PortApiProcessing}");
+        m_appPath = ProviderProjectBasePath.GetFullPath($@"src\DemoServer.Processing.Application\bin\{configuration}\net7.0-windows\win-x64");
+        m_directoryLogs = new TestDirectory(Path.Combine(m_appPath, "Logs"), m_buildEnviroment == false);
+        m_portApiProcessing = Constants.DefaultPortApiProcessing;
+        m_portApiMonitoring = Constants.DefaultPortApiProcessingMonitoring;
+        UrlApiProcessing = new Uri($"http://localhost:{m_portApiProcessing}");
 
         /*
         Если адрес, логин и пароль БД PostgreSQL не указаны явно то они берутся из реестра Windows.
         Файл с настройками реестра.
         src\DemoServer.Testing\WindowsRegisterTestingEnvirioment.reg
         */
-        ServerConnectionString = PostgreSqlDbHelper.GetServerConnectionString(userCredentials: BaseDbTests.PostgreSqlUserCredentials, serverAdress: BaseDbTests.PostgreSqlServerAdress);
+        m_serverConnectionString = PostgreSqlDbHelper.GetServerConnectionString(userCredentials: BaseDbTests.PostgreSqlUserCredentials, serverAdress: BaseDbTests.PostgreSqlServerAdress);
 
         /*
         Если адрес, логин и пароль БД PostgreSQL не указаны явно то они берутся из реестра Windows.
         Файл с настройками реестра.
         src\DemoServer.Testing\WindowsRegisterTestingEnvirioment.reg
         */
-        DbConnectionString = PostgreSqlDbHelper.GetDatabaseConnectionString(DbName, userCredentials: BaseDbTests.PostgreSqlUserCredentials, serverAdress: BaseDbTests.PostgreSqlServerAdress);
+        m_dbConnectionString = PostgreSqlDbHelper.GetDatabaseConnectionString(m_dbName, userCredentials: BaseDbTests.PostgreSqlUserCredentials, serverAdress: BaseDbTests.PostgreSqlServerAdress);
     }
 
     public void Start(
@@ -90,15 +90,15 @@ public class AppHost : IDisposable
             m_freeAll = true;
 
             var systemSettings = SystemSettings.GetDefault();
-            systemSettings.ConnectionString.Value = DbConnectionString;
+            systemSettings.ConnectionString.Value = m_dbConnectionString;
             updateSystemSettings?.Invoke(systemSettings);
 
             WaitHelpers.TimeOut(
-                () => NetHelpers.IsOpenTcpIpPort(PortApiProcessing) == false,
+                () => NetHelpers.IsOpenTcpIpPort(m_portApiProcessing) == false,
                 TimeSpan.FromMinutes(1));
 
             WaitHelpers.TimeOut(
-                () => NetHelpers.IsOpenTcpIpPort(PortApiMonitoring) == false,
+                () => NetHelpers.IsOpenTcpIpPort(m_portApiMonitoring) == false,
                 TimeSpan.FromMinutes(1));
 
             WaitHelpers.TimeOut(
@@ -110,13 +110,13 @@ public class AppHost : IDisposable
                 },
                 TimeSpan.FromMinutes(1));
 
-            if (BuildDb)
+            if (m_buildDb)
             {
                 try
                 {
                     PostgreSqlDbHelper.DropDb(
-                        DbName,
-                        serverConnectionString: ServerConnectionString);
+                        m_dbName,
+                        serverConnectionString: m_serverConnectionString);
                 }
                 catch
                 {
@@ -125,13 +125,13 @@ public class AppHost : IDisposable
 
                 var sqlScript = Deploy.GetSqlScript();
                 PostgreSqlDbHelper.CreateDb(
-                    DbName, 
-                    tag: Tag, 
+                    m_dbName, 
+                    tag: m_tag, 
                     sqlScript: sqlScript,
-                    serverConnectionString: ServerConnectionString,
-                    databaseConnectionString: DbConnectionString);
+                    serverConnectionString: m_serverConnectionString,
+                    databaseConnectionString: m_dbConnectionString);
 
-                Model.Environment.BaseDbTests.DefineRandomDbSequences(DbConnectionString);
+                Model.Environment.BaseDbTests.DefineRandomDbSequences(m_dbConnectionString);
             }
 
             m_freeAll = false;
@@ -152,29 +152,29 @@ public class AppHost : IDisposable
     {
         m_freeAll = false;
 
-        if (Process != null)
+        if (m_process != null)
         {
             string output = null;
             var hasException = false;
             try
             {
                 FreeConsole();
-                AttachConsole((uint)Process.Id);
+                AttachConsole((uint)m_process.Id);
                 SetConsoleCtrlHandler(null, true);
                 GenerateConsoleCtrlEvent(CtrlTypes.CtrlCEvent, 0);
 
                 output = m_output.ReadToEnd();
 
-                if (false == Process.WaitForExit((int)TimeSpan.FromSeconds(30).TotalMilliseconds))
+                if (false == m_process.WaitForExit((int)TimeSpan.FromSeconds(30).TotalMilliseconds))
                 {
-                    Process.Kill(true);
-                    Process.WaitForExit();
+                    m_process.Kill(true);
+                    m_process.WaitForExit();
                 }
 
                 FreeConsole();
                 SetConsoleCtrlHandler(null, false);
 
-                Assert.AreEqual(0, Process.ExitCode, CollectLogs());
+                Assert.AreEqual(0, m_process.ExitCode, CollectLogs());
             }
             catch (Exception exception)
             {
@@ -195,7 +195,7 @@ public class AppHost : IDisposable
             {
                 try
                 {
-                    Process.Refresh();
+                    m_process.Refresh();
                 }
                 catch
                 {
@@ -203,10 +203,10 @@ public class AppHost : IDisposable
                 }
                 try
                 {
-                    if (false == Process.HasExited)
+                    if (false == m_process.HasExited)
                     {
-                        Process.Kill(true);
-                        Process.WaitForExit();
+                        m_process.Kill(true);
+                        m_process.WaitForExit();
                     }
                 }
                 catch
@@ -214,8 +214,8 @@ public class AppHost : IDisposable
                     /* NONE */
                 }
 
-                Process.SilentDispose();
-                Process = null;
+                m_process.SilentDispose();
+                m_process = null;
 
                 if (hasException)
                 {
@@ -229,20 +229,20 @@ public class AppHost : IDisposable
 
     private void DoFinalize()
     {
-        if (BuildEnviroment)
+        if (m_buildEnviroment)
         {
             return;
         }
 
-        DirectoryLogs.SilentDispose();
+        m_directoryLogs.SilentDispose();
 
-        if (BuildDb && DropDb)
+        if (m_buildDb && m_dropDb)
         {
             try
             {
                 PostgreSqlDbHelper.DropDb(
-                    DbName,
-                    serverConnectionString: ServerConnectionString);
+                    m_dbName,
+                    serverConnectionString: m_serverConnectionString);
             }
             catch
             {
@@ -265,11 +265,11 @@ public class AppHost : IDisposable
             return;
         }
 
-        if (Process != null)
+        if (m_process != null)
         {
             try
             {
-                Process.Refresh();
+                m_process.Refresh();
             }
             catch
             {
@@ -277,29 +277,29 @@ public class AppHost : IDisposable
             }
             try
             {
-                Process.Kill(true);
-                Process.WaitForExit(TimeSpan.FromSeconds(30));
+                m_process.Kill(true);
+                m_process.WaitForExit(TimeSpan.FromSeconds(30));
             }
             catch
             {
                 /* NONE */
             }
 
-            Process.SilentDispose();
-            Process = null;
+            m_process.SilentDispose();
+            m_process = null;
         }
 
-        DirectoryLogs.DeleteDirectoryOnDispose = true;
+        m_directoryLogs.DeleteDirectoryOnDispose = true;
 
-        DirectoryLogs.SilentDispose();
+        m_directoryLogs.SilentDispose();
 
-        if (DbName != null)
+        if (m_dbName != null)
         {
             try
             {
                 PostgreSqlDbHelper.DropDb(
-                    DbName,
-                    serverConnectionString: ServerConnectionString);
+                    m_dbName,
+                    serverConnectionString: m_serverConnectionString);
             }
             catch
             {
@@ -310,7 +310,7 @@ public class AppHost : IDisposable
 
     private void DoStartApplication(SystemSettings systemSettings, bool showWindow)
     {
-        var pathAppSettings = Path.Combine(AppPath, Program.FileNameOfAppSettings);
+        var pathAppSettings = Path.Combine(m_appPath, Program.FileNameOfAppSettings);
         var textAppSettings = File.ReadAllText(pathAppSettings);
         var appSettings = JsonConvert.DeserializeObject<dynamic>(textAppSettings);
         var systemSettingsDeserializeObject = JsonConvert.DeserializeObject<dynamic>(systemSettings.ToJsonText());
@@ -319,13 +319,13 @@ public class AppHost : IDisposable
         textAppSettings = JsonConvert.SerializeObject(appSettings, Formatting.Indented);
         File.WriteAllText(pathAppSettings, textAppSettings);
 
-        Process
+        m_process
             = new Process
             {
                 StartInfo =
                 {
-                    FileName = Path.Combine(AppPath, "ShtrihM.DemoServer.Processing.Application.exe"),
-                    WorkingDirectory = AppPath,
+                    FileName = Path.Combine(m_appPath, "ShtrihM.DemoServer.Processing.Application.exe"),
+                    WorkingDirectory = m_appPath,
                     RedirectStandardInput = true,
                     RedirectStandardOutput = true,
                     RedirectStandardError = true,
@@ -340,23 +340,23 @@ public class AppHost : IDisposable
                 EnableRaisingEvents = true,
             };
 
-        Process.StartInfo.EnvironmentVariables[EnvironmentVariablesHelpers.EnvironmentVariableAsLogsDir] = DirectoryLogs.BasePath;
+        m_process.StartInfo.EnvironmentVariables[EnvironmentVariablesHelpers.EnvironmentVariableAsLogsDir] = m_directoryLogs.BasePath;
 
         Console.WriteLine("--------------------------------------------------------------------------------");
         Console.WriteLine();
-        Console.WriteLine($"БД : {DbName}");
+        Console.WriteLine($"БД : {m_dbName}");
         Console.WriteLine();
         Console.WriteLine("Команда :");
         Console.WriteLine();
-        Console.WriteLine($"SET {EnvironmentVariablesHelpers.EnvironmentVariableAsLogsDir}={DirectoryLogs.BasePath}");
-        Console.WriteLine(Process.StartInfo.FileName);
+        Console.WriteLine($"SET {EnvironmentVariablesHelpers.EnvironmentVariableAsLogsDir}={m_directoryLogs.BasePath}");
+        Console.WriteLine(m_process.StartInfo.FileName);
         Console.WriteLine();
         Console.WriteLine("--------------------------------------------------------------------------------");
         Console.WriteLine();
 
-        var isStart = Process.Start();
+        var isStart = m_process.Start();
 
-        m_output = Process.StandardOutput;
+        m_output = m_process.StandardOutput;
 
         if (isStart == false)
         {
@@ -373,7 +373,7 @@ public class AppHost : IDisposable
 
     private bool GetEntryPointIsReady()
     {
-        using var monitorsClient = new InfrastructureMonitorClient(port: PortApiMonitoring);
+        using var monitorsClient = new InfrastructureMonitorClient(port: m_portApiMonitoring);
 
         var snapshot = monitorsClient.GetInfrastructureMonitorSnapshot(WellknownInfrastructureMonitors.EntryPoint);
         var value = (bool)snapshot.Values.Single(o => o.Id == WellknownSnapShotInfrastructureMonitorValues.DeferredReadyObject.IsReady).Data.Value;
@@ -383,7 +383,7 @@ public class AppHost : IDisposable
 
     private bool GetEntryPointGlobalIsReady()
     {
-        using var monitorsClient = new InfrastructureMonitorClient(port: PortApiMonitoring);
+        using var monitorsClient = new InfrastructureMonitorClient(port: m_portApiMonitoring);
 
         var snapshot = monitorsClient.GetInfrastructureMonitorSnapshot(WellknownInfrastructureMonitors.EntryPoint);
         var value = (bool)snapshot.Values.Single(o => o.Id == WellknownSnapShotInfrastructureMonitorValues.DeferredReadyObject.GlobalIsReady).Data.Value;
@@ -459,7 +459,7 @@ public class AppHost : IDisposable
     public string CollectLogs()
     {
         var text = new StringBuilder();
-        foreach (var file in Directory.GetFiles(AppPath, "ShtrihM.DemoServer.Processing.Application.log.*.txt"))
+        foreach (var file in Directory.GetFiles(m_appPath, "ShtrihM.DemoServer.Processing.Application.log.*.txt"))
         {
             try
             {

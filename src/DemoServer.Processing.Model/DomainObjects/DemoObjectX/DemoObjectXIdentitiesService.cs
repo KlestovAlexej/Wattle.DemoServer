@@ -9,25 +9,24 @@ using ShtrihM.DemoServer.Processing.Model.Interfaces;
 using ShtrihM.Wattle3.DomainObjects;
 using ShtrihM.Wattle3.DomainObjects.IdentitiesServices;
 
+#pragma warning disable IDE0290
+
 namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
 
 public sealed class DemoObjectXIdentitiesService : BaseIdentitiesWithContextWithAlternativeKeyService<DemoObjectXAlternativeKey, long /* Group */>
 {
     private readonly ICustomEntryPoint m_entryPoint;
 
-    public DemoObjectXIdentitiesService(
-        ICustomEntryPoint entryPoint,
-        TimeSpan initializeThreadEmergencyTimeout,
-        ILoggerFactory loggerFactory)
+    public DemoObjectXIdentitiesService(ICustomEntryPoint entryPoint)
         : base(
             entryPoint,
             entryPoint.ExceptionPolicy,
             entryPoint.TimeService,
-            initializeThreadEmergencyTimeout,
+            entryPoint.SystemSettings.DomainObjectRegistersSettings.Value.InitializeEmergencyTimeout.Value,
             new Guid("CD1F66C3-9E12-47B4-B028-8D36BEC6D7EA"),
             $"Реестр идентити объектов '{WellknownDomainObjects.GetDisplayName(WellknownDomainObjects.DemoObjectX)}'",
             $"Реестр идентити объектов '{WellknownDomainObjects.GetDisplayName(WellknownDomainObjects.DemoObjectX)}'",
-            loggerFactory.CreateLogger<DemoObjectXIdentitiesService>(),
+            entryPoint.LoggerFactory.CreateLogger<DemoObjectXIdentitiesService>(),
             new LocksPoolAsync<long>(
                 new Guid("75738FB6-ABBB-4EEA-950F-D456EF3A4674"),
                 $"Пул лок-объектов реестра идентити объектов '{WellknownDomainObjects.GetDisplayName(WellknownDomainObjects.DemoObjectX)}'",

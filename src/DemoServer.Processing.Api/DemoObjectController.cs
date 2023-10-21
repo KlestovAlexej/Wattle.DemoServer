@@ -12,9 +12,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Net.Mime;
 using System.Threading;
 using System.Threading.Tasks;
-#pragma warning disable CS1573
+#pragma warning disable CS1573 // Parameter has no matching param tag in the XML comment (but other parameters do)
 
-#pragma warning disable CS1998
 
 namespace ShtrihM.DemoServer.Processing.Api;
 
@@ -25,7 +24,7 @@ namespace ShtrihM.DemoServer.Processing.Api;
 [Produces(MediaTypeNames.Application.Json)]
 public class DemoObjectController : BaseProcessingController
 {
-    private const string Tag = "Магазины";
+    private const string Tag = "Объект";
 
     private readonly IDemoObjectControllerService m_controllerService;
     private readonly ICustomEntryPoint m_entryPoint;

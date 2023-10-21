@@ -3,22 +3,21 @@ using ShtrihM.Wattle3.Primitives;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+
+// ReSharper disable MemberHidesStaticFromOuterClass
 
 namespace ShtrihM.DemoServer.Processing.Common;
 
 /// <summary>
 /// Идентификаторы объектов.
 /// </summary>
-[SuppressMessage("ReSharper", "UnusedMember.Global")]
 public static class WellknownDomainObjects
 {
     /// <summary>
     /// Идентификаторы объектов в текстовом виде.
     /// </summary>
-    [SuppressMessage("ReSharper", "MemberHidesStaticFromOuterClass")]
     public static class Text
     {
         /// <summary>
@@ -50,7 +49,7 @@ public static class WellknownDomainObjects
     /// <summary>
     /// Все идентификаторы объектов и их описание.
     /// </summary>
-    public static readonly IReadOnlyDictionary<Guid, string> DisplayNames;
+    private static readonly IReadOnlyDictionary<Guid, string> DisplayNames;
 
     static WellknownDomainObjects()
     {
