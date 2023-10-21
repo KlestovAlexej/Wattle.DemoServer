@@ -35,7 +35,7 @@ dotnet build Tools\MSBuild\Publish.csproj "/p:BuildProfile=/p:DefineConstants=BU
 IF %ERRORLEVEL% NEQ 0 EXIT 1
 
 rem Публикация пакетов nuget
-rem dotnet nuget push Publish\NuGet\ShtrihM.DemoServer.Common.*.nupkg --skip-duplicate -k oy2bw43wvxsujr6kwotqxmvbmw75stkebpzni5ko63rh5e -sk <NUGET-KEY> -s https://api.nuget.org/v3/index.json -ss https://nuget.org/ -t 300 -d
+rem dotnet nuget push Publish\NuGet\ShtrihM.DemoServer.Common.*.nupkg --skip-duplicate -k <NUGET-KEY> -sk <NUGET-KEY> -s https://api.nuget.org/v3/index.json -ss https://nuget.org/ -t 300 -d
 rem IF %ERRORLEVEL% NEQ 0 EXIT 1
 rem dotnet nuget push Publish\NuGet\ShtrihM.DemoServer.Processing.Api.Common.*.nupkg --skip-duplicate -k <NUGET-KEY> -sk <NUGET-KEY> -s https://api.nuget.org/v3/index.json -ss https://nuget.org/ -t 300 -d
 rem IF %ERRORLEVEL% NEQ 0 EXIT 1
