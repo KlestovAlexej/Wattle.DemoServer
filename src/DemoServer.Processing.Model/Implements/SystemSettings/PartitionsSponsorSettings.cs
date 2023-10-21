@@ -46,12 +46,12 @@ public class PartitionsSponsorSettings
         ActivateTimeout =
             new SettingValue<TimeSpan>(
                 default,
-                @"Интервал активации");
+                "Интервал активации");
 
         TablespaceNames =
             new SettingValue<TablespacesEntry>(
                 default,
-                $@"Карта имён табличных пространств БД для партиций БД - Пример: {new TablespacesEntry
+                $"Карта имён табличных пространств БД для партиций БД - Пример: {new TablespacesEntry
                 {
                     Tablespaces =
                         new List<TablespaceEntry>
@@ -72,7 +72,7 @@ public class PartitionsSponsorSettings
         DomainObjectsTablespaceNames =
             new SettingValue<DomainObjectsEntry>(
                 default,
-                $@"Карта имён табличных пространств БД для партиций БД для конкретных доменных объектов - Пример: {new DomainObjectsEntry
+                $"Карта имён табличных пространств БД для партиций БД для конкретных доменных объектов - Пример: {new DomainObjectsEntry
                 {
                     DomainObjects =
                         new List<DomainObjectTablespaceEntry>

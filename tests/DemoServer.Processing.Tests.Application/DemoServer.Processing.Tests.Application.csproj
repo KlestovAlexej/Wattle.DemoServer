@@ -6,6 +6,7 @@
 		<RootNamespace>ShtrihM.DemoServer.Processing.Tests.Application</RootNamespace>
 		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
 		<UseWindowsForms>true</UseWindowsForms>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 	</PropertyGroup>
 
 	<ItemGroup>

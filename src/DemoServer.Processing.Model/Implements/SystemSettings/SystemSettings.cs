@@ -15,72 +15,72 @@ public sealed class SystemSettings
         MappersFeaturesValidateUpdateResults =
             new SettingValue<bool>(
                 default,
-                @"Проверять каждое обновление БД на корректность брутальным способом");
+                "Проверять каждое обновление БД на корректность брутальным способом");
 
         InstanceId =
             new SettingValue<Guid>(
                 default,
-                @"Идентификатор экземпляра сервера");
+                "Идентификатор экземпляра сервера");
 
         InstanceName =
             new SettingValue<string>(
                 default,
-                @"Текстовый идентификатор экземпляра сервера");
+                "Текстовый идентификатор экземпляра сервера");
 
         LocksPoolSettings =
             new SettingValue<LocksPoolSettings>(
                 default,
-                @"Настройки пулов лок-объектов");
+                "Настройки пулов лок-объектов");
 
         ExceptionPolicySettings =
             new SettingValue<ExceptionPolicySettings>(
                 default,
-                @"Настройки уведомления об исключениях системы");
+                "Настройки уведомления об исключениях системы");
 
         IdentityCachesSettings =
             new SettingValue<IdentityCachesSettings>(
                 default,
-                @"Настройки кэширующих провайдеров идентити объектов");
+                "Настройки кэширующих провайдеров идентити объектов");
 
         MappersCacheActualStateDtoSettings =
             new SettingValue<MappersCacheActualStateDtoSettings>(
                 default,
-                @"Настройки кэшей актуальных данных состояний доменнй объектов в БД");
+                "Настройки кэшей актуальных данных состояний доменнй объектов в БД");
 
         QueueThreadsSizeEmergencyDomainBehaviour =
             new SettingValue<int>(
                 default,
-                @"Очередь обработки аварийных ситуаций доменного поведения - количество потоков обработки");
+                "Очередь обработки аварийных ситуаций доменного поведения - количество потоков обработки");
 
         QueueEmergencyTimeoutEmergencyDomainBehaviour =
             new SettingValue<TimeSpan>(
                 default,
-                @"Очередь обработки аварийных ситуаций доменного поведения - интервал аварийного ожидания повторной обработки");
+                "Очередь обработки аварийных ситуаций доменного поведения - интервал аварийного ожидания повторной обработки");
 
         SqlCommandTimeout =
             new SettingValue<int>(
                 default,
-                @"Интервал ожидания исполнения SQL-команд");
+                "Интервал ожидания исполнения SQL-команд");
 
         DebugMode =
             new SettingValue<bool>(
                 default,
-                @"Отладочный режим");
+                "Отладочный режим");
 
         TimeStatisticsStep =
             new SettingValue<TimeSpan>(
                 default,
-                @"Интервал аккумуляции статистики");
+                "Интервал аккумуляции статистики");
 
         ConnectionString =
             new SettingValue<string>(
                 default,
-                @"Строка подключения к БД");
+                "Строка подключения к БД");
 
         PartitionsSponsorSettings =
             new SettingValue<PartitionsSponsorSettings>(
                 default,
-                @"Настройки создателя партиций БД");
+                "Настройки создателя партиций БД");
 
         DomainObjectRegistersSettings =
             new SettingValue<DomainObjectRegistersSettings>(

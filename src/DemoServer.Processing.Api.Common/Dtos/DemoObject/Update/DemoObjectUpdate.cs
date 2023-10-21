@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Runtime.CompilerServices;
 
 namespace ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update;
 
@@ -16,23 +15,12 @@ public sealed class DemoObjectUpdate
     /// </summary>
     [JsonRequired]
     [Description("Идентификатор")]
-    public long Id
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get;
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set;
-    }
+    public long Id;
 
     /// <summary>
     /// Значения полей объекта для обновления.
     /// </summary>
+    [JsonRequired]
     [Description("Значения полей объекта для обновления")]
-    public List<BaseDemoObjectUpdateFieldValue> Fields
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get;
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set;
-    }
+    public List<BaseDemoObjectUpdateFieldValue> Fields;
 }

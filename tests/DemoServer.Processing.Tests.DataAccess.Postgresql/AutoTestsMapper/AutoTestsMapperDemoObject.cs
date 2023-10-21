@@ -20,7 +20,7 @@ public partial class AutoTestsMapperDemoObject
     }
 
     [Test]
-    [Category(@"Unit")]
+    [Category("Unit")]
     [Timeout(300000)]
     [Description("Создание и Получение")]
     public void Test_New_Get2()

@@ -23,11 +23,5 @@ public sealed class DemoObjectUpdateFieldValueOfName : BaseDemoObjectUpdateField
     [JsonRequired]
     [Description("Название")]
     [StringLength(FieldsConstants.DemoObjectNameMaxLength)]
-    public string Name
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get;
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set;
-    }
+    public string Name;
 }

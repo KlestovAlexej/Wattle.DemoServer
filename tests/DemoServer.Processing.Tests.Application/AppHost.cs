@@ -21,6 +21,8 @@ using System.Runtime.InteropServices;
 using System.Text;
 using Path = System.IO.Path;
 
+#pragma warning disable SYSLIB1054
+
 namespace ShtrihM.DemoServer.Processing.Tests.Application;
 
 public class AppHost : IDisposable
@@ -48,8 +50,7 @@ public class AppHost : IDisposable
         bool buildEnviroment = false,
         bool buildDb = true,
         string dbName = null,
-        string tag = null,
-        Guid? instanceId = null)
+        string tag = null)
     {
         m_freeAll = true;
 
@@ -253,6 +254,8 @@ public class AppHost : IDisposable
     public void Dispose()
     {
         FreeAll();
+
+        GC.SuppressFinalize(this);
     }
 
     private void FreeAll()

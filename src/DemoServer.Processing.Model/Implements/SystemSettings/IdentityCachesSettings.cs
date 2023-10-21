@@ -17,22 +17,22 @@ public class IdentityCachesSettings
         SystemLog =
             new SettingValue<IdentityCacheSettings>(
                 default,
-                @$"Маппер '{WellknownDomainObjects.GetDisplayName(WellknownDomainObjects.SystemLog)}'");
+                $"Маппер '{WellknownDomainObjects.GetDisplayName(WellknownDomainObjects.SystemLog)}'");
 
         ChangeTracker =
             new SettingValue<IdentityCacheSettings>(
                 default,
-                @$"Маппер '{WellknownDomainObjects.GetDisplayName(WellknownDomainObjects.ChangeTracker)}'");
+                $"Маппер '{WellknownDomainObjects.GetDisplayName(WellknownDomainObjects.ChangeTracker)}'");
 
         DemoObject =
             new SettingValue<IdentityCacheSettings>(
                 default,
-                @$"Маппер '{WellknownDomainObjects.GetDisplayName(WellknownDomainObjects.DemoObject)}'");
+                $"Маппер '{WellknownDomainObjects.GetDisplayName(WellknownDomainObjects.DemoObject)}'");
 
         DemoObjectX =
             new SettingValue<IdentityCacheSettings>(
                 default,
-                @$"Маппер '{WellknownDomainObjects.GetDisplayName(WellknownDomainObjects.DemoObjectX)}'");
+                $"Маппер '{WellknownDomainObjects.GetDisplayName(WellknownDomainObjects.DemoObjectX)}'");
     }
 
     /// <summary>

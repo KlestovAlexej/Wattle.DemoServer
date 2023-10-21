@@ -9,12 +9,12 @@
             Создание объекта.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.DemoObjectCreate.Name">
+        <member name="F:ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.DemoObjectCreate.Name">
             <summary>
             Название.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.DemoObjectCreate.Enabled">
+        <member name="F:ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.DemoObjectCreate.Enabled">
             <summary>
             Признак разрешения работы.
             </summary>
@@ -24,17 +24,17 @@
             Данные объекта.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.DemoObjectInfo.Id">
+        <member name="F:ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.DemoObjectInfo.Id">
             <summary>
             Идентификатор.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.DemoObjectInfo.Name">
+        <member name="F:ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.DemoObjectInfo.Name">
             <summary>
             Название.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.DemoObjectInfo.Enabled">
+        <member name="F:ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.DemoObjectInfo.Enabled">
             <summary>
             Признак разрешения работы.
             </summary>
@@ -44,7 +44,7 @@
             Базовое значение поля объекта для обновления.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update.BaseDemoObjectUpdateFieldValue.Field">
+        <member name="F:ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update.BaseDemoObjectUpdateFieldValue.Field">
             <summary>
             Тип поля.
             </summary>
@@ -54,12 +54,12 @@
             Обновление объекта.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update.DemoObjectUpdate.Id">
+        <member name="F:ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update.DemoObjectUpdate.Id">
             <summary>
             Идентификатор.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update.DemoObjectUpdate.Fields">
+        <member name="F:ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update.DemoObjectUpdate.Fields">
             <summary>
             Значения полей объекта для обновления.
             </summary>
@@ -84,7 +84,7 @@
             Значение поля объекта для обновления - признак разрешения работы.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update.DemoObjectUpdateFieldValueOfEnabled.Enabled">
+        <member name="F:ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update.DemoObjectUpdateFieldValueOfEnabled.Enabled">
             <summary>
             Признак разрешения работы.
             </summary>
@@ -94,7 +94,7 @@
             Значение поля объекта для обновления - название.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update.DemoObjectUpdateFieldValueOfName.Name">
+        <member name="F:ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update.DemoObjectUpdateFieldValueOfName.Name">
             <summary>
             Название.
             </summary>

@@ -71,10 +71,10 @@ public class TestsCreateEmptyDb : BaseAutoTestsMapper
     {
         var fileName = Path.Combine(ProviderProjectBasePath.GetFullPath(@"src\DemoServer.Processing.DataAccess.Postgresql\EfModels"), $"{nameof(ProcessingDbContext)}.cs");
         var text = File.ReadAllText(fileName);
-        text = text.Replace(@"$PD_", "");
+        text = text.Replace("$PD_", "");
         text = text.Replace(@"entity.ToTable(""", "entity.ToTableLowerCase(\"");
-        text = text.Replace(@"entity.HasKey(", "// entity.HasKey(");
-        text = text.Replace(@"entity.HasIndex(", "// entity.HasIndex(");
+        text = text.Replace("entity.HasKey(", "// entity.HasKey(");
+        text = text.Replace("entity.HasIndex(", "// entity.HasIndex(");
         File.WriteAllText(fileName, text, Encoding.Unicode);
     }
 }

@@ -50,7 +50,7 @@ public abstract class BaseDbTests : Testing.BaseDbTests
     {
         using var command = connection.CreateCommand();
         command.CommandType = CommandType.Text;
-        command.CommandText = $@"ALTER SEQUENCE {name} RESTART WITH {value.ToString(CultureInfo.InvariantCulture)}";
+        command.CommandText = $"ALTER SEQUENCE {name} RESTART WITH {value.ToString(CultureInfo.InvariantCulture)}";
         command.ExecuteNonQuery();
     }
 

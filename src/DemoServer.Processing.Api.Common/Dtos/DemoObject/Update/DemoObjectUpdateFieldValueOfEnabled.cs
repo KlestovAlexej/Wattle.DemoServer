@@ -21,11 +21,5 @@ public sealed class DemoObjectUpdateFieldValueOfEnabled : BaseDemoObjectUpdateFi
     /// </summary>
     [JsonRequired]
     [Description("Признак разрешения работы")]
-    public bool Enabled
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get;
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set;
-    }
+    public bool Enabled;
 }

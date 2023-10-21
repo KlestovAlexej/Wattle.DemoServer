@@ -5,9 +5,10 @@ using ShtrihM.Wattle3.OpenTelemetry;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ShtrihM.DemoServer.Processing.Application.Startups;
-
+#pragma warning disable IDE0290
 #pragma warning disable CS1591
+
+namespace ShtrihM.DemoServer.Processing.Application.Startups;
 
 public class HealthCheck : IHealthCheck
 {

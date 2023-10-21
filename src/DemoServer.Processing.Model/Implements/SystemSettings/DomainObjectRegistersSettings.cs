@@ -20,17 +20,17 @@ public class DomainObjectRegistersSettings
         InitializeEmergencyTimeout =
             new SettingValue<TimeSpan>(
                 default,
-                @"Аварийный интервал ожидания инициализации реестра доменных объектов");
+                "Аварийный интервал ожидания инициализации реестра доменных объектов");
 
         MemoryCacheDemoObjectX =
             new SettingValue<MemoryCacheSettings>(
                 default,
-                @"Настройки кэширования реестра доменных объектов - Объект X");
+                "Настройки кэширования реестра доменных объектов - Объект X");
 
         UseIdentitiesServices =
             new SettingValue<bool>(
                 default,
-                @"Использовать реестры идентити объектов");
+                "Использовать реестры идентити объектов");
     }
 
     /// <summary>

@@ -232,10 +232,12 @@ public class Program
                 container.RegisterInstance(loggerFactory, InstanceLifetime.External);
                 container.RegisterInstance(application.Services, InstanceLifetime.External);
 
-                Logger.LogDebug(@$"
+                Logger.LogDebug(@"
+
 Настройки сервера:
-{systemSettings.ToJsonText(true)}
-");
+{systemSettings}
+
+", systemSettings.ToJsonText(true));
 
                 container.RegisterInstance(systemSettings, InstanceLifetime.External);
 

@@ -3,12 +3,10 @@ using ShtrihM.DemoServer.Common;
 using ShtrihM.DemoServer.Testing;
 using ShtrihM.Wattle3.Testing;
 using ShtrihM.Wattle3.Utils;
-using System.Diagnostics.CodeAnalysis;
 
 namespace ShtrihM.DemoServer.Processing.Tests.Application;
 
 [TestFixture]
-[SuppressMessage("ReSharper", "AccessToDisposedClosure")]
 public class TestsBuildEnviroment : BaseSlimTests
 {
     private AppHost m_appHost;
@@ -24,7 +22,7 @@ public class TestsBuildEnviroment : BaseSlimTests
     public void SetUp()
     {
         m_appHost = new AppHost(
-            dbName: $"test_{Constants.ProductTag.ToLower()}_for_ui",
+            dbName: $"test_{Constants.ProductTag.ToLower()}_enviroment",
             buildEnviroment: true);
         try
         {
