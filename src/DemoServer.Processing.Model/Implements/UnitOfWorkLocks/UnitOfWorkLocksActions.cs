@@ -14,8 +14,8 @@ public sealed class UnitOfWorkLocksActions
             throw new ArgumentNullException(nameof(unitOfWorkLocksHub));
         }
 
-        CreateDemoObjectX = new UnitOfWorkLocksAction<DemoObjectXAlternativeKey>(unitOfWorkLocksHub, WellknownCommonInfrastructureMonitors.LocksCreateDemoObjectX);
+        CreateDemoObjectX = new UnitOfWorkLocksAction<DemoObjectXIdentitiesService.AlternativeKeyEntry>(unitOfWorkLocksHub, WellknownCommonInfrastructureMonitors.LocksCreateDemoObjectX);
     }
 
-    public readonly UnitOfWorkLocksAction<DemoObjectXAlternativeKey> CreateDemoObjectX;
+    public readonly UnitOfWorkLocksAction<DemoObjectXIdentitiesService.AlternativeKeyEntry> CreateDemoObjectX;
 }

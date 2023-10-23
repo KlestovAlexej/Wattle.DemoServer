@@ -11,7 +11,7 @@ namespace ShtrihM.DemoServer.Processing.Model.Interfaces;
 [DomainObjectInterface(WellknownDomainObjects.Text.DemoObjectX)]
 public interface IDomainObjectDemoObjectX : IDomainObject
 {
-    DemoObjectXAlternativeKey GetKey();
+    DemoObjectXIdentitiesService.AlternativeKeyEntry GetKey();
     void Delete();
 
     /// <summary>

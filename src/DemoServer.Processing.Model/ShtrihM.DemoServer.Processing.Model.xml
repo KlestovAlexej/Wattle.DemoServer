@@ -4,16 +4,6 @@
         <name>ShtrihM.DemoServer.Processing.Model</name>
     </assembly>
     <members>
-        <member name="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX.DemoObjectXAlternativeKey">
-            <summary>
-            Альтернативный ключ объекта X.
-            </summary>
-        </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX.DemoObjectXAlternativeKey.#ctor(System.Guid,System.String)">
-            <summary>
-            Альтернативный ключ объекта X.
-            </summary>
-        </member>
         <member name="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.DomainObjectMutable`1">
             <summary>
             Базовая реализация доменного объекта с поддержкой изменения.
