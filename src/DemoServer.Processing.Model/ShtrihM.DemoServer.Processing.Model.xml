@@ -44,11 +44,6 @@
             Настройки реестров доменных объектов.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.DomainObjectRegistersSettings.InitializeEmergencyTimeout">
-            <summary>
-            Аварийный интервал ожидания инициализации реестра доменных объектов.
-            </summary>
-        </member>
         <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.DomainObjectRegistersSettings.MemoryCacheDemoObjectX">
             <summary>
             Настройки кэширования реестра доменных объектов - Объект X.
