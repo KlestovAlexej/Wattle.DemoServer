@@ -44,8 +44,8 @@
 - Создан доменный объект [DemoObjectX](src/DemoServer.Processing.Model/DomainObjects/DemoObject/DomainObjectDemoObject.cs)
 	- Реализован кэширующий маппер БД
 	- Пример использования столбца таблицы БД с [именем в кавычках](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/92ca77457c4f495fde82e4202aeaf3bc03067d74/src/DemoServer.Processing.Common/WellknownDomainObjectFields.cs#L280)
-	- Реализована оптимистическая конкуренция при обновлении на уровне БД
-	- Реализована критическая секция при обновлении и [создании DemoObject](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/92ca77457c4f495fde82e4202aeaf3bc03067d74/src/DemoServer.Processing.Model/DomainObjects/DemoObjectX/DomainObjectIntergratorDemoObjectX.cs#L44)
+	- Реализована [оптимистическая конкуренция при обновлении](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/104c0f9cf212fcc98e55640c8f2ea9034e2bbb04/src/DemoServer.Processing.Common/WellknownDomainObjectFields.cs#L180) на уровне БД
+	- Реализована критическая секция при обновлении и [создании DemoObjectХ](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/92ca77457c4f495fde82e4202aeaf3bc03067d74/src/DemoServer.Processing.Model/DomainObjects/DemoObjectX/DomainObjectIntergratorDemoObjectX.cs#L44)
 	- При создании объекта показана стратегия определения успешности коммита Unit of Work 
 	- Показана реализация [реестра идентити объектов](src/DemoServer.Processing.Model/DomainObjects/DemoObjectX/DemoObjectXIdentitiesService.cs) - механизма полного кэшированияв в памяти (с фоновым прогревом) идентификаторов и альтернативных ключей доменных объектов для минимизации и даже полного исключения обращений к БД
 	- Показано [удаление объектов](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/92ca77457c4f495fde82e4202aeaf3bc03067d74/src/DemoServer.Processing.Model/DomainObjects/DemoObjectX/DomainObjectDemoObjectX.cs#L141)
