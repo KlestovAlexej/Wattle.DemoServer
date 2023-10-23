@@ -1,8 +1,7 @@
 Полнофункциональный демонстрационный сервер на базе библиотеки [Wattle3](https://github.com/KlestovAlexej/Wattle3.Examples).
 
-<details open><summary>Примечания.</summary>
-
-##
+<details open>
+## Примечания
 1. Сервер написан 100% на [C#](https://ru.wikipedia.org/wiki/C_Sharp) под [.NET 7](https://devblogs.microsoft.com/dotnet/announcing-dotnet-7/).
 2. Все [автоматические тесты сервера](tests) оформлены как [NUnit](https://nunit.org/)-тесты для запуска в ОС Windows из-под [Visual Studio 2022](https://visualstudio.microsoft.com/ru/vs/) (версии не ниже 17.6.5).
 3. Все БД [PostgreSQL](https://www.postgresql.org/) (версии не ниже 15) [создаются](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/95348fd30ce41607e97bd4b727b0e72fa0861db7/src/DemoServer.Testing/BaseDbTests.cs#L55) и [уничтожаются](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/95348fd30ce41607e97bd4b727b0e72fa0861db7/src/DemoServer.Testing/BaseDbTests.cs#L70) автоматически при запуске тестов.
@@ -13,10 +12,7 @@
 	* [SQL-скрипт](src/DemoServer.Processing.DataAccess.Postgresql/DemoServer.Processing.sql) БД PostgreSQL создан из [модели](src/DemoServer.Processing.DataAccess.Postgresql/DemoServer.Processing.dmm) спроектированной с использованием [Luna Modeler](https://www.datensen.com/data-modeling/luna-modeler-for-relational-databases.html).
 </details>
 
----
-
-
-**В примере показаны :**
+## В примере показаны
 
 - [Реализован](src/DemoServer.Processing.Model/Implements/UnitOfWork.cs) паттерн [Unit of Work](https://martinfowler.com/eaaCatalog/unitOfWork.html)
 - [Пример логирования](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/33de4b303ffb87c1ce43c089b191ebe04c301da4/src/DemoServer.Processing.Application/appsettings.json#L12) с использованием [serilog](https://serilog.net/)
