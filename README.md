@@ -17,7 +17,7 @@
 
 ---
 
-## В примере показаны.
+## В демонстрации сервера показаны.
 
 - [Реализован](src/DemoServer.Processing.Model/Implements/UnitOfWork.cs) паттерн [Unit of Work](https://martinfowler.com/eaaCatalog/unitOfWork.html)
 - [Пример логирования](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/33de4b303ffb87c1ce43c089b191ebe04c301da4/src/DemoServer.Processing.Application/appsettings.json#L12) с использованием [serilog](https://serilog.net/)
