@@ -18,6 +18,7 @@ using ShtrihM.Wattle3.Primitives;
 namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
 
 [DomainObjectDataMapper(WellknownMappersAsText.DemoObjectX, DomainObjectDataTarget.Create, DomainObjectDataTarget.Update, DomainObjectDataTarget.Delete)]
+// ReSharper disable once ClassNeverInstantiated.Global
 public sealed class DomainObjectDemoObjectX : DomainObjectMutable<DomainObjectDemoObjectX>, IDomainObjectDemoObjectX, IDomainObjectActivatorPostCreate
 {
     [DomainObjectFieldValue(DomainObjectDataTarget.Create, DomainObjectDataTarget.Update, DtoFiledName = nameof(DemoObjectXDtoChanged.Enabled))]
@@ -26,10 +27,10 @@ public sealed class DomainObjectDemoObjectX : DomainObjectMutable<DomainObjectDe
     [DomainObjectFieldValue(DomainObjectDataTarget.Create, DomainObjectDataTarget.Update, DtoFiledName = nameof(DemoObjectXDtoChanged.Name))]
     private MutableFieldStringLimitedEx m_name;
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    // ReSharper disable once UnusedMember.Global
     public DomainObjectDemoObjectX(
-        ICustomEntryPoint entryPoint,
-        DemoObjectXDtoActual data)
+        DemoObjectXDtoActual data,
+        ICustomEntryPoint entryPoint)
         : base(entryPoint, data)
     {
         CreateDate = data.CreateDate.SpecifyKindLocal();
@@ -41,11 +42,11 @@ public sealed class DomainObjectDemoObjectX : DomainObjectMutable<DomainObjectDe
         Group = data.Group;
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    // ReSharper disable once UnusedMember.Global
     public DomainObjectDemoObjectX(
-        ICustomEntryPoint entryPoint,
         long identity,
-        DomainObjectTemplateDemoObjectX template)
+        DomainObjectTemplateDemoObjectX template,
+        ICustomEntryPoint entryPoint)
         : base(entryPoint, identity)
     {
         CreateDate = m_entryPoint.TimeService.NowDateTime;

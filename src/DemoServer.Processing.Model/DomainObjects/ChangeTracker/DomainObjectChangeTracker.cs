@@ -3,23 +3,24 @@ using ShtrihM.DemoServer.Processing.Model.Interfaces;
 using ShtrihM.Wattle3.DomainObjects.DomainObjects;
 using ShtrihM.Wattle3.DomainObjects.Interfaces;
 using System;
-using System.Runtime.CompilerServices;
 using ShtrihM.DemoServer.Processing.Generated.Interface;
 
 namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.ChangeTracker;
 
 [DomainObjectDataMapper(WellknownMappersAsText.ChangeTracker, DomainObjectDataTarget.Create)]
+// ReSharper disable once ClassNeverInstantiated.Global
 public sealed class DomainObjectChangeTracker : BaseDomainObject<DomainObjectChangeTracker>, IDomainObjectChangeTracker
 {
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    // ReSharper disable once UnusedMember.Global
     public DomainObjectChangeTracker(ChangeTrackerDtoActual data)
         : base(data.Id, false)
     {
         /* NONE */
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public DomainObjectChangeTracker(long identity)
+    // ReSharper disable once UnusedMember.Global
+    // ReSharper disable once UnusedParameter.Local
+    public DomainObjectChangeTracker(long identity, DomainObjectTemplateChangeTracker _)
         : base(identity, true)
     {
         /* NONE */

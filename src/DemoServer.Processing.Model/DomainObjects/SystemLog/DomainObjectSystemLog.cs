@@ -10,9 +10,10 @@ using ShtrihM.Wattle3.Primitives;
 namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.SystemLog;
 
 [DomainObjectDataMapper(WellknownMappersAsText.SystemLog, DomainObjectDataTarget.Create)]
+// ReSharper disable once ClassNeverInstantiated.Global
 public sealed class DomainObjectSystemLog : BaseDomainObject<DomainObjectSystemLog>, IDomainObjectSystemLog
 {
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    // ReSharper disable once UnusedMember.Global
     public DomainObjectSystemLog(SystemLogDtoActual data)
         : base(data.Id, false)
     {
@@ -23,15 +24,15 @@ public sealed class DomainObjectSystemLog : BaseDomainObject<DomainObjectSystemL
         Type = data.Type;
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    // ReSharper disable once UnusedMember.Global
     public DomainObjectSystemLog(
         long identity,
         DomainObjectTemplateSystemLog template,
-        DateTime createDate)
+        ITimeService timeService)
         : base(identity, true)
     {
         Code = template.Code;
-        CreateDate = createDate;
+        CreateDate = timeService.NowDateTime;
         Data = template.Data;
         Message = template.Message;
         Type = template.Type;
