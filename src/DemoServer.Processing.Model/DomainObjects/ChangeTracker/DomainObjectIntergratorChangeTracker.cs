@@ -38,8 +38,6 @@ public class DomainObjectIntergratorChangeTracker : BaseDomainObjectIntergrator<
                 new DomainObjectDataActivatorForActualStateDtoDefault<ChangeTrackerDtoActual,
                     DomainObjectChangeTracker>(),
                 new DomainObjectActivatorDefault<DomainObjectChangeTracker.Template, DomainObjectChangeTracker>(
-                    entryPoint.UnitOfWorkProvider),
-                initializeThreadEmergencyTimeout: entryPoint.SystemSettings.DomainObjectRegistersSettings.Value
-                    .InitializeEmergencyTimeout.Value));
+                    entryPoint.UnitOfWorkProvider)));
     }
 }

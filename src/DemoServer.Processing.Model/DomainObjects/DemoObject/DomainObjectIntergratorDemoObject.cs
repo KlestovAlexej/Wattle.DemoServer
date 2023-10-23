@@ -38,8 +38,6 @@ public class DomainObjectIntergratorDemoObject : BaseDomainObjectIntergrator<IUn
                 new DomainObjectDataActivatorForActualStateDtoDefault<DemoObjectDtoActual, DomainObjectDemoObject>(
                     entryPoint),
                 new DomainObjectActivatorDefault<DomainObjectDemoObject.Template, DomainObjectDemoObject>(
-                    entryPoint.UnitOfWorkProvider, entryPoint.UnitOfWorkLocks.DemoObject, entryPoint),
-                initializeThreadEmergencyTimeout: entryPoint.SystemSettings.DomainObjectRegistersSettings.Value
-                    .InitializeEmergencyTimeout.Value));
+                    entryPoint.UnitOfWorkProvider, entryPoint.UnitOfWorkLocks.DemoObject, entryPoint)));
     }
 }

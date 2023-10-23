@@ -624,7 +624,6 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
             result.m_partitionsSponsor =
                 new PartitionsSponsor(
                     result,
-                    result.SystemSettings.DomainObjectRegistersSettings.Value.InitializeEmergencyTimeout.Value,
                     partitionsSponsorTrigger,
                     loggerFactory);
             container.RegisterInstance(result.m_partitionsSponsor, InstanceLifetime.External);

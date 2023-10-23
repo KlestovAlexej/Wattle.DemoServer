@@ -37,8 +37,6 @@ public class DomainObjectIntergratorSystemLog : BaseDomainObjectIntergrator<IUni
                 dataMapper,
                 new DomainObjectDataActivatorForActualStateDtoDefault<SystemLogDtoActual, DomainObjectSystemLog>(),
                 new DomainObjectActivatorDefault<DomainObjectSystemLog.Template, DomainObjectSystemLog>(
-                    entryPoint.UnitOfWorkProvider, entryPoint.TimeService),
-                initializeThreadEmergencyTimeout: entryPoint.SystemSettings.DomainObjectRegistersSettings.Value
-                    .InitializeEmergencyTimeout.Value));
+                    entryPoint.UnitOfWorkProvider, entryPoint.TimeService)));
     }
 }

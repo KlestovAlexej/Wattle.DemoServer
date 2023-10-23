@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
-using ShtrihM.DemoServer.Processing.Common;
+﻿using ShtrihM.DemoServer.Processing.Common;
 using ShtrihM.DemoServer.Processing.Generated.Interface;
 using ShtrihM.DemoServer.Processing.Model.Interfaces;
 using ShtrihM.Wattle3.Caching;
@@ -42,9 +41,7 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
                 : null,
             DemoObjectXIdentitiesService.AlternativeKeyEntry.AlternativeKeyName,
             WellknownDomainObjectFields.DemoObjectX.NameCollection,
-            DemoObjectXIdentitiesService.AlternativeKeyEntry.AlternativeKeyDecode,
-            entryPoint.SystemSettings.DomainObjectRegistersSettings.Value.InitializeEmergencyTimeout.Value,
-            logger: entryPoint.LoggerFactory.CreateLogger<DomainObjectRegisterDemoObjectX>())
+            DemoObjectXIdentitiesService.AlternativeKeyEntry.AlternativeKeyDecode)
     {
     }
 

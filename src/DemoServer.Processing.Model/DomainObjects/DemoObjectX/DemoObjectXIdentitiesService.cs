@@ -28,8 +28,7 @@ public sealed class DemoObjectXIdentitiesService : BaseIdentitiesWithContextWith
     public DemoObjectXIdentitiesService(ICustomEntryPoint entryPoint)
         : base(
             entryPoint.Context,
-            new Guid("CD1F66C3-9E12-47B4-B028-8D36BEC6D7EA"),
-            initializeThreadEmergencyTimeout: entryPoint.SystemSettings.DomainObjectRegistersSettings.Value.InitializeEmergencyTimeout.Value)
+            new Guid("CD1F66C3-9E12-47B4-B028-8D36BEC6D7EA"))
     {
         m_entryPoint = entryPoint;
     }

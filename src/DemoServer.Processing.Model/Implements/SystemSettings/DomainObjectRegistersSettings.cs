@@ -1,9 +1,7 @@
-using System;
 using System.ComponentModel;
 using Newtonsoft.Json;
 using ShtrihM.DemoServer.Processing.DataAccess.Interface;
 using ShtrihM.Wattle3.Caching;
-using ShtrihM.Wattle3.DomainObjects.DomainObjectsRegisters;
 using ShtrihM.Wattle3.Json;
 
 namespace ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
@@ -18,11 +16,6 @@ public class DomainObjectRegistersSettings
 
     public DomainObjectRegistersSettings()
     {
-        InitializeEmergencyTimeout =
-            new SettingValue<TimeSpan>(
-                default,
-                "Аварийный интервал ожидания инициализации реестра доменных объектов");
-
         MemoryCacheDemoObjectX =
             new SettingValue<MemoryCacheSettings>(
                 default,
@@ -33,12 +26,6 @@ public class DomainObjectRegistersSettings
                 default,
                 "Использовать реестры идентити объектов");
     }
-
-    /// <summary>
-    /// Аварийный интервал ожидания инициализации реестра доменных объектов.
-    /// </summary>
-    [JsonRequired]
-    public SettingValue<TimeSpan> InitializeEmergencyTimeout { get; set; }
 
     /// <summary>
     /// Настройки кэширования реестра доменных объектов - Объект X.
@@ -63,11 +50,6 @@ public class DomainObjectRegistersSettings
             UseIdentitiesServices =
             {
                 Value = true,
-            },
-
-            InitializeEmergencyTimeout =
-            {
-                Value = DomainObjectRegisterStateless.DefaultInitializeThreadEmergencyTimeout,
             },
 
             MemoryCacheDemoObjectX =

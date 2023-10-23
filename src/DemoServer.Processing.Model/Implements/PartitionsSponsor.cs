@@ -18,6 +18,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using ShtrihM.DemoServer.Processing.Generated.Interface;
+using ShtrihM.Wattle3.DomainObjects.DomainObjectsRegisters;
 using ITrigger = ShtrihM.Wattle3.DomainObjects.Interfaces.ITrigger;
 using Status = OpenTelemetry.Trace.Status;
 
@@ -41,12 +42,11 @@ public class PartitionsSponsor : BaseServiceScheduled
 
     public PartitionsSponsor(
         ICustomEntryPoint entryPoint,
-        TimeSpan initializeThreadEmergencyTimeout,
         ITrigger trigger,
         ILoggerFactory loggerFactory)
         : base(
             entryPoint.ExceptionPolicy,
-            initializeThreadEmergencyTimeout,
+            DomainObjectRegisterStateless.DefaultInitializeThreadEmergencyTimeout,
             WellknownCommonInfrastructureMonitors.GetDisplayName(WellknownCommonInfrastructureMonitors.PartitionsSponsor),
             owner => new InfrastructureMonitorDrivenObject(
                 WellknownCommonInfrastructureMonitors.PartitionsSponsor,
