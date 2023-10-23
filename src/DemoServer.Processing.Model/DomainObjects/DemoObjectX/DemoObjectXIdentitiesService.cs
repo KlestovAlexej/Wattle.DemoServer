@@ -1,15 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Extensions.Logging;
-using ShtrihM.DemoServer.Processing.Common;
 using ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
 using ShtrihM.DemoServer.Processing.Model.Implements;
 using ShtrihM.DemoServer.Processing.Model.Interfaces;
-using ShtrihM.Wattle3.DomainObjects;
 using ShtrihM.Wattle3.DomainObjects.IdentitiesServices;
-
-#pragma warning disable IDE0290
 
 namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
 
@@ -19,29 +14,9 @@ public sealed class DemoObjectXIdentitiesService : BaseIdentitiesWithContextWith
 
     public DemoObjectXIdentitiesService(ICustomEntryPoint entryPoint)
         : base(
-            entryPoint,
-            entryPoint.ExceptionPolicy,
-            entryPoint.TimeService,
-            entryPoint.SystemSettings.DomainObjectRegistersSettings.Value.InitializeEmergencyTimeout.Value,
+            entryPoint.Context,
             new Guid("CD1F66C3-9E12-47B4-B028-8D36BEC6D7EA"),
-            $"Реестр идентити объектов '{WellknownDomainObjects.GetDisplayName(WellknownDomainObjects.DemoObjectX)}'",
-            $"Реестр идентити объектов '{WellknownDomainObjects.GetDisplayName(WellknownDomainObjects.DemoObjectX)}'",
-            entryPoint.LoggerFactory.CreateLogger<DemoObjectXIdentitiesService>(),
-            new LocksPoolAsync<long>(
-                new Guid("75738FB6-ABBB-4EEA-950F-D456EF3A4674"),
-                $"Пул лок-объектов реестра идентити объектов '{WellknownDomainObjects.GetDisplayName(WellknownDomainObjects.DemoObjectX)}'",
-                $"Пул лок-объектов реестра идентити объектов '{WellknownDomainObjects.GetDisplayName(WellknownDomainObjects.DemoObjectX)}'",
-                entryPoint.TimeService),
-            new LocksPoolAsync<DemoObjectXAlternativeKey>(
-                new Guid("7CD9ECD7-49C0-42EB-ABA6-B915F6D0FDB5"),
-                $"Пул лок-объектов альтернативных ключей реестра идентити объектов '{WellknownDomainObjects.GetDisplayName(WellknownDomainObjects.DemoObjectX)}'",
-                $"Пул лок-объектов альтернативных ключей реестра идентити объектов '{WellknownDomainObjects.GetDisplayName(WellknownDomainObjects.DemoObjectX)}'",
-                entryPoint.TimeService),
-            new LocksPoolAsync<long>(
-                new Guid("A92F4C35-C29F-4D17-82C7-E3B5DB284773"),
-                $"Пул лок-объектов контекстов реестра идентити объектов '{WellknownDomainObjects.GetDisplayName(WellknownDomainObjects.DemoObjectX)}'",
-                $"Пул лок-объектов контекстов реестра идентити объектов '{WellknownDomainObjects.GetDisplayName(WellknownDomainObjects.DemoObjectX)}'",
-                entryPoint.TimeService))
+            initializeThreadEmergencyTimeout: entryPoint.SystemSettings.DomainObjectRegistersSettings.Value.InitializeEmergencyTimeout.Value)
     {
         m_entryPoint = entryPoint;
     }

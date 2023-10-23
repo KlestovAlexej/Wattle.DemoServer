@@ -66,7 +66,7 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
         public ILoggerFactory LoggerFactory => m_entryPoint.LoggerFactory;
         public IMappers Mappers => m_entryPoint.Mappers;
 
-        public string GetDisplayNameDomainObject(Guid typeId) => WellknownDomainObjects.GetDisplayName(typeId);
+        public string GetDisplayNameDomainObject(Guid typeId) => WellknownDomainObjectDisplayNames.DisplayNamesProvider(typeId);
     }
 
     #endregion

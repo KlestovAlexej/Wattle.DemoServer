@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
-using ShtrihM.DemoServer.Processing.Common;
 using ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements;
 using ShtrihM.Wattle3.Common.Interfaces;
 using ShtrihM.Wattle3.DomainObjects.Common;
+using ShtrihM.Wattle3.DomainObjects.Interfaces;
 using ShtrihM.Wattle3.Json;
 using ShtrihM.Wattle3.Json.Extensions;
 using ShtrihM.Wattle3.Mappers;
@@ -175,7 +175,7 @@ public class PartitionsSponsorSettings
                 new DomainObjectTablespaceEntry
                 {
                     DomainObjectType = manager.Mapper.MapperId,
-                    Comment = WellknownDomainObjects.GetDisplayName(manager.Mapper.MapperId),
+                    Comment = WellknownDomainObjectDisplayNames.DisplayNamesProvider(manager.Mapper.MapperId),
                     Tablespaces = new List<TablespaceEntry>(),
                 });
         }

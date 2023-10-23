@@ -2,7 +2,6 @@
 using Microsoft.Extensions.Logging;
 using Npgsql;
 using NUnit.Framework;
-using ShtrihM.DemoServer.Processing.Common;
 using ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements;
 using ShtrihM.DemoServer.Processing.Model.Implements;
 using ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
@@ -334,7 +333,7 @@ public abstract class BaseTestsWithEntryPoint : BaseDbTests
                         new PartitionsSponsorSettings.DomainObjectTablespaceEntry
                         {
                             DomainObjectType = manager.Mapper.MapperId,
-                            Comment = WellknownDomainObjects.GetDisplayName(manager.Mapper.MapperId),
+                            Comment = WellknownDomainObjectDisplayNames.DisplayNamesProvider(manager.Mapper.MapperId),
                             Tablespaces =
                                 new List<PartitionsSponsorSettings.TablespaceEntry>
                                 {
@@ -357,7 +356,7 @@ public abstract class BaseTestsWithEntryPoint : BaseDbTests
                         new PartitionsSponsorSettings.DomainObjectTablespaceEntry
                         {
                             DomainObjectType = manager.Mapper.MapperId,
-                            Comment = WellknownDomainObjects.GetDisplayName(manager.Mapper.MapperId),
+                            Comment = WellknownDomainObjectDisplayNames.DisplayNamesProvider(manager.Mapper.MapperId),
                             Tablespaces = new List<PartitionsSponsorSettings.TablespaceEntry>()
                         });
                 }

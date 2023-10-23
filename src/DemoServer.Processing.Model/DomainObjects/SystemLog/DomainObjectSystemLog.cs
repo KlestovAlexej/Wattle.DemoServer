@@ -13,6 +13,34 @@ namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.SystemLog;
 // ReSharper disable once ClassNeverInstantiated.Global
 public sealed class DomainObjectSystemLog : BaseDomainObject<DomainObjectSystemLog>, IDomainObjectSystemLog
 {
+    #region Template
+
+    public class Template : IDomainObjectTemplate
+    {
+        public Template(
+            int code,
+            int type,
+            string message,
+            string data)
+        {
+            Code = code;
+            Type = type;
+            Message = message ?? throw new ArgumentNullException(nameof(message));
+            Data = data ?? throw new ArgumentNullException(nameof(data));
+
+            if (Message.Length > Constants.SystemLogFieldMaxSizeMessage)
+            {
+                Message = Message.Substring(0, Constants.SystemLogFieldMaxSizeMessage);
+            }
+        }
+
+        public readonly int Code;
+        public readonly int Type;
+        public readonly string Message;
+        public readonly string Data;
+    }
+    #endregion
+
     // ReSharper disable once UnusedMember.Global
     public DomainObjectSystemLog(SystemLogDtoActual data)
         : base(data.Id, false)
@@ -27,7 +55,7 @@ public sealed class DomainObjectSystemLog : BaseDomainObject<DomainObjectSystemL
     // ReSharper disable once UnusedMember.Global
     public DomainObjectSystemLog(
         long identity,
-        DomainObjectTemplateSystemLog template,
+        Template template,
         ITimeService timeService)
         : base(identity, true)
     {

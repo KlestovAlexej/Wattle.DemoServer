@@ -24,6 +24,38 @@ namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObject;
 // ReSharper disable once ClassNeverInstantiated.Global
 public sealed class DomainObjectDemoObject : DomainObjectMutable<DomainObjectDemoObject>, IDomainObjectDemoObject, IDomainObjectActivatorPostCreate
 {
+    #region Template
+
+    public class Template : IDomainObjectTemplate
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public Template(
+            string name,
+            bool enabled)
+        {
+            Name = name ?? throw new ArgumentNullException(nameof(name));
+            Enabled = enabled;
+        }
+
+        public readonly string Name;
+        public readonly bool Enabled;
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public ValueTask<IDomainObjectDemoObject> NewAsync(
+            ICustomEntryPoint entryPoint,
+            CancellationToken cancellationToken = default)
+        {
+            if (entryPoint == null)
+            {
+                ThrowsHelper.ThrowArgumentNullException(nameof(entryPoint));
+            }
+
+            return entryPoint!.NewAsync<IDomainObjectDemoObject>(this, cancellationToken);
+        }
+    }
+
+    #endregion
+
     [DomainObjectFieldValue(DomainObjectDataTarget.Create, DomainObjectDataTarget.Update, DtoFiledName = nameof(DemoObjectDtoChanged.Enabled))]
     private MutableField<bool> m_enabled;
 
@@ -45,7 +77,7 @@ public sealed class DomainObjectDemoObject : DomainObjectMutable<DomainObjectDem
     // ReSharper disable once UnusedMember.Global
     public DomainObjectDemoObject(
         long identity,
-        DomainObjectTemplateDemoObject template,
+        Template template,
         ICustomEntryPoint entryPoint)
         : base(entryPoint, identity)
     {

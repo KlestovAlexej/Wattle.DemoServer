@@ -1,10 +1,8 @@
-﻿using Microsoft.Extensions.Logging;
-using ShtrihM.DemoServer.Processing.Model.Interfaces;
+﻿using ShtrihM.DemoServer.Processing.Model.Interfaces;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectDataMappers;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectIntergrators;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectsRegisters;
 using ShtrihM.Wattle3.DomainObjects.Interfaces;
-using ShtrihM.Wattle3.Primitives;
 using ShtrihM.DemoServer.Processing.Generated.Interface;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectActivators;
 using Unity;
@@ -18,34 +16,20 @@ public class DomainObjectIntergratorDemoObjectX : BaseDomainObjectIntergrator<IU
     protected override void DoRun(IUnityContainer container)
     {
         var entryPoint = container.Resolve<ICustomEntryPoint>();
-        var mapper = entryPoint.Mappers.GetMapper<IMapperDemoObjectX>();
-        var identityCache =
-            new IdentityCache<IMapperDemoObjectX>(
-                GuidGenerator.New($"{mapper.MapperId} {nameof(IMapperDemoObjectX)}"),
-                $"Кэширующий провайдер идентити доменных объектов '{mapper.MapperId}'.",
-                $"Кэширующий провайдер идентити доменных объектов '{mapper.MapperId}'.",
-                entryPoint.TimeService,
-                entryPoint.ExceptionPolicy,
-                entryPoint.WorkflowExceptionPolicy,
-                entryPoint.SystemSettings.TimeStatisticsStep.Value,
-                mapper,
-                entryPoint.SystemSettings.IdentityCachesSettings.Value.DemoObjectX.Value,
-                entryPoint.LoggerFactory.CreateLogger<IdentityCache<IMapperDemoObjectX>>());
         var dataMapper =
             new DomainObjectDataMapperFullDefault
             <IMapperDemoObjectX, DemoObjectXDtoNew, DemoObjectXDtoActual, DemoObjectXDtoChanged,
                 DemoObjectXDtoDeleted>(
-                entryPoint.UnitOfWorkProvider,
-                entryPoint.TimeService,
-                mapper,
-                identityCache);
+                entryPoint.Context,
+                entryPoint.SystemSettings.IdentityCachesSettings.Value.DemoObjectX.Value);
         container.Resolve<DomainObjectDataMappers>().AddMapper(dataMapper);
 
         container.Resolve<DomainObjectRegisters>().AddRegister(
             new DomainObjectRegisterDemoObjectX(
+                entryPoint.Context,
                 dataMapper,
                 new DomainObjectDataActivatorForActualStateDtoDefault<DemoObjectXDtoActual, DomainObjectDemoObjectX>(entryPoint),
-                new DomainObjectActivatorDefault<DomainObjectTemplateDemoObjectX, DomainObjectDemoObjectX>(entryPoint.UnitOfWorkProvider, entryPoint.UnitOfWorkLocks.DemoObjectX, entryPoint)
+                new DomainObjectActivatorDefault<DomainObjectDemoObjectX.Template, DomainObjectDemoObjectX>(entryPoint.UnitOfWorkProvider, entryPoint.UnitOfWorkLocks.DemoObjectX, entryPoint)
                     .SetPreCreate(
                         template =>
                         {

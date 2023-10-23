@@ -113,7 +113,7 @@ public class EntryPointFacade : IEntryPointFacade
             throw new ArgumentNullException(nameof(parameters));
         }
 
-        var demoObject = await new DomainObjectTemplateDemoObject(
+        var demoObject = await new DomainObjectDemoObject.Template(
                 parameters.Name,
                 parameters.Enabled)
             .NewAsync(m_entryPoint, cancellationToken)

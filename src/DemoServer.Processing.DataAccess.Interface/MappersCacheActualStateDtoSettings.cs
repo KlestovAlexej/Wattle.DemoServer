@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using ShtrihM.DemoServer.Processing.Common;
 using ShtrihM.Wattle3.Caching;
+using ShtrihM.Wattle3.DomainObjects.Interfaces;
 using ShtrihM.Wattle3.Json;
 using System;
 using System.ComponentModel;
@@ -26,12 +27,12 @@ public class MappersCacheActualStateDtoSettings
         DemoObject =
             new SettingValue<MemoryCacheSettings>(
                 default,
-                $"Маппер '{WellknownDomainObjects.GetDisplayName(WellknownDomainObjects.DemoObject)}'");
+                $"Маппер '{WellknownDomainObjectDisplayNames.DisplayNamesProvider(WellknownDomainObjects.DemoObject)}'");
 
         DemoObjectX =
             new SettingValue<MemoryCacheSettings>(
                 default,
-                $"Маппер '{WellknownDomainObjects.GetDisplayName(WellknownDomainObjects.DemoObjectX)}'");
+                $"Маппер '{WellknownDomainObjectDisplayNames.DisplayNamesProvider(WellknownDomainObjects.DemoObjectX)}'");
     }
 
     /// <summary>

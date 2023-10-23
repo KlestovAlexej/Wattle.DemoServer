@@ -1,12 +1,12 @@
 ﻿using NUnit.Framework;
 using ShtrihM.DemoServer.Processing.Common;
-using ShtrihM.DemoServer.Processing.Model.DomainObjects.SystemLog;
 using ShtrihM.DemoServer.Processing.Model.Interfaces;
 using ShtrihM.DemoServer.Processing.Tests.Model.Environment;
 using ShtrihM.Wattle3.DomainObjects.Interfaces;
 using ShtrihM.Wattle3.Testing;
 using System.Linq;
 using System.Threading.Tasks;
+using ShtrihM.DemoServer.Processing.Model.DomainObjects.SystemLog;
 
 namespace ShtrihM.DemoServer.Processing.Tests.Model;
 
@@ -19,7 +19,7 @@ public class TestsDomainObjectSystemLog : BaseTestsDomainObjects
     public async Task Test()
     {
         var template =
-            new DomainObjectTemplateSystemLog(
+            new DomainObjectSystemLog.Template(
                 ProviderRandomValues.GetInt32(),
                 ProviderRandomValues.GetInt32(),
                 ProviderRandomValues.GetString(),

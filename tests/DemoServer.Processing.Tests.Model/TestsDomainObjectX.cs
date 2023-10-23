@@ -21,7 +21,7 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
     public void Test_New_No_Commit()
     {
         var template =
-            new DomainObjectTemplateDemoObjectX(
+            new DomainObjectDemoObjectX.Template(
                 "Name",
                 true,
                 new Guid("6457CCA1-4217-4D47-B057-9668278FE290"),
@@ -54,7 +54,7 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
     public void Test_New_Delete()
     {
         var template =
-            new DomainObjectTemplateDemoObjectX(
+            new DomainObjectDemoObjectX.Template(
                 "Name",
                 true,
                 new Guid("6457CCA1-4217-4D47-B057-9668278FE290"),
@@ -152,14 +152,14 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
     public void Test_Key_Duplicate()
     {
         var template1 =
-            new DomainObjectTemplateDemoObjectX(
+            new DomainObjectDemoObjectX.Template(
                 "Name1",
                 true,
                 new Guid("6457CCA1-4217-4D47-B057-9668278FE290"),
                 "Key2",
                 1);
         var template2 =
-            new DomainObjectTemplateDemoObjectX(
+            new DomainObjectDemoObjectX.Template(
                 "Name2",
                 true,
                 new Guid("6457CCA1-4217-4D47-B057-9668278FE290"),
@@ -192,7 +192,7 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
     public void Test_Update()
     {
         var template =
-            new DomainObjectTemplateDemoObjectX(
+            new DomainObjectDemoObjectX.Template(
                 "Name",
                 true,
                 new Guid("6457CCA1-4217-4D47-B057-9668278FE290"),

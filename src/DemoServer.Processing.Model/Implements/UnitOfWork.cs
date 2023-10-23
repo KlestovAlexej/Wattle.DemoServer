@@ -60,7 +60,7 @@ public sealed class UnitOfWork(
         CancellationToken cancellationToken = default)
     {
         var register = Registers.GetRegister(WellknownDomainObjects.ChangeTracker);
-        var domainObject = await register.NewAsync(DomainObjectTemplateChangeTracker.Instance, cancellationToken)
+        var domainObject = await register.NewAsync(DomainObjectChangeTracker.Template.Instance, cancellationToken)
             .ConfigureAwait(false);
         var result = DoCreateUnitOfWorkCommitVerifying(domainObject.Identity);
 
@@ -70,7 +70,7 @@ public sealed class UnitOfWork(
     protected override IUnitOfWorkCommitVerifying DoCreateUnitOfWorkCommitVerifying()
     {
         var register = Registers.GetRegister(WellknownDomainObjects.ChangeTracker);
-        var identity = register.New(DomainObjectTemplateChangeTracker.Instance).Identity;
+        var identity = register.New(DomainObjectChangeTracker.Template.Instance).Identity;
         var result = DoCreateUnitOfWorkCommitVerifying(identity);
 
         return result;

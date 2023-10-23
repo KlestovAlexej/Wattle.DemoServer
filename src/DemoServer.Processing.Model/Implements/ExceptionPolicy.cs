@@ -213,7 +213,7 @@ public class ExceptionPolicy : BaseExceptionPolicy
                 var register = unitOfWork.Registers.GetRegister(WellknownDomainObjects.SystemLog);
 
                 register.New(
-                    new DomainObjectTemplateSystemLog(
+                    new DomainObjectSystemLog.Template(
                         WellknownSytemLogCodes.InternalException,
                         WellknownSytemLogTypes.Fatal,
                         exception.Message,
@@ -279,7 +279,7 @@ public class ExceptionPolicy : BaseExceptionPolicy
                 var register = unitOfWork.Registers.GetRegister(WellknownDomainObjects.SystemLog);
 
                 register.New(
-                    new DomainObjectTemplateSystemLog(
+                    new DomainObjectSystemLog.Template(
                         WellknownSytemLogCodes.UnexpectedException,
                         WellknownSytemLogTypes.Warning,
                         exception.Message,
@@ -326,7 +326,7 @@ public class ExceptionPolicy : BaseExceptionPolicy
                 var register = unitOfWork.Registers.GetRegister(WellknownDomainObjects.SystemLog);
 
                 register.New(
-                    new DomainObjectTemplateSystemLog(
+                    new DomainObjectSystemLog.Template(
                         WellknownSytemLogCodes.MappersException,
                         WellknownSytemLogTypes.Warning,
                         exception.Message,

@@ -3,6 +3,7 @@ using ShtrihM.DemoServer.Processing.Common;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectDataMappers;
 using ShtrihM.Wattle3.Json;
 using System.ComponentModel;
+using ShtrihM.Wattle3.DomainObjects.Interfaces;
 
 namespace ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
 
@@ -17,22 +18,22 @@ public class IdentityCachesSettings
         SystemLog =
             new SettingValue<IdentityCacheSettings>(
                 default,
-                $"Маппер '{WellknownDomainObjects.GetDisplayName(WellknownDomainObjects.SystemLog)}'");
+                $"Маппер '{WellknownDomainObjectDisplayNames.DisplayNamesProvider(WellknownDomainObjects.SystemLog)}'");
 
         ChangeTracker =
             new SettingValue<IdentityCacheSettings>(
                 default,
-                $"Маппер '{WellknownDomainObjects.GetDisplayName(WellknownDomainObjects.ChangeTracker)}'");
+                $"Маппер '{WellknownDomainObjectDisplayNames.DisplayNamesProvider(WellknownDomainObjects.ChangeTracker)}'");
 
         DemoObject =
             new SettingValue<IdentityCacheSettings>(
                 default,
-                $"Маппер '{WellknownDomainObjects.GetDisplayName(WellknownDomainObjects.DemoObject)}'");
+                $"Маппер '{WellknownDomainObjectDisplayNames.DisplayNamesProvider(WellknownDomainObjects.DemoObject)}'");
 
         DemoObjectX =
             new SettingValue<IdentityCacheSettings>(
                 default,
-                $"Маппер '{WellknownDomainObjects.GetDisplayName(WellknownDomainObjects.DemoObjectX)}'");
+                $"Маппер '{WellknownDomainObjectDisplayNames.DisplayNamesProvider(WellknownDomainObjects.DemoObjectX)}'");
     }
 
     /// <summary>

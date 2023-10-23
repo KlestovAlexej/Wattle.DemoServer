@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using ShtrihM.DemoServer.Processing.Common;
 using ShtrihM.DemoServer.Processing.Generated.Interface;
 using ShtrihM.DemoServer.Processing.Model.Interfaces;
@@ -14,38 +13,28 @@ namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
 public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWithAlternativeKeyStatelessDefault<IDomainObjectDemoObjectX, DemoObjectXAlternativeKey, long /* Group */, DemoObjectXDtoActual, IMapperDemoObjectX>, IDomainObjectRegisterDemoObjectX
 {
     public DomainObjectRegisterDemoObjectX(
+        IEntryPointContext entryPointContext,
         IDomainObjectDataMapper dataMapper,
         IDomainObjectDataActivator dataActivator,
         IDomainObjectActivator activator,
         ICustomEntryPoint entryPoint)
         : base(
-            WellknownDomainObjects.DemoObjectX,
-            WellknownDomainObjects.GetDisplayName(WellknownDomainObjects.DemoObjectX),
+            entryPointContext,
             dataMapper,
             dataActivator,
             activator,
-            entryPoint.SystemSettings.DomainObjectRegistersSettings.Value.InitializeEmergencyTimeout.Value,
-            null,
-            entryPoint.Mappers,
-            entryPoint.TimeService,
-            entryPoint.WorkflowExceptionPolicy,
-            entryPoint.ExceptionPolicy,
-            entryPoint.UnitOfWorkProvider,
-            entryPoint.LoggerFactory.CreateLogger<DomainObjectRegisterDemoObjectX>(),
             new DefaultMemoryCacheSlim<long, DemoObjectXAlternativeKey>(
-                entryPoint.TimeService,
-                entryPoint.ExceptionPolicy,
+                entryPoint.Context,
                 entryPoint.SystemSettings.DomainObjectRegistersSettings.Value.MemoryCacheDemoObjectX.Value,
-                $"Кэш реестра доменных объектов '{WellknownDomainObjects.GetDisplayName(WellknownDomainObjects.DemoObjectX)}' по ключу",
-                $"Кэш реестра доменных объектов '{WellknownDomainObjects.GetDisplayName(WellknownDomainObjects.DemoObjectX)}' по ключу",
-                new Guid("580A791B-2CF2-488B-9337-EA044202E0EC")),
+                $"Кэш реестра доменных объектов '{entryPoint.Context.GetDisplayNameDomainObject(WellknownDomainObjects.DemoObjectX)}' по ключу"),
             entryPoint.SystemSettings.DomainObjectRegistersSettings.Value.UseIdentitiesServices.Value
                 ? new DemoObjectXIdentitiesService(entryPoint)
                 : null,
-            entryPoint.Mappers.GetMapper<IMapperDemoObjectX>(),
             DemoObjectXAlternativeKey.AlternativeKeyName,
             WellknownDomainObjectFields.DemoObjectX.NameCollection,
-            DemoObjectXAlternativeKey.AlternativeKeyDecode)
+            DemoObjectXAlternativeKey.AlternativeKeyDecode,
+            entryPoint.SystemSettings.DomainObjectRegistersSettings.Value.InitializeEmergencyTimeout.Value,
+            logger: entryPoint.LoggerFactory.CreateLogger<DomainObjectRegisterDemoObjectX>())
     {
     }
 
