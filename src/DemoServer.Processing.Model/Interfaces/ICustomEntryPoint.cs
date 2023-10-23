@@ -37,6 +37,7 @@ public interface ICustomEntryPoint : IEntryPoint
     Tracer Tracer { get; }
     ILoggerFactory LoggerFactory { get; }
     UnitOfWorkLocksHubTyped UnitOfWorkLocks { get; }
+    IEntryPointContext Context { get; }
 
 #if DEBUG
     ConcurrentDictionary<Guid, Action<object>> HotSpots { get; }

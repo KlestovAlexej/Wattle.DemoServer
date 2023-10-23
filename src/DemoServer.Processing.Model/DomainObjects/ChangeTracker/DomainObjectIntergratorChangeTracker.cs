@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
-using ShtrihM.DemoServer.Processing.Common;
+﻿using ShtrihM.DemoServer.Processing.Common;
 using ShtrihM.DemoServer.Processing.Model.Interfaces;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectDataMappers;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectIntergrators;
@@ -20,28 +19,15 @@ public class DomainObjectIntergratorChangeTracker : BaseDomainObjectIntergrator<
     {
         var entryPoint = container.Resolve<ICustomEntryPoint>();
         var mapper = entryPoint.Mappers.GetMapper<IMapperChangeTracker>();
-        var identityCache =
-            new IdentityCache<IMapperChangeTracker>(
-                GuidGenerator.New($"{mapper.MapperId} {nameof(IMapperChangeTracker)}"),
-                $"Кэширующий провайдер идентити доменных объектов '{mapper.MapperId}'.",
-                $"Кэширующий провайдер идентити доменных объектов '{mapper.MapperId}'.",
-                entryPoint.TimeService,
-                entryPoint.ExceptionPolicy,
-                entryPoint.WorkflowExceptionPolicy,
-                entryPoint.SystemSettings.TimeStatisticsStep.Value,
-                mapper,
-                entryPoint.SystemSettings.IdentityCachesSettings.Value.ChangeTracker.Value,
-                entryPoint.LoggerFactory.CreateLogger<IdentityCache<IMapperChangeTracker>>());
-
         var partitionsLevel = mapper.Partitions.Level;
         var partitionsDay = entryPoint.PartitionsDay;
         var dataMapper =
             new DomainObjectDataMapperNoDeleteUpdateDefault
                 <IMapperChangeTracker, ChangeTrackerDtoNew, ChangeTrackerDtoActual>(
-                    entryPoint.UnitOfWorkProvider,
-                    entryPoint.TimeService,
-                    mapper,
-                    identityCache,
+                    entryPoint.Context,
+                    new IdentityCache<IMapperChangeTracker>(
+                        entryPoint.Context,
+                        entryPoint.SystemSettings.IdentityCachesSettings.Value.ChangeTracker.Value),
                     identityPrepare:
                     identity =>
                     {
@@ -54,18 +40,14 @@ public class DomainObjectIntergratorChangeTracker : BaseDomainObjectIntergrator<
 
         container.Resolve<DomainObjectRegisters>().AddRegister(
             new DomainObjectRegisterStateless(
+                entryPoint.Context,
                 WellknownDomainObjects.ChangeTracker,
-                WellknownDomainObjects.GetDisplayName(WellknownDomainObjects.ChangeTracker),
                 dataMapper,
-                new DomainObjectDataActivatorForActualStateDtoDefault<ChangeTrackerDtoActual, DomainObjectChangeTracker>(),
-                new DomainObjectActivatorDefault<DomainObjectTemplateChangeTracker, DomainObjectChangeTracker>(entryPoint.UnitOfWorkProvider),
-                entryPoint.SystemSettings.DomainObjectRegistersSettings.Value.InitializeEmergencyTimeout.Value,
-                null,
-                entryPoint.Mappers,
-                entryPoint.TimeService,
-                entryPoint.WorkflowExceptionPolicy,
-                entryPoint.ExceptionPolicy,
-                entryPoint.UnitOfWorkProvider,
-                entryPoint.LoggerFactory.CreateLogger<DomainObjectRegisterStateless>()));
+                new DomainObjectDataActivatorForActualStateDtoDefault<ChangeTrackerDtoActual,
+                    DomainObjectChangeTracker>(),
+                new DomainObjectActivatorDefault<DomainObjectTemplateChangeTracker, DomainObjectChangeTracker>(
+                    entryPoint.UnitOfWorkProvider),
+                initializeThreadEmergencyTimeout: entryPoint.SystemSettings.DomainObjectRegistersSettings.Value
+                    .InitializeEmergencyTimeout.Value));
     }
 }

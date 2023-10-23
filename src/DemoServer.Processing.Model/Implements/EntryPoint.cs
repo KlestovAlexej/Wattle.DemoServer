@@ -48,6 +48,29 @@ namespace ShtrihM.DemoServer.Processing.Model.Implements;
 
 public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
 {
+    #region Private Class EntryPointContext
+
+    private class EntryPointContext : IEntryPointContext
+    {
+        private readonly EntryPoint m_entryPoint;
+
+        public EntryPointContext(EntryPoint entryPoint)
+        {
+            m_entryPoint = entryPoint;
+        }
+
+        public IEntryPoint EntryPoint => m_entryPoint;
+        public ITimeService TimeService => m_entryPoint.TimeService;
+        public IExceptionPolicy ExceptionPolicy => m_entryPoint.ExceptionPolicy;
+        public IWorkflowExceptionPolicy WorkflowExceptionPolicy => m_entryPoint.WorkflowExceptionPolicy;
+        public ILoggerFactory LoggerFactory => m_entryPoint.LoggerFactory;
+        public IMappers Mappers => m_entryPoint.Mappers;
+
+        public string GetDisplayNameDomainObject(Guid typeId) => WellknownDomainObjects.GetDisplayName(typeId);
+    }
+
+    #endregion
+
     #region Private Class SnapShotInfrastructureMonitorCustomEntryPoint
 
     private class SnapShotInfrastructureMonitorCustomEntryPoint : SnapShotInfrastructureMonitorEntryPoint, ISnapShotInfrastructureMonitorCustomEntryPoint
@@ -199,6 +222,7 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
         m_templateServerDescription = templateServerDescription ?? throw new ArgumentNullException(nameof(templateServerDescription));
         ServiceProvider = serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider));
         LoggerFactory = loggerFactory;
+        Context = new EntryPointContext(this);
 
         m_proxyDomainObjectRegisterFactories.AddFactories(GetType().Assembly);
 
@@ -270,6 +294,7 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
     public Tracer Tracer { get; }
     public ILoggerFactory LoggerFactory { get; }
     public UnitOfWorkLocksHubTyped UnitOfWorkLocks { get; private set; }
+    public IEntryPointContext Context { get; }
 
 #if DEBUG
     public ConcurrentDictionary<Guid, Action<object>> HotSpots { get; }

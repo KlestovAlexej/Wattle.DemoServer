@@ -3,6 +3,7 @@ using System.ComponentModel;
 using Newtonsoft.Json;
 using ShtrihM.DemoServer.Processing.DataAccess.Interface;
 using ShtrihM.Wattle3.Caching;
+using ShtrihM.Wattle3.DomainObjects.DomainObjectsRegisters;
 using ShtrihM.Wattle3.Json;
 
 namespace ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
@@ -66,7 +67,7 @@ public class DomainObjectRegistersSettings
 
             InitializeEmergencyTimeout =
             {
-                Value = TimeSpan.FromSeconds(3)
+                Value = DomainObjectRegisterStateless.DefaultInitializeThreadEmergencyTimeout,
             },
 
             MemoryCacheDemoObjectX =
