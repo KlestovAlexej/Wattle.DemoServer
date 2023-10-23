@@ -4,7 +4,6 @@
 
 <details open><summary>Примечания.</summary>
 
-## 
 1. Сервер написан 100% на [C#](https://ru.wikipedia.org/wiki/C_Sharp) под [.NET 7](https://devblogs.microsoft.com/dotnet/announcing-dotnet-7/).
 2. Все [автоматические тесты сервера](tests) оформлены как [NUnit](https://nunit.org/)-тесты для запуска в ОС Windows из-под [Visual Studio 2022](https://visualstudio.microsoft.com/ru/vs/) (версии не ниже 17.6.5).
 3. Все БД [PostgreSQL](https://www.postgresql.org/) (версии не ниже 15) [создаются](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/95348fd30ce41607e97bd4b727b0e72fa0861db7/src/DemoServer.Testing/BaseDbTests.cs#L55) и [уничтожаются](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/95348fd30ce41607e97bd4b727b0e72fa0861db7/src/DemoServer.Testing/BaseDbTests.cs#L70) автоматически при запуске тестов.
