@@ -1,5 +1,7 @@
 Полнофункциональный демонстрационный сервер на базе библиотеки [Wattle3](https://github.com/KlestovAlexej/Wattle3.Examples).
 
+---
+
 <details open><summary>Примечания.</summary>
 
 ## 
