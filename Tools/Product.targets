@@ -7,6 +7,7 @@
 		<MinorVersion>0</MinorVersion>
 		<Build>0</Build>
 		<Revision>0</Revision>
+		<FileRevision>0</FileRevision>
 		<IsReleased>false</IsReleased>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageProjectUrl>https://github.com/KlestovAlexej/Wattle3.DemoServer</PackageProjectUrl>
