@@ -76,7 +76,7 @@ public class DomainObjectRegistersSettings
                     {
                         ExpirationTimeout =
                         {
-                            Value = MappersCacheActualStateDtoSettings.InteractiveExpirationTimeout,
+                            Value = MappersCacheActualStateDtoSettings.DefaultExpirationTimeout,
                         },
                         Enabled =
                         {
@@ -84,7 +84,7 @@ public class DomainObjectRegistersSettings
                         },
                         PollingInterval =
                         {
-                            Value = MappersCacheActualStateDtoSettings.InteractivePollingInterval,
+                            Value = MappersCacheActualStateDtoSettings.DefaultPollingInterval,
                         },
                         ActiveExpired =
                         {

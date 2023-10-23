@@ -13,8 +13,8 @@ namespace ShtrihM.DemoServer.Processing.DataAccess.Interface;
 [Description("Настройки кэшей актуальных данных состояний доменнй объектов в БД")]
 public class MappersCacheActualStateDtoSettings
 {
-    public static readonly TimeSpan InteractiveExpirationTimeout = TimeSpan.FromMinutes(20);
-    public static readonly TimeSpan InteractivePollingInterval = InteractiveExpirationTimeout.Add(TimeSpan.FromMinutes(5));
+    public static readonly TimeSpan DefaultExpirationTimeout = TimeSpan.FromMinutes(20);
+    public static readonly TimeSpan DefaultPollingInterval = DefaultExpirationTimeout.Add(TimeSpan.FromMinutes(5));
 
     public MappersCacheActualStateDtoSettings()
     {
@@ -73,7 +73,7 @@ public class MappersCacheActualStateDtoSettings
                     {
                         ExpirationTimeout =
                         {
-                            Value = InteractiveExpirationTimeout,
+                            Value = DefaultExpirationTimeout,
                         },
                         Enabled =
                         {
@@ -81,7 +81,7 @@ public class MappersCacheActualStateDtoSettings
                         },
                         PollingInterval =
                         {
-                            Value = InteractivePollingInterval
+                            Value = DefaultPollingInterval
                         },
                         ActiveExpired =
                         {
@@ -113,7 +113,7 @@ public class MappersCacheActualStateDtoSettings
                     {
                         ExpirationTimeout =
                         {
-                            Value = InteractiveExpirationTimeout,
+                            Value = DefaultExpirationTimeout,
                         },
                         Enabled =
                         {
@@ -121,7 +121,7 @@ public class MappersCacheActualStateDtoSettings
                         },
                         PollingInterval =
                         {
-                            Value = InteractivePollingInterval
+                            Value = DefaultPollingInterval
                         },
                         ActiveExpired =
                         {
