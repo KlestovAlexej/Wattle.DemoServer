@@ -43,7 +43,7 @@ public class TestsUnitOfWork : BaseTestsDomainObjects
 
         using (var unitOfWork = (UnitOfWork)m_entryPoint.CreateUnitOfWork())
         {
-            using var dbContext = unitOfWork.NewDbContext(true);
+            using var dbContext = unitOfWork.NewDbContext();
 
             Assert.IsNotNull(dbContext.Database.GetDbConnection());
             Assert.IsNotNull(dbContext.Database.CurrentTransaction);
@@ -67,7 +67,7 @@ public class TestsUnitOfWork : BaseTestsDomainObjects
 
         using (var unitOfWork = (UnitOfWork)m_entryPoint.CreateUnitOfWork())
         {
-            using var dbContext = unitOfWork.NewDbContext(true);
+            using var dbContext = unitOfWork.NewDbContext();
 
             Assert.IsNotNull(dbContext.Database.GetDbConnection());
             Assert.IsNotNull(dbContext.Database.CurrentTransaction);
@@ -93,7 +93,7 @@ public class TestsUnitOfWork : BaseTestsDomainObjects
 
         using (var unitOfWork = (UnitOfWork)m_entryPoint.CreateUnitOfWork())
         {
-            using var dbContext = unitOfWork.NewDbContext(true);
+            using var dbContext = unitOfWork.NewDbContext();
 
             Assert.IsNotNull(dbContext.Database.GetDbConnection());
             Assert.IsNotNull(dbContext.Database.CurrentTransaction);
@@ -132,7 +132,7 @@ public class TestsUnitOfWork : BaseTestsDomainObjects
 
         await using (var unitOfWork = (UnitOfWork)await m_entryPoint.CreateUnitOfWorkAsync())
         {
-            await using var dbContext = await unitOfWork.NewDbContextAsync(true);
+            await using var dbContext = await unitOfWork.NewDbContextAsync();
 
             Assert.IsNotNull(dbContext.Database.GetDbConnection());
             Assert.IsNotNull(dbContext.Database.CurrentTransaction);
@@ -156,7 +156,7 @@ public class TestsUnitOfWork : BaseTestsDomainObjects
 
         await using (var unitOfWork = (UnitOfWork)await m_entryPoint.CreateUnitOfWorkAsync())
         {
-            await using var dbContext = await unitOfWork.NewDbContextAsync(true);
+            await using var dbContext = await unitOfWork.NewDbContextAsync();
 
             Assert.IsNotNull(dbContext.Database.GetDbConnection());
             Assert.IsNotNull(dbContext.Database.CurrentTransaction);
@@ -182,7 +182,7 @@ public class TestsUnitOfWork : BaseTestsDomainObjects
 
         await using (var unitOfWork = (UnitOfWork)await m_entryPoint.CreateUnitOfWorkAsync())
         {
-            await using var dbContext = await unitOfWork.NewDbContextAsync(true);
+            await using var dbContext = await unitOfWork.NewDbContextAsync();
 
             Assert.IsNotNull(dbContext.Database.GetDbConnection());
             Assert.IsNotNull(dbContext.Database.CurrentTransaction);
