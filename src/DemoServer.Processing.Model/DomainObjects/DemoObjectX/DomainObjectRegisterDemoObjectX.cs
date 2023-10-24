@@ -25,23 +25,19 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
         IEntryPointContext entryPointContext,
         IDomainObjectDataMapper dataMapper,
         IDomainObjectDataActivator dataActivator,
-        IDomainObjectActivator activator,
-        ICustomEntryPoint entryPoint)
+        IDomainObjectActivator activator)
         : base(
             entryPointContext,
             dataMapper,
             dataActivator,
             activator,
             new DefaultMemoryCacheSlim<long, DemoObjectXIdentitiesService.AlternativeKeyEntry>(
-                entryPoint.Context,
-                entryPoint.SystemSettings.DomainObjectRegistersSettings.Value.MemoryCacheDemoObjectX.Value,
-                $"Кэш реестра доменных объектов '{entryPoint.Context.GetDisplayNameDomainObject(WellknownDomainObjects.DemoObjectX)}' по ключу"),
-            entryPoint.SystemSettings.DomainObjectRegistersSettings.Value.UseIdentitiesServices.Value
-                ? new DemoObjectXIdentitiesService(entryPoint)
-                : null,
-            DemoObjectXIdentitiesService.AlternativeKeyEntry.AlternativeKeyName,
-            WellknownDomainObjectFields.DemoObjectX.NameCollection,
-            DemoObjectXIdentitiesService.AlternativeKeyEntry.AlternativeKeyDecode)
+                entryPointContext,
+                ((ICustomEntryPoint)entryPointContext.EntryPoint).SystemSettings.DomainObjectRegistersSettings.Value.MemoryCacheDemoObjectX.Value,
+                $"Кэш реестра доменных объектов '{entryPointContext.GetDisplayNameDomainObject(WellknownDomainObjects.DemoObjectX)}' по ключу"),
+            DemoObjectXIdentitiesService.New((ICustomEntryPoint)entryPointContext.EntryPoint),
+            WellknownDomainObjectFields.DemoObjectX.NameAlternateKey,
+            WellknownDomainObjectFields.DemoObjectX.NameCollection)
     {
     }
 

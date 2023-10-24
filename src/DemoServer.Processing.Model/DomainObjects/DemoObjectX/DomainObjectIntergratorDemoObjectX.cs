@@ -66,7 +66,6 @@ public class DomainObjectIntergratorDemoObjectX : BaseDomainObjectIntergrator<IU
 
                                 throw workflowException;
                             }
-                        }),
-                entryPoint));
+                        })));
     }
 }

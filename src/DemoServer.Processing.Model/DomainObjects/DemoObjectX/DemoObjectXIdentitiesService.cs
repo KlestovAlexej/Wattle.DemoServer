@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using ShtrihM.DemoServer.Processing.Common;
 using ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
 using ShtrihM.DemoServer.Processing.Model.Implements;
 using ShtrihM.DemoServer.Processing.Model.Interfaces;
+using ShtrihM.Wattle3.DomainObjects.DomainObjectsRegisters.IdentitiesServices;
 using ShtrihM.Wattle3.DomainObjects.IdentitiesServices;
+using ShtrihM.Wattle3.DomainObjects.Interfaces;
 
 namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
 
@@ -13,29 +15,36 @@ public sealed class DemoObjectXIdentitiesService : BaseIdentitiesWithContextWith
 {
     #region AlternativeKeyEntry - Альтернативный ключ объекта X
 
-    public readonly record struct AlternativeKeyEntry(Guid Key1, string Key2)
-    {
-        public static readonly string AlternativeKeyName = WellknownDomainObjectFields.DemoObjectX.NameAlternateKey;
-
-        public static (Type[] TypeArguments, Func<AlternativeKeyEntry, object[]> DecodeArguments) AlternativeKeyDecode
-            => (new[] { typeof(Guid), typeof(string) }, key => new object[] { key.Key1, key.Key2 });
-    }
+    [SuppressMessage("ReSharper", "NotAccessedPositionalProperty.Global")]
+    public readonly record struct AlternativeKeyEntry(
+        [property: AlternativeKeyIndex(0)] Guid Key1,
+        [property: AlternativeKeyIndex(1)] string Key2);
 
     #endregion
 
-    private readonly ICustomEntryPoint m_entryPoint;
+    private readonly IUnitOfWorkProvider m_unitOfWorkProvider;
 
-    public DemoObjectXIdentitiesService(ICustomEntryPoint entryPoint)
+    private DemoObjectXIdentitiesService(ICustomEntryPoint entryPoint)
         : base(
             entryPoint.Context,
             new Guid("CD1F66C3-9E12-47B4-B028-8D36BEC6D7EA"))
     {
-        m_entryPoint = entryPoint;
+        m_unitOfWorkProvider = entryPoint.UnitOfWorkProvider;
+    }
+
+    public static DemoObjectXIdentitiesService New(ICustomEntryPoint entryPoint)
+    {
+        var result =
+            entryPoint.SystemSettings.DomainObjectRegistersSettings.Value.UseIdentitiesServices.Value
+                ? new DemoObjectXIdentitiesService(entryPoint)
+                : null;
+
+        return result;
     }
 
     protected override IEnumerable<(long Identity, AlternativeKeyEntry Key, long Context)> DoGetIdentitiesFromMaxToMin(long? maxIdentity)
     {
-        var unitOfWork = (UnitOfWork)m_entryPoint.UnitOfWorkProvider.Instance;
+        var unitOfWork = (UnitOfWork)m_unitOfWorkProvider.Instance;
         using var dbContext = unitOfWork.NewDbContext(false);
 
         IOrderedQueryable<Demoobjectx> query;
