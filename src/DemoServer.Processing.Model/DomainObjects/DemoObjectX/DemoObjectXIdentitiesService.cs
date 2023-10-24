@@ -11,7 +11,7 @@ using ShtrihM.Wattle3.DomainObjects.Interfaces;
 
 namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
 
-public sealed class DemoObjectXIdentitiesService : BaseIdentitiesWithContextWithAlternativeKeyService<DemoObjectXIdentitiesService.AlternativeKeyEntry, long /* Group */>
+public sealed class DemoObjectXIdentitiesService : BaseIdentitiesWithContextWithAlternativeKeyService<DemoObjectXIdentitiesService.AlternativeKeyEntry, long /* Group */, DemoObjectXIdentitiesService>
 {
     #region AlternativeKeyEntry - Альтернативный ключ объекта X
 
@@ -25,9 +25,7 @@ public sealed class DemoObjectXIdentitiesService : BaseIdentitiesWithContextWith
     private readonly IUnitOfWorkProvider m_unitOfWorkProvider;
 
     private DemoObjectXIdentitiesService(ICustomEntryPoint entryPoint)
-        : base(
-            entryPoint.Context,
-            new Guid("CD1F66C3-9E12-47B4-B028-8D36BEC6D7EA"))
+        : base(entryPoint.Context)
     {
         m_unitOfWorkProvider = entryPoint.UnitOfWorkProvider;
     }

@@ -56,12 +56,6 @@ public static class WellknownCommonInfrastructureMonitors
     public static readonly Guid MapperDemoObject = new("ACF0F934-7A89-4AD7-A7E5-AD6E66639B7F");
 
     /// <summary>
-    /// Кэш актуальных данных состояния доменного объекта 'Объект' в БД.
-    /// </summary>
-    [Description("Кэш актуальных данных состояния доменного объекта 'Объект' в БД")]
-    public static readonly Guid MapperDemoObjectCacheActualStateDto = new("D40EF9A2-0C27-4859-A524-85FFB68920ED");
-
-    /// <summary>
     /// Пул лок-объектов сценария обновления объекта 'Объект X'.
     /// </summary>
     [Description("Пул лок-объектов сценария обновления объекта 'Объект X'")]
@@ -72,12 +66,6 @@ public static class WellknownCommonInfrastructureMonitors
     /// </summary>
     [Description("Маппер данных состояния доменного объекта 'Объект X' в БД")]
     public static readonly Guid MapperDemoObjectX = new("1133A907-5A1D-410A-9D66-B7C8392C9F36");
-
-    /// <summary>
-    /// Кэш актуальных данных состояния доменного объекта 'Объект X' в БД.
-    /// </summary>
-    [Description("Кэш актуальных данных состояния доменного объекта 'Объект X' в БД")]
-    public static readonly Guid MapperDemoObjectXCacheActualStateDto = new("572ECC86-4280-4EF4-B250-8FD823E5637E");
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static string GetDisplayName(Guid id)

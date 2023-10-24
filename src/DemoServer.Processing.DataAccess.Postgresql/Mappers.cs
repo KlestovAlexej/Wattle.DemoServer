@@ -11,6 +11,10 @@ using ShtrihM.Wattle3.Utils;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using ShtrihM.Wattle3.Mappers.Primitives;
+using ShtrihM.Wattle3.Caching;
+using ShtrihM.Wattle3.Caching.Interfaces;
+using ShtrihM.Wattle3.Infrastructures.Interfaces.Monitors;
 
 // ReSharper disable once CheckNamespace
 namespace ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements;
@@ -26,83 +30,17 @@ public partial class Mappers : ICustomMappers
 
         var mappersContext = (MappersContext)context;
 
-        #region DemoObject
+        AddMapper(
+            CreateMapper<MapperDemoObject, DemoObjectDtoActual>(
+                mappersContext,
+                WellknownCommonInfrastructureMonitors.MapperDemoObject,
+                mappersContext.MappersCacheActualStateDtoSettings.DemoObject.Value));
 
-        {
-            mappersContext.MappersCacheActualStateDtoSettings.DemoObject.Value.Enabled.Value =
-                mappersContext.MappersCacheActualStateDtoSettings.DemoObject.Value.Enabled.Value
-                && mappersContext.MappersCacheActualStateDtoSettings.Enabled.Value;
-
-            var actualDtoMemoryCache =
-                new MemoryCacheMapperActualStateDto<DemoObjectDtoActual>(
-                    mappersContext.TimeService,
-                    mappersContext.MappersCacheActualStateDtoSettings.DemoObject.Value,
-                    WellknownCommonInfrastructureMonitors.GetDisplayName(WellknownCommonInfrastructureMonitors.MapperDemoObjectCacheActualStateDto),
-                    new LocksPoolEx<long>(
-                        GuidGenerator.New($"{WellknownCommonInfrastructureMonitors.MapperDemoObjectCacheActualStateDto} {nameof(MapperDemoObject)}"),
-                        "Пул лок-объектов." + Environment.NewLine + WellknownCommonInfrastructureMonitors.GetDisplayName(WellknownCommonInfrastructureMonitors.MapperDemoObjectCacheActualStateDto),
-                        "Пул лок-объектов." + Environment.NewLine + WellknownCommonInfrastructureMonitors.GetDisplayName(WellknownCommonInfrastructureMonitors.MapperDemoObjectCacheActualStateDto),
-                        mappersContext.TimeService),
-                    new BinarySerializerAsMessagePack<DemoObjectDtoActual>(),
-                    mappersContext.ExceptionPolicy,
-                    WellknownCommonInfrastructureMonitors.GetDisplayName(WellknownCommonInfrastructureMonitors.MapperDemoObjectCacheActualStateDto),
-                    WellknownCommonInfrastructureMonitors.MapperDemoObjectCacheActualStateDto,
-                    timeStatisticsStep: mappersContext.TimeStatisticsStep);
-            var mapper =
-                new MapperDemoObject(
-                    ExceptionPolicy,
-                    m_selectFilterFactory,
-                    new InfrastructureMonitorMapper(
-                        mappersContext.TimeService,
-                        WellknownCommonInfrastructureMonitors.MapperDemoObject,
-                        WellknownCommonInfrastructureMonitors.GetDisplayName(WellknownCommonInfrastructureMonitors.MapperDemoObject),
-                        WellknownCommonInfrastructureMonitors.GetDisplayName(WellknownCommonInfrastructureMonitors.MapperDemoObject),
-                        actualDtoMemoryCache.InfrastructureMonitor),
-                    actualDtoMemoryCache);
-            RemoveMapper(mapper.MapperId).SilentDispose();
-            AddMapper(mapper);
-        }
-
-        #endregion
-
-        #region DemoObjectX
-
-        {
-            mappersContext.MappersCacheActualStateDtoSettings.DemoObjectX.Value.Enabled.Value =
-                mappersContext.MappersCacheActualStateDtoSettings.DemoObjectX.Value.Enabled.Value
-                && mappersContext.MappersCacheActualStateDtoSettings.Enabled.Value;
-
-            var actualDtoMemoryCache =
-                new MemoryCacheMapperActualStateDto<DemoObjectXDtoActual>(
-                    mappersContext.TimeService,
-                    mappersContext.MappersCacheActualStateDtoSettings.DemoObjectX.Value,
-                    WellknownCommonInfrastructureMonitors.GetDisplayName(WellknownCommonInfrastructureMonitors.MapperDemoObjectXCacheActualStateDto),
-                    new LocksPoolEx<long>(
-                        GuidGenerator.New($"{WellknownCommonInfrastructureMonitors.MapperDemoObjectXCacheActualStateDto} {nameof(MapperDemoObjectX)}"),
-                        "Пул лок-объектов." + Environment.NewLine + WellknownCommonInfrastructureMonitors.GetDisplayName(WellknownCommonInfrastructureMonitors.MapperDemoObjectXCacheActualStateDto),
-                        "Пул лок-объектов." + Environment.NewLine + WellknownCommonInfrastructureMonitors.GetDisplayName(WellknownCommonInfrastructureMonitors.MapperDemoObjectXCacheActualStateDto),
-                        mappersContext.TimeService),
-                    new BinarySerializerAsMessagePack<DemoObjectXDtoActual>(),
-                    mappersContext.ExceptionPolicy,
-                    WellknownCommonInfrastructureMonitors.GetDisplayName(WellknownCommonInfrastructureMonitors.MapperDemoObjectXCacheActualStateDto),
-                    WellknownCommonInfrastructureMonitors.MapperDemoObjectXCacheActualStateDto,
-                    timeStatisticsStep: mappersContext.TimeStatisticsStep);
-            var mapper =
-                new MapperDemoObjectX(
-                    ExceptionPolicy,
-                    m_selectFilterFactory,
-                    new InfrastructureMonitorMapper(
-                        mappersContext.TimeService,
-                        WellknownCommonInfrastructureMonitors.MapperDemoObjectX,
-                        WellknownCommonInfrastructureMonitors.GetDisplayName(WellknownCommonInfrastructureMonitors.MapperDemoObjectX),
-                        WellknownCommonInfrastructureMonitors.GetDisplayName(WellknownCommonInfrastructureMonitors.MapperDemoObjectX),
-                        actualDtoMemoryCache.InfrastructureMonitor),
-                    actualDtoMemoryCache);
-            RemoveMapper(mapper.MapperId).SilentDispose();
-            AddMapper(mapper);
-        }
-
-        #endregion
+        AddMapper(
+            CreateMapper<MapperDemoObjectX, DemoObjectXDtoActual>(
+                mappersContext,
+                WellknownCommonInfrastructureMonitors.MapperDemoObjectX,
+                mappersContext.MappersCacheActualStateDtoSettings.DemoObjectX.Value));
     }
 
     public IDictionary<Guid, string> GetSystemSettings(IMappersSession session)
@@ -111,6 +49,7 @@ public partial class Mappers : ICustomMappers
         {
             throw new ArgumentNullException(nameof(session));
         }
+
         var typedSession = (IPostgreSqlMappersSession)session;
 
         var result = new Dictionary<Guid, string>();
@@ -129,5 +68,90 @@ public partial class Mappers : ICustomMappers
         }
 
         return (result);
+    }
+
+    private new void AddMapper(IMapper mapper)
+    {
+        RemoveMapper(mapper.MapperId).SilentDispose();
+        base.AddMapper(mapper);
+    }
+
+    private TMapper CreateMapper<TMapper, TMapperActualStateDto>(
+        IMappersExceptionPolicy exceptionPolicy,
+        IPostgreSqlMapperSelectFilterFactory selectFilterFactory,
+        IInfrastructureMonitorMapper infrastructureMonitor,
+        IMemoryCache<TMapperActualStateDto, long> actualDtoMemoryCache)
+    {
+        var constructorInfo =
+            typeof(TMapper)
+                .GetConstructor(
+                    new[]
+                    {
+                        typeof(IMappersExceptionPolicy),
+                        typeof(IPostgreSqlMapperSelectFilterFactory),
+                        typeof(IInfrastructureMonitorMapper),
+                        typeof(IMemoryCache<TMapperActualStateDto, long>)
+                    });
+        if (constructorInfo == null)
+        {
+            throw new InvalidOperationException(
+                $"Для маппера '{typeof(TMapper).AssemblyQualifiedName}' не найден конструктор.");
+        }
+
+        var result =
+            (TMapper)constructorInfo.Invoke(
+                new object[]
+                {
+                    exceptionPolicy,
+                    selectFilterFactory,
+                    infrastructureMonitor,
+                    actualDtoMemoryCache
+                });
+
+        return (result);
+    }
+
+    private TMapper CreateMapper<TMapper, TMapperActualStateDto>(
+        MappersContext mappersContext,
+        Guid mapperIdInfrastructureMonitor,
+        MemoryCacheSettings memoryCacheSettings)
+        where TMapperActualStateDto : IMapperDtoVersion
+    {
+        memoryCacheSettings.Enabled.Value =
+            memoryCacheSettings.Enabled.Value
+            && mappersContext.MappersCacheActualStateDtoSettings.Enabled.Value;
+
+        var cacheName = "Кэш актуальных данных состояния доменного объекта в БД";
+        var mapperCacheIdInfrastructureMonitor = GuidGenerator.New(typeof(TMapper).FullName);
+        var actualDtoMemoryCache =
+            new MemoryCacheMapperActualStateDto<TMapperActualStateDto>(
+                mappersContext.TimeService,
+                memoryCacheSettings,
+                cacheName,
+                new LocksPoolEx<long>(
+                    GuidGenerator.New($"{mapperCacheIdInfrastructureMonitor} {cacheName}"),
+                    $"Пул лок-объектов '{cacheName}'.",
+                    $"Пул лок-объектов '{cacheName}'.",
+                    mappersContext.TimeService),
+                new BinarySerializerAsMessagePack<TMapperActualStateDto>(),
+                mappersContext.ExceptionPolicy,
+                cacheName,
+                mapperCacheIdInfrastructureMonitor,
+                timeStatisticsStep: mappersContext.TimeStatisticsStep);
+        var infrastructureMonitorMapper =
+            new InfrastructureMonitorMapper(
+                mappersContext.TimeService,
+                mapperIdInfrastructureMonitor,
+                WellknownCommonInfrastructureMonitors.GetDisplayName(mapperIdInfrastructureMonitor),
+                WellknownCommonInfrastructureMonitors.GetDisplayName(mapperIdInfrastructureMonitor),
+                actualDtoMemoryCache.InfrastructureMonitor);
+        var mapper =
+            CreateMapper<TMapper, TMapperActualStateDto>(
+                ExceptionPolicy,
+                m_selectFilterFactory,
+                infrastructureMonitorMapper,
+                actualDtoMemoryCache);
+
+        return mapper;
     }
 }

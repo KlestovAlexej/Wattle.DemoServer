@@ -2,10 +2,10 @@
 using ShtrihM.Wattle3.DomainObjects.DomainObjectDataMappers;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectIntergrators;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectsRegisters;
-using ShtrihM.Wattle3.Primitives;
 using ShtrihM.DemoServer.Processing.Generated.Interface;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectActivators;
 using Unity;
+using ShtrihM.DemoServer.Processing.Model.Implements;
 
 namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.ChangeTracker;
 
@@ -21,14 +21,7 @@ public class DomainObjectIntergratorChangeTracker : BaseDomainObjectIntergrator<
                 <IMapperChangeTracker, ChangeTrackerDtoNew, ChangeTrackerDtoActual>(
                     entryPoint.Context,
                     entryPoint.SystemSettings.IdentityCachesSettings.Value.ChangeTracker.Value,
-                    identityPrepare:
-                    (mapper, identity) =>
-                    {
-                        var nowDayIndex = entryPoint.PartitionsDay.NowDayIndex;
-                        identity = ComplexIdentity.Build(mapper.Partitions.Level, nowDayIndex, identity);
-
-                        return identity;
-                    });
+                    identityPrepare: DomainObjectIntergratorHelpers.GetIdentityPrepare<IMapperChangeTracker>(entryPoint));
         container.Resolve<DomainObjectDataMappers>().AddMapper(dataMapper);
 
         container.Resolve<DomainObjectRegisters>().AddRegister(

@@ -60,11 +60,6 @@
             Маппер данных состояния доменного объекта 'Объект' в БД.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownCommonInfrastructureMonitors.MapperDemoObjectCacheActualStateDto">
-            <summary>
-            Кэш актуальных данных состояния доменного объекта 'Объект' в БД.
-            </summary>
-        </member>
         <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownCommonInfrastructureMonitors.LocksUpdateDemoObjectX">
             <summary>
             Пул лок-объектов сценария обновления объекта 'Объект X'.
@@ -73,11 +68,6 @@
         <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownCommonInfrastructureMonitors.MapperDemoObjectX">
             <summary>
             Маппер данных состояния доменного объекта 'Объект X' в БД.
-            </summary>
-        </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownCommonInfrastructureMonitors.MapperDemoObjectXCacheActualStateDto">
-            <summary>
-            Кэш актуальных данных состояния доменного объекта 'Объект X' в БД.
             </summary>
         </member>
         <member name="T:ShtrihM.DemoServer.Processing.Common.WellknownCommonSnapShotInfrastructureMonitorValues">
