@@ -43,7 +43,7 @@
 
 - Создан доменный объект [DemoObjectX](src/DemoServer.Processing.Model/DomainObjects/DemoObject/DomainObjectDemoObject.cs)
 	- Реализован кэширующий маппер БД
-        - Пример произвольной выборки доменных объектов с использованием [Entity Framework](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/d5bae07d895043e9c05035d84a41dba8a88b0177/tests/DemoServer.Processing.Tests.Model/TestsDomainObjectX.cs#L32)
+	- Пример произвольной выборки доменных объектов с использованием [Entity Framework](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/d5bae07d895043e9c05035d84a41dba8a88b0177/tests/DemoServer.Processing.Tests.Model/TestsDomainObjectX.cs#L32)
 	- Пример использования столбца таблицы БД с [именем в кавычках](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/92ca77457c4f495fde82e4202aeaf3bc03067d74/src/DemoServer.Processing.Common/WellknownDomainObjectFields.cs#L280)
 	- Реализована [оптимистическая конкуренция при обновлении](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/104c0f9cf212fcc98e55640c8f2ea9034e2bbb04/src/DemoServer.Processing.Common/WellknownDomainObjectFields.cs#L180) на уровне БД
 	- Реализована критическая секция при обновлении и [создании DemoObjectХ](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/92ca77457c4f495fde82e4202aeaf3bc03067d74/src/DemoServer.Processing.Model/DomainObjects/DemoObjectX/DomainObjectIntergratorDemoObjectX.cs#L44)
