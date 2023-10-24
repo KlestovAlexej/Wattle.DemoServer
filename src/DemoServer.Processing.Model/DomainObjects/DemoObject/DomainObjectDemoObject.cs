@@ -22,7 +22,7 @@ namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObject;
 
 [DomainObjectDataMapper(WellknownMappersAsText.DemoObject, DomainObjectDataTarget.Create, DomainObjectDataTarget.Update)]
 // ReSharper disable once ClassNeverInstantiated.Global
-public sealed class DomainObjectDemoObject : DomainObjectMutable<DomainObjectDemoObject>, IDomainObjectDemoObject, IDomainObjectActivatorPostCreate
+public sealed class DomainObjectDemoObject : BaseDomainObjectMutable<DomainObjectDemoObject>, IDomainObjectDemoObject, IDomainObjectActivatorPostCreate
 {
     #region Template
 

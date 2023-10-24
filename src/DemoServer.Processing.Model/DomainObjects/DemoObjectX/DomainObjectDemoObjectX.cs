@@ -22,7 +22,7 @@ namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
 [DomainObjectDataMapper(WellknownMappersAsText.DemoObjectX, DomainObjectDataTarget.Create,
     DomainObjectDataTarget.Update, DomainObjectDataTarget.Delete)]
 // ReSharper disable once ClassNeverInstantiated.Global
-public sealed class DomainObjectDemoObjectX : DomainObjectMutable<DomainObjectDemoObjectX>, IDomainObjectDemoObjectX,
+public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutable<DomainObjectDemoObjectX>, IDomainObjectDemoObjectX,
     IDomainObjectActivatorPostCreate
 {
     #region Template
@@ -73,12 +73,10 @@ public sealed class DomainObjectDemoObjectX : DomainObjectMutable<DomainObjectDe
 
     #endregion
 
-    [DomainObjectFieldValue(DomainObjectDataTarget.Create, DomainObjectDataTarget.Update,
-        DtoFiledName = nameof(DemoObjectXDtoChanged.Enabled))]
+    [DomainObjectFieldValue(DomainObjectDataTarget.Create, DomainObjectDataTarget.Update, DtoFiledName = nameof(DemoObjectXDtoChanged.Enabled))]
     private MutableField<bool> m_enabled;
 
-    [DomainObjectFieldValue(DomainObjectDataTarget.Create, DomainObjectDataTarget.Update,
-        DtoFiledName = nameof(DemoObjectXDtoChanged.Name))]
+    [DomainObjectFieldValue(DomainObjectDataTarget.Create, DomainObjectDataTarget.Update, DtoFiledName = nameof(DemoObjectXDtoChanged.Name))]
     private MutableFieldStringLimitedEx m_name;
 
     // ReSharper disable once UnusedMember.Global

@@ -30,7 +30,7 @@ public class UnitOfWorkLocksHubTyped
         DemoObjectX = new DomainObjectUnitOfWorkLocks(
             Hub,
             WellknownCommonInfrastructureMonitors.LocksUpdateDemoObjectX,
-            WellknownDomainObjects.DemoObject,
+            WellknownDomainObjects.DemoObjectX,
             unitOfWorkLocks);
     }
 

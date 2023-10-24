@@ -28,12 +28,14 @@ public class DomainObjectIntergratorDemoObjectX : BaseDomainObjectIntergrator<IU
 
         container.Resolve<DomainObjectRegisters>().AddRegister(
             new DomainObjectRegisterDemoObjectX(
-                entryPoint.Context,
+                entryPoint,
                 dataMapper,
                 new DomainObjectDataActivatorForActualStateDtoDefault<DemoObjectXDtoActual, DomainObjectDemoObjectX>(entryPoint),
                 new DomainObjectActivatorDefault<DomainObjectDemoObjectX.Template, DomainObjectDemoObjectX>(entryPoint.UnitOfWorkProvider, entryPoint.UnitOfWorkLocks.DemoObjectX, entryPoint)
                     .SetPreCreate(PreCreate, PreCreateAsync)));
 
+        #region PreCreate
+       
         void PreCreate(DomainObjectDemoObjectX.Template template)
         {
             var key = template.GetKey();
@@ -69,5 +71,7 @@ public class DomainObjectIntergratorDemoObjectX : BaseDomainObjectIntergrator<IU
                 throw workflowException;
             }
         }
+
+        #endregion
     }
 }

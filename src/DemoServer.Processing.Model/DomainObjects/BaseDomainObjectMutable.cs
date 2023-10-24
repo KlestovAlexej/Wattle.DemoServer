@@ -9,7 +9,7 @@ namespace ShtrihM.DemoServer.Processing.Model.DomainObjects;
 /// <summary>
 /// Базовая реализация доменного объекта с поддержкой изменения.
 /// </summary>
-public abstract class DomainObjectMutable<TDomainObject> : BaseDomainObject<TDomainObject>
+public abstract class BaseDomainObjectMutable<TDomainObject> : BaseDomainObject<TDomainObject>
     where TDomainObject : BaseDomainObject<TDomainObject>
 {
     private bool m_isChanged;
@@ -23,7 +23,7 @@ public abstract class DomainObjectMutable<TDomainObject> : BaseDomainObject<TDom
     protected readonly ICustomEntryPoint m_entryPoint;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    protected DomainObjectMutable(ICustomEntryPoint entryPoint, IMapperDtoVersion data)
+    protected BaseDomainObjectMutable(ICustomEntryPoint entryPoint, IMapperDtoVersion data)
         : base(data.Id, false)
     {
         m_entryPoint = entryPoint;
@@ -31,7 +31,7 @@ public abstract class DomainObjectMutable<TDomainObject> : BaseDomainObject<TDom
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    protected DomainObjectMutable(ICustomEntryPoint entryPoint, long identity)
+    protected BaseDomainObjectMutable(ICustomEntryPoint entryPoint, long identity)
         : base(identity, true)
     {
         m_entryPoint = entryPoint;

@@ -1,7 +1,6 @@
 ﻿using ShtrihM.DemoServer.Processing.Common;
 using ShtrihM.DemoServer.Processing.Generated.Interface;
 using ShtrihM.DemoServer.Processing.Model.Interfaces;
-using ShtrihM.Wattle3.Caching;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectsRegisters.IdentitiesServices;
 using ShtrihM.Wattle3.DomainObjects.Interfaces;
 
@@ -22,20 +21,17 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
     #endregion
 
     public DomainObjectRegisterDemoObjectX(
-        IEntryPointContext entryPointContext,
+        ICustomEntryPoint entryPoint,
         IDomainObjectDataMapper dataMapper,
         IDomainObjectDataActivator dataActivator,
         IDomainObjectActivator activator)
         : base(
-            entryPointContext,
+            entryPoint.Context,
             dataMapper,
             dataActivator,
             activator,
-            new DefaultMemoryCacheSlim<long, DemoObjectXIdentitiesService.AlternativeKeyEntry>(
-                entryPointContext,
-                ((ICustomEntryPoint)entryPointContext.EntryPoint).SystemSettings.DomainObjectRegistersSettings.Value.MemoryCacheDemoObjectX.Value,
-                $"Кэш реестра доменных объектов '{entryPointContext.GetDisplayNameDomainObject(WellknownDomainObjects.DemoObjectX)}' по ключу"),
-            DemoObjectXIdentitiesService.New((ICustomEntryPoint)entryPointContext.EntryPoint),
+            entryPoint.SystemSettings.DomainObjectRegistersSettings.Value.MemoryCacheDemoObjectX.Value,
+            DemoObjectXIdentitiesService.New(entryPoint),
             WellknownDomainObjectFields.DemoObjectX.NameAlternateKey,
             WellknownDomainObjectFields.DemoObjectX.NameCollection)
     {
