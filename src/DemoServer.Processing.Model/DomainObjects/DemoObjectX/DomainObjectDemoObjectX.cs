@@ -9,17 +9,21 @@ using System;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
+using ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
 using ShtrihM.DemoServer.Processing.Generated.Interface;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectActivators;
+using ShtrihM.Wattle3.Mappers.Primitives;
 using ShtrihM.Wattle3.Primitives;
 
 #pragma warning disable CA2254
 
 namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
 
-[DomainObjectDataMapper(WellknownMappersAsText.DemoObjectX, DomainObjectDataTarget.Create, DomainObjectDataTarget.Update, DomainObjectDataTarget.Delete)]
+[DomainObjectDataMapper(WellknownMappersAsText.DemoObjectX, DomainObjectDataTarget.Create,
+    DomainObjectDataTarget.Update, DomainObjectDataTarget.Delete)]
 // ReSharper disable once ClassNeverInstantiated.Global
-public sealed class DomainObjectDemoObjectX : DomainObjectMutable<DomainObjectDemoObjectX>, IDomainObjectDemoObjectX, IDomainObjectActivatorPostCreate
+public sealed class DomainObjectDemoObjectX : DomainObjectMutable<DomainObjectDemoObjectX>, IDomainObjectDemoObjectX,
+    IDomainObjectActivatorPostCreate
 {
     #region Template
 
@@ -69,10 +73,12 @@ public sealed class DomainObjectDemoObjectX : DomainObjectMutable<DomainObjectDe
 
     #endregion
 
-    [DomainObjectFieldValue(DomainObjectDataTarget.Create, DomainObjectDataTarget.Update, DtoFiledName = nameof(DemoObjectXDtoChanged.Enabled))]
+    [DomainObjectFieldValue(DomainObjectDataTarget.Create, DomainObjectDataTarget.Update,
+        DtoFiledName = nameof(DemoObjectXDtoChanged.Enabled))]
     private MutableField<bool> m_enabled;
 
-    [DomainObjectFieldValue(DomainObjectDataTarget.Create, DomainObjectDataTarget.Update, DtoFiledName = nameof(DemoObjectXDtoChanged.Name))]
+    [DomainObjectFieldValue(DomainObjectDataTarget.Create, DomainObjectDataTarget.Update,
+        DtoFiledName = nameof(DemoObjectXDtoChanged.Name))]
     private MutableFieldStringLimitedEx m_name;
 
     // ReSharper disable once UnusedMember.Global
@@ -190,7 +196,8 @@ public sealed class DomainObjectDemoObjectX : DomainObjectMutable<DomainObjectDe
     {
         m_entryPoint.CurrentUnitOfWork.AddDelete(this);
 
-        var register = (DomainObjectRegisterDemoObjectX)m_entryPoint.Registers.GetRegister<IDomainObjectRegisterDemoObjectX>();
+        var register =
+            (DomainObjectRegisterDemoObjectX)m_entryPoint.Registers.GetRegister<IDomainObjectRegisterDemoObjectX>();
         var domainBehaviour = m_entryPoint.CreateDomainBehaviourWithСonfirmation();
 
         register.RemoveDomainObject(domainBehaviour, Identity, GetKey());
@@ -200,7 +207,8 @@ public sealed class DomainObjectDemoObjectX : DomainObjectMutable<DomainObjectDe
     {
         DoPostCreate();
 
-        var register = (DomainObjectRegisterDemoObjectX)m_entryPoint.Registers.GetRegister<IDomainObjectRegisterDemoObjectX>();
+        var register =
+            (DomainObjectRegisterDemoObjectX)m_entryPoint.Registers.GetRegister<IDomainObjectRegisterDemoObjectX>();
         var domainBehaviour = m_entryPoint.CreateDomainBehaviourWithСonfirmation();
 
         register.AddDomainObject(domainBehaviour, Identity, GetKey(), Group);
@@ -210,7 +218,8 @@ public sealed class DomainObjectDemoObjectX : DomainObjectMutable<DomainObjectDe
     {
         DoPostCreate();
 
-        var register = (DomainObjectRegisterDemoObjectX)m_entryPoint.Registers.GetRegister<IDomainObjectRegisterDemoObjectX>();
+        var register =
+            (DomainObjectRegisterDemoObjectX)m_entryPoint.Registers.GetRegister<IDomainObjectRegisterDemoObjectX>();
         var domainBehaviour = m_entryPoint.CreateDomainBehaviourWithСonfirmation();
 
         return register.AddDomainObjectAsync(domainBehaviour, Identity, GetKey(), Group, cancellationToken);
@@ -249,5 +258,30 @@ public sealed class DomainObjectDemoObjectX : DomainObjectMutable<DomainObjectDe
         base.DoUpdate();
 
         ModificationDate = m_entryPoint.TimeService.NowDateTime;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static IMapperDto EntityToDto(Demoobjectx entity)
+    {
+        if (entity == null)
+        {
+            return null;
+        }
+
+        var result =
+            new DemoObjectXDtoActual
+            {
+                Name = entity!.Name,
+                CreateDate = entity.Createdate,
+                Enabled = entity.Enabled,
+                Group = entity.Group,
+                Id = entity.Id,
+                Key1 = entity.Key1,
+                Key2 = entity.Key2,
+                ModificationDate = entity.Modificationdate,
+                Revision = entity.Revision,
+            };
+
+        return result;
     }
 }

@@ -1,20 +1,181 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using NUnit.Framework;
 using ShtrihM.DemoServer.Processing.Model.Interfaces;
 using ShtrihM.DemoServer.Processing.Tests.Model.Environment;
 using ShtrihM.Wattle3.DomainObjects.Interfaces;
 using ShtrihM.Wattle3.Testing;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Threading;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using ShtrihM.DemoServer.Processing.Api.Common;
 using ShtrihM.DemoServer.Processing.Generated.Interface;
 using ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
+using ShtrihM.DemoServer.Processing.Model.Implements;
 using ShtrihM.Wattle3.Common.Exceptions;
+using ShtrihM.Wattle3.Mappers.Primitives;
+using ShtrihM.Wattle3.Utils;
 
 namespace ShtrihM.DemoServer.Processing.Tests.Model;
 
 [TestFixture]
 public class TestsDomainObjectX : BaseTestsDomainObjects
 {
+    [Test]
+    [Timeout(TestTimeout.Unit)]
+    [Category(TestCategory.Unit)]
+    [Description("Выборка доменных обектов с использованием Entity Framework")]
+    [SuppressMessage("ReSharper", "AccessToDisposedClosure")]
+    public void Test_EntityFramework()
+    {
+        var template1 =
+            new DomainObjectDemoObjectX.Template(
+                "Name1",
+                true,
+                new Guid("6457CCA1-4217-4D47-B057-9668278FE290"),
+                "Key21",
+                1);
+        var template2 =
+            new DomainObjectDemoObjectX.Template(
+                "Name2",
+                true,
+                new Guid("03B5D8E7-7528-4EED-BE17-D2882CD67C98"),
+                "Key22",
+                1);
+        var template3 =
+            new DomainObjectDemoObjectX.Template(
+                "Name3",
+                true,
+                new Guid("601F8424-380F-4BA5-BC30-30C0C0F13972"),
+                "Key23",
+                1);
+
+        long id1;
+        long id2;
+        long id3;
+        using (var unitOfWork = m_entryPoint.CreateUnitOfWork())
+        {
+            id1 = template1.New(m_entryPoint).Identity;
+            id2 = template2.New(m_entryPoint).Identity;
+            id3 = template3.New(m_entryPoint).Identity;
+
+            unitOfWork.Commit();
+        }
+
+        using (var unitOfWork = (UnitOfWork)m_entryPoint.CreateUnitOfWork())
+        {
+            var register = unitOfWork.Registers.GetRegister<IDomainObjectRegisterDemoObjectX>();
+            using var dbContext = unitOfWork.NewDbContext();
+
+            var instance =
+                register.Find(() =>
+                    DomainObjectDemoObjectX.EntityToDto(
+                        dbContext.Demoobjectx
+                            .SingleOrDefault(
+                                entity => entity.Id == id1)));
+            Assert.IsNotNull(instance);
+            Assert.AreEqual(id1, instance.Identity);
+
+            instance =
+                register.FindAsync(async ct =>
+                        DomainObjectDemoObjectX.EntityToDto(
+                            await dbContext.Demoobjectx
+                                .SingleOrDefaultAsync(
+                                    entity => entity.Id == id1, ct)))
+                    .SafeGetResult();
+            Assert.IsNotNull(instance);
+            Assert.AreEqual(id1, instance.Identity);
+
+            instance =
+                register.FindAsync(async ct =>
+                        DomainObjectDemoObjectX.EntityToDto(
+                            await dbContext.Demoobjectx
+                                .SingleOrDefaultAsync(
+                                    entity => entity.Id == -1, ct)))
+                    .SafeGetResult();
+            Assert.IsNull(instance);
+
+            var instances =
+                register.GetObjectEnumerator(() =>
+                        dbContext.Demoobjectx
+                            .Where(entity => entity.Id == id1)
+                            .Select(entity => DomainObjectDemoObjectX.EntityToDto(entity)))
+                    .ToList();
+            Assert.IsNotNull(instances);
+            Assert.AreEqual(1, instances.Count);
+            Assert.AreEqual(id1, instances[0].Identity);
+
+            {
+                instances = register
+                    .GetObjectEnumeratorAsync(DtoCollectionSelector)
+                    .ToListAsync()
+                    .SafeGetResult();
+                Assert.IsNotNull(instances);
+                Assert.AreEqual(1, instances.Count);
+                Assert.AreEqual(id1, instances[0].Identity);
+
+                async IAsyncEnumerable<IMapperDto> DtoCollectionSelector([EnumeratorCancellation] CancellationToken ct)
+                {
+                    await foreach (var entity in dbContext.Demoobjectx
+                                       .Where(entity => entity.Id == id1)
+                                       .AsAsyncEnumerable()
+                                       .WithCancellation(ct)
+                                       .ConfigureAwait(false))
+                    {
+                        yield return DomainObjectDemoObjectX.EntityToDto(entity);
+                    }
+                }
+            }
+
+            {
+                instances = register
+                    .GetObjectEnumeratorAsync(DtoCollectionSelector)
+                    .ToListAsync()
+                    .SafeGetResult();
+                Assert.IsNotNull(instances);
+                Assert.AreEqual(2, instances.Count);
+                Assert.IsTrue(instances.Any(i => i.Identity == id2));
+                Assert.IsTrue(instances.Any(i => i.Identity == id3));
+
+                async IAsyncEnumerable<IMapperDto> DtoCollectionSelector([EnumeratorCancellation] CancellationToken ct)
+                {
+                    await foreach (var entity in dbContext.Demoobjectx
+                                       .Where(entity => entity.Id != id1)
+                                       .AsAsyncEnumerable()
+                                       .WithCancellation(ct)
+                                       .ConfigureAwait(false))
+                    {
+                        yield return DomainObjectDemoObjectX.EntityToDto(entity);
+                    }
+                }
+            }
+
+            {
+                instances = register
+                    .GetObjectEnumeratorAsync(DtoCollectionSelector)
+                    .ToListAsync()
+                    .SafeGetResult();
+                Assert.IsNotNull(instances);
+                Assert.AreEqual(0, instances.Count);
+
+                async IAsyncEnumerable<IMapperDto> DtoCollectionSelector([EnumeratorCancellation] CancellationToken ct)
+                {
+                    await foreach (var entity in dbContext.Demoobjectx
+                                       .Where(entity => entity.Id == -1)
+                                       .AsAsyncEnumerable()
+                                       .WithCancellation(ct)
+                                       .ConfigureAwait(false))
+                    {
+                        yield return DomainObjectDemoObjectX.EntityToDto(entity);
+                    }
+                }
+            }
+        }
+    }
+
     [Test]
     [Timeout(TestTimeout.Unit)]
     [Category(TestCategory.Unit)]

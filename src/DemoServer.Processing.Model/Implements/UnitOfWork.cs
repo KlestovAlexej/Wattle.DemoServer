@@ -32,7 +32,7 @@ public sealed class UnitOfWork(
     }
 
     public async ValueTask<ProcessingDbContext> NewDbContextAsync(
-        bool useTransaction,
+        bool useTransaction = true,
         CancellationToken cancellationToken = default)
     {
         var context = (CustomUnitOfWorkContext)m_context;
@@ -45,7 +45,7 @@ public sealed class UnitOfWork(
         return result;
     }
 
-    public ProcessingDbContext NewDbContext(bool useTransaction)
+    public ProcessingDbContext NewDbContext(bool useTransaction = true)
     {
         var context = (CustomUnitOfWorkContext)m_context;
         var mappersSession = (IPostgreSqlMappersSession)MappersSession;
