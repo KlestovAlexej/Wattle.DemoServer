@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
+using ShtrihM.DemoServer.Processing.Common;
 using ShtrihM.DemoServer.Processing.Model.Implements;
 using ShtrihM.DemoServer.Processing.Model.Interfaces;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectsRegisters.IdentitiesServices;
@@ -17,8 +17,8 @@ public sealed class DemoObjectXIdentitiesService : BaseIdentitiesWithContextWith
 
     [SuppressMessage("ReSharper", "NotAccessedPositionalProperty.Global")]
     public readonly record struct AlternativeKeyEntry(
-        [property: AlternativeKeyIndex(0)] Guid Key1,
-        [property: AlternativeKeyIndex(1)] string Key2);
+        [property: AlternativeKeyIndex(WellknownDomainObjectFields.DemoObjectX.IndexAlternateKeyValue1)] Guid Key1,
+        [property: AlternativeKeyIndex(WellknownDomainObjectFields.DemoObjectX.IndexAlternateKeyValue2)] string Key2);
 
     #endregion
 
@@ -46,23 +46,7 @@ public sealed class DemoObjectXIdentitiesService : BaseIdentitiesWithContextWith
     {
         var unitOfWork = (UnitOfWork)m_unitOfWorkProvider.Instance;
         using var dbContext = unitOfWork.NewDbContext(false);
-
-        IOrderedQueryable<Demoobjectx> query;
-        if (maxIdentity.HasValue)
-        {
-            var currentMaxIdentity = maxIdentity.Value;
-            query = dbContext
-                .Demoobjectx
-                .Where(a => a.Id > currentMaxIdentity)
-                .OrderBy(a => a.Id);
-        }
-        else
-        {
-            query = dbContext
-                .Demoobjectx
-                .OrderBy(a => a.Id);
-        }
-
+        var query = BaseIdentitiesService.GetIdentitiesFromMaxToMin(maxIdentity, dbContext.Demoobjectx);
         var identities =
             query.Select(
                 a => new

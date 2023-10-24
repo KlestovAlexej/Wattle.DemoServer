@@ -224,6 +224,8 @@ public static class WellknownDomainObjectFields
     {
         public const string NameAlternateKey = "Key";
         public const string NameCollection = nameof(Group);
+        public const int IndexAlternateKeyValue1 = 0;
+        public const int IndexAlternateKeyValue2 = 1;
 
         /// <summary>
         /// Дата создания.
@@ -258,7 +260,7 @@ public static class WellknownDomainObjectFields
         /// </summary>
         [Description("Альтернативный ключ - часть №1")]
         [SchemaMapperField(typeof(Guid), Where = true, Order = true)]
-        [SchemaMapperFieldAlternateKey(NameAlternateKey, 1)]
+        [SchemaMapperFieldAlternateKey(NameAlternateKey, IndexAlternateKeyValue1)]
         public static readonly Guid Key1 = new("14367E40-CC94-47A7-8FBD-47E81C62B9BD");
 
         /// <summary>
@@ -266,7 +268,7 @@ public static class WellknownDomainObjectFields
         /// </summary>
         [Description("Альтернативный ключ - часть №2")]
         [SchemaMapperField(typeof(string), Where = true, Order = true, DbSize = FieldsConstants.DemoObjectXKey2MaxLength)]
-        [SchemaMapperFieldAlternateKey(NameAlternateKey, 2)]
+        [SchemaMapperFieldAlternateKey(NameAlternateKey, IndexAlternateKeyValue2)]
         public static readonly Guid Key2 = new("95D0BDF7-5420-4B5C-B89B-7C7979A05F99");
 
         /// <summary>
