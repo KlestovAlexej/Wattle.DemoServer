@@ -1,4 +1,6 @@
-﻿using ShtrihM.DemoServer.Processing.Model.Interfaces;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using ShtrihM.DemoServer.Processing.Model.Interfaces;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectDataMappers;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectIntergrators;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectsRegisters;
@@ -30,42 +32,42 @@ public class DomainObjectIntergratorDemoObjectX : BaseDomainObjectIntergrator<IU
                 dataMapper,
                 new DomainObjectDataActivatorForActualStateDtoDefault<DemoObjectXDtoActual, DomainObjectDemoObjectX>(entryPoint),
                 new DomainObjectActivatorDefault<DomainObjectDemoObjectX.Template, DomainObjectDemoObjectX>(entryPoint.UnitOfWorkProvider, entryPoint.UnitOfWorkLocks.DemoObjectX, entryPoint)
-                    .SetPreCreate(
-                        template =>
-                        {
-                            var key = template.GetKey();
-                            if (false == entryPoint.UnitOfWorkLocks.UnitOfWorkLocksActions.CreateDemoObjectX.TryEnter(key))
-                            {
-                                var workflowException = entryPoint.WorkflowExceptionPolicy.CreateTooBusy();
+                    .SetPreCreate(PreCreate, PreCreateAsync)));
 
-                                throw workflowException;
-                            }
+        void PreCreate(DomainObjectDemoObjectX.Template template)
+        {
+            var key = template.GetKey();
+            if (false == entryPoint.UnitOfWorkLocks.UnitOfWorkLocksActions.CreateDemoObjectX.TryEnter(key))
+            {
+                var workflowException = entryPoint.WorkflowExceptionPolicy.CreateTooBusy();
+                throw workflowException;
+            }
 
-                            var register = (DomainObjectRegisterDemoObjectX)entryPoint.Registers.GetRegister<IDomainObjectRegisterDemoObjectX>();
-                            if (register.ExistsByKey(key))
-                            {
-                                var workflowException = entryPoint.WorkflowExceptionPolicy.CreateDemoObjectXKeyAlreadyExists();
+            var register = (DomainObjectRegisterDemoObjectX)entryPoint.Registers.GetRegister<IDomainObjectRegisterDemoObjectX>();
+            if (register.ExistsByKey(key))
+            {
+                var workflowException = entryPoint.WorkflowExceptionPolicy.CreateDemoObjectXKeyAlreadyExists();
 
-                                throw workflowException;
-                            }
-                        },
-                        async (template, cancellationToken) =>
-                        {
-                            var key = template.GetKey();
-                            if (false == await entryPoint.UnitOfWorkLocks.UnitOfWorkLocksActions.CreateDemoObjectX.TryEnterAsync(key, cancellationToken).ConfigureAwait(false))
-                            {
-                                var workflowException = entryPoint.WorkflowExceptionPolicy.CreateTooBusy();
+                throw workflowException;
+            }
+        }
 
-                                throw workflowException;
-                            }
+        async ValueTask PreCreateAsync(DomainObjectDemoObjectX.Template template, CancellationToken cancellationToken)
+        {
+            var key = template.GetKey();
+            if (false == await entryPoint.UnitOfWorkLocks.UnitOfWorkLocksActions.CreateDemoObjectX.TryEnterAsync(key, cancellationToken).ConfigureAwait(false))
+            {
+                var workflowException = entryPoint.WorkflowExceptionPolicy.CreateTooBusy();
+                throw workflowException;
+            }
 
-                            var register = (DomainObjectRegisterDemoObjectX)entryPoint.Registers.GetRegister<IDomainObjectRegisterDemoObjectX>();
-                            if (await register.ExistsByKeyAsync(key, cancellationToken).ConfigureAwait(false))
-                            {
-                                var workflowException = entryPoint.WorkflowExceptionPolicy.CreateDemoObjectXKeyAlreadyExists();
+            var register = (DomainObjectRegisterDemoObjectX)entryPoint.Registers.GetRegister<IDomainObjectRegisterDemoObjectX>();
+            if (await register.ExistsByKeyAsync(key, cancellationToken).ConfigureAwait(false))
+            {
+                var workflowException = entryPoint.WorkflowExceptionPolicy.CreateDemoObjectXKeyAlreadyExists();
 
-                                throw workflowException;
-                            }
-                        })));
+                throw workflowException;
+            }
+        }
     }
 }
