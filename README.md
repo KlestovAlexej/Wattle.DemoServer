@@ -25,6 +25,7 @@
 ## В демонстрации сервера показаны.
 
 - [Реализован](src/DemoServer.Processing.Model/Implements/UnitOfWork.cs) паттерн [Unit of Work](https://martinfowler.com/eaaCatalog/unitOfWork.html)
+- [Пример автоматического создания](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/d209439e8593eb4a0f80ddb5f02609ba45b7ce6c/tests/DemoServer.Processing.Tests.DataAccess.Postgresql/TestsCreateEmptyDb.cs#L33) контекста Entity Framework по существующей БД
 - [Пример логирования](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/33de4b303ffb87c1ce43c089b191ebe04c301da4/src/DemoServer.Processing.Application/appsettings.json#L12) с использованием [serilog](https://serilog.net/)
 	- К примеру, для просмотра логов в онлайне укажите [токен](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/76abbcacc47f599b4731c22b0acb9f201e2efc32/src/DemoServer.Processing.Application/appsettings.json#L36) сайта [logz.io](https://logz.io/) с бесплатным доступом.
 - [Интеграция](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/8a280815be311432f3dd9e6281b8b36423a1ed61/src/DemoServer.Processing.Model/Implements/ControllersServices/ControllerServiceDispatchProxy.cs#L27) с [OpenTelemetry](https://opentelemetry.io/)
