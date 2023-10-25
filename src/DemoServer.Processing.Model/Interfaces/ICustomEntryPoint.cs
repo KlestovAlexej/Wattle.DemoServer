@@ -10,7 +10,6 @@ using ShtrihM.Wattle3.DomainObjects.Interfaces;
 using ShtrihM.Wattle3.Mappers.Interfaces;
 using ShtrihM.Wattle3.Mappers.PostgreSql;
 using System;
-using System.Collections.Concurrent;
 
 namespace ShtrihM.DemoServer.Processing.Model.Interfaces;
 
@@ -19,27 +18,25 @@ public interface ICustomEntryPoint : IEntryPoint
     DomainBehaviourWithСonfirmation CreateDomainBehaviourWithСonfirmation<TMapper>(long identity) where TMapper : IMapper;
     DomainBehaviourWithСonfirmation CreateDomainBehaviourWithСonfirmation();
 
+    // ReSharper disable once UnusedMemberInSuper.Global
+    new IInfrastructureMonitorCustomEntryPoint InfrastructureMonitor { get; }
+
+    // ReSharper disable once UnusedMemberInSuper.Global
+    IServiceProvider ServiceProvider { get; }
+
     UnitOfWork CurrentUnitOfWork { get; }
     IDomainObjectRegisters Registers { get; }
-    IDomainObjectDataMappers DataMappers { get; }
-    SystemSettingsLocal SystemSettingsLocal { get; }
     ITimeService TimeService { get; }
     WorkflowExceptionPolicy WorkflowExceptionPolicy { get; }
     MetaServerDescription ServerDescription { get; }
-    new IInfrastructureMonitorCustomEntryPoint InfrastructureMonitor { get; }
     SystemSettings SystemSettings { get; }
     ICustomMappers Mappers { get; }
     IExceptionPolicy ExceptionPolicy { get; }
     IPartitionsDay PartitionsDay { get; }
-    IServiceProvider ServiceProvider { get; }
     IEntryPointFacade Facade { get; }
     Metrics Metrics { get; }
     Tracer Tracer { get; }
     ILoggerFactory LoggerFactory { get; }
     UnitOfWorkLocksHubTyped UnitOfWorkLocks { get; }
     IEntryPointContext Context { get; }
-
-#if DEBUG
-    ConcurrentDictionary<Guid, Action<object>> HotSpots { get; }
-#endif
 }

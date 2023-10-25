@@ -8,5 +8,6 @@ public interface IInfrastructureMonitorCustomEntryPoint : IInfrastructureMonitor
     /// Получить текущий снимок стостояния.
     /// </summary>
     /// <returns>Состояние.</returns>
+    // ReSharper disable once UnusedMember.Global
     new ISnapShotInfrastructureMonitorCustomEntryPoint GetSnapShot();
 }

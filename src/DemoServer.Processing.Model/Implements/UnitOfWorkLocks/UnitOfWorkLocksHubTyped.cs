@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using ShtrihM.DemoServer.Processing.Common;
 using ShtrihM.Wattle3.DomainObjects.Interfaces;
 using ShtrihM.Wattle3.DomainObjects.UnitOfWorkLocks;
 
 namespace ShtrihM.DemoServer.Processing.Model.Implements.UnitOfWorkLocks;
 
+[SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
 public class UnitOfWorkLocksHubTyped
 {
     public UnitOfWorkLocksHubTyped(

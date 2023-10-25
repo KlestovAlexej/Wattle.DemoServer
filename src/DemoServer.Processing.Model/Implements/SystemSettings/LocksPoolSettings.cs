@@ -4,6 +4,7 @@ using ShtrihM.Wattle3.DomainObjects.Interfaces;
 using ShtrihM.Wattle3.Json;
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 
 namespace ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
 
@@ -11,10 +12,13 @@ namespace ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
 /// Настройки пулов лок-объектов.
 /// </summary>
 [Description("Настройки пулов лок-объектов")]
+[SuppressMessage("ReSharper", "AutoPropertyCanBeMadeGetOnly.Global")]
 public class LocksPoolSettings
 {
-    public static readonly TimeSpan DefaultTimeout = TimeSpan.FromSeconds(3);
+    private static readonly TimeSpan DefaultTimeout = TimeSpan.FromSeconds(3);
 
+    // ReSharper disable once MemberCanBePrivate.Global
+    // ReSharper disable once ConvertConstructorToMemberInitializers
     public LocksPoolSettings()
     {
         UpdateDemoObject =

@@ -3,14 +3,17 @@ using ShtrihM.Wattle3.Common.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
 namespace ShtrihM.DemoServer.Processing.Model.Implements;
 
 [AttributeUsage(AttributeTargets.Method)]
+[SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
 public class WorkflowErrorCodeDataKeysAttribute : Attribute
 {
     public WorkflowErrorCodeDataKeysAttribute(int code, params string[] keys)
+        // ReSharper disable once ConvertToPrimaryConstructor
     {
         Code = code;
         Keys = keys ?? throw new ArgumentNullException(nameof(keys));

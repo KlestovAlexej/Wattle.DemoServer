@@ -33,6 +33,7 @@ public class EntryPointFacade : IEntryPointFacade
         ICustomEntryPoint entryPoint,
         Tracer tracer,
         ILogger logger)
+        // ReSharper disable once ConvertToPrimaryConstructor
     {
         m_entryPoint = entryPoint ?? throw new ArgumentNullException(nameof(entryPoint));
         m_tracer = tracer;

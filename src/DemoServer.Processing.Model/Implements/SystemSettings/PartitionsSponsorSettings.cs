@@ -9,6 +9,7 @@ using ShtrihM.Wattle3.Mappers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 
 namespace ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
 
@@ -16,6 +17,8 @@ namespace ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
 /// Настройки создателя партиций БД.
 /// </summary>
 [Description("Настройки создателя партиций БД")]
+[SuppressMessage("ReSharper", "AutoPropertyCanBeMadeGetOnly.Global")]
+[SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
 public class PartitionsSponsorSettings
 {
     public class TablespaceEntry
@@ -41,6 +44,8 @@ public class PartitionsSponsorSettings
         public List<DomainObjectTablespaceEntry> DomainObjects { get; init; } = new();
     }
 
+    // ReSharper disable once MemberCanBePrivate.Global
+    // ReSharper disable once ConvertConstructorToMemberInitializers
     public PartitionsSponsorSettings()
     {
         ActivateTimeout =

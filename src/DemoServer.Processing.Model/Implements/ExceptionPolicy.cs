@@ -48,6 +48,7 @@ public class ExceptionPolicy : BaseExceptionPolicy
         : base(
             timeService,
             logger)
+    // ReSharper disable once ConvertToPrimaryConstructor
     {
         m_workflowExceptionPolicy = workflowExceptionPolicy ?? throw new ArgumentNullException(nameof(workflowExceptionPolicy));
         m_settings = systemSettings.ExceptionPolicySettings.Value;

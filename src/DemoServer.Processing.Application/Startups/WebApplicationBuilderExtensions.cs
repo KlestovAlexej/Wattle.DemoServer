@@ -78,6 +78,7 @@ public static class WebApplicationBuilderExtensions
             out mutexCreatedNew);
     }
 
+    // ReSharper disable once UnusedMethodReturnValue.Global
     public static WebApplicationBuilder AddCustoms(
         this WebApplicationBuilder builder,
         bool isWindowsService,
@@ -94,7 +95,7 @@ public static class WebApplicationBuilderExtensions
 
         var configuration = builder.Configuration;
         builder.Services.AddSingleton(configuration);
-        builder.Services.AddEntryPointServices(systemSettings);
+        builder.Services.AddEntryPointServices();
 
         builder
             .UseCustomSerilog(builder.Configuration, systemSettings)
@@ -125,6 +126,7 @@ public static class WebApplicationBuilderExtensions
         return builder;
     }
 
+    // ReSharper disable once UnusedMethodReturnValue.Global
     public static WebApplication UseCustoms(
         this WebApplication application,
         ILogger logger,

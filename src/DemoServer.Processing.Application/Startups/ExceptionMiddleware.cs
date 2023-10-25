@@ -37,6 +37,7 @@ public class ExceptionMiddleware
         RequestDelegate next,
         Tracer tracer = null,
         IOptionsSnapshot<OpenTelemetrySettings> openTelemetrySettings = null)
+        // ReSharper disable once ConvertToPrimaryConstructor
     {
         m_entryPoint = entryPoint;
         m_next = next;

@@ -18,6 +18,7 @@ public static class EntryPointExtensions
         /* NONE */
     }
 
+    // ReSharper disable once UnusedMethodReturnValue.Global
     public static WebApplication AddEntryPointServices(this WebApplication application)
     {
         /* NONE */
@@ -25,18 +26,12 @@ public static class EntryPointExtensions
         return application;
     }
 
-    public static IServiceCollection AddEntryPointServices(
-        this IServiceCollection services,
-        SystemSettings.SystemSettings systemSettings)
+    // ReSharper disable once UnusedMethodReturnValue.Global
+    public static IServiceCollection AddEntryPointServices(this IServiceCollection services)
     {
         if (services == null)
         {
             throw new ArgumentNullException(nameof(services));
-        }
-
-        if (systemSettings == null)
-        {
-            throw new ArgumentNullException(nameof(systemSettings));
         }
 
         services.AddSingleton(

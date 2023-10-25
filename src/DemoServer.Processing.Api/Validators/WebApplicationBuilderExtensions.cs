@@ -8,6 +8,7 @@ namespace ShtrihM.DemoServer.Processing.Api.Validators;
 
 public static class WebApplicationBuilderExtensions
 {
+    // ReSharper disable once UnusedMethodReturnValue.Global
     public static WebApplicationBuilder AddCustomValidators(this WebApplicationBuilder builder)
     {
         builder.Services.AddFluentValidationAutoValidation();

@@ -10,8 +10,8 @@ namespace ShtrihM.DemoServer.Processing.Application.Startups;
 
 public static class EnvironmentVariablesHelpers
 {
+    private static readonly string NameLogsDir = "Logs";
     public static readonly string EnvironmentVariableAsLogsDir = "LOGS_DIR";
-    public static readonly string NameLogsDir = "Logs";
 
     public static void Print(ILogger logger)
     {

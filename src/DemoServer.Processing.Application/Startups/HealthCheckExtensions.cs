@@ -31,6 +31,7 @@ public static class HealthCheckExtensions
         return builder;
     }
 
+    // ReSharper disable once UnusedMethodReturnValue.Global
     public static WebApplicationBuilder AddCustomHealthCheck(
         this WebApplicationBuilder builder,
         string name = "Entrypoint")

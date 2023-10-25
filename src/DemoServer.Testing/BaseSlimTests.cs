@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System.Diagnostics.CodeAnalysis;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Npgsql;
 using NUnit.Framework;
@@ -12,6 +13,7 @@ namespace ShtrihM.DemoServer.Testing;
 
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
+[SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
 public abstract class BaseSlimTests : BaseTests
 {
     protected ILoggerFactory m_loggerFactory;

@@ -5,13 +5,8 @@ using System.Globalization;
 
 namespace ShtrihM.DemoServer.Processing.Model.Implements;
 
-public class WorkflowExceptionPolicy : DefaultWorkflowExceptionPolicy
+public class WorkflowExceptionPolicy() : DefaultWorkflowExceptionPolicy(CommonWorkflowExceptionErrorCodesBuilder.New())
 {
-    public WorkflowExceptionPolicy()
-        : base(CommonWorkflowExceptionErrorCodesBuilder.New())
-    {
-    }
-
     public WorkflowException CreateDemoObjectXKeyAlreadyExists()
     {
         var result = new WorkflowException(

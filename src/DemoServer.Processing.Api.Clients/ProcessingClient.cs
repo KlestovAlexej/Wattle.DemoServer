@@ -24,6 +24,7 @@ public sealed class ProcessingClient : IProcessingClient
     private readonly bool m_disposeRestClient;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    // ReSharper disable once MemberCanBePrivate.Global
     public ProcessingClient(
         IRestClient restClient,
         bool disposeRestClient = false)
@@ -117,6 +118,7 @@ public sealed class ProcessingClient : IProcessingClient
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     // ReSharper disable once MemberCanBePrivate.Global
+    // ReSharper disable once UnusedMethodReturnValue.Global
     public static SerializerConfig UpdateSerializerConfig(SerializerConfig config)
     {
         if (config == null)

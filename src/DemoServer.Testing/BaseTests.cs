@@ -30,9 +30,7 @@ public class BaseTests : Wattle3.Testing.BaseTests
     }
 
     [SetUp]
-#pragma warning disable IDE1006 // Naming Styles
-    public void _BaseTests_SetUp()
-#pragma warning restore IDE1006 // Naming Styles
+    public void BaseTests_SetUp()
     {
         CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
         CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;

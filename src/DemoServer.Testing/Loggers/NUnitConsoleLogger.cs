@@ -22,6 +22,7 @@ public class NUnitConsoleLogger : ILogger
     private readonly NUnitConsoleLoggerProvider m_owner;
 
     public NUnitConsoleLogger(string categoryName, NUnitConsoleLoggerProvider owner)
+        // ReSharper disable once ConvertToPrimaryConstructor
     {
         m_categoryName = categoryName;
         m_owner = owner ?? throw new ArgumentNullException(nameof(owner));

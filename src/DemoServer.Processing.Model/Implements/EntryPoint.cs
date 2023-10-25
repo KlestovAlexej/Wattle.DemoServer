@@ -35,7 +35,6 @@ using ShtrihM.Wattle3.QueueProcessors.Interfaces;
 using ShtrihM.Wattle3.Triggers;
 using ShtrihM.Wattle3.Utils;
 using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Runtime.ExceptionServices;
 using System.Text;
@@ -55,6 +54,7 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
         private readonly EntryPoint m_entryPoint;
 
         public EntryPointContext(EntryPoint entryPoint)
+            // ReSharper disable once ConvertToPrimaryConstructor
         {
             m_entryPoint = entryPoint;
         }
@@ -131,6 +131,7 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
                 null,
                 timeStatisticsStep,
                 timeService)
+        // ReSharper disable once ConvertToPrimaryConstructor
         {
             m_serviceInstanceId = serviceInstanceId;
         }
@@ -191,7 +192,6 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
     private EntryPoint(
         TemplateMetaServerDescription templateServerDescription,
         SystemSettings.SystemSettings systemSettings,
-        SystemSettingsLocal systemSettingsLocal,
         IDomainObjectDataMappers dataMappers,
         IDomainObjectRegisters registers,
         IMappers mappers,
@@ -200,7 +200,6 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
         ITimeService timeService,
         TimeSpan timeStatisticsStep,
         ILoggerFactory loggerFactory,
-        IServiceProvider serviceProvider,
         Tracer tracer)
         : base(
             new UnitOfWorkProviderCallContext(),
@@ -218,19 +217,12 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
 
         m_logger = loggerFactory.CreateLogger(GetType());
         SystemSettings = systemSettings;
-        SystemSettingsLocal = systemSettingsLocal ?? throw new ArgumentNullException(nameof(systemSettingsLocal));
         m_templateServerDescription = templateServerDescription ?? throw new ArgumentNullException(nameof(templateServerDescription));
-        ServiceProvider = serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider));
         LoggerFactory = loggerFactory;
         Context = new EntryPointContext(this);
+        Tracer = tracer;
 
         m_proxyDomainObjectRegisterFactories.AddFactories(GetType().Assembly);
-
-#if DEBUG
-        HotSpots = new ConcurrentDictionary<Guid, Action<object>>();
-#endif
-
-        Tracer = tracer;
     }
 
     public DomainBehaviourWithСonfirmation CreateDomainBehaviourWithСonfirmation<TMapper>(long identity)
@@ -281,24 +273,18 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
     public ICustomMappers Mappers => (ICustomMappers)m_mappers;
     public IExceptionPolicy ExceptionPolicy => m_exceptionPolicy;
     public IPartitionsDay PartitionsDay { get; private set; }
-    public IDomainObjectDataMappers DataMappers => m_dataMappers;
     public WorkflowExceptionPolicy WorkflowExceptionPolicy => ((WorkflowExceptionPolicy)m_workflowExceptionPolicy);
     public new IInfrastructureMonitorCustomEntryPoint InfrastructureMonitor => (IInfrastructureMonitorCustomEntryPoint)base.InfrastructureMonitor;
     public SystemSettings.SystemSettings SystemSettings { get; }
     public ITimeService TimeService => m_timeService;
     public InfrastructureMonitorRegisters InfrastructureMonitorRegisters { get; private set; }
-    public SystemSettingsLocal SystemSettingsLocal { get; }
-    public IServiceProvider ServiceProvider { get; }
     public IEntryPointFacade Facade { get; private set; }
     public Metrics Metrics { get; private set; }
     public Tracer Tracer { get; }
     public ILoggerFactory LoggerFactory { get; }
     public UnitOfWorkLocksHubTyped UnitOfWorkLocks { get; private set; }
     public IEntryPointContext Context { get; }
-
-#if DEBUG
-    public ConcurrentDictionary<Guid, Action<object>> HotSpots { get; }
-#endif
+    public IServiceProvider ServiceProvider { get; private set; }
 
     public MetaServerDescription ServerDescription
     {
@@ -581,7 +567,6 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
             new EntryPoint(
                 templateServerDescription,
                 systemSettings,
-                systemSettingsLocal,
                 dataMappers,
                 registers,
                 new Mappers(
@@ -603,9 +588,9 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
                 timeService,
                 systemSettings.TimeStatisticsStep.Value,
                 loggerFactory,
-                serviceProvider,
                 tracer);
         exceptionPolicy.EntryPoint = result;
+        result.ServiceProvider = serviceProvider;
 
         result.PartitionsDay = new PartitionsDay(timeService, new(2023, 8, 1));
         result.InfrastructureMonitorRegisters = new InfrastructureMonitorRegisters();
@@ -690,7 +675,7 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
                 loggerFactory.CreateLogger<UnitOfWorkContext>(),
                 false,
                 result.m_unitOfWorkProvider,
-                result.ServiceProvider.GetService<IDbContextFactory<ProcessingDbContext>>(),
+                serviceProvider.GetService<IDbContextFactory<ProcessingDbContext>>(),
                 serviceProvider,
                 result.m_unitOfWorkLocksHub);
 

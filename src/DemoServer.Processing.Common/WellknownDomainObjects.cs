@@ -3,6 +3,7 @@ using ShtrihM.Wattle3.Primitives;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
@@ -13,6 +14,7 @@ namespace ShtrihM.DemoServer.Processing.Common;
 /// <summary>
 /// Идентификаторы объектов.
 /// </summary>
+[SuppressMessage("ReSharper", "UnusedMember.Global")]
 public static class WellknownDomainObjects
 {
     /// <summary>
@@ -89,6 +91,7 @@ public static class WellknownDomainObjects
     public static readonly Guid DemoObjectX = new(Text.DemoObjectX);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    // ReSharper disable once MemberCanBePrivate.Global
     public static string GetDisplayName(Guid id)
     {
         return DisplayNames.TryGetValue(id, out var result) ? result : id.ToString();

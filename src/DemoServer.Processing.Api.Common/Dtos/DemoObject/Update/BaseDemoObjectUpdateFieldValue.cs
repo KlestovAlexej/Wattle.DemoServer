@@ -22,6 +22,7 @@ public abstract class BaseDemoObjectUpdateFieldValue
 {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     protected BaseDemoObjectUpdateFieldValue(DemoObjectUpdateFields filed)
+        // ReSharper disable once ConvertToPrimaryConstructor
     {
         Field = filed;
     }

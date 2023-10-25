@@ -14,6 +14,7 @@ public sealed class DemoObjectUpdateFieldValueOfName : BaseDemoObjectUpdateField
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public DemoObjectUpdateFieldValueOfName()
         : base(DemoObjectUpdateFields.Name)
+    // ReSharper disable once ConvertToPrimaryConstructor
     {
     }
 

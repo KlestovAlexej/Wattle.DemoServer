@@ -6,11 +6,17 @@ using ShtrihM.Wattle3.DomainObjects.UnitOfWorkLocks;
 
 namespace ShtrihM.DemoServer.Processing.Model.Implements.UnitOfWorkLocks;
 
-public sealed class UnitOfWorkLocksAction<TIdentity>(IUnitOfWorkLocksHub unitOfWorkLocksHub, Guid id)
-    where TIdentity : IEquatable<TIdentity>
+public sealed class UnitOfWorkLocksAction<TIdentity> where TIdentity : IEquatable<TIdentity>
 {
-    private readonly IUnitOfWorkLocksHub m_locksHub = unitOfWorkLocksHub ?? throw new ArgumentNullException(nameof(unitOfWorkLocksHub));
-    private readonly Guid m_id = id;
+    private readonly IUnitOfWorkLocksHub m_locksHub;
+    private readonly Guid m_id;
+
+    public UnitOfWorkLocksAction(IUnitOfWorkLocksHub unitOfWorkLocksHub, Guid id)
+        // ReSharper disable once ConvertToPrimaryConstructor
+    {
+        m_locksHub = unitOfWorkLocksHub ?? throw new ArgumentNullException(nameof(unitOfWorkLocksHub));
+        m_id = id;
+    }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public ValueTask<bool> TryEnterAsync(TIdentity identity, CancellationToken cancellationToken = default)

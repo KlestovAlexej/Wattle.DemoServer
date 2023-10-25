@@ -7,10 +7,12 @@ namespace ShtrihM.DemoServer.Testing.Loggers;
 public class NUnitConsoleLoggerProvider : ILoggerProvider
 {
     public NUnitConsoleLoggerProvider(bool suppressOutput = false)
+        // ReSharper disable once ConvertToPrimaryConstructor
     {
         SuppressOutput = suppressOutput;
     }
 
+    // ReSharper disable once FieldCanBeMadeReadOnly.Global
     public bool SuppressOutput;
 
     public void Dispose()

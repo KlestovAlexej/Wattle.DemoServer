@@ -11,6 +11,7 @@ public class MappersContext
         MappersCacheActualStateDtoSettings mappersCacheActualStateDtoSettings,
         TimeSpan timeStatisticsStep,
         IExceptionPolicy exceptionPolicy)
+        // ReSharper disable once ConvertToPrimaryConstructor
     {
         TimeService = timeService ?? throw new ArgumentNullException(nameof(timeService));
         MappersCacheActualStateDtoSettings = mappersCacheActualStateDtoSettings ?? throw new ArgumentNullException(nameof(mappersCacheActualStateDtoSettings));

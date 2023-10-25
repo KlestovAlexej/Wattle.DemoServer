@@ -10,6 +10,7 @@ public sealed class SystemSettings
 {
     public static readonly string SectionName = "SystemSettings";
 
+    // ReSharper disable once ConvertConstructorToMemberInitializers
     public SystemSettings()
     {
         MappersFeaturesValidateUpdateResults =

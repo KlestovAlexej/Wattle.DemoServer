@@ -13,6 +13,7 @@ public sealed class DemoObjectUpdateFieldValueOfEnabled : BaseDemoObjectUpdateFi
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public DemoObjectUpdateFieldValueOfEnabled()
         : base(DemoObjectUpdateFields.Enabled)
+    // ReSharper disable once ConvertToPrimaryConstructor
     {
     }
 

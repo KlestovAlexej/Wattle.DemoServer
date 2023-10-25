@@ -35,6 +35,7 @@ public class Metrics
             description: "Количество входящих запросов проверки работоспособности");
     }
 
+    // ReSharper disable once MemberCanBePrivate.Global
     public readonly Meter Meter;
 
     /// <summary>

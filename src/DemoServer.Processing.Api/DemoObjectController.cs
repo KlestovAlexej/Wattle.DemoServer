@@ -32,6 +32,7 @@ public class DemoObjectController : BaseProcessingController
     public DemoObjectController(
         IDemoObjectControllerService controllerService,
         ICustomEntryPoint entryPoint)
+        // ReSharper disable once ConvertToPrimaryConstructor
     {
         m_controllerService = controllerService ?? throw new ArgumentNullException(nameof(controllerService));
         m_entryPoint = entryPoint ?? throw new ArgumentNullException(nameof(entryPoint));

@@ -37,6 +37,7 @@ public class ServerController : BaseProcessingController
         ILogger<ServerController> logger,
         ICustomEntryPoint entryPoint,
         Tracer tracer = null)
+        // ReSharper disable once ConvertToPrimaryConstructor
     {
         m_logger = logger;
         m_tracer = tracer;

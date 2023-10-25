@@ -7,12 +7,15 @@ using ShtrihM.DemoServer.Processing.Tests.Model.Environment;
 using ShtrihM.Wattle3.DomainObjects.Interfaces;
 using ShtrihM.Wattle3.Testing;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace ShtrihM.DemoServer.Processing.Tests.Model;
 
 [TestFixture]
+[SuppressMessage("ReSharper", "MethodHasAsyncOverload")]
+[SuppressMessage("ReSharper", "UseAwaitUsing")]
 public class TestsEntryPointFacade : BaseTestsDomainObjects
 {
     [Test]

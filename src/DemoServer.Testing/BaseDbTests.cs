@@ -1,11 +1,13 @@
 ﻿using NUnit.Framework;
 using ShtrihM.Wattle3.Testing.Databases.PostgreSql;
 using System;
-
-namespace ShtrihM.DemoServer.Testing;
+using System.Diagnostics.CodeAnalysis;
 
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
+namespace ShtrihM.DemoServer.Testing;
+
+[SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
 public abstract class BaseDbTests : BaseSlimTests
 {
     /*

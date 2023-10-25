@@ -26,6 +26,7 @@ public class HealthCheck : IHealthCheck
     public HealthCheck(
         ICustomEntryPoint entryPoint,
         Tracer tracer = null)
+        // ReSharper disable once ConvertToPrimaryConstructor
     {
         m_tracer = tracer;
         m_entryPoint = entryPoint;
