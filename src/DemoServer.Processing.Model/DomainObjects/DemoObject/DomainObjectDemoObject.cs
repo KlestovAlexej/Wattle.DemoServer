@@ -170,7 +170,6 @@ public sealed class DomainObjectDemoObject : BaseDomainObjectMutable<DomainObjec
         return ValueTask.CompletedTask;
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public DemoObjectInfo GetInfo()
     {
         var result =

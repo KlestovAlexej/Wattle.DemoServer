@@ -197,13 +197,11 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutable<DomainObje
         return result;
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void Delete()
     {
         m_entryPoint.CurrentUnitOfWork.AddDelete(this);
 
-        var register =
-            (DomainObjectRegisterDemoObjectX)m_entryPoint.Registers.GetRegister<IDomainObjectRegisterDemoObjectX>();
+        var register = DoGetRegister();
         var domainBehaviour = m_entryPoint.CreateDomainBehaviourWithСonfirmation();
 
         register.RemoveDomainObject(domainBehaviour, Identity, GetKey());
@@ -213,8 +211,7 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutable<DomainObje
     {
         DoPostCreate();
 
-        var register =
-            (DomainObjectRegisterDemoObjectX)m_entryPoint.Registers.GetRegister<IDomainObjectRegisterDemoObjectX>();
+        var register = DoGetRegister();
         var domainBehaviour = m_entryPoint.CreateDomainBehaviourWithСonfirmation();
 
         register.AddDomainObject(domainBehaviour, Identity, GetKey(), Group);
@@ -224,11 +221,18 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutable<DomainObje
     {
         DoPostCreate();
 
-        var register =
-            (DomainObjectRegisterDemoObjectX)m_entryPoint.Registers.GetRegister<IDomainObjectRegisterDemoObjectX>();
+        var register = DoGetRegister();
         var domainBehaviour = m_entryPoint.CreateDomainBehaviourWithСonfirmation();
 
         return register.AddDomainObjectAsync(domainBehaviour, Identity, GetKey(), Group, cancellationToken);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    private DomainObjectRegisterDemoObjectX DoGetRegister()
+    {
+        var result = (DomainObjectRegisterDemoObjectX)m_entryPoint.Registers.GetRegister<IDomainObjectRegisterDemoObjectX>();
+
+        return result;
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
