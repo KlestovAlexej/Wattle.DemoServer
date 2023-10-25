@@ -7,6 +7,7 @@ using ShtrihM.Wattle3.Testing;
 using System;
 using System.IO;
 using System.Text;
+using System.Xml.Linq;
 
 namespace ShtrihM.DemoServer.Processing.Tests.DataAccess.PostgreSql;
 
@@ -22,18 +23,13 @@ public class TestsCreateEmptyDb : BaseAutoTestsMapper
 
     /// <summary>
     /// Создание пустой БД и скрипта генерации контекста Entity Framework Core.
-    ///
-    /// !!!!!!!!!!!!!
-    /// Сделать проект стартовым DemoServer.Processing.DataAccess.Postgresql.
-    /// !!!!!!!!!!!!!
-    /// 
     /// </summary>
     [Test]
     [Explicit]
     [Timeout(TestTimeout.Short)]
     [Category(TestCategory.Short)]
     [Description("Создание БД")]
-    public void Test_Step_1()
+    public void Test()
     {
         m_dropDb = false;
 
@@ -50,32 +46,24 @@ public class TestsCreateEmptyDb : BaseAutoTestsMapper
             session.Commit();
         }
 
-        Console.WriteLine();
-        Console.WriteLine(@"Шаг №1 - выполнить команду :");
-        Console.WriteLine($@"Scaffold-DbContext -Connection ""{m_dbConnectionString}"" -Provider ""Npgsql.EntityFrameworkCore.PostgreSQL"" -OutputDir ""EfModels"" -ContextDir ""EfModels"" -Namespace ""ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels"" -ContextNamespace ""ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels"" -Context ""{nameof(ProcessingDbContext)}"" -NoOnConfiguring -Force -Project DemoServer.Processing.DataAccess.Postgresql -NoPluralize");
-        Console.WriteLine();
-        Console.WriteLine(@"Шаг №2 :");
-        Console.WriteLine("Выполнить тест Test_Step_2");
-        Console.WriteLine();
-        Console.WriteLine(@"Шаг №3 - выполнить команду :");
-        Console.WriteLine($"Optimize-DbContext -OutputDir EfModelsOptimized -Verbose -Context {nameof(ProcessingDbContext)} -StartupProject DemoServer.Processing.DataAccess.Postgresql -Project DemoServer.Processing.DataAccess.Postgresql");
-        Console.WriteLine();
-    }
+        var path = ProviderProjectBasePath.GetFullPath(@"src\DemoServer.Processing.DataAccess.Postgresql");
 
-    [Test]
-    [Explicit]
-    [Timeout(TestTimeout.Short)]
-    [Category(TestCategory.Short)]
-    [Description("Корректировка DbContext")]
-    public void Test_Step_2()
-    {
-        var fileName = Path.Combine(ProviderProjectBasePath.GetFullPath(@"src\DemoServer.Processing.DataAccess.Postgresql\EfModels"), $"{nameof(ProcessingDbContext)}.cs");
-        var text = File.ReadAllText(fileName);
-        text = text.Replace("$PD_", "");
-        text = text.Replace(@"entity.ToTable(""", "entity.ToTableLowerCase(\"");
-        text = text.Replace("entity.HasKey(", "// entity.HasKey(");
-        text = text.Replace("entity.HasIndex(", "// entity.HasIndex(");
-        File.WriteAllText(fileName, text, Encoding.Unicode);
+        Console.WriteLine();
+        Console.WriteLine("В Package Manager Console выполнить команды :");
+        Console.WriteLine();
+        Console.WriteLine($"Rename-Item -Path \"{Path.Combine(path, "EfModels")}\" -NewName EfModels_old");
+        Console.WriteLine($"Rename-Item -Path \"{Path.Combine(path, "EfModelsOptimized")}\" -NewName EfModelsOptimized_old");
+        Console.WriteLine($@"Scaffold-DbContext -Connection ""{m_dbConnectionString}"" -Provider ""Npgsql.EntityFrameworkCore.PostgreSQL"" -OutputDir ""EfModels"" -ContextDir ""EfModels"" -Namespace ""ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels"" -ContextNamespace ""ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels"" -Context ""{nameof(ProcessingDbContext)}"" -NoOnConfiguring -Force -StartupProject DemoServer.Processing.DataAccess.Postgresql -Project DemoServer.Processing.DataAccess.Postgresql -NoPluralize");
+        Console.WriteLine($"Remove-Item -LiteralPath \"{Path.Combine(path, "EfModels_old")}\" -Force -Recurse");
+
+        var fileName = Path.Combine(Path.Combine(path, "EfModels"), $"{nameof(ProcessingDbContext)}.cs");
+        Console.WriteLine($"(Get-Content \"{fileName}\").Replace('$PD_', '') | Set-Content \"{fileName}\"");
+        Console.WriteLine($"(Get-Content \"{fileName}\").Replace('entity.ToTable(\"', 'entity.ToTableLowerCase(\"') | Set-Content \"{fileName}\"");
+        Console.WriteLine($"(Get-Content \"{fileName}\").Replace('entity.HasKey(', '// entity.HasKey(') | Set-Content \"{fileName}\"");
+        Console.WriteLine($"(Get-Content \"{fileName}\").Replace('entity.HasIndex(', '// entity.HasIndex(') | Set-Content \"{fileName}\"");
+        Console.WriteLine($"Optimize-DbContext -OutputDir EfModelsOptimized -Verbose -Context {nameof(ProcessingDbContext)} -StartupProject DemoServer.Processing.DataAccess.Postgresql -Project DemoServer.Processing.DataAccess.Postgresql");
+        Console.WriteLine($"Remove-Item -LiteralPath \"{Path.Combine(path, "EfModelsOptimized_old")}\" -Force -Recurse");
+        Console.WriteLine();
     }
 }
 

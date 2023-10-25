@@ -24,6 +24,8 @@ public abstract partial class BaseAutoTestsMapper
         m_dbName = $"test_{Constants.ProductTag.ToLower()}_" + Guid.NewGuid().ToString("N") + "_" + DateTime.Now.ToString("yyyMMddhhmmss");
         var sqlScript = Deploy.GetSqlScript();
 
+        DoPreCreateDb();
+
         /*
         Если адрес, логин и пароль БД PostgreSQL не указаны явно то они берутся из реестра Windows.
         Файл с настройками реестра.
@@ -37,8 +39,6 @@ public abstract partial class BaseAutoTestsMapper
         src\DemoServer.Testing\WindowsRegisterTestingEnvirioment.reg
         */
         m_dbConnectionString = PostgreSqlDbHelper.GetDatabaseConnectionString(m_dbName, userCredentials: BaseDbTests.PostgreSqlUserCredentials, serverAdress: BaseDbTests.PostgreSqlServerAdress);
-
-        DoPreCreateDb();
 
         PostgreSqlDbHelper.CreateDb(
             m_dbName,

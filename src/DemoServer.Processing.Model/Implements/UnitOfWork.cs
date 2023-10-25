@@ -12,6 +12,8 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using ShtrihM.DemoServer.Processing.Generated.Interface;
+using ShtrihM.Wattle3.DomainObjects;
+using Microsoft.EntityFrameworkCore;
 
 namespace ShtrihM.DemoServer.Processing.Model.Implements;
 
@@ -23,37 +25,12 @@ public sealed class UnitOfWork(
     : BaseUnitOfWork(
         unitOfWorkContext,
         registersFactory,
-        visitor)
+        visitor), IUnitOfWorkDbContextFactory
 {
     public UnitOfWorkLocks.UnitOfWorkLocks CurrentLocks
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         get => (UnitOfWorkLocks.UnitOfWorkLocks)GetLocks();
-    }
-
-    public async ValueTask<ProcessingDbContext> NewDbContextAsync(
-        bool useTransaction = true,
-        CancellationToken cancellationToken = default)
-    {
-        var context = (CustomUnitOfWorkContext)m_context;
-        var mappersSession = (IPostgreSqlMappersSession)MappersSession;
-        var (connection, transaction) = await mappersSession.GetConnectionAsync(useTransaction, cancellationToken)
-            .ConfigureAwait(false);
-        var result = await context.PooledDbContextFactory.CreateDbContextAsync(cancellationToken).ConfigureAwait(false);
-        result.SetDbConnection(connection, transaction);
-
-        return result;
-    }
-
-    public ProcessingDbContext NewDbContext(bool useTransaction = true)
-    {
-        var context = (CustomUnitOfWorkContext)m_context;
-        var mappersSession = (IPostgreSqlMappersSession)MappersSession;
-        var (connection, transaction) = mappersSession.GetConnection(useTransaction);
-        var result = context.PooledDbContextFactory.CreateDbContext();
-        result.SetDbConnection(connection, transaction);
-
-        return result;
     }
 
     protected override async ValueTask<IUnitOfWorkCommitVerifying> DoCreateUnitOfWorkCommitVerifyingAsync(
@@ -109,4 +86,55 @@ public sealed class UnitOfWork(
         => new UnitOfWorkLocks.UnitOfWorkLocks(
             ((ICustomEntryPoint)m_context.EntryPoint).WorkflowExceptionPolicy,
             ((CustomUnitOfWorkContext)m_context).UnitOfWorkLocksHub);
+
+    public async ValueTask<ProcessingDbContext> NewDbContextAsync(
+        bool useTransaction = true,
+        CancellationToken cancellationToken = default)
+    {
+        var context = (CustomUnitOfWorkContext)m_context;
+        var mappersSession = (IPostgreSqlMappersSession)MappersSession;
+        var (connection, transaction) = await mappersSession.GetConnectionAsync(useTransaction, cancellationToken)
+            .ConfigureAwait(false);
+        var result = await context.PooledDbContextFactory.CreateDbContextAsync(cancellationToken).ConfigureAwait(false);
+        result.SetDbConnection(connection, transaction);
+
+        return result;
+    }
+
+    public ProcessingDbContext NewDbContext(bool useTransaction = true)
+    {
+        var context = (CustomUnitOfWorkContext)m_context;
+        var mappersSession = (IPostgreSqlMappersSession)MappersSession;
+        var (connection, transaction) = mappersSession.GetConnection(useTransaction);
+        var result = context.PooledDbContextFactory.CreateDbContext();
+        result.SetDbConnection(connection, transaction);
+
+        return result;
+    }
+
+    async ValueTask<DbContext> IUnitOfWorkDbContextFactory.NewDbContextAsync(bool useTransaction = true) /*, CancellationToken cancellationToken = default)*/
+    {
+        throw new NotImplementedException();
+/*
+        var context = (CustomUnitOfWorkContext)m_context;
+        var mappersSession = (IPostgreSqlMappersSession)MappersSession;
+        var (connection, transaction) = await mappersSession.GetConnectionAsync(useTransaction, cancellationToken)
+            .ConfigureAwait(false);
+        var result = await context.PooledDbContextFactory.CreateDbContextAsync(cancellationToken).ConfigureAwait(false);
+        result.SetDbConnection(connection, transaction);
+
+        return result;
+*/
+    }
+
+    DbContext IUnitOfWorkDbContextFactory.NewDbContext(bool useTransaction)
+    {
+        var context = (CustomUnitOfWorkContext)m_context;
+        var mappersSession = (IPostgreSqlMappersSession)MappersSession;
+        var (connection, transaction) = mappersSession.GetConnection(useTransaction);
+        var result = context.PooledDbContextFactory.CreateDbContext();
+        result.SetDbConnection(connection, transaction);
+
+        return result;
+    }
 }

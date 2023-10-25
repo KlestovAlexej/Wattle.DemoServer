@@ -1,6 +1,9 @@
-﻿namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
+﻿using System;
+using System.Collections.Generic;
 
-public class PdChangeTracker
+namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
+
+public partial class PdChangeTracker
 {
     public long Id { get; set; }
 }
