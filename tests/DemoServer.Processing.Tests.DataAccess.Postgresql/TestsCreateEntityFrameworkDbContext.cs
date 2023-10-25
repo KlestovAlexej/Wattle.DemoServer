@@ -12,7 +12,7 @@ using ShtrihM.DemoServer.Processing.Model.Implements;
 namespace ShtrihM.DemoServer.Processing.Tests.DataAccess.PostgreSql;
 
 [TestFixture]
-public class TestsCreateEmptyDb : BaseAutoTestsMapper
+public class TestsCreateEntityFrameworkDbContext : BaseAutoTestsMapper
 {
     protected override void DoPreCreateDb()
     {
