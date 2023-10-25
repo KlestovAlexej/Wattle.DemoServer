@@ -116,7 +116,7 @@ public sealed class UnitOfWork(
 
     async ValueTask<DbContext> IUnitOfWorkDbContextFactory.NewDbContextAsync(bool useTransaction, CancellationToken cancellationToken)
     {
-        var result = await NewDbContextAsync(useTransaction, cancellationToken);
+        var result = await NewDbContextAsync(useTransaction, cancellationToken).ConfigureAwait(false);
 
         return result;
     }
