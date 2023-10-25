@@ -12,6 +12,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using ShtrihM.DemoServer.Processing.Api.Common;
+using ShtrihM.DemoServer.Processing.Common;
 using ShtrihM.DemoServer.Processing.Generated.Interface;
 using ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
 using ShtrihM.DemoServer.Processing.Model.Implements;
@@ -369,8 +370,24 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
             unitOfWork.Commit();
         }
 
+        var internalException =
+            Assert.Throws<InternalException>(
+                () =>
+                {
+                    using var unitOfWork = m_entryPoint.CreateUnitOfWork();
+
+                    var register = unitOfWork.Registers.GetRegister<IDomainObjectRegisterDemoObjectX>();
+                    var instance = register.Find<IDomainObjectDemoObjectX>(id);
+                    Assert.IsNotNull(instance);
+
+                    instance.Enabled = false;
+                });
+        Assert.AreEqual($"Для объекта '{WellknownCommonInfrastructureMonitors.LocksUpdateDemoObjectX}' для пула лок-объектов типа '{typeof(long).AssemblyQualifiedName}' для ключа '{id}' не создан лок-объект.", internalException!.Message, internalException.Message);
+
         using (var unitOfWork = m_entryPoint.CreateUnitOfWork())
         {
+            m_entryPoint.UnitOfWorkLocks.DemoObjectX.Register(id);
+
             var register = unitOfWork.Registers.GetRegister<IDomainObjectRegisterDemoObjectX>();
             var instance = register.Find<IDomainObjectDemoObjectX>(id);
             Assert.IsNotNull(instance);

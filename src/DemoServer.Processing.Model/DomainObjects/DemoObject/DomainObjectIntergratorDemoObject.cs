@@ -24,13 +24,13 @@ public class DomainObjectIntergratorDemoObject : BaseDomainObjectIntergrator<IUn
                     identityPrepare: DomainObjectIntergratorHelpers.GetIdentityPrepare<IMapperDemoObject>(entryPoint));
         container.Resolve<DomainObjectDataMappers>().AddMapper(dataMapper);
 
+        var lockUpdate = entryPoint.UnitOfWorkLocks.DemoObject;
         container.Resolve<DomainObjectRegisters>().AddRegister(
             new DomainObjectRegisterStateless(
                 entryPoint.Context,
                 dataMapper,
-                new DomainObjectDataActivatorForActualStateDtoDefault<DemoObjectDtoActual, DomainObjectDemoObject>(
-                    entryPoint),
+                new DomainObjectDataActivatorForActualStateDtoDefault<DemoObjectDtoActual, DomainObjectDemoObject>(entryPoint, lockUpdate),
                 new DomainObjectActivatorDefault<DomainObjectDemoObject.Template, DomainObjectDemoObject>(
-                    entryPoint.UnitOfWorkProvider, entryPoint.UnitOfWorkLocks.DemoObject, entryPoint)));
+                    entryPoint.UnitOfWorkProvider, lockUpdate, entryPoint, lockUpdate)));
     }
 }

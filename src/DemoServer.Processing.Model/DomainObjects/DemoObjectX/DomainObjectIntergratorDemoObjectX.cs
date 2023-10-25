@@ -4,7 +4,6 @@ using ShtrihM.DemoServer.Processing.Model.Interfaces;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectDataMappers;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectIntergrators;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectsRegisters;
-using ShtrihM.Wattle3.DomainObjects.Interfaces;
 using ShtrihM.DemoServer.Processing.Generated.Interface;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectActivators;
 using Unity;
@@ -26,27 +25,32 @@ public class DomainObjectIntergratorDemoObjectX : BaseDomainObjectIntergrator<IU
                 entryPoint.SystemSettings.IdentityCachesSettings.Value.DemoObjectX.Value);
         container.Resolve<DomainObjectDataMappers>().AddMapper(dataMapper);
 
-        container.Resolve<DomainObjectRegisters>().AddRegister(
-            new DomainObjectRegisterDemoObjectX(
+        var lockUpdate = entryPoint.UnitOfWorkLocks.DemoObjectX;
+        var domainObjectActivator = 
+            new DomainObjectActivatorDefault<DomainObjectDemoObjectX.Template, DomainObjectDemoObjectX>(entryPoint.UnitOfWorkProvider, entryPoint, lockUpdate);
+        var domainObjectRegister
+            = new DomainObjectRegisterDemoObjectX(
                 entryPoint,
                 dataMapper,
-                new DomainObjectDataActivatorForActualStateDtoDefault<DemoObjectXDtoActual, DomainObjectDemoObjectX>(entryPoint),
-                new DomainObjectActivatorDefault<DomainObjectDemoObjectX.Template, DomainObjectDemoObjectX>(entryPoint.UnitOfWorkProvider, entryPoint.UnitOfWorkLocks.DemoObjectX, entryPoint)
-                    .SetPreCreate(PreCreate, PreCreateAsync)));
+                new DomainObjectDataActivatorForActualStateDtoDefault<DemoObjectXDtoActual, DomainObjectDemoObjectX>(entryPoint, lockUpdate),
+                domainObjectActivator);
+        container.Resolve<DomainObjectRegisters>().AddRegister(domainObjectRegister);
 
-        #region PreCreate
-       
+        #region DomainObjectActivator + PreCreate
+
+        var lockActionCreate = entryPoint.UnitOfWorkLocks.UnitOfWorkLocksActions.CreateDemoObjectX;
+        domainObjectActivator.SetPreCreate(PreCreate, PreCreateAsync);
+
         void PreCreate(DomainObjectDemoObjectX.Template template)
         {
             var key = template.GetKey();
-            if (false == entryPoint.UnitOfWorkLocks.UnitOfWorkLocksActions.CreateDemoObjectX.TryEnter(key))
+            if (false == lockActionCreate.TryEnter(key))
             {
                 var workflowException = entryPoint.WorkflowExceptionPolicy.CreateTooBusy();
                 throw workflowException;
             }
 
-            var register = (DomainObjectRegisterDemoObjectX)entryPoint.Registers.GetRegister<IDomainObjectRegisterDemoObjectX>();
-            if (register.ExistsByKey(key))
+            if (domainObjectRegister.ExistsByKey(key))
             {
                 var workflowException = entryPoint.WorkflowExceptionPolicy.CreateDemoObjectXKeyAlreadyExists();
 
@@ -57,14 +61,13 @@ public class DomainObjectIntergratorDemoObjectX : BaseDomainObjectIntergrator<IU
         async ValueTask PreCreateAsync(DomainObjectDemoObjectX.Template template, CancellationToken cancellationToken)
         {
             var key = template.GetKey();
-            if (false == await entryPoint.UnitOfWorkLocks.UnitOfWorkLocksActions.CreateDemoObjectX.TryEnterAsync(key, cancellationToken).ConfigureAwait(false))
+            if (false == await lockActionCreate.TryEnterAsync(key, cancellationToken).ConfigureAwait(false))
             {
                 var workflowException = entryPoint.WorkflowExceptionPolicy.CreateTooBusy();
                 throw workflowException;
             }
 
-            var register = (DomainObjectRegisterDemoObjectX)entryPoint.Registers.GetRegister<IDomainObjectRegisterDemoObjectX>();
-            if (await register.ExistsByKeyAsync(key, cancellationToken).ConfigureAwait(false))
+            if (await domainObjectRegister.ExistsByKeyAsync(key, cancellationToken).ConfigureAwait(false))
             {
                 var workflowException = entryPoint.WorkflowExceptionPolicy.CreateDemoObjectXKeyAlreadyExists();
 

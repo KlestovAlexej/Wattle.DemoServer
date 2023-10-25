@@ -27,11 +27,6 @@ public sealed class DomainObjectSystemLog : BaseDomainObject<DomainObjectSystemL
             Type = type;
             Message = message ?? throw new ArgumentNullException(nameof(message));
             Data = data ?? throw new ArgumentNullException(nameof(data));
-
-            if (Message.Length > Constants.SystemLogFieldMaxSizeMessage)
-            {
-                Message = Message.Substring(0, Constants.SystemLogFieldMaxSizeMessage);
-            }
         }
 
         public readonly int Code;
@@ -64,6 +59,11 @@ public sealed class DomainObjectSystemLog : BaseDomainObject<DomainObjectSystemL
         Data = template.Data;
         Message = template.Message;
         Type = template.Type;
+
+        if (Message.Length > Constants.SystemLogFieldMaxSizeMessage)
+        {
+            Message = Message.Substring(0, Constants.SystemLogFieldMaxSizeMessage);
+        }
     }
 
     public override Guid TypeId => WellknownDomainObjects.SystemLog;

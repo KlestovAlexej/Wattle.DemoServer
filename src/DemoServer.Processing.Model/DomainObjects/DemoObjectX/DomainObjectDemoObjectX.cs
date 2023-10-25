@@ -14,6 +14,7 @@ using ShtrihM.DemoServer.Processing.Generated.Interface;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectActivators;
 using ShtrihM.Wattle3.Mappers.Primitives;
 using ShtrihM.Wattle3.Primitives;
+using ShtrihM.Wattle3.DomainObjects.UnitOfWorkLocks;
 
 #pragma warning disable CA2254
 
@@ -25,6 +26,8 @@ namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
 public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutable<DomainObjectDemoObjectX>, IDomainObjectDemoObjectX,
     IDomainObjectActivatorPostCreate
 {
+    private readonly DomainObjectUnitOfWorkLocks m_lockUpdate;
+
     #region Template
 
     public class Template : IDomainObjectTemplate
@@ -82,9 +85,11 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutable<DomainObje
     // ReSharper disable once UnusedMember.Global
     public DomainObjectDemoObjectX(
         DemoObjectXDtoActual data,
-        ICustomEntryPoint entryPoint)
+        ICustomEntryPoint entryPoint,
+        DomainObjectUnitOfWorkLocks lockUpdate)
         : base(entryPoint, data)
     {
+        m_lockUpdate = lockUpdate;
         CreateDate = data.CreateDate.SpecifyKindLocal();
         ModificationDate = data.ModificationDate.SpecifyKindLocal();
         m_name = new MutableFieldStringLimitedEx(FieldsConstants.DemoObjectXNameMaxLength, data.Name);
@@ -98,9 +103,11 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutable<DomainObje
     public DomainObjectDemoObjectX(
         long identity,
         Template template,
-        ICustomEntryPoint entryPoint)
+        ICustomEntryPoint entryPoint,
+        DomainObjectUnitOfWorkLocks lockUpdate)
         : base(entryPoint, identity)
     {
+        m_lockUpdate = lockUpdate;
         CreateDate = m_entryPoint.TimeService.NowDateTime;
         ModificationDate = CreateDate;
         m_name = new MutableFieldStringLimitedEx(FieldsConstants.DemoObjectXNameMaxLength, template.Name);
@@ -120,6 +127,8 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutable<DomainObje
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         set
         {
+            m_lockUpdate.Has(Identity);
+
             m_enabled.SetValue(value);
             if (m_enabled.Changed)
             {
@@ -136,6 +145,8 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutable<DomainObje
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         set
         {
+            m_lockUpdate.Has(Identity);
+
             m_name.SetValue(value);
             if (m_name.Changed)
             {

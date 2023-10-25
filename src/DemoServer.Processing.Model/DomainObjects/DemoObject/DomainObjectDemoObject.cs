@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 using ShtrihM.DemoServer.Processing.Generated.Interface;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectActivators;
 using ShtrihM.Wattle3.Primitives;
+using ShtrihM.Wattle3.DomainObjects.UnitOfWorkLocks;
 
 #pragma warning disable CA2254
 
@@ -24,6 +25,8 @@ namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObject;
 // ReSharper disable once ClassNeverInstantiated.Global
 public sealed class DomainObjectDemoObject : BaseDomainObjectMutable<DomainObjectDemoObject>, IDomainObjectDemoObject, IDomainObjectActivatorPostCreate
 {
+    private readonly DomainObjectUnitOfWorkLocks m_lockUpdate;
+
     #region Template
 
     public class Template : IDomainObjectTemplate
@@ -65,9 +68,11 @@ public sealed class DomainObjectDemoObject : BaseDomainObjectMutable<DomainObjec
     // ReSharper disable once UnusedMember.Global
     public DomainObjectDemoObject(
         DemoObjectDtoActual data,
-        ICustomEntryPoint entryPoint)
+        ICustomEntryPoint entryPoint,
+        DomainObjectUnitOfWorkLocks lockUpdate)
         : base(entryPoint, data)
     {
+        m_lockUpdate = lockUpdate;
         CreateDate = data.CreateDate.SpecifyKindLocal();
         ModificationDate = data.ModificationDate.SpecifyKindLocal();
         m_name = new MutableFieldStringLimitedEx(FieldsConstants.DemoObjectNameMaxLength, data.Name);
@@ -78,9 +83,11 @@ public sealed class DomainObjectDemoObject : BaseDomainObjectMutable<DomainObjec
     public DomainObjectDemoObject(
         long identity,
         Template template,
-        ICustomEntryPoint entryPoint)
+        ICustomEntryPoint entryPoint,
+        DomainObjectUnitOfWorkLocks lockUpdate)
         : base(entryPoint, identity)
     {
+        m_lockUpdate = lockUpdate;
         CreateDate = m_entryPoint.TimeService.NowDateTime;
         ModificationDate = CreateDate;
         m_name = new MutableFieldStringLimitedEx(FieldsConstants.DemoObjectNameMaxLength, template.Name);
@@ -124,7 +131,7 @@ public sealed class DomainObjectDemoObject : BaseDomainObjectMutable<DomainObjec
             throw new ArgumentNullException(nameof(parameters));
         }
 
-        m_entryPoint.UnitOfWorkLocks.DemoObject.Has(Identity);
+        m_lockUpdate.Has(Identity);
 
         var changed = false;
         foreach (var field in parameters.Fields)
