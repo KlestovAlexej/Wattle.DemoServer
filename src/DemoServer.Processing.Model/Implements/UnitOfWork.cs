@@ -112,7 +112,7 @@ public sealed class UnitOfWork(
         return result;
     }
 
-    async ValueTask<DbContext> IUnitOfWorkDbContextFactory.NewDbContextAsync(bool useTransaction = true, CancellationToken cancellationToken = default)
+    async ValueTask<DbContext> IUnitOfWorkDbContextFactory.NewDbContextAsync(bool useTransaction, CancellationToken cancellationToken)
     {
         var context = (CustomUnitOfWorkContext)m_context;
         var mappersSession = (IPostgreSqlMappersSession)MappersSession;
