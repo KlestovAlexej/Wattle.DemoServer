@@ -1,8 +1,7 @@
-﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
-using ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModelsOptimized;
 using ShtrihM.DemoServer.Processing.Model.Implements.ControllersServices;
 using ShtrihM.DemoServer.Processing.Model.Interfaces;
 using ShtrihM.Wattle3.DomainObjects.Interfaces;
@@ -53,7 +52,7 @@ public static class EntryPointExtensions
         services.AddPooledDbContextFactory<ProcessingDbContext>(
             o =>
             {
-                o.UseModel(ProcessingDbContextModel.Instance);
+                o.UseModel(DataAccess.PostgreSql.EfModelsOptimized.ProcessingDbContextModel.Instance);
                 o.UseNpgsql();
             }
 #if DEBUG
