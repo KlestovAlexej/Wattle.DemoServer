@@ -6,8 +6,6 @@ using ShtrihM.Wattle3.Mappers.PostgreSql;
 using ShtrihM.Wattle3.Testing;
 using System;
 using System.IO;
-using System.Text;
-using System.Xml.Linq;
 using ShtrihM.DemoServer.Processing.Model.Implements;
 
 namespace ShtrihM.DemoServer.Processing.Tests.DataAccess.PostgreSql;

@@ -112,10 +112,8 @@ public sealed class UnitOfWork(
         return result;
     }
 
-    async ValueTask<DbContext> IUnitOfWorkDbContextFactory.NewDbContextAsync(bool useTransaction = true) /*, CancellationToken cancellationToken = default)*/
+    async ValueTask<DbContext> IUnitOfWorkDbContextFactory.NewDbContextAsync(bool useTransaction = true, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
-/*
         var context = (CustomUnitOfWorkContext)m_context;
         var mappersSession = (IPostgreSqlMappersSession)MappersSession;
         var (connection, transaction) = await mappersSession.GetConnectionAsync(useTransaction, cancellationToken)
@@ -124,7 +122,6 @@ public sealed class UnitOfWork(
         result.SetDbConnection(connection, transaction);
 
         return result;
-*/
     }
 
     DbContext IUnitOfWorkDbContextFactory.NewDbContext(bool useTransaction)
