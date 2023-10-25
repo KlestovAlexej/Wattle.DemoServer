@@ -87,6 +87,7 @@ public sealed class UnitOfWork(
             ((ICustomEntryPoint)m_context.EntryPoint).WorkflowExceptionPolicy,
             ((CustomUnitOfWorkContext)m_context).UnitOfWorkLocksHub);
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public async ValueTask<ProcessingDbContext> NewDbContextAsync(
         bool useTransaction = true,
         CancellationToken cancellationToken = default)
@@ -101,6 +102,7 @@ public sealed class UnitOfWork(
         return result;
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public ProcessingDbContext NewDbContext(bool useTransaction = true)
     {
         var context = (CustomUnitOfWorkContext)m_context;
@@ -114,23 +116,14 @@ public sealed class UnitOfWork(
 
     async ValueTask<DbContext> IUnitOfWorkDbContextFactory.NewDbContextAsync(bool useTransaction, CancellationToken cancellationToken)
     {
-        var context = (CustomUnitOfWorkContext)m_context;
-        var mappersSession = (IPostgreSqlMappersSession)MappersSession;
-        var (connection, transaction) = await mappersSession.GetConnectionAsync(useTransaction, cancellationToken)
-            .ConfigureAwait(false);
-        var result = await context.PooledDbContextFactory.CreateDbContextAsync(cancellationToken).ConfigureAwait(false);
-        result.SetDbConnection(connection, transaction);
+        var result = await NewDbContextAsync(useTransaction, cancellationToken);
 
         return result;
     }
 
     DbContext IUnitOfWorkDbContextFactory.NewDbContext(bool useTransaction)
     {
-        var context = (CustomUnitOfWorkContext)m_context;
-        var mappersSession = (IPostgreSqlMappersSession)MappersSession;
-        var (connection, transaction) = mappersSession.GetConnection(useTransaction);
-        var result = context.PooledDbContextFactory.CreateDbContext();
-        result.SetDbConnection(connection, transaction);
+        var result = NewDbContext(useTransaction);
 
         return result;
     }
