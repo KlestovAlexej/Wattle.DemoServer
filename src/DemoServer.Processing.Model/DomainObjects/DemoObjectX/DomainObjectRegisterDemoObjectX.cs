@@ -34,6 +34,7 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
             DemoObjectXIdentitiesService.New(entryPoint),
             WellknownDomainObjectFields.DemoObjectX.NameAlternateKey,
             WellknownDomainObjectFields.DemoObjectX.NameCollection)
+    // ReSharper disable once ConvertToPrimaryConstructor
     {
     }
 

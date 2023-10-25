@@ -17,16 +17,12 @@ using ShtrihM.Wattle3.DomainObjects.DomainObjectActivators;
 using ShtrihM.Wattle3.Primitives;
 using ShtrihM.Wattle3.DomainObjects.UnitOfWorkLocks;
 
-#pragma warning disable CA2254
-
 namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObject;
 
 [DomainObjectDataMapper(WellknownMappersAsText.DemoObject, DomainObjectDataTarget.Create, DomainObjectDataTarget.Update)]
 // ReSharper disable once ClassNeverInstantiated.Global
 public sealed class DomainObjectDemoObject : BaseDomainObjectMutable<DomainObjectDemoObject>, IDomainObjectDemoObject, IDomainObjectActivatorPostCreate
 {
-    private readonly DomainObjectUnitOfWorkLocks m_lockUpdate;
-
     #region Template
 
     public class Template : IDomainObjectTemplate
@@ -35,6 +31,7 @@ public sealed class DomainObjectDemoObject : BaseDomainObjectMutable<DomainObjec
         public Template(
             string name,
             bool enabled)
+            // ReSharper disable once ConvertToPrimaryConstructor
         {
             Name = name ?? throw new ArgumentNullException(nameof(name));
             Enabled = enabled;
@@ -58,6 +55,8 @@ public sealed class DomainObjectDemoObject : BaseDomainObjectMutable<DomainObjec
     }
 
     #endregion
+
+    private readonly DomainObjectUnitOfWorkLocks m_lockUpdate;
 
     [DomainObjectFieldValue(DomainObjectDataTarget.Create, DomainObjectDataTarget.Update, DtoFiledName = nameof(DemoObjectDtoChanged.Enabled))]
     private MutableField<bool> m_enabled;

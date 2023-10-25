@@ -1,7 +1,9 @@
 using System.ComponentModel;
 using Newtonsoft.Json;
+using ShtrihM.DemoServer.Processing.Common;
 using ShtrihM.DemoServer.Processing.DataAccess.Interface;
 using ShtrihM.Wattle3.Caching;
+using ShtrihM.Wattle3.DomainObjects.Interfaces;
 using ShtrihM.Wattle3.Json;
 
 namespace ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
@@ -12,14 +14,14 @@ namespace ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
 [Description("Настройки реестров доменных объектов")]
 public class DomainObjectRegistersSettings
 {
-    public static readonly int MemoryCacheMaxItems = 10_000;
+    private static readonly int MemoryCacheMaxItems = 10_000;
 
-    public DomainObjectRegistersSettings()
+    private DomainObjectRegistersSettings()
     {
         MemoryCacheDemoObjectX =
             new SettingValue<MemoryCacheSettings>(
                 default,
-                "Настройки кэширования реестра доменных объектов - Объект X");
+                $"Настройки кэширования реестра доменных объектов - {WellknownDomainObjectDisplayNames.DisplayNamesProvider(WellknownDomainObjects.DemoObjectX)}");
 
         UseIdentitiesServices =
             new SettingValue<bool>(

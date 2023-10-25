@@ -13,6 +13,7 @@ public class DemoObjectControllerService : IDemoObjectControllerService
     private readonly ICustomEntryPoint m_entryPoint;
 
     public DemoObjectControllerService(ICustomEntryPoint entryPoint)
+        // ReSharper disable once ConvertToPrimaryConstructor
     {
         m_entryPoint = entryPoint ?? throw new ArgumentNullException(nameof(entryPoint));
     }

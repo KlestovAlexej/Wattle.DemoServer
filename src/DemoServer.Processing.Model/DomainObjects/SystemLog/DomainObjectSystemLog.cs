@@ -22,6 +22,7 @@ public sealed class DomainObjectSystemLog : BaseDomainObject<DomainObjectSystemL
             int type,
             string message,
             string data)
+            // ReSharper disable once ConvertToPrimaryConstructor
         {
             Code = code;
             Type = type;

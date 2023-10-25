@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json;
+using ShtrihM.DemoServer.Processing.Common;
+using ShtrihM.Wattle3.DomainObjects.Interfaces;
 using ShtrihM.Wattle3.Json;
 using System;
 using System.ComponentModel;
@@ -18,17 +20,17 @@ public class LocksPoolSettings
         UpdateDemoObject =
             new SettingValue<TimeSpan?>(
                 default,
-                "Интервал ожидания получение объекта из пула лок-объектов сценария обновления объекта 'Объект'");
+                $"Интервал ожидания получение объекта из пула лок-объектов сценария обновления объекта '{WellknownDomainObjectDisplayNames.DisplayNamesProvider(WellknownDomainObjects.DemoObject)}'");
 
         UpdateDemoObjectX =
             new SettingValue<TimeSpan?>(
                 default,
-                "Интервал ожидания получение объекта из пула лок-объектов сценария обновления объекта 'Объект X'");
+                $"Интервал ожидания получение объекта из пула лок-объектов сценария обновления объекта '{WellknownDomainObjectDisplayNames.DisplayNamesProvider(WellknownDomainObjects.DemoObjectX)}'");
 
         CreateDemoObjectX =
             new SettingValue<TimeSpan?>(
                 default,
-                "Интервал ожидания получение объекта из пула лок-объектов сценария создания объекта 'Объект X'");
+                $"Интервал ожидания получение объекта из пула лок-объектов сценария создания объекта '{WellknownDomainObjectDisplayNames.DisplayNamesProvider(WellknownDomainObjects.DemoObjectX)}'");
     }
 
     /// <summary>

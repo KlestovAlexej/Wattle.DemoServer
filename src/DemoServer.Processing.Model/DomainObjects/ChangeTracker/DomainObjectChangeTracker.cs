@@ -15,11 +15,6 @@ public sealed class DomainObjectChangeTracker : BaseDomainObject<DomainObjectCha
 
     public class Template : IDomainObjectTemplate
     {
-        private Template()
-        {
-            /* NONE */
-        }
-
         public static readonly Template Instance = new();
     }
 
