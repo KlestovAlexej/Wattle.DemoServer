@@ -53,7 +53,10 @@ public static class EntryPointExtensions
         services.AddPooledDbContextFactory<ProcessingDbContext>(
             o =>
             {
+                // Строка должна быть неизменной т.к. используется в скрипте создания контекста EF.
+                // Сотри тест ShtrihM.DemoServer.Processing.Tests.DataAccess.PostgreSql.TestsCreateEntityFrameworkDbContext
                 o.UseModel(DataAccess.PostgreSql.EfModelsOptimized.ProcessingDbContextModel.Instance);
+
                 o.UseNpgsql();
 
                 if (o.Options.FindExtension<CoreOptionsExtension>()!.Model == null)
