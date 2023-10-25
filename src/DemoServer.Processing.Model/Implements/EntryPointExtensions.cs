@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
 using ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
 using ShtrihM.DemoServer.Processing.Model.Implements.ControllersServices;
@@ -54,6 +55,11 @@ public static class EntryPointExtensions
             {
                 o.UseModel(DataAccess.PostgreSql.EfModelsOptimized.ProcessingDbContextModel.Instance);
                 o.UseNpgsql();
+
+                if (o.Options.FindExtension<CoreOptionsExtension>()!.Model == null)
+                {
+                    throw new InvalidOperationException("Модель не определена.");
+                }
             }
 #if DEBUG
             , 1
