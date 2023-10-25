@@ -18,6 +18,7 @@ public class TestsCreateEmptyDb : BaseAutoTestsMapper
         base.DoPreCreateDb();
 
         m_addTags = false;
+        m_dbName = "test_ef_seed";
     }
 
     /// <summary>
@@ -48,6 +49,8 @@ public class TestsCreateEmptyDb : BaseAutoTestsMapper
         var pathDataAccess = ProviderProjectBasePath.GetFullPath(@"src\DemoServer.Processing.DataAccess.Postgresql");
         var pathModel = ProviderProjectBasePath.GetFullPath(@"src\DemoServer.Processing.Model");
 
+        Console.WriteLine();
+        Console.WriteLine($"Создана БД : {m_dbName}");
         Console.WriteLine();
         Console.WriteLine("В Package Manager Console выполнить команды :");
         Console.WriteLine();
