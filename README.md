@@ -2,7 +2,7 @@
 
 ---
 
-<details open><summary>Примечания.</summary><br/>
+<details><summary>Примечания.</summary><br/>
 
 - Сервер написан 100% на [C#](https://ru.wikipedia.org/wiki/C_Sharp) под [.NET 7](https://devblogs.microsoft.com/dotnet/announcing-dotnet-7/).
 - **Сборка и запуск тестов**
