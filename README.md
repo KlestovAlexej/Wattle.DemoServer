@@ -25,7 +25,7 @@
 ## В демонстрации сервера показаны.
 
 - [Реализован](src/DemoServer.Processing.Model/Implements/UnitOfWork.cs) паттерн [Unit of Work](https://martinfowler.com/eaaCatalog/unitOfWork.html)
-- [Пример автоматического создания](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/d209439e8593eb4a0f80ddb5f02609ba45b7ce6c/tests/DemoServer.Processing.Tests.DataAccess.Postgresql/TestsCreateEmptyDb.cs#L33) контекста Entity Framework по существующей БД
+- [Пример автоматического](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/d209439e8593eb4a0f80ddb5f02609ba45b7ce6c/tests/DemoServer.Processing.Tests.DataAccess.Postgresql/TestsCreateEmptyDb.cs#L33) создания [контекста](src/DemoServer.Processing.DataAccess.Postgresql/EfModels) и [оптимизированной модели](src/DemoServer.Processing.DataAccess.Postgresql/EfModelsOptimized) контекста [Entity Framework](https://learn.microsoft.com/ru-ru/ef/core/get-started/overview/first-app?tabs=netcore-cli) по существующей БД с полным переписыванием предыдущих моделей (полезно если сущности БД удалены или переименованы)
 - [Пример логирования](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/33de4b303ffb87c1ce43c089b191ebe04c301da4/src/DemoServer.Processing.Application/appsettings.json#L12) с использованием [serilog](https://serilog.net/)
 	- К примеру, для просмотра логов в онлайне укажите [токен](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/76abbcacc47f599b4731c22b0acb9f201e2efc32/src/DemoServer.Processing.Application/appsettings.json#L36) сайта [logz.io](https://logz.io/) с бесплатным доступом.
 - [Интеграция](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/8a280815be311432f3dd9e6281b8b36423a1ed61/src/DemoServer.Processing.Model/Implements/ControllersServices/ControllerServiceDispatchProxy.cs#L27) с [OpenTelemetry](https://opentelemetry.io/)
@@ -36,7 +36,7 @@
 	- Созданы [валидаторы DTO](src/DemoServer.Processing.Api/Validators/WebApplicationBuilderExtensions.cs) получаемых по REST интерфейсу
 	- Реализация [высокоуровневого клиент](src/DemoServer.Processing.Api.Clients/ProcessingClient.cs) REST интерфейса на базе [RestSharp](https://restsharp.dev/)
 	- [Интеграционные тесты](tests/DemoServer.Processing.Tests.Application/TestsApiServer.cs) REST интерфейса
-- Интеграция с [Entity Framework](https://learn.microsoft.com/ru-ru/ef/core/get-started/overview/first-app?tabs=netcore-cli) в рамках Unit of Work [c тестами](tests/DemoServer.Processing.Tests.Model/TestsUnitOfWork.cs)
+- Интеграция с Entity Framework в рамках Unit of Work [c тестами](tests/DemoServer.Processing.Tests.Model/TestsUnitOfWork.cs)
 
 - Создан доменный объект [DemoObject](src/DemoServer.Processing.Model/DomainObjects/DemoObject/DomainObjectDemoObject.cs) доступный по REST интерфейсу
 	- Реализован [кэширующий маппер](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/061c419225f81fbdecfec4bce193b8e396812456/src/DemoServer.Processing.Common/WellknownDomainObjectFields.cs#L180) БД
