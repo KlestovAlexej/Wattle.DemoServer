@@ -12,7 +12,7 @@ public class DocumentFilterHealthCheck : IDocumentFilter
 {
     public void Apply(OpenApiDocument swaggerDoc, DocumentFilterContext context)
     {
-        swaggerDoc.Paths.TryAdd(HealthCheckExtensions.Path, new OpenApiPathItem
+        swaggerDoc.Paths.TryAdd(HealthCheckExtensions.Path, new()
         {
             Description = "Проверка работоспособности",
             Extensions = null,
@@ -29,10 +29,10 @@ public class DocumentFilterHealthCheck : IDocumentFilter
                         OperationId = "healthCheck",
                         Parameters = null,
                         RequestBody = null,
-                        Responses = new OpenApiResponses
+                        Responses = new()
                         {
-                            { "200", new OpenApiResponse { Content = null, Description = "Сервер работоспособен" } },
-                            { "503", new OpenApiResponse { Content = null, Description = "Сервер не работоспособен" } },
+                            { "200", new() { Content = null, Description = "Сервер работоспособен" } },
+                            { "503", new() { Content = null, Description = "Сервер не работоспособен" } },
                         },
                         Security = null,
                         Summary = "Проверка работоспособности",

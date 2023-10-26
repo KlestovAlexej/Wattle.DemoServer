@@ -1,43 +1,50 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 using ShtrihM.DemoServer.Processing.Common;
-using ShtrihM.Wattle3.DomainObjects.Interfaces;
+using ShtrihM.DemoServer.Processing.Model.Interfaces;
 using ShtrihM.Wattle3.DomainObjects.UnitOfWorkLocks;
+using ShtrihM.Wattle3.Utils;
 
 namespace ShtrihM.DemoServer.Processing.Model.Implements.UnitOfWorkLocks;
 
-[SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
-public class UnitOfWorkLocksHubTyped
+public class UnitOfWorkLocksHubTyped : IDisposable
 {
-    public UnitOfWorkLocksHubTyped(
-        IUnitOfWorkProvider unitOfWorkProvider,
-        IUnitOfWorkLocksHub unitOfWorkLocksHub)
+    public UnitOfWorkLocksHubTyped(ICustomEntryPoint entryPoint)
     {
-        if (unitOfWorkProvider == null)
+        if (entryPoint == null)
         {
-            throw new ArgumentNullException(nameof(unitOfWorkProvider));
+            throw new ArgumentNullException(nameof(entryPoint));
         }
 
-        Hub = unitOfWorkLocksHub ?? throw new ArgumentNullException(nameof(unitOfWorkLocksHub));
-        UnitOfWorkLocksActions = new UnitOfWorkLocksActions(unitOfWorkLocksHub);
+        Hub = new UnitOfWorkLocksHub(entryPoint);
+        Actions = new(Hub);
 
-        var unitOfWorkLocks = () => ((UnitOfWork)unitOfWorkProvider.Instance).CurrentLocks;
+        var unitOfWorkProvider = entryPoint.UnitOfWorkProvider;
+        var unitOfWorkLocks = () => ((UnitOfWork)unitOfWorkProvider.Instance).CurrentLocksGetOrCreate;
 
-        DemoObject = new DomainObjectUnitOfWorkLocks(
+        UpdateDemoObject = new(
             Hub,
             WellknownCommonInfrastructureMonitors.LocksUpdateDemoObject,
             WellknownDomainObjects.DemoObject,
             unitOfWorkLocks);
 
-        DemoObjectX = new DomainObjectUnitOfWorkLocks(
+        UpdateDemoObjectX = new(
             Hub,
             WellknownCommonInfrastructureMonitors.LocksUpdateDemoObjectX,
             WellknownDomainObjects.DemoObjectX,
             unitOfWorkLocks);
     }
 
-    public readonly IUnitOfWorkLocksHub Hub;
-    public readonly UnitOfWorkLocksActions UnitOfWorkLocksActions;
-    public readonly DomainObjectUnitOfWorkLocks DemoObject;
-    public readonly DomainObjectUnitOfWorkLocks DemoObjectX;
+    public IUnitOfWorkLocksHub Hub { get; private set; }
+    public readonly UnitOfWorkLocksActions Actions;
+    public readonly DomainObjectUnitOfWorkLocks UpdateDemoObject;
+    public readonly DomainObjectUnitOfWorkLocks UpdateDemoObjectX;
+
+    public void Dispose()
+    {
+        var temp = Hub;
+        Hub = null;
+        temp.SilentDispose();
+
+        GC.SuppressFinalize(this);
+    }
 }

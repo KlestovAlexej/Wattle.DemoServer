@@ -49,17 +49,17 @@ public class PartitionsSponsorSettings
     public PartitionsSponsorSettings()
     {
         ActivateTimeout =
-            new SettingValue<TimeSpan>(
+            new(
                 default,
                 "Интервал активации");
 
         TablespaceNames =
-            new SettingValue<TablespacesEntry>(
+            new(
                 default,
                 $"Карта имён табличных пространств БД для партиций БД - Пример: {new TablespacesEntry
                 {
                     Tablespaces =
-                        new List<TablespaceEntry>
+                        new()
                         {
                             new()
                             {
@@ -75,19 +75,19 @@ public class PartitionsSponsorSettings
                 }.ToJsonText()}");
 
         DomainObjectsTablespaceNames =
-            new SettingValue<DomainObjectsEntry>(
+            new(
                 default,
                 $"Карта имён табличных пространств БД для партиций БД для конкретных доменных объектов - Пример: {new DomainObjectsEntry
                 {
                     DomainObjects =
-                        new List<DomainObjectTablespaceEntry>
+                        new()
                         {
                             new()
                             {
                                 Comment = "Комментарий",
                                 DomainObjectType = Guid.NewGuid(),
                                 Tablespaces =
-                                    new List<TablespaceEntry>
+                                    new()
                                     {
                                         new()
                                         {
@@ -106,7 +106,7 @@ public class PartitionsSponsorSettings
                                 Comment = "Комментарий",
                                 DomainObjectType = Guid.NewGuid(),
                                 Tablespaces =
-                                    new List<TablespaceEntry>
+                                    new()
                                     {
                                         new()
                                         {
@@ -157,12 +157,12 @@ public class PartitionsSponsorSettings
 
                 TablespaceNames =
                 {
-                    Value = new TablespacesEntry()
+                    Value = new()
                 },
 
                 DomainObjectsTablespaceNames =
                 {
-                    Value = new DomainObjectsEntry()
+                    Value = new()
                 },
             };
 
@@ -177,11 +177,11 @@ public class PartitionsSponsorSettings
         foreach (var manager in PartitionsSponsor.GetAllPartitionsManagers(mappers))
         {
             result.DomainObjectsTablespaceNames.Value.DomainObjects.Add(
-                new DomainObjectTablespaceEntry
+                new()
                 {
                     DomainObjectType = manager.Mapper.MapperId,
                     Comment = WellknownDomainObjectDisplayNames.DisplayNamesProvider(manager.Mapper.MapperId),
-                    Tablespaces = new List<TablespaceEntry>(),
+                    Tablespaces = new(),
                 });
         }
 

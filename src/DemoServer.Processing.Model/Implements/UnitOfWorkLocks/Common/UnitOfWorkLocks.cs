@@ -5,7 +5,7 @@ using ShtrihM.Wattle3.Primitives;
 using System.Runtime.CompilerServices;
 using ShtrihM.DemoServer.Processing.Api.Common;
 
-namespace ShtrihM.DemoServer.Processing.Model.Implements.UnitOfWorkLocks;
+namespace ShtrihM.DemoServer.Processing.Model.Implements.UnitOfWorkLocks.Common;
 
 public sealed class UnitOfWorkLocks : AbstractUnitOfWorkLocks
 {

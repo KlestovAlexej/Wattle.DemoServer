@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using ShtrihM.DemoServer.Processing.Generated.Interface;
 using ShtrihM.Wattle3.DomainObjects;
 using Microsoft.EntityFrameworkCore;
+using ShtrihM.Wattle3.DomainObjects.UnitOfWorkLocks;
 
 namespace ShtrihM.DemoServer.Processing.Model.Implements;
 
@@ -27,10 +28,10 @@ public sealed class UnitOfWork(
         registersFactory,
         visitor), IUnitOfWorkDbContextFactory
 {
-    public UnitOfWorkLocks.UnitOfWorkLocks CurrentLocks
+    public AbstractUnitOfWorkLocks CurrentLocksGetOrCreate
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => (UnitOfWorkLocks.UnitOfWorkLocks)GetLocks();
+        get => (AbstractUnitOfWorkLocks)GetLocks();
     }
 
     protected override async ValueTask<IUnitOfWorkCommitVerifying> DoCreateUnitOfWorkCommitVerifyingAsync(
@@ -83,7 +84,7 @@ public sealed class UnitOfWork(
     }
 
     protected override IUnitOfWorkLocks DoCreateLocks()
-        => new UnitOfWorkLocks.UnitOfWorkLocks(
+        => new UnitOfWorkLocks.Common.UnitOfWorkLocks(
             ((ICustomEntryPoint)m_context.EntryPoint).WorkflowExceptionPolicy,
             ((CustomUnitOfWorkContext)m_context).UnitOfWorkLocksHub);
 

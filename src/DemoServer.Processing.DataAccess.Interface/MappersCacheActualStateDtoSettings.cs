@@ -24,17 +24,17 @@ public class MappersCacheActualStateDtoSettings
     public MappersCacheActualStateDtoSettings()
     {
         Enabled =
-            new SettingValue<bool>(
+            new(
                 default,
                 "Разрешение для кэширования");
 
         DemoObject =
-            new SettingValue<MemoryCacheSettings>(
+            new(
                 default,
                 $"Маппер '{WellknownDomainObjectDisplayNames.DisplayNamesProvider(WellknownDomainObjects.DemoObject)}'");
 
         DemoObjectX =
-            new SettingValue<MemoryCacheSettings>(
+            new(
                 default,
                 $"Маппер '{WellknownDomainObjectDisplayNames.DisplayNamesProvider(WellknownDomainObjects.DemoObjectX)}'");
     }

@@ -20,7 +20,6 @@ using ShtrihM.Wattle3.DomainObjects.DomainObjectIntergrators;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectsRegisters;
 using ShtrihM.Wattle3.DomainObjects.EntryPoints;
 using ShtrihM.Wattle3.DomainObjects.Interfaces;
-using ShtrihM.Wattle3.DomainObjects.UnitOfWorkLocks;
 using ShtrihM.Wattle3.DomainObjects.UnitOfWorks;
 using ShtrihM.Wattle3.Infrastructures.Interfaces.Monitors;
 using ShtrihM.Wattle3.Infrastructures.Monitors;
@@ -35,7 +34,6 @@ using ShtrihM.Wattle3.QueueProcessors.Interfaces;
 using ShtrihM.Wattle3.Triggers;
 using ShtrihM.Wattle3.Utils;
 using System;
-using System.Collections.Generic;
 using System.Runtime.ExceptionServices;
 using System.Text;
 using System.Threading;
@@ -105,7 +103,7 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
         {
             var description = WellknownCommonSnapShotInfrastructureMonitorValues.GetDescription(id);
 
-            AddValue(new SnapShotInfrastructureMonitorValue
+            AddValue(new()
             {
                 Id = id,
                 Name = description.Name,
@@ -181,7 +179,6 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
     private readonly ILogger m_logger;
     private PartitionsSponsor m_partitionsSponsor;
     private IQueueItemProcessor m_queueEmergencyDomainBehaviour;
-    private IUnitOfWorkLocksHub m_unitOfWorkLocksHub;
 
     static EntryPoint()
     {
@@ -300,7 +297,7 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
                     ProductId = m_templateServerDescription.ProductId,
                     DateTime = TimeService.Now,
                     Properties =
-                        new Dictionary<string, string>
+                        new()
                         {
                             ["ProcessId"] = SystemSettings.InstanceId.Value.ToString("D"),
                         }
@@ -443,8 +440,8 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
         }
 
         {
-            var temp = m_unitOfWorkLocksHub;
-            m_unitOfWorkLocksHub = null;
+            var temp = UnitOfWorkLocks;
+            UnitOfWorkLocks = null;
             temp.SilentDispose();
         }
 
@@ -584,7 +581,7 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
                         systemSettings.TimeStatisticsStep.Value,
                         exceptionPolicy)),
                 exceptionPolicy,
-                new WorkflowExceptionPolicy(),
+                new(),
                 timeService,
                 systemSettings.TimeStatisticsStep.Value,
                 loggerFactory,
@@ -593,7 +590,7 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
         result.ServiceProvider = serviceProvider;
 
         result.PartitionsDay = new PartitionsDay(timeService, new(2023, 8, 1));
-        result.InfrastructureMonitorRegisters = new InfrastructureMonitorRegisters();
+        result.InfrastructureMonitorRegisters = new();
 
         {
             var partitionsSponsorTrigger =
@@ -607,7 +604,7 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
                     loggerFactory.CreateLogger<ScheduledService>());
 
             result.m_partitionsSponsor =
-                new PartitionsSponsor(
+                new(
                     result,
                     partitionsSponsorTrigger,
                     loggerFactory);
@@ -615,8 +612,7 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
         }
 
         result.Metrics = metrics;
-        result.m_unitOfWorkLocksHub = new UnitOfWorkLocksHub(result);
-        result.UnitOfWorkLocks = new UnitOfWorkLocksHubTyped(result.UnitOfWorkProvider, result.m_unitOfWorkLocksHub);
+        result.UnitOfWorkLocks = new(result);
 
         result.Facade =
             container.ResolveWithDefault(
@@ -655,7 +651,7 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
         infrastructureMonitor.AddSubMonitor(result.m_queueEmergencyDomainBehaviour.InfrastructureMonitor);
         infrastructureMonitor.AddSubMonitor(result.m_partitionsSponsor.InfrastructureMonitor);
 
-        foreach (var iMonitor in result.m_unitOfWorkLocksHub.InfrastructureMonitorLocksPools)
+        foreach (var iMonitor in result.UnitOfWorkLocks.Hub.InfrastructureMonitorLocksPools)
         {
             infrastructureMonitor.AddSubMonitor(iMonitor);
         }
@@ -677,7 +673,7 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
                 result.m_unitOfWorkProvider,
                 serviceProvider.GetService<IDbContextFactory<ProcessingDbContext>>(),
                 serviceProvider,
-                result.m_unitOfWorkLocksHub);
+                result.UnitOfWorkLocks.Hub);
 
         return (result);
     }

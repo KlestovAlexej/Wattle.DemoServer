@@ -21,9 +21,9 @@ public class ServiceEnricher : ILogEventEnricher
             throw new ArgumentNullException(nameof(serviceName));
         }
 
-        m_propertyName = new LogEventProperty(PropertyName, new ScalarValue(serviceName));
-        m_propertyVersion = new LogEventProperty(PropertyVersion, new ScalarValue(serviceVersion));
-        m_propertyInstanceId = new LogEventProperty(PropertyInstanceId, new ScalarValue(instanceId));
+        m_propertyName = new(PropertyName, new ScalarValue(serviceName));
+        m_propertyVersion = new(PropertyVersion, new ScalarValue(serviceVersion));
+        m_propertyInstanceId = new(PropertyInstanceId, new ScalarValue(instanceId));
     }
 
     public void Enrich(LogEvent logEvent, ILogEventPropertyFactory propertyFactory)

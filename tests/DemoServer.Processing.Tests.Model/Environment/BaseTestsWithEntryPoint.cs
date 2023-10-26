@@ -14,7 +14,6 @@ using ShtrihM.Wattle3.Testing;
 using ShtrihM.Wattle3.Testing.DomainObjects;
 using ShtrihM.Wattle3.Utils;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
@@ -58,8 +57,8 @@ public abstract class BaseTestsWithEntryPoint : BaseDbTests
         EntryPointExtensions.RegisterGlobals();
 
         m_useTablespaces = false;
-        m_dataPathTablespace1 = new TestDirectory("Tablespace1");
-        m_dataPathTablespace2 = new TestDirectory("Tablespace2");
+        m_dataPathTablespace1 = new("Tablespace1");
+        m_dataPathTablespace2 = new("Tablespace2");
         m_nameTablespace1 = $"tests_{Constants.ProductTag.ToLower()}_tablespace1";
         m_nameTablespace2 = $"tests_{Constants.ProductTag.ToLower()}_tablespace2";
 
@@ -81,7 +80,7 @@ public abstract class BaseTestsWithEntryPoint : BaseDbTests
         CreateTablespaces();
 
         m_mappers =
-            new Mappers(
+            new(
                 new MappersExceptionPolicy(),
                 m_dbConnectionString,
                 new ManagedTimeService(),
@@ -249,7 +248,7 @@ public abstract class BaseTestsWithEntryPoint : BaseDbTests
         using var container = new UnityContainer().AddExtension(new Diagnostic());
         container.RegisterInstance(m_loggerFactory, InstanceLifetime.External);
 
-        m_timeService = new ManagedTimeService(round: true);
+        m_timeService = new(round: true);
 
         var systemSettings = CreateSystemSettings();
         container.RegisterInstance(systemSettings, InstanceLifetime.External);
@@ -295,10 +294,10 @@ public abstract class BaseTestsWithEntryPoint : BaseDbTests
         if (m_useTablespaces)
         {
             result.PartitionsSponsorSettings.Value.TablespaceNames.Value =
-                new PartitionsSponsorSettings.TablespacesEntry
+                new()
                 {
                     Tablespaces =
-                        new List<PartitionsSponsorSettings.TablespaceEntry>
+                        new()
                         {
                             new()
                             {
@@ -314,7 +313,7 @@ public abstract class BaseTestsWithEntryPoint : BaseDbTests
                 };
 
             result.PartitionsSponsorSettings.Value.DomainObjectsTablespaceNames.Value =
-                new PartitionsSponsorSettings.DomainObjectsEntry();
+                new();
 
             var flag = 0;
             using var mappers =
@@ -330,12 +329,12 @@ public abstract class BaseTestsWithEntryPoint : BaseDbTests
                 if (flag == 0)
                 {
                     result.PartitionsSponsorSettings.Value.DomainObjectsTablespaceNames.Value.DomainObjects.Add(
-                        new PartitionsSponsorSettings.DomainObjectTablespaceEntry
+                        new()
                         {
                             DomainObjectType = manager.Mapper.MapperId,
                             Comment = WellknownDomainObjectDisplayNames.DisplayNamesProvider(manager.Mapper.MapperId),
                             Tablespaces =
-                                new List<PartitionsSponsorSettings.TablespaceEntry>
+                                new()
                                 {
                                     new()
                                     {
@@ -353,11 +352,11 @@ public abstract class BaseTestsWithEntryPoint : BaseDbTests
                 else if (flag == 1)
                 {
                     result.PartitionsSponsorSettings.Value.DomainObjectsTablespaceNames.Value.DomainObjects.Add(
-                        new PartitionsSponsorSettings.DomainObjectTablespaceEntry
+                        new()
                         {
                             DomainObjectType = manager.Mapper.MapperId,
                             Comment = WellknownDomainObjectDisplayNames.DisplayNamesProvider(manager.Mapper.MapperId),
-                            Tablespaces = new List<PartitionsSponsorSettings.TablespaceEntry>()
+                            Tablespaces = new()
                         });
                 }
 
@@ -374,10 +373,10 @@ public abstract class BaseTestsWithEntryPoint : BaseDbTests
         else
         {
             result.PartitionsSponsorSettings.Value.TablespaceNames.Value =
-                new PartitionsSponsorSettings.TablespacesEntry();
+                new();
 
             result.PartitionsSponsorSettings.Value.DomainObjectsTablespaceNames.Value =
-                new PartitionsSponsorSettings.DomainObjectsEntry();
+                new();
         }
 
         return result;

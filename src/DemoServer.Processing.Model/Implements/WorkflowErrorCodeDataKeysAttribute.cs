@@ -37,7 +37,7 @@ public class WorkflowErrorCodeDataKeysAttribute : Attribute
 
             if (false == map.TryGetValue(attribute!.Code, out var keys))
             {
-                keys = new HashSet<string>();
+                keys = new();
                 map.Add(attribute.Code, keys);
             }
 

@@ -89,8 +89,8 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutable<DomainObje
         m_lockUpdate = lockUpdate;
         CreateDate = data.CreateDate.SpecifyKindLocal();
         ModificationDate = data.ModificationDate.SpecifyKindLocal();
-        m_name = new MutableFieldStringLimitedEx(FieldsConstants.DemoObjectXNameMaxLength, data.Name);
-        m_enabled = new MutableField<bool>(data.Enabled);
+        m_name = new(FieldsConstants.DemoObjectXNameMaxLength, data.Name);
+        m_enabled = new(data.Enabled);
         Key1 = data.Key1;
         Key2 = data.Key2;
         Group = data.Group;
@@ -107,8 +107,8 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutable<DomainObje
         m_lockUpdate = lockUpdate;
         CreateDate = m_entryPoint.TimeService.NowDateTime;
         ModificationDate = CreateDate;
-        m_name = new MutableFieldStringLimitedEx(FieldsConstants.DemoObjectXNameMaxLength, template.Name);
-        m_enabled = new MutableField<bool>(template.Enabled);
+        m_name = new(FieldsConstants.DemoObjectXNameMaxLength, template.Name);
+        m_enabled = new(template.Enabled);
         Key1 = template.Key1;
         Key2 = template.Key2;
         Group = template.Group;

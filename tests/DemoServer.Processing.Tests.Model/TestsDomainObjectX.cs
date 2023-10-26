@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using NUnit.Framework;
 using ShtrihM.DemoServer.Processing.Model.Interfaces;
@@ -36,21 +35,21 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
             new DomainObjectDemoObjectX.Template(
                 "Name1",
                 true,
-                new Guid("6457CCA1-4217-4D47-B057-9668278FE290"),
+                new("6457CCA1-4217-4D47-B057-9668278FE290"),
                 "Key21",
                 1);
         var template2 =
             new DomainObjectDemoObjectX.Template(
                 "Name2",
                 true,
-                new Guid("03B5D8E7-7528-4EED-BE17-D2882CD67C98"),
+                new("03B5D8E7-7528-4EED-BE17-D2882CD67C98"),
                 "Key22",
                 1);
         var template3 =
             new DomainObjectDemoObjectX.Template(
                 "Name3",
                 true,
-                new Guid("601F8424-380F-4BA5-BC30-30C0C0F13972"),
+                new("601F8424-380F-4BA5-BC30-30C0C0F13972"),
                 "Key23",
                 1);
 
@@ -186,7 +185,7 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
             new DomainObjectDemoObjectX.Template(
                 "Name",
                 true,
-                new Guid("6457CCA1-4217-4D47-B057-9668278FE290"),
+                new("6457CCA1-4217-4D47-B057-9668278FE290"),
                 "Key2",
                 1);
 
@@ -219,7 +218,7 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
             new DomainObjectDemoObjectX.Template(
                 "Name",
                 true,
-                new Guid("6457CCA1-4217-4D47-B057-9668278FE290"),
+                new("6457CCA1-4217-4D47-B057-9668278FE290"),
                 "Key2",
                 1);
 
@@ -317,14 +316,14 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
             new DomainObjectDemoObjectX.Template(
                 "Name1",
                 true,
-                new Guid("6457CCA1-4217-4D47-B057-9668278FE290"),
+                new("6457CCA1-4217-4D47-B057-9668278FE290"),
                 "Key2",
                 1);
         var template2 =
             new DomainObjectDemoObjectX.Template(
                 "Name2",
                 true,
-                new Guid("6457CCA1-4217-4D47-B057-9668278FE290"),
+                new("6457CCA1-4217-4D47-B057-9668278FE290"),
                 "Key2",
                 1);
 
@@ -357,7 +356,7 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
             new DomainObjectDemoObjectX.Template(
                 "Name",
                 true,
-                new Guid("6457CCA1-4217-4D47-B057-9668278FE290"),
+                new("6457CCA1-4217-4D47-B057-9668278FE290"),
                 "Key2",
                 1);
 
@@ -386,7 +385,7 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
 
         using (var unitOfWork = m_entryPoint.CreateUnitOfWork())
         {
-            m_entryPoint.UnitOfWorkLocks.DemoObjectX.Register(id);
+            m_entryPoint.UnitOfWorkLocks.UpdateDemoObjectX.Register(id);
 
             var register = unitOfWork.Registers.GetRegister<IDomainObjectRegisterDemoObjectX>();
             var instance = register.Find<IDomainObjectDemoObjectX>(id);

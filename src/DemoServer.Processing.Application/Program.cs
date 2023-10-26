@@ -18,7 +18,6 @@ using ShtrihM.Wattle3.Primitives;
 using ShtrihM.Wattle3.Testing;
 using ShtrihM.Wattle3.Utils;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 using System.Threading;
@@ -91,23 +90,23 @@ public class Program
                         {
                             Enabled = true,
                             Wattle = 
-                                new WattleInstrumentationSettings
+                                new()
                                 {
                                     Enabled = true,
                                     UseMetics = true,
                                     UseTracing = true,
                                 },
                             Tracing =
-                                    new OpenTelemetryTracingSettings
+                                    new()
                                     {
                                         Enabled = true,
                                         Npgsql =
-                                            new NpgsqlSettings
+                                            new()
                                             {
                                                 Enabled = true,
                                             },
                                         HttpClientInstrumentation =
-                                            new HttpClientInstrumentationSettings
+                                            new()
                                             {
                                                 Enabled = true,
                                                 DisplayNameWithUrl = true,
@@ -115,7 +114,7 @@ public class Program
                                                 RecordHttpResponse = true,
                                             },
                                         AspNetCoreInstrumentation =
-                                            new AspNetCoreInstrumentationSettings
+                                            new()
                                             {
                                                 Enabled = true,
                                                 RecordException = true,
@@ -123,46 +122,46 @@ public class Program
                                                 RecordHttpRequest = true,
                                             },
                                         Otlp =
-                                            new OtlpSettings
+                                            new()
                                             {
                                                 Enabled = true,
                                                 Headers = $"lightstep-access-token={lightstepAccessToken}",
                                                 Endpoint = "https://ingest.lightstep.com:443",
                                             },
                                         Jaeger =
-                                            new JaegerSettings
+                                            new()
                                             {
                                                 Enabled = false,
                                                 Endpoint = "",
                                             },
                                         EntityFrameworkCoreInstrumentation =
-                                            new EntityFrameworkCoreInstrumentationSettings
+                                            new()
                                             {
                                                 Enabled = true,
                                             },
                                     },
                             Metics =
-                                    new OpenTelemetryMeticsSettings
+                                    new()
                                     {
                                         Enabled = true,
                                         UseHttpClientInstrumentation = true,
                                         UseAspNetCoreInstrumentation = true,
                                         UseRuntimeInstrumentation = true,
                                         Otlp =
-                                            new OtlpSettings
+                                            new()
                                             {
                                                 Enabled = true,
                                                 Headers = $"lightstep-access-token={lightstepAccessToken}",
                                                 Endpoint = "https://ingest.lightstep.com:443",
                                             },
                                         Prometheus =
-                                            new PrometheusSettings
+                                            new()
                                             {
                                                 Enabled = true,
                                                 SwaggerTag = ServerController.Tag,
                                             },
                                         EventCounters =
-                                            new List<string>
+                                            new()
                                             {
                                                 "Microsoft.AspNetCore.Hosting",
                                                 "Microsoft.AspNetCore.Http.Connections",

@@ -25,7 +25,7 @@ public partial class ProcessingDbContext
             var optionsBuilder = new DbContextOptionsBuilder<ProcessingDbContext>();
             optionsBuilder.UseNpgsql();
 
-            return new ProcessingDbContext(optionsBuilder.Options);
+            return new(optionsBuilder.Options);
         }
     }
 

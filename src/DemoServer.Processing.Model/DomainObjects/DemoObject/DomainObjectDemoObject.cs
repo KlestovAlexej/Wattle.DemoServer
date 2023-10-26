@@ -74,8 +74,8 @@ public sealed class DomainObjectDemoObject : BaseDomainObjectMutable<DomainObjec
         m_lockUpdate = lockUpdate;
         CreateDate = data.CreateDate.SpecifyKindLocal();
         ModificationDate = data.ModificationDate.SpecifyKindLocal();
-        m_name = new MutableFieldStringLimitedEx(FieldsConstants.DemoObjectNameMaxLength, data.Name);
-        m_enabled = new MutableField<bool>(data.Enabled);
+        m_name = new(FieldsConstants.DemoObjectNameMaxLength, data.Name);
+        m_enabled = new(data.Enabled);
     }
 
     // ReSharper disable once UnusedMember.Global
@@ -89,8 +89,8 @@ public sealed class DomainObjectDemoObject : BaseDomainObjectMutable<DomainObjec
         m_lockUpdate = lockUpdate;
         CreateDate = m_entryPoint.TimeService.NowDateTime;
         ModificationDate = CreateDate;
-        m_name = new MutableFieldStringLimitedEx(FieldsConstants.DemoObjectNameMaxLength, template.Name);
-        m_enabled = new MutableField<bool>(template.Enabled);
+        m_name = new(FieldsConstants.DemoObjectNameMaxLength, template.Name);
+        m_enabled = new(template.Enabled);
     }
 
     public override Guid TypeId => WellknownDomainObjects.DemoObject;

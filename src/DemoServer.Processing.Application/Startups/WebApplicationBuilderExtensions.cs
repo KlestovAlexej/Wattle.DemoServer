@@ -9,7 +9,6 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Microsoft.OpenApi.Models;
 using Newtonsoft.Json.Converters;
 using Serilog;
 using ShtrihM.DemoServer.Common;
@@ -37,7 +36,6 @@ using System.Linq;
 using System.Net.Mime;
 using System.Reflection;
 using System.Threading;
-using System.Xml.XPath;
 using Constants = ShtrihM.DemoServer.Common.Constants;
 using ILogger = Microsoft.Extensions.Logging.ILogger;
 
@@ -54,7 +52,7 @@ public static class WebApplicationBuilderExtensions
 
     static WebApplicationBuilderExtensions()
     {
-        XmlCommentsText = new List<string>();
+        XmlCommentsText = new();
         foreach (var assembly in Wattle3.Utils.ExtensionsReflection.GetAssemblies())
         {
             var filename = Path.Combine(AppContext.BaseDirectory, $"{assembly.GetName().Name}.xml");
@@ -72,7 +70,7 @@ public static class WebApplicationBuilderExtensions
 
     public static Mutex CreateMutex(Guid instanceId, out bool mutexCreatedNew)
     {
-        return new Mutex(
+        return new(
             true,
             $"{ServiceName}.{instanceId}",
             out mutexCreatedNew);
@@ -120,7 +118,7 @@ public static class WebApplicationBuilderExtensions
             (_, cfg) =>
                 cfg
                     .Enrich.WithThreadId()
-                    .Enrich.With(new ServiceEnricher(ServiceName, new Version(Constants.ProductVersion.ToString(Constants.VersionComparePrecision)), systemSettings.InstanceId.Value))
+                    .Enrich.With(new ServiceEnricher(ServiceName, new(Constants.ProductVersion.ToString(Constants.VersionComparePrecision)), systemSettings.InstanceId.Value))
                     .ReadFrom.Configuration(configuration));
 
         return builder;
@@ -301,7 +299,7 @@ public static class WebApplicationBuilderExtensions
                 options.EnableAnnotations(enableAnnotationsForInheritance: true, enableAnnotationsForPolymorphism: true);
                 options.UseAllOfToExtendReferenceSchemas();
 
-                options.SwaggerDoc("v1", new OpenApiInfo
+                options.SwaggerDoc("v1", new()
                 {
                     Version = "v1",
                     Title = "API демонстрационного сервера.",
@@ -310,7 +308,7 @@ public static class WebApplicationBuilderExtensions
 
                 foreach (var text in XmlCommentsText)
                 {
-                    options.IncludeXmlComments(() => new XPathDocument(new StringReader(text)), true);
+                    options.IncludeXmlComments(() => new(new StringReader(text)), true);
                 }
 
                 options.SchemaFilter<SwaggerDefineDescriptionSchemaFilter>();
@@ -388,7 +386,7 @@ public static class WebApplicationBuilderExtensions
             {
                 o.ReportApiVersions = false;
                 o.AssumeDefaultVersionWhenUnspecified = true;
-                o.DefaultApiVersion = new ApiVersion(1, 0);
+                o.DefaultApiVersion = new(1, 0);
             });
 
         builder.AddCustomValidators();

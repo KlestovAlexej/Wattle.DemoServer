@@ -1,6 +1,5 @@
 ﻿using ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update;
 using Swashbuckle.AspNetCore.Filters;
-using System.Collections.Generic;
 
 namespace ShtrihM.DemoServer.Processing.Api.Examples;
 
@@ -13,7 +12,7 @@ public class ExamplesDemoObjectUpdate : IExamplesProvider<DemoObjectUpdate>
             {
                 Id = -1,
                 Fields =
-                    new List<BaseDemoObjectUpdateFieldValue>
+                    new()
                     {
                         new DemoObjectUpdateFieldValueOfEnabled
                         {

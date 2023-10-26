@@ -1,11 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
-using ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject;
 using ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update;
 using ShtrihM.DemoServer.Processing.Model.Interfaces;
 using ShtrihM.DemoServer.Processing.Tests.Model.Environment;
 using ShtrihM.Wattle3.Testing;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace ShtrihM.DemoServer.Processing.Tests.Model;
@@ -43,7 +41,7 @@ public class TestsDemoObjectControllerService : BaseTestsDomainObjects
     {
         var info =
             await m_demoObjectControllerService.CreateAsync(
-                new DemoObjectCreate
+                new()
                 {
                     Enabled = true,
                     Name = "Name",
@@ -59,7 +57,7 @@ public class TestsDemoObjectControllerService : BaseTestsDomainObjects
     {
         var info =
             await m_demoObjectControllerService.CreateAsync(
-                new DemoObjectCreate
+                new()
                 {
                     Enabled = true,
                     Name = "Name",
@@ -77,7 +75,7 @@ public class TestsDemoObjectControllerService : BaseTestsDomainObjects
     {
         var info =
             await m_demoObjectControllerService.CreateAsync(
-                new DemoObjectCreate
+                new()
                 {
                     Enabled = true,
                     Name = "Name",
@@ -85,11 +83,11 @@ public class TestsDemoObjectControllerService : BaseTestsDomainObjects
 
         info =
             await m_demoObjectControllerService.UpdateAsync(
-                new DemoObjectUpdate
+                new()
                 {
                     Id = info.Id,
                     Fields =
-                        new List<BaseDemoObjectUpdateFieldValue>
+                        new()
                         {
                             new DemoObjectUpdateFieldValueOfEnabled
                             {

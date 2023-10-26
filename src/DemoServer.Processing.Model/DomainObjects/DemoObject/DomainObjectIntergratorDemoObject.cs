@@ -23,7 +23,7 @@ public class DomainObjectIntergratorDemoObject : BaseDomainObjectIntergrator<IUn
                     identityGroupId: entryPoint.PartitionsDay);
         container.Resolve<DomainObjectDataMappers>().AddMapper(dataMapper);
 
-        var lockUpdate = entryPoint.UnitOfWorkLocks.DemoObject;
+        var lockUpdate = entryPoint.UnitOfWorkLocks.UpdateDemoObject;
         container.Resolve<DomainObjectRegisters>().AddRegister(
             new DomainObjectRegisterStateless(
                 entryPoint.Context,

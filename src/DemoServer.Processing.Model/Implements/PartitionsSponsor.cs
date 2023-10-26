@@ -4,7 +4,6 @@ using ShtrihM.DemoServer.Processing.Common;
 using ShtrihM.DemoServer.Processing.Model.Interfaces;
 using ShtrihM.Wattle3.Common.Exceptions;
 using ShtrihM.Wattle3.DomainObjects.Interfaces;
-using ShtrihM.Wattle3.Infrastructures.Monitors;
 using ShtrihM.Wattle3.Mappers.Interfaces;
 using ShtrihM.Wattle3.OpenTelemetry;
 using ShtrihM.Wattle3.Primitives;
@@ -47,7 +46,7 @@ public class PartitionsSponsor : BaseServiceScheduled
             entryPoint.ExceptionPolicy,
             DomainObjectRegisterStateless.DefaultInitializeThreadEmergencyTimeout,
             WellknownCommonInfrastructureMonitors.GetDisplayName(WellknownCommonInfrastructureMonitors.PartitionsSponsor),
-            owner => new InfrastructureMonitorDrivenObject(
+            owner => new(
                 WellknownCommonInfrastructureMonitors.PartitionsSponsor,
                 WellknownCommonInfrastructureMonitors.GetDisplayName(WellknownCommonInfrastructureMonitors.PartitionsSponsor),
                 WellknownCommonInfrastructureMonitors.GetDisplayName(WellknownCommonInfrastructureMonitors.PartitionsSponsor),
@@ -57,7 +56,7 @@ public class PartitionsSponsor : BaseServiceScheduled
             loggerFactory.CreateLogger<PartitionsSponsor>())
     {
         m_entryPoint = entryPoint;
-        m_managers = new List<(Guid Id, IPartitionsManager Manager)>();
+        m_managers = new();
         foreach (var manager in GetAllPartitionsManagers(m_entryPoint.Mappers))
         {
             if (manager.Mapper.MapperId == WellknownMappers.TablePartition)
@@ -203,7 +202,7 @@ public class PartitionsSponsor : BaseServiceScheduled
                 var id = ComplexIdentity.Build(manager.Manager.Level, m_entryPoint.PartitionsDay.GetDayIndex(nowDay), m_mapperTablePartition.GetNextId(session));
                 m_mapperTablePartition.New(
                     session,
-                    new TablePartitionDtoNew
+                    new()
                     {
                         Id = id,
                         Day = nowDay,
@@ -261,7 +260,7 @@ public class PartitionsSponsor : BaseServiceScheduled
 
                 m_mapperTablePartition.New(
                     session,
-                    new TablePartitionDtoNew
+                    new()
                     {
                         Id = ComplexIdentity.Build(manager.Manager.Level, m_entryPoint.PartitionsDay.GetDayIndex(nowDay), m_mapperTablePartition.GetNextId(session)),
                         Day = nextDay,

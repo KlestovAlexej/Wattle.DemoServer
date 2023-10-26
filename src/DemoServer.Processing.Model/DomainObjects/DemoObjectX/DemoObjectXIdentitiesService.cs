@@ -51,7 +51,7 @@ public sealed class DemoObjectXIdentitiesService : BaseIdentitiesWithContextWith
 
         foreach (var identity in identities)
         {
-            yield return (identity.Id, new AlternativeKeyEntry(identity.Key1, identity.Key2), identity.Group);
+            yield return (identity.Id, new(identity.Key1, identity.Key2), identity.Group);
         }
     }
 }

@@ -22,17 +22,17 @@ public class LocksPoolSettings
     public LocksPoolSettings()
     {
         UpdateDemoObject =
-            new SettingValue<TimeSpan?>(
+            new(
                 default,
                 $"Интервал ожидания получение объекта из пула лок-объектов сценария обновления объекта '{WellknownDomainObjectDisplayNames.DisplayNamesProvider(WellknownDomainObjects.DemoObject)}'");
 
         UpdateDemoObjectX =
-            new SettingValue<TimeSpan?>(
+            new(
                 default,
                 $"Интервал ожидания получение объекта из пула лок-объектов сценария обновления объекта '{WellknownDomainObjectDisplayNames.DisplayNamesProvider(WellknownDomainObjects.DemoObjectX)}'");
 
         CreateDemoObjectX =
-            new SettingValue<TimeSpan?>(
+            new(
                 default,
                 $"Интервал ожидания получение объекта из пула лок-объектов сценария создания объекта '{WellknownDomainObjectDisplayNames.DisplayNamesProvider(WellknownDomainObjects.DemoObjectX)}'");
     }

@@ -14,11 +14,11 @@ public static class Constants
         if (assembly.IsDefined(typeof(AssemblyFileVersionAttribute), false))
         {
             var attibute = (AssemblyFileVersionAttribute)assembly.GetCustomAttributes(typeof(AssemblyFileVersionAttribute), false)[0];
-            ProductBuildVersion = new Version(attibute.Version);
+            ProductBuildVersion = new(attibute.Version);
         }
         else
         {
-            ProductBuildVersion = new Version(0, 0, 0, 0);
+            ProductBuildVersion = new(0, 0, 0, 0);
         }
         ProductVersion = assembly.GetName().Version;
     }

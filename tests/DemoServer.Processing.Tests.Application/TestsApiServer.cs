@@ -1,12 +1,10 @@
 ﻿using NUnit.Framework;
 using ShtrihM.DemoServer.Processing.Api.Clients;
-using ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject;
 using ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update;
 using ShtrihM.DemoServer.Testing;
 using ShtrihM.Wattle3.Testing;
 using ShtrihM.Wattle3.Utils;
 using System;
-using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -21,7 +19,7 @@ public class TestsApiServer : BaseSlimTests
     [SetUp]
     public void SetUp()
     {
-        m_appHost = new AppHost();
+        m_appHost = new();
         try
         {
             m_appHost.Start();
@@ -36,7 +34,7 @@ public class TestsApiServer : BaseSlimTests
         }
 
         m_httpClient =
-            new HttpClient
+            new()
             {
                 BaseAddress = m_appHost.UrlApiProcessing,
             };
@@ -82,7 +80,7 @@ public class TestsApiServer : BaseSlimTests
         {
             using IProcessingClient client = new ProcessingClient(m_httpClient);
             var info = await client.DemoObjectCreateAsync(
-                new DemoObjectCreate
+                new()
                 {
                     Enabled = true,
                     Name = "test",
@@ -93,11 +91,11 @@ public class TestsApiServer : BaseSlimTests
             Assert.IsNotNull(info);
 
             info = await client.DemoObjectUpdateAsync(
-                new DemoObjectUpdate
+                new()
                 {
                     Id = info.Id,
                     Fields =
-                        new List<BaseDemoObjectUpdateFieldValue>
+                        new()
                         {
                             new DemoObjectUpdateFieldValueOfEnabled
                             {

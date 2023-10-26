@@ -16,7 +16,7 @@ public class ExceptionPolicySettings
     public ExceptionPolicySettings()
     {
         ControllersEnabledUnexpectedException =
-            new SettingValue<bool>(default,
+            new(default,
                 "Разрешение контроллерам уведомлять о неожиданных исключениях");
     }
 

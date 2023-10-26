@@ -25,7 +25,7 @@ public class DomainObjectIntergratorDemoObjectX : BaseDomainObjectIntergrator<IU
                 entryPoint.SystemSettings.IdentityCachesSettings.Value.DemoObjectX.Value);
         container.Resolve<DomainObjectDataMappers>().AddMapper(dataMapper);
 
-        var lockUpdate = entryPoint.UnitOfWorkLocks.DemoObjectX;
+        var lockUpdate = entryPoint.UnitOfWorkLocks.UpdateDemoObjectX;
         var domainObjectActivator = 
             new DomainObjectActivatorDefault<DomainObjectDemoObjectX.Template, DomainObjectDemoObjectX>(entryPoint.UnitOfWorkProvider, entryPoint, lockUpdate);
         var domainObjectRegister
@@ -38,7 +38,7 @@ public class DomainObjectIntergratorDemoObjectX : BaseDomainObjectIntergrator<IU
 
         #region DomainObjectActivator + PreCreate
 
-        var lockActionCreate = entryPoint.UnitOfWorkLocks.UnitOfWorkLocksActions.CreateDemoObjectX;
+        var lockActionCreate = entryPoint.UnitOfWorkLocks.Actions.CreateDemoObjectX;
         domainObjectActivator.SetPreCreate(PreCreate, PreCreateAsync);
 
         void PreCreate(DomainObjectDemoObjectX.Template template)

@@ -6,7 +6,6 @@ using ShtrihM.DemoServer.Processing.Model.Interfaces;
 using ShtrihM.DemoServer.Processing.Tests.Model.Environment;
 using ShtrihM.Wattle3.DomainObjects.Interfaces;
 using ShtrihM.Wattle3.Testing;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
@@ -27,7 +26,7 @@ public class TestsEntryPointFacade : BaseTestsDomainObjects
 
         var info =
             await m_entryPoint.Facade.DemoObjectCreateAsync(
-                new DemoObjectCreate
+                new()
                 {
                     Enabled = true,
                     Name = "Name",
@@ -48,7 +47,7 @@ public class TestsEntryPointFacade : BaseTestsDomainObjects
         {
             info =
                 await m_entryPoint.Facade.DemoObjectCreateAsync(
-                    new DemoObjectCreate
+                    new()
                     {
                         Enabled = true,
                         Name = "Name",
@@ -77,7 +76,7 @@ public class TestsEntryPointFacade : BaseTestsDomainObjects
         {
             info =
                 await m_entryPoint.Facade.DemoObjectCreateAsync(
-                    new DemoObjectCreate
+                    new()
                     {
                         Enabled = true,
                         Name = "Name",
@@ -92,11 +91,11 @@ public class TestsEntryPointFacade : BaseTestsDomainObjects
             Assert.IsNotNull(demoObject);
 
             await demoObject.UpdateAsync(
-                new DemoObjectUpdate
+                new()
                 {
                     Id = info.Id,
                     Fields =
-                        new List<BaseDemoObjectUpdateFieldValue>
+                        new()
                         {
                             new DemoObjectUpdateFieldValueOfEnabled
                             {
@@ -119,11 +118,11 @@ public class TestsEntryPointFacade : BaseTestsDomainObjects
         {
             info =
                 await m_entryPoint.Facade.DemoObjectUpdateAsync(
-                    new DemoObjectUpdate
+                    new()
                     {
                         Id = info.Id,
                         Fields =
-                            new List<BaseDemoObjectUpdateFieldValue>
+                            new()
                             {
                                 new DemoObjectUpdateFieldValueOfEnabled
                                 {

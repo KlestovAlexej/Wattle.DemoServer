@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using ShtrihM.Wattle3.DomainObjects.UnitOfWorkLocks;
 
-namespace ShtrihM.DemoServer.Processing.Model.Implements.UnitOfWorkLocks;
+namespace ShtrihM.DemoServer.Processing.Model.Implements.UnitOfWorkLocks.Common;
 
 public sealed class UnitOfWorkLocksAction<TIdentity> where TIdentity : IEquatable<TIdentity>
 {
@@ -12,7 +12,7 @@ public sealed class UnitOfWorkLocksAction<TIdentity> where TIdentity : IEquatabl
     private readonly Guid m_id;
 
     public UnitOfWorkLocksAction(IUnitOfWorkLocksHub unitOfWorkLocksHub, Guid id)
-        // ReSharper disable once ConvertToPrimaryConstructor
+    // ReSharper disable once ConvertToPrimaryConstructor
     {
         m_locksHub = unitOfWorkLocksHub ?? throw new ArgumentNullException(nameof(unitOfWorkLocksHub));
         m_id = id;

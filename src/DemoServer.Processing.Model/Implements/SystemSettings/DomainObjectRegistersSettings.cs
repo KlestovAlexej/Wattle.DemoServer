@@ -23,12 +23,12 @@ public class DomainObjectRegistersSettings
     public DomainObjectRegistersSettings()
     {
         MemoryCacheDemoObjectX =
-            new SettingValue<MemoryCacheSettings>(
+            new(
                 default,
                 $"Настройки кэширования реестра доменных объектов - {WellknownDomainObjectDisplayNames.DisplayNamesProvider(WellknownDomainObjects.DemoObjectX)}");
 
         UseIdentitiesServices =
-            new SettingValue<bool>(
+            new(
                 default,
                 "Использовать реестры идентити объектов");
     }

@@ -27,12 +27,12 @@ public sealed class UnitOfWorkLocksHub : AbstractUnitOfWorkLocksHub
 
         AddDomainObject(
             WellknownCommonInfrastructureMonitors.LocksUpdateDemoObject,
-            entryPoint.SystemSettings.LocksPoolSettings.Value.UpdateDemoObject.Value,
+            m_entryPoint.SystemSettings.LocksPoolSettings.Value.UpdateDemoObject.Value,
             WellknownDomainObjects.DemoObject);
 
         AddDomainObject(
             WellknownCommonInfrastructureMonitors.LocksUpdateDemoObjectX,
-            entryPoint.SystemSettings.LocksPoolSettings.Value.UpdateDemoObjectX.Value,
+            m_entryPoint.SystemSettings.LocksPoolSettings.Value.UpdateDemoObjectX.Value,
             WellknownDomainObjects.DemoObjectX);
 
         Add(NewLocksPool<DemoObjectXIdentitiesService.AlternativeKeyEntry>(
