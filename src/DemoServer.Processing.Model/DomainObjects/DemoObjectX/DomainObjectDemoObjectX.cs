@@ -238,8 +238,11 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutable<DomainObje
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     private void DoPostCreate()
     {
+        /*
+         * Не использовать m_entryPoint.CreateDomainBehaviourWithСonfirmation<TMapper>
+         * Это не безопасно для надёжной работы логики так как объект удаляемый.
+        */
         var domainBehaviour = m_entryPoint.CreateDomainBehaviourWithСonfirmation();
-
         m_entryPoint.UnitOfWorkProvider.Instance.AddBehaviour(domainBehaviour);
 
         var identity = Identity;
