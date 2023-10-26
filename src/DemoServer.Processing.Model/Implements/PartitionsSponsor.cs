@@ -6,7 +6,6 @@ using ShtrihM.Wattle3.Common.Exceptions;
 using ShtrihM.Wattle3.DomainObjects.Interfaces;
 using ShtrihM.Wattle3.Infrastructures.Monitors;
 using ShtrihM.Wattle3.Mappers.Interfaces;
-using ShtrihM.Wattle3.Mappers.PostgreSql;
 using ShtrihM.Wattle3.OpenTelemetry;
 using ShtrihM.Wattle3.Primitives;
 using ShtrihM.Wattle3.Services;
@@ -108,7 +107,7 @@ public class PartitionsSponsor : BaseServiceScheduled
 
         Debug.Assert(m_manager != null, nameof(m_manager) + " != null");
 
-        DoCreate(nowDay, m_manager.Value, tracer);
+        DoCreate(nowDay, m_manager!.Value, tracer);
 
         foreach (var manager in m_managers)
         {

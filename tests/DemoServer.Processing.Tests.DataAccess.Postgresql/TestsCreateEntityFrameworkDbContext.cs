@@ -2,12 +2,12 @@
 using ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
 using ShtrihM.DemoServer.Processing.Generated.Tests;
 using ShtrihM.DemoServer.Testing;
-using ShtrihM.Wattle3.Mappers.PostgreSql;
 using ShtrihM.Wattle3.Testing;
 using System;
 using System.IO;
 using System.Text;
 using ShtrihM.DemoServer.Processing.Model.Implements;
+using ShtrihM.Wattle3.Mappers.Interfaces;
 
 namespace ShtrihM.DemoServer.Processing.Tests.DataAccess.PostgreSql;
 

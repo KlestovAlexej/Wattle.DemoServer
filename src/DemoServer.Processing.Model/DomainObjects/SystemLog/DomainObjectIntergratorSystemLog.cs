@@ -5,7 +5,6 @@ using ShtrihM.Wattle3.DomainObjects.DomainObjectsRegisters;
 using ShtrihM.DemoServer.Processing.Generated.Interface;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectActivators;
 using Unity;
-using ShtrihM.DemoServer.Processing.Model.Implements;
 
 namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.SystemLog;
 
@@ -21,7 +20,7 @@ public class DomainObjectIntergratorSystemLog : BaseDomainObjectIntergrator<IUni
                 <IMapperSystemLog, SystemLogDtoNew, SystemLogDtoActual>(
                     entryPoint.Context,
                     entryPoint.SystemSettings.IdentityCachesSettings.Value.SystemLog.Value,
-                    identityPrepare: DomainObjectIntergratorHelpers.GetIdentityPrepare<IMapperSystemLog>(entryPoint));
+                    identityGroupId: entryPoint.PartitionsDay);
         container.Resolve<DomainObjectDataMappers>().AddMapper(dataMapper);
 
         container.Resolve<DomainObjectRegisters>().AddRegister(

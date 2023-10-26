@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using ShtrihM.DemoServer.Processing.Generated.Interface;
 using ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements;
-using ShtrihM.Wattle3.Mappers.PostgreSql;
+using ShtrihM.Wattle3.Mappers.Interfaces;
 
 // ReSharper disable once CheckNamespace
 namespace ShtrihM.DemoServer.Processing.Generated.Tests;
