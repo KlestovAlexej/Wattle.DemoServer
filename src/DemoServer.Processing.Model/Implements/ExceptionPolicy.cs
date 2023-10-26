@@ -184,8 +184,8 @@ public class ExceptionPolicy : BaseExceptionPolicy
         if (m_tracer != null)
         {
             using var mainSpan = m_tracer.StartActiveSpan(nameof(DoWorkflowExceptionLogger), initialAttributes: SpanAttributes);
-            mainSpan?.SetAttribute(OpenTelemetryAttibutes.AttributeExceptionType, exception.GetType().FullName);
-            mainSpan?.SetAttribute(OpenTelemetryAttibutes.AttributeException, exception.ToString());
+            mainSpan.SetAttribute(OpenTelemetryAttibutes.AttributeExceptionType, exception.GetType().FullName);
+            mainSpan.SetAttribute(OpenTelemetryAttibutes.AttributeException, exception.ToString());
         }
     }
 
@@ -200,8 +200,8 @@ public class ExceptionPolicy : BaseExceptionPolicy
         if (m_tracer != null)
         {
             using var mainSpan = m_tracer.StartActiveSpan(nameof(DoInternalExceptionLogger), initialAttributes: SpanAttributes);
-            mainSpan?.SetAttribute(OpenTelemetryAttibutes.AttributeExceptionType, exception.GetType().FullName);
-            mainSpan?.SetAttribute(OpenTelemetryAttibutes.AttributeException, exception.ToString());
+            mainSpan.SetAttribute(OpenTelemetryAttibutes.AttributeExceptionType, exception.GetType().FullName);
+            mainSpan.SetAttribute(OpenTelemetryAttibutes.AttributeException, exception.ToString());
         }
 
         try
@@ -242,8 +242,8 @@ public class ExceptionPolicy : BaseExceptionPolicy
         if (m_tracer != null)
         {
             using var mainSpan = m_tracer.StartActiveSpan(nameof(DoExceptionLogger), initialAttributes: SpanAttributes);
-            mainSpan?.SetAttribute(OpenTelemetryAttibutes.AttributeExceptionType, exception.GetType().FullName);
-            mainSpan?.SetAttribute(OpenTelemetryAttibutes.AttributeException, exception.ToString());
+            mainSpan.SetAttribute(OpenTelemetryAttibutes.AttributeExceptionType, exception.GetType().FullName);
+            mainSpan.SetAttribute(OpenTelemetryAttibutes.AttributeException, exception.ToString());
         }
 
         if (exception is OperationCanceledException)
@@ -313,8 +313,8 @@ public class ExceptionPolicy : BaseExceptionPolicy
         if (m_tracer != null)
         {
             using var mainSpan = m_tracer.StartActiveSpan(nameof(DoMappersExceptionLogger), initialAttributes: SpanAttributes);
-            mainSpan?.SetAttribute(OpenTelemetryAttibutes.AttributeExceptionType, exception.GetType().FullName);
-            mainSpan?.SetAttribute(OpenTelemetryAttibutes.AttributeException, exception.ToString());
+            mainSpan.SetAttribute(OpenTelemetryAttibutes.AttributeExceptionType, exception.GetType().FullName);
+            mainSpan.SetAttribute(OpenTelemetryAttibutes.AttributeException, exception.ToString());
         }
 
         try
