@@ -51,7 +51,6 @@ public static class CallAsyncMethodsHelpers
         return false;
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     private static T GetResultValueTask1<T>(ValueTask<T> task)
     {
         var result = task.SafeGetResult();
