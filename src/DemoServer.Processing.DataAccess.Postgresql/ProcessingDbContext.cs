@@ -11,8 +11,8 @@ namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
 
 /// <summary>
 /// Контекст.
-///  <remarks>
-/// Для перегенерации контекста надо запустить руками тесты <code>ShtrihM.DemoServer.Processing.Tests.DataAccess.PostgreSql.TestsCreateEmptyDb</code>
+/// <remarks>
+/// Для перегенерации контекста надо запустить руками тест <code>ShtrihM.DemoServer.Processing.Tests.DataAccess.PostgreSql.TestsCreateEntityFrameworkDbContext</code>
 /// </remarks>
 ///  </summary>
 public partial class ProcessingDbContext
