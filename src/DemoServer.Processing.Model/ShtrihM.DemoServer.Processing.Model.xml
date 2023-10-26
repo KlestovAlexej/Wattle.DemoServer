@@ -4,12 +4,12 @@
         <name>ShtrihM.DemoServer.Processing.Model</name>
     </assembly>
     <members>
-        <member name="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.BaseDomainObjectMutable`1">
+        <member name="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.Common.BaseDomainObjectMutable`1">
             <summary>
             Базовая реализация доменного объекта с поддержкой изменения.
             </summary>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Model.DomainObjects.BaseDomainObjectMutable`1.DoUpdate">
+        <member name="M:ShtrihM.DemoServer.Processing.Model.DomainObjects.Common.BaseDomainObjectMutable`1.DoUpdate">
             <summary>
             Фиксация в <see cref="T:ShtrihM.Wattle3.DomainObjects.Interfaces.IUnitOfWork"/> изменений доменного объекта.
             </summary>
