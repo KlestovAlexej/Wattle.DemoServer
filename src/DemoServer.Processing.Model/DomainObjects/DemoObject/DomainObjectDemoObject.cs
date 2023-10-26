@@ -13,6 +13,7 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using ShtrihM.DemoServer.Processing.Generated.Interface;
+using ShtrihM.Wattle3.DomainObjects;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectActivators;
 using ShtrihM.Wattle3.Primitives;
 using ShtrihM.Wattle3.DomainObjects.UnitOfWorkLocks;
@@ -50,7 +51,7 @@ public sealed class DomainObjectDemoObject : BaseDomainObjectMutable<DomainObjec
                 ThrowsHelper.ThrowArgumentNullException(nameof(entryPoint));
             }
 
-            return entryPoint!.NewAsync<IDomainObjectDemoObject>(this, cancellationToken);
+            return entryPoint!.CurrentUnitOfWork.NewAsync<IDomainObjectDemoObject>(this, cancellationToken);
         }
     }
 

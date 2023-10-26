@@ -11,6 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
 using ShtrihM.DemoServer.Processing.Generated.Interface;
+using ShtrihM.Wattle3.DomainObjects;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectActivators;
 using ShtrihM.Wattle3.Mappers.Primitives;
 using ShtrihM.Wattle3.Primitives;
@@ -65,7 +66,7 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutable<DomainObje
                 ThrowsHelper.ThrowArgumentNullException(nameof(entryPoint));
             }
 
-            return entryPoint!.New<IDomainObjectDemoObjectX>(this);
+            return entryPoint!.CurrentUnitOfWork.New<IDomainObjectDemoObjectX>(this);
         }
     }
 
