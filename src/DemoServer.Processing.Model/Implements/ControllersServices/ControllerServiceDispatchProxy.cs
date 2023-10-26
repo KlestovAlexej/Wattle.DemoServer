@@ -56,6 +56,8 @@ public class ControllerServiceDispatchProxy<TService> : DispatchProxy
         }
         catch (WorkflowException exception)
         {
+            mainSpan?.RecordException(exception);
+
             ExceptionDispatchInfo.Capture(exception).Throw();
 
             throw;
