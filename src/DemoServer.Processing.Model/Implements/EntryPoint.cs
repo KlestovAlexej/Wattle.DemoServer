@@ -616,7 +616,13 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
 
         result.Facade =
             container.ResolveWithDefault(
-                () => new EntryPointFacade(result, tracer, loggerFactory.CreateLogger<EntryPointFacade>()));
+                () =>
+                {
+                    var entryPointFacade = new EntryPointFacade(result);
+                    var proxy = EntryPointFacadeDispatchProxy.CreateProxy(result, entryPointFacade);
+
+                    return proxy;
+                });
 
         result.m_queueEmergencyDomainBehaviour =
             container.ResolveWithDefault<IQueueItemProcessor>(

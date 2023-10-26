@@ -11,11 +11,11 @@ using System.Runtime.CompilerServices;
 using System.Runtime.ExceptionServices;
 using System.Threading;
 
-namespace ShtrihM.DemoServer.Processing.Model.Implements.ControllersServices;
+namespace ShtrihM.DemoServer.Processing.Model.Implements;
 
-public class ControllerServiceDispatchProxy<TService> : DispatchProxy
+public class EntryPointFacadeDispatchProxy : DispatchProxy
 {
-    private TService m_service;
+    private IEntryPointFacade m_service;
     private ILogger m_logger;
     private ICustomEntryPoint m_entryPoint;
     private SpanAttributes m_spanAttributes;
@@ -72,9 +72,9 @@ public class ControllerServiceDispatchProxy<TService> : DispatchProxy
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static TService CreateProxy(
+    public static IEntryPointFacade CreateProxy(
         ICustomEntryPoint entryPoint,
-        TService service)
+        IEntryPointFacade service)
     {
         if (entryPoint == null)
         {
@@ -85,20 +85,20 @@ public class ControllerServiceDispatchProxy<TService> : DispatchProxy
             ThrowsHelper.ThrowArgumentNullException(nameof(service));
         }
 
-        var logger = entryPoint!.LoggerFactory.CreateLogger<TService>();
+        var logger = entryPoint!.LoggerFactory.CreateLogger<IEntryPointFacade>();
         if (entryPoint.Tracer == null && false == logger.IsDebugEnabled())
         {
             return service;
         }
 
-        var proxy = Create<TService, ControllerServiceDispatchProxy<TService>>();
+        var proxy = Create<IEntryPointFacade, EntryPointFacadeDispatchProxy>();
 
         // ReSharper disable once SuspiciousTypeConversion.Global
-        var typedProxy = proxy as ControllerServiceDispatchProxy<TService>;
+        var typedProxy = proxy as EntryPointFacadeDispatchProxy;
         typedProxy!.m_service = service;
         typedProxy.m_entryPoint = entryPoint;
         typedProxy.m_logger = logger;
-        typedProxy.m_spanAttributes = new SpanAttributes().AddModuleType<ControllerServiceDispatchProxy<TService>>();
+        typedProxy.m_spanAttributes = new SpanAttributes().AddModuleType<EntryPointFacadeDispatchProxy>();
 
         return proxy;
     }
