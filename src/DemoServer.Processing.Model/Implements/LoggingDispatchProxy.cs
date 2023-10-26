@@ -22,13 +22,13 @@ public class LoggingDispatchProxy<TService> : DispatchProxy
 
     protected override object Invoke(MethodInfo targetMethod, object[] args)
     {
-        using var mainSpan = m_tracer.StartActiveSpan(targetMethod!.Name, initialAttributes: m_spanAttributes, kind: SpanKind.Server);
+        using var mainSpan = m_tracer?.StartActiveSpan(targetMethod!.Name, initialAttributes: m_spanAttributes, kind: SpanKind.Server);
 
         try
         {
             if (m_logger.IsDebugEnabled())
             {
-                var parameters = targetMethod.GetParameters();
+                var parameters = targetMethod!.GetParameters();
                 var text = $@"
 Метод '{targetMethod!.Name}'
 Аргументы ({parameters.Length}) :";
