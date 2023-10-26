@@ -619,7 +619,7 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
                 () =>
                 {
                     var entryPointFacade = new EntryPointFacade(result);
-                    var proxy = EntryPointFacadeDispatchProxy.CreateProxy(result, entryPointFacade);
+                    var proxy = LoggingDispatchProxy<IEntryPointFacade>.CreateProxy(result, entryPointFacade);
 
                     return proxy;
                 });

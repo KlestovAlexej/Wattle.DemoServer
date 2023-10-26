@@ -43,7 +43,20 @@ public static class EntryPointExtensions
                 var entryPoint = provider.GetRequiredService<ICustomEntryPoint>();
                 var service = new DemoObjectControllerService(entryPoint);
                 var result =
-                    ControllerServiceDispatchProxy<IDemoObjectControllerService>.CreateProxy(
+                    LoggingDispatchProxy<IDemoObjectControllerService>.CreateProxy(
+                        entryPoint,
+                        service);
+
+                return result;
+            });
+
+        services.AddSingleton(
+            provider =>
+            {
+                var entryPoint = provider.GetRequiredService<ICustomEntryPoint>();
+                var service = new ServerControllerService(entryPoint);
+                var result =
+                    LoggingDispatchProxy<IServerControllerService>.CreateProxy(
                         entryPoint,
                         service);
 

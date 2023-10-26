@@ -234,7 +234,7 @@ public class AppHost : IDisposable
             return;
         }
 
-        m_directoryLogs.SilentDispose();
+        // m_directoryLogs.SilentDispose();
 
         if (m_buildDb && m_dropDb)
         {

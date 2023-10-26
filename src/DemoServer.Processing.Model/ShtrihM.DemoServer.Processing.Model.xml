@@ -371,6 +371,11 @@
             </summary>
             <returns>Состояние.</returns>
         </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Model.Interfaces.IServerControllerService.GetDescription">
+            <summary>
+            Получить описание сервера.
+            </summary>
+        </member>
         <member name="P:ShtrihM.DemoServer.Processing.Model.Interfaces.ISnapShotInfrastructureMonitorCustomEntryPoint.ProcessId">
             <summary>
             Идентификатор процесса сервера.
