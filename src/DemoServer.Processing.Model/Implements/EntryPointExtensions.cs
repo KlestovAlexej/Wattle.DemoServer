@@ -67,7 +67,7 @@ public static class EntryPointExtensions
             o =>
             {
                 // Строка должна быть неизменной т.к. используется в скрипте создания контекста EF.
-                // Сотри тест ShtrihM.DemoServer.Processing.Tests.DataAccess.PostgreSql.TestsCreateEntityFrameworkDbContext
+                // Смотри тест ShtrihM.DemoServer.Processing.Tests.DataAccess.PostgreSql.TestsCreateEntityFrameworkDbContext
                 o.UseModel(DataAccess.PostgreSql.EfModelsOptimized.ProcessingDbContextModel.Instance);
 
                 o.UseNpgsql();
