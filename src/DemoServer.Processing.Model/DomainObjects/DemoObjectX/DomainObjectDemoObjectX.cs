@@ -9,13 +9,12 @@ using System;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
-using ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
 using ShtrihM.DemoServer.Processing.Generated.Interface;
 using ShtrihM.Wattle3.DomainObjects;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectActivators;
-using ShtrihM.Wattle3.Mappers.Primitives;
 using ShtrihM.Wattle3.Primitives;
 using ShtrihM.Wattle3.DomainObjects.UnitOfWorkLocks;
+using ShtrihM.DemoServer.Processing.Model.DomainObjects.Common;
 
 namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
 
@@ -269,30 +268,5 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutable<DomainObje
         base.DoUpdate();
 
         ModificationDate = m_entryPoint.TimeService.NowDateTime;
-    }
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static IMapperDto EntityToDto(Demoobjectx entity)
-    {
-        if (entity == null)
-        {
-            return null;
-        }
-
-        var result =
-            new DemoObjectXDtoActual
-            {
-                Name = entity!.Name,
-                CreateDate = entity.Createdate,
-                Enabled = entity.Enabled,
-                Group = entity.Group,
-                Id = entity.Id,
-                Key1 = entity.Key1,
-                Key2 = entity.Key2,
-                ModificationDate = entity.Modificationdate,
-                Revision = entity.Revision,
-            };
-
-        return result;
     }
 }

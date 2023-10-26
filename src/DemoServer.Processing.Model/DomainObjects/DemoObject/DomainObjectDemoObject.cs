@@ -17,6 +17,7 @@ using ShtrihM.Wattle3.DomainObjects;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectActivators;
 using ShtrihM.Wattle3.Primitives;
 using ShtrihM.Wattle3.DomainObjects.UnitOfWorkLocks;
+using ShtrihM.DemoServer.Processing.Model.DomainObjects.Common;
 
 namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObject;
 

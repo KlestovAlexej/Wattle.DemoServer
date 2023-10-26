@@ -18,6 +18,7 @@ using ShtrihM.DemoServer.Processing.Model.Implements;
 using ShtrihM.Wattle3.Common.Exceptions;
 using ShtrihM.Wattle3.Mappers.Primitives;
 using ShtrihM.Wattle3.Utils;
+using ShtrihM.DemoServer.Processing.Model.DomainObjects.Common;
 
 namespace ShtrihM.DemoServer.Processing.Tests.Model;
 
@@ -72,29 +73,29 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
 
             var instance =
                 register.Find(() =>
-                    DomainObjectDemoObjectX.EntityToDto(
-                        dbContext.Demoobjectx
-                            .SingleOrDefault(
-                                entity => entity.Id == id1)));
+                    dbContext.Demoobjectx
+                        .SingleOrDefault(
+                            entity => entity.Id == id1)
+                        .ToMapperDto());
             Assert.IsNotNull(instance);
             Assert.AreEqual(id1, instance.Identity);
 
             instance =
                 register.FindAsync(async ct =>
-                        DomainObjectDemoObjectX.EntityToDto(
-                            await dbContext.Demoobjectx
-                                .SingleOrDefaultAsync(
-                                    entity => entity.Id == id1, ct)))
+                        (await dbContext.Demoobjectx
+                            .SingleOrDefaultAsync(
+                                entity => entity.Id == id1, ct))
+                        .ToMapperDto())
                     .SafeGetResult();
             Assert.IsNotNull(instance);
             Assert.AreEqual(id1, instance.Identity);
 
             instance =
                 register.FindAsync(async ct =>
-                        DomainObjectDemoObjectX.EntityToDto(
-                            await dbContext.Demoobjectx
-                                .SingleOrDefaultAsync(
-                                    entity => entity.Id == -1, ct)))
+                        (await dbContext.Demoobjectx
+                            .SingleOrDefaultAsync(
+                                entity => entity.Id == -1, ct))
+                        .ToMapperDto())
                     .SafeGetResult();
             Assert.IsNull(instance);
 
@@ -102,7 +103,7 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
                 register.GetObjectEnumerator(() =>
                         dbContext.Demoobjectx
                             .Where(entity => entity.Id == id1)
-                            .Select(entity => DomainObjectDemoObjectX.EntityToDto(entity)))
+                            .Select(entity => entity.ToMapperDto()))
                     .ToList();
             Assert.IsNotNull(instances);
             Assert.AreEqual(1, instances.Count);
@@ -125,7 +126,7 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
                                        .WithCancellation(ct)
                                        .ConfigureAwait(false))
                     {
-                        yield return DomainObjectDemoObjectX.EntityToDto(entity);
+                        yield return entity.ToMapperDto();
                     }
                 }
             }
@@ -148,7 +149,7 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
                                        .WithCancellation(ct)
                                        .ConfigureAwait(false))
                     {
-                        yield return DomainObjectDemoObjectX.EntityToDto(entity);
+                        yield return entity.ToMapperDto();
                     }
                 }
             }
@@ -169,7 +170,7 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
                                        .WithCancellation(ct)
                                        .ConfigureAwait(false))
                     {
-                        yield return DomainObjectDemoObjectX.EntityToDto(entity);
+                        yield return entity.ToMapperDto();
                     }
                 }
             }

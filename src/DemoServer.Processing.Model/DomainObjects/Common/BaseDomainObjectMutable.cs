@@ -4,7 +4,7 @@ using ShtrihM.Wattle3.DomainObjects.DomainObjects;
 using ShtrihM.Wattle3.DomainObjects.Interfaces;
 using ShtrihM.Wattle3.Mappers.Primitives;
 
-namespace ShtrihM.DemoServer.Processing.Model.DomainObjects;
+namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.Common;
 
 /// <summary>
 /// Базовая реализация доменного объекта с поддержкой изменения.
