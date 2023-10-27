@@ -91,8 +91,6 @@ public class ExceptionPolicy : BaseExceptionPolicy
 
     protected override void DoNotfyNotfication(ExceptionPolicyNotfication notfication)
     {
-        m_metrics?.ExceptionsUnexpected.Add(1);
-
         DoNotficationLogger(notfication);
     }
 
@@ -379,6 +377,8 @@ public class ExceptionPolicy : BaseExceptionPolicy
         {
             return;
         }
+
+        m_metrics?.ExceptionsUnexpected.Add(1);
 
         try
         {
