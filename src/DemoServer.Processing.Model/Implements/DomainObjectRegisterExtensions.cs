@@ -19,12 +19,23 @@ public static class DomainObjectRegisterExtensions
             ThrowsHelper.ThrowArgumentNullException(nameof(register));
         }
 
-        var lockService =
-            ((ICustomEntryPoint)((UnitOfWork)register!.UnitOfWorkProvider.Instance).EntryPoint)
-            .UnitOfWorkLocks.GetLock(register.TypeId);
+        var lockService = register.EntryPoint().UnitOfWorkLocks.GetLock(register!.TypeId);
 
         lockService.Register(identity);
 
         return register;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    private static ICustomEntryPoint EntryPoint(this IDomainObjectRegister register)
+    {
+        if (register == null)
+        {
+            ThrowsHelper.ThrowArgumentNullException(nameof(register));
+        }
+
+        var result = (ICustomEntryPoint)((UnitOfWork)register!.UnitOfWorkProvider.Instance).EntryPoint;
+
+        return result;
     }
 }
