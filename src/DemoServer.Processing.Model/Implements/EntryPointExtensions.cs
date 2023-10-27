@@ -1,4 +1,4 @@
-п»їusing Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
@@ -76,7 +76,7 @@ public static class EntryPointExtensions
 
                 if (o.Options.FindExtension<CoreOptionsExtension>()!.Model == null)
                 {
-                    throw new InvalidOperationException("РњРѕРґРµР»СЊ РЅРµ РѕРїСЂРµРґРµР»РµРЅР°.");
+                    throw new InvalidOperationException("Модель не определена.");
                 }
             }
 #if DEBUG
