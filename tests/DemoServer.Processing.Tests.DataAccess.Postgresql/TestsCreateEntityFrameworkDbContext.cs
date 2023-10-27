@@ -47,8 +47,9 @@ public class TestsCreateEntityFrameworkDbContext : BaseAutoTestsMapper
             session.Commit();
         }
 
-        var pathDataAccess = ProviderProjectBasePath.GetFullPath(@"src\DemoServer.Processing.DataAccess.Postgresql");
-        var pathModel = ProviderProjectBasePath.GetFullPath(@"src\DemoServer.Processing.Model");
+        var pathSrc = "src";
+        var pathDataAccess = ProviderProjectBasePath.GetFullPath(pathSrc + @"\DemoServer.Processing.DataAccess.Postgresql");
+        var pathModel = ProviderProjectBasePath.GetFullPath(pathSrc + @"\DemoServer.Processing.Model");
         var text = new StringBuilder();
         var fileNameScrirpt = Path.Combine(Path.GetTempPath(), $"Make_{nameof(ProcessingDbContext)}.ps1");
 
