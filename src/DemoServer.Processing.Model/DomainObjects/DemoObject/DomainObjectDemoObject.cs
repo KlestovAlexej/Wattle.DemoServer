@@ -16,8 +16,8 @@ using ShtrihM.DemoServer.Processing.Generated.Interface;
 using ShtrihM.Wattle3.DomainObjects;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectActivators;
 using ShtrihM.Wattle3.Primitives;
-using ShtrihM.Wattle3.DomainObjects.UnitOfWorkLocks;
 using ShtrihM.DemoServer.Processing.Model.DomainObjects.Common;
+using ShtrihM.Wattle3.DomainObjects.UnitOfWorkLocks;
 
 namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObject;
 
@@ -58,7 +58,7 @@ public sealed class DomainObjectDemoObject : BaseDomainObjectMutable<DomainObjec
 
     #endregion
 
-    private readonly DomainObjectUnitOfWorkLocks m_lockUpdate;
+    private readonly IDomainObjectUnitOfWorkLockService m_lockUpdate;
 
     [DomainObjectFieldValue(DomainObjectDataTarget.Create, DomainObjectDataTarget.Update, DtoFiledName = nameof(DemoObjectDtoChanged.Enabled))]
     private MutableField<bool> m_enabled;
@@ -70,7 +70,7 @@ public sealed class DomainObjectDemoObject : BaseDomainObjectMutable<DomainObjec
     public DomainObjectDemoObject(
         DemoObjectDtoActual data,
         ICustomEntryPoint entryPoint,
-        DomainObjectUnitOfWorkLocks lockUpdate)
+        IDomainObjectUnitOfWorkLockService lockUpdate)
         : base(entryPoint, data)
     {
         m_lockUpdate = lockUpdate;
@@ -85,7 +85,7 @@ public sealed class DomainObjectDemoObject : BaseDomainObjectMutable<DomainObjec
         long identity,
         Template template,
         ICustomEntryPoint entryPoint,
-        DomainObjectUnitOfWorkLocks lockUpdate)
+        IDomainObjectUnitOfWorkLockService lockUpdate)
         : base(entryPoint, identity)
     {
         m_lockUpdate = lockUpdate;

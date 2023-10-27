@@ -21,13 +21,13 @@ public class UnitOfWorkLocksHubTyped : IDisposable
         var unitOfWorkProvider = entryPoint.UnitOfWorkProvider;
         var unitOfWorkLocks = () => ((UnitOfWork)unitOfWorkProvider.Instance).CurrentLocksGetOrCreate;
 
-        UpdateDemoObject = new(
+        UpdateDemoObject = new DomainObjectUnitOfWorkLockServiceDefault(
             Hub,
             WellknownCommonInfrastructureMonitors.LocksUpdateDemoObject,
             WellknownDomainObjects.DemoObject,
             unitOfWorkLocks);
 
-        UpdateDemoObjectX = new(
+        UpdateDemoObjectX = new DomainObjectUnitOfWorkLockServiceDefault(
             Hub,
             WellknownCommonInfrastructureMonitors.LocksUpdateDemoObjectX,
             WellknownDomainObjects.DemoObjectX,
@@ -36,8 +36,8 @@ public class UnitOfWorkLocksHubTyped : IDisposable
 
     public IUnitOfWorkLocksHub Hub { get; private set; }
     public readonly UnitOfWorkLocksActions Actions;
-    public readonly DomainObjectUnitOfWorkLocks UpdateDemoObject;
-    public readonly DomainObjectUnitOfWorkLocks UpdateDemoObjectX;
+    public readonly IDomainObjectUnitOfWorkLockService UpdateDemoObject;
+    public readonly IDomainObjectUnitOfWorkLockService UpdateDemoObjectX;
 
     public void Dispose()
     {

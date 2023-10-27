@@ -35,9 +35,15 @@ public sealed class UnitOfWorkLocksHub : AbstractUnitOfWorkLocksHub
             m_entryPoint.SystemSettings.LocksPoolSettings.Value.UpdateDemoObjectX.Value,
             WellknownDomainObjects.DemoObjectX);
 
-        Add(NewLocksPool<DemoObjectXIdentitiesService.AlternativeKeyEntry>(
+        AddLock<DemoObjectXIdentitiesService.AlternativeKeyEntry>(
             WellknownCommonInfrastructureMonitors.LocksCreateDemoObjectX,
-            m_entryPoint.SystemSettings.LocksPoolSettings.Value.CreateDemoObjectX.Value));
+            m_entryPoint.SystemSettings.LocksPoolSettings.Value.CreateDemoObjectX.Value);
+    }
+
+    private void AddLock<T>(Guid id, TimeSpan? lockWait)
+        where T : IEquatable<T>
+    {
+        Add(NewLocksPool<T>(id, lockWait));
     }
 
     private void AddDomainObject(Guid id, TimeSpan? lockWait, Guid typeId)

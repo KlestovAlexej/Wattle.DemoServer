@@ -84,7 +84,7 @@ public sealed class UnitOfWork(
     }
 
     protected override IUnitOfWorkLocks DoCreateLocks()
-        => new UnitOfWorkLocks.Common.UnitOfWorkLocks(
+        => new UnitOfWorkLocks.UnitOfWorkLocks(
             ((ICustomEntryPoint)m_context.EntryPoint).WorkflowExceptionPolicy,
             ((CustomUnitOfWorkContext)m_context).UnitOfWorkLocksHub);
 
