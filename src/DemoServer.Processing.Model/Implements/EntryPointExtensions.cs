@@ -2,12 +2,14 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
 using ShtrihM.DemoServer.Processing.Model.Implements.ControllersServices;
 using ShtrihM.DemoServer.Processing.Model.Interfaces;
 using ShtrihM.Wattle3.DomainObjects.Interfaces;
 using ShtrihM.Wattle3.Primitives;
 using System;
+using ShtrihM.Wattle3.DomainObjects;
 
 namespace ShtrihM.DemoServer.Processing.Model.Implements;
 
@@ -42,10 +44,11 @@ public static class EntryPointExtensions
             {
                 var entryPoint = provider.GetRequiredService<ICustomEntryPoint>();
                 var service = new DemoObjectControllerService(entryPoint);
-                var result =
+                var result = 
                     LoggingDispatchProxy<IDemoObjectControllerService>.CreateProxy(
-                        entryPoint,
-                        service);
+                        service, 
+                        entryPoint.LoggerFactory.CreateLogger<DemoObjectControllerService>(), 
+                        entryPoint.Tracer);
 
                 return result;
             });
@@ -57,8 +60,9 @@ public static class EntryPointExtensions
                 var service = new ServerControllerService(entryPoint);
                 var result =
                     LoggingDispatchProxy<IServerControllerService>.CreateProxy(
-                        entryPoint,
-                        service);
+                        service,
+                        entryPoint.LoggerFactory.CreateLogger<ServerControllerService>(),
+                        entryPoint.Tracer);
 
                 return result;
             });
