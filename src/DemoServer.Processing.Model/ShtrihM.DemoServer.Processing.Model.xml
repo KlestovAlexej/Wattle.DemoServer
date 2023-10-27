@@ -14,6 +14,12 @@
             Фиксация в <see cref="T:ShtrihM.Wattle3.DomainObjects.Interfaces.IUnitOfWork"/> изменений доменного объекта.
             </summary>
         </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Model.Implements.DomainObjectRegisterExtensions.LockRegister(ShtrihM.Wattle3.DomainObjects.Interfaces.IDomainObjectRegister,System.Int64)">
+            <summary>
+            Регистрация критической секции доменного объекта при его получении из реестра.
+            <example>К примеру <seealso cref="M:ShtrihM.Wattle3.DomainObjects.Interfaces.IDomainObjectRegister.Find(System.Int64)" />.</example>
+            </summary>
+        </member>
         <member name="F:ShtrihM.DemoServer.Processing.Model.Implements.Metrics.RequestsIncoming">
             <summary>
             Количество входящих запросов.

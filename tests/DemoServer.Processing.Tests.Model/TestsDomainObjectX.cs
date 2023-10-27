@@ -398,6 +398,11 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
             Assert.AreEqual(false, instance.Enabled);
             Assert.AreEqual("Name2", instance.Name);
 
+            instance = register.LockRegister(id).Find<IDomainObjectDemoObjectX>(id);
+            Assert.IsNotNull(instance);
+            Assert.AreEqual(false, instance.Enabled);
+            Assert.AreEqual("Name2", instance.Name);
+
             unitOfWork.Commit();
         }
 
