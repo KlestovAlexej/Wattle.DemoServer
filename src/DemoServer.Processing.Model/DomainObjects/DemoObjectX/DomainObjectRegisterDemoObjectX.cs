@@ -79,27 +79,27 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
     public IEnumerable<IDomainObjectDemoObjectX> GetCollectionByDemoGroup(
         long group)
     {
-        throw new NotImplementedException("Реализация в прокси.");
+        throw new NotSupportedException("Реализация в прокси.");
     }
 
     public IAsyncEnumerable<IDomainObjectDemoObjectX> GetCollectionByDemoGroupAsync(
         long group,
         CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException("Реализация в прокси.");
+        throw new NotSupportedException("Реализация в прокси.");
     }
 
     public IDomainObjectDemoObjectX FindByDemoAlternativeKey(
         DemoObjectXIdentitiesService.AlternativeKeyEntry alternativeKey)
     {
-        throw new NotImplementedException("Реализация в прокси.");
+        throw new NotSupportedException("Реализация в прокси.");
     }
 
     public ValueTask<IDomainObjectDemoObjectX> FindByDemoAlternativeKeyAsync(
         DemoObjectXIdentitiesService.AlternativeKeyEntry alternativeKey,
         CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException("Реализация в прокси.");
+        throw new NotSupportedException("Реализация в прокси.");
     }
 
     protected override AltProxyDomainObjectRegisterWithContextWithAlternativeKey<IDomainObjectDemoObjectX, DemoObjectXIdentitiesService.AlternativeKeyEntry, long>
