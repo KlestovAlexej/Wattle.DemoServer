@@ -37,8 +37,7 @@
 	- Реализация [высокоуровневого клиент](src/DemoServer.Processing.Api.Clients/ProcessingClient.cs) REST интерфейса на базе [RestSharp](https://restsharp.dev/)
 	- [Интеграционные тесты](tests/DemoServer.Processing.Tests.Application/TestsApiServer.cs) REST интерфейса
 - Интеграция с Entity Framework в рамках Unit of Work [c тестами](tests/DemoServer.Processing.Tests.Model/TestsUnitOfWork.cs)
-- Пример [логирующего прокси](src/DemoServer.Processing.Model/Implements/LoggingDispatchProxy.cs) с поддержкой [вызова асинхронных методов](src/DemoServer.Processing.Model/Implements/CallAsyncMethodsHelpers.cs)
-
+- Пример [логирующего прокси](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/86583a8d871adb4f1b40305163aee844d9616286/src/DemoServer.Processing.Model/Implements/EntryPointExtensions.cs#L62) с поддержкой вызова [асинхронных методов](https://learn.microsoft.com/ru-ru/dotnet/csharp/asynchronous-programming/)
 - Создан доменный объект [DemoObject](src/DemoServer.Processing.Model/DomainObjects/DemoObject/DomainObjectDemoObject.cs) доступный по REST интерфейсу
 	- Реализован [кэширующий маппер](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/061c419225f81fbdecfec4bce193b8e396812456/src/DemoServer.Processing.Common/WellknownDomainObjectFields.cs#L180) БД
 	- Данные в БД хранится [в партиционированных таблицах](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/061c419225f81fbdecfec4bce193b8e396812456/src/DemoServer.Processing.Common/WellknownDomainObjectFields.cs#L181)
