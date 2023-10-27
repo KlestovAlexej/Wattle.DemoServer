@@ -73,8 +73,6 @@ public class ExceptionPolicy : BaseExceptionPolicy
         m_metrics?.ExceptionsWorkflow.Add(1);
 
         DoWorkflowExceptionLogger(exception);
-
-        base.DoNotfyWorkflowException(exception);
     }
 
     protected override void DoNotfyInternalException(InternalException exception)
@@ -82,8 +80,6 @@ public class ExceptionPolicy : BaseExceptionPolicy
         m_metrics?.ExceptionsUnexpected.Add(1);
 
         DoInternalExceptionLogger(exception);
-
-        base.DoNotfyInternalException(exception);
     }
 
     protected override void DoNotfyUnexpectedException(Exception exception)
@@ -91,8 +87,13 @@ public class ExceptionPolicy : BaseExceptionPolicy
         m_metrics?.ExceptionsUnexpected.Add(1);
 
         DoExceptionLogger(exception);
+    }
 
-        base.DoNotfyUnexpectedException(exception);
+    protected override void DoNotfyNotfication(ExceptionPolicyNotfication notfication)
+    {
+        m_metrics?.ExceptionsUnexpected.Add(1);
+
+        DoNotficationLogger(notfication);
     }
 
     protected override void DoNotfyMappersException(MappersException exception)
@@ -100,8 +101,6 @@ public class ExceptionPolicy : BaseExceptionPolicy
         m_metrics?.ExceptionsUnexpected.Add(1);
 
         DoMappersExceptionLogger(exception);
-
-        base.DoNotfyMappersException(exception);
     }
 
     protected override WorkflowException DoApplyMappersException(MappersException exception)
@@ -345,6 +344,70 @@ public class ExceptionPolicy : BaseExceptionPolicy
             if (m_logger.IsCriticalEnabled())
             {
                 m_logger.LogCritical(exception2, "Ошибка логирования не предвиденной ошибки мапперов БД." + Environment.NewLine + exception);
+            }
+        }
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    private void DoNotficationLogger(ExceptionPolicyNotfication notfication)
+    {
+        if (m_tracer != null)
+        {
+            using var mainSpan = m_tracer.StartActiveSpan(nameof(DoNotficationLogger), initialAttributes: SpanAttributes);
+            mainSpan.SetAttribute(OpenTelemetryAttibutes.AttributeErrorMessage, notfication.ToString());
+        }
+
+        if (m_logger.IsEnabled(notfication.Level))
+        {
+            m_logger.Log(notfication.Level, $"Неожиданное уведомление.{Environment.NewLine}{notfication}");
+        }
+
+        int type;
+        if (notfication.Level == LogLevel.Warning)
+        {
+            type = WellknownSytemLogTypes.Warning;
+        }
+        else if (notfication.Level == LogLevel.Error)
+        {
+            type = WellknownSytemLogTypes.Error;
+        }
+        else if (notfication.Level == LogLevel.Critical)
+        {
+            type = WellknownSytemLogTypes.Fatal;
+        }
+        else
+        {
+            return;
+        }
+
+        try
+        {
+            var oldUnitOfWork = EntryPoint.UnitOfWorkProvider.SetCurrentUnitOfWork(null);
+            try
+            {
+                using var unitOfWork = EntryPoint.CreateUnitOfWork();
+
+                var register = unitOfWork.Registers.GetRegister(WellknownDomainObjects.SystemLog);
+
+                register.New(
+                    new DomainObjectSystemLog.Template(
+                        WellknownSytemLogCodes.UnexpectedException,
+                        type,
+                        notfication.Message,
+                        notfication.ToString()));
+
+                unitOfWork.Commit();
+            }
+            finally
+            {
+                EntryPoint.UnitOfWorkProvider.SetCurrentUnitOfWork(oldUnitOfWork);
+            }
+        }
+        catch (Exception exception2)
+        {
+            if (m_logger.IsCriticalEnabled())
+            {
+                m_logger.LogCritical(exception2, "Ошибка логирования неожиданного уведомления." + Environment.NewLine + notfication);
             }
         }
     }
