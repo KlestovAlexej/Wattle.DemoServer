@@ -60,7 +60,7 @@ public class TestsCreateEntityFrameworkDbContext : BaseAutoTestsMapper
         text.AppendLine($"Remove-Item -LiteralPath \"{Path.Combine(pathDataAccess, "EfModelsOptimized_old")}\" -Force -Recurse");
 
         var fileNameEntryPointExtensions = Path.Combine(Path.Combine(pathModel, "Implements"), $"{nameof(EntryPointExtensions)}.cs");
-        text.AppendLine($"(Get-Content \"{fileNameEntryPointExtensions}\").Replace('o.UseModel(DataAccess.PostgreSql.EfModelsOptimized.ProcessingDbContextModel.Instance);', '// o.UseModel(DataAccess.PostgreSql.EfModelsOptimized.ProcessingDbContextModel.Instance);') | Set-Content \"{fileNameEntryPointExtensions}\"");
+        text.AppendLine($"(Get-Content \"{fileNameEntryPointExtensions}\").Replace('o.UseModel(DbContextModel.Instance);', '// o.UseModel(DbContextModel.Instance);') | Set-Content \"{fileNameEntryPointExtensions}\"");
 
         var fileNameProcessingDbContext = Path.Combine(Path.Combine(pathDataAccess, "EfModels"), $"{nameof(ProcessingDbContext)}.cs");
         text.AppendLine($"(Get-Content \"{fileNameProcessingDbContext}\").Replace('$PD_', '') | Set-Content \"{fileNameProcessingDbContext}\"");
@@ -68,7 +68,7 @@ public class TestsCreateEntityFrameworkDbContext : BaseAutoTestsMapper
         text.AppendLine($"(Get-Content \"{fileNameProcessingDbContext}\").Replace('entity.HasKey(', '// entity.HasKey(') | Set-Content \"{fileNameProcessingDbContext}\"");
         text.AppendLine($"(Get-Content \"{fileNameProcessingDbContext}\").Replace('entity.HasIndex(', '// entity.HasIndex(') | Set-Content \"{fileNameProcessingDbContext}\"");
         text.AppendLine($"Optimize-DbContext -OutputDir EfModelsOptimized -Verbose -Context {nameof(ProcessingDbContext)} -StartupProject DemoServer.Processing.DataAccess.Postgresql -Project DemoServer.Processing.DataAccess.Postgresql");
-        text.AppendLine($"(Get-Content \"{fileNameEntryPointExtensions}\").Replace('// o.UseModel(DataAccess.PostgreSql.EfModelsOptimized.ProcessingDbContextModel.Instance);', 'o.UseModel(DataAccess.PostgreSql.EfModelsOptimized.ProcessingDbContextModel.Instance);') | Set-Content \"{fileNameEntryPointExtensions}\"");
+        text.AppendLine($"(Get-Content \"{fileNameEntryPointExtensions}\").Replace('// o.UseModel(DbContextModel.Instance);', 'o.UseModel(DbContextModel.Instance);') | Set-Content \"{fileNameEntryPointExtensions}\"");
         text.AppendLine($"Remove-Item -Path \"{fileNameScrirpt}\"");
         var scrirptText = text.ToString();
         File.WriteAllText(fileNameScrirpt, scrirptText);
