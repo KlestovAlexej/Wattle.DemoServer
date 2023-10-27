@@ -234,6 +234,32 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
             Assert.AreEqual(template.Key1, instance.Key1);
             Assert.AreEqual(template.Name, instance.Name);
 
+            var register = unitOfWork.Registers.GetRegister<IDomainObjectRegisterDemoObjectX>();
+
+            var instance2 = register.FindByKey(template.GetKey());
+            Assert.IsNotNull(instance2);
+            Assert.IsTrue(ReferenceEquals(instance, instance2));
+
+            instance2 = register.FindByDemoAlternativeKey(template.GetKey());
+            Assert.IsNotNull(instance2);
+            Assert.IsTrue(ReferenceEquals(instance, instance2));
+
+            instance2 = register.FindByDemoAlternativeKeyAsync(template.GetKey()).SafeGetResult();
+            Assert.IsNotNull(instance2);
+            Assert.IsTrue(ReferenceEquals(instance, instance2));
+
+            var instances = register.GetEnumeratorByContext(template.Group).ToList();
+            Assert.IsNotNull(instances);
+            Assert.AreEqual(0, instances.Count);
+
+            instances = register.GetCollectionByDemoGroup(template.Group).ToList();
+            Assert.IsNotNull(instances);
+            Assert.AreEqual(0, instances.Count);
+
+            instances = register.GetCollectionByDemoGroupAsync(template.Group).ToListAsync().SafeGetResult();
+            Assert.IsNotNull(instances);
+            Assert.AreEqual(0, instances.Count);
+
             unitOfWork.Commit();
         }
 
@@ -252,7 +278,27 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
             Assert.IsNotNull(instance2);
             Assert.IsTrue(ReferenceEquals(instance, instance2));
 
+            instance2 = register.FindByDemoAlternativeKey(template.GetKey());
+            Assert.IsNotNull(instance2);
+            Assert.IsTrue(ReferenceEquals(instance, instance2));
+
+            instance2 = register.FindByDemoAlternativeKeyAsync(template.GetKey()).SafeGetResult();
+            Assert.IsNotNull(instance2);
+            Assert.IsTrue(ReferenceEquals(instance, instance2));
+
             var instances = register.GetEnumeratorByContext(template.Group).ToList();
+            Assert.IsNotNull(instances);
+            Assert.AreEqual(1, instances.Count);
+            instance2 = instances[0];
+            Assert.IsTrue(ReferenceEquals(instance, instance2));
+
+            instances = register.GetCollectionByDemoGroup(template.Group).ToList();
+            Assert.IsNotNull(instances);
+            Assert.AreEqual(1, instances.Count);
+            instance2 = instances[0];
+            Assert.IsTrue(ReferenceEquals(instance, instance2));
+
+            instances = register.GetCollectionByDemoGroupAsync(template.Group).ToListAsync().SafeGetResult();
             Assert.IsNotNull(instances);
             Assert.AreEqual(1, instances.Count);
             instance2 = instances[0];
