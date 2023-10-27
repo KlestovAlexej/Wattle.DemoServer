@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Builder;
+п»їusing Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
@@ -70,15 +70,15 @@ public static class EntryPointExtensions
         services.AddPooledDbContextFactory<ProcessingDbContext>(
             o =>
             {
-                // Строка должна быть неизменной т.к. используется в скрипте создания контекста EF.
-                // Смотри тест ShtrihM.DemoServer.Processing.Tests.DataAccess.PostgreSql.TestsCreateEntityFrameworkDbContext
+                // РЎС‚СЂРѕРєР° РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РЅРµРёР·РјРµРЅРЅРѕР№ С‚.Рє. РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РІ СЃРєСЂРёРїС‚Рµ СЃРѕР·РґР°РЅРёСЏ РєРѕРЅС‚РµРєСЃС‚Р° EF.
+                // РЎРјРѕС‚СЂРё С‚РµСЃС‚ ShtrihM.DemoServer.Processing.Tests.DataAccess.PostgreSql.TestsCreateEntityFrameworkDbContext
                 o.UseModel(DataAccess.PostgreSql.EfModelsOptimized.ProcessingDbContextModel.Instance);
 
                 o.UseNpgsql();
 
                 if (o.Options.FindExtension<CoreOptionsExtension>()!.Model == null)
                 {
-                    throw new InvalidOperationException("Модель не определена.");
+                    throw new InvalidOperationException("РњРѕРґРµР»СЊ РЅРµ РѕРїСЂРµРґРµР»РµРЅР°.");
                 }
             }
 #if DEBUG
