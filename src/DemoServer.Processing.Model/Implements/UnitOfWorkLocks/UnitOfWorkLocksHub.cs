@@ -11,8 +11,6 @@ namespace ShtrihM.DemoServer.Processing.Model.Implements.UnitOfWorkLocks;
 
 public sealed class UnitOfWorkLocksHub : AbstractUnitOfWorkLocksHub
 {
-    private readonly ICustomEntryPoint m_entryPoint;
-
     public UnitOfWorkLocksHub(ICustomEntryPoint entryPoint)
         : base(
             entryPoint.UnitOfWorkProvider,
@@ -23,22 +21,24 @@ public sealed class UnitOfWorkLocksHub : AbstractUnitOfWorkLocksHub
 #endif
         )
     {
-        m_entryPoint = entryPoint;
+        EntryPoint = entryPoint;
 
         AddDomainObject(
             WellknownCommonInfrastructureMonitors.LocksUpdateDemoObject,
-            m_entryPoint.SystemSettings.LocksPoolSettings.Value.UpdateDemoObject.Value,
+            EntryPoint.SystemSettings.LocksPoolSettings.Value.UpdateDemoObject.Value,
             WellknownDomainObjects.DemoObject);
 
         AddDomainObject(
             WellknownCommonInfrastructureMonitors.LocksUpdateDemoObjectX,
-            m_entryPoint.SystemSettings.LocksPoolSettings.Value.UpdateDemoObjectX.Value,
+            EntryPoint.SystemSettings.LocksPoolSettings.Value.UpdateDemoObjectX.Value,
             WellknownDomainObjects.DemoObjectX);
 
         AddLock<DemoObjectXIdentitiesService.AlternativeKeyEntry>(
             WellknownCommonInfrastructureMonitors.LocksCreateDemoObjectX,
-            m_entryPoint.SystemSettings.LocksPoolSettings.Value.CreateDemoObjectX.Value);
+            EntryPoint.SystemSettings.LocksPoolSettings.Value.CreateDemoObjectX.Value);
     }
+
+    public readonly ICustomEntryPoint EntryPoint;
 
     private void AddLock<T>(Guid id, TimeSpan? lockWait)
         where T : IEquatable<T>
@@ -58,12 +58,12 @@ public sealed class UnitOfWorkLocksHub : AbstractUnitOfWorkLocksHub
                 id,
                 WellknownCommonInfrastructureMonitors.GetDisplayName(id),
                 WellknownCommonInfrastructureMonitors.GetDisplayName(id),
-                m_entryPoint.TimeService,
+                EntryPoint.TimeService,
                 lockWait);
 
         return result;
     }
 
     protected override DomainBehaviourWithСonfirmation CreateDomainBehaviourWithСonfirmation()
-        => m_entryPoint.CreateDomainBehaviourWithСonfirmation();
+        => EntryPoint.CreateDomainBehaviourWithСonfirmation();
 }

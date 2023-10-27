@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using ShtrihM.DemoServer.Processing.Common;
 using ShtrihM.DemoServer.Processing.Model.Interfaces;
+using ShtrihM.Wattle3.Common.Exceptions;
 using ShtrihM.Wattle3.DomainObjects.UnitOfWorkLocks;
 using ShtrihM.Wattle3.Utils;
 
@@ -8,6 +10,8 @@ namespace ShtrihM.DemoServer.Processing.Model.Implements.UnitOfWorkLocks;
 
 public class UnitOfWorkLocksHubTyped : IDisposable
 {
+    private readonly Dictionary<Guid, IDomainObjectUnitOfWorkLockService> m_locks;
+
     public UnitOfWorkLocksHubTyped(ICustomEntryPoint entryPoint)
     {
         if (entryPoint == null)
@@ -18,26 +22,31 @@ public class UnitOfWorkLocksHubTyped : IDisposable
         Hub = new UnitOfWorkLocksHub(entryPoint);
         Actions = new(Hub);
 
-        var unitOfWorkProvider = entryPoint.UnitOfWorkProvider;
-        var unitOfWorkLocks = () => ((UnitOfWork)unitOfWorkProvider.Instance).CurrentLocksGetOrCreate;
+        m_locks = new Dictionary<Guid, IDomainObjectUnitOfWorkLockService>();
 
-        UpdateDemoObject = new DomainObjectUnitOfWorkLockServiceDefault(
-            Hub,
+        UpdateDemoObject = DoCreate(
             WellknownCommonInfrastructureMonitors.LocksUpdateDemoObject,
-            WellknownDomainObjects.DemoObject,
-            unitOfWorkLocks);
+            WellknownDomainObjects.DemoObject);
 
-        UpdateDemoObjectX = new DomainObjectUnitOfWorkLockServiceDefault(
-            Hub,
+        UpdateDemoObjectX = DoCreate(
             WellknownCommonInfrastructureMonitors.LocksUpdateDemoObjectX,
-            WellknownDomainObjects.DemoObjectX,
-            unitOfWorkLocks);
+            WellknownDomainObjects.DemoObjectX);
     }
 
-    public IUnitOfWorkLocksHub Hub { get; private set; }
+    public UnitOfWorkLocksHub Hub { get; private set; }
     public readonly UnitOfWorkLocksActions Actions;
     public readonly IDomainObjectUnitOfWorkLockService UpdateDemoObject;
     public readonly IDomainObjectUnitOfWorkLockService UpdateDemoObjectX;
+
+    public IDomainObjectUnitOfWorkLockService GetLock(Guid typeId)
+    {
+        if (false == m_locks.TryGetValue(typeId, out var service))
+        {
+            throw new InternalException($"Не найдены сервисы лок-объекта для доменного объекта с типом '{typeId}'.");
+        }
+
+        return service;
+    }
 
     public void Dispose()
     {
@@ -46,5 +55,20 @@ public class UnitOfWorkLocksHubTyped : IDisposable
         temp.SilentDispose();
 
         GC.SuppressFinalize(this);
+    }
+
+    private IDomainObjectUnitOfWorkLockService DoCreate(Guid lockId, Guid typeId)
+    {
+        var unitOfWorkProvider = Hub.EntryPoint.UnitOfWorkProvider;
+        var result =
+            new DomainObjectUnitOfWorkLockServiceDefault(
+                Hub,
+                lockId,
+                typeId,
+                () => ((UnitOfWork)unitOfWorkProvider.Instance).CurrentLocksGetOrCreate);
+
+        m_locks.Add(typeId, result);
+
+        return result;
     }
 }

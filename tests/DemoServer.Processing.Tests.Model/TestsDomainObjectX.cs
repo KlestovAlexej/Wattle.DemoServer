@@ -386,10 +386,8 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
 
         using (var unitOfWork = m_entryPoint.CreateUnitOfWork())
         {
-            m_entryPoint.UnitOfWorkLocks.UpdateDemoObjectX.Register(id);
-
             var register = unitOfWork.Registers.GetRegister<IDomainObjectRegisterDemoObjectX>();
-            var instance = register.Find<IDomainObjectDemoObjectX>(id);
+            var instance = register.LockRegister(id).Find<IDomainObjectDemoObjectX>(id);
             Assert.IsNotNull(instance);
             Assert.AreEqual(true, instance.Enabled);
             Assert.AreEqual("Name", instance.Name);

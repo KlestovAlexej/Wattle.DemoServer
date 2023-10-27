@@ -50,10 +50,9 @@ public class EntryPointFacade : IEntryPointFacade
             throw new ArgumentNullException(nameof(parameters));
         }
 
-        m_entryPoint.UnitOfWorkLocks.UpdateDemoObject.Register(parameters.Id);
-
         var registerDemoObject = m_entryPoint.CurrentUnitOfWork.Registers.GetRegister(WellknownDomainObjects.DemoObject);
         var demoObject = await registerDemoObject
+            .LockRegister(parameters.Id)
             .FindAsync<IDomainObjectDemoObject>(parameters.Id, cancellationToken)
             .ConfigureAwait(false);
         if (demoObject == null)
