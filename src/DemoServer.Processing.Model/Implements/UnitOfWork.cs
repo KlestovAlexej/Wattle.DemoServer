@@ -11,10 +11,10 @@ using System;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
-using ShtrihM.DemoServer.Processing.Generated.Interface;
 using ShtrihM.Wattle3.DomainObjects;
 using Microsoft.EntityFrameworkCore;
 using ShtrihM.Wattle3.DomainObjects.UnitOfWorkLocks;
+using ShtrihM.Wattle3.Mappers.Interfaces;
 
 namespace ShtrihM.DemoServer.Processing.Model.Implements;
 
@@ -61,9 +61,8 @@ public sealed class UnitOfWork(
             new UnitOfWorkCommitVerifyingDelegate(
                 mappersSession =>
                 {
-                    var entryPoint = (ICustomEntryPoint)m_context.EntryPoint;
-                    var mapper = entryPoint.Mappers.GetMapper<IMapperChangeTracker>();
-                    var existsRaw = mapper.ExistsRaw(mappersSession, identity);
+                    var context = (CustomUnitOfWorkContext)m_context;
+                    var existsRaw = context.MapperChangeTracker.ExistsRaw(mappersSession, identity);
 
                     return (existsRaw
                         ? UnitOfWorkCommitVerifyingResult.Successfully
@@ -71,9 +70,8 @@ public sealed class UnitOfWork(
                 },
                 async mappersSession =>
                 {
-                    var entryPoint = (ICustomEntryPoint)m_context.EntryPoint;
-                    var mapper = entryPoint.Mappers.GetMapper<IMapperChangeTracker>();
-                    var existsRaw = await mapper.ExistsRawAsync(mappersSession, identity).ConfigureAwait(false);
+                    var context = (CustomUnitOfWorkContext)m_context;
+                    var existsRaw = await context.MapperChangeTracker.ExistsRawAsync(mappersSession, identity).ConfigureAwait(false);
 
                     return (existsRaw
                         ? UnitOfWorkCommitVerifyingResult.Successfully
@@ -115,6 +113,21 @@ public sealed class UnitOfWork(
         return result;
     }
 
+    public IDomainBehaviourWithСonfirmation CreateDomainBehaviourWithСonfirmation<TMapper>(long identity)
+        where TMapper : IMapper
+    {
+        var result = CreateDomainBehaviourWithСonfirmation(() => DoCreateDomainBehaviourWithСonfirmation<TMapper>(identity));
+
+        return result;
+    }
+
+    public IDomainBehaviourWithСonfirmation CreateDomainBehaviourWithСonfirmation()
+    {
+        var result = DoCreateDomainBehaviourWithСonfirmation();
+
+        return result;
+    }
+
     async ValueTask<DbContext> IUnitOfWorkDbContextFactory.NewDbContextAsync(bool useTransaction, CancellationToken cancellationToken)
     {
         var result = await NewDbContextAsync(useTransaction, cancellationToken).ConfigureAwait(false);
@@ -129,10 +142,24 @@ public sealed class UnitOfWork(
         return result;
     }
 
-    public override IDomainBehaviourWithСonfirmation CreateDomainBehaviourWithСonfirmation()
+    private IUnitOfWorkCommitVerifying DoCreateDomainBehaviourWithСonfirmation<TMapper>(long identity)
+        where TMapper : IMapper
     {
-        var entryPoint = (ICustomEntryPoint)m_context.EntryPoint;
-        var result = entryPoint.CreateDomainBehaviourWithСonfirmation();
+        var context = (CustomUnitOfWorkContext)m_context;
+        var result = DomainObjectsHelpers.CreateUnitOfWorkCommitVerifyingDelegate<TMapper>(identity, context.Mappers);
+
+        return result;
+    }
+
+    protected override IDomainBehaviourWithСonfirmation DoCreateDomainBehaviourWithСonfirmation()
+    {
+        var context = (CustomUnitOfWorkContext)m_context;
+        var result =
+            new DomainBehaviourWithСonfirmation(
+                m_context.ExceptionPolicy,
+                m_context.Mappers,
+                context.QueueEmergencyDomainBehaviour,
+                CommitVerifying);
 
         return result;
     }

@@ -356,4 +356,15 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
 
         return result;
     }
+
+    protected override IUnitOfWorkCommitVerifying CreateUnitOfWorkCommitVerifyingDelegate(IDomainObject domainObject)
+    {
+        /*
+         * Не использовать стратегию по умолчанию - проверка существования объекта в БД по идентити.
+         * Это не безопасно для надёжной работы логики так как объект удаляемый.
+         */
+        var result = m_unitOfWorkProvider.Instance.CommitVerifying;
+
+        return result;
+    }
 }

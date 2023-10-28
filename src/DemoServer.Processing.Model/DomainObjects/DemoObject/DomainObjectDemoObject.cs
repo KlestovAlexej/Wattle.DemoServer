@@ -188,9 +188,9 @@ public sealed class DomainObjectDemoObject : BaseDomainObjectMutable<DomainObjec
     public void PostCreate()
     {
         var identity = Identity;
-        var domainBehaviour = m_entryPoint.CreateDomainBehaviourWithСonfirmation<IMapperDemoObject>(identity);
-
-        m_entryPoint.CurrentUnitOfWork.AddBehaviour(domainBehaviour);
+        var unitOfWork = m_entryPoint.CurrentUnitOfWork;
+        var domainBehaviour = unitOfWork.CreateDomainBehaviourWithСonfirmation<IMapperDemoObject>(identity);
+        unitOfWork.AddBehaviour(domainBehaviour);
 
         domainBehaviour.SetFailAll(
             () =>

@@ -14,7 +14,6 @@ using ShtrihM.Wattle3.Common.Exceptions;
 using ShtrihM.Wattle3.Common.Interfaces;
 using ShtrihM.Wattle3.DomainObjects;
 using ShtrihM.Wattle3.DomainObjects.Common;
-using ShtrihM.Wattle3.DomainObjects.DomainBehaviours;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectDataMappers;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectIntergrators;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectsRegisters;
@@ -220,49 +219,6 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
         Tracer = tracer;
 
         m_proxyDomainObjectRegisterFactories.AddFactories(GetType().Assembly);
-    }
-
-    public DomainBehaviourWithСonfirmation CreateDomainBehaviourWithСonfirmation<TMapper>(long identity)
-        where TMapper : IMapper
-    {
-        using var mainSpan = Tracer?.StartActiveSpan(nameof(CreateDomainBehaviourWithСonfirmation), initialAttributes: SpanAttributes);
-
-        var unitOfWork = m_unitOfWorkProvider.Instance;
-        if (false == unitOfWork.IsDefinedCommitVerifying)
-        {
-            var commitVerifying = DomainObjectsHelpers.CreateUnitOfWorkCommitVerifyingDelegate<TMapper>(identity, Mappers);
-            unitOfWork.CommitVerifying = commitVerifying;
-
-            mainSpan?.AddEvent(OpenTelemetryConstants.EventNotDefinedCommitVerifying);
-        }
-        else
-        {
-            mainSpan?.AddEvent(OpenTelemetryConstants.EventDefinedCommitVerifying);
-        }
-
-        var result =
-            new DomainBehaviourWithСonfirmation(
-                ExceptionPolicy,
-                Mappers,
-                m_queueEmergencyDomainBehaviour,
-                unitOfWork.CommitVerifying);
-
-        return result;
-    }
-
-    public DomainBehaviourWithСonfirmation CreateDomainBehaviourWithСonfirmation()
-    {
-        using var mainSpan = Tracer?.StartActiveSpan(nameof(CreateDomainBehaviourWithСonfirmation), initialAttributes: SpanAttributes);
-
-        var unitOfWork = m_unitOfWorkProvider.Instance;
-        var result =
-            new DomainBehaviourWithСonfirmation(
-                ExceptionPolicy,
-                Mappers,
-                m_queueEmergencyDomainBehaviour,
-                unitOfWork.CommitVerifying);
-
-        return result;
     }
 
 #if DEBUG
@@ -685,7 +641,8 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
                 result.m_unitOfWorkProvider,
                 serviceProvider.GetService<IDbContextFactory<ProcessingDbContext>>(),
                 serviceProvider,
-                result.UnitOfWorkLocks.Hub);
+                result.UnitOfWorkLocks.Hub,
+                result.m_queueEmergencyDomainBehaviour);
 
         return (result);
     }

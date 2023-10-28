@@ -213,7 +213,7 @@ public class TestsUnitOfWork : BaseTestsDomainObjects
             Assert.IsTrue(ReferenceEquals(commitVerifying, unitOfWork.CommitVerifying));
 
             var domainBehaviour =
-                m_entryPoint.CreateDomainBehaviourWithСonfirmation()
+                m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithСonfirmation()
                     .SetSuccessful(
                         () => commitState.IsSuccessful = true,
                         () =>
@@ -256,7 +256,7 @@ public class TestsUnitOfWork : BaseTestsDomainObjects
         using (var unitOfWork = m_entryPoint.CreateUnitOfWork())
         {
             var domainBehaviour =
-                m_entryPoint.CreateDomainBehaviourWithСonfirmation()
+                m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithСonfirmation()
                     .SetSuccessful(
                         () => commitState.IsSuccessful = true,
                         () =>
@@ -302,7 +302,7 @@ public class TestsUnitOfWork : BaseTestsDomainObjects
         using (var unitOfWork = m_entryPoint.CreateUnitOfWork())
         {
             var domainBehaviour =
-                m_entryPoint.CreateDomainBehaviourWithСonfirmation()
+                m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithСonfirmation()
                     .SetSuccessful(
                         () => commitState.IsSuccessful = true,
                         () =>

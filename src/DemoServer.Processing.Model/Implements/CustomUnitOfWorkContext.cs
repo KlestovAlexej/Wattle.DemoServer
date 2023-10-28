@@ -6,10 +6,14 @@ using ShtrihM.Wattle3.DomainObjects.UnitOfWorkLocks;
 using ShtrihM.Wattle3.DomainObjects.UnitOfWorks;
 using ShtrihM.Wattle3.Mappers.Interfaces;
 using System;
+using ShtrihM.DemoServer.Processing.Generated.Interface;
+using ShtrihM.Wattle3.QueueProcessors.Interfaces;
 
 namespace ShtrihM.DemoServer.Processing.Model.Implements;
 
-public sealed class CustomUnitOfWorkContext(
+public sealed class CustomUnitOfWorkContext : UnitOfWorkContext
+{
+    public CustomUnitOfWorkContext(
         IEntryPoint entryPoint,
         IDomainObjectDataMappers dataMappers,
         IMappers mappers,
@@ -20,21 +24,27 @@ public sealed class CustomUnitOfWorkContext(
         IUnitOfWorkProvider unitOfWorkProvider,
         IDbContextFactory<ProcessingDbContext> pooledDbContextFactory,
         IServiceProvider serviceProvider,
-        IUnitOfWorkLocksHub unitOfWorkLocksHub)
-    : UnitOfWorkContext(
-        entryPoint,
-        dataMappers,
-        mappers,
-        exceptionPolicy,
-        workflowExceptionPolicy,
-        logger,
-        addStackTrace,
-        unitOfWorkProvider,
-        serviceProvider)
-{
-    public readonly IUnitOfWorkLocksHub UnitOfWorkLocksHub =
-        unitOfWorkLocksHub ?? throw new ArgumentNullException(nameof(unitOfWorkLocksHub));
+        IUnitOfWorkLocksHub unitOfWorkLocksHub,
+        IQueueItemProcessor queueEmergencyDomainBehaviour)
+        : base(
+            entryPoint,
+            dataMappers,
+            mappers,
+            exceptionPolicy,
+            workflowExceptionPolicy,
+            logger,
+            addStackTrace,
+            unitOfWorkProvider,
+            serviceProvider)
+    {
+        QueueEmergencyDomainBehaviour = queueEmergencyDomainBehaviour ?? throw new ArgumentNullException(nameof(queueEmergencyDomainBehaviour));
+        UnitOfWorkLocksHub = unitOfWorkLocksHub ?? throw new ArgumentNullException(nameof(unitOfWorkLocksHub));
+        PooledDbContextFactory = pooledDbContextFactory ?? throw new ArgumentNullException(nameof(pooledDbContextFactory));
+        MapperChangeTracker = mappers.GetMapper<IMapperChangeTracker>();
+    }
 
-    public readonly IDbContextFactory<ProcessingDbContext> PooledDbContextFactory =
-        pooledDbContextFactory ?? throw new ArgumentNullException(nameof(pooledDbContextFactory));
+    public readonly IMapperChangeTracker MapperChangeTracker;
+    public readonly IQueueItemProcessor QueueEmergencyDomainBehaviour;
+    public readonly IUnitOfWorkLocksHub UnitOfWorkLocksHub;
+    public readonly IDbContextFactory<ProcessingDbContext> PooledDbContextFactory;
 }

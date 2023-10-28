@@ -2,7 +2,6 @@
 using ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
 using ShtrihM.DemoServer.Processing.Model.Interfaces;
 using ShtrihM.Wattle3.DomainObjects;
-using ShtrihM.Wattle3.DomainObjects.DomainBehaviours;
 using ShtrihM.Wattle3.DomainObjects.Interfaces;
 using ShtrihM.Wattle3.DomainObjects.UnitOfWorkLocks;
 using System;
@@ -64,6 +63,10 @@ public sealed class UnitOfWorkLocksHub : AbstractUnitOfWorkLocksHub
         return result;
     }
 
-    protected override DomainBehaviourWithСonfirmation CreateDomainBehaviourWithСonfirmation()
-        => EntryPoint.CreateDomainBehaviourWithСonfirmation();
+    protected override IDomainBehaviourWithСonfirmation CreateDomainBehaviourWithСonfirmation()
+    {
+        var result = EntryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithСonfirmation();
+
+        return result;
+    }
 }
