@@ -397,14 +397,16 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
             Assert.IsNotNull(instance);
             Assert.IsTrue(ReferenceEquals(instance, instance1));
 
-            var newName = "0000000000000";
+            var newName1 = "00000000000001";
+            var newName2 = "00000000000002";
+            var newName3 = "00000000000003";
 
             // Изменяем доменные объекты
             // Теперь поиск по БД их находит
             // Но на уровне прокси-реестра проверка определяет что объекты в памяти не соответствуют критериям выборки
-            instance1.Name = newName;
-            instance2.Name = newName;
-            instance3.Name = newName;
+            instance1.Name = newName1;
+            instance2.Name = newName2;
+            instance3.Name = newName3;
 
             instances = register.GetCollectionByNameSize(1).ToList();
             Assert.AreEqual(0, instances.Count);
@@ -418,6 +420,12 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
             instances = register.GetCollectionByNameSize(7).ToList();
             Assert.AreEqual(0, instances.Count);
 
+            instances = register.GetCollectionByNameSize(newName1.Length).ToList();
+            Assert.AreEqual(3, instances.Count);
+            Assert.IsTrue(instances.Any(i => ReferenceEquals(i, instance1)));
+            Assert.IsTrue(instances.Any(i => ReferenceEquals(i, instance2)));
+            Assert.IsTrue(instances.Any(i => ReferenceEquals(i, instance3)));
+
             instances = register.GetCollectionByNameSizeAsync(1).ToListAsync().SafeGetResult();
             Assert.AreEqual(0, instances.Count);
 
@@ -430,14 +438,21 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
             instances = register.GetCollectionByNameSizeAsync(7).ToListAsync().SafeGetResult();
             Assert.AreEqual(0, instances.Count);
 
+            instances = register.GetCollectionByNameSizeAsync(newName1.Length).ToListAsync().SafeGetResult();
+            Assert.AreEqual(3, instances.Count);
+            Assert.IsTrue(instances.Any(i => ReferenceEquals(i, instance1)));
+            Assert.IsTrue(instances.Any(i => ReferenceEquals(i, instance2)));
+            Assert.IsTrue(instances.Any(i => ReferenceEquals(i, instance3)));
+
             instance = register.GetByName("xxx");
             Assert.IsNull(instance);
 
             instance = register.GetByName("Name1");
             Assert.IsNull(instance);
 
-            instance = register.GetByName(newName);
-            Assert.IsNull(instance);
+            instance = register.GetByName(newName1);
+            Assert.IsNotNull(instance);
+            Assert.IsTrue(ReferenceEquals(instance, instance1));
 
             instance = register.GetByNameAsync("xxx").SafeGetResult();
             Assert.IsNull(instance);
@@ -445,8 +460,9 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
             instance = register.GetByNameAsync("Name1").SafeGetResult();
             Assert.IsNull(instance);
 
-            instance = register.GetByNameAsync(newName).SafeGetResult();
-            Assert.IsNull(instance);
+            instance = register.GetByNameAsync(newName1).SafeGetResult();
+            Assert.IsNotNull(instance);
+            Assert.IsTrue(ReferenceEquals(instance, instance1));
         }
     }
 

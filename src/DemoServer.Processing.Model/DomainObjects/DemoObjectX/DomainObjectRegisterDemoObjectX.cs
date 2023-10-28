@@ -33,8 +33,15 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
             result = SafeTryRegister(result);
 
             // Поле Name изменяемое
-            // Проверка объекта соответсви. критерию выборки т.к. он могбыть взят из локального реестра и он не соответствует критерию выборки т.к. мог быть изменён
+            // Проверка объекта на соответствие критерию выборки т.к. он могбыть взят из локального реестра и он не соответствует критерию выборки т.к. мог быть изменён
             result = DoGetByName(result, name);
+
+            // Поле Name изменяемое
+            // Проверка объектов локального реестра на соответствие критерию выборки
+            result ??=
+                GetLocalEnumerable()
+                    .Cast<IDomainObjectDemoObjectX>()
+                    .FirstOrDefault(domainObject => DoGetByName(domainObject, name) != null);
 
             return result;
         }
@@ -50,8 +57,15 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
             result = SafeTryRegister(result);
 
             // Поле Name изменяемое
-            // Проверка объекта соответсви. критерию выборки т.к. он могбыть взят из локального реестра и он не соответствует критерию выборки т.к. мог быть изменён
+            // Проверка объекта на соответствие критерию выборки т.к. он могбыть взят из локального реестра и он не соответствует критерию выборки т.к. мог быть изменён
             result = DoGetByName(result, name);
+
+            // Поле Name изменяемое
+            // Проверка объектов локального реестра на соответствие критерию выборки
+            result ??=
+                GetLocalEnumerable()
+                    .Cast<IDomainObjectDemoObjectX>()
+                    .FirstOrDefault(domainObject => DoGetByName(domainObject, name) != null);
 
             return result;
         }
@@ -61,14 +75,17 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
         {
             var register = (IDomainObjectRegisterDemoObjectX)m_register;
 
-            // Любой доменный объект полученный из реестра необходимо всегда регистрировать в локальном реестре.
-            var instances = DoForEach(register.GetCollectionByNameSize(size));
-
-            foreach (var domainObject in instances)
+            foreach (var domainObject in register.GetCollectionByNameSize(size))
             {
-                // Поле Name изменяемое
-                // Проверка объекта соответсви. критерию выборки т.к. он могбыть взят из локального реестра и он не соответствует критерию выборки т.к. мог быть изменён
-                var result = DoGetByNameSize(domainObject, size);
+                // Любой доменный объект полученный из реестра необходимо всегда регистрировать в локальном реестре.
+                SafeTryRegister(domainObject);
+            }
+
+            // Поле Name изменяемое
+            // Проверка объектов локального реестра на соответствие критерию выборки
+            foreach (var domainObject in GetLocalEnumerable())
+            {
+                var result = DoGetByNameSize((IDomainObjectDemoObjectX)domainObject, size);
 
                 if (result == null)
                 {
@@ -85,14 +102,17 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
         {
             var register = (IDomainObjectRegisterDemoObjectX)m_register;
 
-            // Любой доменный объект полученный из реестра необходимо всегда регистрировать в локальном реестре.
-            var instances = DoForEachAsync(register.GetCollectionByNameSizeAsync(size, cancellationToken), cancellationToken);
-
-            await foreach (var domainObject in instances.ConfigureAwait(false))
+            await foreach (var domainObject in register.GetCollectionByNameSizeAsync(size, cancellationToken).ConfigureAwait(false))
             {
-                // Поле Name изменяемое
-                // Проверка объекта соответсви. критерию выборки т.к. он могбыть взят из локального реестра и он не соответствует критерию выборки т.к. мог быть изменён
-                var result = DoGetByNameSize(domainObject, size);
+                // Любой доменный объект полученный из реестра необходимо всегда регистрировать в локальном реестре.
+                await SafeTryRegisterAsync(domainObject, cancellationToken).ConfigureAwait(false);
+            }
+
+            // Поле Name изменяемое
+            // Проверка объектов локального реестра на соответствие критерию выборки
+            foreach (var domainObject in GetLocalEnumerable())
+            {
+                var result = DoGetByNameSize((IDomainObjectDemoObjectX)domainObject, size);
 
                 if (result == null)
                 {
@@ -262,7 +282,7 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
         var result =
             Find(
                 () => dbContext.Demoobjectx
-                    .SingleOrDefault(entity => entity.Name == name)
+                    .FirstOrDefault(entity => entity.Name == name)
                     .ToMapperDto());
 
         return (IDomainObjectDemoObjectX)result;
@@ -279,7 +299,7 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
             await FindAsync(
                 async ct =>
                     (await dbContext.Demoobjectx
-                        .SingleOrDefaultAsync(entity => entity.Name == name, cancellationToken: ct)
+                        .FirstOrDefaultAsync(entity => entity.Name == name, cancellationToken: ct)
                         .ConfigureAwait(false))
                     .ToMapperDto(),
                 cancellationToken);
