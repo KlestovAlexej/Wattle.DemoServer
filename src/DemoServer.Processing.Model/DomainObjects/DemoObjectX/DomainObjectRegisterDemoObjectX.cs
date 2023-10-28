@@ -21,88 +21,80 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
 {
     #region ProxyDomainObjectRegister
 
+    [SuppressMessage("ReSharper", "AccessToDisposedClosure")]
     private class ProxyDomainObjectRegister : AltProxyDomainObjectRegisterWithContextWithAlternativeKey<IDomainObjectDemoObjectX, DemoObjectXIdentitiesService.AlternativeKey, long /* Group */>, IDomainObjectRegisterDemoObjectX
     {
         public IDomainObjectDemoObjectX GetByName(
             string name)
         {
-            var register = (IDomainObjectRegisterDemoObjectX)m_register;
-            var result = register.GetByName(name);
+            var unitOfWork = (UnitOfWork)UnitOfWorkProvider.Instance;
+            using var dbContext = unitOfWork.NewDbContext();
+            var result =
+                Find(() =>
+                        dbContext.Demoobjectx
+                            .FirstOrDefault(entity => entity.Name == name)
+                            .ToMapperDto(),
+                    domainObjects =>
+                        domainObjects.Cast<IDomainObjectDemoObjectX>()
+                            .FirstOrDefault(domainObject => domainObject.Name == name));
 
-            // Любой доменный объект полученный из реестра необходимо всегда регистрировать в локальном реестре.
-            result = SafeTryRegister(result);
-
-            // Поле Name изменяемое
-            // Проверка объекта на соответствие критерию выборки т.к. он могбыть взят из локального реестра и он не соответствует критерию выборки т.к. мог быть изменён
-            result = DoGetByName(result, name);
-
-            // Поле Name изменяемое
-            // Поиск объекта в локальном реестре соответствующего критерию выборки
-            result ??= GetLocalEnumerable()
-                .Cast<IDomainObjectDemoObjectX>()
-                .FirstOrDefault(domainObject => DoGetByName(domainObject, name) != null);
-
-            return result;
+            return (IDomainObjectDemoObjectX)result;
         }
 
         public async ValueTask<IDomainObjectDemoObjectX> GetByNameAsync(
             string name,
             CancellationToken cancellationToken = default)
         {
-            var register = (IDomainObjectRegisterDemoObjectX)m_register;
-            var result = await register.GetByNameAsync(name, cancellationToken).ConfigureAwait(false);
+            var unitOfWork = (UnitOfWork)UnitOfWorkProvider.Instance;
+            await using var dbContext = await unitOfWork.NewDbContextAsync(cancellationToken: cancellationToken).ConfigureAwait(false);
 
-            // Любой доменный объект полученный из реестра необходимо всегда регистрировать в локальном реестре.
-            result = SafeTryRegister(result);
+            var result =
+                await FindAsync(
+                    async ct =>
+                        (await dbContext.Demoobjectx
+                            .FirstOrDefaultAsync(entity => entity.Name == name, cancellationToken: ct)
+                            .ConfigureAwait(false))
+                        .ToMapperDto(),
+                    DomainObjectSelector,
+                    cancellationToken);
 
-            // Поле Name изменяемое
-            // Проверка объекта на соответствие критерию выборки т.к. он могбыть взят из локального реестра и он не соответствует критерию выборки т.к. мог быть изменён
-            result = DoGetByName(result, name);
-
-            if (result == null)
+            ValueTask<IDomainObject> DomainObjectSelector(IEnumerable<IDomainObject> domainObjects, CancellationToken ct)
             {
-                // Поле Name изменяемое
-                // Поиск объекта в локальном реестре соответствующего критерию выборки
-                foreach (var domainObject in GetLocalEnumerable().Cast<IDomainObjectDemoObjectX>())
+                foreach (var domainObject in domainObjects.Cast<IDomainObjectDemoObjectX>())
                 {
-                    cancellationToken.ThrowIfCancellationRequested();
+                    ct.ThrowIfCancellationRequested();
 
-                    result = DoGetByName(domainObject, name);
-
-                    if (result != null)
+                    if (domainObject.Name == name)
                     {
-                        break;
+                        return ValueTask.FromResult<IDomainObject>(domainObject);
                     }
                 }
+
+                return ValueTask.FromResult<IDomainObject>(null);
             }
 
-            return result;
+            return (IDomainObjectDemoObjectX)result;
         }
 
         public IEnumerable<IDomainObjectDemoObjectX> GetCollectionByNameSize(
             int size)
         {
-            var register = (IDomainObjectRegisterDemoObjectX)m_register;
-            var instances = register.GetCollectionByNameSize(size);
+            var unitOfWork = (UnitOfWork)UnitOfWorkProvider.Instance;
+            using var dbContext = unitOfWork.NewDbContext();
+            var instances =
+                GetObjectEnumerator(
+                        () =>
+                            dbContext.Demoobjectx
+                                .Where(entity => entity.Name.Length == size)
+                                .Select(entity => entity.ToMapperDto()),
+                        domainObjects =>
+                            domainObjects.Cast<IDomainObjectDemoObjectX>()
+                                .Where(domainObject => domainObject.Name.Length == size))
+                    .Cast<IDomainObjectDemoObjectX>();
 
-            // Любой доменный объект полученный из реестра необходимо всегда регистрировать в локальном реестре.
-            foreach (var _ in DoForEach(instances))
+            foreach (var instance in instances)
             {
-                /* NONE */
-            }
-
-            // Поле Name изменяемое
-            // Поиск объектов локального реестра соответствующих критерию выборки
-            foreach (var domainObject in GetLocalEnumerable())
-            {
-                var result = DoGetByNameSize((IDomainObjectDemoObjectX)domainObject, size);
-
-                if (result == null)
-                {
-                    continue;
-                }
-
-                yield return result;
+                yield return instance;
             }
         }
 
@@ -110,29 +102,46 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
             int size,
             [EnumeratorCancellation] CancellationToken cancellationToken = default)
         {
-            var register = (IDomainObjectRegisterDemoObjectX)m_register;
-            var instances = register.GetCollectionByNameSizeAsync(size, cancellationToken);
+            var unitOfWork = (UnitOfWork)UnitOfWorkProvider.Instance;
+            await using var dbContext = await unitOfWork.NewDbContextAsync(cancellationToken: cancellationToken).ConfigureAwait(false);
+            var instances =
+                GetObjectEnumeratorAsync(
+                    DtoSelector,
+                    DomainObjectSelector,
+                    cancellationToken).ConfigureAwait(false);
 
-            // Любой доменный объект полученный из реестра необходимо всегда регистрировать в локальном реестре.
-            await foreach (var _ in DoForEachAsync(instances, cancellationToken).ConfigureAwait(false))
+            await foreach (var instance in instances)
             {
-                /* NONE */
+                yield return (IDomainObjectDemoObjectX)instance;
             }
 
-            // Поле Name изменяемое
-            // Поиск объектов локального реестра соответствующих критерию выборки
-            foreach (var domainObject in GetLocalEnumerable())
+            yield break;
+
+            async IAsyncEnumerable<IMapperDto> DtoSelector([EnumeratorCancellation] CancellationToken ct)
             {
-                cancellationToken.ThrowIfCancellationRequested();
-
-                var result = DoGetByNameSize((IDomainObjectDemoObjectX)domainObject, size);
-
-                if (result == null)
+                await foreach (var entity in dbContext.Demoobjectx
+                                   .Where(entity => entity.Name.Length == size)
+                                   .AsAsyncEnumerable()
+                                   .WithCancellation(ct)
+                                   .ConfigureAwait(false))
                 {
-                    continue;
+                    yield return entity.ToMapperDto();
+                }
+            }
+
+            async IAsyncEnumerable<IDomainObject> DomainObjectSelector(IEnumerable<IDomainObject> domainObjects, [EnumeratorCancellation] CancellationToken ct)
+            {
+                foreach (var domainObject in domainObjects.Cast<IDomainObjectDemoObjectX>())
+                {
+                    ct.ThrowIfCancellationRequested();
+
+                    if (domainObject.Name.Length == size)
+                    {
+                        yield return domainObject;
+                    }
                 }
 
-                yield return result;
+                await Task.Yield();
             }
         }
 
@@ -174,42 +183,6 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
         {
             keyEntry = domainObject.GetKey();
         }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private IDomainObjectDemoObjectX DoGetByName(
-            IDomainObjectDemoObjectX demoObject,
-            string name)
-        {
-            if (demoObject == null)
-            {
-                return null;
-            }
-
-            if (demoObject.Name == name)
-            {
-                return demoObject;
-            }
-
-            return null;
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private IDomainObjectDemoObjectX DoGetByNameSize(
-            IDomainObjectDemoObjectX demoObject,
-            int size)
-        {
-            if (demoObject == null)
-            {
-                return null;
-            }
-
-            if (demoObject.Name.Length == size)
-            {
-                return demoObject;
-            }
-
-            return null;
-        }
     }
 
     #endregion
@@ -234,12 +207,6 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
     {
     }
 
-    public IEnumerable<IDomainObjectDemoObjectX> GetCollectionByDemoGroup(
-        long group)
-    {
-        throw new NotSupportedException("Реализация в прокси.");
-    }
-
     private static (DemoObjectXIdentitiesService.AlternativeKey, long) DecodeDomainObject(IDomainObject domainObject)
     {
         var instance = (IDomainObjectDemoObjectX)domainObject;
@@ -248,86 +215,35 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
         return result;
     }
 
-    [SuppressMessage("ReSharper", "AccessToDisposedClosure")]
+    public IEnumerable<IDomainObjectDemoObjectX> GetCollectionByDemoGroup(
+        long group)
+    {
+        throw new NotSupportedException("Реализация в прокси.");
+    }
+
     public IEnumerable<IDomainObjectDemoObjectX> GetCollectionByNameSize(
         int size)
     {
-        var unitOfWork = (UnitOfWork)UnitOfWorkProvider.Instance;
-        using var dbContext = unitOfWork.NewDbContext();
-        var instances =
-            GetObjectEnumerator(
-                    () => dbContext.Demoobjectx
-                        .Where(entity => entity.Name.Length == size)
-                        .Select(entity => entity.ToMapperDto()))
-                .Cast<IDomainObjectDemoObjectX>();
-
-        foreach (var instance in instances)
-        {
-            yield return instance;
-        }
+        throw new NotSupportedException("Реализация в прокси.");
     }
 
-    [SuppressMessage("ReSharper", "AccessToDisposedClosure")]
-    public async IAsyncEnumerable<IDomainObjectDemoObjectX> GetCollectionByNameSizeAsync(
+    public IAsyncEnumerable<IDomainObjectDemoObjectX> GetCollectionByNameSizeAsync(
         int size,
-        [EnumeratorCancellation] CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default)
     {
-        var unitOfWork = (UnitOfWork)UnitOfWorkProvider.Instance;
-        await using var dbContext = await unitOfWork.NewDbContextAsync(cancellationToken: cancellationToken).ConfigureAwait(false);
-        var instances = GetObjectEnumeratorAsync(Selector, cancellationToken);
-
-        await foreach (var instance in instances.ConfigureAwait(false))
-        {
-            yield return (IDomainObjectDemoObjectX)instance;
-        }
-
-        yield break;
-
-        async IAsyncEnumerable<IMapperDto> Selector([EnumeratorCancellation] CancellationToken ct)
-        {
-            await foreach (var entity in dbContext.Demoobjectx
-                               .Where(entity => entity.Name.Length == size)
-                               .AsAsyncEnumerable()
-                               .WithCancellation(ct)
-                               .ConfigureAwait(false))
-            {
-                yield return entity.ToMapperDto();
-            }
-        }
+        throw new NotSupportedException("Реализация в прокси.");
     }
 
-    [SuppressMessage("ReSharper", "AccessToDisposedClosure")]
-    public IDomainObjectDemoObjectX GetByName(
-        string name)
+    public IDomainObjectDemoObjectX GetByName(string name)
     {
-        var unitOfWork = (UnitOfWork)UnitOfWorkProvider.Instance;
-        using var dbContext = unitOfWork.NewDbContext();
-        var result =
-            Find(
-                () => dbContext.Demoobjectx
-                    .FirstOrDefault(entity => entity.Name == name)
-                    .ToMapperDto());
-
-        return (IDomainObjectDemoObjectX)result;
+        throw new NotSupportedException("Реализация в прокси.");
     }
 
-    [SuppressMessage("ReSharper", "AccessToDisposedClosure")]
-    public async ValueTask<IDomainObjectDemoObjectX> GetByNameAsync(
+    public ValueTask<IDomainObjectDemoObjectX> GetByNameAsync(
         string name,
         CancellationToken cancellationToken = default)
     {
-        var unitOfWork = (UnitOfWork)UnitOfWorkProvider.Instance;
-        await using var dbContext = await unitOfWork.NewDbContextAsync(cancellationToken: cancellationToken).ConfigureAwait(false);
-        var result =
-            await FindAsync(
-                async ct =>
-                    (await dbContext.Demoobjectx
-                        .FirstOrDefaultAsync(entity => entity.Name == name, cancellationToken: ct)
-                        .ConfigureAwait(false))
-                    .ToMapperDto(),
-                cancellationToken);
-
-        return (IDomainObjectDemoObjectX)result;
+        throw new NotSupportedException("Реализация в прокси.");
     }
 
     public IAsyncEnumerable<IDomainObjectDemoObjectX> GetCollectionByDemoGroupAsync(
