@@ -75,10 +75,10 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
         {
             var register = (IDomainObjectRegisterDemoObjectX)m_register;
 
-            foreach (var domainObject in register.GetCollectionByNameSize(size))
+            // Любой доменный объект полученный из реестра необходимо всегда регистрировать в локальном реестре.
+            foreach (var _ in DoForEach(register.GetCollectionByNameSize(size)))
             {
-                // Любой доменный объект полученный из реестра необходимо всегда регистрировать в локальном реестре.
-                SafeTryRegister(domainObject);
+                /* NONE */
             }
 
             // Поле Name изменяемое
@@ -102,10 +102,10 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
         {
             var register = (IDomainObjectRegisterDemoObjectX)m_register;
 
-            await foreach (var domainObject in register.GetCollectionByNameSizeAsync(size, cancellationToken).ConfigureAwait(false))
+            // Любой доменный объект полученный из реестра необходимо всегда регистрировать в локальном реестре.
+            await foreach (var _ in DoForEachAsync(register.GetCollectionByNameSizeAsync(size, cancellationToken), cancellationToken).ConfigureAwait(false))
             {
-                // Любой доменный объект полученный из реестра необходимо всегда регистрировать в локальном реестре.
-                await SafeTryRegisterAsync(domainObject, cancellationToken).ConfigureAwait(false);
+                /* NONE */
             }
 
             // Поле Name изменяемое
