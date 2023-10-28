@@ -28,18 +28,15 @@ public partial class ProcessingDbContext
         }
     }
 
-    private DatabaseFacade m_database;
-
     public void SetDbConnection(
         DbConnection connection,
         DbTransaction transaction)
     {
-        m_database = Database;
-        m_database.SetDbConnection(connection);
-        m_database.UseTransaction(transaction);
+        Database.SetDbConnection(connection);
+        Database.UseTransaction(transaction);
 
 #if DEBUG
-        var dependencies = (((IDatabaseFacadeDependenciesAccessor)m_database).Dependencies as IRelationalDatabaseFacadeDependencies);
+        var dependencies = (((IDatabaseFacadeDependenciesAccessor)Database).Dependencies as IRelationalDatabaseFacadeDependencies);
         Debug.Assert(dependencies != null, "dependencies != null");
         Debug.Assert(ReferenceEquals(dependencies.RelationalConnection.DbConnection, connection), "dependencies.RelationalConnection.ConnectionString != null");
 
