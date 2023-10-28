@@ -24,6 +24,8 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
     [SuppressMessage("ReSharper", "AccessToDisposedClosure")]
     private class ProxyDomainObjectRegister : AltProxyDomainObjectRegisterWithContextWithAlternativeKey<IDomainObjectDemoObjectX, DemoObjectXIdentitiesService.AlternativeKey, long /* Group */>, IDomainObjectRegisterDemoObjectX
     {
+        #region IDomainObjectRegisterDemoObject
+        
         public IDomainObjectDemoObjectX GetByName(
             string name)
         {
@@ -181,6 +183,8 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
             return result;
         }
 
+        #endregion
+
         protected override void GetKey(IDomainObjectDemoObjectX domainObject, out DemoObjectXIdentitiesService.AlternativeKey keyEntry)
         {
             keyEntry = domainObject.GetKey();
@@ -216,6 +220,8 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
 
         return result;
     }
+
+    #region IDomainObjectRegisterDemoObjectX
 
     public IEnumerable<IDomainObjectDemoObjectX> GetCollectionByDemoGroup(
         long group)
@@ -267,6 +273,8 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
     {
         throw new NotSupportedException("Реализация в прокси.");
     }
+
+    #endregion
 
     protected override AltProxyDomainObjectRegisterWithContextWithAlternativeKey<IDomainObjectDemoObjectX, DemoObjectXIdentitiesService.AlternativeKey, long>
         DoCreateProxy()
