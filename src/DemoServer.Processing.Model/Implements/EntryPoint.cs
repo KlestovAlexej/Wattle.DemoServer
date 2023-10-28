@@ -37,7 +37,6 @@ using System.Runtime.ExceptionServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using ShtrihM.DemoServer.Processing.Generated.Interface;
 using Unity;
 using Status = OpenTelemetry.Trace.Status;
 
@@ -242,6 +241,7 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
     public UnitOfWorkLocksHubTyped UnitOfWorkLocks { get; private set; }
     public IEntryPointContext Context { get; }
     public IServiceProvider ServiceProvider { get; private set; }
+    public IUnitOfWorkCommitVerifyingFactory CommitVerifyingFactory { get; private set; }
 
     public MetaServerDescription ServerDescription
     {
@@ -628,6 +628,8 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
 
         result.m_partitionsSponsor.Create(tracer);
 
+        result.CommitVerifyingFactory = new UnitOfWorkCommitVerifyingFactory(result.m_mappers);
+
         result.m_unitOfWorkContext =
             new CustomUnitOfWorkContext(
                 result,
@@ -642,7 +644,7 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
                 serviceProvider,
                 result.UnitOfWorkLocks.Hub,
                 result.m_queueEmergencyDomainBehaviour,
-                result.m_mappers.GetMapper<IMapperChangeTracker>());
+                result.CommitVerifyingFactory);
 
         return (result);
     }

@@ -7,7 +7,6 @@ using ShtrihM.Wattle3.DomainObjects.UnitOfWorks;
 using ShtrihM.Wattle3.Mappers.Interfaces;
 using System;
 using System.Runtime.CompilerServices;
-using ShtrihM.DemoServer.Processing.Generated.Interface;
 using ShtrihM.Wattle3.QueueProcessors.Interfaces;
 
 namespace ShtrihM.DemoServer.Processing.Model.Implements;
@@ -27,7 +26,7 @@ public sealed class CustomUnitOfWorkContext : UnitOfWorkContext
         IServiceProvider serviceProvider,
         IUnitOfWorkLocksHub unitOfWorkLocksHub,
         IQueueItemProcessor queueEmergencyDomainBehaviour,
-        IMapperChangeTracker mapperChangeTracker)
+        IUnitOfWorkCommitVerifyingFactory commitVerifyingFactory)
         : base(
             entryPoint,
             dataMappers,
@@ -42,13 +41,13 @@ public sealed class CustomUnitOfWorkContext : UnitOfWorkContext
         QueueEmergencyDomainBehaviour = queueEmergencyDomainBehaviour ?? throw new ArgumentNullException(nameof(queueEmergencyDomainBehaviour));
         UnitOfWorkLocksHub = unitOfWorkLocksHub ?? throw new ArgumentNullException(nameof(unitOfWorkLocksHub));
         PooledDbContextFactory = pooledDbContextFactory ?? throw new ArgumentNullException(nameof(pooledDbContextFactory));
-        MapperChangeTracker = mapperChangeTracker ?? throw new ArgumentNullException(nameof(mapperChangeTracker));
+        CommitVerifyingFactory = commitVerifyingFactory ?? throw new ArgumentNullException(nameof(commitVerifyingFactory));
     }
 
-    public readonly IMapperChangeTracker MapperChangeTracker;
     public readonly IQueueItemProcessor QueueEmergencyDomainBehaviour;
     public readonly IUnitOfWorkLocksHub UnitOfWorkLocksHub;
     public readonly IDbContextFactory<ProcessingDbContext> PooledDbContextFactory;
+    public readonly IUnitOfWorkCommitVerifyingFactory CommitVerifyingFactory;
 
     public new WorkflowExceptionPolicy WorkflowExceptionPolicy
     {

@@ -14,6 +14,7 @@ using ShtrihM.Wattle3.DomainObjects;
 using Microsoft.EntityFrameworkCore;
 using ShtrihM.Wattle3.DomainObjects.UnitOfWorkLocks;
 using ShtrihM.Wattle3.Mappers.Interfaces;
+using ShtrihM.DemoServer.Processing.Generated.Interface;
 
 namespace ShtrihM.DemoServer.Processing.Model.Implements;
 
@@ -41,10 +42,11 @@ public sealed class UnitOfWork : BaseUnitOfWork, IUnitOfWorkDbContextFactory
         CancellationToken cancellationToken = default)
     {
         var register = Registers.GetRegister(WellknownDomainObjects.ChangeTracker);
-        var domainObject =
-            await register.NewAsync(DomainObjectChangeTracker.Template.Instance, cancellationToken)
-                .ConfigureAwait(false);
-        var result = DoCreateUnitOfWorkCommitVerifying(domainObject.Identity);
+        var identity =
+            (await register.NewAsync(DomainObjectChangeTracker.Template.Instance, cancellationToken)
+                .ConfigureAwait(false)).Identity;
+        var context = (CustomUnitOfWorkContext)m_context;
+        var result = context.CommitVerifyingFactory.Create<IMapperChangeTracker>(identity);
 
         return result;
     }
@@ -53,34 +55,8 @@ public sealed class UnitOfWork : BaseUnitOfWork, IUnitOfWorkDbContextFactory
     {
         var register = Registers.GetRegister(WellknownDomainObjects.ChangeTracker);
         var identity = register.New(DomainObjectChangeTracker.Template.Instance).Identity;
-        var result = DoCreateUnitOfWorkCommitVerifying(identity);
-
-        return result;
-    }
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private IUnitOfWorkCommitVerifying DoCreateUnitOfWorkCommitVerifying(long identity)
-    {
-        var result =
-            new UnitOfWorkCommitVerifyingDelegate(
-                mappersSession =>
-                {
-                    var context = (CustomUnitOfWorkContext)m_context;
-                    var existsRaw = context.MapperChangeTracker.ExistsRaw(mappersSession, identity);
-
-                    return (existsRaw
-                        ? UnitOfWorkCommitVerifyingResult.Successfully
-                        : UnitOfWorkCommitVerifyingResult.Fail);
-                },
-                async mappersSession =>
-                {
-                    var context = (CustomUnitOfWorkContext)m_context;
-                    var existsRaw = await context.MapperChangeTracker.ExistsRawAsync(mappersSession, identity).ConfigureAwait(false);
-
-                    return (existsRaw
-                        ? UnitOfWorkCommitVerifyingResult.Successfully
-                        : UnitOfWorkCommitVerifyingResult.Fail);
-                });
+        var context = (CustomUnitOfWorkContext)m_context;
+        var result = context.CommitVerifyingFactory.Create<IMapperChangeTracker>(identity);
 
         return result;
     }
@@ -124,21 +100,20 @@ public sealed class UnitOfWork : BaseUnitOfWork, IUnitOfWorkDbContextFactory
         return result;
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public IDomainBehaviourWithСonfirmation CreateDomainBehaviourWithСonfirmation<TMapper>(long identity)
         where TMapper : IMapper
     {
-        var result = CreateDomainBehaviourWithСonfirmation(
-            () =>
-            {
-                var context = (CustomUnitOfWorkContext)m_context;
-                var result = DomainObjectsHelpers.CreateUnitOfWorkCommitVerifyingDelegate<TMapper>(identity, context.Mappers);
+        if (false == IsDefinedCommitVerifying)
+        {
+            var context = (CustomUnitOfWorkContext)m_context;
+            CommitVerifying = context.CommitVerifyingFactory.Create<TMapper>(identity);
+        }
 
-                return result;
-            });
-
-        return result;
+        return DoCreateDomainBehaviourWithСonfirmation();
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public IDomainBehaviourWithСonfirmation CreateDomainBehaviourWithСonfirmation()
     {
         var result = DoCreateDomainBehaviourWithСonfirmation();
@@ -146,6 +121,7 @@ public sealed class UnitOfWork : BaseUnitOfWork, IUnitOfWorkDbContextFactory
         return result;
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     async ValueTask<DbContext> IUnitOfWorkDbContextFactory.NewDbContextAsync(bool useTransaction, CancellationToken cancellationToken)
     {
         var result = await NewDbContextAsync(useTransaction, cancellationToken).ConfigureAwait(false);
@@ -153,6 +129,7 @@ public sealed class UnitOfWork : BaseUnitOfWork, IUnitOfWorkDbContextFactory
         return result;
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     DbContext IUnitOfWorkDbContextFactory.NewDbContext(bool useTransaction)
     {
         var result = NewDbContext(useTransaction);
@@ -160,6 +137,7 @@ public sealed class UnitOfWork : BaseUnitOfWork, IUnitOfWorkDbContextFactory
         return result;
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     protected override IDomainBehaviourWithСonfirmation DoCreateDomainBehaviourWithСonfirmation()
     {
         var context = (CustomUnitOfWorkContext)m_context;

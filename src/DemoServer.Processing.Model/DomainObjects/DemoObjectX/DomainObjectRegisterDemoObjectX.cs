@@ -228,7 +228,8 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
             DemoObjectXIdentitiesService.New(entryPoint),
             WellknownDomainObjectFields.DemoObjectX.NameAlternateKey,
             WellknownDomainObjectFields.DemoObjectX.NameCollection,
-            DecodeDomainObject)
+            DecodeDomainObject,
+            entryPoint.CommitVerifyingFactory)
     // ReSharper disable once ConvertToPrimaryConstructor
     {
     }

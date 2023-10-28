@@ -6,6 +6,7 @@ using ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
 using ShtrihM.DemoServer.Processing.Model.Implements.UnitOfWorkLocks;
 using ShtrihM.Wattle3.Common.Interfaces;
 using ShtrihM.Wattle3.DomainObjects.Interfaces;
+using ShtrihM.Wattle3.DomainObjects.UnitOfWorks;
 using ShtrihM.Wattle3.Mappers.PostgreSql;
 using System;
 
@@ -19,6 +20,7 @@ public interface ICustomEntryPoint : IEntryPoint
     // ReSharper disable once UnusedMemberInSuper.Global
     IServiceProvider ServiceProvider { get; }
 
+    IUnitOfWorkCommitVerifyingFactory CommitVerifyingFactory { get; }
     UnitOfWork CurrentUnitOfWork { get; }
     ITimeService TimeService { get; }
     WorkflowExceptionPolicy WorkflowExceptionPolicy { get; }
