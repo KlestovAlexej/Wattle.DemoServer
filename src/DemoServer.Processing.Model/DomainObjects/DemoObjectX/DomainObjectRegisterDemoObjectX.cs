@@ -14,6 +14,7 @@ using ShtrihM.DemoServer.Processing.Model.Implements;
 using ShtrihM.Wattle3.Mappers.Primitives;
 using System.Runtime.CompilerServices;
 using Microsoft.EntityFrameworkCore;
+using ShtrihM.Wattle3.DomainObjects.DomainBehaviours;
 
 namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
 

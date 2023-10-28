@@ -15,6 +15,7 @@ using ShtrihM.Wattle3.DomainObjects.DomainObjectActivators;
 using ShtrihM.Wattle3.Primitives;
 using ShtrihM.DemoServer.Processing.Model.DomainObjects.Common;
 using ShtrihM.Wattle3.DomainObjects.UnitOfWorkLocks;
+using ShtrihM.Wattle3.DomainObjects.DomainObjectsRegisters.IdentitiesServices;
 
 namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
 
@@ -201,7 +202,7 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutable<DomainObje
     {
         m_entryPoint.CurrentUnitOfWork.AddDelete(this);
 
-        var register = DoGetRegister();
+        var register = DoGetRegisterManagement();
         var domainBehaviour = m_entryPoint.CreateDomainBehaviourWithСonfirmation();
 
         register.RemoveDomainObject(domainBehaviour, Identity, GetKey());
@@ -211,7 +212,7 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutable<DomainObje
     {
         DoPostCreate();
 
-        var register = DoGetRegister();
+        var register = DoGetRegisterManagement();
         var domainBehaviour = m_entryPoint.CreateDomainBehaviourWithСonfirmation();
 
         register.AddDomainObject(domainBehaviour, Identity, GetKey(), Group);
@@ -221,16 +222,16 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutable<DomainObje
     {
         DoPostCreate();
 
-        var register = DoGetRegister();
+        var register = DoGetRegisterManagement();
         var domainBehaviour = m_entryPoint.CreateDomainBehaviourWithСonfirmation();
 
         return register.AddDomainObjectAsync(domainBehaviour, Identity, GetKey(), Group, cancellationToken);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private DomainObjectRegisterDemoObjectX DoGetRegister()
+    private IDomainObjectRegisterWithContextWithAlternativeKeyManagement<DemoObjectXIdentitiesService.AlternativeKey, long /* Group */> DoGetRegisterManagement()
     {
-        var result = (DomainObjectRegisterDemoObjectX)m_entryPoint.Registers.GetRegister<IDomainObjectRegisterDemoObjectX>();
+        var result = (IDomainObjectRegisterWithContextWithAlternativeKeyManagement<DemoObjectXIdentitiesService.AlternativeKey, long>)m_entryPoint.UnitOfWorkProvider.Instance.Registers.GetRegister<IDomainObjectRegisterDemoObjectX>();
 
         return result;
     }

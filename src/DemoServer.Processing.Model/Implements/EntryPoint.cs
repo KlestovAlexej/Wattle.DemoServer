@@ -266,7 +266,6 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
     }
 
     public UnitOfWork CurrentUnitOfWork => (UnitOfWork)UnitOfWorkProvider.Instance;
-    public IDomainObjectRegisters Registers => m_registers;
     public ICustomMappers Mappers => (ICustomMappers)m_mappers;
     public IExceptionPolicy ExceptionPolicy => m_exceptionPolicy;
     public IPartitionsDay PartitionsDay { get; private set; }

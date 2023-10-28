@@ -25,7 +25,6 @@ public interface ICustomEntryPoint : IEntryPoint
     IServiceProvider ServiceProvider { get; }
 
     UnitOfWork CurrentUnitOfWork { get; }
-    IDomainObjectRegisters Registers { get; }
     ITimeService TimeService { get; }
     WorkflowExceptionPolicy WorkflowExceptionPolicy { get; }
     MetaServerDescription ServerDescription { get; }
