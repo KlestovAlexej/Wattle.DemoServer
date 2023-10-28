@@ -29,13 +29,8 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
             var register = (IDomainObjectRegisterDemoObjectX)m_register;
             var result = register.GetByName(name);
 
-            if (result == null)
-            {
-                return null;
-            }
-
             // Любой доменный объект полученный из реестра необходимо всегда регистрировать в локальном реестре.
-            result = (IDomainObjectDemoObjectX)TryRegister(result);
+            result = SafeTryRegister(result);
 
             return result;
         }
@@ -47,13 +42,8 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
             var register = (IDomainObjectRegisterDemoObjectX)m_register;
             var result = await register.GetByNameAsync(name, cancellationToken).ConfigureAwait(false);
 
-            if (result == null)
-            {
-                return null;
-            }
-
             // Любой доменный объект полученный из реестра необходимо всегда регистрировать в локальном реестре.
-            result = (IDomainObjectDemoObjectX)TryRegister(result);
+            result = SafeTryRegister(result);
 
             return result;
         }
@@ -62,6 +52,8 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
             int size)
         {
             var register = (IDomainObjectRegisterDemoObjectX)m_register;
+
+            // Любой доменный объект полученный из реестра необходимо всегда регистрировать в локальном реестре.
             var result = DoForEach(register.GetCollectionByNameSize(size));
 
             return result;
@@ -72,6 +64,8 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
             CancellationToken cancellationToken = default)
         {
             var register = (IDomainObjectRegisterDemoObjectX)m_register;
+
+            // Любой доменный объект полученный из реестра необходимо всегда регистрировать в локальном реестре.
             var result = DoForEachAsync(register.GetCollectionByNameSizeAsync(size, cancellationToken), cancellationToken);
 
             return result;
@@ -169,9 +163,9 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
     {
         var unitOfWork = (UnitOfWork)UnitOfWorkProvider.Instance;
         await using var dbContext = await unitOfWork.NewDbContextAsync(cancellationToken: cancellationToken).ConfigureAwait(false);
-        var instances = GetObjectEnumeratorAsync(Selector, cancellationToken).ConfigureAwait(false);
+        var instances = GetObjectEnumeratorAsync(Selector, cancellationToken);
 
-        await foreach (var instance in instances)
+        await foreach (var instance in instances.ConfigureAwait(false))
         {
             yield return (IDomainObjectDemoObjectX)instance;
         }
@@ -217,7 +211,8 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
             await FindAsync(
                 async ct =>
                     (await dbContext.Demoobjectx
-                        .SingleOrDefaultAsync(entity => entity.Name == name, cancellationToken: ct))
+                        .SingleOrDefaultAsync(entity => entity.Name == name, cancellationToken: ct)
+                        .ConfigureAwait(false))
                     .ToMapperDto(),
                 cancellationToken);
 
