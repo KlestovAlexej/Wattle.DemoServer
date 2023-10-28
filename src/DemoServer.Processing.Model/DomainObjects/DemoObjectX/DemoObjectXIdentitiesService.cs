@@ -11,12 +11,12 @@ using ShtrihM.Wattle3.DomainObjects.Interfaces;
 
 namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
 
-public sealed class DemoObjectXIdentitiesService : BaseIdentitiesWithContextWithAlternativeKeyService<DemoObjectXIdentitiesService.AlternativeKeyEntry, long /* Group */, DemoObjectXIdentitiesService, Demoobjectx, ProcessingDbContext>
+public sealed class DemoObjectXIdentitiesService : BaseIdentitiesWithContextWithAlternativeKeyService<DemoObjectXIdentitiesService.AlternativeKey, long /* Group */, DemoObjectXIdentitiesService, Demoobjectx, ProcessingDbContext>
 {
     #region AlternativeKeyEntry - Альтернативный ключ объекта X
 
     [SuppressMessage("ReSharper", "NotAccessedPositionalProperty.Global")]
-    public readonly record struct AlternativeKeyEntry(
+    public new readonly record struct AlternativeKey(
         [property: AlternativeKeyIndex(WellknownDomainObjectFields.DemoObjectX.IndexAlternateKeyValue1)] Guid Key1,
         [property: AlternativeKeyIndex(WellknownDomainObjectFields.DemoObjectX.IndexAlternateKeyValue2)] string Key2);
 
@@ -37,7 +37,7 @@ public sealed class DemoObjectXIdentitiesService : BaseIdentitiesWithContextWith
         return result;
     }
 
-    protected override IEnumerable<(long Identity, AlternativeKeyEntry Key, long Context)> DoGetIdentities(IQueryable<Demoobjectx> entities)
+    protected override IEnumerable<(long Identity, AlternativeKey Key, long Context)> DoGetIdentities(IQueryable<Demoobjectx> entities)
     {
         var identities =
             entities.Select(

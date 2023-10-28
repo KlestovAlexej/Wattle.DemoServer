@@ -8,13 +8,13 @@ using System.Threading;
 namespace ShtrihM.DemoServer.Processing.Model.Interfaces;
 
 [DomainObjectRegistersInterface(WellknownDomainObjects.Text.DemoObjectX)]
-public interface IDomainObjectRegisterDemoObjectX : IDomainObjectRegisterWithContextWithAlternativeKey<IDomainObjectDemoObjectX, DemoObjectXIdentitiesService.AlternativeKeyEntry, long /* Group */>
+public interface IDomainObjectRegisterDemoObjectX : IDomainObjectRegisterWithContextWithAlternativeKey<IDomainObjectDemoObjectX, DemoObjectXIdentitiesService.AlternativeKey, long /* Group */>
 {
     IEnumerable<IDomainObjectDemoObjectX> GetCollectionByDemoGroup(long group);
     IAsyncEnumerable<IDomainObjectDemoObjectX> GetCollectionByDemoGroupAsync(long group, CancellationToken cancellationToken = default);
 
-    IDomainObjectDemoObjectX FindByDemoAlternativeKey(DemoObjectXIdentitiesService.AlternativeKeyEntry alternativeKey);
-    ValueTask<IDomainObjectDemoObjectX> FindByDemoAlternativeKeyAsync(DemoObjectXIdentitiesService.AlternativeKeyEntry alternativeKey, CancellationToken cancellationToken = default);
+    IDomainObjectDemoObjectX FindByDemoAlternativeKey(DemoObjectXIdentitiesService.AlternativeKey alternativeKey);
+    ValueTask<IDomainObjectDemoObjectX> FindByDemoAlternativeKeyAsync(DemoObjectXIdentitiesService.AlternativeKey alternativeKey, CancellationToken cancellationToken = default);
 
     IEnumerable<IDomainObjectDemoObjectX> GetCollectionByNameSize(int size);
     IAsyncEnumerable<IDomainObjectDemoObjectX> GetCollectionByNameSizeAsync(int size, CancellationToken cancellationToken = default);

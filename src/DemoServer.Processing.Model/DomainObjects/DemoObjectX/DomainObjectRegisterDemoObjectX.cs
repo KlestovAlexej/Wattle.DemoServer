@@ -17,11 +17,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
 
-public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWithAlternativeKeyStatelessDefault<IDomainObjectDemoObjectX, DemoObjectXIdentitiesService.AlternativeKeyEntry, long /* Group */, DemoObjectXDtoActual, IMapperDemoObjectX>, IDomainObjectRegisterDemoObjectX
+public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWithAlternativeKeyStatelessDefault<IDomainObjectDemoObjectX, DemoObjectXIdentitiesService.AlternativeKey, long /* Group */, DemoObjectXDtoActual, IMapperDemoObjectX>, IDomainObjectRegisterDemoObjectX
 {
     #region ProxyDomainObjectRegister
 
-    private class ProxyDomainObjectRegister : AltProxyDomainObjectRegisterWithContextWithAlternativeKey<IDomainObjectDemoObjectX, DemoObjectXIdentitiesService.AlternativeKeyEntry, long /* Group */>, IDomainObjectRegisterDemoObjectX
+    private class ProxyDomainObjectRegister : AltProxyDomainObjectRegisterWithContextWithAlternativeKey<IDomainObjectDemoObjectX, DemoObjectXIdentitiesService.AlternativeKey, long /* Group */>, IDomainObjectRegisterDemoObjectX
     {
         public IDomainObjectDemoObjectX GetByName(
             string name)
@@ -95,7 +95,7 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
         }
 
         public IDomainObjectDemoObjectX FindByDemoAlternativeKey(
-            DemoObjectXIdentitiesService.AlternativeKeyEntry alternativeKey)
+            DemoObjectXIdentitiesService.AlternativeKey alternativeKey)
         {
             var result = FindByKey(alternativeKey);
 
@@ -103,7 +103,7 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
         }
 
         public ValueTask<IDomainObjectDemoObjectX> FindByDemoAlternativeKeyAsync(
-            DemoObjectXIdentitiesService.AlternativeKeyEntry alternativeKey,
+            DemoObjectXIdentitiesService.AlternativeKey alternativeKey,
             CancellationToken cancellationToken = default)
         {
             var result = FindByKeyAsync(alternativeKey, cancellationToken);
@@ -111,7 +111,7 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
             return result;
         }
 
-        protected override void GetKey(IDomainObjectDemoObjectX domainObject, out DemoObjectXIdentitiesService.AlternativeKeyEntry keyEntry)
+        protected override void GetKey(IDomainObjectDemoObjectX domainObject, out DemoObjectXIdentitiesService.AlternativeKey keyEntry)
         {
             keyEntry = domainObject.GetKey();
         }
@@ -232,19 +232,19 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
     }
 
     public IDomainObjectDemoObjectX FindByDemoAlternativeKey(
-        DemoObjectXIdentitiesService.AlternativeKeyEntry alternativeKey)
+        DemoObjectXIdentitiesService.AlternativeKey alternativeKey)
     {
         throw new NotSupportedException("Реализация в прокси.");
     }
 
     public ValueTask<IDomainObjectDemoObjectX> FindByDemoAlternativeKeyAsync(
-        DemoObjectXIdentitiesService.AlternativeKeyEntry alternativeKey,
+        DemoObjectXIdentitiesService.AlternativeKey alternativeKey,
         CancellationToken cancellationToken = default)
     {
         throw new NotSupportedException("Реализация в прокси.");
     }
 
-    protected override AltProxyDomainObjectRegisterWithContextWithAlternativeKey<IDomainObjectDemoObjectX, DemoObjectXIdentitiesService.AlternativeKeyEntry, long>
+    protected override AltProxyDomainObjectRegisterWithContextWithAlternativeKey<IDomainObjectDemoObjectX, DemoObjectXIdentitiesService.AlternativeKey, long>
         DoCreateProxy()
     {
         var result = new ProxyDomainObjectRegister();
