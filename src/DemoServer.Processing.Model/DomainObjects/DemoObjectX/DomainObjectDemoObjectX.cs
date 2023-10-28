@@ -200,7 +200,6 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutable<DomainObje
         private set;
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public (DemoObjectXIdentitiesService.AlternativeKey, long /* Group */) Decode()
     {
         return (GetKey(), Group);
@@ -219,25 +218,13 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutable<DomainObje
         m_entryPoint.CurrentUnitOfWork.AddDelete(this);
     }
 
-    public void PostCreate()
-    {
-        DoPostCreate();
-    }
-
-    public ValueTask PostCreateAsync(CancellationToken cancellationToken)
-    {
-        DoPostCreate();
-
-        return ValueTask.CompletedTask;
-    }
-
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private void DoPostCreate()
+    public void PostCreate()
     {
         /*
          * Не использовать m_entryPoint.CreateDomainBehaviourWithСonfirmation<TMapper>
          * Это не безопасно для надёжной работы логики так как объект удаляемый.
-        */
+         */
         var domainBehaviour = m_entryPoint.CreateDomainBehaviourWithСonfirmation();
         m_entryPoint.UnitOfWorkProvider.Instance.AddBehaviour(domainBehaviour);
 
@@ -260,6 +247,13 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutable<DomainObje
                 logger.LogError(messgae);
                 Console.WriteLine(messgae);
             });
+    }
+
+    public ValueTask PostCreateAsync(CancellationToken cancellationToken)
+    {
+        PostCreate();
+
+        return ValueTask.CompletedTask;
     }
 
     protected override void DoUpdate()
