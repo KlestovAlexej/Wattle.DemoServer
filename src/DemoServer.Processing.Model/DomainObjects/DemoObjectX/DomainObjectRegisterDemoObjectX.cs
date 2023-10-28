@@ -24,8 +24,13 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
     [SuppressMessage("ReSharper", "AccessToDisposedClosure")]
     private class ProxyDomainObjectRegister : AltProxyDomainObjectRegisterWithContextWithAlternativeKey<IDomainObjectDemoObjectX, DemoObjectXIdentitiesService.AlternativeKey, long /* Group */>, IDomainObjectRegisterDemoObjectX
     {
+        public ProxyDomainObjectRegister()
+            : base(DecodeDomainObject)
+        {
+        }
+
         #region IDomainObjectRegisterDemoObject
-        
+
         public IDomainObjectDemoObjectX GetByName(
             string name)
         {
@@ -184,11 +189,6 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
         }
 
         #endregion
-
-        protected override void GetKey(IDomainObjectDemoObjectX domainObject, out DemoObjectXIdentitiesService.AlternativeKey keyEntry)
-        {
-            keyEntry = domainObject.GetKey();
-        }
     }
 
     #endregion
@@ -208,8 +208,16 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
             WellknownDomainObjectFields.DemoObjectX.NameAlternateKey,
             WellknownDomainObjectFields.DemoObjectX.NameCollection,
             DecodeDomainObject,
-            entryPoint.CommitVerifyingFactory)
-    // ReSharper disable once ConvertToPrimaryConstructor
+            /*
+             * !!! ВАЖНО !!!
+             *
+             * Не использовать стратегию ICustomEntryPoint.CommitVerifyingFactory - проверка существования объекта в БД по идентити.
+             * Это не безопасно для надёжной работы логики так как объект удаляемый.
+             *
+             * Если указать null, то используется стратегия IUnitOfWork.CommitVerifying - она использует неудаляемый объект ChangeTracker для проверки результата исполнения IUnitOfWork.
+             */
+            null,
+            () => new ProxyDomainObjectRegister())
     {
     }
 
@@ -275,25 +283,4 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
     }
 
     #endregion
-
-    protected override AltProxyDomainObjectRegisterWithContextWithAlternativeKey<IDomainObjectDemoObjectX, DemoObjectXIdentitiesService.AlternativeKey, long>
-        DoCreateProxy()
-    {
-        var result = new ProxyDomainObjectRegister();
-
-        return result;
-    }
-
-    protected override IUnitOfWorkCommitVerifying CreateUnitOfWorkCommitVerifyingDelegate(IDomainObject domainObject)
-    {
-        /*
-         * Не использовать стратегию по умолчанию - проверка существования объекта в БД по идентити.
-         * Это не безопасно для надёжной работы логики так как объект удаляемый.
-         *
-         * Стратегия по умолчанию использует неудаляемый объект ChangeTracker.
-         */
-        var result = m_unitOfWorkProvider.Instance.CommitVerifying;
-
-        return result;
-    }
 }
