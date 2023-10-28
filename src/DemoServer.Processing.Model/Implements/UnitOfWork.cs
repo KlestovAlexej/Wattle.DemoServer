@@ -18,16 +18,20 @@ using ShtrihM.Wattle3.Mappers.Interfaces;
 
 namespace ShtrihM.DemoServer.Processing.Model.Implements;
 
-[method: MethodImpl(MethodImplOptions.AggressiveInlining)]
-public sealed class UnitOfWork(
+public sealed class UnitOfWork : BaseUnitOfWork, IUnitOfWorkDbContextFactory
+{
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public UnitOfWork(
         UnitOfWorkContext unitOfWorkContext,
         Func<ProxyDomainObjectRegisters> registersFactory,
         IUnitOfWorkVisitor visitor)
-    : BaseUnitOfWork(
-        unitOfWorkContext,
-        registersFactory,
-        visitor), IUnitOfWorkDbContextFactory
-{
+        : base(
+            unitOfWorkContext,
+            registersFactory,
+            visitor)
+    {
+    }
+
     public AbstractUnitOfWorkLocks CurrentLocksGetOrCreate
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
