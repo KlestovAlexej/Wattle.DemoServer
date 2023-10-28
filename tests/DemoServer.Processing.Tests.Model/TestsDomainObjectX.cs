@@ -110,71 +110,74 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
                 Assert.AreEqual(1, instances.Count);
                 Assert.AreEqual(id1, instances[0].Identity);
 
+                using (var dbContext2 = unitOfWork.NewDbContext())
                 {
-                    instances = register
+                    {
+                        instances = register
                         .GetObjectEnumeratorAsync(DtoCollectionSelector)
                         .ToListAsync()
                         .SafeGetResult();
-                    Assert.IsNotNull(instances);
-                    Assert.AreEqual(1, instances.Count);
-                    Assert.AreEqual(id1, instances[0].Identity);
+                        Assert.IsNotNull(instances);
+                        Assert.AreEqual(1, instances.Count);
+                        Assert.AreEqual(id1, instances[0].Identity);
 
-                    async IAsyncEnumerable<IMapperDto> DtoCollectionSelector(
-                        [EnumeratorCancellation] CancellationToken ct)
-                    {
-                        await foreach (var entity in dbContext.Demoobjectx
-                                           .Where(entity => entity.Id == id1)
-                                           .AsAsyncEnumerable()
-                                           .WithCancellation(ct)
-                                           .ConfigureAwait(false))
+                        async IAsyncEnumerable<IMapperDto> DtoCollectionSelector(
+                            [EnumeratorCancellation] CancellationToken ct)
                         {
-                            yield return entity.ToMapperDto();
+                            await foreach (var entity in dbContext2.Demoobjectx
+                                               .Where(entity => entity.Id == id1)
+                                               .AsAsyncEnumerable()
+                                               .WithCancellation(ct)
+                                               .ConfigureAwait(false))
+                            {
+                                yield return entity.ToMapperDto();
+                            }
                         }
                     }
-                }
 
-                {
-                    instances = register
-                        .GetObjectEnumeratorAsync(DtoCollectionSelector)
-                        .ToListAsync()
-                        .SafeGetResult();
-                    Assert.IsNotNull(instances);
-                    Assert.AreEqual(2, instances.Count);
-                    Assert.IsTrue(instances.Any(i => i.Identity == id2));
-                    Assert.IsTrue(instances.Any(i => i.Identity == id3));
-
-                    async IAsyncEnumerable<IMapperDto> DtoCollectionSelector(
-                        [EnumeratorCancellation] CancellationToken ct)
                     {
-                        await foreach (var entity in dbContext.Demoobjectx
-                                           .Where(entity => entity.Id != id1)
-                                           .AsAsyncEnumerable()
-                                           .WithCancellation(ct)
-                                           .ConfigureAwait(false))
+                        instances = register
+                            .GetObjectEnumeratorAsync(DtoCollectionSelector)
+                            .ToListAsync()
+                            .SafeGetResult();
+                        Assert.IsNotNull(instances);
+                        Assert.AreEqual(2, instances.Count);
+                        Assert.IsTrue(instances.Any(i => i.Identity == id2));
+                        Assert.IsTrue(instances.Any(i => i.Identity == id3));
+
+                        async IAsyncEnumerable<IMapperDto> DtoCollectionSelector(
+                            [EnumeratorCancellation] CancellationToken ct)
                         {
-                            yield return entity.ToMapperDto();
+                            await foreach (var entity in dbContext2.Demoobjectx
+                                               .Where(entity => entity.Id != id1)
+                                               .AsAsyncEnumerable()
+                                               .WithCancellation(ct)
+                                               .ConfigureAwait(false))
+                            {
+                                yield return entity.ToMapperDto();
+                            }
                         }
                     }
-                }
 
-                {
-                    instances = register
-                        .GetObjectEnumeratorAsync(DtoCollectionSelector)
-                        .ToListAsync()
-                        .SafeGetResult();
-                    Assert.IsNotNull(instances);
-                    Assert.AreEqual(0, instances.Count);
-
-                    async IAsyncEnumerable<IMapperDto> DtoCollectionSelector(
-                        [EnumeratorCancellation] CancellationToken ct)
                     {
-                        await foreach (var entity in dbContext.Demoobjectx
-                                           .Where(entity => entity.Id == -1)
-                                           .AsAsyncEnumerable()
-                                           .WithCancellation(ct)
-                                           .ConfigureAwait(false))
+                        instances = register
+                            .GetObjectEnumeratorAsync(DtoCollectionSelector)
+                            .ToListAsync()
+                            .SafeGetResult();
+                        Assert.IsNotNull(instances);
+                        Assert.AreEqual(0, instances.Count);
+
+                        async IAsyncEnumerable<IMapperDto> DtoCollectionSelector(
+                            [EnumeratorCancellation] CancellationToken ct)
                         {
-                            yield return entity.ToMapperDto();
+                            await foreach (var entity in dbContext2.Demoobjectx
+                                               .Where(entity => entity.Id == -1)
+                                               .AsAsyncEnumerable()
+                                               .WithCancellation(ct)
+                                               .ConfigureAwait(false))
+                            {
+                                yield return entity.ToMapperDto();
+                            }
                         }
                     }
                 }
