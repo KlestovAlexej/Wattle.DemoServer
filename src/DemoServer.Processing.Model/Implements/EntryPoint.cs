@@ -265,6 +265,10 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
         return result;
     }
 
+#if DEBUG
+    public IDomainObjectRegisters Registers => m_registers;
+#endif
+
     public UnitOfWork CurrentUnitOfWork => (UnitOfWork)UnitOfWorkProvider.Instance;
     public ICustomMappers Mappers => (ICustomMappers)m_mappers;
     public IExceptionPolicy ExceptionPolicy => m_exceptionPolicy;

@@ -13,6 +13,7 @@ namespace ShtrihM.DemoServer.Processing.Model.Interfaces;
 [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
 public interface IDomainObjectDemoObjectX : IDomainObject
 {
+    (DemoObjectXIdentitiesService.AlternativeKey, long /* Group */) Decode();
     DemoObjectXIdentitiesService.AlternativeKey GetKey();
     void Delete();
 

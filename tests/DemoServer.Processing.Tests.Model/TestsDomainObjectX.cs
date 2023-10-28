@@ -19,6 +19,7 @@ using ShtrihM.Wattle3.Common.Exceptions;
 using ShtrihM.Wattle3.Mappers.Primitives;
 using ShtrihM.Wattle3.Utils;
 using ShtrihM.DemoServer.Processing.Model.DomainObjects.Common;
+using ShtrihM.Wattle3.DomainObjects.IdentitiesServices;
 
 namespace ShtrihM.DemoServer.Processing.Tests.Model;
 
@@ -484,6 +485,14 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
             template.New(m_entryPoint);
         }
 
+#if DEBUG
+        {
+            var register = m_entryPoint.Registers.GetRegisterAs<IDomainObjectRegisterDemoObjectX, DomainObjectRegisterDemoObjectX>();
+            Assert.AreEqual(IdentitiesServiceResult.NotFound, register.IdentitiesService!.AlternativeKey.FindKey(template.GetKey(), out _));
+            Assert.AreEqual(IdentitiesServiceResult.NotFound, register.IdentitiesService.Contexts.TryGetCount(template.Group, out _));
+        }
+#endif
+
         using (var unitOfWork = m_entryPoint.CreateUnitOfWork())
         {
             var register = unitOfWork.Registers.GetRegister<IDomainObjectRegisterDemoObjectX>();
@@ -552,6 +561,16 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
             unitOfWork.Commit();
         }
 
+#if DEBUG
+        {
+            var register = m_entryPoint.Registers.GetRegisterAs<IDomainObjectRegisterDemoObjectX, DomainObjectRegisterDemoObjectX>();
+            Assert.AreEqual(IdentitiesServiceResult.Exists, register.IdentitiesService!.AlternativeKey.FindKey(template.GetKey(), out var tempId));
+            Assert.AreEqual(id, tempId);
+            Assert.AreEqual(IdentitiesServiceResult.Exists, register.IdentitiesService.Contexts.TryGetCount(template.Group, out var count));
+            Assert.AreEqual(1, count);
+        }
+#endif
+
         using (var unitOfWork = m_entryPoint.CreateUnitOfWork())
         {
             var register = unitOfWork.Registers.GetRegister<IDomainObjectRegisterDemoObjectX>();
@@ -594,9 +613,19 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
             Assert.IsTrue(ReferenceEquals(instance, instance2));
 
             instance.Delete();
+            instance.Delete();
+            instance.Delete();
 
             unitOfWork.Commit();
         }
+
+#if DEBUG
+        {
+            var register = m_entryPoint.Registers.GetRegisterAs<IDomainObjectRegisterDemoObjectX, DomainObjectRegisterDemoObjectX>();
+            Assert.AreEqual(IdentitiesServiceResult.NotFound, register.IdentitiesService!.AlternativeKey.FindKey(template.GetKey(), out _));
+            Assert.AreEqual(IdentitiesServiceResult.NotFound, register.IdentitiesService.Contexts.TryGetCount(template.Group, out _));
+        }
+#endif
 
         var mapper = m_entryPoint.Mappers.GetMapper<IMapperDemoObjectX>();
 
@@ -641,6 +670,81 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
 
             unitOfWork.Commit();
         }
+    }
+
+    [Test]
+    [Timeout(TestTimeout.Unit)]
+    [Category(TestCategory.Unit)]
+    public async Task Test_New_Delete_Async()
+    {
+        var template =
+            new DomainObjectDemoObjectX.Template(
+                "Name",
+                true,
+                new("6457CCA1-4217-4D47-B057-9668278FE290"),
+                "Key2",
+                1);
+
+        var id =
+            await m_entryPoint.CreateAndUsingUnitOfWorkAsync(
+                async (unitOfWork, cancellationToken) =>
+                {
+                    var instance = await template.NewAsync(m_entryPoint, cancellationToken);
+                    var register = unitOfWork.Registers.GetRegister<IDomainObjectRegisterDemoObjectX>();
+                    var instance2 = await register.FindByKeyAsync(template.GetKey(), cancellationToken);
+                    Assert.IsNotNull(instance2);
+                    Assert.IsTrue(ReferenceEquals(instance, instance2));
+
+                    return instance.Identity;
+                },
+                autoCommit: true);
+
+#if DEBUG
+        {
+            var register = m_entryPoint.Registers.GetRegisterAs<IDomainObjectRegisterDemoObjectX, DomainObjectRegisterDemoObjectX>();
+            Assert.AreEqual(IdentitiesServiceResult.Exists, register.IdentitiesService!.AlternativeKey.FindKey(template.GetKey(), out var tempId));
+            Assert.AreEqual(id, tempId);
+            Assert.AreEqual(IdentitiesServiceResult.Exists, register.IdentitiesService.Contexts.TryGetCount(template.Group, out var count));
+            Assert.AreEqual(1, count);
+        }
+#endif
+
+        await m_entryPoint.CreateAndUsingUnitOfWorkAsync(
+            (unitOfWork, _) =>
+            {
+                var register = unitOfWork.Registers.GetRegister<IDomainObjectRegisterDemoObjectX>();
+                var instance = register.Find<IDomainObjectDemoObjectX>(id);
+                Assert.IsNotNull(instance);
+                Assert.AreEqual(template.Group, instance.Group);
+                Assert.AreEqual(template.Enabled, instance.Enabled);
+                Assert.AreEqual(template.Key2, instance.Key2);
+                Assert.AreEqual(template.Key1, instance.Key1);
+                Assert.AreEqual(template.Name, instance.Name);
+
+                instance.Delete();
+
+                return ValueTask.CompletedTask;
+            },
+            autoCommit: true);
+
+#if DEBUG
+        {
+            var register = m_entryPoint.Registers.GetRegisterAs<IDomainObjectRegisterDemoObjectX, DomainObjectRegisterDemoObjectX>();
+            Assert.AreEqual(IdentitiesServiceResult.NotFound, register.IdentitiesService!.AlternativeKey.FindKey(template.GetKey(), out _));
+            Assert.AreEqual(IdentitiesServiceResult.NotFound, register.IdentitiesService.Contexts.TryGetCount(template.Group, out _));
+        }
+#endif
+
+        await m_entryPoint.CreateAndUsingUnitOfWorkAsync(
+            (unitOfWork, _) =>
+            {
+                var register = unitOfWork.Registers.GetRegister<IDomainObjectRegisterDemoObjectX>();
+                var instance = register.Find<IDomainObjectDemoObjectX>(id);
+                Assert.IsNull(instance);
+
+                return ValueTask.CompletedTask;
+            },
+            autoCommit: true);
     }
 
     [Test]

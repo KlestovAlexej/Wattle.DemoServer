@@ -14,7 +14,6 @@ using ShtrihM.DemoServer.Processing.Model.Implements;
 using ShtrihM.Wattle3.Mappers.Primitives;
 using System.Runtime.CompilerServices;
 using Microsoft.EntityFrameworkCore;
-using ShtrihM.Wattle3.DomainObjects.DomainBehaviours;
 
 namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
 
@@ -38,11 +37,10 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
             result = DoGetByName(result, name);
 
             // Поле Name изменяемое
-            // Проверка объектов локального реестра на соответствие критерию выборки
-            result ??=
-                GetLocalEnumerable()
-                    .Cast<IDomainObjectDemoObjectX>()
-                    .FirstOrDefault(domainObject => DoGetByName(domainObject, name) != null);
+            // Поиск объекта в локальном реестре соответствующего критерию выборки
+            result ??= GetLocalEnumerable()
+                .Cast<IDomainObjectDemoObjectX>()
+                .FirstOrDefault(domainObject => DoGetByName(domainObject, name) != null);
 
             return result;
         }
@@ -61,12 +59,22 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
             // Проверка объекта на соответствие критерию выборки т.к. он могбыть взят из локального реестра и он не соответствует критерию выборки т.к. мог быть изменён
             result = DoGetByName(result, name);
 
-            // Поле Name изменяемое
-            // Проверка объектов локального реестра на соответствие критерию выборки
-            result ??=
-                GetLocalEnumerable()
-                    .Cast<IDomainObjectDemoObjectX>()
-                    .FirstOrDefault(domainObject => DoGetByName(domainObject, name) != null);
+            if (result == null)
+            {
+                // Поле Name изменяемое
+                // Поиск объекта в локальном реестре соответствующего критерию выборки
+                foreach (var domainObject in GetLocalEnumerable().Cast<IDomainObjectDemoObjectX>())
+                {
+                    cancellationToken.ThrowIfCancellationRequested();
+
+                    result = DoGetByName(domainObject, name);
+
+                    if (result != null)
+                    {
+                        break;
+                    }
+                }
+            }
 
             return result;
         }
@@ -84,7 +92,7 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
             }
 
             // Поле Name изменяемое
-            // Проверка объектов локального реестра на соответствие критерию выборки
+            // Поиск объектов локального реестра соответствующих критерию выборки
             foreach (var domainObject in GetLocalEnumerable())
             {
                 var result = DoGetByNameSize((IDomainObjectDemoObjectX)domainObject, size);
@@ -112,7 +120,7 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
             }
 
             // Поле Name изменяемое
-            // Проверка объектов локального реестра на соответствие критерию выборки
+            // Поиск объектов локального реестра соответствующих критерию выборки
             foreach (var domainObject in GetLocalEnumerable())
             {
                 cancellationToken.ThrowIfCancellationRequested();
@@ -219,7 +227,8 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
             entryPoint.SystemSettings.DomainObjectRegistersSettings.Value.MemoryCacheDemoObjectX.Value,
             DemoObjectXIdentitiesService.New(entryPoint),
             WellknownDomainObjectFields.DemoObjectX.NameAlternateKey,
-            WellknownDomainObjectFields.DemoObjectX.NameCollection)
+            WellknownDomainObjectFields.DemoObjectX.NameCollection,
+            DecodeDomainObject)
     // ReSharper disable once ConvertToPrimaryConstructor
     {
     }
@@ -228,6 +237,14 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
         long group)
     {
         throw new NotSupportedException("Реализация в прокси.");
+    }
+
+    private static (DemoObjectXIdentitiesService.AlternativeKey, long /* Group */) DecodeDomainObject(IDomainObject domainObject)
+    {
+        var instance = (IDomainObjectDemoObjectX)domainObject;
+        var result = instance.Decode();
+
+        return result;
     }
 
     [SuppressMessage("ReSharper", "AccessToDisposedClosure")]

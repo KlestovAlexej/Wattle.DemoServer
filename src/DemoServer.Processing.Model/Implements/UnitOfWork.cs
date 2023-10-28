@@ -128,4 +128,12 @@ public sealed class UnitOfWork(
 
         return result;
     }
+
+    public override IDomainBehaviourWithСonfirmation CreateDomainBehaviourWithСonfirmation()
+    {
+        var entryPoint = (ICustomEntryPoint)m_context.EntryPoint;
+        var result = entryPoint.CreateDomainBehaviourWithСonfirmation();
+
+        return result;
+    }
 }
