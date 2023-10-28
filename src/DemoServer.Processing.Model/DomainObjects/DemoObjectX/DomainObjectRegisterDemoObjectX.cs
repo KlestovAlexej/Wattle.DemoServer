@@ -33,7 +33,7 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
             result = SafeTryRegister(result);
 
             // Поле Name изменяемое
-            // Проверка объекта соответсвия критерию выборки т.к. он могбыть взят из локального реестра и не соответствует критерию выборки т.к. мог быть изменён до коммита UoW
+            // Проверка объекта соответсви. критерию выборки т.к. он могбыть взят из локального реестра и он не соответствует критерию выборки т.к. мог быть изменён
             result = DoGetByName(result, name);
 
             return result;
@@ -50,7 +50,7 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
             result = SafeTryRegister(result);
 
             // Поле Name изменяемое
-            // Проверка объекта соответсвия критерию выборки т.к. он могбыть взят из локального реестра и не соответствует критерию выборки т.к. мог быть изменён до коммита UoW
+            // Проверка объекта соответсви. критерию выборки т.к. он могбыть взят из локального реестра и он не соответствует критерию выборки т.к. мог быть изменён
             result = DoGetByName(result, name);
 
             return result;
@@ -67,7 +67,7 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
             foreach (var domainObject in instances)
             {
                 // Поле Name изменяемое
-                // Проверка объекта соответсвия критерию выборки т.к. он могбыть взят из локального реестра и не соответствует критерию выборки т.к. мог быть изменён до коммита UoW
+                // Проверка объекта соответсви. критерию выборки т.к. он могбыть взят из локального реестра и он не соответствует критерию выборки т.к. мог быть изменён
                 var result = DoGetByNameSize(domainObject, size);
 
                 if (result == null)
@@ -91,7 +91,7 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
             await foreach (var domainObject in instances.ConfigureAwait(false))
             {
                 // Поле Name изменяемое
-                // Проверка объекта соответсвия критерию выборки т.к. он могбыть взят из локального реестра и не соответствует критерию выборки т.к. мог быть изменён до коммита UoW
+                // Проверка объекта соответсви. критерию выборки т.к. он могбыть взят из локального реестра и он не соответствует критерию выборки т.к. мог быть изменён
                 var result = DoGetByNameSize(domainObject, size);
 
                 if (result == null)
@@ -147,6 +147,11 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
             IDomainObjectDemoObjectX demoObject,
             string name)
         {
+            if (demoObject == null)
+            {
+                return null;
+            }
+
             if (demoObject.Name == name)
             {
                 return demoObject;
@@ -160,6 +165,11 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
             IDomainObjectDemoObjectX demoObject,
             int size)
         {
+            if (demoObject == null)
+            {
+                return null;
+            }
+
             if (demoObject.Name.Length == size)
             {
                 return demoObject;
