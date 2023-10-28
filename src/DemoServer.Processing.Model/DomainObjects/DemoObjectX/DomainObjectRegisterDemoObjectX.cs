@@ -74,9 +74,10 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
             int size)
         {
             var register = (IDomainObjectRegisterDemoObjectX)m_register;
+            var instances = register.GetCollectionByNameSize(size);
 
             // Любой доменный объект полученный из реестра необходимо всегда регистрировать в локальном реестре.
-            foreach (var _ in DoForEach(register.GetCollectionByNameSize(size)))
+            foreach (var _ in DoForEach(instances))
             {
                 /* NONE */
             }
@@ -101,9 +102,10 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
             [EnumeratorCancellation] CancellationToken cancellationToken = default)
         {
             var register = (IDomainObjectRegisterDemoObjectX)m_register;
+            var instances = register.GetCollectionByNameSizeAsync(size, cancellationToken);
 
             // Любой доменный объект полученный из реестра необходимо всегда регистрировать в локальном реестре.
-            await foreach (var _ in DoForEachAsync(register.GetCollectionByNameSizeAsync(size, cancellationToken), cancellationToken).ConfigureAwait(false))
+            await foreach (var _ in DoForEachAsync(instances, cancellationToken).ConfigureAwait(false))
             {
                 /* NONE */
             }
