@@ -397,9 +397,9 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
             Assert.IsNotNull(instance);
             Assert.IsTrue(ReferenceEquals(instance, instance1));
 
-            // Изменяем доменные обхекты
+            // Изменяем доменные объекты
             // Теперь поиск по БД их находит
-            // Но на уровне прокси проверка определяет что объекты в памяти не соответствуют критериям выборки
+            // Но на уровне прокси-реестра проверка определяет что объекты в памяти не соответствуют критериям выборки
             instance1.Name = "0000000000000";
             instance2.Name = "0000000000000";
             instance3.Name = "0000000000000";
