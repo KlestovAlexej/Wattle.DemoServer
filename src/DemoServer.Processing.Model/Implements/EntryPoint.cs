@@ -546,6 +546,7 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
                 systemSettings.TimeStatisticsStep.Value,
                 loggerFactory,
                 tracer);
+        result.CommitVerifyingFactory = new UnitOfWorkCommitVerifyingFactory(result.m_mappers);
         exceptionPolicy.EntryPoint = result;
         result.ServiceProvider = serviceProvider;
 
@@ -627,8 +628,6 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
         result.InfrastructureMonitorRegisters.AddFavorit(infrastructureMonitor.Id);
 
         result.m_partitionsSponsor.Create(tracer);
-
-        result.CommitVerifyingFactory = new UnitOfWorkCommitVerifyingFactory(result.m_mappers);
 
         result.m_unitOfWorkContext =
             new CustomUnitOfWorkContext(
