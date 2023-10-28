@@ -239,10 +239,10 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
         throw new NotSupportedException("Реализация в прокси.");
     }
 
-    private static (DemoObjectXIdentitiesService.AlternativeKey, long /* Group */) DecodeDomainObject(IDomainObject domainObject)
+    private static (DemoObjectXIdentitiesService.AlternativeKey, long) DecodeDomainObject(IDomainObject domainObject)
     {
         var instance = (IDomainObjectDemoObjectX)domainObject;
-        var result = instance.Decode();
+        var result = DomainObjectDemoObjectX.Decode(instance);
 
         return result;
     }

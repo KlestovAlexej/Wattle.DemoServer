@@ -200,11 +200,6 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutable<DomainObje
         private set;
     }
 
-    public (DemoObjectXIdentitiesService.AlternativeKey, long) Decode()
-    {
-        return (GetKey(), Group);
-    }
-
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public DemoObjectXIdentitiesService.AlternativeKey GetKey()
     {
@@ -258,5 +253,11 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutable<DomainObje
         base.DoUpdate();
 
         ModificationDate = m_entryPoint.TimeService.NowDateTime;
+    }
+
+    [DomainObjectFieldValue(DomainObjectDataTarget.Create, DomainObjectDataTarget.Update)]
+    public static (DemoObjectXIdentitiesService.AlternativeKey, long) Decode(IDomainObjectDemoObjectX demoObject)
+    {
+        return (demoObject.GetKey(), demoObject.Group);
     }
 }
