@@ -32,6 +32,10 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
             // Любой доменный объект полученный из реестра необходимо всегда регистрировать в локальном реестре.
             result = SafeTryRegister(result);
 
+            // Поле Name изменяемое
+            // Проверка объекта соответсвия критерию выборки т.к. он могбыть взят из локального реестра и не соответствует критерию выборки т.к. мог быть изменён до коммита UoW
+            result = DoGetByName(result, name);
+
             return result;
         }
 
@@ -45,6 +49,10 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
             // Любой доменный объект полученный из реестра необходимо всегда регистрировать в локальном реестре.
             result = SafeTryRegister(result);
 
+            // Поле Name изменяемое
+            // Проверка объекта соответсвия критерию выборки т.к. он могбыть взят из локального реестра и не соответствует критерию выборки т.к. мог быть изменён до коммита UoW
+            result = DoGetByName(result, name);
+
             return result;
         }
 
@@ -54,21 +62,45 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
             var register = (IDomainObjectRegisterDemoObjectX)m_register;
 
             // Любой доменный объект полученный из реестра необходимо всегда регистрировать в локальном реестре.
-            var result = DoForEach(register.GetCollectionByNameSize(size));
+            var instances = DoForEach(register.GetCollectionByNameSize(size));
 
-            return result;
+            foreach (var domainObject in instances)
+            {
+                // Поле Name изменяемое
+                // Проверка объекта соответсвия критерию выборки т.к. он могбыть взят из локального реестра и не соответствует критерию выборки т.к. мог быть изменён до коммита UoW
+                var result = DoGetByNameSize(domainObject, size);
+
+                if (result == null)
+                {
+                    continue;
+                }
+
+                yield return result;
+            }
         }
 
-        public IAsyncEnumerable<IDomainObjectDemoObjectX> GetCollectionByNameSizeAsync(
+        public async IAsyncEnumerable<IDomainObjectDemoObjectX> GetCollectionByNameSizeAsync(
             int size,
-            CancellationToken cancellationToken = default)
+            [EnumeratorCancellation] CancellationToken cancellationToken = default)
         {
             var register = (IDomainObjectRegisterDemoObjectX)m_register;
 
             // Любой доменный объект полученный из реестра необходимо всегда регистрировать в локальном реестре.
-            var result = DoForEachAsync(register.GetCollectionByNameSizeAsync(size, cancellationToken), cancellationToken);
+            var instances = DoForEachAsync(register.GetCollectionByNameSizeAsync(size, cancellationToken), cancellationToken);
 
-            return result;
+            await foreach (var domainObject in instances.ConfigureAwait(false))
+            {
+                // Поле Name изменяемое
+                // Проверка объекта соответсвия критерию выборки т.к. он могбыть взят из локального реестра и не соответствует критерию выборки т.к. мог быть изменён до коммита UoW
+                var result = DoGetByNameSize(domainObject, size);
+
+                if (result == null)
+                {
+                    continue;
+                }
+
+                yield return result;
+            }
         }
 
         public IEnumerable<IDomainObjectDemoObjectX> GetCollectionByDemoGroup(
@@ -108,6 +140,32 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
         protected override void GetKey(IDomainObjectDemoObjectX domainObject, out DemoObjectXIdentitiesService.AlternativeKey keyEntry)
         {
             keyEntry = domainObject.GetKey();
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private IDomainObjectDemoObjectX DoGetByName(
+            IDomainObjectDemoObjectX demoObject,
+            string name)
+        {
+            if (demoObject.Name == name)
+            {
+                return demoObject;
+            }
+
+            return null;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private IDomainObjectDemoObjectX DoGetByNameSize(
+            IDomainObjectDemoObjectX demoObject,
+            int size)
+        {
+            if (demoObject.Name.Length == size)
+            {
+                return demoObject;
+            }
+
+            return null;
         }
     }
 
