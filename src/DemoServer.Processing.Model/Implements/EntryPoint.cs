@@ -37,6 +37,7 @@ using System.Runtime.ExceptionServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using ShtrihM.DemoServer.Processing.Generated.Interface;
 using Unity;
 using Status = OpenTelemetry.Trace.Status;
 
@@ -587,17 +588,15 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
                 });
 
         result.m_queueEmergencyDomainBehaviour =
-            container.ResolveWithDefault<IQueueItemProcessor>(
-                WellknownDomainObjectIntergratorContextObjectNames.QueueEmergencyDomainBehaviour,
-                () => new QueueItemProcessor(
-                    result.SystemSettings.QueueThreadsSizeEmergencyDomainBehaviour.Value,
-                    result.SystemSettings.QueueEmergencyTimeoutEmergencyDomainBehaviour.Value,
-                    WellknownCommonInfrastructureMonitors.GetDisplayName(WellknownCommonInfrastructureMonitors.QueueEmergencyDomainBehaviour),
-                    result.ExceptionPolicy,
-                    result.TimeService,
-                    WellknownCommonInfrastructureMonitors.QueueEmergencyDomainBehaviour,
-                    loggerFactory.CreateLogger<QueueItemProcessor>(),
-                    result.SystemSettings.TimeStatisticsStep.Value));
+            new QueueItemProcessor(
+                result.SystemSettings.QueueThreadsSizeEmergencyDomainBehaviour.Value,
+                result.SystemSettings.QueueEmergencyTimeoutEmergencyDomainBehaviour.Value,
+                WellknownCommonInfrastructureMonitors.GetDisplayName(WellknownCommonInfrastructureMonitors.QueueEmergencyDomainBehaviour),
+                result.ExceptionPolicy,
+                result.TimeService,
+                WellknownCommonInfrastructureMonitors.QueueEmergencyDomainBehaviour,
+                loggerFactory.CreateLogger<QueueItemProcessor>(),
+                result.SystemSettings.TimeStatisticsStep.Value);
 
         container.RegisterInstance((DomainObjectDataMappers)result.m_dataMappers, InstanceLifetime.External);
         container.RegisterInstance<ICustomEntryPoint>(result, InstanceLifetime.External);
@@ -635,14 +634,15 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
                 result.m_dataMappers,
                 result.m_mappers,
                 result.m_exceptionPolicy,
-                result.m_workflowExceptionPolicy,
+                (WorkflowExceptionPolicy)result.m_workflowExceptionPolicy,
                 loggerFactory.CreateLogger<UnitOfWorkContext>(),
                 false,
                 result.m_unitOfWorkProvider,
                 serviceProvider.GetService<IDbContextFactory<ProcessingDbContext>>(),
                 serviceProvider,
                 result.UnitOfWorkLocks.Hub,
-                result.m_queueEmergencyDomainBehaviour);
+                result.m_queueEmergencyDomainBehaviour,
+                result.m_mappers.GetMapper<IMapperChangeTracker>());
 
         return (result);
     }

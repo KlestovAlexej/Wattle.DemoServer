@@ -362,6 +362,8 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
         /*
          * Не использовать стратегию по умолчанию - проверка существования объекта в БД по идентити.
          * Это не безопасно для надёжной работы логики так как объект удаляемый.
+         *
+         * Стратегия по умолчанию использует неудаляемый объект ChangeTracker.
          */
         var result = m_unitOfWorkProvider.Instance.CommitVerifying;
 

@@ -313,7 +313,7 @@ public static class WebApplicationBuilderExtensions
 
                 options.SchemaFilter<SwaggerDefineDescriptionSchemaFilter>();
 
-                var remarks = WorkflowErrorCodeDataKeysAttribute.GetRemarks(WorkflowErrorCodes.Remarks);
+                var remarks = WorkflowErrorCodeDataKeysAttribute.GetRemarks(typeof(WorkflowExceptionPolicy), WellknownWorkflowExceptionDataKeys.GetDisplayName, WorkflowErrorCodes.Remarks);
 
                 options.SchemaFilter<WorkflowErrorCodesSchemaFilter>(
                     new WorkflowErrorCodesSchemaFilter.Parameters(

@@ -186,10 +186,10 @@
         </member>
         <member name="M:ShtrihM.DemoServer.Processing.Api.Common.WorkflowErrorCodes.GetDisplayName(System.Int32)">
             <summary>
-            Получить текстовое описание кода ошибоки.
+            Получить текстовое описание кода ошибки.
             </summary>
             <param name="id">Код ошибоки.</param>
-            <returns>Текстовое описание кода ошибоки.</returns>
+            <returns>Текстовое описание кода ошибки.</returns>
         </member>
         <member name="M:ShtrihM.DemoServer.Processing.Api.Common.WorkflowErrorCodes.GetSeverity(System.Int32)">
             <summary>

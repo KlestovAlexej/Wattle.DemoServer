@@ -6,6 +6,7 @@ using ShtrihM.Wattle3.DomainObjects.UnitOfWorkLocks;
 using ShtrihM.Wattle3.DomainObjects.UnitOfWorks;
 using ShtrihM.Wattle3.Mappers.Interfaces;
 using System;
+using System.Runtime.CompilerServices;
 using ShtrihM.DemoServer.Processing.Generated.Interface;
 using ShtrihM.Wattle3.QueueProcessors.Interfaces;
 
@@ -18,14 +19,15 @@ public sealed class CustomUnitOfWorkContext : UnitOfWorkContext
         IDomainObjectDataMappers dataMappers,
         IMappers mappers,
         IExceptionPolicy exceptionPolicy,
-        IWorkflowExceptionPolicy workflowExceptionPolicy,
+        WorkflowExceptionPolicy workflowExceptionPolicy,
         ILogger logger,
         bool addStackTrace,
         IUnitOfWorkProvider unitOfWorkProvider,
         IDbContextFactory<ProcessingDbContext> pooledDbContextFactory,
         IServiceProvider serviceProvider,
         IUnitOfWorkLocksHub unitOfWorkLocksHub,
-        IQueueItemProcessor queueEmergencyDomainBehaviour)
+        IQueueItemProcessor queueEmergencyDomainBehaviour,
+        IMapperChangeTracker mapperChangeTracker)
         : base(
             entryPoint,
             dataMappers,
@@ -40,11 +42,17 @@ public sealed class CustomUnitOfWorkContext : UnitOfWorkContext
         QueueEmergencyDomainBehaviour = queueEmergencyDomainBehaviour ?? throw new ArgumentNullException(nameof(queueEmergencyDomainBehaviour));
         UnitOfWorkLocksHub = unitOfWorkLocksHub ?? throw new ArgumentNullException(nameof(unitOfWorkLocksHub));
         PooledDbContextFactory = pooledDbContextFactory ?? throw new ArgumentNullException(nameof(pooledDbContextFactory));
-        MapperChangeTracker = mappers.GetMapper<IMapperChangeTracker>();
+        MapperChangeTracker = mapperChangeTracker ?? throw new ArgumentNullException(nameof(mapperChangeTracker));
     }
 
     public readonly IMapperChangeTracker MapperChangeTracker;
     public readonly IQueueItemProcessor QueueEmergencyDomainBehaviour;
     public readonly IUnitOfWorkLocksHub UnitOfWorkLocksHub;
     public readonly IDbContextFactory<ProcessingDbContext> PooledDbContextFactory;
+
+    public new WorkflowExceptionPolicy WorkflowExceptionPolicy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => (WorkflowExceptionPolicy)base.WorkflowExceptionPolicy;
+    }
 }

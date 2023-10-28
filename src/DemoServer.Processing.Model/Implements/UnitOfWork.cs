@@ -1,7 +1,6 @@
 ﻿using ShtrihM.DemoServer.Processing.Common;
 using ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
 using ShtrihM.DemoServer.Processing.Model.DomainObjects.ChangeTracker;
-using ShtrihM.DemoServer.Processing.Model.Interfaces;
 using ShtrihM.Wattle3.DomainObjects.DomainBehaviours;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectsRegisters;
 using ShtrihM.Wattle3.DomainObjects.Interfaces;
@@ -42,8 +41,9 @@ public sealed class UnitOfWork : BaseUnitOfWork, IUnitOfWorkDbContextFactory
         CancellationToken cancellationToken = default)
     {
         var register = Registers.GetRegister(WellknownDomainObjects.ChangeTracker);
-        var domainObject = await register.NewAsync(DomainObjectChangeTracker.Template.Instance, cancellationToken)
-            .ConfigureAwait(false);
+        var domainObject =
+            await register.NewAsync(DomainObjectChangeTracker.Template.Instance, cancellationToken)
+                .ConfigureAwait(false);
         var result = DoCreateUnitOfWorkCommitVerifying(domainObject.Identity);
 
         return result;
@@ -86,9 +86,15 @@ public sealed class UnitOfWork : BaseUnitOfWork, IUnitOfWorkDbContextFactory
     }
 
     protected override IUnitOfWorkLocks DoCreateLocks()
-        => new UnitOfWorkLocks.UnitOfWorkLocks(
-            ((ICustomEntryPoint)m_context.EntryPoint).WorkflowExceptionPolicy,
-            ((CustomUnitOfWorkContext)m_context).UnitOfWorkLocksHub);
+    {
+        var context = (CustomUnitOfWorkContext)m_context;
+        var result =
+            new UnitOfWorkLocks.UnitOfWorkLocks(
+                context.WorkflowExceptionPolicy,
+                context.UnitOfWorkLocksHub);
+
+        return result;
+    }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public async ValueTask<ProcessingDbContext> NewDbContextAsync(
@@ -97,8 +103,9 @@ public sealed class UnitOfWork : BaseUnitOfWork, IUnitOfWorkDbContextFactory
     {
         var context = (CustomUnitOfWorkContext)m_context;
         var mappersSession = (IPostgreSqlMappersSession)MappersSession;
-        var (connection, transaction) = await mappersSession.GetConnectionAsync(useTransaction, cancellationToken)
-            .ConfigureAwait(false);
+        var (connection, transaction) =
+            await mappersSession.GetConnectionAsync(useTransaction, cancellationToken)
+                .ConfigureAwait(false);
         var result = await context.PooledDbContextFactory.CreateDbContextAsync(cancellationToken).ConfigureAwait(false);
         result.SetDbConnection(connection, transaction);
 
@@ -120,7 +127,14 @@ public sealed class UnitOfWork : BaseUnitOfWork, IUnitOfWorkDbContextFactory
     public IDomainBehaviourWithСonfirmation CreateDomainBehaviourWithСonfirmation<TMapper>(long identity)
         where TMapper : IMapper
     {
-        var result = CreateDomainBehaviourWithСonfirmation(() => DoCreateDomainBehaviourWithСonfirmation<TMapper>(identity));
+        var result = CreateDomainBehaviourWithСonfirmation(
+            () =>
+            {
+                var context = (CustomUnitOfWorkContext)m_context;
+                var result = DomainObjectsHelpers.CreateUnitOfWorkCommitVerifyingDelegate<TMapper>(identity, context.Mappers);
+
+                return result;
+            });
 
         return result;
     }
@@ -142,15 +156,6 @@ public sealed class UnitOfWork : BaseUnitOfWork, IUnitOfWorkDbContextFactory
     DbContext IUnitOfWorkDbContextFactory.NewDbContext(bool useTransaction)
     {
         var result = NewDbContext(useTransaction);
-
-        return result;
-    }
-
-    private IUnitOfWorkCommitVerifying DoCreateDomainBehaviourWithСonfirmation<TMapper>(long identity)
-        where TMapper : IMapper
-    {
-        var context = (CustomUnitOfWorkContext)m_context;
-        var result = DomainObjectsHelpers.CreateUnitOfWorkCommitVerifyingDelegate<TMapper>(identity, context.Mappers);
 
         return result;
     }

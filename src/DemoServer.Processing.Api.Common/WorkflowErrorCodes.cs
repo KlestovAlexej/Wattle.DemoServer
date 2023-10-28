@@ -58,10 +58,10 @@ public static class WorkflowErrorCodes
     public const int DemoObjectXKeyAlreadyExists = 3;
     
     /// <summary>
-    /// Получить текстовое описание кода ошибоки.
+    /// Получить текстовое описание кода ошибки.
     /// </summary>
     /// <param name="id">Код ошибоки.</param>
-    /// <returns>Текстовое описание кода ошибоки.</returns>
+    /// <returns>Текстовое описание кода ошибки.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static string GetDisplayName(int id)
     {
