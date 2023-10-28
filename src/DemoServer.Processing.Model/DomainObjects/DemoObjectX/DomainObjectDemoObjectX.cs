@@ -200,7 +200,7 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutable<DomainObje
         private set;
     }
 
-    public (DemoObjectXIdentitiesService.AlternativeKey, long /* Group */) Decode()
+    public (DemoObjectXIdentitiesService.AlternativeKey, long) Decode()
     {
         return (GetKey(), Group);
     }
