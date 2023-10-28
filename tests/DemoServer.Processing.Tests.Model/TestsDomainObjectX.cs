@@ -48,7 +48,7 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
                 1);
         var template3 =
             new DomainObjectDemoObjectX.Template(
-                "Name3",
+                "Name33",
                 true,
                 new("601F8424-380F-4BA5-BC30-30C0C0F13972"),
                 "Key23",
@@ -174,6 +174,58 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
                     }
                 }
             }
+        }
+
+        using (var unitOfWork = (UnitOfWork)m_entryPoint.CreateUnitOfWork())
+        {
+            var register = unitOfWork.Registers.GetRegister<IDomainObjectRegisterDemoObjectX>();
+            var instance1 = register.Find(id1);
+            var instance2 = register.Find(id2);
+            var instance3 = register.Find(id3);
+
+            var instances = register.GetCollectionByNameSize(1).ToList();
+            Assert.AreEqual(0, instances.Count);
+
+            instances = register.GetCollectionByNameSize(5).ToList();
+            Assert.AreEqual(2, instances.Count);
+            Assert.IsTrue(instances.Any(instance => ReferenceEquals(instance, instance1)));
+            Assert.IsTrue(instances.Any(instance => ReferenceEquals(instance, instance2)));
+
+            instances = register.GetCollectionByNameSize(6).ToList();
+            Assert.AreEqual(1, instances.Count);
+            Assert.IsTrue(instances.Any(instance => ReferenceEquals(instance, instance3)));
+
+            instances = register.GetCollectionByNameSize(7).ToList();
+            Assert.AreEqual(0, instances.Count);
+
+            instances = register.GetCollectionByNameSizeAsync(1).ToListAsync().SafeGetResult();
+            Assert.AreEqual(0, instances.Count);
+
+            instances = register.GetCollectionByNameSizeAsync(5).ToListAsync().SafeGetResult();
+            Assert.AreEqual(2, instances.Count);
+            Assert.IsTrue(instances.Any(instance => ReferenceEquals(instance, instance1)));
+            Assert.IsTrue(instances.Any(instance => ReferenceEquals(instance, instance2)));
+
+            instances = register.GetCollectionByNameSizeAsync(6).ToListAsync().SafeGetResult();
+            Assert.AreEqual(1, instances.Count);
+            Assert.IsTrue(instances.Any(instance => ReferenceEquals(instance, instance3)));
+
+            instances = register.GetCollectionByNameSizeAsync(7).ToListAsync().SafeGetResult();
+            Assert.AreEqual(0, instances.Count);
+
+            var instance = register.GetByName("xxx");
+            Assert.IsNull(instance);
+
+            instance = register.GetByName("Name1");
+            Assert.IsNotNull(instance);
+            Assert.IsTrue(ReferenceEquals(instance, instance1));
+
+            instance = register.GetByNameAsync("xxx").SafeGetResult();
+            Assert.IsNull(instance);
+
+            instance = register.GetByNameAsync("Name1").SafeGetResult();
+            Assert.IsNotNull(instance);
+            Assert.IsTrue(ReferenceEquals(instance, instance1));
         }
     }
 

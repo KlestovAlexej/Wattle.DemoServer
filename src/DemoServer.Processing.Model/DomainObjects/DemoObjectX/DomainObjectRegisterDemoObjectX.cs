@@ -5,8 +5,15 @@ using ShtrihM.DemoServer.Processing.Model.Interfaces;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectsRegisters.IdentitiesServices;
 using ShtrihM.Wattle3.DomainObjects.Interfaces;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
+using ShtrihM.DemoServer.Processing.Model.DomainObjects.Common;
+using ShtrihM.DemoServer.Processing.Model.Implements;
+using ShtrihM.Wattle3.Mappers.Primitives;
+using System.Runtime.CompilerServices;
+using Microsoft.EntityFrameworkCore;
 
 namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
 
@@ -16,6 +23,60 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
 
     private class ProxyDomainObjectRegister : AltProxyDomainObjectRegisterWithContextWithAlternativeKey<IDomainObjectDemoObjectX, DemoObjectXIdentitiesService.AlternativeKeyEntry, long /* Group */>, IDomainObjectRegisterDemoObjectX
     {
+        public IDomainObjectDemoObjectX GetByName(
+            string name)
+        {
+            var register = (IDomainObjectRegisterDemoObjectX)m_register;
+            var result = register.GetByName(name);
+
+            if (result == null)
+            {
+                return null;
+            }
+
+            // Любой доменный объект полученный из реестра необходимо всегда регистрировать в локальном реестре.
+            result = (IDomainObjectDemoObjectX)TryRegister(result);
+
+            return result;
+        }
+
+        public async ValueTask<IDomainObjectDemoObjectX> GetByNameAsync(
+            string name,
+            CancellationToken cancellationToken = default)
+        {
+            var register = (IDomainObjectRegisterDemoObjectX)m_register;
+            var result = await register.GetByNameAsync(name, cancellationToken).ConfigureAwait(false);
+
+            if (result == null)
+            {
+                return null;
+            }
+
+            // Любой доменный объект полученный из реестра необходимо всегда регистрировать в локальном реестре.
+            result = (IDomainObjectDemoObjectX)TryRegister(result);
+
+            return result;
+        }
+
+        public IEnumerable<IDomainObjectDemoObjectX> GetCollectionByNameSize(
+            int size)
+        {
+            var register = (IDomainObjectRegisterDemoObjectX)m_register;
+            var result = DoForEach(register.GetCollectionByNameSize(size));
+
+            return result;
+        }
+
+        public IAsyncEnumerable<IDomainObjectDemoObjectX> GetCollectionByNameSizeAsync(
+            int size,
+            CancellationToken cancellationToken = default)
+        {
+            var register = (IDomainObjectRegisterDemoObjectX)m_register;
+            var result = DoForEachAsync(register.GetCollectionByNameSizeAsync(size, cancellationToken), cancellationToken);
+
+            return result;
+        }
+
         public IEnumerable<IDomainObjectDemoObjectX> GetCollectionByDemoGroup(
             long group)
         {
@@ -80,6 +141,87 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
         long group)
     {
         throw new NotSupportedException("Реализация в прокси.");
+    }
+
+    [SuppressMessage("ReSharper", "AccessToDisposedClosure")]
+    public IEnumerable<IDomainObjectDemoObjectX> GetCollectionByNameSize(
+        int size)
+    {
+        var unitOfWork = (UnitOfWork)UnitOfWorkProvider.Instance;
+        using var dbContext = unitOfWork.NewDbContext();
+        var instances =
+            GetObjectEnumerator(
+                    () => dbContext.Demoobjectx
+                        .Where(entity => entity.Name.Length == size)
+                        .Select(entity => entity.ToMapperDto()))
+                .Cast<IDomainObjectDemoObjectX>();
+
+        foreach (var instance in instances)
+        {
+            yield return instance;
+        }
+    }
+
+    [SuppressMessage("ReSharper", "AccessToDisposedClosure")]
+    public async IAsyncEnumerable<IDomainObjectDemoObjectX> GetCollectionByNameSizeAsync(
+        int size,
+        [EnumeratorCancellation] CancellationToken cancellationToken = default)
+    {
+        var unitOfWork = (UnitOfWork)UnitOfWorkProvider.Instance;
+        await using var dbContext = await unitOfWork.NewDbContextAsync(cancellationToken: cancellationToken).ConfigureAwait(false);
+        var instances = GetObjectEnumeratorAsync(Selector, cancellationToken).ConfigureAwait(false);
+
+        await foreach (var instance in instances)
+        {
+            yield return (IDomainObjectDemoObjectX)instance;
+        }
+
+        yield break;
+
+        async IAsyncEnumerable<IMapperDto> Selector([EnumeratorCancellation] CancellationToken ct)
+        {
+            await foreach (var entity in dbContext.Demoobjectx
+                               .Where(entity => entity.Name.Length == size)
+                               .AsAsyncEnumerable()
+                               .WithCancellation(ct)
+                               .ConfigureAwait(false))
+            {
+                yield return entity.ToMapperDto();
+            }
+        }
+    }
+
+    [SuppressMessage("ReSharper", "AccessToDisposedClosure")]
+    public IDomainObjectDemoObjectX GetByName(
+        string name)
+    {
+        var unitOfWork = (UnitOfWork)UnitOfWorkProvider.Instance;
+        using var dbContext = unitOfWork.NewDbContext();
+        var result =
+            Find(
+                () => dbContext.Demoobjectx
+                    .SingleOrDefault(entity => entity.Name == name)
+                    .ToMapperDto());
+
+        return (IDomainObjectDemoObjectX)result;
+    }
+
+    [SuppressMessage("ReSharper", "AccessToDisposedClosure")]
+    public async ValueTask<IDomainObjectDemoObjectX> GetByNameAsync(
+        string name,
+        CancellationToken cancellationToken = default)
+    {
+        var unitOfWork = (UnitOfWork)UnitOfWorkProvider.Instance;
+        await using var dbContext = await unitOfWork.NewDbContextAsync(cancellationToken: cancellationToken).ConfigureAwait(false);
+        var result =
+            await FindAsync(
+                async ct =>
+                    (await dbContext.Demoobjectx
+                        .SingleOrDefaultAsync(entity => entity.Name == name, cancellationToken: ct))
+                    .ToMapperDto(),
+                cancellationToken);
+
+        return (IDomainObjectDemoObjectX)result;
     }
 
     public IAsyncEnumerable<IDomainObjectDemoObjectX> GetCollectionByDemoGroupAsync(

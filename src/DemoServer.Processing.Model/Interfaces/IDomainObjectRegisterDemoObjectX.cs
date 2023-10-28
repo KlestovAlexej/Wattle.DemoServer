@@ -15,4 +15,10 @@ public interface IDomainObjectRegisterDemoObjectX : IDomainObjectRegisterWithCon
 
     IDomainObjectDemoObjectX FindByDemoAlternativeKey(DemoObjectXIdentitiesService.AlternativeKeyEntry alternativeKey);
     ValueTask<IDomainObjectDemoObjectX> FindByDemoAlternativeKeyAsync(DemoObjectXIdentitiesService.AlternativeKeyEntry alternativeKey, CancellationToken cancellationToken = default);
+
+    IEnumerable<IDomainObjectDemoObjectX> GetCollectionByNameSize(int size);
+    IAsyncEnumerable<IDomainObjectDemoObjectX> GetCollectionByNameSizeAsync(int size, CancellationToken cancellationToken = default);
+
+    IDomainObjectDemoObjectX GetByName(string name);
+    ValueTask<IDomainObjectDemoObjectX> GetByNameAsync(string name, CancellationToken cancellationToken = default);
 }
