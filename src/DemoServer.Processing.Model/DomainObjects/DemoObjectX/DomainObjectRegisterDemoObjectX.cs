@@ -114,6 +114,8 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
             // Проверка объектов локального реестра на соответствие критерию выборки
             foreach (var domainObject in GetLocalEnumerable())
             {
+                cancellationToken.ThrowIfCancellationRequested();
+
                 var result = DoGetByNameSize((IDomainObjectDemoObjectX)domainObject, size);
 
                 if (result == null)
