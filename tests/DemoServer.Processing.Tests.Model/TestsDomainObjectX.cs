@@ -397,12 +397,14 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
             Assert.IsNotNull(instance);
             Assert.IsTrue(ReferenceEquals(instance, instance1));
 
+            var newName = "0000000000000";
+
             // Изменяем доменные объекты
             // Теперь поиск по БД их находит
             // Но на уровне прокси-реестра проверка определяет что объекты в памяти не соответствуют критериям выборки
-            instance1.Name = "0000000000000";
-            instance2.Name = "0000000000000";
-            instance3.Name = "0000000000000";
+            instance1.Name = newName;
+            instance2.Name = newName;
+            instance3.Name = newName;
 
             instances = register.GetCollectionByNameSize(1).ToList();
             Assert.AreEqual(0, instances.Count);
@@ -434,10 +436,16 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
             instance = register.GetByName("Name1");
             Assert.IsNull(instance);
 
+            instance = register.GetByName(newName);
+            Assert.IsNull(instance);
+
             instance = register.GetByNameAsync("xxx").SafeGetResult();
             Assert.IsNull(instance);
 
             instance = register.GetByNameAsync("Name1").SafeGetResult();
+            Assert.IsNull(instance);
+
+            instance = register.GetByNameAsync(newName).SafeGetResult();
             Assert.IsNull(instance);
         }
     }
