@@ -58,22 +58,24 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
                     DomainObjectSelector,
                     cancellationToken);
 
-            ValueTask<IDomainObject> DomainObjectSelector(IEnumerable<IDomainObject> domainObjects, CancellationToken ct)
+            return (IDomainObjectDemoObjectX)result;
+
+            async ValueTask<IDomainObject> DomainObjectSelector(IEnumerable<IDomainObject> domainObjects, CancellationToken ct)
             {
+                await Task.Yield();
+
                 foreach (var domainObject in domainObjects.Cast<IDomainObjectDemoObjectX>())
                 {
                     ct.ThrowIfCancellationRequested();
 
                     if (domainObject.Name == name)
                     {
-                        return ValueTask.FromResult<IDomainObject>(domainObject);
+                        return domainObject;
                     }
                 }
 
-                return ValueTask.FromResult<IDomainObject>(null);
+                return null;
             }
-
-            return (IDomainObjectDemoObjectX)result;
         }
 
         public IEnumerable<IDomainObjectDemoObjectX> GetCollectionByNameSize(
@@ -131,6 +133,8 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
 
             async IAsyncEnumerable<IDomainObject> DomainObjectSelector(IEnumerable<IDomainObject> domainObjects, [EnumeratorCancellation] CancellationToken ct)
             {
+                await Task.Yield();
+
                 foreach (var domainObject in domainObjects.Cast<IDomainObjectDemoObjectX>())
                 {
                     ct.ThrowIfCancellationRequested();
@@ -140,8 +144,6 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
                         yield return domainObject;
                     }
                 }
-
-                await Task.Yield();
             }
         }
 
