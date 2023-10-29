@@ -180,15 +180,7 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
             WellknownDomainObjectFields.DemoObjectX.NameAlternateKey,
             WellknownDomainObjectFields.DemoObjectX.NameCollection,
             DecodeDomainObject,
-            /*
-             * !!! ВАЖНО !!!
-             *
-             * Не использовать стратегию ICustomEntryPoint.CommitVerifyingFactory - проверка существования объекта в БД по идентити.
-             * Это не безопасно для надёжной работы логики так как объект удаляемый.
-             *
-             * Если указать null, то используется стратегия IUnitOfWork.CommitVerifying - она использует неудаляемый объект ChangeTracker для проверки результата исполнения IUnitOfWork.
-             */
-            null,
+            entryPoint.CommitVerifyingFactory,
             () => new ProxyDomainObjectRegister())
     // ReSharper disable once ConvertToPrimaryConstructor
     {
@@ -197,7 +189,7 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
     private static (DemoObjectXIdentitiesService.AlternativeKey, long) DecodeDomainObject(IDomainObject domainObject)
     {
         var instance = (IDomainObjectDemoObjectX)domainObject;
-        var result = DomainObjectDemoObjectX.Decode(instance);
+        var result = (instance.GetKey(), instance.Group);
 
         return result;
     }

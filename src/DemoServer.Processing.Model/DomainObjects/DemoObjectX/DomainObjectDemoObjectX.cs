@@ -254,10 +254,4 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutable<DomainObje
 
         ModificationDate = m_entryPoint.TimeService.NowDateTime;
     }
-
-    [DomainObjectFieldValue(DomainObjectDataTarget.Create, DomainObjectDataTarget.Update)]
-    public static (DemoObjectXIdentitiesService.AlternativeKey, long) Decode(IDomainObjectDemoObjectX demoObject)
-    {
-        return (demoObject.GetKey(), demoObject.Group);
-    }
 }
