@@ -37,6 +37,8 @@ using System.Runtime.ExceptionServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using ShtrihM.DemoServer.Processing.Generated.Interface;
+using ShtrihM.DemoServer.Processing.Model.DomainObjects.ChangeTracker;
 using Unity;
 using Status = OpenTelemetry.Trace.Status;
 
@@ -347,7 +349,7 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
         object context,
         CancellationToken cancellationToken = default)
     {
-        var result = new UnitOfWork(m_unitOfWorkContext, m_registersFactory, visitor);
+        var result = new UnitOfWork((UnitOfWorkFullContext<ProcessingDbContext, IMapperChangeTracker>)m_unitOfWorkContext, m_registersFactory, visitor);
 
         return ValueTask.FromResult<IUnitOfWork>(result);
     }
@@ -374,7 +376,7 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
 
     protected override IUnitOfWork DoCreateUnitOfWork(IUnitOfWorkVisitor visitor, object context)
     {
-        var result = new UnitOfWork(m_unitOfWorkContext, m_registersFactory, visitor);
+        var result = new UnitOfWork((UnitOfWorkFullContext<ProcessingDbContext, IMapperChangeTracker>)m_unitOfWorkContext, m_registersFactory, visitor);
 
         return result;
     }
@@ -630,7 +632,7 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
         result.m_partitionsSponsor.Create(tracer);
 
         result.m_unitOfWorkContext =
-            new CustomUnitOfWorkContext(
+            new UnitOfWorkFullContext<ProcessingDbContext, IMapperChangeTracker>(
                 result,
                 result.m_dataMappers,
                 result.m_mappers,
@@ -643,7 +645,9 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
                 serviceProvider,
                 result.UnitOfWorkLocks.Hub,
                 result.m_queueEmergencyDomainBehaviour,
-                result.CommitVerifyingFactory);
+                result.CommitVerifyingFactory,
+                () => new UnitOfWorkLocks.UnitOfWorkLocks(result.WorkflowExceptionPolicy, result.UnitOfWorkLocks.Hub),
+                () => DomainObjectChangeTracker.Template.Instance);
 
         return (result);
     }
