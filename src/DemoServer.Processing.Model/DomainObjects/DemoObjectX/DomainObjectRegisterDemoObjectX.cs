@@ -109,10 +109,11 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
                         _ =>
                             dbContext.Demoobjectx
                                 .Where(entity => entity.Name.Length == size)
-                                .ToAsyncEnumerable()
-                                .Select(entity => entity.ToMapperDto()),
-                        (domainObjects, _) =>
-                            domainObjects.Cast<IDomainObjectDemoObjectX>()
+                                .Select(entity => entity.ToMapperDto())
+                                .AsAsyncEnumerable(),
+                        (domainObjects, ct) =>
+                            domainObjects
+                                .Cast<IDomainObjectDemoObjectX>()
                                 .Where(domainObject => domainObject.Name.Length == size)
                                 .ToAsyncEnumerable(),
                         cancellationToken)
