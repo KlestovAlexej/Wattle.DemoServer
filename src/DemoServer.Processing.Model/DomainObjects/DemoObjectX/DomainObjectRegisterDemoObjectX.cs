@@ -52,22 +52,24 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
             CancellationToken cancellationToken = default)
         {
             var unitOfWork = (UnitOfWork)UnitOfWorkProvider.Instance;
-            await using var dbContext = await unitOfWork.NewDbContextAsync(cancellationToken: cancellationToken)
-                .ConfigureAwait(false);
+            await using var dbContext =
+                await unitOfWork.NewDbContextAsync(cancellationToken: cancellationToken)
+                    .ConfigureAwait(false);
 
             var result =
                 await FindAsync(
-                    async ct =>
-                        (await dbContext.Demoobjectx
-                            .FirstOrDefaultAsync(entity => entity.Name == name, cancellationToken: ct)
-                            .ConfigureAwait(false))
-                        .ToMapperDto(),
-                    async (domainObjects, ct) =>
-                        await domainObjects.Cast<IDomainObjectDemoObjectX>()
-                            .ToAsyncEnumerable()
-                            .FirstOrDefaultAsync(entity => entity.Name == name, cancellationToken: ct)
-                            .ConfigureAwait(false),
-                    cancellationToken);
+                        async ct =>
+                            (await dbContext.Demoobjectx
+                                .FirstOrDefaultAsync(entity => entity.Name == name, cancellationToken: ct)
+                                .ConfigureAwait(false))
+                            .ToMapperDto(),
+                        async (domainObjects, ct) =>
+                            await domainObjects.Cast<IDomainObjectDemoObjectX>()
+                                .ToAsyncEnumerable()
+                                .FirstOrDefaultAsync(entity => entity.Name == name, cancellationToken: ct)
+                                .ConfigureAwait(false),
+                        cancellationToken)
+                    .ConfigureAwait(false);
 
             return (IDomainObjectDemoObjectX)result;
         }
@@ -99,19 +101,22 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
             [EnumeratorCancellation] CancellationToken cancellationToken = default)
         {
             var unitOfWork = (UnitOfWork)UnitOfWorkProvider.Instance;
-            await using var dbContext = await unitOfWork.NewDbContextAsync(cancellationToken: cancellationToken).ConfigureAwait(false);
+            await using var dbContext =
+                await unitOfWork.NewDbContextAsync(cancellationToken: cancellationToken)
+                    .ConfigureAwait(false);
             var instances =
                 GetObjectEnumeratorAsync(
-                    _ =>
-                        dbContext.Demoobjectx
-                            .Where(entity => entity.Name.Length == size)
-                            .ToAsyncEnumerable()
-                            .Select(entity => entity.ToMapperDto()),
-                    (domainObjects, _) =>
-                        domainObjects.Cast<IDomainObjectDemoObjectX>()
-                            .Where(domainObject => domainObject.Name.Length == size)
-                            .ToAsyncEnumerable(),
-                    cancellationToken).ConfigureAwait(false);
+                        _ =>
+                            dbContext.Demoobjectx
+                                .Where(entity => entity.Name.Length == size)
+                                .ToAsyncEnumerable()
+                                .Select(entity => entity.ToMapperDto()),
+                        (domainObjects, _) =>
+                            domainObjects.Cast<IDomainObjectDemoObjectX>()
+                                .Where(domainObject => domainObject.Name.Length == size)
+                                .ToAsyncEnumerable(),
+                        cancellationToken)
+                    .ConfigureAwait(false);
 
             await foreach (var instance in instances)
             {
