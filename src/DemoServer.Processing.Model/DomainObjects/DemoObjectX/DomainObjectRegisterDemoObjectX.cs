@@ -117,11 +117,12 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
                                 .Where(domainObject => domainObject.Name.Length == size)
                                 .ToAsyncEnumerable(),
                         cancellationToken)
+                    .Cast<IDomainObjectDemoObjectX>()
                     .ConfigureAwait(false);
 
             await foreach (var instance in instances)
             {
-                yield return (IDomainObjectDemoObjectX)instance;
+                yield return instance;
             }
         }
 
