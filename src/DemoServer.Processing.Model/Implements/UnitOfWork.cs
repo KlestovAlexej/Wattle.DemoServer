@@ -5,7 +5,6 @@ using ShtrihM.Wattle3.DomainObjects.DomainBehaviours;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectsRegisters;
 using ShtrihM.Wattle3.DomainObjects.Interfaces;
 using ShtrihM.Wattle3.DomainObjects.UnitOfWorks;
-using ShtrihM.Wattle3.Mappers.PostgreSql;
 using System;
 using System.Runtime.CompilerServices;
 using System.Threading;
@@ -78,7 +77,7 @@ public sealed class UnitOfWork : BaseUnitOfWork, IUnitOfWorkDbContextFactory
         CancellationToken cancellationToken = default)
     {
         var context = (CustomUnitOfWorkContext)m_context;
-        var mappersSession = (IPostgreSqlMappersSession)MappersSession;
+        var mappersSession = (IDbMappersSession)MappersSession;
         var (connection, transaction) =
             await mappersSession.GetConnectionAsync(useTransaction, cancellationToken)
                 .ConfigureAwait(false);
@@ -92,7 +91,7 @@ public sealed class UnitOfWork : BaseUnitOfWork, IUnitOfWorkDbContextFactory
     public ProcessingDbContext NewDbContext(bool useTransaction = true)
     {
         var context = (CustomUnitOfWorkContext)m_context;
-        var mappersSession = (IPostgreSqlMappersSession)MappersSession;
+        var mappersSession = (IDbMappersSession)MappersSession;
         var (connection, transaction) = mappersSession.GetConnection(useTransaction);
         var result = context.PooledDbContextFactory.CreateDbContext();
         result.SetDbConnection(connection, transaction);
