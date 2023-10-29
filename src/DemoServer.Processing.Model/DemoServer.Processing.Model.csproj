@@ -26,6 +26,7 @@
 		<PackageReference Include="ShtrihM.Wattle3.Swashbuckle.AspNetCore" Version="3.0.0.37399" />
 		<PackageReference Include="ShtrihM.Wattle3.Triggers" Version="3.0.0.37399" />
 		<PackageReference Include="ShtrihM.Wattle3.UniqueRegisters" Version="3.0.0.37399" />
+		<PackageReference Include="System.Linq.Async" Version="6.0.1" />
 		<PackageReference Include="Unity" Version="5.11.10" />
 	</ItemGroup>
 

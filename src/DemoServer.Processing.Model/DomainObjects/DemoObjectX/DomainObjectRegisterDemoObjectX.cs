@@ -11,7 +11,6 @@ using System.Threading.Tasks;
 using System.Threading;
 using ShtrihM.DemoServer.Processing.Model.DomainObjects.Common;
 using ShtrihM.DemoServer.Processing.Model.Implements;
-using ShtrihM.Wattle3.Mappers.Primitives;
 using System.Runtime.CompilerServices;
 using Microsoft.EntityFrameworkCore;
 
@@ -53,7 +52,8 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
             CancellationToken cancellationToken = default)
         {
             var unitOfWork = (UnitOfWork)UnitOfWorkProvider.Instance;
-            await using var dbContext = await unitOfWork.NewDbContextAsync(cancellationToken: cancellationToken).ConfigureAwait(false);
+            await using var dbContext = await unitOfWork.NewDbContextAsync(cancellationToken: cancellationToken)
+                .ConfigureAwait(false);
 
             var result =
                 await FindAsync(
@@ -62,27 +62,14 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
                             .FirstOrDefaultAsync(entity => entity.Name == name, cancellationToken: ct)
                             .ConfigureAwait(false))
                         .ToMapperDto(),
-                    DomainObjectSelector,
+                    async (domainObjects, ct) =>
+                        await domainObjects.Cast<IDomainObjectDemoObjectX>()
+                            .ToAsyncEnumerable()
+                            .FirstOrDefaultAsync(entity => entity.Name == name, cancellationToken: ct)
+                            .ConfigureAwait(false),
                     cancellationToken);
 
             return (IDomainObjectDemoObjectX)result;
-
-            async ValueTask<IDomainObject> DomainObjectSelector(IEnumerable<IDomainObject> domainObjects, CancellationToken ct)
-            {
-                await Task.Yield();
-
-                foreach (var domainObject in domainObjects.Cast<IDomainObjectDemoObjectX>())
-                {
-                    ct.ThrowIfCancellationRequested();
-
-                    if (domainObject.Name == name)
-                    {
-                        return domainObject;
-                    }
-                }
-
-                return null;
-            }
         }
 
         public IEnumerable<IDomainObjectDemoObjectX> GetCollectionByNameSize(
@@ -115,42 +102,20 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
             await using var dbContext = await unitOfWork.NewDbContextAsync(cancellationToken: cancellationToken).ConfigureAwait(false);
             var instances =
                 GetObjectEnumeratorAsync(
-                    DtoSelector,
-                    DomainObjectSelector,
+                    _ =>
+                        dbContext.Demoobjectx
+                            .Where(entity => entity.Name.Length == size)
+                            .ToAsyncEnumerable()
+                            .Select(entity => entity.ToMapperDto()),
+                    (domainObjects, _) =>
+                        domainObjects.Cast<IDomainObjectDemoObjectX>()
+                            .Where(domainObject => domainObject.Name.Length == size)
+                            .ToAsyncEnumerable(),
                     cancellationToken).ConfigureAwait(false);
 
             await foreach (var instance in instances)
             {
                 yield return (IDomainObjectDemoObjectX)instance;
-            }
-
-            yield break;
-
-            async IAsyncEnumerable<IMapperDto> DtoSelector([EnumeratorCancellation] CancellationToken ct)
-            {
-                await foreach (var entity in dbContext.Demoobjectx
-                                   .Where(entity => entity.Name.Length == size)
-                                   .AsAsyncEnumerable()
-                                   .WithCancellation(ct)
-                                   .ConfigureAwait(false))
-                {
-                    yield return entity.ToMapperDto();
-                }
-            }
-
-            async IAsyncEnumerable<IDomainObject> DomainObjectSelector(IEnumerable<IDomainObject> domainObjects, [EnumeratorCancellation] CancellationToken ct)
-            {
-                await Task.Yield();
-
-                foreach (var domainObject in domainObjects.Cast<IDomainObjectDemoObjectX>())
-                {
-                    ct.ThrowIfCancellationRequested();
-
-                    if (domainObject.Name.Length == size)
-                    {
-                        yield return domainObject;
-                    }
-                }
             }
         }
 
