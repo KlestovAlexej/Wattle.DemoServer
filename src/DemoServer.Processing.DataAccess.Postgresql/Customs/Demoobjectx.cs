@@ -8,7 +8,7 @@ namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
 public partial class Demoobjectx
 {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public IMapperDto ToMapperDto()
+    public DemoObjectXDtoActual ToMapperDto()
     {
         var result =
             new DemoObjectXDtoActual
