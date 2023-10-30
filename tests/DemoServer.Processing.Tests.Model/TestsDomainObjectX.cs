@@ -77,7 +77,7 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
                         dbContext.Demoobjectx
                             .SingleOrDefault(
                                 entity => entity.Id == id1)
-                            .ToMapperDto());
+                            ?.ToMapperDto());
                 Assert.IsNotNull(instance);
                 Assert.AreEqual(id1, instance.Identity);
 
@@ -86,7 +86,7 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
                             (await dbContext.Demoobjectx
                                 .SingleOrDefaultAsync(
                                     entity => entity.Id == id1, ct))
-                            .ToMapperDto())
+                            ?.ToMapperDto())
                         .SafeGetResult();
                 Assert.IsNotNull(instance);
                 Assert.AreEqual(id1, instance.Identity);
@@ -96,7 +96,7 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
                             (await dbContext.Demoobjectx
                                 .SingleOrDefaultAsync(
                                     entity => entity.Id == -1, ct))
-                            .ToMapperDto())
+                            ?.ToMapperDto())
                         .SafeGetResult();
                 Assert.IsNull(instance);
 
@@ -190,7 +190,7 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
                         dbContext.Demoobjectx
                             .SingleOrDefault(
                                 entity => entity.Id == id1)
-                            .ToMapperDto());
+                            ?.ToMapperDto());
                 Assert.IsNotNull(instance);
                 Assert.AreEqual(id1, instance.Identity);
 
@@ -199,7 +199,7 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
                             (await dbContext.Demoobjectx
                                 .SingleOrDefaultAsync(
                                     entity => entity.Id == id1, ct))
-                            .ToMapperDto())
+                            ?.ToMapperDto())
                         .SafeGetResult();
                 Assert.IsNotNull(instance);
                 Assert.AreEqual(id1, instance.Identity);
@@ -209,7 +209,7 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
                             (await dbContext.Demoobjectx
                                 .SingleOrDefaultAsync(
                                     entity => entity.Id == -1, ct))
-                            .ToMapperDto())
+                            ?.ToMapperDto())
                         .SafeGetResult();
                 Assert.IsNull(instance);
 
