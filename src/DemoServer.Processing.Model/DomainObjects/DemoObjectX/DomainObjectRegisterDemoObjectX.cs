@@ -1,5 +1,4 @@
-﻿using System;
-using ShtrihM.DemoServer.Processing.Common;
+﻿using ShtrihM.DemoServer.Processing.Common;
 using ShtrihM.DemoServer.Processing.Generated.Interface;
 using ShtrihM.DemoServer.Processing.Model.Interfaces;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectsRegisters.IdentitiesServices;
@@ -16,7 +15,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
 
-public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWithAlternativeKeyStatelessDefault<IDomainObjectDemoObjectX, DemoObjectXIdentitiesService.AlternativeKey, long /* Group */, DemoObjectXDtoActual, IMapperDemoObjectX>, IDomainObjectRegisterDemoObjectX
+public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWithAlternativeKeyStatelessDefault<IDomainObjectDemoObjectX, DemoObjectXIdentitiesService.AlternativeKey, long /* Group */, DemoObjectXDtoActual, IMapperDemoObjectX>
 {
     #region ProxyDomainObjectRegister
 
@@ -193,59 +192,4 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
 
         return result;
     }
-
-    #region IDomainObjectRegisterDemoObjectX
-
-    public IEnumerable<IDomainObjectDemoObjectX> GetCollectionByDemoGroup(
-        long group)
-    {
-        throw new NotSupportedException("Реализация в прокси.");
-    }
-
-    public IEnumerable<IDomainObjectDemoObjectX> GetCollectionByNameSize(
-        int size)
-    {
-        throw new NotSupportedException("Реализация в прокси.");
-    }
-
-    public IAsyncEnumerable<IDomainObjectDemoObjectX> GetCollectionByNameSizeAsync(
-        int size,
-        CancellationToken cancellationToken = default)
-    {
-        throw new NotSupportedException("Реализация в прокси.");
-    }
-
-    public IDomainObjectDemoObjectX GetByName(string name)
-    {
-        throw new NotSupportedException("Реализация в прокси.");
-    }
-
-    public ValueTask<IDomainObjectDemoObjectX> GetByNameAsync(
-        string name,
-        CancellationToken cancellationToken = default)
-    {
-        throw new NotSupportedException("Реализация в прокси.");
-    }
-
-    public IAsyncEnumerable<IDomainObjectDemoObjectX> GetCollectionByDemoGroupAsync(
-        long group,
-        CancellationToken cancellationToken = default)
-    {
-        throw new NotSupportedException("Реализация в прокси.");
-    }
-
-    public IDomainObjectDemoObjectX FindByDemoAlternativeKey(
-        DemoObjectXIdentitiesService.AlternativeKey alternativeKey)
-    {
-        throw new NotSupportedException("Реализация в прокси.");
-    }
-
-    public ValueTask<IDomainObjectDemoObjectX> FindByDemoAlternativeKeyAsync(
-        DemoObjectXIdentitiesService.AlternativeKey alternativeKey,
-        CancellationToken cancellationToken = default)
-    {
-        throw new NotSupportedException("Реализация в прокси.");
-    }
-
-    #endregion
 }
