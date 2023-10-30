@@ -24,11 +24,6 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
     [SuppressMessage("ReSharper", "AccessToDisposedClosure")]
     private class ProxyDomainObjectRegister : AltProxyDomainObjectRegisterWithContextWithAlternativeKey<IDomainObjectDemoObjectX, DemoObjectXIdentitiesService.AlternativeKey, long /* Group */>, IDomainObjectRegisterDemoObjectX
     {
-        public ProxyDomainObjectRegister() : base(DecodeDomainObject)
-        // ReSharper disable once ConvertToPrimaryConstructor
-        {
-        }
-
         #region IDomainObjectRegisterDemoObject
 
         public IDomainObjectDemoObjectX GetByName(
