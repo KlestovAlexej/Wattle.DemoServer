@@ -13,7 +13,9 @@ using System.Threading;
 using ShtrihM.DemoServer.Processing.Model.Implements;
 using System.Runtime.CompilerServices;
 using Microsoft.EntityFrameworkCore;
+using OpenTelemetry.Trace;
 using ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
+using ShtrihM.Wattle3.Utils;
 
 namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
 
@@ -21,9 +23,14 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
 {
     #region ProxyDomainObjectRegister
 
-    [SuppressMessage("ReSharper", "AccessToDisposedClosure")]
     private class ProxyDomainObjectRegister : AltProxyDomainObjectRegisterWithContextWithAlternativeKey<IDomainObjectDemoObjectX, DemoObjectXIdentitiesService.AlternativeKey, long /* Group */>, IDomainObjectRegisterDemoObjectX
     {
+        private ICustomEntryPoint EntryPoint
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get => (ICustomEntryPoint)UnitOfWorkProvider.Instance.EntryPoint;
+        }
+
         #region IDomainObjectRegisterDemoObject
 
         public IDomainObjectDemoObjectX GetByName(
@@ -76,7 +83,14 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
         public IEnumerable<IDomainObjectDemoObjectX> GetCollectionByDemoGroup(
             long group)
         {
+            using var span = EntryPoint.Tracer?.StartActiveSpan(nameof(GetCollectionByDemoGroup), SpanKind.Server);
+
             var result = GetEnumeratorByContext(group);
+
+            if (span != null)
+            {
+                result = result.ToList();
+            }
 
             return result;
         }
@@ -85,7 +99,14 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
             long group,
             CancellationToken cancellationToken = default)
         {
+            using var span = EntryPoint.Tracer?.StartActiveSpan(nameof(GetCollectionByDemoGroupAsync), SpanKind.Server);
+
             var result = GetEnumeratorByContextAsync(group, cancellationToken);
+
+            if (span != null)
+            {
+                result = result.ToListAsync(cancellationToken: cancellationToken).SafeGetResult().ToAsyncEnumerable();
+            }
 
             return result;
         }
@@ -93,6 +114,8 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
         public IDomainObjectDemoObjectX FindByDemoAlternativeKey(
             DemoObjectXIdentitiesService.AlternativeKey alternativeKey)
         {
+            using var span = EntryPoint.Tracer?.StartActiveSpan(nameof(FindByDemoAlternativeKey), SpanKind.Server);
+
             var result = FindByKey(alternativeKey);
 
             return result;
@@ -102,7 +125,14 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
             DemoObjectXIdentitiesService.AlternativeKey alternativeKey,
             CancellationToken cancellationToken = default)
         {
+            using var span = EntryPoint.Tracer?.StartActiveSpan(nameof(FindByDemoAlternativeKeyAsync), SpanKind.Server);
+
             var result = FindByKeyAsync(alternativeKey, cancellationToken);
+
+            if (span != null)
+            {
+                result = ValueTask.FromResult(result.SafeGetResult());
+            }
 
             return result;
         }
@@ -111,11 +141,15 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
 
         #region Common
 
+        [SuppressMessage("ReSharper", "AccessToDisposedClosure")]
         private async IAsyncEnumerable<IDomainObjectDemoObjectX> DoGetObjectEnumeratorAsync(
             Expression<Func<Demoobjectx, bool>> dtoSelector,
             Func<IDomainObjectDemoObjectX, bool> domainObjectSelector = null,
-            [EnumeratorCancellation] CancellationToken cancellationToken = default)
+            [EnumeratorCancellation] CancellationToken cancellationToken = default,
+            [CallerMemberName] string caller = null)
         {
+            using var span = EntryPoint.Tracer?.StartActiveSpan(caller, SpanKind.Server);
+
             var unitOfWork = (UnitOfWork)UnitOfWorkProvider.Instance;
             await using var dbContext =
                 await unitOfWork.NewDbContextAsync(cancellationToken: cancellationToken)
@@ -135,19 +169,28 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
                                     .ToAsyncEnumerable()
                                 : null,
                         cancellationToken)
-                    .Cast<IDomainObjectDemoObjectX>()
-                    .ConfigureAwait(false);
+                    .Cast<IDomainObjectDemoObjectX>();
 
-            await foreach (var instance in instances)
+            if (span != null)
+            {
+                instances = instances.ToListAsync(cancellationToken: cancellationToken).SafeGetResult()
+                    .ToAsyncEnumerable();
+            }
+
+            await foreach (var instance in instances.ConfigureAwait(false))
             {
                 yield return instance;
             }
         }
 
+        [SuppressMessage("ReSharper", "AccessToDisposedClosure")]
         private IEnumerable<IDomainObjectDemoObjectX> DoGetObjectEnumerator(
             Expression<Func<Demoobjectx, bool>> dtoSelector,
-            Func<IDomainObjectDemoObjectX, bool> domainObjectSelector = null)
+            Func<IDomainObjectDemoObjectX, bool> domainObjectSelector = null,
+            [CallerMemberName] string caller = null)
         {
+            using var span = EntryPoint.Tracer?.StartActiveSpan(caller, SpanKind.Server);
+
             var unitOfWork = (UnitOfWork)UnitOfWorkProvider.Instance;
             using var dbContext = unitOfWork.NewDbContext();
             var instances =
@@ -163,16 +206,25 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
                             : null)
                     .Cast<IDomainObjectDemoObjectX>();
 
+            if (span != null)
+            {
+                instances = instances.ToList();
+            }
+
             foreach (var instance in instances)
             {
                 yield return instance;
             }
         }
 
+        [SuppressMessage("ReSharper", "AccessToDisposedClosure")]
         private IDomainObjectDemoObjectX DoFind(
             Expression<Func<Demoobjectx, bool>> dtoSelector,
-            Func<IDomainObjectDemoObjectX, bool> domainObjectSelector = null)
+            Func<IDomainObjectDemoObjectX, bool> domainObjectSelector = null,
+            [CallerMemberName] string caller = null)
         {
+            using var span = EntryPoint.Tracer?.StartActiveSpan(caller, SpanKind.Server);
+
             var unitOfWork = (UnitOfWork)UnitOfWorkProvider.Instance;
             using var dbContext = unitOfWork.NewDbContext();
             var result =
@@ -189,11 +241,15 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
             return (IDomainObjectDemoObjectX)result;
         }
 
+        [SuppressMessage("ReSharper", "AccessToDisposedClosure")]
         private async ValueTask<IDomainObjectDemoObjectX> DoFindAsync(
             Expression<Func<Demoobjectx, bool>> dtoSelector,
             Func<IDomainObjectDemoObjectX, bool> domainObjectSelector = null,
-            CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken = default,
+            [CallerMemberName] string caller = null)
         {
+            using var span = EntryPoint.Tracer?.StartActiveSpan(caller, SpanKind.Server);
+
             var unitOfWork = (UnitOfWork)UnitOfWorkProvider.Instance;
             await using var dbContext =
                 await unitOfWork.NewDbContextAsync(cancellationToken: cancellationToken)
