@@ -196,8 +196,8 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
 
         private async ValueTask<IDomainObjectDemoObjectX> DoFindAsync(
             Expression<Func<Demoobjectx, bool>> dtoSelector,
-            Func<IDomainObjectDemoObjectX, bool> domainObjectSelector,
-            CancellationToken cancellationToken)
+            Func<IDomainObjectDemoObjectX, bool> domainObjectSelector = null,
+            CancellationToken cancellationToken = default)
         {
             var unitOfWork = (UnitOfWork)UnitOfWorkProvider.Instance;
             await using var dbContext =
