@@ -18,7 +18,6 @@ using ShtrihM.DemoServer.Processing.Model.Implements;
 using ShtrihM.Wattle3.Common.Exceptions;
 using ShtrihM.Wattle3.Mappers.Primitives;
 using ShtrihM.Wattle3.Utils;
-using ShtrihM.DemoServer.Processing.Model.DomainObjects.Common;
 using ShtrihM.Wattle3.DomainObjects.IdentitiesServices;
 
 namespace ShtrihM.DemoServer.Processing.Tests.Model;

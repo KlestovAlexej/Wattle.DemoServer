@@ -10,7 +10,6 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using System.Threading;
-using ShtrihM.DemoServer.Processing.Model.DomainObjects.Common;
 using ShtrihM.DemoServer.Processing.Model.Implements;
 using System.Runtime.CompilerServices;
 using Microsoft.EntityFrameworkCore;
@@ -185,7 +184,7 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
                 Find(() =>
                         dbContext.Demoobjectx
                             .FirstOrDefault(dtoSelector)
-                            .ToMapperDto(),
+                            ?.ToMapperDto(),
                     (domainObjectSelector != null)
                         ? domainObjects =>
                             domainObjects.Cast<IDomainObjectDemoObjectX>()
@@ -211,7 +210,7 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
                             (await dbContext.Demoobjectx
                                 .FirstOrDefaultAsync(dtoSelector, cancellationToken: ct)
                                 .ConfigureAwait(false))
-                            .ToMapperDto(),
+                            ?.ToMapperDto(),
                         (domainObjectSelector != null)
                             ? async (domainObjects, ct) =>
                                 await domainObjects.Cast<IDomainObjectDemoObjectX>()
