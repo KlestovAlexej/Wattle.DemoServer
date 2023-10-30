@@ -1,4 +1,5 @@
-﻿using ShtrihM.DemoServer.Processing.Common;
+﻿using System;
+using ShtrihM.DemoServer.Processing.Common;
 using ShtrihM.DemoServer.Processing.Generated.Interface;
 using ShtrihM.DemoServer.Processing.Model.Interfaces;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectsRegisters.IdentitiesServices;
@@ -6,12 +7,14 @@ using ShtrihM.Wattle3.DomainObjects.Interfaces;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using System.Threading;
 using ShtrihM.DemoServer.Processing.Model.DomainObjects.Common;
 using ShtrihM.DemoServer.Processing.Model.Implements;
 using System.Runtime.CompilerServices;
 using Microsoft.EntityFrameworkCore;
+using ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
 
 namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
 
@@ -32,97 +35,48 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
         public IDomainObjectDemoObjectX GetByName(
             string name)
         {
-            var unitOfWork = (UnitOfWork)UnitOfWorkProvider.Instance;
-            using var dbContext = unitOfWork.NewDbContext();
-            var result =
-                Find(() =>
-                        dbContext.Demoobjectx
-                            .FirstOrDefault(entity => entity.Name == name)
-                            .ToMapperDto(),
-                    domainObjects =>
-                        domainObjects.Cast<IDomainObjectDemoObjectX>()
-                            .FirstOrDefault(domainObject => domainObject.Name == name));
+            var result = DoFind(
+                entity => entity.Name == name,
+                domainObject => domainObject.Name == name);
 
-            return (IDomainObjectDemoObjectX)result;
+            return result;
         }
 
-        public async ValueTask<IDomainObjectDemoObjectX> GetByNameAsync(
+        public ValueTask<IDomainObjectDemoObjectX> GetByNameAsync(
             string name,
             CancellationToken cancellationToken = default)
         {
-            var unitOfWork = (UnitOfWork)UnitOfWorkProvider.Instance;
-            await using var dbContext =
-                await unitOfWork.NewDbContextAsync(cancellationToken: cancellationToken)
-                    .ConfigureAwait(false);
-
             var result =
-                await FindAsync(
-                        async ct =>
-                            (await dbContext.Demoobjectx
-                                .FirstOrDefaultAsync(entity => entity.Name == name, cancellationToken: ct)
-                                .ConfigureAwait(false))
-                            .ToMapperDto(),
-                        async (domainObjects, ct) =>
-                            await domainObjects.Cast<IDomainObjectDemoObjectX>()
-                                .ToAsyncEnumerable()
-                                .FirstOrDefaultAsync(entity => entity.Name == name, cancellationToken: ct)
-                                .ConfigureAwait(false),
-                        cancellationToken)
-                    .ConfigureAwait(false);
+                DoFindAsync(
+                    entity => entity.Name == name,
+                    domainObject => domainObject.Name == name,
+                    cancellationToken);
 
-            return (IDomainObjectDemoObjectX)result;
+            return result;
         }
 
         public IEnumerable<IDomainObjectDemoObjectX> GetCollectionByNameSize(
             int size)
         {
-            var unitOfWork = (UnitOfWork)UnitOfWorkProvider.Instance;
-            using var dbContext = unitOfWork.NewDbContext();
-            var instances =
-                GetObjectEnumerator(
-                        () =>
-                            dbContext.Demoobjectx
-                                .Where(entity => entity.Name.Length == size)
-                                .Select(entity => entity.ToMapperDto()),
-                        domainObjects =>
-                            domainObjects.Cast<IDomainObjectDemoObjectX>()
-                                .Where(domainObject => domainObject.Name.Length == size))
-                    .Cast<IDomainObjectDemoObjectX>();
+            var result =
+                DoGetObjectEnumerator(
+                    entity => entity.Name.Length == size,
+                    domainObject => domainObject.Name.Length == size);
 
-            foreach (var instance in instances)
-            {
-                yield return instance;
-            }
+            return result;
         }
 
-        public async IAsyncEnumerable<IDomainObjectDemoObjectX> GetCollectionByNameSizeAsync(
+        public IAsyncEnumerable<IDomainObjectDemoObjectX> GetCollectionByNameSizeAsync(
             int size,
-            [EnumeratorCancellation] CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken = default)
         {
-            var unitOfWork = (UnitOfWork)UnitOfWorkProvider.Instance;
-            await using var dbContext =
-                await unitOfWork.NewDbContextAsync(cancellationToken: cancellationToken)
-                    .ConfigureAwait(false);
-            var instances =
-                GetObjectEnumeratorAsync(
-                        _ =>
-                            dbContext.Demoobjectx
-                                .Where(entity => entity.Name.Length == size)
-                                .Select(entity => entity.ToMapperDto())
-                                .AsAsyncEnumerable(),
-                        (domainObjects, _) =>
-                            domainObjects
-                                .Cast<IDomainObjectDemoObjectX>()
-                                .Where(domainObject => domainObject.Name.Length == size)
-                                .ToAsyncEnumerable(),
-                        cancellationToken)
-                    .Cast<IDomainObjectDemoObjectX>()
-                    .ConfigureAwait(false);
+            var result =
+                DoGetObjectEnumeratorAsync(
+                    entity => entity.Name.Length == size,
+                    domainObject => domainObject.Name.Length == size,
+                    cancellationToken);
 
-            await foreach (var instance in instances)
-            {
-                yield return instance;
-            }
+            return result;
         }
 
         public IEnumerable<IDomainObjectDemoObjectX> GetCollectionByDemoGroup(
@@ -157,6 +111,118 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
             var result = FindByKeyAsync(alternativeKey, cancellationToken);
 
             return result;
+        }
+
+        #endregion
+
+        #region Common
+
+        private async IAsyncEnumerable<IDomainObjectDemoObjectX> DoGetObjectEnumeratorAsync(
+            Expression<Func<Demoobjectx, bool>> dtoSelector,
+            Func<IDomainObjectDemoObjectX, bool> domainObjectSelector = null,
+            [EnumeratorCancellation] CancellationToken cancellationToken = default)
+        {
+            var unitOfWork = (UnitOfWork)UnitOfWorkProvider.Instance;
+            await using var dbContext =
+                await unitOfWork.NewDbContextAsync(cancellationToken: cancellationToken)
+                    .ConfigureAwait(false);
+            var instances =
+                GetObjectEnumeratorAsync(
+                        _ =>
+                            dbContext.Demoobjectx
+                                .Where(dtoSelector)
+                                .Select(entity => entity.ToMapperDto())
+                                .AsAsyncEnumerable(),
+                        (domainObjects, _) =>
+                            (domainObjectSelector != null)
+                                ? domainObjects
+                                    .Cast<IDomainObjectDemoObjectX>()
+                                    .Where(domainObjectSelector)
+                                    .ToAsyncEnumerable()
+                                : null,
+                        cancellationToken)
+                    .Cast<IDomainObjectDemoObjectX>()
+                    .ConfigureAwait(false);
+
+            await foreach (var instance in instances)
+            {
+                yield return instance;
+            }
+        }
+
+        private IEnumerable<IDomainObjectDemoObjectX> DoGetObjectEnumerator(
+            Expression<Func<Demoobjectx, bool>> dtoSelector,
+            Func<IDomainObjectDemoObjectX, bool> domainObjectSelector = null)
+        {
+            var unitOfWork = (UnitOfWork)UnitOfWorkProvider.Instance;
+            using var dbContext = unitOfWork.NewDbContext();
+            var instances =
+                GetObjectEnumerator(
+                        () =>
+                            dbContext.Demoobjectx
+                                .Where(dtoSelector)
+                                .Select(entity => entity.ToMapperDto()),
+                        (domainObjectSelector != null)
+                            ? domainObjects =>
+                                domainObjects.Cast<IDomainObjectDemoObjectX>()
+                                    .Where(domainObjectSelector)
+                            : null)
+                    .Cast<IDomainObjectDemoObjectX>();
+
+            foreach (var instance in instances)
+            {
+                yield return instance;
+            }
+        }
+
+        private IDomainObjectDemoObjectX DoFind(
+            Expression<Func<Demoobjectx, bool>> dtoSelector,
+            Func<IDomainObjectDemoObjectX, bool> domainObjectSelector = null)
+        {
+            var unitOfWork = (UnitOfWork)UnitOfWorkProvider.Instance;
+            using var dbContext = unitOfWork.NewDbContext();
+            var result =
+                Find(() =>
+                        dbContext.Demoobjectx
+                            .FirstOrDefault(dtoSelector)
+                            .ToMapperDto(),
+                    (domainObjectSelector != null)
+                        ? domainObjects =>
+                            domainObjects.Cast<IDomainObjectDemoObjectX>()
+                                .FirstOrDefault(domainObjectSelector)
+                        : null);
+
+            return (IDomainObjectDemoObjectX)result;
+        }
+
+        private async ValueTask<IDomainObjectDemoObjectX> DoFindAsync(
+            Expression<Func<Demoobjectx, bool>> dtoSelector,
+            Func<IDomainObjectDemoObjectX, bool> domainObjectSelector,
+            CancellationToken cancellationToken)
+        {
+            var unitOfWork = (UnitOfWork)UnitOfWorkProvider.Instance;
+            await using var dbContext =
+                await unitOfWork.NewDbContextAsync(cancellationToken: cancellationToken)
+                    .ConfigureAwait(false);
+
+            var result =
+                await FindAsync(
+                        async ct =>
+                            (await dbContext.Demoobjectx
+                                .FirstOrDefaultAsync(dtoSelector, cancellationToken: ct)
+                                .ConfigureAwait(false))
+                            .ToMapperDto(),
+                        (domainObjectSelector != null)
+                            ? async (domainObjects, ct) =>
+                                await domainObjects.Cast<IDomainObjectDemoObjectX>()
+                                    .ToAsyncEnumerable()
+                                    .FirstOrDefaultAsync(domainObjectSelector, cancellationToken: ct)
+                                    .ConfigureAwait(false)
+                            : null,
+                        cancellationToken)
+                    .ConfigureAwait(false);
+
+            return (IDomainObjectDemoObjectX)result;
         }
 
         #endregion
