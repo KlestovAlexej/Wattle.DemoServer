@@ -180,6 +180,7 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
     private readonly ILogger m_logger;
     private PartitionsSponsor m_partitionsSponsor;
     private IQueueItemProcessor m_queueEmergencyDomainBehaviour;
+    private SystemSettingsLocal m_systemSettingsLocal;
 
     static EntryPoint()
     {
@@ -198,7 +199,8 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
         ITimeService timeService,
         TimeSpan timeStatisticsStep,
         ILoggerFactory loggerFactory,
-        Tracer tracer)
+        Tracer tracer,
+        SystemSettingsLocal systemSettingsLocal)
         : base(
             new UnitOfWorkProviderCallContext(),
             new InfrastructureMonitorCustomEntryPoint(timeStatisticsStep, timeService, systemSettings.InstanceId.Value),
@@ -221,6 +223,7 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
         Tracer = tracer;
 
         m_proxyDomainObjectRegisterFactories.AddFactories(GetType().Assembly);
+        m_systemSettingsLocal = systemSettingsLocal;
     }
 
 #if DEBUG
@@ -261,7 +264,7 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
                     Properties =
                         new()
                         {
-                            ["ProcessId"] = SystemSettings.InstanceId.Value.ToString("D"),
+                            [nameof(SystemSettingsLocal.ProductName)] = m_systemSettingsLocal.ProductName,
                         }
                 };
 
@@ -547,7 +550,8 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
                 timeService,
                 systemSettings.TimeStatisticsStep.Value,
                 loggerFactory,
-                tracer);
+                tracer,
+                systemSettingsLocal);
         result.CommitVerifyingFactory = new UnitOfWorkCommitVerifyingFactory(result.m_mappers);
         exceptionPolicy.EntryPoint = result;
         result.ServiceProvider = serviceProvider;

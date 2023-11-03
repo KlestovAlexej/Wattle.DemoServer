@@ -10,6 +10,8 @@ namespace ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
 [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
 public sealed class SystemSettingsLocal
 {
+    public static readonly string ProductNameText = "Сервер обеспечения взаимодействия с системой быстрых платежей";
+
     public SystemSettingsLocal(IDictionary<Guid, string> values)
     {
         if (values == null)
@@ -20,6 +22,7 @@ public sealed class SystemSettingsLocal
         ProductId = GetValueAsGuid(values, WellknownCommonSystemSettings.ProductId);
         ProductVersion = GetValueAsVersion(values, WellknownCommonSystemSettings.ProductVersion);
         InstallationName = GetValue(values, WellknownCommonSystemSettings.InstallationName);
+        ProductName = ProductNameText;
     }
 
     /// <summary>
@@ -36,6 +39,11 @@ public sealed class SystemSettingsLocal
     /// Имя инсталляции <seealso cref="WellknownCommonSystemSettings.InstallationName"/>.
     /// </summary>
     public string InstallationName { get; set; }
+
+    /// <summary>
+    /// Имя продукта.
+    /// </summary>
+    public string ProductName { get; }
 
     private string GetValue(IDictionary<Guid, string> values, Guid id)
     {

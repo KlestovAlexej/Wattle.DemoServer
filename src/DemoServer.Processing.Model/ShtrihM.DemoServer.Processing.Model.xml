@@ -250,6 +250,11 @@
             Имя инсталляции <seealso cref="F:ShtrihM.DemoServer.Common.WellknownCommonSystemSettings.InstallationName"/>.
             </summary>
         </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettingsLocal.ProductName">
+            <summary>
+            Имя продукта.
+            </summary>
+        </member>
         <member name="M:ShtrihM.DemoServer.Processing.Model.Interfaces.IDemoObjectControllerService.CreateAsync(ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.DemoObjectCreate,System.Threading.CancellationToken)">
             <summary>
             Создание объекта.
