@@ -71,6 +71,7 @@ public static class EntryPointExtensions
         services.AddPooledDbContextFactory<ProcessingDbContext>(
             o =>
             {
+                o.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
                 o.UseModel(DbContextModel.Instance);
                 o.UseNpgsql();
 

@@ -10,10 +10,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.7.2" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
 		<PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
-		<PackageReference Include="ShtrihM.Wattle3.CodeGeneration.Generators" Version="3.0.0.37407" />
-		<PackageReference Include="ShtrihM.Wattle3.Testing" Version="3.0.0.37407" />
+		<PackageReference Include="ShtrihM.Wattle3.CodeGeneration.Generators" Version="3.0.0.37412" />
+		<PackageReference Include="ShtrihM.Wattle3.Testing" Version="3.0.0.37412" />
 	</ItemGroup>
 
 	<ItemGroup>
