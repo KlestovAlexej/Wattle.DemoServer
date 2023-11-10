@@ -14,8 +14,8 @@ CREATE TABLE changetracker
 CREATE TABLE demoobject(
   id bigint NOT NULL,
   revision bigint NOT NULL,
-  createdate timestamp NOT NULL,
-  modificationdate timestamp NOT NULL,
+  createdate timestamptz NOT NULL,
+  modificationdate timestamptz NOT NULL,
   "name" character varying(1024) NOT NULL,
   enabled boolean NOT NULL,
   CONSTRAINT "Primary key demoobject" PRIMARY KEY(id)
@@ -24,8 +24,8 @@ CREATE TABLE demoobject(
 CREATE TABLE demoobjectx(
   id bigint NOT NULL,
   revision bigint NOT NULL,
-  createdate timestamp NOT NULL,
-  modificationdate timestamp NOT NULL,
+  createdate timestamptz NOT NULL,
+  modificationdate timestamptz NOT NULL,
   "name" character varying(1024) NOT NULL,
   enabled boolean NOT NULL,
   key1 uuid NOT NULL,
@@ -40,7 +40,7 @@ CREATE TABLE demoobjectx(
   
 CREATE TABLE systemlog(
   id bigint NOT NULL,
-  createdate timestamp NOT NULL,
+  createdate timestamptz NOT NULL,
   code integer NOT NULL,
   "type" integer NOT NULL,
   message character varying(1024) NOT NULL,
@@ -67,7 +67,7 @@ INSERT INTO SystemSetting (Id, Value, Name) VALUES('208B4E39-A3D1-45E2-A9DC-E79B
 
 CREATE TABLE tablepartition(
   id bigint NOT NULL,
-  createdate timestamp NOT NULL,
+  createdate timestamptz NOT NULL,
   tablename character varying NOT NULL,
   partitionname character varying NOT NULL,
   "day" date NOT NULL,

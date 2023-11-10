@@ -94,7 +94,7 @@ public class PartitionsSponsor : BaseServiceScheduled
 
     public void Create(Tracer tracer)
     {
-        var nowDay = m_entryPoint.TimeService.NowDateTime.Date;
+        var nowDay = m_entryPoint.TimeService.Now.Date;
 
         if (m_lastDay.HasValue)
         {
@@ -206,7 +206,7 @@ public class PartitionsSponsor : BaseServiceScheduled
                     {
                         Id = id,
                         Day = nowDay,
-                        CreateDate = m_entryPoint.TimeService.NowDateTime,
+                        CreateDate = m_entryPoint.TimeService.Now,
                         MaxNotIncludeGroupId = nowDayPartitionInfo.MaxNotIncludeGroupId,
                         MaxNotIncludeId = nowDayPartitionInfo.MaxNotIncludeId,
                         MinGroupId = nowDayPartitionInfo.MinGroupId,
@@ -264,7 +264,7 @@ public class PartitionsSponsor : BaseServiceScheduled
                     {
                         Id = ComplexIdentity.Build(manager.Manager.Level, m_entryPoint.PartitionsDay.GetDayIndex(nowDay), m_mapperTablePartition.GetNextId(session)),
                         Day = nextDay,
-                        CreateDate = m_entryPoint.TimeService.NowDateTime,
+                        CreateDate = m_entryPoint.TimeService.Now,
                         MaxNotIncludeGroupId = nextDayPartitionInfo.MaxNotIncludeGroupId,
                         MaxNotIncludeId = nextDayPartitionInfo.MaxNotIncludeId,
                         MinGroupId = nextDayPartitionInfo.MinGroupId,

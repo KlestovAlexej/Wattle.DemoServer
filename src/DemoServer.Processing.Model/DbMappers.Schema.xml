@@ -22,8 +22,8 @@
             <Query Id="4f414fbb-4b25-4691-80c3-9897fc5be61b" Order="true" Where="true" />
           </Identity>
           <Fields>
-            <Field Name="CreateDate" Type="DateTime" Description="Дата создания" UseHide="false" UpdateMode="NotUpdate" NotUseNew="false">
-              <Storage Name="%FieldName%" IsNull="false" Type="Timestamp" IsQuotedName="false" />
+            <Field Name="CreateDate" Type="DateTimeOffset" Description="Дата создания" UseHide="false" UpdateMode="NotUpdate" NotUseNew="false">
+              <Storage Name="%FieldName%" IsNull="false" Type="TimestampTz" IsQuotedName="false" />
               <Query Id="fabb42ed-5c3a-4234-8bf6-0cffa10baa18" Order="true" Where="true" />
             </Field>
             <Field Name="Code" Type="int" Description="Код записи" UseHide="false" UpdateMode="NotUpdate" NotUseNew="false">
@@ -53,8 +53,8 @@
             <Query Id="4f414fbb-4b25-4691-80c3-9897fc5be61b" Order="true" Where="true" />
           </Identity>
           <Fields>
-            <Field Name="CreateDate" Type="DateTime" Description="Дата создания" UseHide="false" UpdateMode="NotUpdate" NotUseNew="false">
-              <Storage Name="%FieldName%" IsNull="false" Type="Timestamp" IsQuotedName="false" />
+            <Field Name="CreateDate" Type="DateTimeOffset" Description="Дата создания" UseHide="false" UpdateMode="NotUpdate" NotUseNew="false">
+              <Storage Name="%FieldName%" IsNull="false" Type="TimestampTz" IsQuotedName="false" />
               <Query Id="e2b3ecf0-17b5-4212-9da0-3c05f17e5c3f" Order="true" Where="true" />
             </Field>
             <Field Name="TableName" Type="string" Description="Имя таблицы БД" UseHide="false" UpdateMode="NotUpdate" NotUseNew="false">
@@ -99,12 +99,12 @@
             <Storage Name="%FieldName%" Type="Bigint" IsQuotedName="false" />
           </Revision>
           <Fields>
-            <Field Name="CreateDate" Type="DateTime" Description="Дата создания" UseHide="false" UpdateMode="NotUpdate" NotUseNew="false">
-              <Storage Name="%FieldName%" IsNull="false" Type="Timestamp" IsQuotedName="false" />
+            <Field Name="CreateDate" Type="DateTimeOffset" Description="Дата создания" UseHide="false" UpdateMode="NotUpdate" NotUseNew="false">
+              <Storage Name="%FieldName%" IsNull="false" Type="TimestampTz" IsQuotedName="false" />
               <Query Id="19d14b24-d899-4ad9-b97b-ae7a7b12fff8" Order="true" Where="true" />
             </Field>
-            <Field Name="ModificationDate" Type="DateTime" Description="Дата модификации" UseHide="false" UpdateMode="UpdateDirect" NotUseNew="false">
-              <Storage Name="%FieldName%" IsNull="false" Type="Timestamp" IsQuotedName="false" />
+            <Field Name="ModificationDate" Type="DateTimeOffset" Description="Дата модификации" UseHide="false" UpdateMode="UpdateDirect" NotUseNew="false">
+              <Storage Name="%FieldName%" IsNull="false" Type="TimestampTz" IsQuotedName="false" />
               <Query Id="f69bae78-0fbd-426a-971c-63dcc6d7f4f7" Order="true" Where="true" />
             </Field>
             <Field Name="Name" Type="string" Description="Название" UseHide="false" UpdateMode="Update" NotUseNew="false">
@@ -127,12 +127,12 @@
             <Storage Name="%FieldName%" Type="Bigint" IsQuotedName="false" />
           </Revision>
           <Fields>
-            <Field Name="CreateDate" Type="DateTime" Description="Дата создания" UseHide="false" UpdateMode="NotUpdate" NotUseNew="false">
-              <Storage Name="%FieldName%" IsNull="false" Type="Timestamp" IsQuotedName="false" />
+            <Field Name="CreateDate" Type="DateTimeOffset" Description="Дата создания" UseHide="false" UpdateMode="NotUpdate" NotUseNew="false">
+              <Storage Name="%FieldName%" IsNull="false" Type="TimestampTz" IsQuotedName="false" />
               <Query Id="cd109655-1dc8-4e88-aa24-5c27e3ef778f" Order="true" Where="true" />
             </Field>
-            <Field Name="ModificationDate" Type="DateTime" Description="Дата модификации" UseHide="false" UpdateMode="UpdateDirect" NotUseNew="false">
-              <Storage Name="%FieldName%" IsNull="false" Type="Timestamp" IsQuotedName="false" />
+            <Field Name="ModificationDate" Type="DateTimeOffset" Description="Дата модификации" UseHide="false" UpdateMode="UpdateDirect" NotUseNew="false">
+              <Storage Name="%FieldName%" IsNull="false" Type="TimestampTz" IsQuotedName="false" />
               <Query Id="6862d6bb-3405-48c1-864c-46601da5726b" Order="true" Where="true" />
             </Field>
             <Field Name="Name" Type="string" Description="Название" UseHide="false" UpdateMode="Update" NotUseNew="false">
@@ -147,14 +147,14 @@
               <Storage Name="%FieldName%" IsNull="false" Type="Uuid" IsQuotedName="false" />
               <Query Id="14367e40-cc94-47a7-8fbd-47e81c62b9bd" Order="true" Where="true" />
               <AlternateKeys>
-                <AlternateKey Name="Key" Index="1" IgnoreDbSize="true" />
+                <AlternateKey Name="Key" Index="0" IgnoreDbSize="true" />
               </AlternateKeys>
             </Field>
             <Field Name="Key2" Type="string" Description="Альтернативный ключ - часть №2" UseHide="false" UpdateMode="NotUpdate" NotUseNew="false">
               <Storage Name="%FieldName%" IsNull="false" Type="Varchar" IsQuotedName="false" Size="10" />
               <Query Id="95d0bdf7-5420-4b5c-b89b-7c7979a05f99" Order="true" Where="true" />
               <AlternateKeys>
-                <AlternateKey Name="Key" Index="2" IgnoreDbSize="true" />
+                <AlternateKey Name="Key" Index="1" IgnoreDbSize="true" />
               </AlternateKeys>
             </Field>
             <Field Name="group" Type="long" Description="Номер группы" UseHide="false" UpdateMode="NotUpdate" NotUseNew="false">

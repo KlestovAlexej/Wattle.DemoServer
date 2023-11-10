@@ -71,7 +71,7 @@ public static class WellknownDomainObjectFields
         /// Дата создания.
         /// </summary>
         [Description("Дата создания")]
-        [SchemaMapperField(typeof(DateTime), Where = true, Order = true)]
+        [SchemaMapperField(typeof(DateTimeOffset), Where = true, Order = true)]
         public static readonly Guid CreateDate = new("FABB42ED-5C3A-4234-8BF6-0CFFA10BAA18");
 
         /// <summary>
@@ -118,7 +118,7 @@ public static class WellknownDomainObjectFields
         /// Дата создания.
         /// </summary>
         [Description("Дата создания")]
-        [SchemaMapperField(typeof(DateTime), Where = true, Order = true)]
+        [SchemaMapperField(typeof(DateTimeOffset), Where = true, Order = true)]
         public static readonly Guid CreateDate = new("E2B3ECF0-17B5-4212-9DA0-3C05F17E5C3F");
 
         /// <summary>
@@ -187,14 +187,14 @@ public static class WellknownDomainObjectFields
         /// Дата создания.
         /// </summary>
         [Description("Дата создания")]
-        [SchemaMapperField(typeof(DateTime), Where = true, Order = true)]
+        [SchemaMapperField(typeof(DateTimeOffset), Where = true, Order = true)]
         public static readonly Guid CreateDate = new("19D14B24-D899-4AD9-B97B-AE7A7B12FFF8");
 
         /// <summary>
         /// Дата модификации.
         /// </summary>
         [Description("Дата модификации")]
-        [SchemaMapperField(typeof(DateTime), Where = true, Order = true, UpdateMode = SchemaMapperFieldUpdateMode.UpdateDirect)]
+        [SchemaMapperField(typeof(DateTimeOffset), Where = true, Order = true, UpdateMode = SchemaMapperFieldUpdateMode.UpdateDirect)]
         public static readonly Guid ModificationDate = new("F69BAE78-0FBD-426A-971C-63DCC6D7F4F7");
 
         /// <summary>
@@ -234,14 +234,14 @@ public static class WellknownDomainObjectFields
         /// Дата создания.
         /// </summary>
         [Description("Дата создания")]
-        [SchemaMapperField(typeof(DateTime), Where = true, Order = true)]
+        [SchemaMapperField(typeof(DateTimeOffset), Where = true, Order = true)]
         public static readonly Guid CreateDate = new("CD109655-1DC8-4E88-AA24-5C27E3EF778F");
 
         /// <summary>
         /// Дата модификации.
         /// </summary>
         [Description("Дата модификации")]
-        [SchemaMapperField(typeof(DateTime), Where = true, Order = true, UpdateMode = SchemaMapperFieldUpdateMode.UpdateDirect)]
+        [SchemaMapperField(typeof(DateTimeOffset), Where = true, Order = true, UpdateMode = SchemaMapperFieldUpdateMode.UpdateDirect)]
         public static readonly Guid ModificationDate = new("6862D6BB-3405-48C1-864C-46601DA5726B");
 
         /// <summary>

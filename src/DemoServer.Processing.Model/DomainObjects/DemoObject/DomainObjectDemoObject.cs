@@ -74,8 +74,8 @@ public sealed class DomainObjectDemoObject : BaseDomainObjectMutable<DomainObjec
         : base(entryPoint, data)
     {
         m_lockUpdate = lockUpdate;
-        CreateDate = data.CreateDate.SpecifyKindLocal();
-        ModificationDate = data.ModificationDate.SpecifyKindLocal();
+        CreateDate = data.CreateDate;
+        ModificationDate = data.ModificationDate;
         m_name = new(FieldsConstants.DemoObjectNameMaxLength, data.Name);
         m_enabled = new(data.Enabled);
     }
@@ -89,7 +89,7 @@ public sealed class DomainObjectDemoObject : BaseDomainObjectMutable<DomainObjec
         : base(entryPoint, identity)
     {
         m_lockUpdate = lockUpdate;
-        CreateDate = m_entryPoint.TimeService.NowDateTime;
+        CreateDate = m_entryPoint.TimeService.Now;
         ModificationDate = CreateDate;
         m_name = new(FieldsConstants.DemoObjectNameMaxLength, template.Name);
         m_enabled = new(template.Enabled);
@@ -110,14 +110,14 @@ public sealed class DomainObjectDemoObject : BaseDomainObjectMutable<DomainObjec
     }
 
     [DomainObjectFieldValue(DomainObjectDataTarget.Create, DomainObjectDataTarget.Update)]
-    public DateTime CreateDate
+    public DateTimeOffset CreateDate
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         get;
     }
 
     [DomainObjectFieldValue(DomainObjectDataTarget.Create, DomainObjectDataTarget.Update)]
-    public DateTime ModificationDate
+    public DateTimeOffset ModificationDate
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         get;
@@ -222,6 +222,6 @@ public sealed class DomainObjectDemoObject : BaseDomainObjectMutable<DomainObjec
     {
         base.DoUpdate();
 
-        ModificationDate = m_entryPoint.TimeService.NowDateTime;
+        ModificationDate = m_entryPoint.TimeService.Now;
     }
 }

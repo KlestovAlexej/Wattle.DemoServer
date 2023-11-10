@@ -5,7 +5,6 @@ using ShtrihM.Wattle3.DomainObjects.Interfaces;
 using System;
 using System.Runtime.CompilerServices;
 using ShtrihM.DemoServer.Processing.Generated.Interface;
-using ShtrihM.Wattle3.Primitives;
 
 namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.SystemLog;
 
@@ -42,7 +41,7 @@ public sealed class DomainObjectSystemLog : BaseDomainObject<DomainObjectSystemL
         : base(data.Id, false)
     {
         Code = data.Code;
-        CreateDate = data.CreateDate.SpecifyKindLocal();
+        CreateDate = data.CreateDate;
         Data = data.Data;
         Message = data.Message;
         Type = data.Type;
@@ -56,7 +55,7 @@ public sealed class DomainObjectSystemLog : BaseDomainObject<DomainObjectSystemL
         : base(identity, true)
     {
         Code = template.Code;
-        CreateDate = timeService.NowDateTime;
+        CreateDate = timeService.Now;
         Data = template.Data;
         Message = template.Message;
         Type = template.Type;
@@ -77,7 +76,7 @@ public sealed class DomainObjectSystemLog : BaseDomainObject<DomainObjectSystemL
     }
 
     [DomainObjectFieldValue(DomainObjectDataTarget.Create)]
-    public DateTime CreateDate
+    public DateTimeOffset CreateDate
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         get;

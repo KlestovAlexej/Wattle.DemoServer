@@ -32,7 +32,6 @@ namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModelsOptimized
                 propertyInfo: typeof(Demoobjectx).GetProperty("Createdate", BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly),
                 fieldInfo: typeof(Demoobjectx).GetField("<Createdate>k__BackingField", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly));
             createdate.AddAnnotation("Relational:ColumnName", "createdate");
-            createdate.AddAnnotation("Relational:ColumnType", "timestamp without time zone");
 
             var enabled = runtimeEntityType.AddProperty(
                 "Enabled",
@@ -69,7 +68,6 @@ namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModelsOptimized
                 propertyInfo: typeof(Demoobjectx).GetProperty("Modificationdate", BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly),
                 fieldInfo: typeof(Demoobjectx).GetField("<Modificationdate>k__BackingField", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly));
             modificationdate.AddAnnotation("Relational:ColumnName", "modificationdate");
-            modificationdate.AddAnnotation("Relational:ColumnType", "timestamp without time zone");
 
             var name = runtimeEntityType.AddProperty(
                 "Name",

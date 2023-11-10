@@ -39,7 +39,6 @@ namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModelsOptimized
                 propertyInfo: typeof(PdSystemLog).GetProperty("Createdate", BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly),
                 fieldInfo: typeof(PdSystemLog).GetField("<Createdate>k__BackingField", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly));
             createdate.AddAnnotation("Relational:ColumnName", "createdate");
-            createdate.AddAnnotation("Relational:ColumnType", "timestamp without time zone");
 
             var data = runtimeEntityType.AddProperty(
                 "Data",

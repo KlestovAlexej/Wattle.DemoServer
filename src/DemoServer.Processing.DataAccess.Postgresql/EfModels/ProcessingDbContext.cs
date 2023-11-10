@@ -36,9 +36,7 @@ public partial class ProcessingDbContext : DbContext
             entity.Property(e => e.Id)
                 .ValueGeneratedNever()
                 .HasColumnName("id");
-            entity.Property(e => e.Createdate)
-                .HasColumnType("timestamp without time zone")
-                .HasColumnName("createdate");
+            entity.Property(e => e.Createdate).HasColumnName("createdate");
             entity.Property(e => e.Enabled).HasColumnName("enabled");
             entity.Property(e => e.Group).HasColumnName("group");
             entity.Property(e => e.Key1).HasColumnName("key1");
@@ -46,9 +44,7 @@ public partial class ProcessingDbContext : DbContext
                 .IsRequired()
                 .HasMaxLength(10)
                 .HasColumnName("key2");
-            entity.Property(e => e.Modificationdate)
-                .HasColumnType("timestamp without time zone")
-                .HasColumnName("modificationdate");
+            entity.Property(e => e.Modificationdate).HasColumnName("modificationdate");
             entity.Property(e => e.Name)
                 .IsRequired()
                 .HasMaxLength(1024)
@@ -76,13 +72,9 @@ public partial class ProcessingDbContext : DbContext
             entity.Property(e => e.Id)
                 .ValueGeneratedNever()
                 .HasColumnName("id");
-            entity.Property(e => e.Createdate)
-                .HasColumnType("timestamp without time zone")
-                .HasColumnName("createdate");
+            entity.Property(e => e.Createdate).HasColumnName("createdate");
             entity.Property(e => e.Enabled).HasColumnName("enabled");
-            entity.Property(e => e.Modificationdate)
-                .HasColumnType("timestamp without time zone")
-                .HasColumnName("modificationdate");
+            entity.Property(e => e.Modificationdate).HasColumnName("modificationdate");
             entity.Property(e => e.Name)
                 .IsRequired()
                 .HasMaxLength(1024)
@@ -100,9 +92,7 @@ public partial class ProcessingDbContext : DbContext
                 .ValueGeneratedNever()
                 .HasColumnName("id");
             entity.Property(e => e.Code).HasColumnName("code");
-            entity.Property(e => e.Createdate)
-                .HasColumnType("timestamp without time zone")
-                .HasColumnName("createdate");
+            entity.Property(e => e.Createdate).HasColumnName("createdate");
             entity.Property(e => e.Data)
                 .IsRequired()
                 .HasColumnName("data");
@@ -122,9 +112,7 @@ public partial class ProcessingDbContext : DbContext
             entity.Property(e => e.Id)
                 .ValueGeneratedNever()
                 .HasColumnName("id");
-            entity.Property(e => e.Createdate)
-                .HasColumnType("timestamp without time zone")
-                .HasColumnName("createdate");
+            entity.Property(e => e.Createdate).HasColumnName("createdate");
             entity.Property(e => e.Day).HasColumnName("day");
             entity.Property(e => e.Maxnotincludegroupid).HasColumnName("maxnotincludegroupid");
             entity.Property(e => e.Maxnotincludeid).HasColumnName("maxnotincludeid");
@@ -162,5 +150,9 @@ public partial class ProcessingDbContext : DbContext
         modelBuilder.HasSequence("sequence_demoobjectx");
         modelBuilder.HasSequence("sequence_systemlog");
         modelBuilder.HasSequence("sequence_tablepartition");
+
+        OnModelCreatingPartial(modelBuilder);
     }
+
+    partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }

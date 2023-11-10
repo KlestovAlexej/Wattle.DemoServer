@@ -24,7 +24,7 @@ public class TestsDomainObjectSystemLog : BaseTestsDomainObjects
                 ProviderRandomValues.GetInt32(),
                 ProviderRandomValues.GetString(),
                 ProviderRandomValues.GetString());
-        var nowDateTime = m_entryPoint.TimeService.NowDateTime;
+        var nowDateTime = m_entryPoint.TimeService.Now;
 
         await m_entryPoint.CreateAndUsingUnitOfWorkAsync(
             async (uow, cancellationToken) =>

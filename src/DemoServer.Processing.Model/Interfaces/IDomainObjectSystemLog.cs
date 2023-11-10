@@ -19,7 +19,7 @@ public interface IDomainObjectSystemLog : IDomainObject
     /// <summary>
     /// Дата создания.
     /// </summary>
-    DateTime CreateDate { get; }
+    DateTimeOffset CreateDate { get; }
 
     /// <summary>
     /// Данные.
