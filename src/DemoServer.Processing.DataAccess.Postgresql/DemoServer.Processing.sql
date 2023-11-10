@@ -14,8 +14,8 @@ CREATE TABLE changetracker
 CREATE TABLE demoobject(
   id bigint NOT NULL,
   revision bigint NOT NULL,
-  createdate timestamptz NOT NULL,
-  modificationdate timestamptz NOT NULL,
+  createdate timestamp NOT NULL,
+  modificationdate timestamp NOT NULL,
   "name" character varying(1024) NOT NULL,
   enabled boolean NOT NULL,
   CONSTRAINT "Primary key demoobject" PRIMARY KEY(id)

@@ -594,7 +594,7 @@
 				{
 					"id": "038f227e-e2b2-4a06-9d3f-dd009dba34a0",
 					"name": "createdate",
-					"datatype": "timestamptz",
+					"datatype": "timestamp",
 					"param": "",
 					"pk": false,
 					"nn": true,
@@ -615,7 +615,7 @@
 				{
 					"id": "22cb82c1-f230-4c56-9238-9232d2119b80",
 					"name": "modificationdate",
-					"datatype": "timestamptz",
+					"datatype": "timestamp",
 					"param": "",
 					"pk": false,
 					"nn": true,
@@ -1160,7 +1160,7 @@
 		"pg": {
 			"schema": ""
 		},
-		"lastSaved": 1697824424373,
+		"lastSaved": 1699646412966,
 		"writeFileParam": true,
 		"activeDiagram": "f1669b85-a87c-45bc-806a-d4c1a20593bc",
 		"sqlSettings": {
@@ -1415,7 +1415,7 @@
 					"x": 690,
 					"y": 100,
 					"gHeight": 135,
-					"gWidth": 261,
+					"gWidth": 254,
 					"color": "#ffffff",
 					"background": "#e91e63",
 					"resized": false,

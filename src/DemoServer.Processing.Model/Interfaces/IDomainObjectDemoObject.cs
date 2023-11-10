@@ -22,12 +22,12 @@ public interface IDomainObjectDemoObject : IDomainObject
     /// <summary>
     /// Дата создания.
     /// </summary>
-    DateTimeOffset CreateDate { get; }
+    DateTime CreateDate { get; }
 
     /// <summary>
     /// Дата модификации.
     /// </summary>
-    DateTimeOffset ModificationDate { get; }
+    DateTime ModificationDate { get; }
 
     /// <summary>
     /// Название.

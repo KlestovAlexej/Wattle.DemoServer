@@ -187,14 +187,14 @@ public static class WellknownDomainObjectFields
         /// Дата создания.
         /// </summary>
         [Description("Дата создания")]
-        [SchemaMapperField(typeof(DateTimeOffset), Where = true, Order = true)]
+        [SchemaMapperField(typeof(DateTime), Where = true, Order = true)]
         public static readonly Guid CreateDate = new("19D14B24-D899-4AD9-B97B-AE7A7B12FFF8");
 
         /// <summary>
         /// Дата модификации.
         /// </summary>
         [Description("Дата модификации")]
-        [SchemaMapperField(typeof(DateTimeOffset), Where = true, Order = true, UpdateMode = SchemaMapperFieldUpdateMode.UpdateDirect)]
+        [SchemaMapperField(typeof(DateTime), Where = true, Order = true, UpdateMode = SchemaMapperFieldUpdateMode.UpdateDirect)]
         public static readonly Guid ModificationDate = new("F69BAE78-0FBD-426A-971C-63DCC6D7F4F7");
 
         /// <summary>
