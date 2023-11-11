@@ -12,8 +12,8 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
 		<PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
-		<PackageReference Include="ShtrihM.Wattle3.CodeGeneration.Generators" Version="3.0.0.37415" />
-		<PackageReference Include="ShtrihM.Wattle3.Testing" Version="3.0.0.37415" />
+		<PackageReference Include="ShtrihM.Wattle3.CodeGeneration.Generators" Version="3.0.0.37416" />
+		<PackageReference Include="ShtrihM.Wattle3.Testing" Version="3.0.0.37416" />
 	</ItemGroup>
 
 	<ItemGroup>
