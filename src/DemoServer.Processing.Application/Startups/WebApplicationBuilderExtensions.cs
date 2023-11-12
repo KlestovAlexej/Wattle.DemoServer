@@ -141,7 +141,7 @@ public static class WebApplicationBuilderExtensions
         application.UseReDoc(c =>
         {
             c.RoutePrefix = "docs";
-            c.DocumentTitle = "API демонстрационного сервера.";
+            c.DocumentTitle = $"API {SystemSettingsLocal.ProductNameText}";
             c.SpecUrl("/swagger/v1/swagger.json");
             c.EnableUntrustedSpec();
             c.ScrollYOffset(10);
@@ -302,8 +302,8 @@ public static class WebApplicationBuilderExtensions
                 options.SwaggerDoc("v1", new()
                 {
                     Version = "v1",
-                    Title = "API демонстрационного сервера.",
-                    Description = "Демонстрационный сервер.",
+                    Title = $"API {SystemSettingsLocal.ProductNameText}",
+                    Description = SystemSettingsLocal.ProductNameText,
                 });
 
                 foreach (var text in XmlCommentsText)

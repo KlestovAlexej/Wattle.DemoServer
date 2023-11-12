@@ -10,7 +10,7 @@ namespace ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
 [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
 public sealed class SystemSettingsLocal
 {
-    public static readonly string ProductNameText = "Сервер обеспечения взаимодействия с системой быстрых платежей";
+    public static readonly string ProductNameText = "Полнофункциональный демонстрационный сервер на базе библиотеки Wattle3";
 
     public SystemSettingsLocal(IDictionary<Guid, string> values)
     {

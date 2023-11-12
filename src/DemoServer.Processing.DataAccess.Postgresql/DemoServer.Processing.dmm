@@ -255,7 +255,7 @@
 				"partition": "",
 				"partitionNames": []
 			},
-			"afterScript": "INSERT INTO SystemSetting (Id, Value, Name) VALUES('CF0ED582-05EC-4AFE-883F-1D68A751B4A8', '9F8FD1D7-8D62-4B73-8A43-9E42518A4A57', 'Код продукта')\n;\n\nINSERT INTO SystemSetting (Id, Value, Name) VALUES('1BF69D7C-2CBF-45a8-9526-0C33234ED62D', '1.0.0', 'Версия продукта')\n;\n\nINSERT INTO SystemSetting (Id, Value, Name) VALUES('208B4E39-A3D1-45E2-A9DC-E79B3E064DF1', 'Демонстрационный сервер', 'Имя инсталляции')\n;\n",
+			"afterScript": "INSERT INTO SystemSetting (Id, Value, Name) VALUES('CF0ED582-05EC-4AFE-883F-1D68A751B4A8', '9F8FD1D7-8D62-4B73-8A43-9E42518A4A57', 'Код продукта')\n;\n\nINSERT INTO SystemSetting (Id, Value, Name) VALUES('1BF69D7C-2CBF-45a8-9526-0C33234ED62D', '1.0.0', 'Версия продукта')\n;\n\nINSERT INTO SystemSetting (Id, Value, Name) VALUES('208B4E39-A3D1-45E2-A9DC-E79B3E064DF1', 'Полнофункциональный демонстрационный сервер на базе библиотеки Wattle3', 'Имя инсталляции')\n;\n",
 			"generate": true,
 			"generateCustomCode": true,
 			"estimatedSize": "",
@@ -1160,7 +1160,7 @@
 		"pg": {
 			"schema": ""
 		},
-		"lastSaved": 1699646412966,
+		"lastSaved": 1699648693151,
 		"writeFileParam": true,
 		"activeDiagram": "f1669b85-a87c-45bc-806a-d4c1a20593bc",
 		"sqlSettings": {
@@ -1343,7 +1343,7 @@
 					"x": 79,
 					"y": 434,
 					"gHeight": 45,
-					"gWidth": 145,
+					"gWidth": 141,
 					"color": "#ffffff",
 					"background": "#e91e63",
 					"resized": false,
@@ -1366,7 +1366,7 @@
 					"referencedItemId": "6e89fda6-6a4b-4b45-a970-786562cbfd99",
 					"x": 46,
 					"y": 30,
-					"gHeight": 32,
+					"gHeight": 33,
 					"gWidth": 295,
 					"color": "#333",
 					"background": "#e91e63",

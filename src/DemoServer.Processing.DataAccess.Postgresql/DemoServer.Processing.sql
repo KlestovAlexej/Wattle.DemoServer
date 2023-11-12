@@ -61,7 +61,7 @@ INSERT INTO SystemSetting (Id, Value, Name) VALUES('CF0ED582-05EC-4AFE-883F-1D68
 INSERT INTO SystemSetting (Id, Value, Name) VALUES('1BF69D7C-2CBF-45a8-9526-0C33234ED62D', '1.0.0', 'Версия продукта')
 ;
 
-INSERT INTO SystemSetting (Id, Value, Name) VALUES('208B4E39-A3D1-45E2-A9DC-E79B3E064DF1', 'Демонстрационный сервер', 'Имя инсталляции')
+INSERT INTO SystemSetting (Id, Value, Name) VALUES('208B4E39-A3D1-45E2-A9DC-E79B3E064DF1', 'Полнофункциональный демонстрационный сервер на базе библиотеки Wattle3', 'Имя инсталляции')
 ;
 
 
