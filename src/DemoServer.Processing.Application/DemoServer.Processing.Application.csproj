@@ -3,7 +3,7 @@
 	<Import Project="..\..\Tools\MSBuild\ShtrihM.MSBuild.Common.targets" />
 
 	<PropertyGroup>
-		<TargetFrameworks>net7.0-windows</TargetFrameworks>
+		<TargetFrameworks>net8.0-windows</TargetFrameworks>
 		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<AnalysisLevel>latest</AnalysisLevel>
