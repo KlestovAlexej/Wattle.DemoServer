@@ -17,15 +17,15 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.13" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="7.0.13" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="8.0.0" />
 		<PackageReference Include="Nito.AsyncEx" Version="5.1.2" />
-		<PackageReference Include="ShtrihM.Wattle3.OpenTelemetry" Version="3.0.0.37416" />
-		<PackageReference Include="ShtrihM.Wattle3.QueueProcessors" Version="3.0.0.37416" />
-		<PackageReference Include="ShtrihM.Wattle3.Services" Version="3.0.0.37416" />
-		<PackageReference Include="ShtrihM.Wattle3.Swashbuckle.AspNetCore" Version="3.0.0.37416" />
-		<PackageReference Include="ShtrihM.Wattle3.Triggers" Version="3.0.0.37416" />
-		<PackageReference Include="ShtrihM.Wattle3.UniqueRegisters" Version="3.0.0.37416" />
+		<PackageReference Include="ShtrihM.Wattle3.OpenTelemetry" Version="3.8.0.37422" />
+		<PackageReference Include="ShtrihM.Wattle3.QueueProcessors" Version="3.8.0.37422" />
+		<PackageReference Include="ShtrihM.Wattle3.Services" Version="3.8.0.37422" />
+		<PackageReference Include="ShtrihM.Wattle3.Swashbuckle.AspNetCore" Version="3.8.0.37422" />
+		<PackageReference Include="ShtrihM.Wattle3.Triggers" Version="3.8.0.37422" />
+		<PackageReference Include="ShtrihM.Wattle3.UniqueRegisters" Version="3.8.0.37422" />
 		<PackageReference Include="System.Linq.Async" Version="6.0.1" />
 		<PackageReference Include="Unity" Version="5.11.10" />
 	</ItemGroup>
