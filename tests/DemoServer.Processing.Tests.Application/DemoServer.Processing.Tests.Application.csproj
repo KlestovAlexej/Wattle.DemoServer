@@ -11,7 +11,7 @@
 
 	<ItemGroup>
 	  <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
-	  <PackageReference Include="ShtrihM.Wattle3.Infrastructures.Rest.Clients" Version="3.8.0.37422" />
+	  <PackageReference Include="ShtrihM.Wattle3.Infrastructures.Rest.Clients" Version="3.8.0.37424" />
 	</ItemGroup>
 
 	<ItemGroup>

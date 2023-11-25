@@ -15,7 +15,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="ShtrihM.Wattle3.Primitives" Version="3.8.0.37422" />
+	  <PackageReference Include="ShtrihM.Wattle3.Primitives" Version="3.8.0.37424" />
 	</ItemGroup>
 
 </Project>

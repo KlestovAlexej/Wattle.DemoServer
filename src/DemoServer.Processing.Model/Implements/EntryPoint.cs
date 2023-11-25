@@ -180,7 +180,7 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
     private readonly ILogger m_logger;
     private PartitionsSponsor m_partitionsSponsor;
     private IQueueItemProcessor m_queueEmergencyDomainBehaviour;
-    private SystemSettingsLocal m_systemSettingsLocal;
+    private readonly SystemSettingsLocal m_systemSettingsLocal;
 
     static EntryPoint()
     {
