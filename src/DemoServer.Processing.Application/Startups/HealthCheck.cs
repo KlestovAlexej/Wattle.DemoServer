@@ -14,7 +14,7 @@ public class HealthCheck : IHealthCheck
 {
     private static readonly SpanAttributes SpanAttributes;
 
-    private readonly Tracer m_tracer;
+    private readonly Tracer? m_tracer;
     private readonly ICustomEntryPoint m_entryPoint;
 
     static HealthCheck()
@@ -25,7 +25,7 @@ public class HealthCheck : IHealthCheck
 
     public HealthCheck(
         ICustomEntryPoint entryPoint,
-        Tracer tracer = null)
+        Tracer? tracer = null)
         // ReSharper disable once ConvertToPrimaryConstructor
     {
         m_tracer = tracer;
@@ -37,7 +37,8 @@ public class HealthCheck : IHealthCheck
         CancellationToken cancellationToken = default)
     {
         using var mainSpan = m_tracer?.StartActiveSpan(nameof(CheckHealthAsync), initialAttributes: SpanAttributes, kind: SpanKind.Server);
-        m_entryPoint.Metrics?.RequestsHealthCheck?.Add(1);
+        
+        m_entryPoint.Metrics?.RequestsHealthCheck.Add(1);
 
         var isHealthy = m_entryPoint.IsReady;
 

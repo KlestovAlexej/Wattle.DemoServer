@@ -50,9 +50,11 @@ public class UnitOfWorkLocksHubTyped : IDisposable
 
     public void Dispose()
     {
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
         var temp = Hub;
         Hub = null;
         temp.SilentDispose();
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
 
         GC.SuppressFinalize(this);
     }

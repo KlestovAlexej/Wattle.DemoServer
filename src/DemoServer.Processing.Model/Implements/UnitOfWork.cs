@@ -19,6 +19,7 @@ public sealed class UnitOfWork : UnitOfWorkFull<ProcessingDbContext, IMapperChan
             unitOfWorkContext,
             registersFactory,
             visitor)
+    // ReSharper disable once ConvertToPrimaryConstructor
     {
     }
 }

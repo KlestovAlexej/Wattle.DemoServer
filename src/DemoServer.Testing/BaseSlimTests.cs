@@ -9,15 +9,18 @@ using ShtrihM.Wattle3.Utils;
 using System.IO;
 using ILogger = Microsoft.Extensions.Logging.ILogger;
 
-namespace ShtrihM.DemoServer.Testing;
-
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+
+namespace ShtrihM.DemoServer.Testing;
 
 [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
 public abstract class BaseSlimTests : BaseTests
 {
     protected ILoggerFactory m_loggerFactory;
     protected NUnitConsoleLoggerProvider m_consoleLoggerProvider;
+    
+    // ReSharper disable once NotAccessedField.Global
     protected ILogger m_logger;
 
     [SetUp]
@@ -33,10 +36,10 @@ public abstract class BaseSlimTests : BaseTests
                 builder =>
                 {
                     var appSettingsConfiguration =
-                        new ConfigurationBuilder().AddJsonFile(Path.Combine(appPath, "AppSettings.json"), false, false)
+                        new ConfigurationBuilder().AddJsonFile(Path.Combine(appPath!, "AppSettings.json"), false, false)
                             .Build();
 
-                    builder.AddSerilog(LoggerSerilog.New(appPath, appSettingsConfiguration), true);
+                    builder.AddSerilog(LoggerSerilog.New(appPath!, appSettingsConfiguration), true);
                     m_consoleLoggerProvider.Add(builder);
                 });
 
@@ -48,7 +51,6 @@ public abstract class BaseSlimTests : BaseTests
     [TearDown]
     public void BaseSlimTests_TearDown()
     {
-        m_loggerFactory.SilentDispose();
-        m_loggerFactory = null;
+        CommonWattleExtensions.SilentDisposeAndFree(ref m_loggerFactory);
     }
 }

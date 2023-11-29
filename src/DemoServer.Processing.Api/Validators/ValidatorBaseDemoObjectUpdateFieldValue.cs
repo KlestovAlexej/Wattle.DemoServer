@@ -10,6 +10,6 @@ public class ValidatorBaseDemoObjectUpdateFieldValue : AbstractValidator<BaseDem
         When(model => model is DemoObjectUpdateFieldValueOfName,
             () =>
                 RuleFor(entity => entity as DemoObjectUpdateFieldValueOfName)
-                    .SetValidator(new ValidatorDemoObjectUpdateFieldValueOfName()));
+                    .SetValidator(new ValidatorDemoObjectUpdateFieldValueOfName()!));
     }
 }

@@ -5,8 +5,7 @@ namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql;
 
 public static class EfExtensions
 {
-    // ReSharper disable once UnusedMethodReturnValue.Global
-    public static EntityTypeBuilder<TEntity> ToTableLowerCase<TEntity>(
+    public static void ToTableLowerCase<TEntity>(
         this EntityTypeBuilder<TEntity> entityTypeBuilder,
         string name)
         where TEntity : class

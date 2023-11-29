@@ -3,6 +3,7 @@ using ShtrihM.Wattle3.Testing.Databases.PostgreSql;
 using System;
 using System.Diagnostics.CodeAnalysis;
 
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
 namespace ShtrihM.DemoServer.Testing;
@@ -15,7 +16,7 @@ public abstract class BaseDbTests : BaseSlimTests
     Файл с настройками реестра.
     src\DemoServer.Testing\WindowsRegisterTestingEnvirioment.reg
     */
-    public static readonly string PostgreSqlServerAdress = null;
+    public static readonly string? PostgreSqlServerAdress = null;
 
     /*
     Если адрес, логин и пароль БД PostgreSQL не указаны явно то они берутся из реестра Windows.
@@ -80,16 +81,19 @@ public abstract class BaseDbTests : BaseSlimTests
     protected abstract string DoGetDbName();
     protected abstract string DoGetSqlScript();
 
+    // ReSharper disable once VirtualMemberNeverOverridden.Global
     protected virtual void DoPostDropDb()
     {
         /* NONE */
     }
 
+    // ReSharper disable once VirtualMemberNeverOverridden.Global
     protected virtual void DoPreCreateDb()
     {
         /* NONE */
     }
 
+    // ReSharper disable once VirtualMemberNeverOverridden.Global
     protected virtual void DoPostCreateDb()
     {
         /* NONE */

@@ -27,7 +27,7 @@ public sealed class DemoObjectXIdentitiesService : BaseIdentitiesWithContextWith
     {
     }
 
-    public static DemoObjectXIdentitiesService New(ICustomEntryPoint entryPoint)
+    public static DemoObjectXIdentitiesService? New(ICustomEntryPoint entryPoint)
     {
         var result =
             entryPoint.SystemSettings.DomainObjectRegistersSettings.Value.UseIdentitiesServices.Value

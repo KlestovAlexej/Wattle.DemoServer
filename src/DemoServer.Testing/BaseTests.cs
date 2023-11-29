@@ -3,9 +3,9 @@ using ShtrihM.Wattle3.Testing;
 using System.Globalization;
 using System.Text;
 
-namespace ShtrihM.DemoServer.Testing;
-
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+
+namespace ShtrihM.DemoServer.Testing;
 
 public class BaseTests : Wattle3.Testing.BaseTests
 {
@@ -17,6 +17,7 @@ public class BaseTests : Wattle3.Testing.BaseTests
 #endif
         ;
 
+    // ReSharper disable once MemberCanBePrivate.Global
     protected bool m_validateConfiguration;
 
     static BaseTests()

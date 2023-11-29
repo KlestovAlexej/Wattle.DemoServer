@@ -31,7 +31,7 @@ public partial class ProcessingDbContext : IDbContext
 
     public void SetDbConnection(
         DbConnection connection,
-        DbTransaction transaction)
+        DbTransaction? transaction)
     {
         Database.SetDbConnection(connection);
         Database.UseTransaction(transaction);

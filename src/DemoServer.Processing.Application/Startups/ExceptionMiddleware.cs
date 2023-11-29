@@ -23,8 +23,8 @@ public class ExceptionMiddleware
 
     private readonly ICustomEntryPoint m_entryPoint;
     private readonly RequestDelegate m_next;
-    private readonly Tracer m_tracer;
-    private readonly IOptionsSnapshot<OpenTelemetrySettings> m_openTelemetrySettings;
+    private readonly Tracer? m_tracer;
+    private readonly IOptionsSnapshot<OpenTelemetrySettings>? m_openTelemetrySettings;
 
     static ExceptionMiddleware()
     {
@@ -35,8 +35,8 @@ public class ExceptionMiddleware
     public ExceptionMiddleware(
         ICustomEntryPoint entryPoint,
         RequestDelegate next,
-        Tracer tracer = null,
-        IOptionsSnapshot<OpenTelemetrySettings> openTelemetrySettings = null)
+        Tracer? tracer = null,
+        IOptionsSnapshot<OpenTelemetrySettings>? openTelemetrySettings = null)
         // ReSharper disable once ConvertToPrimaryConstructor
     {
         m_entryPoint = entryPoint;

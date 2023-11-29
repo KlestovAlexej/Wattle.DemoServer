@@ -47,12 +47,7 @@ public sealed class DomainObjectDemoObject : BaseDomainObjectMutable<DomainObjec
             ICustomEntryPoint entryPoint,
             CancellationToken cancellationToken = default)
         {
-            if (entryPoint == null)
-            {
-                ThrowsHelper.ThrowArgumentNullException(nameof(entryPoint));
-            }
-
-            return entryPoint!.CurrentUnitOfWork.NewAsync<IDomainObjectDemoObject>(this, cancellationToken);
+            return entryPoint.CurrentUnitOfWork.NewAsync<IDomainObjectDemoObject>(this, cancellationToken);
         }
     }
 

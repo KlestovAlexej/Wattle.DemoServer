@@ -166,10 +166,13 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
     private class TemplateMetaServerDescription
     {
         public Guid ProductId;
+        public Guid InstallationId;
+
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         public Version ProductVersion;
         public Version ProductBuildVersion;
         public string InstallationName;
-        public Guid InstallationId;
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
     }
 
     #endregion
@@ -188,7 +191,9 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
             .AddModuleType<EntryPoint>();
     }
 
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
     private EntryPoint(
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         TemplateMetaServerDescription templateServerDescription,
         SystemSettings.SystemSettings systemSettings,
         IDomainObjectDataMappers dataMappers,
@@ -199,7 +204,7 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
         ITimeService timeService,
         TimeSpan timeStatisticsStep,
         ILoggerFactory loggerFactory,
-        Tracer tracer,
+        Tracer? tracer,
         SystemSettingsLocal systemSettingsLocal)
         : base(
             new UnitOfWorkProviderCallContext(),
@@ -240,8 +245,8 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
     public ITimeService TimeService => m_timeService;
     public InfrastructureMonitorRegisters InfrastructureMonitorRegisters { get; private set; }
     public IEntryPointFacade Facade { get; private set; }
-    public Metrics Metrics { get; private set; }
-    public Tracer Tracer { get; }
+    public Metrics? Metrics { get; private set; }
+    public Tracer? Tracer { get; }
     public ILoggerFactory LoggerFactory { get; }
     public UnitOfWorkLocksHubTyped UnitOfWorkLocks { get; private set; }
     public IEntryPointContext Context { get; }
@@ -327,7 +332,7 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
         }
     }
 
-    public override async ValueTask<IUnitOfWork> CreateUnitOfWorkAsync(object context = null, CancellationToken cancellationToken = default)
+    public override async ValueTask<IUnitOfWork> CreateUnitOfWorkAsync(object? context = null, CancellationToken cancellationToken = default)
     {
         if (IsReady)
         {
@@ -357,7 +362,7 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
         return ValueTask.FromResult<IUnitOfWork>(result);
     }
 
-    public override IUnitOfWork CreateUnitOfWork(object context = null)
+    public override IUnitOfWork CreateUnitOfWork(object? context = null)
     {
         if (IsReady)
         {
@@ -386,18 +391,10 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
 
     protected override void Dispose(bool disposing)
     {
-        {
-            var temp = m_queueEmergencyDomainBehaviour;
-            m_queueEmergencyDomainBehaviour = null;
-            temp.SilentDispose();
-        }
+        CommonWattleExtensions.SilentDisposeAndFree(ref m_queueEmergencyDomainBehaviour);
+        CommonWattleExtensions.SilentDisposeAndFree(ref m_partitionsSponsor);
 
-        {
-            var temp = m_partitionsSponsor;
-            m_partitionsSponsor = null;
-            temp.SilentDispose();
-        }
-
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
         {
             var temp = InfrastructureMonitorRegisters;
             InfrastructureMonitorRegisters = null;
@@ -409,6 +406,7 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
             UnitOfWorkLocks = null;
             temp.SilentDispose();
         }
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
 
         base.Dispose(disposing);
     }
@@ -483,7 +481,7 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
     private static EntryPoint DoNew(
         IUnityContainer container,
         IServiceProvider serviceProvider,
-        Tracer tracer)
+        Tracer? tracer)
     {
         var systemSettings = container.Resolve<SystemSettings.SystemSettings>();
         var systemSettingsLocal = GetSystemSettingsLocal(systemSettings.ConnectionString.Value);
@@ -616,7 +614,7 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
                 new DefaultDomainObjectIntergrators<IUnityContainer>(result.m_logger)
                     .Add(result.GetType().Assembly);
         }
-        foreach (var domainObjectIntergrator in domainObjectIntergrators)
+        foreach (var domainObjectIntergrator in domainObjectIntergrators!)
         {
             domainObjectIntergrator.Run(container);
         }

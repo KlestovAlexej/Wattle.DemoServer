@@ -3,7 +3,7 @@
 	<Import Project="..\..\Tools\MSBuild\ShtrihM.MSBuild.Common.targets" />
 
 	<PropertyGroup>
-		<TargetFramework>net8.0</TargetFramework>		
+		<TargetFramework>net8.0</TargetFramework>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<AnalysisLevel>latest</AnalysisLevel>
 		<AssemblyName>ShtrihM.DemoServer.Processing.Api.Clients</AssemblyName>
@@ -13,16 +13,17 @@
 		<DocumentationFile>$(AssemblyName).xml</DocumentationFile>
 		<NoWarn>$(NoWarn);1701;1702;CS1591;CS8032;CS8784</NoWarn>
 		<DocumentationFile>$(AssemblyName).xml</DocumentationFile>
+		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="RestSharp" Version="110.2.0" />
-	  <PackageReference Include="RestSharp.Serializers.NewtonsoftJson" Version="110.2.0" />
-	  <PackageReference Include="ShtrihM.Wattle3.Common" Version="3.8.0.37424" />
-	  <PackageReference Include="ShtrihM.Wattle3.Json" Version="3.8.0.37424" />
+		<PackageReference Include="RestSharp" Version="110.2.0" />
+		<PackageReference Include="RestSharp.Serializers.NewtonsoftJson" Version="110.2.0" />
+		<PackageReference Include="ShtrihM.Wattle3.Common" Version="3.8.0.37424" />
+		<PackageReference Include="ShtrihM.Wattle3.Json" Version="3.8.0.37424" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\DemoServer.Processing.Api.Common\DemoServer.Processing.Api.Common.csproj" />
+		<ProjectReference Include="..\DemoServer.Processing.Api.Common\DemoServer.Processing.Api.Common.csproj" />
 	</ItemGroup>
 </Project>

@@ -30,12 +30,12 @@ public class MappersCacheActualStateDtoSettings
 
         DemoObject =
             new(
-                default,
+                default!,
                 $"Маппер '{WellknownDomainObjectDisplayNames.DisplayNamesProvider(WellknownDomainObjects.DemoObject)}'");
 
         DemoObjectX =
             new(
-                default,
+                default!,
                 $"Маппер '{WellknownDomainObjectDisplayNames.DisplayNamesProvider(WellknownDomainObjects.DemoObjectX)}'");
     }
 

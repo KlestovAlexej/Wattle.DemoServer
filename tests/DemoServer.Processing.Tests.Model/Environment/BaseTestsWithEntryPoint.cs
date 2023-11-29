@@ -32,6 +32,7 @@ public abstract class BaseTestsWithEntryPoint : BaseDbTests
     protected static readonly TimeSpan WaitTimeout = TimeSpan.FromMinutes(1);
 
     protected EntryPoint m_entryPoint;
+    protected bool m_useTablespaces;
     protected ServiceProvider m_entryPointServiceProvider;
     protected ManagedTimeService m_timeService;
     protected Mappers m_mappers;
@@ -39,10 +40,11 @@ public abstract class BaseTestsWithEntryPoint : BaseDbTests
     protected TestDirectory m_dataPathTablespace2;
     protected string m_nameTablespace1;
     protected string m_nameTablespace2;
-    protected bool m_useTablespaces;
     protected bool m_useMappersFeatures;
 
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
     protected BaseTestsWithEntryPoint()
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
     {
         EnvironmentVariablesHelpers.Define(Array.Empty<string>(), Path.GetDirectoryName(typeof(BaseTestsWithEntryPoint).Assembly.Location)!);
 
@@ -62,11 +64,8 @@ public abstract class BaseTestsWithEntryPoint : BaseDbTests
         m_nameTablespace1 = $"tests_{Constants.ProductTag.ToLower()}_tablespace1";
         m_nameTablespace2 = $"tests_{Constants.ProductTag.ToLower()}_tablespace2";
 
-        m_entryPoint.SilentDispose();
-        m_entryPoint = null;
-
-        m_entryPointServiceProvider.SilentDispose();
-        m_entryPointServiceProvider = null;
+        CommonWattleExtensions.SilentDisposeAndFree(ref m_entryPoint);
+        CommonWattleExtensions.SilentDisposeAndFree(ref m_entryPointServiceProvider);
 
         DomainEnviromentConfigurator.DisposeAll();
 
@@ -95,18 +94,17 @@ public abstract class BaseTestsWithEntryPoint : BaseDbTests
     [TearDown]
     public void BaseTestsWithEntryPoint_TearDown()
     {
+        // ReSharper disable once ConditionalAccessQualifierIsNonNullableAccordingToAPIContract
         m_entryPoint?.Stop();
-        m_entryPoint.SilentDispose();
-        m_entryPoint = null;
+        CommonWattleExtensions.SilentDisposeAndFree(ref m_entryPoint!);
 
-        m_entryPointServiceProvider.SilentDispose();
-        m_entryPointServiceProvider = null;
+        CommonWattleExtensions.SilentDisposeAndFree(ref m_entryPointServiceProvider);
 
         DomainEnviromentConfigurator.DisposeAll();
 
         CommonWattleExtensions.SilentDisposeAndFree(ref m_mappers);
 
-        m_logger?.LogDebug($@"
+        m_logger.LogDebug($@"
 
 Конец теста : }} {TestContext.CurrentContext.Test.FullName}
 
@@ -201,21 +199,22 @@ public abstract class BaseTestsWithEntryPoint : BaseDbTests
         return result.ToString();
     }
 
+    // ReSharper disable once MemberCanBePrivate.Global
     protected void DisposeEntryPoint()
     {
+        // ReSharper disable once ConditionalAccessQualifierIsNonNullableAccordingToAPIContract
         m_entryPoint?.Stop();
-        m_entryPoint.SilentDispose();
-        m_entryPoint = null;
+        CommonWattleExtensions.SilentDisposeAndFree(ref m_entryPoint!);
 
-        m_entryPointServiceProvider.SilentDispose();
-        m_entryPointServiceProvider = null;
+        CommonWattleExtensions.SilentDisposeAndFree(ref m_entryPointServiceProvider);
 
         DomainEnviromentConfigurator.DisposeAll();
     }
 
+    // ReSharper disable once MemberCanBePrivate.Global
     protected void CreateEntryPoint(
         bool startAndWaitIsReady = true,
-        Action<EntryPoint> postCreate = null)
+        Action<EntryPoint>? postCreate = null)
     {
         DoCreateEntryPoint();
 
@@ -232,7 +231,7 @@ public abstract class BaseTestsWithEntryPoint : BaseDbTests
 
     protected void ReCreateEntryPoint(
         bool startAndWaitIsReady = true,
-        Action<EntryPoint> postCreate = null)
+        Action<EntryPoint>? postCreate = null)
     {
         DisposeEntryPoint();
 
@@ -241,6 +240,7 @@ public abstract class BaseTestsWithEntryPoint : BaseDbTests
             postCreate);
     }
 
+    // ReSharper disable once VirtualMemberNeverOverridden.Global
     protected virtual void DoCreateEntryPoint()
     {
         var domainEnviromentConfigurator = DomainEnviromentConfigurator.Begin();
@@ -276,13 +276,14 @@ public abstract class BaseTestsWithEntryPoint : BaseDbTests
         }
         catch (Exception exception)
         {
-            m_entryPointServiceProvider.SilentDispose();
-            m_entryPointServiceProvider = null;
+            CommonWattleExtensions.SilentDisposeAndFree(ref m_entryPoint!);
+            CommonWattleExtensions.SilentDisposeAndFree(ref m_entryPointServiceProvider);
 
             ExceptionDispatchInfo.Capture(exception).Throw();
         }
     }
 
+    // ReSharper disable once VirtualMemberNeverOverridden.Global
     protected virtual SystemSettings CreateSystemSettings()
     {
         var result = SystemSettings.GetDefault();

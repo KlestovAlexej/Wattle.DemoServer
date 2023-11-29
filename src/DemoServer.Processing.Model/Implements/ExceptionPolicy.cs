@@ -29,8 +29,8 @@ public class ExceptionPolicy : BaseExceptionPolicy
 
     private readonly IWorkflowExceptionPolicy m_workflowExceptionPolicy;
     private readonly ExceptionPolicySettings m_settings;
-    private readonly Tracer m_tracer;
-    private readonly Metrics m_metrics;
+    private readonly Tracer? m_tracer;
+    private readonly Metrics? m_metrics;
 
     static ExceptionPolicy()
     {
@@ -38,13 +38,15 @@ public class ExceptionPolicy : BaseExceptionPolicy
             .AddModuleType<ExceptionPolicy>();
     }
 
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
     public ExceptionPolicy(
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         SystemSettings.SystemSettings systemSettings,
         IWorkflowExceptionPolicy workflowExceptionPolicy,
         ITimeService timeService,
         ILogger logger,
-        Tracer tracer,
-        Metrics metrics)
+        Tracer? tracer,
+        Metrics? metrics)
         : base(
             timeService,
             logger)

@@ -12,12 +12,13 @@
 		<PackageTags>ShtrihM DemoServer Processing Api Common</PackageTags>
 		<NoWarn>$(NoWarn);1701;1702;CS1591;CS8032;CS8784</NoWarn>
 		<DocumentationFile>$(AssemblyName).xml</DocumentationFile>
+		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="JsonSubTypes" Version="2.0.1" />
-	  <PackageReference Include="ShtrihM.Wattle3.Json" Version="3.8.0.37424" />
-	  <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.5.0" />
+		<PackageReference Include="JsonSubTypes" Version="2.0.1" />
+		<PackageReference Include="ShtrihM.Wattle3.Json" Version="3.8.0.37424" />
+		<PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.5.0" />
 	</ItemGroup>
-	
+
 </Project>

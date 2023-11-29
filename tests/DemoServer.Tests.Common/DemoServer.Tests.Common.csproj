@@ -7,6 +7,7 @@
 		<RootNamespace>ShtrihM.DemoServer.Tests.Common</RootNamespace>
 		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
 		<NoWarn>$(NoWarn);CS8032;CS8784</NoWarn>
+		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -15,8 +16,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\src\DemoServer.Common\DemoServer.Common.csproj" />
-	  <ProjectReference Include="..\..\src\DemoServer.Testing\DemoServer.Testing.csproj" />
+		<ProjectReference Include="..\..\src\DemoServer.Common\DemoServer.Common.csproj" />
+		<ProjectReference Include="..\..\src\DemoServer.Testing\DemoServer.Testing.csproj" />
 	</ItemGroup>
 
 </Project>

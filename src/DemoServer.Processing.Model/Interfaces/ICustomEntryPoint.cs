@@ -30,8 +30,8 @@ public interface ICustomEntryPoint : IEntryPoint
     IExceptionPolicy ExceptionPolicy { get; }
     IPartitionsDay PartitionsDay { get; }
     IEntryPointFacade Facade { get; }
-    Metrics Metrics { get; }
-    Tracer Tracer { get; }
+    Metrics? Metrics { get; }
+    Tracer? Tracer { get; }
     ILoggerFactory LoggerFactory { get; }
     UnitOfWorkLocksHubTyped UnitOfWorkLocks { get; }
     IEntryPointContext Context { get; }

@@ -40,7 +40,7 @@ public abstract class BaseDbTests : Testing.BaseDbTests
         var reader = command.ExecuteReader();
         while (reader.Read())
         {
-            result.Add(reader["relname"].ToString());
+            result.Add(reader["relname"].ToString()!);
         }
 
         return result;

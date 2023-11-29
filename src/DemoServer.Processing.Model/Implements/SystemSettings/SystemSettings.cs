@@ -25,27 +25,27 @@ public sealed class SystemSettings
 
         InstanceName =
             new(
-                default,
+                default!,
                 "Текстовый идентификатор экземпляра сервера");
 
         LocksPoolSettings =
             new(
-                default,
+                default!,
                 "Настройки пулов лок-объектов");
 
         ExceptionPolicySettings =
             new(
-                default,
+                default!,
                 "Настройки уведомления об исключениях системы");
 
         IdentityCachesSettings =
             new(
-                default,
+                default!,
                 "Настройки кэширующих провайдеров идентити объектов");
 
         MappersCacheActualStateDtoSettings =
             new(
-                default,
+                default!,
                 "Настройки кэшей актуальных данных состояний доменнй объектов в БД");
 
         QueueThreadsSizeEmergencyDomainBehaviour =
@@ -75,17 +75,17 @@ public sealed class SystemSettings
 
         ConnectionString =
             new(
-                default,
+                default!,
                 "Строка подключения к БД");
 
         PartitionsSponsorSettings =
             new(
-                default,
+                default!,
                 "Настройки создателя партиций БД");
 
         DomainObjectRegistersSettings =
             new(
-                default,
+                default!,
                 "Настройки реестров доменных объектов");
     }
 

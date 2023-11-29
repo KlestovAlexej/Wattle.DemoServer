@@ -144,9 +144,9 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
         [SuppressMessage("ReSharper", "AccessToDisposedClosure")]
         private async IAsyncEnumerable<IDomainObjectDemoObjectX> DoGetObjectEnumeratorAsync(
             Expression<Func<Demoobjectx, bool>> dtoSelector,
-            Func<IDomainObjectDemoObjectX, bool> domainObjectSelector = null,
+            Func<IDomainObjectDemoObjectX, bool>? domainObjectSelector = null,
             [EnumeratorCancellation] CancellationToken cancellationToken = default,
-            [CallerMemberName] string caller = null)
+            [CallerMemberName] string? caller = null)
         {
             using var span = EntryPoint.Tracer?.StartActiveSpan(caller, SpanKind.Server);
 
@@ -186,8 +186,8 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
         [SuppressMessage("ReSharper", "AccessToDisposedClosure")]
         private IEnumerable<IDomainObjectDemoObjectX> DoGetObjectEnumerator(
             Expression<Func<Demoobjectx, bool>> dtoSelector,
-            Func<IDomainObjectDemoObjectX, bool> domainObjectSelector = null,
-            [CallerMemberName] string caller = null)
+            Func<IDomainObjectDemoObjectX, bool>? domainObjectSelector = null,
+            [CallerMemberName] string? caller = null)
         {
             using var span = EntryPoint.Tracer?.StartActiveSpan(caller, SpanKind.Server);
 
@@ -220,8 +220,8 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
         [SuppressMessage("ReSharper", "AccessToDisposedClosure")]
         private IDomainObjectDemoObjectX DoFind(
             Expression<Func<Demoobjectx, bool>> dtoSelector,
-            Func<IDomainObjectDemoObjectX, bool> domainObjectSelector = null,
-            [CallerMemberName] string caller = null)
+            Func<IDomainObjectDemoObjectX, bool>? domainObjectSelector = null,
+            [CallerMemberName] string? caller = null)
         {
             using var span = EntryPoint.Tracer?.StartActiveSpan(caller, SpanKind.Server);
 
@@ -244,9 +244,9 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
         [SuppressMessage("ReSharper", "AccessToDisposedClosure")]
         private async ValueTask<IDomainObjectDemoObjectX> DoFindAsync(
             Expression<Func<Demoobjectx, bool>> dtoSelector,
-            Func<IDomainObjectDemoObjectX, bool> domainObjectSelector = null,
+            Func<IDomainObjectDemoObjectX, bool>? domainObjectSelector = null,
             CancellationToken cancellationToken = default,
-            [CallerMemberName] string caller = null)
+            [CallerMemberName] string? caller = null)
         {
             using var span = EntryPoint.Tracer?.StartActiveSpan(caller, SpanKind.Server);
 

@@ -1,7 +1,6 @@
 ﻿using System;
 using ShtrihM.Wattle3.Common.Exceptions;
 using ShtrihM.Wattle3.DomainObjects.UnitOfWorkLocks;
-using ShtrihM.Wattle3.Primitives;
 using System.Runtime.CompilerServices;
 using ShtrihM.DemoServer.Processing.Api.Common;
 
@@ -16,12 +15,8 @@ public sealed class UnitOfWorkLocks : AbstractUnitOfWorkLocks
         WorkflowExceptionPolicy workflowExceptionPolicy,
         IUnitOfWorkLocksHub unitOfWorkLocksHub)
         : base(unitOfWorkLocksHub)
+    // ReSharper disable once ConvertToPrimaryConstructor
     {
-        if (workflowExceptionPolicy == null)
-        {
-            ThrowsHelper.ThrowArgumentNullException(nameof(workflowExceptionPolicy));
-        }
-
         m_workflowExceptionPolicy = workflowExceptionPolicy;
     }
 

@@ -21,6 +21,7 @@ namespace ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
 [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
 public class PartitionsSponsorSettings
 {
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
     public class TablespaceEntry
     {
         public int Index { get; init; }
@@ -33,6 +34,7 @@ public class PartitionsSponsorSettings
         public string Comment { get; set; }
         public List<TablespaceEntry> Tablespaces { get; init; } = new();
     }
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 
     public class TablespacesEntry
     {
@@ -55,7 +57,7 @@ public class PartitionsSponsorSettings
 
         TablespaceNames =
             new(
-                default,
+                default!,
                 $"Карта имён табличных пространств БД для партиций БД - Пример: {new TablespacesEntry
                 {
                     Tablespaces =
@@ -76,7 +78,7 @@ public class PartitionsSponsorSettings
 
         DomainObjectsTablespaceNames =
             new(
-                default,
+                default!,
                 $"Карта имён табличных пространств БД для партиций БД для конкретных доменных объектов - Пример: {new DomainObjectsEntry
                 {
                     DomainObjects =

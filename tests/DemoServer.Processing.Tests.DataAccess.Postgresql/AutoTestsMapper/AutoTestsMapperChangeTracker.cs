@@ -6,7 +6,9 @@ namespace ShtrihM.DemoServer.Processing.Generated.Tests;
 
 public partial class AutoTestsMapperChangeTracker
 {
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
     private IPartitionsManager m_partitions;
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 
     partial void DoSetUp()
     {

@@ -92,7 +92,7 @@ public class PartitionsSponsor : BaseServiceScheduled
         }
     }
 
-    public void Create(Tracer tracer)
+    public void Create(Tracer? tracer)
     {
         var nowDay = m_entryPoint.TimeService.Now.Date;
 
@@ -116,7 +116,7 @@ public class PartitionsSponsor : BaseServiceScheduled
         m_lastDay = nowDay;
     }
 
-    protected override bool DoInitialize(CancellationToken cancellationToken, out string retryReason)
+    protected override bool DoInitialize(CancellationToken cancellationToken, out string? retryReason)
     {
         retryReason = null;
 
@@ -149,7 +149,7 @@ public class PartitionsSponsor : BaseServiceScheduled
     private void DoCreate(
         DateTime nowDay,
         (Guid Id, IPartitionsManager Manager) manager,
-        Tracer tracer)
+        Tracer? tracer)
     {
         using var span = tracer?.StartActiveSpan(nameof(DoCreate) + " " + manager.Manager.TableName, initialAttributes: SpanAttributes);
 
@@ -165,7 +165,7 @@ public class PartitionsSponsor : BaseServiceScheduled
                     (pi.MinGroupId == nowDayPartitionInfo.MinGroupId)
                     && (pi.MaxNotIncludeGroupId == nowDayPartitionInfo.MaxNotIncludeGroupId)))
             {
-                string tablespaceName = null;
+                string? tablespaceName = null;
                 var mapDomainObjectsTablespaceNames =
                     m_entryPoint.SystemSettings.PartitionsSponsorSettings.Value.DomainObjectsTablespaceNames.Value.DomainObjects
                         .ToDictionary(v => v.DomainObjectType, v => v.Tablespaces.ToDictionary(t => t.Index, t => t.TablespaceName));
@@ -222,7 +222,7 @@ public class PartitionsSponsor : BaseServiceScheduled
                     (pi.MinGroupId == nextDayPartitionInfo.MinGroupId)
                     && (pi.MaxNotIncludeGroupId == nextDayPartitionInfo.MaxNotIncludeGroupId)))
             {
-                string tablespaceName = null;
+                string? tablespaceName = null;
                 var mapDomainObjectsTablespaceNames =
                     m_entryPoint.SystemSettings.PartitionsSponsorSettings.Value.DomainObjectsTablespaceNames.Value.DomainObjects
                         .ToDictionary(v => v.DomainObjectType, v => v.Tablespaces.ToDictionary(t => t.Index, t => t.TablespaceName));

@@ -25,7 +25,7 @@ public static class EnvironmentVariablesHelpers
         logger.LogDebug(text);
     }
 
-    public static void Define(string[] args, string baseDirectoryName = null)
+    public static void Define(string[] args, string? baseDirectoryName = null)
     {
         var basePath = new DirectoryInfo(baseDirectoryName ?? Path.GetDirectoryName(typeof(Program).Assembly.Location)!).FullName;
 
@@ -54,7 +54,7 @@ public static class EnvironmentVariablesHelpers
 
             if (false == Directory.Exists(logsPath))
             {
-                Directory.CreateDirectory(logsPath!);
+                Directory.CreateDirectory(logsPath);
             }
             logsPath = new DirectoryInfo(logsPath).FullName;
         }

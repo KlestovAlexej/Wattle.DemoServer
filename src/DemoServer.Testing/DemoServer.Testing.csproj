@@ -11,6 +11,7 @@
 		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
 		<CompilerGeneratedFilesOutputPath>Generated</CompilerGeneratedFilesOutputPath>
 		<DocumentationFile>$(AssemblyName).xml</DocumentationFile>
+		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -38,9 +39,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Update="WindowsRegisterTestingEnvirioment.reg">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </None>
+		<None Update="WindowsRegisterTestingEnvirioment.reg">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
 	</ItemGroup>
 
 </Project>

@@ -24,7 +24,7 @@ public class DomainObjectRegistersSettings
     {
         MemoryCacheDemoObjectX =
             new(
-                default,
+                default!,
                 $"Настройки кэширования реестра доменных объектов - {WellknownDomainObjectDisplayNames.DisplayNamesProvider(WellknownDomainObjects.DemoObjectX)}");
 
         UseIdentitiesServices =

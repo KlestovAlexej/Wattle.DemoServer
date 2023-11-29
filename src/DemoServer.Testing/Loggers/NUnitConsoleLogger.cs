@@ -28,7 +28,7 @@ public class NUnitConsoleLogger : ILogger
         m_owner = owner ?? throw new ArgumentNullException(nameof(owner));
     }
 
-    public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter)
+    public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception? exception, Func<TState, Exception?, string> formatter)
     {
         if (m_owner.SuppressOutput)
         {
@@ -43,7 +43,8 @@ public class NUnitConsoleLogger : ILogger
         return true;
     }
 
-    public IDisposable BeginScope<TState>(TState state)
+    public IDisposable BeginScope<TState>(TState state) 
+        where TState : notnull
     {
         return new StubScope();
     }

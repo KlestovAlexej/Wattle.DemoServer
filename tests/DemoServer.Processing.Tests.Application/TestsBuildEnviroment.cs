@@ -9,7 +9,9 @@ namespace ShtrihM.DemoServer.Processing.Tests.Application;
 [TestFixture]
 public class TestsBuildEnviroment : BaseSlimTests
 {
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
     private AppHost m_appHost;
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 
     protected override void BeforeSetUp()
     {
@@ -30,9 +32,9 @@ public class TestsBuildEnviroment : BaseSlimTests
         }
         catch
         {
-            m_appHost.Stop();
-            m_appHost.SilentDispose();
-            m_appHost = null;
+            // ReSharper disable once ConditionalAccessQualifierIsNonNullableAccordingToAPIContract
+            m_appHost?.Stop();
+            CommonWattleExtensions.SilentDisposeAndFree(ref m_appHost!);
 
             throw;
         }
@@ -41,9 +43,9 @@ public class TestsBuildEnviroment : BaseSlimTests
     [TearDown]
     public void TearDown()
     {
+        // ReSharper disable once ConditionalAccessQualifierIsNonNullableAccordingToAPIContract
         m_appHost?.Stop();
-        m_appHost.SilentDispose();
-        m_appHost = null;
+        CommonWattleExtensions.SilentDisposeAndFree(ref m_appHost!);
     }
 
     [Test]

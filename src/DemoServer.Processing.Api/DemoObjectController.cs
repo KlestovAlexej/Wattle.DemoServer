@@ -12,8 +12,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Net.Mime;
 using System.Threading;
 using System.Threading.Tasks;
-#pragma warning disable CS1573 // Parameter has no matching param tag in the XML comment (but other parameters do)
 
+#pragma warning disable CS1573 // Parameter has no matching param tag in the XML comment (but other parameters do)
 
 namespace ShtrihM.DemoServer.Processing.Api;
 

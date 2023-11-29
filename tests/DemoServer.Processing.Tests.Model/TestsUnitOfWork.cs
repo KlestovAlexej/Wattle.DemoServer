@@ -104,7 +104,7 @@ public class TestsUnitOfWork : BaseTestsDomainObjects
                 items.SingleOrDefault(
                     i => i.Id == new Guid("AE46F447-2B40-4428-82A5-C836A860674B"));
             Assert.IsNotNull(item);
-            Assert.AreEqual("Name", item.Name);
+            Assert.AreEqual("Name", item!.Name);
             Assert.AreEqual("Value", item.Value);
 
             unitOfWork.Commit();
@@ -193,7 +193,7 @@ public class TestsUnitOfWork : BaseTestsDomainObjects
                 items.SingleOrDefault(
                     i => i.Id == new Guid("AE46F447-2B40-4428-82A5-C836A860674B"));
             Assert.IsNotNull(item);
-            Assert.AreEqual("Name", item.Name);
+            Assert.AreEqual("Name", item!.Name);
             Assert.AreEqual("Value", item.Value);
 
             await unitOfWork.CommitAsync();

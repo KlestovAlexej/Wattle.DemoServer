@@ -28,8 +28,8 @@ namespace ShtrihM.DemoServer.Processing.Tests.Application;
 public class AppHost : IDisposable
 {
     private bool m_freeAll;
-    private StreamReader m_output;
-    private readonly string m_dbName;
+    private StreamReader? m_output;
+    private readonly string? m_dbName;
     private readonly string m_dbConnectionString;
     private readonly string m_serverConnectionString;
     private readonly TestDirectory m_directoryLogs;
@@ -38,19 +38,19 @@ public class AppHost : IDisposable
     private readonly bool m_buildDb;
     private readonly string m_tag;
     private readonly string m_appPath;
-    private Process m_process;
+    private Process? m_process;
     private readonly int m_portApiProcessing;
     private readonly int m_portApiMonitoring;
 
     public readonly Uri UrlApiProcessing;
 
     public AppHost(
-        string configuration = null,
+        string? configuration = null,
         bool dropDb = true,
         bool buildEnviroment = false,
         bool buildDb = true,
-        string dbName = null,
-        string tag = null)
+        string? dbName = null,
+        string? tag = null)
     {
         m_freeAll = true;
 
@@ -82,7 +82,7 @@ public class AppHost : IDisposable
     }
 
     public void Start(
-        Action<SystemSettings> updateSystemSettings = null,
+        Action<SystemSettings>? updateSystemSettings = null,
         bool showWindow = false)
     {
         try
@@ -154,7 +154,7 @@ public class AppHost : IDisposable
 
         if (m_process != null)
         {
-            string output = null;
+            string? output = null;
             var hasException = false;
             try
             {
@@ -163,7 +163,7 @@ public class AppHost : IDisposable
                 SetConsoleCtrlHandler(null, true);
                 GenerateConsoleCtrlEvent(CtrlTypes.CtrlCEvent, 0);
 
-                output = m_output.ReadToEnd();
+                output = m_output?.ReadToEnd();
 
                 if (false == m_process.WaitForExit((int)TimeSpan.FromSeconds(30).TotalMilliseconds))
                 {
@@ -313,9 +313,10 @@ public class AppHost : IDisposable
         var pathAppSettings = Path.Combine(m_appPath, Program.FileNameOfAppSettings);
         var textAppSettings = File.ReadAllText(pathAppSettings);
         var appSettings = JsonConvert.DeserializeObject<dynamic>(textAppSettings);
-        var systemSettingsDeserializeObject = JsonConvert.DeserializeObject<dynamic>(systemSettings.ToJsonText());
         Assert.IsNotNull(appSettings);
-        appSettings.SystemSettings = systemSettingsDeserializeObject;
+        var systemSettingsDeserializeObject = JsonConvert.DeserializeObject<dynamic>(systemSettings.ToJsonText());
+        Assert.IsNotNull(systemSettingsDeserializeObject);
+        appSettings!.SystemSettings = systemSettingsDeserializeObject!;
         textAppSettings = JsonConvert.SerializeObject(appSettings, Formatting.Indented);
         File.WriteAllText(pathAppSettings, textAppSettings);
 
@@ -490,7 +491,7 @@ public class AppHost : IDisposable
     static extern bool FreeConsole();
 
     [DllImport("kernel32.dll")]
-    static extern bool SetConsoleCtrlHandler(ConsoleCtrlDelegate handler, bool add);
+    static extern bool SetConsoleCtrlHandler(ConsoleCtrlDelegate? handler, bool add);
 
     delegate bool ConsoleCtrlDelegate(CtrlTypes type);
 

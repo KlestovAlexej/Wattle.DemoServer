@@ -21,22 +21,22 @@ public class IdentityCachesSettings
     {
         SystemLog =
             new(
-                default,
+                default!,
                 $"Маппер '{WellknownDomainObjectDisplayNames.DisplayNamesProvider(WellknownDomainObjects.SystemLog)}'");
 
         ChangeTracker =
             new(
-                default,
+                default!,
                 $"Маппер '{WellknownDomainObjectDisplayNames.DisplayNamesProvider(WellknownDomainObjects.ChangeTracker)}'");
 
         DemoObject =
             new(
-                default,
+                default!,
                 $"Маппер '{WellknownDomainObjectDisplayNames.DisplayNamesProvider(WellknownDomainObjects.DemoObject)}'");
 
         DemoObjectX =
             new(
-                default,
+                default!,
                 $"Маппер '{WellknownDomainObjectDisplayNames.DisplayNamesProvider(WellknownDomainObjects.DemoObjectX)}'");
     }
 

@@ -12,7 +12,6 @@ using System.Threading.Tasks;
 using ShtrihM.DemoServer.Processing.Generated.Interface;
 using ShtrihM.Wattle3.DomainObjects;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectActivators;
-using ShtrihM.Wattle3.Primitives;
 using ShtrihM.DemoServer.Processing.Model.DomainObjects.Common;
 using ShtrihM.Wattle3.DomainObjects.UnitOfWorkLocks;
 
@@ -60,23 +59,13 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutable<DomainObje
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public IDomainObjectDemoObjectX New(ICustomEntryPoint entryPoint)
         {
-            if (entryPoint == null)
-            {
-                ThrowsHelper.ThrowArgumentNullException(nameof(entryPoint));
-            }
-
-            return entryPoint!.CurrentUnitOfWork.New<IDomainObjectDemoObjectX>(this);
+            return entryPoint.CurrentUnitOfWork.New<IDomainObjectDemoObjectX>(this);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public ValueTask<IDomainObjectDemoObjectX> NewAsync(ICustomEntryPoint entryPoint, CancellationToken cancellationToken = default)
         {
-            if (entryPoint == null)
-            {
-                ThrowsHelper.ThrowArgumentNullException(nameof(entryPoint));
-            }
-
-            return entryPoint!.CurrentUnitOfWork.NewAsync<IDomainObjectDemoObjectX>(this, cancellationToken);
+            return entryPoint.CurrentUnitOfWork.NewAsync<IDomainObjectDemoObjectX>(this, cancellationToken);
         }
     }
 

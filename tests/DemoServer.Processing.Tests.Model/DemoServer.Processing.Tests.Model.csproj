@@ -7,6 +7,7 @@
 		<UseWpf>true</UseWpf>
 		<UseWindowsForms>true</UseWindowsForms>
 		<NoWarn>$(NoWarn);MSB3270</NoWarn>
+		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
 	<ItemGroup>

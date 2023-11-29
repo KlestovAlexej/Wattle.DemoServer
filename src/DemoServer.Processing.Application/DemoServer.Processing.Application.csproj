@@ -14,6 +14,7 @@
 		<RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
 		<ApplicationIcon>..\..\Tools\Product.ico</ApplicationIcon>
 		<DocumentationFile>$(AssemblyName).xml</DocumentationFile>
+		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -31,9 +32,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\DemoServer.Processing.Api.Common\DemoServer.Processing.Api.Common.csproj" />
-	  <ProjectReference Include="..\DemoServer.Processing.Api\DemoServer.Processing.Api.csproj" />
-	  <ProjectReference Include="..\DemoServer.Processing.Model\DemoServer.Processing.Model.csproj" />
+		<ProjectReference Include="..\DemoServer.Processing.Api.Common\DemoServer.Processing.Api.Common.csproj" />
+		<ProjectReference Include="..\DemoServer.Processing.Api\DemoServer.Processing.Api.csproj" />
+		<ProjectReference Include="..\DemoServer.Processing.Model\DemoServer.Processing.Model.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -41,11 +42,11 @@
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
 		<None Update="WindowsRegister.txt">
-		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
 	</ItemGroup>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-	  <Exec Command="PWSH.exe -File &quot;$(MSBuildProjectDirectory)\AppSettings.Auto.ps1&quot; -projectPath &quot;$(TargetDir)\&quot;" />
+		<Exec Command="PWSH.exe -File &quot;$(MSBuildProjectDirectory)\AppSettings.Auto.ps1&quot; -projectPath &quot;$(TargetDir)\&quot;" />
 	</Target>
 </Project>

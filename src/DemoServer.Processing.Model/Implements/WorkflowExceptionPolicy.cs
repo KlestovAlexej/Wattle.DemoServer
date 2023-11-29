@@ -22,7 +22,7 @@ public class WorkflowExceptionPolicy() : DefaultWorkflowExceptionPolicy(CommonWo
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public WorkflowException CreateTooBusy(string details = null)
+    public WorkflowException CreateTooBusy(string? details = null)
     {
         var result = new WorkflowException(
             WorkflowErrorCodes.GetDisplayName(WorkflowErrorCodes.TooBusy),

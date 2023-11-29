@@ -10,14 +10,17 @@ namespace ShtrihM.DemoServer.Processing.Tests.Model;
 
 public class TestsDemoObjectControllerService : BaseTestsDomainObjects
 {
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
     private IDemoObjectControllerService m_demoObjectControllerService;
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+
     private bool m_skipCountInternalException;
 
     [SetUp]
     public void SetUp()
     {
         m_skipCountInternalException = false;
-        m_demoObjectControllerService = m_entryPoint.ServiceProvider.GetService<IDemoObjectControllerService>();
+        m_demoObjectControllerService = m_entryPoint.ServiceProvider.GetService<IDemoObjectControllerService>()!;
     }
 
     [TearDown]

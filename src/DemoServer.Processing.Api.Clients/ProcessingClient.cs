@@ -16,6 +16,8 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+
 namespace ShtrihM.DemoServer.Processing.Api.Clients;
 
 public sealed class ProcessingClient : IProcessingClient
@@ -28,12 +30,8 @@ public sealed class ProcessingClient : IProcessingClient
     public ProcessingClient(
         IRestClient restClient,
         bool disposeRestClient = false)
+        // ReSharper disable once ConvertToPrimaryConstructor
     {
-        if (restClient == null)
-        {
-            ThrowsHelper.ThrowArgumentNullException(nameof(restClient));
-        }
-
         m_restClient = restClient;
         m_disposeRestClient = disposeRestClient;
     }
@@ -44,7 +42,7 @@ public sealed class ProcessingClient : IProcessingClient
         bool disposeHttpClient = false)
         : this(
             new RestClient(
-                httpClient!,
+                httpClient,
                 disposeHttpClient: disposeHttpClient,
                 configureSerialization: s => UpdateSerializerConfig(s)),
             true)
@@ -81,14 +79,9 @@ public sealed class ProcessingClient : IProcessingClient
         DemoObjectCreate parameters,
         CancellationToken cancellationToken = default)
     {
-        if (parameters == null)
-        {
-            ThrowsHelper.ThrowArgumentNullException(nameof(parameters));
-        }
-
         var request =
             new RestRequest(DemoObjectControllerConstants.MethodCreate.UrlSuffix, Method.Post)
-                .AddJsonBody(parameters!);
+                .AddJsonBody(parameters);
         var response = await m_restClient.ExecuteAsync(request, cancellationToken).ConfigureAwait(false);
         var result = ReadResponse<DemoObjectInfo>(response);
 
@@ -100,14 +93,9 @@ public sealed class ProcessingClient : IProcessingClient
         DemoObjectUpdate parameters,
         CancellationToken cancellationToken = default)
     {
-        if (parameters == null)
-        {
-            ThrowsHelper.ThrowArgumentNullException(nameof(parameters));
-        }
-
         var request =
             new RestRequest(DemoObjectControllerConstants.MethodUpdate.UrlSuffix, Method.Post)
-                .AddJsonBody(parameters!);
+                .AddJsonBody(parameters);
         var response = await m_restClient.ExecuteAsync(request, cancellationToken).ConfigureAwait(false);
         var result = ReadResponse<DemoObjectInfo>(response);
 
@@ -121,12 +109,7 @@ public sealed class ProcessingClient : IProcessingClient
     // ReSharper disable once UnusedMethodReturnValue.Global
     public static SerializerConfig UpdateSerializerConfig(SerializerConfig config)
     {
-        if (config == null)
-        {
-            ThrowsHelper.ThrowArgumentNullException(nameof(config));
-        }
-
-        config!.UseNewtonsoftJson(JsonExtensions.CreateSettings());
+        config.UseNewtonsoftJson(JsonExtensions.CreateSettings());
 
         return config;
     }
@@ -168,7 +151,7 @@ public sealed class ProcessingClient : IProcessingClient
 
         ThrowsHelper.ThrowInvalidOperationException($"Ошибка '{response.StatusCode}'.");
 
-        return default;
+        return default!;
     }
 
     #endregion

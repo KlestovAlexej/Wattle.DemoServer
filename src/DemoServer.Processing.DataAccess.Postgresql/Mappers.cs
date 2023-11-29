@@ -23,7 +23,8 @@ public partial class Mappers : ICustomMappers
 {
     partial void OnExitConstructor(object context)
     {
-        if (context == null)
+        // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+        if (context is null)
         {
             return;
         }

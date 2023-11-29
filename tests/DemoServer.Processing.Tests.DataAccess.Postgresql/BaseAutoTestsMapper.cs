@@ -13,8 +13,11 @@ namespace ShtrihM.DemoServer.Processing.Generated.Tests;
 [SuppressMessage("ReSharper", "InconsistentNaming")]
 public abstract partial class BaseAutoTestsMapper
 {
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
     protected string m_serverConnectionString;
     protected string m_dbName;
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+
     protected bool m_dropDb;
     protected bool m_addTags;
 

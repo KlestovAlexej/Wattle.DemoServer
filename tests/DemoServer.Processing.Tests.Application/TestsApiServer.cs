@@ -13,8 +13,10 @@ namespace ShtrihM.DemoServer.Processing.Tests.Application;
 [TestFixture]
 public class TestsApiServer : BaseSlimTests
 {
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
     private AppHost m_appHost;
     private HttpClient m_httpClient;
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 
     [SetUp]
     public void SetUp()
@@ -26,9 +28,9 @@ public class TestsApiServer : BaseSlimTests
         }
         catch
         {
-            m_appHost.Stop();
-            m_appHost.SilentDispose();
-            m_appHost = null;
+            // ReSharper disable once ConditionalAccessQualifierIsNonNullableAccordingToAPIContract
+            m_appHost?.Stop();
+            CommonWattleExtensions.SilentDisposeAndFree(ref m_appHost!);
 
             throw;
         }
@@ -43,12 +45,12 @@ public class TestsApiServer : BaseSlimTests
     [TearDown]
     public void TearDown()
     {
+        // ReSharper disable once ConditionalAccessQualifierIsNonNullableAccordingToAPIContract
         m_appHost?.Stop();
-        m_appHost.SilentDispose();
-        m_appHost = null;
+        CommonWattleExtensions.SilentDisposeAndFree(ref m_appHost!);
 
         m_httpClient.SilentDispose();
-        m_httpClient = null;
+        CommonWattleExtensions.SilentDisposeAndFree(ref m_httpClient);
     }
 
     [Test]

@@ -12,10 +12,11 @@
 		<PackageTags>ShtrihM DemoServer Common</PackageTags>
 		<NoWarn>$(NoWarn);1701;1702;CS1591;CS8784</NoWarn>
 		<DocumentationFile>$(AssemblyName).xml</DocumentationFile>
+		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="ShtrihM.Wattle3.Primitives" Version="3.8.0.37424" />
+		<PackageReference Include="ShtrihM.Wattle3.Primitives" Version="3.8.0.37424" />
 	</ItemGroup>
 
 </Project>

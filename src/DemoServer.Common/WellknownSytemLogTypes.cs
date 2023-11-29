@@ -4,6 +4,8 @@ using System.ComponentModel;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
+// ReSharper disable All
+
 namespace ShtrihM.DemoServer.Common;
 
 /// <summary>

@@ -70,8 +70,7 @@ public static class HealthCheckExtensions
                 {
                     jsonWriter.WritePropertyName(item.Key);
 
-                    // ReSharper disable once ConstantNullCoalescingCondition
-                    // ReSharper disable once ConstantConditionalAccessQualifier
+                    // ReSharper disable once ConditionalAccessQualifierIsNonNullableAccordingToAPIContract
                     JsonSerializer.Serialize(jsonWriter, item.Value, item.Value?.GetType() ?? typeof(object));
                 }
 

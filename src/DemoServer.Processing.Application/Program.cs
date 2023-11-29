@@ -37,7 +37,7 @@ public class Program
     private static readonly string AppSettingsOfOpenTelemetrySettings = "-S:" + OpenTelemetrySettings.SectionName;
 
     // ReSharper disable once InconsistentNaming
-    private static ILogger Logger;
+    private static ILogger? Logger;
 
     private static int Main(string[] args)
     {
@@ -193,12 +193,17 @@ public class Program
                     .GetSection(SystemSettings.SectionName)
                     .Get<SystemSettings>();
 
+            if (systemSettings == null)
+            {
+                throw new InvalidOperationException($"Не найдена секция '{SystemSettings.SectionName}'.");
+            }
+
             if (systemSettings.MappersFeaturesValidateUpdateResults.Value)
             {
                 TestsMappersFeatures.SetValidateUpdateResults(true);
             }
 
-            using var mutex = WebApplicationBuilderExtensions.CreateMutex(systemSettings!.InstanceId.Value, out var mutexCreatedNew);
+            using var mutex = WebApplicationBuilderExtensions.CreateMutex(systemSettings.InstanceId.Value, out var mutexCreatedNew);
 
             builder.AddCustoms(IsWindowsService, systemSettings);
 
@@ -261,7 +266,7 @@ public class Program
                     new MonitorsHostApplet(
                         () =>
                         {
-                            var ep = (ICustomEntryPoint)ServiceProviderHolder.Instance.GetService<IEntryPoint>();
+                            var ep = (ICustomEntryPoint?)ServiceProviderHolder.Instance.GetService<IEntryPoint>();
                             if (ep != null)
                             {
                                 var result = ep.ServerDescription;

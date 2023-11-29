@@ -20,7 +20,7 @@ public static class Constants
         {
             ProductBuildVersion = new(0, 0, 0, 0);
         }
-        ProductVersion = assembly.GetName().Version;
+        ProductVersion = assembly.GetName().Version!;
     }
 
     /// <summary>
