@@ -24,6 +24,7 @@ using ShtrihM.DemoServer.Processing.Generated.Interface;
 using ShtrihM.Wattle3.Json.Extensions;
 using Unity;
 using Constants = ShtrihM.DemoServer.Common.Constants;
+using System.Threading;
 
 namespace ShtrihM.DemoServer.Processing.Tests.Model.Environment;
 
@@ -182,21 +183,55 @@ public abstract class BaseTestsWithEntryPoint : BaseDbTests
         }
     }
 
-    protected string GetDbLogs()
+    protected string GetDbLogs(int maxEntries = 100)
     {
-        var result = new StringBuilder();
-        result.AppendLine();
-        result.AppendLine("-- { SystemLog -------------------------");
-        using var session = m_mappers.OpenSession();
-        var mapper = m_mappers.GetMapper<IMapperSystemLog>();
-        foreach (var dto in mapper.GetEnumeratorRaw(session).OrderByDescending(i => i.Id))
+        var countEntries = 0;
         {
-            result.AppendLine(dto.ToJsonText(true));
-        }
-        result.AppendLine("-- } SystemLog -------------------------");
-        result.AppendLine();
+            var result = new StringBuilder();
+            result.AppendLine();
+            result.AppendLine("-- { SystemLog -------------------------");
+            using var session = m_mappers.OpenSession();
+            var mapper = m_mappers.GetMapper<IMapperSystemLog>();
+            foreach (var dto in mapper.GetEnumeratorRaw(session).OrderByDescending(i => i.Id))
+            {
+                result.AppendLine(dto.ToJsonText(true));
+                ++countEntries;
+                if (countEntries > maxEntries)
+                {
+                    break;
+                }
+            }
+            result.AppendLine("-- } SystemLog -------------------------");
+            result.AppendLine();
 
-        return result.ToString();
+            if (countEntries != 0)
+            {
+                return result.ToString();
+            }
+        }
+
+        {
+            Thread.Sleep(TimeSpan.FromSeconds(5));
+
+            var result = new StringBuilder();
+            result.AppendLine();
+            result.AppendLine("-- { SystemLog -------------------------");
+            using var session = m_mappers.OpenSession();
+            var mapper = m_mappers.GetMapper<IMapperSystemLog>();
+            foreach (var dto in mapper.GetEnumeratorRaw(session).OrderByDescending(i => i.Id))
+            {
+                result.AppendLine(dto.ToJsonText(true));
+                ++countEntries;
+                if (countEntries > maxEntries)
+                {
+                    break;
+                }
+            }
+            result.AppendLine("-- } SystemLog -------------------------");
+            result.AppendLine();
+
+            return result.ToString();
+        }
     }
 
     // ReSharper disable once MemberCanBePrivate.Global
@@ -224,8 +259,8 @@ public abstract class BaseTestsWithEntryPoint : BaseDbTests
         {
             m_entryPoint.Start();
 
-            WaitHelpers.TimeOut(() => m_entryPoint.IsReady, WaitTimeout, GetDbLogs);
-            WaitHelpers.TimeOut(() => m_entryPoint.GlobalIsReady, WaitTimeout, GetDbLogs);
+            WaitHelpers.TimeOut(() => m_entryPoint.IsReady, WaitTimeout, () => GetDbLogs());
+            WaitHelpers.TimeOut(() => m_entryPoint.GlobalIsReady, WaitTimeout, () => GetDbLogs());
         }
     }
 

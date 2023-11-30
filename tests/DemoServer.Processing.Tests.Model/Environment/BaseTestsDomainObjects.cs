@@ -10,7 +10,7 @@ public abstract class BaseTestsDomainObjects : BaseTestsWithEntryPoint
     {
         m_entryPoint.Start();
 
-        WaitHelpers.TimeOut(() => m_entryPoint.IsReady, WaitTimeout, GetDbLogs);
-        WaitHelpers.TimeOut(() => m_entryPoint.GlobalIsReady, WaitTimeout, GetDbLogs);
+        WaitHelpers.TimeOut(() => m_entryPoint.IsReady, WaitTimeout, () => GetDbLogs());
+        WaitHelpers.TimeOut(() => m_entryPoint.GlobalIsReady, WaitTimeout, () => GetDbLogs());
     }
 }
