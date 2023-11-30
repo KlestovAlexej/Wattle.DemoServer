@@ -359,9 +359,7 @@ public class TestsUnitOfWork : BaseTestsDomainObjects
         var commitState3 = new UnitOfWorkCommitState();
         using (var unitOfWork = m_entryPoint.CreateUnitOfWork())
         {
-            var commitVerifying = unitOfWork.CommitVerifying;
-            Assert.IsNotNull(commitVerifying);
-            Assert.IsTrue(ReferenceEquals(commitVerifying, unitOfWork.CommitVerifying));
+            Assert.IsFalse(unitOfWork.IsDefinedCommitVerifying);
 
             {
                 var internalException =
@@ -390,6 +388,13 @@ public class TestsUnitOfWork : BaseTestsDomainObjects
                 unitOfWork.AddBehaviour(domainBehaviour);
             }
 
+            Assert.IsFalse(unitOfWork.IsDefinedCommitVerifying);
+
+            var commitVerifying = unitOfWork.CommitVerifying;
+            Assert.IsNotNull(commitVerifying);
+            Assert.IsTrue(ReferenceEquals(commitVerifying, unitOfWork.CommitVerifying));
+
+            Assert.IsFalse(unitOfWork.IsDefinedCommitVerifying);
 
             {
                 var domainBehaviour =
@@ -413,6 +418,9 @@ public class TestsUnitOfWork : BaseTestsDomainObjects
                 unitOfWork.AddBehaviour(domainBehaviour);
             }
 
+            Assert.IsTrue(unitOfWork.IsDefinedCommitVerifying);
+            Assert.IsTrue(ReferenceEquals(commitVerifying, unitOfWork.CommitVerifying));
+
             {
                 var domainBehaviour =
                     m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithСonfirmation<IMapperDemoObjectX>(-2)
@@ -434,6 +442,9 @@ public class TestsUnitOfWork : BaseTestsDomainObjects
                             });
                 unitOfWork.AddBehaviour(domainBehaviour);
             }
+
+            Assert.IsTrue(unitOfWork.IsDefinedCommitVerifying);
+            Assert.IsTrue(ReferenceEquals(commitVerifying, unitOfWork.CommitVerifying));
         }
 
         Assert.IsFalse(commitState1.IsSuccessful);
