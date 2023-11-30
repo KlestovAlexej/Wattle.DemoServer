@@ -65,7 +65,7 @@ public sealed class UnitOfWorkLocksHub : AbstractUnitOfWorkLocksHub
 
     protected override IDomainBehaviourWithСonfirmation CreateDomainBehaviourWithСonfirmation()
     {
-        var result = EntryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithСonfirmation();
+        var result = EntryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithСonfirmation(false);
 
         return result;
     }

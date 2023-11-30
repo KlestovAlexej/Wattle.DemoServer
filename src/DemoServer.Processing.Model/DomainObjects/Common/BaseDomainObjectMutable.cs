@@ -1,4 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
+using System.Threading;
+using System.Threading.Tasks;
 using ShtrihM.DemoServer.Processing.Model.Interfaces;
 using ShtrihM.Wattle3.DomainObjects.DomainObjects;
 using ShtrihM.Wattle3.DomainObjects.Interfaces;
@@ -41,15 +43,17 @@ public abstract class BaseDomainObjectMutable<TDomainObject> : BaseDomainObject<
     /// <summary>
     /// Фиксация в <see cref="IUnitOfWork"/> изменений доменного объекта.
     /// </summary>
-    protected virtual void DoUpdate()
+    protected virtual ValueTask DoUpdateAsync(CancellationToken cancellationToken = default)
     {
         if (IsGhost || m_isChanged)
         {
-            return;
+            return ValueTask.CompletedTask;
         }
 
         m_isChanged = true;
 
         m_entryPoint.UnitOfWorkProvider.Instance.AddUpdate(this);
+
+        return ValueTask.CompletedTask;
     }
 }

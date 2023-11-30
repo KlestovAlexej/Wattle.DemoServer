@@ -14,6 +14,7 @@ using ShtrihM.Wattle3.DomainObjects;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectActivators;
 using ShtrihM.DemoServer.Processing.Model.DomainObjects.Common;
 using ShtrihM.Wattle3.DomainObjects.UnitOfWorkLocks;
+using ShtrihM.Wattle3.Utils;
 
 namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
 
@@ -129,7 +130,7 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutable<DomainObje
             m_enabled.SetValue(value);
             if (m_enabled.Changed)
             {
-                DoUpdate();
+                DoUpdateAsync().SafeGetResult();
             }
         }
     }
@@ -147,7 +148,7 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutable<DomainObje
             m_name.SetValue(value);
             if (m_name.Changed)
             {
-                DoUpdate();
+                DoUpdateAsync().SafeGetResult();
             }
         }
     }
@@ -237,10 +238,10 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutable<DomainObje
         return ValueTask.CompletedTask;
     }
 
-    protected override void DoUpdate()
+    protected override ValueTask DoUpdateAsync(CancellationToken cancellationToken = default)
     {
-        base.DoUpdate();
+        ModificationDate = m_entryPoint.TimeService.NowDateTime;
 
-        ModificationDate = m_entryPoint.TimeService.Now;
+        return base.DoUpdateAsync(cancellationToken);
     }
 }

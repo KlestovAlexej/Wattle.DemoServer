@@ -161,7 +161,7 @@ public sealed class DomainObjectDemoObject : BaseDomainObjectMutable<DomainObjec
 
         if (changed)
         {
-            DoUpdate();
+            return DoUpdateAsync(cancellationToken);
         }
 
         return ValueTask.CompletedTask;
@@ -213,10 +213,10 @@ public sealed class DomainObjectDemoObject : BaseDomainObjectMutable<DomainObjec
         return ValueTask.CompletedTask;
     }
 
-    protected override void DoUpdate()
+    protected override ValueTask DoUpdateAsync(CancellationToken cancellationToken = default)
     {
-        base.DoUpdate();
-
         ModificationDate = m_entryPoint.TimeService.NowDateTime;
+
+        return base.DoUpdateAsync(cancellationToken);
     }
 }

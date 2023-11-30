@@ -8,6 +8,8 @@ using ShtrihM.Wattle3.Testing;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using ShtrihM.DemoServer.Processing.Generated.Interface;
+using ShtrihM.Wattle3.Common.Exceptions;
 
 namespace ShtrihM.DemoServer.Processing.Tests.Model;
 
@@ -213,7 +215,7 @@ public class TestsUnitOfWork : BaseTestsDomainObjects
             Assert.IsTrue(ReferenceEquals(commitVerifying, unitOfWork.CommitVerifying));
 
             var domainBehaviour =
-                m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithСonfirmation()
+                m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithСonfirmation(false)
                     .SetSuccessful(
                         () => commitState.IsSuccessful = true,
                         () =>
@@ -250,13 +252,219 @@ public class TestsUnitOfWork : BaseTestsDomainObjects
     [Test]
     [Timeout(TestTimeout.Unit)]
     [Category(TestCategory.Unit)]
+    public void Test_DefineVerifying_UnitOfWork_Fail()
+    {
+        var commitState1 = new UnitOfWorkCommitState();
+        var commitState2 = new UnitOfWorkCommitState();
+        var commitState3 = new UnitOfWorkCommitState();
+        using (var unitOfWork = m_entryPoint.CreateUnitOfWork())
+        {
+            var commitVerifying = unitOfWork.CommitVerifying;
+            Assert.IsNotNull(commitVerifying);
+            Assert.IsTrue(ReferenceEquals(commitVerifying, unitOfWork.CommitVerifying));
+
+            {
+                var domainBehaviour =
+                    m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithСonfirmation<IMapperDemoObject>(-1)
+                        .SetSuccessful(
+                            () => commitState1.IsSuccessful = true,
+                            () =>
+                            {
+                                commitState1.IsSuccessful = true;
+
+                                return ValueTask.CompletedTask;
+                            })
+                        .SetFail(
+                            () => commitState1.IsFail = true,
+                            () =>
+                            {
+                                commitState1.IsFail = true;
+
+                                return ValueTask.CompletedTask;
+                            });
+                unitOfWork.AddBehaviour(domainBehaviour);
+            }
+
+            {
+                var domainBehaviour =
+                    m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithСonfirmation()
+                        .SetSuccessful(
+                            () => commitState2.IsSuccessful = true,
+                            () =>
+                            {
+                                commitState2.IsSuccessful = true;
+
+                                return ValueTask.CompletedTask;
+                            })
+                        .SetFail(
+                            () => commitState2.IsFail = true,
+                            () =>
+                            {
+                                commitState2.IsFail = true;
+
+                                return ValueTask.CompletedTask;
+                            });
+                unitOfWork.AddBehaviour(domainBehaviour);
+            }
+
+            {
+                var domainBehaviour =
+                    m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithСonfirmation<IMapperDemoObjectX>(-2)
+                        .SetSuccessful(
+                            () => commitState3.IsSuccessful = true,
+                            () =>
+                            {
+                                commitState3.IsSuccessful = true;
+
+                                return ValueTask.CompletedTask;
+                            })
+                        .SetFail(
+                            () => commitState3.IsFail = true,
+                            () =>
+                            {
+                                commitState3.IsFail = true;
+
+                                return ValueTask.CompletedTask;
+                            });
+                unitOfWork.AddBehaviour(domainBehaviour);
+            }
+        }
+
+        Assert.IsFalse(commitState1.IsSuccessful);
+        Assert.IsTrue(commitState1.IsFail);
+
+        Assert.IsFalse(commitState2.IsSuccessful);
+        Assert.IsTrue(commitState2.IsFail);
+
+        Assert.IsFalse(commitState3.IsSuccessful);
+        Assert.IsTrue(commitState3.IsFail);
+
+        using (var unitOfWork = m_entryPoint.CreateUnitOfWork())
+        {
+            var register = unitOfWork.Registers.GetRegister(WellknownDomainObjects.ChangeTracker);
+            var instances = register.GetObjectEnumerator().ToList();
+            Assert.AreEqual(0, instances.Count);
+
+            unitOfWork.Commit();
+        }
+    }
+
+    [Test]
+    [Timeout(TestTimeout.Unit)]
+    [Category(TestCategory.Unit)]
+    public void Test_DefineVerifying_UnitOfWork_Fail_2()
+    {
+        var commitState1 = new UnitOfWorkCommitState();
+        var commitState2 = new UnitOfWorkCommitState();
+        var commitState3 = new UnitOfWorkCommitState();
+        using (var unitOfWork = m_entryPoint.CreateUnitOfWork())
+        {
+            var commitVerifying = unitOfWork.CommitVerifying;
+            Assert.IsNotNull(commitVerifying);
+            Assert.IsTrue(ReferenceEquals(commitVerifying, unitOfWork.CommitVerifying));
+
+            {
+                var internalException =
+                    Assert.Throws<InternalException>(
+                        () => m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithСonfirmation());
+                Assert.AreEqual("Стратегия проверки успешности завершения IUnitOfWork не определена.", internalException!.Message, internalException.Message);
+
+                var domainBehaviour =
+                    m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithСonfirmation(false)
+                        .SetSuccessful(
+                            () => commitState2.IsSuccessful = true,
+                            () =>
+                            {
+                                commitState2.IsSuccessful = true;
+
+                                return ValueTask.CompletedTask;
+                            })
+                        .SetFail(
+                            () => commitState2.IsFail = true,
+                            () =>
+                            {
+                                commitState2.IsFail = true;
+
+                                return ValueTask.CompletedTask;
+                            });
+                unitOfWork.AddBehaviour(domainBehaviour);
+            }
+
+
+            {
+                var domainBehaviour =
+                    m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithСonfirmation<IMapperDemoObject>(-1)
+                        .SetSuccessful(
+                            () => commitState1.IsSuccessful = true,
+                            () =>
+                            {
+                                commitState1.IsSuccessful = true;
+
+                                return ValueTask.CompletedTask;
+                            })
+                        .SetFail(
+                            () => commitState1.IsFail = true,
+                            () =>
+                            {
+                                commitState1.IsFail = true;
+
+                                return ValueTask.CompletedTask;
+                            });
+                unitOfWork.AddBehaviour(domainBehaviour);
+            }
+
+            {
+                var domainBehaviour =
+                    m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithСonfirmation<IMapperDemoObjectX>(-2)
+                        .SetSuccessful(
+                            () => commitState3.IsSuccessful = true,
+                            () =>
+                            {
+                                commitState3.IsSuccessful = true;
+
+                                return ValueTask.CompletedTask;
+                            })
+                        .SetFail(
+                            () => commitState3.IsFail = true,
+                            () =>
+                            {
+                                commitState3.IsFail = true;
+
+                                return ValueTask.CompletedTask;
+                            });
+                unitOfWork.AddBehaviour(domainBehaviour);
+            }
+        }
+
+        Assert.IsFalse(commitState1.IsSuccessful);
+        Assert.IsTrue(commitState1.IsFail);
+
+        Assert.IsFalse(commitState2.IsSuccessful);
+        Assert.IsTrue(commitState2.IsFail);
+
+        Assert.IsFalse(commitState3.IsSuccessful);
+        Assert.IsTrue(commitState3.IsFail);
+
+        using (var unitOfWork = m_entryPoint.CreateUnitOfWork())
+        {
+            var register = unitOfWork.Registers.GetRegister(WellknownDomainObjects.ChangeTracker);
+            var instances = register.GetObjectEnumerator().ToList();
+            Assert.AreEqual(0, instances.Count);
+
+            unitOfWork.Commit();
+        }
+    }
+
+    [Test]
+    [Timeout(TestTimeout.Unit)]
+    [Category(TestCategory.Unit)]
     public void Test_DefineVerifying_UnitOfWork_Rollback()
     {
         var commitState = new UnitOfWorkCommitState();
         using (var unitOfWork = m_entryPoint.CreateUnitOfWork())
         {
             var domainBehaviour =
-                m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithСonfirmation()
+                m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithСonfirmation(false)
                     .SetSuccessful(
                         () => commitState.IsSuccessful = true,
                         () =>
@@ -302,7 +510,7 @@ public class TestsUnitOfWork : BaseTestsDomainObjects
         using (var unitOfWork = m_entryPoint.CreateUnitOfWork())
         {
             var domainBehaviour =
-                m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithСonfirmation()
+                m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithСonfirmation(false)
                     .SetSuccessful(
                         () => commitState.IsSuccessful = true,
                         () =>

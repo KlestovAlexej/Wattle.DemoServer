@@ -9,7 +9,7 @@
             Базовая реализация доменного объекта с поддержкой изменения.
             </summary>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Model.DomainObjects.Common.BaseDomainObjectMutable`1.DoUpdate">
+        <member name="M:ShtrihM.DemoServer.Processing.Model.DomainObjects.Common.BaseDomainObjectMutable`1.DoUpdateAsync(System.Threading.CancellationToken)">
             <summary>
             Фиксация в <see cref="T:ShtrihM.Wattle3.DomainObjects.Interfaces.IUnitOfWork"/> изменений доменного объекта.
             </summary>

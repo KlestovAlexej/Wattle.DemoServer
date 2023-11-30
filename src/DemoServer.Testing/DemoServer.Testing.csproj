@@ -29,9 +29,9 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
 		<PackageReference Include="Serilog.Settings.Configuration" Version="8.0.0" />
-		<PackageReference Include="ShtrihM.Wattle3.Testing" Version="3.8.0.37424" />
-		<PackageReference Include="ShtrihM.Wattle3.Testing.Databases.PostgreSql" Version="3.8.0.37424" />
-		<PackageReference Include="ShtrihM.Wattle3.CodeGeneration.Generator.Path" Version="3.8.0.37424">
+		<PackageReference Include="ShtrihM.Wattle3.Testing" Version="3.8.0.37427" />
+		<PackageReference Include="ShtrihM.Wattle3.Testing.Databases.PostgreSql" Version="3.8.0.37427" />
+		<PackageReference Include="ShtrihM.Wattle3.CodeGeneration.Generator.Path" Version="3.8.0.37427">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 			<TreatAsUsed>true</TreatAsUsed>
