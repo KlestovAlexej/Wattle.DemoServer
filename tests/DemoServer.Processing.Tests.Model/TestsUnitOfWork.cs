@@ -207,43 +207,143 @@ public class TestsUnitOfWork : BaseTestsDomainObjects
     [Category(TestCategory.Unit)]
     public void Test_DefineVerifying_UnitOfWork_Successful()
     {
-        var commitState = new UnitOfWorkCommitState();
+        var commitState1 = new UnitOfWorkCommitState();
+        var commitState2 = new UnitOfWorkCommitState();
+        var commitState3 = new UnitOfWorkCommitState();
+        var commitState4= new UnitOfWorkCommitState();
         using (var unitOfWork = m_entryPoint.CreateUnitOfWork())
         {
+            Assert.IsFalse(unitOfWork.IsDefinedCommitVerifying);
+
+            {
+                var internalException =
+                    Assert.Throws<InternalException>(
+                        () => m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithСonfirmation());
+                Assert.AreEqual("Стратегия проверки успешности завершения IUnitOfWork не определена.", internalException!.Message, internalException.Message);
+
+                var domainBehaviour =
+                    m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithСonfirmation(false)
+                        .SetSuccessful(
+                            () => commitState1.IsSuccessful = true,
+                            () =>
+                            {
+                                commitState1.IsSuccessful = true;
+
+                                return ValueTask.CompletedTask;
+                            })
+                        .SetFail(
+                            () => commitState1.IsFail = true,
+                            () =>
+                            {
+                                commitState1.IsFail = true;
+
+                                return ValueTask.CompletedTask;
+                            });
+                unitOfWork.AddBehaviour(domainBehaviour);
+            }
+
+            Assert.IsFalse(unitOfWork.IsDefinedCommitVerifying);
+
+            {
+                var domainBehaviour =
+                    m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithСonfirmation()
+                        .SetSuccessful(
+                            () => commitState2.IsSuccessful = true,
+                            () =>
+                            {
+                                commitState2.IsSuccessful = true;
+
+                                return ValueTask.CompletedTask;
+                            })
+                        .SetFail(
+                            () => commitState2.IsFail = true,
+                            () =>
+                            {
+                                commitState2.IsFail = true;
+
+                                return ValueTask.CompletedTask;
+                            });
+                unitOfWork.AddBehaviour(domainBehaviour);
+            }
+
+            Assert.IsFalse(unitOfWork.IsDefinedCommitVerifying);
+
             var commitVerifying = unitOfWork.CommitVerifying;
             Assert.IsNotNull(commitVerifying);
             Assert.IsTrue(ReferenceEquals(commitVerifying, unitOfWork.CommitVerifying));
 
-            var domainBehaviour =
-                m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithСonfirmation(false)
-                    .SetSuccessful(
-                        () => commitState.IsSuccessful = true,
-                        () =>
-                        {
-                            commitState.IsSuccessful = true;
+            Assert.IsFalse(unitOfWork.IsDefinedCommitVerifying);
 
-                            return ValueTask.CompletedTask;
-                        })
-                    .SetFail(
-                        () => commitState.IsFail = true,
-                        () =>
-                        {
-                            commitState.IsFail = true;
+            {
+                var domainBehaviour =
+                    m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithСonfirmation<IMapperDemoObject>(-1)
+                        .SetSuccessful(
+                            () => commitState3.IsSuccessful = true,
+                            () =>
+                            {
+                                commitState3.IsSuccessful = true;
 
-                            return ValueTask.CompletedTask;
-                        });
-            unitOfWork.AddBehaviour(domainBehaviour);
+                                return ValueTask.CompletedTask;
+                            })
+                        .SetFail(
+                            () => commitState3.IsFail = true,
+                            () =>
+                            {
+                                commitState3.IsFail = true;
+
+                                return ValueTask.CompletedTask;
+                            });
+                unitOfWork.AddBehaviour(domainBehaviour);
+            }
+
+            Assert.IsTrue(unitOfWork.IsDefinedCommitVerifying);
+            Assert.IsTrue(ReferenceEquals(commitVerifying, unitOfWork.CommitVerifying));
+
+            {
+                var domainBehaviour =
+                    m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithСonfirmation<IMapperDemoObjectX>(-2)
+                        .SetSuccessful(
+                            () => commitState4.IsSuccessful = true,
+                            () =>
+                            {
+                                commitState4.IsSuccessful = true;
+
+                                return ValueTask.CompletedTask;
+                            })
+                        .SetFail(
+                            () => commitState4.IsFail = true,
+                            () =>
+                            {
+                                commitState4.IsFail = true;
+
+                                return ValueTask.CompletedTask;
+                            });
+                unitOfWork.AddBehaviour(domainBehaviour);
+            }
+
+            Assert.IsTrue(unitOfWork.IsDefinedCommitVerifying);
+            Assert.IsTrue(ReferenceEquals(commitVerifying, unitOfWork.CommitVerifying));
 
             unitOfWork.Commit();
         }
-        Assert.IsTrue(commitState.IsSuccessful);
-        Assert.IsFalse(commitState.IsFail);
+
+        Assert.IsTrue(commitState1.IsSuccessful);
+        Assert.IsFalse(commitState1.IsFail);
+
+        Assert.IsTrue(commitState2.IsSuccessful);
+        Assert.IsFalse(commitState2.IsFail);
+
+        Assert.IsTrue(commitState3.IsSuccessful);
+        Assert.IsFalse(commitState3.IsFail);
+
+        Assert.IsTrue(commitState4.IsSuccessful);
+        Assert.IsFalse(commitState4.IsFail);
 
         using (var unitOfWork = m_entryPoint.CreateUnitOfWork())
         {
             var register = unitOfWork.Registers.GetRegister(WellknownDomainObjects.ChangeTracker);
             var instances = register.GetObjectEnumerator().ToList();
-            Assert.AreEqual(1, instances.Count);
+            Assert.AreEqual(0, instances.Count);
 
             unitOfWork.Commit();
         }
@@ -357,6 +457,7 @@ public class TestsUnitOfWork : BaseTestsDomainObjects
         var commitState1 = new UnitOfWorkCommitState();
         var commitState2 = new UnitOfWorkCommitState();
         var commitState3 = new UnitOfWorkCommitState();
+        var commitState4 = new UnitOfWorkCommitState();
         using (var unitOfWork = m_entryPoint.CreateUnitOfWork())
         {
             Assert.IsFalse(unitOfWork.IsDefinedCommitVerifying);
@@ -369,6 +470,30 @@ public class TestsUnitOfWork : BaseTestsDomainObjects
 
                 var domainBehaviour =
                     m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithСonfirmation(false)
+                        .SetSuccessful(
+                            () => commitState1.IsSuccessful = true,
+                            () =>
+                            {
+                                commitState1.IsSuccessful = true;
+
+                                return ValueTask.CompletedTask;
+                            })
+                        .SetFail(
+                            () => commitState1.IsFail = true,
+                            () =>
+                            {
+                                commitState1.IsFail = true;
+
+                                return ValueTask.CompletedTask;
+                            });
+                unitOfWork.AddBehaviour(domainBehaviour);
+            }
+
+            Assert.IsFalse(unitOfWork.IsDefinedCommitVerifying);
+
+            {
+                var domainBehaviour =
+                    m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithСonfirmation()
                         .SetSuccessful(
                             () => commitState2.IsSuccessful = true,
                             () =>
@@ -400,31 +525,6 @@ public class TestsUnitOfWork : BaseTestsDomainObjects
                 var domainBehaviour =
                     m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithСonfirmation<IMapperDemoObject>(-1)
                         .SetSuccessful(
-                            () => commitState1.IsSuccessful = true,
-                            () =>
-                            {
-                                commitState1.IsSuccessful = true;
-
-                                return ValueTask.CompletedTask;
-                            })
-                        .SetFail(
-                            () => commitState1.IsFail = true,
-                            () =>
-                            {
-                                commitState1.IsFail = true;
-
-                                return ValueTask.CompletedTask;
-                            });
-                unitOfWork.AddBehaviour(domainBehaviour);
-            }
-
-            Assert.IsTrue(unitOfWork.IsDefinedCommitVerifying);
-            Assert.IsTrue(ReferenceEquals(commitVerifying, unitOfWork.CommitVerifying));
-
-            {
-                var domainBehaviour =
-                    m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithСonfirmation<IMapperDemoObjectX>(-2)
-                        .SetSuccessful(
                             () => commitState3.IsSuccessful = true,
                             () =>
                             {
@@ -445,6 +545,31 @@ public class TestsUnitOfWork : BaseTestsDomainObjects
 
             Assert.IsTrue(unitOfWork.IsDefinedCommitVerifying);
             Assert.IsTrue(ReferenceEquals(commitVerifying, unitOfWork.CommitVerifying));
+
+            {
+                var domainBehaviour =
+                    m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithСonfirmation<IMapperDemoObjectX>(-2)
+                        .SetSuccessful(
+                            () => commitState4.IsSuccessful = true,
+                            () =>
+                            {
+                                commitState4.IsSuccessful = true;
+
+                                return ValueTask.CompletedTask;
+                            })
+                        .SetFail(
+                            () => commitState4.IsFail = true,
+                            () =>
+                            {
+                                commitState4.IsFail = true;
+
+                                return ValueTask.CompletedTask;
+                            });
+                unitOfWork.AddBehaviour(domainBehaviour);
+            }
+
+            Assert.IsTrue(unitOfWork.IsDefinedCommitVerifying);
+            Assert.IsTrue(ReferenceEquals(commitVerifying, unitOfWork.CommitVerifying));
         }
 
         Assert.IsFalse(commitState1.IsSuccessful);
@@ -455,6 +580,9 @@ public class TestsUnitOfWork : BaseTestsDomainObjects
 
         Assert.IsFalse(commitState3.IsSuccessful);
         Assert.IsTrue(commitState3.IsFail);
+
+        Assert.IsFalse(commitState4.IsSuccessful);
+        Assert.IsTrue(commitState4.IsFail);
 
         using (var unitOfWork = m_entryPoint.CreateUnitOfWork())
         {

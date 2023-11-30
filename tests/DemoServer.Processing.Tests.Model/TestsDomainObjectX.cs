@@ -802,7 +802,12 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
         long id;
         using (var unitOfWork = m_entryPoint.CreateUnitOfWork())
         {
+            Assert.IsFalse(unitOfWork.IsDefinedCommitVerifying);
+
             var instance = template.New(m_entryPoint);
+
+            Assert.IsTrue(unitOfWork.IsDefinedCommitVerifying);
+
             id = instance.Identity;
 
             unitOfWork.Commit();

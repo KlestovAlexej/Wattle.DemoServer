@@ -74,7 +74,7 @@ public class TestsDemoObjectControllerService : BaseTestsDomainObjects
     [Test]
     [Timeout(TestTimeout.Unit)]
     [Category(TestCategory.Unit)]
-    public async Task Test_DemoObjectUpdateAsync()
+    public async Task Test_UpdateAsync()
     {
         var info =
             await m_demoObjectControllerService.CreateAsync(
