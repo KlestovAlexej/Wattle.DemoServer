@@ -242,6 +242,6 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutable<DomainObje
     {
         await base.DoUpdateAsync(cancellationToken).ConfigureAwait(false);
 
-        ModificationDate = m_entryPoint.TimeService.NowDateTime;
+        ModificationDate = m_entryPoint.TimeService.Now;
     }
 }

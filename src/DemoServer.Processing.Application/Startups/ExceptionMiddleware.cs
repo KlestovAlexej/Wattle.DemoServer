@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Options;
 using OpenTelemetry.Trace;
 using ShtrihM.DemoServer.Processing.Api.Common;
 using ShtrihM.DemoServer.Processing.Model.Implements;
@@ -24,7 +23,6 @@ public class ExceptionMiddleware
     private readonly ICustomEntryPoint m_entryPoint;
     private readonly RequestDelegate m_next;
     private readonly Tracer? m_tracer;
-    private readonly IOptionsSnapshot<OpenTelemetrySettings>? m_openTelemetrySettings;
 
     static ExceptionMiddleware()
     {
@@ -32,17 +30,15 @@ public class ExceptionMiddleware
             .AddModuleType<ExceptionMiddleware>();
     }
 
+    // ReSharper disable once ConvertToPrimaryConstructor
     public ExceptionMiddleware(
         ICustomEntryPoint entryPoint,
         RequestDelegate next,
-        Tracer? tracer = null,
-        IOptionsSnapshot<OpenTelemetrySettings>? openTelemetrySettings = null)
-        // ReSharper disable once ConvertToPrimaryConstructor
+        Tracer? tracer = null)
     {
         m_entryPoint = entryPoint;
         m_next = next;
         m_tracer = tracer;
-        m_openTelemetrySettings = openTelemetrySettings;
     }
 
     // ReSharper disable once UnusedMember.Global
@@ -59,11 +55,7 @@ public class ExceptionMiddleware
             if (mainSpan != null)
             {
                 mainSpan.SetStatus(Status.Error);
-
-                if (m_openTelemetrySettings?.Value.Tracing.AspNetCoreInstrumentation is { Enabled: true, RecordException: true })
-                {
-                    mainSpan.RecordException(exception);
-                }
+                mainSpan.RecordException(exception);
             }
 
             var workflowException = (WorkflowException)await m_entryPoint.ExceptionPolicy.ApplyAsync(exception).ConfigureAwait(false);
@@ -82,11 +74,7 @@ public class ExceptionMiddleware
             if (mainSpan != null)
             {
                 mainSpan.SetStatus(Status.Error);
-
-                if (m_openTelemetrySettings?.Value.Tracing.AspNetCoreInstrumentation is { Enabled: true, RecordException: true })
-                {
-                    mainSpan.RecordException(exception);
-                }
+                mainSpan.RecordException(exception);
             }
 
             exception.Data.Add(ExceptionPolicy.ExceptionSourceModule, ExceptionPolicy.ExceptionSourceModuleAsController);
