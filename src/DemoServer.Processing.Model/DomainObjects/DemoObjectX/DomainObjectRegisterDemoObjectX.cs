@@ -148,7 +148,7 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
             [EnumeratorCancellation] CancellationToken cancellationToken = default,
             [CallerMemberName] string? caller = null)
         {
-            using var span = EntryPoint.Tracer?.StartActiveSpan(caller, SpanKind.Server);
+            using var span = EntryPoint.Tracer?.StartActiveSpan(caller!, SpanKind.Server);
 
             var unitOfWork = (UnitOfWork)UnitOfWorkProvider.Instance;
             await using var dbContext =
@@ -189,7 +189,7 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
             Func<IDomainObjectDemoObjectX, bool>? domainObjectSelector = null,
             [CallerMemberName] string? caller = null)
         {
-            using var span = EntryPoint.Tracer?.StartActiveSpan(caller, SpanKind.Server);
+            using var span = EntryPoint.Tracer?.StartActiveSpan(caller!, SpanKind.Server);
 
             var unitOfWork = (UnitOfWork)UnitOfWorkProvider.Instance;
             using var dbContext = unitOfWork.NewDbContext();
@@ -223,7 +223,7 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
             Func<IDomainObjectDemoObjectX, bool>? domainObjectSelector = null,
             [CallerMemberName] string? caller = null)
         {
-            using var span = EntryPoint.Tracer?.StartActiveSpan(caller, SpanKind.Server);
+            using var span = EntryPoint.Tracer?.StartActiveSpan(caller!, SpanKind.Server);
 
             var unitOfWork = (UnitOfWork)UnitOfWorkProvider.Instance;
             using var dbContext = unitOfWork.NewDbContext();
@@ -248,7 +248,7 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
             CancellationToken cancellationToken = default,
             [CallerMemberName] string? caller = null)
         {
-            using var span = EntryPoint.Tracer?.StartActiveSpan(caller, SpanKind.Server);
+            using var span = EntryPoint.Tracer?.StartActiveSpan(caller!, SpanKind.Server);
 
             var unitOfWork = (UnitOfWork)UnitOfWorkProvider.Instance;
             await using var dbContext =
