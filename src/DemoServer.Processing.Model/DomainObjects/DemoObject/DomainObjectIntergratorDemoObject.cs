@@ -16,8 +16,7 @@ public class DomainObjectIntergratorDemoObject : BaseDomainObjectIntergrator<IUn
     {
         var entryPoint = container.Resolve<ICustomEntryPoint>();
         var dataMapper =
-            new DomainObjectDataMapperNoDeleteDefault
-                <IMapperDemoObject, DemoObjectDtoNew, DemoObjectDtoActual, DemoObjectDtoChanged>(
+            DomainObjectDataMapperNoDeleteDefaultFactory.Create<IMapperDemoObject>(
                     entryPoint.Context,
                     entryPoint.SystemSettings.IdentityCachesSettings.Value.DemoObject.Value,
                     identityGroupId: entryPoint.PartitionsDay);
@@ -28,7 +27,8 @@ public class DomainObjectIntergratorDemoObject : BaseDomainObjectIntergrator<IUn
             new DomainObjectRegisterStateless(
                 entryPoint.Context,
                 dataMapper,
-                new DomainObjectDataActivatorForActualStateDtoDefault<DemoObjectDtoActual, DomainObjectDemoObject>(entryPoint, lockUpdate),
+                new DomainObjectDataActivatorForActualStateDtoDefault<DemoObjectDtoActual, DomainObjectDemoObject>(
+                    entryPoint, lockUpdate),
                 new DomainObjectActivatorDefault<DomainObjectDemoObject.Template, DomainObjectDemoObject>(
                     entryPoint.UnitOfWorkProvider, lockUpdate, entryPoint, lockUpdate)));
     }

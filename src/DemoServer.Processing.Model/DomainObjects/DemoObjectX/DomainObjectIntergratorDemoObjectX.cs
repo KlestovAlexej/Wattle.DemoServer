@@ -18,21 +18,21 @@ public class DomainObjectIntergratorDemoObjectX : BaseDomainObjectIntergrator<IU
     {
         var entryPoint = container.Resolve<ICustomEntryPoint>();
         var dataMapper =
-            new DomainObjectDataMapperFullDefault
-            <IMapperDemoObjectX, DemoObjectXDtoNew, DemoObjectXDtoActual, DemoObjectXDtoChanged,
-                DemoObjectXDtoDeleted>(
+            DomainObjectDataMapperFullDefaultFactory.Create<IMapperDemoObjectX>(
                 entryPoint.Context,
                 entryPoint.SystemSettings.IdentityCachesSettings.Value.DemoObjectX.Value);
         container.Resolve<DomainObjectDataMappers>().AddMapper(dataMapper);
 
         var lockUpdate = entryPoint.UnitOfWorkLocks.UpdateDemoObjectX;
         var domainObjectActivator = 
-            new DomainObjectActivatorDefault<DomainObjectDemoObjectX.Template, DomainObjectDemoObjectX>(entryPoint.UnitOfWorkProvider, entryPoint, lockUpdate);
+            new DomainObjectActivatorDefault<DomainObjectDemoObjectX.Template, DomainObjectDemoObjectX>(
+                entryPoint.UnitOfWorkProvider, entryPoint, lockUpdate);
         var domainObjectRegister
             = new DomainObjectRegisterDemoObjectX(
                 entryPoint,
                 dataMapper,
-                new DomainObjectDataActivatorForActualStateDtoDefault<DemoObjectXDtoActual, DomainObjectDemoObjectX>(entryPoint, lockUpdate),
+                new DomainObjectDataActivatorForActualStateDtoDefault<DemoObjectXDtoActual, DomainObjectDemoObjectX>(
+                    entryPoint, lockUpdate),
                 domainObjectActivator);
         container.Resolve<DomainObjectRegisters>().AddRegister(domainObjectRegister);
 
