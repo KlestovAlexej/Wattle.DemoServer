@@ -12,13 +12,13 @@ public partial class Demoobjectx
 
     public DateTime Modificationdate { get; set; }
 
-    public string Name { get; set; }
+    public string Name { get; set; } = null!;
 
     public bool Enabled { get; set; }
 
     public Guid Key1 { get; set; }
 
-    public string Key2 { get; set; }
+    public string Key2 { get; set; } = null!;
 
     public long Group { get; set; }
 }

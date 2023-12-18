@@ -16,8 +16,7 @@ public class DomainObjectIntergratorChangeTracker : BaseDomainObjectIntergrator<
     {
         var entryPoint = container.Resolve<ICustomEntryPoint>();
         var dataMapper =
-            new DomainObjectDataMapperNoDeleteUpdateDefault
-                <IMapperChangeTracker, ChangeTrackerDtoNew, ChangeTrackerDtoActual>(
+            DomainObjectDataMapperNoDeleteUpdateDefaultFactory.Create<IMapperChangeTracker>(
                     entryPoint.Context,
                     entryPoint.SystemSettings.IdentityCachesSettings.Value.ChangeTracker.Value,
                     identityGroupId: entryPoint.PartitionsDay);

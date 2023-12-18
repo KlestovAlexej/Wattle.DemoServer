@@ -2,7 +2,7 @@
 
 namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
 
-public class PdSystemLog
+public partial class PdSystemLog
 {
     public long Id { get; set; }
 
@@ -12,7 +12,7 @@ public class PdSystemLog
 
     public int Type { get; set; }
 
-    public string Message { get; set; }
+    public string Message { get; set; } = null!;
 
-    public string Data { get; set; }
+    public string Data { get; set; } = null!;
 }

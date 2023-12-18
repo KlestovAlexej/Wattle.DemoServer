@@ -2,7 +2,7 @@
 
 namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
 
-public class PdDemoObject
+public partial class PdDemoObject
 {
     public long Id { get; set; }
 
@@ -12,7 +12,7 @@ public class PdDemoObject
 
     public DateTime Modificationdate { get; set; }
 
-    public string Name { get; set; }
+    public string Name { get; set; } = null!;
 
     public bool Enabled { get; set; }
 }

@@ -41,12 +41,10 @@ public partial class ProcessingDbContext : DbContext
             entity.Property(e => e.Group).HasColumnName("group");
             entity.Property(e => e.Key1).HasColumnName("key1");
             entity.Property(e => e.Key2)
-                .IsRequired()
                 .HasMaxLength(10)
                 .HasColumnName("key2");
             entity.Property(e => e.Modificationdate).HasColumnName("modificationdate");
             entity.Property(e => e.Name)
-                .IsRequired()
                 .HasMaxLength(1024)
                 .HasColumnName("name");
             entity.Property(e => e.Revision).HasColumnName("revision");
@@ -80,7 +78,6 @@ public partial class ProcessingDbContext : DbContext
                 .HasColumnType("timestamp without time zone")
                 .HasColumnName("modificationdate");
             entity.Property(e => e.Name)
-                .IsRequired()
                 .HasMaxLength(1024)
                 .HasColumnName("name");
             entity.Property(e => e.Revision).HasColumnName("revision");
@@ -97,11 +94,8 @@ public partial class ProcessingDbContext : DbContext
                 .HasColumnName("id");
             entity.Property(e => e.Code).HasColumnName("code");
             entity.Property(e => e.Createdate).HasColumnName("createdate");
-            entity.Property(e => e.Data)
-                .IsRequired()
-                .HasColumnName("data");
+            entity.Property(e => e.Data).HasColumnName("data");
             entity.Property(e => e.Message)
-                .IsRequired()
                 .HasMaxLength(1024)
                 .HasColumnName("message");
             entity.Property(e => e.Type).HasColumnName("type");
@@ -123,11 +117,9 @@ public partial class ProcessingDbContext : DbContext
             entity.Property(e => e.Mingroupid).HasColumnName("mingroupid");
             entity.Property(e => e.Minid).HasColumnName("minid");
             entity.Property(e => e.Partitionname)
-                .IsRequired()
                 .HasColumnType("character varying")
                 .HasColumnName("partitionname");
             entity.Property(e => e.Tablename)
-                .IsRequired()
                 .HasColumnType("character varying")
                 .HasColumnName("tablename");
         });
@@ -142,17 +134,18 @@ public partial class ProcessingDbContext : DbContext
                 .ValueGeneratedNever()
                 .HasColumnName("id");
             entity.Property(e => e.Name)
-                .IsRequired()
                 .HasMaxLength(1024)
                 .HasColumnName("name");
-            entity.Property(e => e.Value)
-                .IsRequired()
-                .HasColumnName("value");
+            entity.Property(e => e.Value).HasColumnName("value");
         });
         modelBuilder.HasSequence("sequence_changetracker");
         modelBuilder.HasSequence("sequence_demoobject");
         modelBuilder.HasSequence("sequence_demoobjectx");
         modelBuilder.HasSequence("sequence_systemlog");
         modelBuilder.HasSequence("sequence_tablepartition");
+
+        OnModelCreatingPartial(modelBuilder);
     }
+
+    partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }

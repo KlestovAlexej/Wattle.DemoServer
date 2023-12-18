@@ -16,8 +16,7 @@ public class DomainObjectIntergratorSystemLog : BaseDomainObjectIntergrator<IUni
     {
         var entryPoint = container.Resolve<ICustomEntryPoint>();
         var dataMapper =
-            new DomainObjectDataMapperNoDeleteUpdateDefault
-                <IMapperSystemLog, SystemLogDtoNew, SystemLogDtoActual>(
+            DomainObjectDataMapperNoDeleteUpdateDefaultFactory.Create<IMapperSystemLog>(
                     entryPoint.Context,
                     entryPoint.SystemSettings.IdentityCachesSettings.Value.SystemLog.Value,
                     identityGroupId: entryPoint.PartitionsDay);

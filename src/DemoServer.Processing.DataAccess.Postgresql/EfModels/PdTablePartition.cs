@@ -2,15 +2,15 @@
 
 namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
 
-public class PdTablePartition
+public partial class PdTablePartition
 {
     public long Id { get; set; }
 
     public DateTime Createdate { get; set; }
 
-    public string Tablename { get; set; }
+    public string Tablename { get; set; } = null!;
 
-    public string Partitionname { get; set; }
+    public string Partitionname { get; set; } = null!;
 
     public DateOnly Day { get; set; }
 
