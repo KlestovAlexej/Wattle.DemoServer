@@ -8,5 +8,4 @@ obj/
 Publish/
 /All.sln.DotSettings.user
 **/ShtrihM.DemoServer.*.xml
-**/*.Generated.cs
 Deploy/

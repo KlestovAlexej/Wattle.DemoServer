@@ -17,8 +17,10 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
+	<!-- Сгенерированные исходники -->
 	<ItemGroup>
 		<Compile Remove="$(CompilerGeneratedFilesOutputPath)/*/**/*.cs" />
+		<None Include="$(CompilerGeneratedFilesOutputPath)/*/**/*.cs" />
 	</ItemGroup>
 
 	<ItemGroup>

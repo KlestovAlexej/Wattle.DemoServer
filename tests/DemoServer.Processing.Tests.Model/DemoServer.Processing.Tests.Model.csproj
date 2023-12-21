@@ -11,12 +11,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Compile Remove="Helpers\**" />
-		<EmbeddedResource Remove="Helpers\**" />
-		<None Remove="Helpers\**" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
 		<PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
 		<PackageReference Include="ShtrihM.Wattle3.Testing.DomainObjects" Version="3.9.0.3132" />
