@@ -7,5 +7,6 @@ public class InfrastructureMonitorsSettings
 {
     public static readonly string SectionName = "InfrastructureMonitors";
 
+    // ReSharper disable once PropertyCanBeMadeInitOnly.Global
     public string Endpoint { get; set; }
 }

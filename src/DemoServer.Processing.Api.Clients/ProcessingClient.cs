@@ -25,6 +25,7 @@ public sealed class ProcessingClient : IProcessingClient
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     // ReSharper disable once ConvertToPrimaryConstructor
+    // ReSharper disable once MemberCanBePrivate.Global
     public ProcessingClient(
         IRestClient restClient,
         bool disposeRestClient = false)

@@ -9,6 +9,7 @@ using ShtrihM.Wattle3.Mappers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 
 namespace ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
 
@@ -16,6 +17,7 @@ namespace ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
 /// Настройки создателя партиций БД.
 /// </summary>
 [Description("Настройки создателя партиций БД")]
+[SuppressMessage("ReSharper", "AutoPropertyCanBeMadeGetOnly.Global")]
 public class PartitionsSponsorSettings
 {
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
@@ -29,18 +31,18 @@ public class PartitionsSponsorSettings
     {
         public Guid DomainObjectType { get; init; }
         public string Comment { get; set; }
-        public List<TablespaceEntry> Tablespaces { get; init; } = new();
+        public List<TablespaceEntry> Tablespaces { get; init; } = [];
     }
 #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 
     public class TablespacesEntry
     {
-        public List<TablespaceEntry> Tablespaces { get; init; } = new();
+        public List<TablespaceEntry> Tablespaces { get; init; } = [];
     }
 
     public class DomainObjectsEntry
     {
-        public List<DomainObjectTablespaceEntry> DomainObjects { get; init; } = new();
+        public List<DomainObjectTablespaceEntry> DomainObjects { get; init; } = [];
     }
 
     // ReSharper disable once MemberCanBePrivate.Global
@@ -58,19 +60,20 @@ public class PartitionsSponsorSettings
                 $"Карта имён табличных пространств БД для партиций БД - Пример: {new TablespacesEntry
                 {
                     Tablespaces =
-                        new List<TablespaceEntry>
+                    [
+                        new()
                         {
-                            new()
-                            {
-                                Index = 0,
-                                TablespaceName = "tablespace_1"
-                            },
-                            new()
-                            {
-                                Index = 1,
-                                TablespaceName = "tablespace_2"
-                            },
+                            Index = 0,
+                            TablespaceName = "tablespace_1"
+                        },
+
+                        new()
+                        {
+                            Index = 1,
+                            TablespaceName = "tablespace_2"
                         }
+
+                    ]
                 }.ToJsonText()}");
 
         DomainObjectsTablespaceNames =
@@ -79,47 +82,50 @@ public class PartitionsSponsorSettings
                 $"Карта имён табличных пространств БД для партиций БД для конкретных доменных объектов - Пример: {new DomainObjectsEntry
                 {
                     DomainObjects =
-                        new List<DomainObjectTablespaceEntry>
+                    [
+                        new()
                         {
-                            new()
-                            {
-                                Comment = "Комментарий",
-                                DomainObjectType = Guid.NewGuid(),
-                                Tablespaces =
-                                    new List<TablespaceEntry>
-                                    {
-                                        new()
-                                        {
-                                            Index = 0,
-                                            TablespaceName = "tablespace_1"
-                                        },
-                                        new()
-                                        {
-                                            Index = 1,
-                                            TablespaceName = "tablespace_2"
-                                        },
-                                    },
-                            },
-                            new()
-                            {
-                                Comment = "Комментарий",
-                                DomainObjectType = Guid.NewGuid(),
-                                Tablespaces =
-                                    new List<TablespaceEntry>
-                                    {
-                                        new()
-                                        {
-                                            Index = 0,
-                                            TablespaceName = "tablespace_1"
-                                        },
-                                        new()
-                                        {
-                                            Index = 1,
-                                            TablespaceName = "tablespace_2"
-                                        },
-                                    },
-                            },
+                            Comment = "Комментарий",
+                            DomainObjectType = Guid.NewGuid(),
+                            Tablespaces =
+                            [
+                                new()
+                                {
+                                    Index = 0,
+                                    TablespaceName = "tablespace_1"
+                                },
+
+                                new()
+                                {
+                                    Index = 1,
+                                    TablespaceName = "tablespace_2"
+                                }
+
+                            ],
+                        },
+
+                        new()
+                        {
+                            Comment = "Комментарий",
+                            DomainObjectType = Guid.NewGuid(),
+                            Tablespaces =
+                            [
+                                new()
+                                {
+                                    Index = 0,
+                                    TablespaceName = "tablespace_1"
+                                },
+
+                                new()
+                                {
+                                    Index = 1,
+                                    TablespaceName = "tablespace_2"
+                                }
+
+                            ],
                         }
+
+                    ]
                 }.ToJsonText()}");
     }
 
@@ -180,7 +186,7 @@ public class PartitionsSponsorSettings
                 {
                     DomainObjectType = manager.Mapper.MapperId,
                     Comment = WellknownDomainObjectDisplayNames.DisplayNamesProvider(manager.Mapper.MapperId),
-                    Tablespaces = new List<TablespaceEntry>(),
+                    Tablespaces = [],
                 });
         }
 

@@ -43,6 +43,7 @@ public abstract class BaseDomainObjectMutable<TDomainObject> : BaseDomainObject<
     /// <summary>
     /// Фиксация в <see cref="IUnitOfWork"/> изменений доменного объекта.
     /// </summary>
+    // ReSharper disable once UnusedParameter.Global
     protected virtual ValueTask DoUpdateAsync(CancellationToken cancellationToken = default)
     {
         if (IsGhost || m_isChanged)

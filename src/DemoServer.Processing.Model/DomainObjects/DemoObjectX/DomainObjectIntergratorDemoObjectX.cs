@@ -11,7 +11,7 @@ using Unity;
 namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
 
 [DomainObjectIntergrator]
-// ReSharper disable once UnusedMember.Global
+// ReSharper disable once UnusedType.Global
 public class DomainObjectIntergratorDemoObjectX : BaseDomainObjectIntergrator<IUnityContainer>
 {
     protected override void DoRun(IUnityContainer container)

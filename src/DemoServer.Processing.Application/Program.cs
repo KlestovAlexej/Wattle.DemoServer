@@ -18,7 +18,6 @@ using ShtrihM.Wattle3.Primitives;
 using ShtrihM.Wattle3.Testing;
 using ShtrihM.Wattle3.Utils;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 using System.Threading;
@@ -162,16 +161,15 @@ public class Program
                                                 SwaggerTag = ServerController.Tag,
                                             },
                                         EventCounters =
-                                            new List<string>
-                                            {
-                                                "Microsoft.AspNetCore.Hosting",
-                                                "Microsoft.AspNetCore.Http.Connections",
-                                                "Microsoft-AspNetCore-Server-Kestrel",
-                                                "System.Net.Http",
-                                                "System.Net.NameResolution",
-                                                "System.Net.Security",
-                                                "System.Net.Socket",
-                                            },
+                                        [
+                                            "Microsoft.AspNetCore.Hosting",
+                                            "Microsoft.AspNetCore.Http.Connections",
+                                            "Microsoft-AspNetCore-Server-Kestrel",
+                                            "System.Net.Http",
+                                            "System.Net.NameResolution",
+                                            "System.Net.Security",
+                                            "System.Net.Socket"
+                                        ],
                                     },
                         }
                             .ToJsonText(true));

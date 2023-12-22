@@ -5,6 +5,7 @@ using ShtrihM.Wattle3.DomainObjects.Interfaces;
 using ShtrihM.Wattle3.Json;
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 
 namespace ShtrihM.DemoServer.Processing.DataAccess.Interface;
 
@@ -12,6 +13,7 @@ namespace ShtrihM.DemoServer.Processing.DataAccess.Interface;
 /// Настройки кэшей актуальных данных состояний доменнй объектов в БД.
 /// </summary>
 [Description("Настройки кэшей актуальных данных состояний доменнй объектов в БД")]
+[SuppressMessage("ReSharper", "AutoPropertyCanBeMadeGetOnly.Global")]
 public class MappersCacheActualStateDtoSettings
 {
     public static readonly TimeSpan DefaultExpirationTimeout = TimeSpan.FromMinutes(20);

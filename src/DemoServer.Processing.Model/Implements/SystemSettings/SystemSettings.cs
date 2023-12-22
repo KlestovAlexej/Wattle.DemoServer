@@ -3,9 +3,11 @@ using ShtrihM.DemoServer.Processing.DataAccess.Interface;
 using ShtrihM.Wattle3.Json;
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 
 namespace ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
 
+[SuppressMessage("ReSharper", "PropertyCanBeMadeInitOnly.Global")]
 public sealed class SystemSettings
 {
     public static readonly string SectionName = "SystemSettings";

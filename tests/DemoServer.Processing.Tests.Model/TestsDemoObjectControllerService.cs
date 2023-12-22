@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
 using ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update;
 using ShtrihM.DemoServer.Processing.Model.Interfaces;
@@ -92,17 +91,18 @@ public class TestsDemoObjectControllerService : BaseTestsDomainObjects
                 {
                     Id = info.Id,
                     Fields =
-                        new List<BaseDemoObjectUpdateFieldValue>
+                    [
+                        new DemoObjectUpdateFieldValueOfEnabled
                         {
-                            new DemoObjectUpdateFieldValueOfEnabled
-                            {
-                                Enabled = false,
-                            },
-                            new DemoObjectUpdateFieldValueOfName
-                            {
-                                Name = "Name2",
-                            },
+                            Enabled = false,
                         },
+
+                        new DemoObjectUpdateFieldValueOfName
+                        {
+                            Name = "Name2",
+                        }
+
+                    ],
                 });
         Assert.False(info.Enabled);
         Assert.AreEqual("Name2", info.Name);

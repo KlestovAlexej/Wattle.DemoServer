@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json;
 using ShtrihM.DemoServer.Processing.Common;
 using ShtrihM.DemoServer.Processing.DataAccess.Interface;
@@ -12,6 +13,7 @@ namespace ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
 /// Настройки реестров доменных объектов.
 /// </summary>
 [Description("Настройки реестров доменных объектов")]
+[SuppressMessage("ReSharper", "AutoPropertyCanBeMadeGetOnly.Global")]
 public class DomainObjectRegistersSettings
 {
     private static readonly int MemoryCacheMaxItems = 10_000;

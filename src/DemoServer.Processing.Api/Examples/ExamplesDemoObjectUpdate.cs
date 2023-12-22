@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update;
+﻿using ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update;
 using Swashbuckle.AspNetCore.Filters;
 
 namespace ShtrihM.DemoServer.Processing.Api.Examples;

@@ -5,7 +5,6 @@ using ShtrihM.DemoServer.Testing;
 using ShtrihM.Wattle3.Testing;
 using ShtrihM.Wattle3.Utils;
 using System;
-using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject;
@@ -99,17 +98,18 @@ public class TestsApiServer : BaseSlimTests
                 {
                     Id = info.Id,
                     Fields =
-                        new List<BaseDemoObjectUpdateFieldValue>
+                    [
+                        new DemoObjectUpdateFieldValueOfEnabled
                         {
-                            new DemoObjectUpdateFieldValueOfEnabled
-                            {
-                                Enabled = false,
-                            },
-                            new DemoObjectUpdateFieldValueOfName
-                            {
-                                Name = "test2",
-                            },
+                            Enabled = false,
                         },
+
+                        new DemoObjectUpdateFieldValueOfName
+                        {
+                            Name = "test2",
+                        }
+
+                    ],
                 });
             Assert.IsNotNull(info);
         }

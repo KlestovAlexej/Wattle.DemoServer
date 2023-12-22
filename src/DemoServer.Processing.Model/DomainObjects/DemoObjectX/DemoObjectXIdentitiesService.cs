@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using ShtrihM.DemoServer.Processing.Common;
 using ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
@@ -14,6 +15,7 @@ public sealed class DemoObjectXIdentitiesService : BaseIdentitiesWithContextWith
 {
     #region AlternativeKeyEntry - Альтернативный ключ объекта X
 
+    [SuppressMessage("ReSharper", "NotAccessedPositionalProperty.Global")]
     public new readonly record struct AlternativeKey(
         [property: AlternativeKeyIndex(WellknownDomainObjectFields.DemoObjectX.IndexAlternateKeyValue1)] Guid Key1,
         [property: AlternativeKeyIndex(WellknownDomainObjectFields.DemoObjectX.IndexAlternateKeyValue2)] string Key2);

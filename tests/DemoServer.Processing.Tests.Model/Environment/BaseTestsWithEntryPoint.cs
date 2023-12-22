@@ -14,8 +14,8 @@ using ShtrihM.Wattle3.Testing;
 using ShtrihM.Wattle3.Testing.DomainObjects;
 using ShtrihM.Wattle3.Utils;
 using System;
-using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Runtime.ExceptionServices;
@@ -27,8 +27,11 @@ using Unity;
 using Constants = ShtrihM.DemoServer.Common.Constants;
 using System.Threading;
 
+// ReSharper disable MemberCanBePrivate.Global
+
 namespace ShtrihM.DemoServer.Processing.Tests.Model.Environment;
 
+[SuppressMessage("ReSharper", "FieldCanBeMadeReadOnly.Global")]
 public abstract class BaseTestsWithEntryPoint : BaseDbTests
 {
     protected static readonly TimeSpan WaitTimeout = TimeSpan.FromMinutes(1);
@@ -334,19 +337,20 @@ public abstract class BaseTestsWithEntryPoint : BaseDbTests
                 new PartitionsSponsorSettings.TablespacesEntry
                 {
                     Tablespaces =
-                        new List<PartitionsSponsorSettings.TablespaceEntry>
+                    [
+                        new()
                         {
-                            new()
-                            {
-                                Index = 0,
-                                TablespaceName = m_nameTablespace1
-                            },
-                            new()
-                            {
-                                Index = 1,
-                                TablespaceName = m_nameTablespace2
-                            },
+                            Index = 0,
+                            TablespaceName = m_nameTablespace1
+                        },
+
+                        new()
+                        {
+                            Index = 1,
+                            TablespaceName = m_nameTablespace2
                         }
+
+                    ]
                 };
 
             result.PartitionsSponsorSettings.Value.DomainObjectsTablespaceNames.Value =
@@ -371,19 +375,20 @@ public abstract class BaseTestsWithEntryPoint : BaseDbTests
                             DomainObjectType = manager.Mapper.MapperId,
                             Comment = WellknownDomainObjectDisplayNames.DisplayNamesProvider(manager.Mapper.MapperId),
                             Tablespaces =
-                                new List<PartitionsSponsorSettings.TablespaceEntry>
+                            [
+                                new()
                                 {
-                                    new()
-                                    {
-                                        Index = 0,
-                                        TablespaceName = m_nameTablespace1
-                                    },
-                                    new()
-                                    {
-                                        Index = 1,
-                                        TablespaceName = m_nameTablespace2
-                                    },
+                                    Index = 0,
+                                    TablespaceName = m_nameTablespace1
+                                },
+
+                                new()
+                                {
+                                    Index = 1,
+                                    TablespaceName = m_nameTablespace2
                                 }
+
+                            ]
                         });
                 }
                 else if (flag == 1)
@@ -393,7 +398,7 @@ public abstract class BaseTestsWithEntryPoint : BaseDbTests
                         {
                             DomainObjectType = manager.Mapper.MapperId,
                             Comment = WellknownDomainObjectDisplayNames.DisplayNamesProvider(manager.Mapper.MapperId),
-                            Tablespaces = new List<PartitionsSponsorSettings.TablespaceEntry>()
+                            Tablespaces = []
                         });
                 }
 

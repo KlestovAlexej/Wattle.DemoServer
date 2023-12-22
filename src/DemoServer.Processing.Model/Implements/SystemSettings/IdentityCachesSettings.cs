@@ -3,6 +3,7 @@ using ShtrihM.DemoServer.Processing.Common;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectDataMappers;
 using ShtrihM.Wattle3.Json;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using ShtrihM.Wattle3.DomainObjects.Interfaces;
 
 namespace ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
@@ -11,6 +12,7 @@ namespace ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
 /// Настройки кэширующих провайдеров идентити объектов.
 /// </summary>
 [Description("Настройки кэширующих провайдеров идентити объектов")]
+[SuppressMessage("ReSharper", "AutoPropertyCanBeMadeGetOnly.Global")]
 public class IdentityCachesSettings
 {
     // ReSharper disable once MemberCanBePrivate.Global

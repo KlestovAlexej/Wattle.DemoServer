@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject;
 using ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update;
 using ShtrihM.DemoServer.Processing.Common;
@@ -9,6 +8,9 @@ using ShtrihM.Wattle3.DomainObjects.Interfaces;
 using ShtrihM.Wattle3.Testing;
 using System.Threading;
 using System.Threading.Tasks;
+
+// ReSharper disable MethodHasAsyncOverload
+// ReSharper disable UseAwaitUsing
 
 namespace ShtrihM.DemoServer.Processing.Tests.Model;
 
@@ -93,17 +95,18 @@ public class TestsEntryPointFacade : BaseTestsDomainObjects
                 {
                     Id = info.Id,
                     Fields =
-                        new List<BaseDemoObjectUpdateFieldValue>
+                    [
+                        new DemoObjectUpdateFieldValueOfEnabled
                         {
-                            new DemoObjectUpdateFieldValueOfEnabled
-                            {
-                                Enabled = false,
-                            },
-                            new DemoObjectUpdateFieldValueOfName
-                            {
-                                Name = "Name2",
-                            },
+                            Enabled = false,
                         },
+
+                        new DemoObjectUpdateFieldValueOfName
+                        {
+                            Name = "Name2",
+                        }
+
+                    ],
                 });
             info = demoObject.GetInfo();
             Assert.False(info.Enabled);
@@ -120,17 +123,18 @@ public class TestsEntryPointFacade : BaseTestsDomainObjects
                     {
                         Id = info.Id,
                         Fields =
-                            new List<BaseDemoObjectUpdateFieldValue>
+                        [
+                            new DemoObjectUpdateFieldValueOfEnabled
                             {
-                                new DemoObjectUpdateFieldValueOfEnabled
-                                {
-                                    Enabled = true,
-                                },
-                                new DemoObjectUpdateFieldValueOfName
-                                {
-                                    Name = "Name3",
-                                },
+                                Enabled = true,
                             },
+
+                            new DemoObjectUpdateFieldValueOfName
+                            {
+                                Name = "Name3",
+                            }
+
+                        ],
                     });
             Assert.True(info.Enabled);
             Assert.AreEqual("Name3", info.Name);

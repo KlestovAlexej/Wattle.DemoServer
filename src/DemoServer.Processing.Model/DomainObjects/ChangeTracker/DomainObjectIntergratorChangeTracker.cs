@@ -9,7 +9,7 @@ using Unity;
 namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.ChangeTracker;
 
 [DomainObjectIntergrator]
-// ReSharper disable once UnusedMember.Global
+// ReSharper disable once UnusedType.Global
 public class DomainObjectIntergratorChangeTracker : BaseDomainObjectIntergrator<IUnityContainer>
 {
     protected override void DoRun(IUnityContainer container)
