@@ -28,7 +28,6 @@ public sealed class DomainObjectChangeTracker : BaseDomainObject<DomainObjectCha
     }
 
     // ReSharper disable once UnusedMember.Global
-    // ReSharper disable once UnusedParameter.Local
     public DomainObjectChangeTracker(long identity, Template _)
         : base(identity, true)
     {
