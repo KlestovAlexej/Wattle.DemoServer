@@ -1,5 +1,4 @@
-﻿using System;
-using System.Diagnostics.Metrics;
+﻿using System.Diagnostics.Metrics;
 
 namespace ShtrihM.DemoServer.Processing.Model.Implements;
 
@@ -7,7 +6,7 @@ public class Metrics
 {
     public Metrics(Meter meter)
     {
-        Meter = meter ?? throw new ArgumentNullException(nameof(meter));
+        Meter = meter;
 
         RequestsIncoming = Meter.CreateCounter<int>(
             name: "shtrihm_DemoServer_processing_requests_incoming",

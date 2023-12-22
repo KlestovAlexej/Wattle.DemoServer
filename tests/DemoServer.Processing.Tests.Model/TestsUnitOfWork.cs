@@ -8,6 +8,7 @@ using ShtrihM.Wattle3.Testing;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
 using ShtrihM.DemoServer.Processing.Generated.Interface;
 using ShtrihM.Wattle3.Common.Exceptions;
 
@@ -53,9 +54,9 @@ public class TestsUnitOfWork : BaseTestsDomainObjects
             Assert.AreEqual(3, items.Count);
 
             dbContext.Systemsetting.Add(
-                new()
+                new Systemsetting
                 {
-                    Id = new("AE46F447-2B40-4428-82A5-C836A860674B"),
+                    Id = new Guid("AE46F447-2B40-4428-82A5-C836A860674B"),
                     Name = "Name",
                     Value = "Value",
                 });
@@ -77,9 +78,9 @@ public class TestsUnitOfWork : BaseTestsDomainObjects
             Assert.AreEqual(3, items.Count);
 
             dbContext.Systemsetting.Add(
-                new()
+                new Systemsetting
                 {
-                    Id = new("AE46F447-2B40-4428-82A5-C836A860674B"),
+                    Id = new Guid("AE46F447-2B40-4428-82A5-C836A860674B"),
                     Name = "Name",
                     Value = "Value",
                 });
@@ -142,9 +143,9 @@ public class TestsUnitOfWork : BaseTestsDomainObjects
             Assert.AreEqual(3, items.Count);
 
             dbContext.Systemsetting.Add(
-                new()
+                new Systemsetting
                 {
-                    Id = new("AE46F447-2B40-4428-82A5-C836A860674B"),
+                    Id = new Guid("AE46F447-2B40-4428-82A5-C836A860674B"),
                     Name = "Name",
                     Value = "Value",
                 });
@@ -166,9 +167,9 @@ public class TestsUnitOfWork : BaseTestsDomainObjects
             Assert.AreEqual(3, items.Count);
 
             dbContext.Systemsetting.Add(
-                new()
+                new Systemsetting
                 {
-                    Id = new("AE46F447-2B40-4428-82A5-C836A860674B"),
+                    Id = new Guid("AE46F447-2B40-4428-82A5-C836A860674B"),
                     Name = "Name",
                     Value = "Value",
                 });

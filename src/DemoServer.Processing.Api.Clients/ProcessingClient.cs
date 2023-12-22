@@ -16,8 +16,6 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 
-#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-
 namespace ShtrihM.DemoServer.Processing.Api.Clients;
 
 public sealed class ProcessingClient : IProcessingClient
@@ -26,11 +24,10 @@ public sealed class ProcessingClient : IProcessingClient
     private readonly bool m_disposeRestClient;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    // ReSharper disable once MemberCanBePrivate.Global
+    // ReSharper disable once ConvertToPrimaryConstructor
     public ProcessingClient(
         IRestClient restClient,
         bool disposeRestClient = false)
-        // ReSharper disable once ConvertToPrimaryConstructor
     {
         m_restClient = restClient;
         m_disposeRestClient = disposeRestClient;

@@ -30,12 +30,12 @@ public sealed class DomainObjectDemoObject : BaseDomainObjectMutable<DomainObjec
     public class Template : IDomainObjectTemplate
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        // ReSharper disable once ConvertToPrimaryConstructor
         public Template(
             string name,
             bool enabled)
-            // ReSharper disable once ConvertToPrimaryConstructor
         {
-            Name = name ?? throw new ArgumentNullException(nameof(name));
+            Name = name;
             Enabled = enabled;
         }
 
@@ -71,8 +71,8 @@ public sealed class DomainObjectDemoObject : BaseDomainObjectMutable<DomainObjec
         m_lockUpdate = lockUpdate;
         CreateDate = data.CreateDate.SpecifyKindLocal();
         ModificationDate = data.ModificationDate.SpecifyKindLocal();
-        m_name = new(FieldsConstants.DemoObjectNameMaxLength, data.Name);
-        m_enabled = new(data.Enabled);
+        m_name = new MutableFieldStringLimitedEx(FieldsConstants.DemoObjectNameMaxLength, data.Name);
+        m_enabled = new MutableField<bool>(data.Enabled);
     }
 
     // ReSharper disable once UnusedMember.Global
@@ -86,8 +86,8 @@ public sealed class DomainObjectDemoObject : BaseDomainObjectMutable<DomainObjec
         m_lockUpdate = lockUpdate;
         CreateDate = m_entryPoint.TimeService.NowDateTime;
         ModificationDate = CreateDate;
-        m_name = new(FieldsConstants.DemoObjectNameMaxLength, template.Name);
-        m_enabled = new(template.Enabled);
+        m_name = new MutableFieldStringLimitedEx(FieldsConstants.DemoObjectNameMaxLength, template.Name);
+        m_enabled = new MutableField<bool>(template.Enabled);
     }
 
     public override Guid TypeId => WellknownDomainObjects.DemoObject;
@@ -122,11 +122,6 @@ public sealed class DomainObjectDemoObject : BaseDomainObjectMutable<DomainObjec
 
     public ValueTask UpdateAsync(DemoObjectUpdate parameters, CancellationToken cancellationToken)
     {
-        if (parameters == null)
-        {
-            throw new ArgumentNullException(nameof(parameters));
-        }
-
         m_lockUpdate.Has(Identity);
 
         var changed = false;
@@ -213,10 +208,10 @@ public sealed class DomainObjectDemoObject : BaseDomainObjectMutable<DomainObjec
         return ValueTask.CompletedTask;
     }
 
-    protected override async ValueTask DoUpdateAsync(CancellationToken cancellationToken = default)
+    protected override ValueTask DoUpdateAsync(CancellationToken cancellationToken = default)
     {
-        await base.DoUpdateAsync(cancellationToken).ConfigureAwait(false);
-
         ModificationDate = m_entryPoint.TimeService.NowDateTime;
+
+        return base.DoUpdateAsync(cancellationToken);
     }
 }

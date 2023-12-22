@@ -1,14 +1,13 @@
 ﻿using NUnit.Framework;
 using ShtrihM.Wattle3.Testing.Databases.PostgreSql;
 using System;
-using System.Diagnostics.CodeAnalysis;
 
+// ReSharper disable MemberCanBePrivate.Global
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
 namespace ShtrihM.DemoServer.Testing;
 
-[SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
 public abstract class BaseDbTests : BaseSlimTests
 {
     /*

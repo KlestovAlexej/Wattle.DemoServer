@@ -61,10 +61,10 @@ public class AppHost : IDisposable
         m_tag = tag ?? Environment.StackTrace;
         configuration ??= Testing.BaseTests.Configuration;
         m_appPath = ProviderProjectBasePath.GetFullPath($@"src\DemoServer.Processing.Application\bin\{configuration}\net8.0-windows\win-x64");
-        m_directoryLogs = new(Path.Combine(m_appPath, "Logs"), m_buildEnviroment == false);
+        m_directoryLogs = new TestDirectory(Path.Combine(m_appPath, "Logs"), m_buildEnviroment == false);
         m_portApiProcessing = Constants.DefaultPortApiProcessing;
         m_portApiMonitoring = Constants.DefaultPortApiProcessingMonitoring;
-        UrlApiProcessing = new($"http://localhost:{m_portApiProcessing}");
+        UrlApiProcessing = new Uri($"http://localhost:{m_portApiProcessing}");
 
         /*
         Если адрес, логин и пароль БД PostgreSQL не указаны явно то они берутся из реестра Windows.
@@ -321,7 +321,7 @@ public class AppHost : IDisposable
         File.WriteAllText(pathAppSettings, textAppSettings);
 
         m_process
-            = new()
+            = new Process
             {
                 StartInfo =
                 {

@@ -1,5 +1,4 @@
 using System.ComponentModel;
-using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json;
 using ShtrihM.DemoServer.Processing.Common;
 using ShtrihM.DemoServer.Processing.DataAccess.Interface;
@@ -13,7 +12,6 @@ namespace ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
 /// Настройки реестров доменных объектов.
 /// </summary>
 [Description("Настройки реестров доменных объектов")]
-[SuppressMessage("ReSharper", "AutoPropertyCanBeMadeGetOnly.Global")]
 public class DomainObjectRegistersSettings
 {
     private static readonly int MemoryCacheMaxItems = 10_000;
@@ -23,12 +21,12 @@ public class DomainObjectRegistersSettings
     public DomainObjectRegistersSettings()
     {
         MemoryCacheDemoObjectX =
-            new(
+            new SettingValue<MemoryCacheSettings>(
                 default!,
                 $"Настройки кэширования реестра доменных объектов - {WellknownDomainObjectDisplayNames.DisplayNamesProvider(WellknownDomainObjects.DemoObjectX)}");
 
         UseIdentitiesServices =
-            new(
+            new SettingValue<bool>(
                 default,
                 "Использовать реестры идентити объектов");
     }
@@ -51,7 +49,7 @@ public class DomainObjectRegistersSettings
     /// </summary>
     public static DomainObjectRegistersSettings GetDefault()
     {
-        return new()
+        return new DomainObjectRegistersSettings
         {
             UseIdentitiesServices =
             {
@@ -61,7 +59,7 @@ public class DomainObjectRegistersSettings
             MemoryCacheDemoObjectX =
             {
                 Value =
-                    new()
+                    new MemoryCacheSettings
                     {
                         ExpirationTimeout =
                         {

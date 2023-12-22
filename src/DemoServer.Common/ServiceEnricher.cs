@@ -14,16 +14,12 @@ public class ServiceEnricher : ILogEventEnricher
     private readonly LogEventProperty m_propertyVersion;
     private readonly LogEventProperty m_propertyInstanceId;
 
+    // ReSharper disable once ConvertToPrimaryConstructor
     public ServiceEnricher(string serviceName, Version serviceVersion, Guid instanceId)
     {
-        if (serviceName == null)
-        {
-            throw new ArgumentNullException(nameof(serviceName));
-        }
-
-        m_propertyName = new(PropertyName, new ScalarValue(serviceName));
-        m_propertyVersion = new(PropertyVersion, new ScalarValue(serviceVersion));
-        m_propertyInstanceId = new(PropertyInstanceId, new ScalarValue(instanceId));
+        m_propertyName = new LogEventProperty(PropertyName, new ScalarValue(serviceName));
+        m_propertyVersion = new LogEventProperty(PropertyVersion, new ScalarValue(serviceVersion));
+        m_propertyInstanceId = new LogEventProperty(PropertyInstanceId, new ScalarValue(instanceId));
     }
 
     public void Enrich(LogEvent logEvent, ILogEventPropertyFactory propertyFactory)

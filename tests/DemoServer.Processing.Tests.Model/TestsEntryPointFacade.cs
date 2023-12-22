@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Collections.Generic;
+using NUnit.Framework;
 using ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject;
 using ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update;
 using ShtrihM.DemoServer.Processing.Common;
@@ -6,15 +7,12 @@ using ShtrihM.DemoServer.Processing.Model.Interfaces;
 using ShtrihM.DemoServer.Processing.Tests.Model.Environment;
 using ShtrihM.Wattle3.DomainObjects.Interfaces;
 using ShtrihM.Wattle3.Testing;
-using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace ShtrihM.DemoServer.Processing.Tests.Model;
 
 [TestFixture]
-[SuppressMessage("ReSharper", "MethodHasAsyncOverload")]
-[SuppressMessage("ReSharper", "UseAwaitUsing")]
 public class TestsEntryPointFacade : BaseTestsDomainObjects
 {
     [Test]
@@ -26,7 +24,7 @@ public class TestsEntryPointFacade : BaseTestsDomainObjects
 
         var info =
             await m_entryPoint.Facade.DemoObjectCreateAsync(
-                new()
+                new DemoObjectCreate
                 {
                     Enabled = true,
                     Name = "Name",
@@ -47,7 +45,7 @@ public class TestsEntryPointFacade : BaseTestsDomainObjects
         {
             info =
                 await m_entryPoint.Facade.DemoObjectCreateAsync(
-                    new()
+                    new DemoObjectCreate
                     {
                         Enabled = true,
                         Name = "Name",
@@ -76,7 +74,7 @@ public class TestsEntryPointFacade : BaseTestsDomainObjects
         {
             info =
                 await m_entryPoint.Facade.DemoObjectCreateAsync(
-                    new()
+                    new DemoObjectCreate
                     {
                         Enabled = true,
                         Name = "Name",
@@ -91,11 +89,11 @@ public class TestsEntryPointFacade : BaseTestsDomainObjects
             Assert.IsNotNull(demoObject);
 
             await demoObject.UpdateAsync(
-                new()
+                new DemoObjectUpdate
                 {
                     Id = info.Id,
                     Fields =
-                        new()
+                        new List<BaseDemoObjectUpdateFieldValue>
                         {
                             new DemoObjectUpdateFieldValueOfEnabled
                             {
@@ -118,11 +116,11 @@ public class TestsEntryPointFacade : BaseTestsDomainObjects
         {
             info =
                 await m_entryPoint.Facade.DemoObjectUpdateAsync(
-                    new()
+                    new DemoObjectUpdate
                     {
                         Id = info.Id,
                         Fields =
-                            new()
+                            new List<BaseDemoObjectUpdateFieldValue>
                             {
                                 new DemoObjectUpdateFieldValueOfEnabled
                                 {

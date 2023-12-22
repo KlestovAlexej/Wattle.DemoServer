@@ -2,23 +2,15 @@ using ShtrihM.DemoServer.Common;
 using ShtrihM.Wattle3.Common.Exceptions;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 
 namespace ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
 
-[SuppressMessage("ReSharper", "AutoPropertyCanBeMadeGetOnly.Global")]
-[SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
 public sealed class SystemSettingsLocal
 {
     public static readonly string ProductNameText = "Полнофункциональный демонстрационный сервер на базе библиотеки Wattle3";
 
     public SystemSettingsLocal(IDictionary<Guid, string> values)
     {
-        if (values == null)
-        {
-            throw new ArgumentNullException(nameof(values));
-        }
-
         ProductId = GetValueAsGuid(values, WellknownCommonSystemSettings.ProductId);
         ProductVersion = GetValueAsVersion(values, WellknownCommonSystemSettings.ProductVersion);
         InstallationName = GetValue(values, WellknownCommonSystemSettings.InstallationName);

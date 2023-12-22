@@ -46,11 +46,6 @@ public partial class Mappers : ICustomMappers
 
     public IDictionary<Guid, string> GetSystemSettings(IMappersSession session)
     {
-        if (session == null)
-        {
-            throw new ArgumentNullException(nameof(session));
-        }
-
         var typedSession = (IPostgreSqlMappersSession)session;
 
         var result = new Dictionary<Guid, string>();

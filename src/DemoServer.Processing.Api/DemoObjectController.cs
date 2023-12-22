@@ -7,7 +7,6 @@ using ShtrihM.DemoServer.Processing.Api.Examples;
 using ShtrihM.DemoServer.Processing.Model.Interfaces;
 using Swashbuckle.AspNetCore.Annotations;
 using Swashbuckle.AspNetCore.Filters;
-using System;
 using System.ComponentModel.DataAnnotations;
 using System.Net.Mime;
 using System.Threading;
@@ -29,13 +28,13 @@ public class DemoObjectController : BaseProcessingController
     private readonly IDemoObjectControllerService m_controllerService;
     private readonly ICustomEntryPoint m_entryPoint;
 
+    // ReSharper disable once ConvertToPrimaryConstructor
     public DemoObjectController(
         IDemoObjectControllerService controllerService,
         ICustomEntryPoint entryPoint)
-        // ReSharper disable once ConvertToPrimaryConstructor
     {
-        m_controllerService = controllerService ?? throw new ArgumentNullException(nameof(controllerService));
-        m_entryPoint = entryPoint ?? throw new ArgumentNullException(nameof(entryPoint));
+        m_controllerService = controllerService;
+        m_entryPoint = entryPoint;
     }
 
     /// <summary>

@@ -21,11 +21,11 @@ public class NUnitConsoleLogger : ILogger
     private readonly string m_categoryName;
     private readonly NUnitConsoleLoggerProvider m_owner;
 
+    // ReSharper disable once ConvertToPrimaryConstructor
     public NUnitConsoleLogger(string categoryName, NUnitConsoleLoggerProvider owner)
-        // ReSharper disable once ConvertToPrimaryConstructor
     {
         m_categoryName = categoryName;
-        m_owner = owner ?? throw new ArgumentNullException(nameof(owner));
+        m_owner = owner;
     }
 
     public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception? exception, Func<TState, Exception?, string> formatter)

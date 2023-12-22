@@ -33,6 +33,7 @@ using ShtrihM.Wattle3.QueueProcessors.Interfaces;
 using ShtrihM.Wattle3.Triggers;
 using ShtrihM.Wattle3.Utils;
 using System;
+using System.Collections.Generic;
 using System.Runtime.ExceptionServices;
 using System.Text;
 using System.Threading;
@@ -52,8 +53,8 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
     {
         private readonly EntryPoint m_entryPoint;
 
+        // ReSharper disable once ConvertToPrimaryConstructor
         public EntryPointContext(EntryPoint entryPoint)
-            // ReSharper disable once ConvertToPrimaryConstructor
         {
             m_entryPoint = entryPoint;
         }
@@ -104,7 +105,7 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
         {
             var description = WellknownCommonSnapShotInfrastructureMonitorValues.GetDescription(id);
 
-            AddValue(new()
+            AddValue(new SnapShotInfrastructureMonitorValue
             {
                 Id = id,
                 Name = description.Name,
@@ -122,6 +123,7 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
     {
         private readonly Guid m_serviceInstanceId;
 
+        // ReSharper disable once ConvertToPrimaryConstructor
         public InfrastructureMonitorCustomEntryPoint(
             TimeSpan timeStatisticsStep,
             ITimeService timeService,
@@ -130,7 +132,6 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
                 null,
                 timeStatisticsStep,
                 timeService)
-        // ReSharper disable once ConvertToPrimaryConstructor
         {
             m_serviceInstanceId = serviceInstanceId;
         }
@@ -222,7 +223,7 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
 
         m_logger = loggerFactory.CreateLogger(GetType());
         SystemSettings = systemSettings;
-        m_templateServerDescription = templateServerDescription ?? throw new ArgumentNullException(nameof(templateServerDescription));
+        m_templateServerDescription = templateServerDescription;
         LoggerFactory = loggerFactory;
         Context = new EntryPointContext(this);
         Tracer = tracer;
@@ -267,7 +268,7 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
                     ProductId = m_templateServerDescription.ProductId,
                     DateTime = TimeService.Now,
                     Properties =
-                        new()
+                        new Dictionary<string, string>
                         {
                             [nameof(SystemSettingsLocal.ProductName)] = m_systemSettingsLocal.ProductName,
                         }
@@ -446,11 +447,6 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
 
     public static EntryPoint New(IUnityContainer container)
     {
-        if (container == null)
-        {
-            throw new ArgumentNullException(nameof(container));
-        }
-
         var serviceProvider = container.Resolve<IServiceProvider>();
 
         var tracer = serviceProvider.GetService<Tracer>();
@@ -544,7 +540,7 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
                         systemSettings.TimeStatisticsStep.Value,
                         exceptionPolicy)),
                 exceptionPolicy,
-                new(),
+                new WorkflowExceptionPolicy(),
                 timeService,
                 systemSettings.TimeStatisticsStep.Value,
                 loggerFactory,
@@ -554,8 +550,8 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
         exceptionPolicy.EntryPoint = result;
         result.ServiceProvider = serviceProvider;
 
-        result.PartitionsDay = new PartitionsDay(timeService, new(2023, 8, 1));
-        result.InfrastructureMonitorRegisters = new();
+        result.PartitionsDay = new PartitionsDay(timeService, new DateTime(2023, 8, 1));
+        result.InfrastructureMonitorRegisters = new InfrastructureMonitorRegisters();
 
         {
             var partitionsSponsorTrigger =
@@ -569,7 +565,7 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
                     loggerFactory.CreateLogger<ScheduledService>());
 
             result.m_partitionsSponsor =
-                new(
+                new PartitionsSponsor(
                     result,
                     partitionsSponsorTrigger,
                     loggerFactory);
@@ -577,7 +573,7 @@ public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
         }
 
         result.Metrics = metrics;
-        result.UnitOfWorkLocks = new(result);
+        result.UnitOfWorkLocks = new UnitOfWorkLocksHubTyped(result);
 
         result.Facade =
             container.ResolveWithDefault(

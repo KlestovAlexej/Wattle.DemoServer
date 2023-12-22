@@ -23,6 +23,7 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
 {
     #region ProxyDomainObjectRegister
 
+    [SuppressMessage("ReSharper", "AccessToDisposedClosure")]
     private class ProxyDomainObjectRegister : AltProxyDomainObjectRegisterWithContextWithAlternativeKey<IDomainObjectDemoObjectX, DemoObjectXIdentitiesService.AlternativeKey, long /* Group */>, IDomainObjectRegisterDemoObjectX
     {
         private ICustomEntryPoint EntryPoint
@@ -141,7 +142,6 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
 
         #region Common
 
-        [SuppressMessage("ReSharper", "AccessToDisposedClosure")]
         private async IAsyncEnumerable<IDomainObjectDemoObjectX> DoGetObjectEnumeratorAsync(
             Expression<Func<Demoobjectx, bool>> dtoSelector,
             Func<IDomainObjectDemoObjectX, bool>? domainObjectSelector = null,
@@ -183,7 +183,6 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
             }
         }
 
-        [SuppressMessage("ReSharper", "AccessToDisposedClosure")]
         private IEnumerable<IDomainObjectDemoObjectX> DoGetObjectEnumerator(
             Expression<Func<Demoobjectx, bool>> dtoSelector,
             Func<IDomainObjectDemoObjectX, bool>? domainObjectSelector = null,
@@ -217,7 +216,6 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
             }
         }
 
-        [SuppressMessage("ReSharper", "AccessToDisposedClosure")]
         private IDomainObjectDemoObjectX DoFind(
             Expression<Func<Demoobjectx, bool>> dtoSelector,
             Func<IDomainObjectDemoObjectX, bool>? domainObjectSelector = null,
@@ -241,7 +239,6 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
             return (IDomainObjectDemoObjectX)result;
         }
 
-        [SuppressMessage("ReSharper", "AccessToDisposedClosure")]
         private async ValueTask<IDomainObjectDemoObjectX> DoFindAsync(
             Expression<Func<Demoobjectx, bool>> dtoSelector,
             Func<IDomainObjectDemoObjectX, bool>? domainObjectSelector = null,
@@ -280,6 +277,7 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
 
     #endregion
 
+    // ReSharper disable once ConvertToPrimaryConstructor
     public DomainObjectRegisterDemoObjectX(
         ICustomEntryPoint entryPoint,
         IDomainObjectDataMapper dataMapper,
@@ -297,7 +295,6 @@ public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWi
             DecodeDomainObject,
             entryPoint.CommitVerifyingFactory,
             () => new ProxyDomainObjectRegister())
-    // ReSharper disable once ConvertToPrimaryConstructor
     {
     }
 

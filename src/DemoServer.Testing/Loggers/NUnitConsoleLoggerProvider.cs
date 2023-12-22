@@ -6,8 +6,8 @@ namespace ShtrihM.DemoServer.Testing.Loggers;
 
 public class NUnitConsoleLoggerProvider : ILoggerProvider
 {
+    // ReSharper disable once ConvertToPrimaryConstructor
     public NUnitConsoleLoggerProvider(bool suppressOutput = false)
-        // ReSharper disable once ConvertToPrimaryConstructor
     {
         SuppressOutput = suppressOutput;
     }

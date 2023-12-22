@@ -17,7 +17,7 @@ namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
 ///  </summary>
 public partial class ProcessingDbContext : IDbContext
 {
-    // ReSharper disable once UnusedType.Global
+    // ReSharper disable once UnusedMember.Global
     public class ProcessingDbContextFactory : IDesignTimeDbContextFactory<ProcessingDbContext>
     {
         public ProcessingDbContext CreateDbContext(string[] args)
@@ -25,7 +25,7 @@ public partial class ProcessingDbContext : IDbContext
             var optionsBuilder = new DbContextOptionsBuilder<ProcessingDbContext>();
             optionsBuilder.UseNpgsql();
 
-            return new(optionsBuilder.Options);
+            return new ProcessingDbContext(optionsBuilder.Options);
         }
     }
 

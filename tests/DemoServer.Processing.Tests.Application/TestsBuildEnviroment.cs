@@ -23,7 +23,7 @@ public class TestsBuildEnviroment : BaseSlimTests
     [SetUp]
     public void SetUp()
     {
-        m_appHost = new(
+        m_appHost = new AppHost(
             dbName: $"test_{Constants.ProductTag.ToLower()}_enviroment",
             buildEnviroment: true);
         try

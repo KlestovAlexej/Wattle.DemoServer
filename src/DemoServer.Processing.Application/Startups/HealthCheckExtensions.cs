@@ -8,6 +8,7 @@ using System.IO;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
 namespace ShtrihM.DemoServer.Processing.Application.Startups;
 
@@ -21,7 +22,7 @@ public static class HealthCheckExtensions
     {
         builder.MapHealthChecks(
             Path,
-            new()
+            new HealthCheckOptions
             {
                 AllowCachingResponses = false,
                 ResponseWriter = WriteResponse

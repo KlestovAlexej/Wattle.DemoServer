@@ -14,77 +14,77 @@ public sealed class SystemSettings
     public SystemSettings()
     {
         MappersFeaturesValidateUpdateResults =
-            new(
+            new SettingValue<bool>(
                 default,
                 "Проверять каждое обновление БД на корректность брутальным способом");
 
         InstanceId =
-            new(
+            new SettingValue<Guid>(
                 default,
                 "Идентификатор экземпляра сервера");
 
         InstanceName =
-            new(
+            new SettingValue<string>(
                 default!,
                 "Текстовый идентификатор экземпляра сервера");
 
         LocksPoolSettings =
-            new(
+            new SettingValue<LocksPoolSettings>(
                 default!,
                 "Настройки пулов лок-объектов");
 
         ExceptionPolicySettings =
-            new(
+            new SettingValue<ExceptionPolicySettings>(
                 default!,
                 "Настройки уведомления об исключениях системы");
 
         IdentityCachesSettings =
-            new(
+            new SettingValue<IdentityCachesSettings>(
                 default!,
                 "Настройки кэширующих провайдеров идентити объектов");
 
         MappersCacheActualStateDtoSettings =
-            new(
+            new SettingValue<MappersCacheActualStateDtoSettings>(
                 default!,
                 "Настройки кэшей актуальных данных состояний доменнй объектов в БД");
 
         QueueThreadsSizeEmergencyDomainBehaviour =
-            new(
+            new SettingValue<int>(
                 default,
                 "Очередь обработки аварийных ситуаций доменного поведения - количество потоков обработки");
 
         QueueEmergencyTimeoutEmergencyDomainBehaviour =
-            new(
+            new SettingValue<TimeSpan>(
                 default,
                 "Очередь обработки аварийных ситуаций доменного поведения - интервал аварийного ожидания повторной обработки");
 
         SqlCommandTimeout =
-            new(
+            new SettingValue<int>(
                 default,
                 "Интервал ожидания исполнения SQL-команд");
 
         DebugMode =
-            new(
+            new SettingValue<bool>(
                 default,
                 "Отладочный режим");
 
         TimeStatisticsStep =
-            new(
+            new SettingValue<TimeSpan>(
                 default,
                 "Интервал аккумуляции статистики");
 
         ConnectionString =
-            new(
+            new SettingValue<string>(
                 default!,
                 "Строка подключения к БД");
 
         PartitionsSponsorSettings =
-            new(
+            new SettingValue<PartitionsSponsorSettings>(
                 default!,
                 "Настройки создателя партиций БД");
 
         DomainObjectRegistersSettings =
-            new(
+            new SettingValue<DomainObjectRegistersSettings>(
                 default!,
                 "Настройки реестров доменных объектов");
     }
@@ -242,7 +242,7 @@ public sealed class SystemSettings
 #elif BUILD_TEST
                     Value = new Guid("77777777-7777-7777-7777-777777777777"),
 #else
-                    Value = new("55555555-5555-5555-5555-555555555555"),
+                    Value = new Guid("55555555-5555-5555-5555-555555555555"),
 #endif
                 },
 

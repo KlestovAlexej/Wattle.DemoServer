@@ -9,7 +9,6 @@ using ShtrihM.Wattle3.Mappers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics.CodeAnalysis;
 
 namespace ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
 
@@ -17,8 +16,6 @@ namespace ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
 /// Настройки создателя партиций БД.
 /// </summary>
 [Description("Настройки создателя партиций БД")]
-[SuppressMessage("ReSharper", "AutoPropertyCanBeMadeGetOnly.Global")]
-[SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
 public class PartitionsSponsorSettings
 {
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
@@ -51,17 +48,17 @@ public class PartitionsSponsorSettings
     public PartitionsSponsorSettings()
     {
         ActivateTimeout =
-            new(
+            new SettingValue<TimeSpan>(
                 default,
                 "Интервал активации");
 
         TablespaceNames =
-            new(
+            new SettingValue<TablespacesEntry>(
                 default!,
                 $"Карта имён табличных пространств БД для партиций БД - Пример: {new TablespacesEntry
                 {
                     Tablespaces =
-                        new()
+                        new List<TablespaceEntry>
                         {
                             new()
                             {
@@ -77,19 +74,19 @@ public class PartitionsSponsorSettings
                 }.ToJsonText()}");
 
         DomainObjectsTablespaceNames =
-            new(
+            new SettingValue<DomainObjectsEntry>(
                 default!,
                 $"Карта имён табличных пространств БД для партиций БД для конкретных доменных объектов - Пример: {new DomainObjectsEntry
                 {
                     DomainObjects =
-                        new()
+                        new List<DomainObjectTablespaceEntry>
                         {
                             new()
                             {
                                 Comment = "Комментарий",
                                 DomainObjectType = Guid.NewGuid(),
                                 Tablespaces =
-                                    new()
+                                    new List<TablespaceEntry>
                                     {
                                         new()
                                         {
@@ -108,7 +105,7 @@ public class PartitionsSponsorSettings
                                 Comment = "Комментарий",
                                 DomainObjectType = Guid.NewGuid(),
                                 Tablespaces =
-                                    new()
+                                    new List<TablespaceEntry>
                                     {
                                         new()
                                         {
@@ -159,12 +156,12 @@ public class PartitionsSponsorSettings
 
                 TablespaceNames =
                 {
-                    Value = new()
+                    Value = new TablespacesEntry()
                 },
 
                 DomainObjectsTablespaceNames =
                 {
-                    Value = new()
+                    Value = new DomainObjectsEntry()
                 },
             };
 
@@ -179,11 +176,11 @@ public class PartitionsSponsorSettings
         foreach (var manager in PartitionsSponsor.GetAllPartitionsManagers(mappers))
         {
             result.DomainObjectsTablespaceNames.Value.DomainObjects.Add(
-                new()
+                new DomainObjectTablespaceEntry
                 {
                     DomainObjectType = manager.Mapper.MapperId,
                     Comment = WellknownDomainObjectDisplayNames.DisplayNamesProvider(manager.Mapper.MapperId),
-                    Tablespaces = new(),
+                    Tablespaces = new List<TablespaceEntry>(),
                 });
         }
 

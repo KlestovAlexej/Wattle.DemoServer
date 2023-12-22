@@ -34,10 +34,10 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutable<DomainObje
             string key2,
             long group)
         {
-            Name = name ?? throw new ArgumentNullException(nameof(name));
+            Name = name;
             Enabled = enabled;
             Key1 = key1;
-            Key2 = key2 ?? throw new ArgumentNullException(nameof(key2));
+            Key2 = key2;
             Group = group;
             Key2 = key2;
         }
@@ -90,8 +90,8 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutable<DomainObje
         m_lockUpdate = lockUpdate;
         CreateDate = data.CreateDate;
         ModificationDate = data.ModificationDate;
-        m_name = new(FieldsConstants.DemoObjectXNameMaxLength, data.Name);
-        m_enabled = new(data.Enabled);
+        m_name = new MutableFieldStringLimitedEx(FieldsConstants.DemoObjectXNameMaxLength, data.Name);
+        m_enabled = new MutableField<bool>(data.Enabled);
         Key1 = data.Key1;
         Key2 = data.Key2;
         Group = data.Group;
@@ -108,8 +108,8 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutable<DomainObje
         m_lockUpdate = lockUpdate;
         CreateDate = m_entryPoint.TimeService.Now;
         ModificationDate = CreateDate;
-        m_name = new(FieldsConstants.DemoObjectXNameMaxLength, template.Name);
-        m_enabled = new(template.Enabled);
+        m_name = new MutableFieldStringLimitedEx(FieldsConstants.DemoObjectXNameMaxLength, template.Name);
+        m_enabled = new MutableField<bool>(template.Enabled);
         Key1 = template.Key1;
         Key2 = template.Key2;
         Group = template.Group;
@@ -238,10 +238,10 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutable<DomainObje
         return ValueTask.CompletedTask;
     }
 
-    protected override async ValueTask DoUpdateAsync(CancellationToken cancellationToken = default)
+    protected override ValueTask DoUpdateAsync(CancellationToken cancellationToken = default)
     {
-        await base.DoUpdateAsync(cancellationToken).ConfigureAwait(false);
-
         ModificationDate = m_entryPoint.TimeService.Now;
+
+        return base.DoUpdateAsync(cancellationToken);
     }
 }

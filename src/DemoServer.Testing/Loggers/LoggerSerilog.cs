@@ -3,7 +3,6 @@ using Serilog;
 using Serilog.Core;
 using Serilog.Events;
 using System;
-using System.Threading;
 
 namespace ShtrihM.DemoServer.Testing.Loggers;
 
@@ -20,7 +19,7 @@ public static class LoggerSerilog
     {
         public void Enrich(LogEvent logEvent, ILogEventPropertyFactory propertyFactory)
         {
-            logEvent.AddPropertyIfAbsent(propertyFactory.CreateProperty("ThreadId", Thread.CurrentThread.ManagedThreadId));
+            logEvent.AddPropertyIfAbsent(propertyFactory.CreateProperty("ThreadId", Environment.CurrentManagedThreadId));
         }
     }
 
@@ -29,21 +28,6 @@ public static class LoggerSerilog
         IConfiguration configuration,
         string environmentVariable = EnvironmentVariableAsLogsDir)
     {
-        if (appPath == null)
-        {
-            throw new ArgumentNullException(nameof(appPath));
-        }
-
-        if (configuration == null)
-        {
-            throw new ArgumentNullException(nameof(configuration));
-        }
-
-        if (environmentVariable == null)
-        {
-            throw new ArgumentNullException(nameof(environmentVariable));
-        }
-
         if (string.IsNullOrEmpty(Environment.GetEnvironmentVariable(environmentVariable)))
         {
             Environment.SetEnvironmentVariable(environmentVariable, appPath);

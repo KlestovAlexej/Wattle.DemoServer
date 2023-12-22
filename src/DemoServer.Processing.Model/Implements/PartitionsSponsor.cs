@@ -17,6 +17,7 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using ShtrihM.DemoServer.Processing.Generated.Interface;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectsRegisters;
+using ShtrihM.Wattle3.Infrastructures.Monitors;
 using ITrigger = ShtrihM.Wattle3.DomainObjects.Interfaces.ITrigger;
 using Status = OpenTelemetry.Trace.Status;
 
@@ -46,7 +47,7 @@ public class PartitionsSponsor : BaseServiceScheduled
             entryPoint.ExceptionPolicy,
             DomainObjectRegisterStateless.DefaultInitializeThreadEmergencyTimeout,
             WellknownCommonInfrastructureMonitors.GetDisplayName(WellknownCommonInfrastructureMonitors.PartitionsSponsor),
-            owner => new(
+            owner => new InfrastructureMonitorDrivenObject(
                 WellknownCommonInfrastructureMonitors.PartitionsSponsor,
                 WellknownCommonInfrastructureMonitors.GetDisplayName(WellknownCommonInfrastructureMonitors.PartitionsSponsor),
                 WellknownCommonInfrastructureMonitors.GetDisplayName(WellknownCommonInfrastructureMonitors.PartitionsSponsor),
@@ -56,7 +57,7 @@ public class PartitionsSponsor : BaseServiceScheduled
             loggerFactory.CreateLogger<PartitionsSponsor>())
     {
         m_entryPoint = entryPoint;
-        m_managers = new();
+        m_managers = new List<(Guid Id, IPartitionsManager Manager)>();
         foreach (var manager in GetAllPartitionsManagers(m_entryPoint.Mappers))
         {
             if (manager.Mapper.MapperId == WellknownMappers.TablePartition)
@@ -78,11 +79,6 @@ public class PartitionsSponsor : BaseServiceScheduled
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static IEnumerable<(IMapper Mapper, IPartitionsManager PartitionsManager)> GetAllPartitionsManagers(IMappers mappers)
     {
-        if (mappers == null)
-        {
-            throw new ArgumentNullException(nameof(mappers));
-        }
-
         foreach (var mapper in mappers)
         {
             if (mapper is IPartitionsMapper partitionsMapper)
@@ -202,7 +198,7 @@ public class PartitionsSponsor : BaseServiceScheduled
                 var id = ComplexIdentity.Build(manager.Manager.Level, m_entryPoint.PartitionsDay.GetDayIndex(nowDay), m_mapperTablePartition.GetNextId(session));
                 m_mapperTablePartition.New(
                     session,
-                    new()
+                    new TablePartitionDtoNew
                     {
                         Id = id,
                         Day = nowDay,
@@ -260,7 +256,7 @@ public class PartitionsSponsor : BaseServiceScheduled
 
                 m_mapperTablePartition.New(
                     session,
-                    new()
+                    new TablePartitionDtoNew
                     {
                         Id = ComplexIdentity.Build(manager.Manager.Level, m_entryPoint.PartitionsDay.GetDayIndex(nowDay), m_mapperTablePartition.GetNextId(session)),
                         Day = nextDay,

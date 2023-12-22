@@ -4,7 +4,6 @@ using ShtrihM.Wattle3.DomainObjects.Interfaces;
 using ShtrihM.Wattle3.Json;
 using System;
 using System.ComponentModel;
-using System.Diagnostics.CodeAnalysis;
 
 namespace ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
 
@@ -12,7 +11,6 @@ namespace ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
 /// Настройки пулов лок-объектов.
 /// </summary>
 [Description("Настройки пулов лок-объектов")]
-[SuppressMessage("ReSharper", "AutoPropertyCanBeMadeGetOnly.Global")]
 public class LocksPoolSettings
 {
     private static readonly TimeSpan DefaultTimeout = TimeSpan.FromSeconds(3);
@@ -22,17 +20,17 @@ public class LocksPoolSettings
     public LocksPoolSettings()
     {
         UpdateDemoObject =
-            new(
+            new SettingValue<TimeSpan?>(
                 default,
                 $"Интервал ожидания получение объекта из пула лок-объектов сценария обновления объекта '{WellknownDomainObjectDisplayNames.DisplayNamesProvider(WellknownDomainObjects.DemoObject)}'");
 
         UpdateDemoObjectX =
-            new(
+            new SettingValue<TimeSpan?>(
                 default,
                 $"Интервал ожидания получение объекта из пула лок-объектов сценария обновления объекта '{WellknownDomainObjectDisplayNames.DisplayNamesProvider(WellknownDomainObjects.DemoObjectX)}'");
 
         CreateDemoObjectX =
-            new(
+            new SettingValue<TimeSpan?>(
                 default,
                 $"Интервал ожидания получение объекта из пула лок-объектов сценария создания объекта '{WellknownDomainObjectDisplayNames.DisplayNamesProvider(WellknownDomainObjects.DemoObjectX)}'");
     }
@@ -60,7 +58,7 @@ public class LocksPoolSettings
     /// </summary>
     public static LocksPoolSettings GetDefault()
     {
-        return new()
+        return new LocksPoolSettings
         {
             UpdateDemoObject =
             {

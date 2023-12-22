@@ -32,11 +32,6 @@ public static class EntryPointExtensions
     // ReSharper disable once UnusedMethodReturnValue.Global
     public static IServiceCollection AddEntryPointServices(this IServiceCollection services)
     {
-        if (services == null)
-        {
-            throw new ArgumentNullException(nameof(services));
-        }
-
         services.AddSingleton(
             _ => (ICustomEntryPoint)ServiceProviderHolder.Instance.GetRequiredService<IEntryPoint>());
 

@@ -21,8 +21,8 @@ namespace ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update;
 public abstract class BaseDemoObjectUpdateFieldValue
 {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    // ReSharper disable once ConvertToPrimaryConstructor
     protected BaseDemoObjectUpdateFieldValue(DemoObjectUpdateFields filed)
-        // ReSharper disable once ConvertToPrimaryConstructor
     {
         Field = filed;
     }

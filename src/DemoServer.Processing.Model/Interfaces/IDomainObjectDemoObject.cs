@@ -3,7 +3,6 @@ using ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update;
 using ShtrihM.DemoServer.Processing.Common;
 using ShtrihM.Wattle3.DomainObjects.Interfaces;
 using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -13,7 +12,6 @@ namespace ShtrihM.DemoServer.Processing.Model.Interfaces;
 /// Объект.
 /// </summary>
 [DomainObjectInterface(WellknownDomainObjects.Text.DemoObject)]
-[SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
 public interface IDomainObjectDemoObject : IDomainObject
 {
     ValueTask UpdateAsync(DemoObjectUpdate parameters, CancellationToken cancellationToken = default);

@@ -11,6 +11,7 @@ namespace ShtrihM.DemoServer.Processing.Model.Implements;
 public sealed class UnitOfWork : UnitOfWorkFull<ProcessingDbContext, IMapperChangeTracker>
 {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    // ReSharper disable once ConvertToPrimaryConstructor
     public UnitOfWork(
         UnitOfWorkFullContext<ProcessingDbContext, IMapperChangeTracker> unitOfWorkContext,
         Func<ProxyDomainObjectRegisters> registersFactory,
@@ -19,7 +20,6 @@ public sealed class UnitOfWork : UnitOfWorkFull<ProcessingDbContext, IMapperChan
             unitOfWorkContext,
             registersFactory,
             visitor)
-    // ReSharper disable once ConvertToPrimaryConstructor
     {
     }
 }

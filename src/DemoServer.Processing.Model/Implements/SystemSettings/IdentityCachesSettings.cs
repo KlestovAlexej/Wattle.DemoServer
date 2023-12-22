@@ -3,7 +3,6 @@ using ShtrihM.DemoServer.Processing.Common;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectDataMappers;
 using ShtrihM.Wattle3.Json;
 using System.ComponentModel;
-using System.Diagnostics.CodeAnalysis;
 using ShtrihM.Wattle3.DomainObjects.Interfaces;
 
 namespace ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
@@ -12,7 +11,6 @@ namespace ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
 /// Настройки кэширующих провайдеров идентити объектов.
 /// </summary>
 [Description("Настройки кэширующих провайдеров идентити объектов")]
-[SuppressMessage("ReSharper", "AutoPropertyCanBeMadeGetOnly.Global")]
 public class IdentityCachesSettings
 {
     // ReSharper disable once MemberCanBePrivate.Global
@@ -20,22 +18,22 @@ public class IdentityCachesSettings
     public IdentityCachesSettings()
     {
         SystemLog =
-            new(
+            new SettingValue<IdentityCacheSettings>(
                 default!,
                 $"Маппер '{WellknownDomainObjectDisplayNames.DisplayNamesProvider(WellknownDomainObjects.SystemLog)}'");
 
         ChangeTracker =
-            new(
+            new SettingValue<IdentityCacheSettings>(
                 default!,
                 $"Маппер '{WellknownDomainObjectDisplayNames.DisplayNamesProvider(WellknownDomainObjects.ChangeTracker)}'");
 
         DemoObject =
-            new(
+            new SettingValue<IdentityCacheSettings>(
                 default!,
                 $"Маппер '{WellknownDomainObjectDisplayNames.DisplayNamesProvider(WellknownDomainObjects.DemoObject)}'");
 
         DemoObjectX =
-            new(
+            new SettingValue<IdentityCacheSettings>(
                 default!,
                 $"Маппер '{WellknownDomainObjectDisplayNames.DisplayNamesProvider(WellknownDomainObjects.DemoObjectX)}'");
     }
@@ -75,7 +73,7 @@ public class IdentityCachesSettings
     {
         var fillFactor = 0.9f;
 
-        return new()
+        return new IdentityCachesSettings
         {
             SystemLog =
             {

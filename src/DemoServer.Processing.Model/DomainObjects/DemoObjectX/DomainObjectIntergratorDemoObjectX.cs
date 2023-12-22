@@ -11,7 +11,7 @@ using Unity;
 namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
 
 [DomainObjectIntergrator]
-// ReSharper disable once UnusedType.Global
+// ReSharper disable once UnusedMember.Global
 public class DomainObjectIntergratorDemoObjectX : BaseDomainObjectIntergrator<IUnityContainer>
 {
     protected override void DoRun(IUnityContainer container)
@@ -47,6 +47,7 @@ public class DomainObjectIntergratorDemoObjectX : BaseDomainObjectIntergrator<IU
             if (false == lockActionCreate.TryEnter(key))
             {
                 var workflowException = entryPoint.WorkflowExceptionPolicy.CreateTooBusy();
+
                 throw workflowException;
             }
 
@@ -64,6 +65,7 @@ public class DomainObjectIntergratorDemoObjectX : BaseDomainObjectIntergrator<IU
             if (false == await lockActionCreate.TryEnterAsync(key, cancellationToken).ConfigureAwait(false))
             {
                 var workflowException = entryPoint.WorkflowExceptionPolicy.CreateTooBusy();
+
                 throw workflowException;
             }
 

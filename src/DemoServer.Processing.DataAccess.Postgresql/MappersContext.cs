@@ -6,17 +6,17 @@ namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql;
 
 public class MappersContext
 {
+    // ReSharper disable once ConvertToPrimaryConstructor
     public MappersContext(
         ITimeService timeService,
         MappersCacheActualStateDtoSettings mappersCacheActualStateDtoSettings,
         TimeSpan timeStatisticsStep,
         IExceptionPolicy exceptionPolicy)
-        // ReSharper disable once ConvertToPrimaryConstructor
     {
-        TimeService = timeService ?? throw new ArgumentNullException(nameof(timeService));
-        MappersCacheActualStateDtoSettings = mappersCacheActualStateDtoSettings ?? throw new ArgumentNullException(nameof(mappersCacheActualStateDtoSettings));
+        TimeService = timeService;
+        MappersCacheActualStateDtoSettings = mappersCacheActualStateDtoSettings;
         TimeStatisticsStep = timeStatisticsStep;
-        ExceptionPolicy = exceptionPolicy ?? throw new ArgumentNullException(nameof(exceptionPolicy));
+        ExceptionPolicy = exceptionPolicy;
     }
 
     public readonly ITimeService TimeService;

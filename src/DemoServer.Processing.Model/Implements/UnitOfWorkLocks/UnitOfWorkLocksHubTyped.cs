@@ -14,13 +14,8 @@ public class UnitOfWorkLocksHubTyped : IDisposable
 
     public UnitOfWorkLocksHubTyped(ICustomEntryPoint entryPoint)
     {
-        if (entryPoint == null)
-        {
-            throw new ArgumentNullException(nameof(entryPoint));
-        }
-
         Hub = new UnitOfWorkLocksHub(entryPoint);
-        Actions = new(Hub);
+        Actions = new UnitOfWorkLocksActions(Hub);
 
         m_locks = new Dictionary<Guid, IDomainObjectUnitOfWorkLockService>();
 

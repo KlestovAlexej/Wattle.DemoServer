@@ -11,11 +11,11 @@ public sealed class UnitOfWorkLocks : AbstractUnitOfWorkLocks
     private readonly WorkflowExceptionPolicy m_workflowExceptionPolicy;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    // ReSharper disable once ConvertToPrimaryConstructor
     public UnitOfWorkLocks(
         WorkflowExceptionPolicy workflowExceptionPolicy,
         IUnitOfWorkLocksHub unitOfWorkLocksHub)
         : base(unitOfWorkLocksHub)
-    // ReSharper disable once ConvertToPrimaryConstructor
     {
         m_workflowExceptionPolicy = workflowExceptionPolicy;
     }

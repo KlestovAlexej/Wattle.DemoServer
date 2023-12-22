@@ -22,7 +22,7 @@ public class DbMappersSchemaXmlBuilder
     static DbMappersSchemaXmlBuilder()
     {
         Cached =
-            new()
+            new HashSet<Guid>
             {
                 WellknownDomainObjects.DemoObject,
                 WellknownDomainObjects.DemoObjectX,
@@ -33,14 +33,14 @@ public class DbMappersSchemaXmlBuilder
     public DbMappersSchemaXmlBuilder()
     {
         m_deleteMode =
-            new()
+            new Dictionary<Guid, SchemaMapperDeleteMode>
             {
                 {WellknownDomainObjects.DemoObject, SchemaMapperDeleteMode.Disabled},
                 {WellknownDomainObjects.DemoObjectX, SchemaMapperDeleteMode.Delete},
             };
 
         m_optimisticConcurrency =
-            new()
+            new HashSet<Guid>
             {
                 WellknownDomainObjects.DemoObject,
                 WellknownDomainObjects.DemoObjectX,
@@ -70,11 +70,6 @@ public class DbMappersSchemaXmlBuilder
 
     private void Apply(SchemaMapper schema)
     {
-        if (schema == null)
-        {
-            throw new ArgumentNullException(nameof(schema));
-        }
-
         if (m_deleteMode.TryGetValue(schema.Id, out var expectedDeleteMode))
         {
             if (schema.DeleteMode != expectedDeleteMode)

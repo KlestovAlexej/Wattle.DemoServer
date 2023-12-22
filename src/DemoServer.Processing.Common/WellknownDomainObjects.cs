@@ -3,7 +3,6 @@ using ShtrihM.Wattle3.Primitives;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
@@ -14,7 +13,6 @@ namespace ShtrihM.DemoServer.Processing.Common;
 /// <summary>
 /// Идентификаторы объектов.
 /// </summary>
-[SuppressMessage("ReSharper", "UnusedMember.Global")]
 public static class WellknownDomainObjects
 {
     /// <summary>

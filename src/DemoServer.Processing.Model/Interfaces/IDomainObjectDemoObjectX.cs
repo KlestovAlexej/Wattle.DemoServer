@@ -1,7 +1,6 @@
 ﻿using ShtrihM.DemoServer.Processing.Common;
 using ShtrihM.Wattle3.DomainObjects.Interfaces;
 using System;
-using System.Diagnostics.CodeAnalysis;
 using ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
 
 namespace ShtrihM.DemoServer.Processing.Model.Interfaces;
@@ -10,7 +9,6 @@ namespace ShtrihM.DemoServer.Processing.Model.Interfaces;
 /// Объект.
 /// </summary>
 [DomainObjectInterface(WellknownDomainObjects.Text.DemoObjectX)]
-[SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
 public interface IDomainObjectDemoObjectX : IDomainObject
 {
     DemoObjectXIdentitiesService.AlternativeKey GetKey();

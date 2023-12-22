@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ShtrihM.DemoServer.Processing.Api.Common;
 using ShtrihM.DemoServer.Processing.Api.Examples;
@@ -21,13 +20,13 @@ public class ServerController : BaseProcessingController
     private readonly IServerControllerService m_controllerService;
     private readonly ICustomEntryPoint m_entryPoint;
 
+    // ReSharper disable once ConvertToPrimaryConstructor
     public ServerController(
         IServerControllerService controllerService,
         ICustomEntryPoint entryPoint)
-        // ReSharper disable once ConvertToPrimaryConstructor
     {
-        m_controllerService = controllerService ?? throw new ArgumentNullException(nameof(controllerService));
-        m_entryPoint = entryPoint ?? throw new ArgumentNullException(nameof(entryPoint));
+        m_controllerService = controllerService;
+        m_entryPoint = entryPoint;
     }
 
     [HttpGet(ServerControllerConstants.MethodDescription.Name)]

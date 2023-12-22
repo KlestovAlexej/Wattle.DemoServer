@@ -5,7 +5,6 @@ using ShtrihM.Wattle3.DomainObjects.Interfaces;
 using ShtrihM.Wattle3.Json;
 using System;
 using System.ComponentModel;
-using System.Diagnostics.CodeAnalysis;
 
 namespace ShtrihM.DemoServer.Processing.DataAccess.Interface;
 
@@ -13,7 +12,6 @@ namespace ShtrihM.DemoServer.Processing.DataAccess.Interface;
 /// Настройки кэшей актуальных данных состояний доменнй объектов в БД.
 /// </summary>
 [Description("Настройки кэшей актуальных данных состояний доменнй объектов в БД")]
-[SuppressMessage("ReSharper", "AutoPropertyCanBeMadeGetOnly.Global")]
 public class MappersCacheActualStateDtoSettings
 {
     public static readonly TimeSpan DefaultExpirationTimeout = TimeSpan.FromMinutes(20);
@@ -24,17 +22,17 @@ public class MappersCacheActualStateDtoSettings
     public MappersCacheActualStateDtoSettings()
     {
         Enabled =
-            new(
+            new SettingValue<bool>(
                 default,
                 "Разрешение для кэширования");
 
         DemoObject =
-            new(
+            new SettingValue<MemoryCacheSettings>(
                 default!,
                 $"Маппер '{WellknownDomainObjectDisplayNames.DisplayNamesProvider(WellknownDomainObjects.DemoObject)}'");
 
         DemoObjectX =
-            new(
+            new SettingValue<MemoryCacheSettings>(
                 default!,
                 $"Маппер '{WellknownDomainObjectDisplayNames.DisplayNamesProvider(WellknownDomainObjects.DemoObjectX)}'");
     }
@@ -64,7 +62,7 @@ public class MappersCacheActualStateDtoSettings
     /// </summary>
     public static MappersCacheActualStateDtoSettings GetDefault()
     {
-        return new()
+        return new MappersCacheActualStateDtoSettings
         {
             Enabled =
             {
@@ -74,7 +72,7 @@ public class MappersCacheActualStateDtoSettings
             DemoObject =
             {
                 Value =
-                    new()
+                    new MemoryCacheSettings
                     {
                         ExpirationTimeout =
                         {
@@ -114,7 +112,7 @@ public class MappersCacheActualStateDtoSettings
             DemoObjectX =
             {
                 Value =
-                    new()
+                    new MemoryCacheSettings
                     {
                         ExpirationTimeout =
                         {

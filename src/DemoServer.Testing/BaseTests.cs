@@ -9,7 +9,7 @@ namespace ShtrihM.DemoServer.Testing;
 
 public class BaseTests : Wattle3.Testing.BaseTests
 {
-    public static readonly string Configuration =
+    public const string Configuration =
 #if RELEASE
             "Release"
 #else

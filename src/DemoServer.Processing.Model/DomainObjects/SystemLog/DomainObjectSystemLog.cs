@@ -16,17 +16,17 @@ public sealed class DomainObjectSystemLog : BaseDomainObject<DomainObjectSystemL
 
     public class Template : IDomainObjectTemplate
     {
+        // ReSharper disable once ConvertToPrimaryConstructor
         public Template(
             int code,
             int type,
             string message,
             string data)
-            // ReSharper disable once ConvertToPrimaryConstructor
         {
             Code = code;
             Type = type;
-            Message = message ?? throw new ArgumentNullException(nameof(message));
-            Data = data ?? throw new ArgumentNullException(nameof(data));
+            Message = message;
+            Data = data;
         }
 
         public readonly int Code;

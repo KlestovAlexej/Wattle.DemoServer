@@ -29,7 +29,7 @@ public abstract class BaseSlimTests : BaseTests
         var appPath = Path.GetDirectoryName(GetType().Assembly.Location);
         Assert.IsNotNull(appPath);
 
-        m_consoleLoggerProvider = new(true);
+        m_consoleLoggerProvider = new NUnitConsoleLoggerProvider(true);
 
         m_loggerFactory =
             LoggerFactory.Create(

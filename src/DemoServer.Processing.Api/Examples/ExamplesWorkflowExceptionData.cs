@@ -1,4 +1,5 @@
-﻿using ShtrihM.Wattle3.Common.Exceptions;
+﻿using System.Collections.Generic;
+using ShtrihM.Wattle3.Common.Exceptions;
 using Swashbuckle.AspNetCore.Filters;
 
 namespace ShtrihM.DemoServer.Processing.Api.Examples;
@@ -14,7 +15,7 @@ public class ExamplesWorkflowExceptionData : IExamplesProvider<WorkflowException
             Message = "Сообщение",
             Details = "Детали",
             Data =
-                new()
+                new Dictionary<string, string>
                 {
                     ["Key 1"] = "Value 1",
                     ["Key 2"] = "Value 2",

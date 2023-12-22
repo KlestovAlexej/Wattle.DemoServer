@@ -4,7 +4,6 @@ using ShtrihM.DemoServer.Processing.Common;
 using ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObject;
 using ShtrihM.DemoServer.Processing.Model.Interfaces;
 using ShtrihM.Wattle3.DomainObjects.Interfaces;
-using System;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -14,10 +13,10 @@ public class EntryPointFacade : IEntryPointFacade
 {
     private readonly ICustomEntryPoint m_entryPoint;
 
+    // ReSharper disable once ConvertToPrimaryConstructor
     public EntryPointFacade(ICustomEntryPoint entryPoint)
-        // ReSharper disable once ConvertToPrimaryConstructor
     {
-        m_entryPoint = entryPoint ?? throw new ArgumentNullException(nameof(entryPoint));
+        m_entryPoint = entryPoint;
     }
 
     public async ValueTask<DemoObjectInfo> DemoObjectReadAsync(
@@ -45,11 +44,6 @@ public class EntryPointFacade : IEntryPointFacade
         DemoObjectUpdate parameters,
         CancellationToken cancellationToken = default)
     {
-        if (parameters == null)
-        {
-            throw new ArgumentNullException(nameof(parameters));
-        }
-
         var registerDemoObject = m_entryPoint.CurrentUnitOfWork.Registers.GetRegister(WellknownDomainObjects.DemoObject);
         var demoObject = await registerDemoObject
             .LockRegister(parameters.Id)
@@ -73,11 +67,6 @@ public class EntryPointFacade : IEntryPointFacade
         DemoObjectCreate parameters,
         CancellationToken cancellationToken = default)
     {
-        if (parameters == null)
-        {
-            throw new ArgumentNullException(nameof(parameters));
-        }
-
         var demoObject = await new DomainObjectDemoObject.Template(
                 parameters.Name,
                 parameters.Enabled)

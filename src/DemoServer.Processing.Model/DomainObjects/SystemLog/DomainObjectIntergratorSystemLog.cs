@@ -9,7 +9,7 @@ using Unity;
 namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.SystemLog;
 
 [DomainObjectIntergrator]
-// ReSharper disable once UnusedType.Global
+// ReSharper disable once UnusedMember.Global
 public class DomainObjectIntergratorSystemLog : BaseDomainObjectIntergrator<IUnityContainer>
 {
     protected override void DoRun(IUnityContainer container)

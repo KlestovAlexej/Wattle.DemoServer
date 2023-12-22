@@ -2,85 +2,73 @@
 using ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update;
 using ShtrihM.DemoServer.Processing.Model.Interfaces;
 using ShtrihM.Wattle3.DomainObjects.Interfaces;
-using System;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace ShtrihM.DemoServer.Processing.Model.Implements.ControllersServices;
 
-public class DemoObjectControllerService : IDemoObjectControllerService
+public sealed class DemoObjectControllerService : IDemoObjectControllerService
 {
     private readonly ICustomEntryPoint m_entryPoint;
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    // ReSharper disable once ConvertToPrimaryConstructor
     public DemoObjectControllerService(ICustomEntryPoint entryPoint)
-        // ReSharper disable once ConvertToPrimaryConstructor
     {
-        m_entryPoint = entryPoint ?? throw new ArgumentNullException(nameof(entryPoint));
+        m_entryPoint = entryPoint;
     }
 
-    public async ValueTask<DemoObjectInfo> CreateAsync(
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public ValueTask<DemoObjectInfo> CreateAsync(
         DemoObjectCreate parameters,
         CancellationToken cancellationToken = default)
     {
-        if (parameters == null)
-        {
-            throw new ArgumentNullException(nameof(parameters));
-        }
-
         var result =
-            await m_entryPoint.CreateAndUsingUnitOfWorkAsync(
-                    async (_, _) =>
-                    await m_entryPoint.Facade
-                    .DemoObjectCreateAsync(
-                        parameters,
-                        cancellationToken)
-                    .ConfigureAwait(false),
-                    autoCommit: true,
-                    cancellationToken: cancellationToken)
-                .ConfigureAwait(false);
+            m_entryPoint.CreateAndUsingUnitOfWorkAsync(
+                (_, _) =>
+                    m_entryPoint.Facade
+                        .DemoObjectCreateAsync(
+                            parameters,
+                            cancellationToken),
+                autoCommit: true,
+                cancellationToken: cancellationToken);
 
         return result;
     }
 
-    public async ValueTask<DemoObjectInfo> ReadAsync(
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public ValueTask<DemoObjectInfo> ReadAsync(
         long id,
         CancellationToken cancellationToken = default)
     {
         var result =
-            await m_entryPoint.CreateAndUsingUnitOfWorkAsync(
-                    async (_, _) =>
-                        await m_entryPoint.Facade
-                            .DemoObjectReadAsync(
-                                id,
-                                cancellationToken)
-                            .ConfigureAwait(false),
-                    autoCommit: true,
-                    cancellationToken: cancellationToken)
-                .ConfigureAwait(false);
+            m_entryPoint.CreateAndUsingUnitOfWorkAsync(
+                (_, _) =>
+                    m_entryPoint.Facade
+                        .DemoObjectReadAsync(
+                            id,
+                            cancellationToken),
+                autoCommit: true,
+                cancellationToken: cancellationToken);
 
         return result;
     }
 
-    public async ValueTask<DemoObjectInfo> UpdateAsync(
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public ValueTask<DemoObjectInfo> UpdateAsync(
         DemoObjectUpdate parameters,
         CancellationToken cancellationToken = default)
     {
-        if (parameters == null)
-        {
-            throw new ArgumentNullException(nameof(parameters));
-        }
-
         var result =
-            await m_entryPoint.CreateAndUsingUnitOfWorkAsync(
-                    async (_, _) =>
-                        await m_entryPoint.Facade
+            m_entryPoint.CreateAndUsingUnitOfWorkAsync(
+                    (_, _) =>
+                        m_entryPoint.Facade
                             .DemoObjectUpdateAsync(
                                 parameters,
-                                cancellationToken)
-                            .ConfigureAwait(false),
+                                cancellationToken),
                     autoCommit: true,
-                    cancellationToken: cancellationToken)
-                .ConfigureAwait(false);
+                    cancellationToken: cancellationToken);
 
         return result;
     }
