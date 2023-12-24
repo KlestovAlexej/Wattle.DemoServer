@@ -3,7 +3,7 @@ using Swashbuckle.AspNetCore.Filters;
 
 namespace ShtrihM.DemoServer.Processing.Api.Examples;
 
-public class ExamplesDemoObjectInfo : IExamplesProvider<DemoObjectInfo>
+public sealed class ExamplesDemoObjectInfo : IExamplesProvider<DemoObjectInfo>
 {
     public DemoObjectInfo GetExamples()
     {

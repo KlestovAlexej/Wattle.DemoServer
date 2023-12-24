@@ -3,7 +3,7 @@ using ShtrihM.DemoServer.Common;
 
 namespace ShtrihM.DemoServer.Processing.Model.Implements;
 
-public class Metrics
+public sealed class Metrics
 {
     public Metrics(Meter meter)
     {

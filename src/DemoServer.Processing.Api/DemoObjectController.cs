@@ -21,7 +21,7 @@ namespace ShtrihM.DemoServer.Processing.Api;
 [Route(DemoObjectControllerConstants.Route)]
 [Consumes(MediaTypeNames.Application.Json)]
 [Produces(MediaTypeNames.Application.Json)]
-public class DemoObjectController : BaseProcessingController
+public sealed class DemoObjectController : BaseProcessingController
 {
     private const string Tag = "Объект";
 

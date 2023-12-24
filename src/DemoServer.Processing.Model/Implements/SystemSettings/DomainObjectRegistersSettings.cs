@@ -14,7 +14,7 @@ namespace ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
 /// </summary>
 [Description("Настройки реестров доменных объектов")]
 [SuppressMessage("ReSharper", "AutoPropertyCanBeMadeGetOnly.Global")]
-public class DomainObjectRegistersSettings
+public sealed class DomainObjectRegistersSettings
 {
     private static readonly int MemoryCacheMaxItems = 10_000;
 

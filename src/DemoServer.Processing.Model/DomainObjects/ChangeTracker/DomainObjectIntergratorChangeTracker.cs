@@ -10,7 +10,7 @@ namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.ChangeTracker;
 
 [DomainObjectIntergrator]
 // ReSharper disable once UnusedType.Global
-public class DomainObjectIntergratorChangeTracker : BaseDomainObjectIntergrator<IUnityContainer>
+public sealed class DomainObjectIntergratorChangeTracker : BaseDomainObjectIntergrator<IUnityContainer>
 {
     protected override void DoRun(IUnityContainer container)
     {

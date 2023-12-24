@@ -13,7 +13,7 @@ namespace ShtrihM.DemoServer.Processing.Api;
 [Route(ServerControllerConstants.Route)]
 [Consumes(MediaTypeNames.Application.Json)]
 [Produces(MediaTypeNames.Application.Json)]
-public class ServerController : BaseProcessingController
+public sealed class ServerController : BaseProcessingController
 {
     public const string Tag = "Служебное";
 

@@ -19,7 +19,7 @@ using ShtrihM.Wattle3.Utils;
 
 namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
 
-public class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWithAlternativeKeyStatelessDefault<IDomainObjectDemoObjectX, DemoObjectXIdentitiesService.AlternativeKey, long /* Group */, DemoObjectXDtoActual, IMapperDemoObjectX>
+public sealed class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWithAlternativeKeyStatelessDefault<IDomainObjectDemoObjectX, DemoObjectXIdentitiesService.AlternativeKey, long /* Group */, DemoObjectXDtoActual, IMapperDemoObjectX>
 {
     #region ProxyDomainObjectRegister
 

@@ -7,7 +7,7 @@ using ShtrihM.Wattle3.Swashbuckle.AspNetCore;
 
 namespace ShtrihM.DemoServer.Processing.Model.Implements;
 
-public class WorkflowExceptionPolicy() : DefaultWorkflowExceptionPolicy(CommonWorkflowExceptionErrorCodesBuilder.New())
+public sealed class WorkflowExceptionPolicy() : DefaultWorkflowExceptionPolicy(CommonWorkflowExceptionErrorCodesBuilder.New())
 {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public WorkflowException CreateDemoObjectXKeyAlreadyExists()

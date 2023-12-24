@@ -13,7 +13,7 @@ namespace ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
 /// </summary>
 [Description("Настройки кэширующих провайдеров идентити объектов")]
 [SuppressMessage("ReSharper", "AutoPropertyCanBeMadeGetOnly.Global")]
-public class IdentityCachesSettings
+public sealed class IdentityCachesSettings
 {
     // ReSharper disable once MemberCanBePrivate.Global
     // ReSharper disable once ConvertConstructorToMemberInitializers

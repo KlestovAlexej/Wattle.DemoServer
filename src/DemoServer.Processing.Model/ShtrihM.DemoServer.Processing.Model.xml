@@ -4,6 +4,11 @@
         <name>ShtrihM.DemoServer.Processing.Model</name>
     </assembly>
     <members>
+        <member name="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.ChangeTracker.DomainObjectChangeTracker.Template">
+            <summary>
+            Шаблон создания объекта <see cref="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.ChangeTracker.DomainObjectChangeTracker"/>.
+            </summary>
+        </member>
         <member name="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.Common.BaseDomainObjectMutable`1">
             <summary>
             Базовая реализация доменного объекта с поддержкой изменения.
@@ -42,6 +47,11 @@
         <member name="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObject.DomainObjectDemoObject.Template">
             <summary>
             Шаблон создания объекта <see cref="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObject.DomainObjectDemoObject"/>.
+            </summary>
+        </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.SystemLog.DomainObjectSystemLog.Template">
+            <summary>
+            Шаблон создания объекта <see cref="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.SystemLog.DomainObjectSystemLog"/>.
             </summary>
         </member>
         <member name="F:ShtrihM.DemoServer.Processing.Model.Implements.Metrics.RequestsIncoming">

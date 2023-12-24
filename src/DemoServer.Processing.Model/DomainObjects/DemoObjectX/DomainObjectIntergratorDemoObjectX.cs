@@ -13,7 +13,7 @@ namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
 
 [DomainObjectIntergrator]
 // ReSharper disable once UnusedType.Global
-public class DomainObjectIntergratorDemoObjectX : BaseDomainObjectIntergrator<IUnityContainer>
+public sealed class DomainObjectIntergratorDemoObjectX : BaseDomainObjectIntergrator<IUnityContainer>
 {
     protected override void DoRun(IUnityContainer container)
     {

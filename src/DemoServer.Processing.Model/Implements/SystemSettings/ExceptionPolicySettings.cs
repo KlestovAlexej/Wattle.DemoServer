@@ -9,7 +9,7 @@ namespace ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
 /// </summary>
 [Description("Настройки уведомления об исключениях системы")]
 [SuppressMessage("ReSharper", "AutoPropertyCanBeMadeGetOnly.Global")]
-public class ExceptionPolicySettings
+public sealed class ExceptionPolicySettings
 {
     // ReSharper disable once MemberCanBePrivate.Global
     // ReSharper disable once ConvertConstructorToMemberInitializers

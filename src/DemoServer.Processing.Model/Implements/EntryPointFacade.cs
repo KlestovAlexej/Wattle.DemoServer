@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ShtrihM.DemoServer.Processing.Model.Implements;
 
-public class EntryPointFacade : IEntryPointFacade
+public sealed class EntryPointFacade : IEntryPointFacade
 {
     private readonly ICustomEntryPoint m_entryPoint;
 

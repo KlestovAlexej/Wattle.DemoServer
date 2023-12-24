@@ -23,7 +23,7 @@ using Status = OpenTelemetry.Trace.Status;
 
 namespace ShtrihM.DemoServer.Processing.Model.Implements;
 
-public class PartitionsSponsor : BaseServiceScheduled
+public sealed class PartitionsSponsor : BaseServiceScheduled
 {
     private static readonly SpanAttributes SpanAttributes;
 

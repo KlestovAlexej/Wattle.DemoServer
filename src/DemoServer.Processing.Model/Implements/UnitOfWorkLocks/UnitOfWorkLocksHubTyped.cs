@@ -8,7 +8,7 @@ using ShtrihM.Wattle3.Utils;
 
 namespace ShtrihM.DemoServer.Processing.Model.Implements.UnitOfWorkLocks;
 
-public class UnitOfWorkLocksHubTyped : IDisposable
+public sealed class UnitOfWorkLocksHubTyped : IDisposable
 {
     private readonly Dictionary<Guid, IDomainObjectUnitOfWorkLockService> m_locks;
 
@@ -45,13 +45,9 @@ public class UnitOfWorkLocksHubTyped : IDisposable
 
     public void Dispose()
     {
-#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
         var temp = Hub;
-        Hub = null;
+        Hub = null!;
         temp.SilentDispose();
-#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
-
-        GC.SuppressFinalize(this);
     }
 
     private IDomainObjectUnitOfWorkLockService DoCreate(Guid lockId, Guid typeId)

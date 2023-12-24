@@ -10,7 +10,7 @@ namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.SystemLog;
 
 [DomainObjectIntergrator]
 // ReSharper disable once UnusedType.Global
-public class DomainObjectIntergratorSystemLog : BaseDomainObjectIntergrator<IUnityContainer>
+public sealed class DomainObjectIntergratorSystemLog : BaseDomainObjectIntergrator<IUnityContainer>
 {
     protected override void DoRun(IUnityContainer container)
     {

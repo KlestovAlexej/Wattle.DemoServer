@@ -45,7 +45,7 @@ using Status = OpenTelemetry.Trace.Status;
 
 namespace ShtrihM.DemoServer.Processing.Model.Implements;
 
-public class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
+public sealed class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
 {
     #region Private Class EntryPointContext
 

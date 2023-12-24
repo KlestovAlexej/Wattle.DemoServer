@@ -17,7 +17,7 @@ using System.Runtime.CompilerServices;
 
 namespace ShtrihM.DemoServer.Processing.Model.Implements;
 
-public class ExceptionPolicy : BaseExceptionPolicy
+public sealed class ExceptionPolicy : BaseExceptionPolicy
 {
     public static readonly string ExceptionSourceModule = "ExceptionSourceModule";
     public static readonly string ExceptionSourceModuleAsController = "Controller";

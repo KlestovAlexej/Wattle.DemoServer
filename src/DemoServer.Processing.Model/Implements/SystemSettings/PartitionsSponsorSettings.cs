@@ -18,7 +18,7 @@ namespace ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
 /// </summary>
 [Description("Настройки создателя партиций БД")]
 [SuppressMessage("ReSharper", "AutoPropertyCanBeMadeGetOnly.Global")]
-public class PartitionsSponsorSettings
+public sealed class PartitionsSponsorSettings
 {
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
     public class TablespaceEntry

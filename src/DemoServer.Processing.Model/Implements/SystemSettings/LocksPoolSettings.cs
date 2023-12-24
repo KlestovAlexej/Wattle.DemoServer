@@ -13,7 +13,7 @@ namespace ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
 /// </summary>
 [Description("Настройки пулов лок-объектов")]
 [SuppressMessage("ReSharper", "AutoPropertyCanBeMadeGetOnly.Global")]
-public class LocksPoolSettings
+public sealed class LocksPoolSettings
 {
     private static readonly TimeSpan DefaultTimeout = TimeSpan.FromSeconds(3);
 

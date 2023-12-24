@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace ShtrihM.DemoServer.Processing.Api.Examples;
 
-public class ExamplesMetaServerDescription : IExamplesProvider<MetaServerDescription>
+public sealed class ExamplesMetaServerDescription : IExamplesProvider<MetaServerDescription>
 {
     public MetaServerDescription GetExamples()
     {

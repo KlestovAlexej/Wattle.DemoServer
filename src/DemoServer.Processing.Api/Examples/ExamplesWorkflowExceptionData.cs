@@ -4,7 +4,7 @@ using Swashbuckle.AspNetCore.Filters;
 
 namespace ShtrihM.DemoServer.Processing.Api.Examples;
 
-public class ExamplesWorkflowExceptionData : IExamplesProvider<WorkflowExceptionData>
+public sealed class ExamplesWorkflowExceptionData : IExamplesProvider<WorkflowExceptionData>
 {
     public WorkflowExceptionData GetExamples()
     {
