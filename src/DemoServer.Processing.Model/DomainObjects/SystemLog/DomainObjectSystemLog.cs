@@ -12,8 +12,11 @@ namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.SystemLog;
 // ReSharper disable once ClassNeverInstantiated.Global
 public sealed class DomainObjectSystemLog : BaseDomainObject<DomainObjectSystemLog>, IDomainObjectSystemLog
 {
-    #region Template
+    #region Template - шаблон создания объекта SystemLog
 
+    /// <summary>
+    /// Шаблон создания объекта <see cref="DomainObjectSystemLog"/>.
+    /// </summary>
     public class Template : IDomainObjectTemplate
     {
         // ReSharper disable once ConvertToPrimaryConstructor
@@ -35,6 +38,8 @@ public sealed class DomainObjectSystemLog : BaseDomainObject<DomainObjectSystemL
         public readonly string Data;
     }
     #endregion
+
+    #region Конструкторы
 
     // ReSharper disable once UnusedMember.Global
     public DomainObjectSystemLog(SystemLogDtoActual data)
@@ -65,6 +70,8 @@ public sealed class DomainObjectSystemLog : BaseDomainObject<DomainObjectSystemL
             Message = Message.Substring(0, Constants.SystemLogFieldMaxSizeMessage);
         }
     }
+
+    #endregion
 
     public override Guid TypeId => WellknownDomainObjects.SystemLog;
 

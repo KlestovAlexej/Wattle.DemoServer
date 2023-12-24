@@ -11,14 +11,19 @@ namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.ChangeTracker;
 // ReSharper disable once ClassNeverInstantiated.Global
 public sealed class DomainObjectChangeTracker : BaseDomainObject<DomainObjectChangeTracker>, IDomainObjectChangeTracker
 {
-    #region Template
+    #region Template - шаблон создания объекта ChangeTracker
 
+    /// <summary>
+    /// Шаблон создания объекта <see cref="DomainObjectChangeTracker"/>.
+    /// </summary>
     public class Template : IDomainObjectTemplate
     {
         public static readonly Template Instance = new();
     }
 
     #endregion
+
+    #region Конструкторы
 
     // ReSharper disable once UnusedMember.Global
     public DomainObjectChangeTracker(ChangeTrackerDtoActual data)
@@ -34,6 +39,8 @@ public sealed class DomainObjectChangeTracker : BaseDomainObject<DomainObjectCha
     {
         /* NONE */
     }
+
+    #endregion
 
     public override Guid TypeId => WellknownDomainObjects.ChangeTracker;
 }
