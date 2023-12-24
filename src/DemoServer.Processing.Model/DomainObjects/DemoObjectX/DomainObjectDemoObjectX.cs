@@ -23,8 +23,11 @@ namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
 public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutableWithUpdateLock<DomainObjectDemoObjectX>, IDomainObjectDemoObjectX,
     IDomainObjectActivatorPostCreate
 {
-    #region Template
+    #region Template - шаблон создания объекта DemoObjectX
 
+    /// <summary>
+    /// Шаблон создания объекта <see cref="DomainObjectDemoObjectX"/>.
+    /// </summary>
     public class Template : IDomainObjectTemplate
     {
         public Template(
@@ -72,11 +75,17 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutableWithUpdateL
 
     #endregion
 
+    #region Изменяемы поля
+
     [DomainObjectFieldValue(DomainObjectDataTarget.Create, DomainObjectDataTarget.Update, DtoFiledName = nameof(DemoObjectXDtoChanged.Enabled))]
     private MutableField<bool> m_enabled;
 
     [DomainObjectFieldValue(DomainObjectDataTarget.Create, DomainObjectDataTarget.Update, DtoFiledName = nameof(DemoObjectXDtoChanged.Name))]
     private MutableFieldStringLimitedEx m_name;
+
+    #endregion
+
+    #region Конструкторы
 
     // ReSharper disable once UnusedMember.Global
     public DomainObjectDemoObjectX(
@@ -110,6 +119,8 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutableWithUpdateL
         Key2 = template.Key2;
         Group = template.Group;
     }
+
+    #endregion
 
     public override Guid TypeId => WellknownDomainObjects.DemoObjectX;
 
@@ -199,6 +210,15 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutableWithUpdateL
         m_entryPoint.CurrentUnitOfWork.AddDelete(this);
     }
 
+    protected override ValueTask DoUpdateAsync(CancellationToken cancellationToken = default)
+    {
+        ModificationDate = m_entryPoint.TimeService.Now;
+
+        return base.DoUpdateAsync(cancellationToken);
+    }
+
+    #region Аспект создания
+
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void PostCreate()
     {
@@ -234,10 +254,5 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutableWithUpdateL
         return ValueTask.CompletedTask;
     }
 
-    protected override ValueTask DoUpdateAsync(CancellationToken cancellationToken = default)
-    {
-        ModificationDate = m_entryPoint.TimeService.Now;
-
-        return base.DoUpdateAsync(cancellationToken);
-    }
+    #endregion
 }

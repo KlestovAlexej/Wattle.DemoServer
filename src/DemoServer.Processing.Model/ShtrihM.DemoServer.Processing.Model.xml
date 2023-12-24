@@ -24,6 +24,26 @@
             Создание специализированной стратегии <see cref="T:ShtrihM.Wattle3.DomainObjects.Interfaces.IUnitOfWorkCommitVerifying"/> проверки успешности завершения <see cref="T:ShtrihM.Wattle3.DomainObjects.Interfaces.IUnitOfWork" />.
             </summary>
         </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX.DemoObjectXIdentitiesService.AlternativeKey">
+            <summary>
+            Альтернативный ключ объекта DemoObjectX.
+            </summary>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX.DemoObjectXIdentitiesService.AlternativeKey.#ctor(System.Guid,System.String)">
+            <summary>
+            Альтернативный ключ объекта DemoObjectX.
+            </summary>
+        </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX.DomainObjectDemoObjectX.Template">
+            <summary>
+            Шаблон создания объекта <see cref="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX.DomainObjectDemoObjectX"/>.
+            </summary>
+        </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObject.DomainObjectDemoObject.Template">
+            <summary>
+            Шаблон создания объекта <see cref="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObject.DomainObjectDemoObject"/>.
+            </summary>
+        </member>
         <member name="F:ShtrihM.DemoServer.Processing.Model.Implements.Metrics.RequestsIncoming">
             <summary>
             Количество входящих запросов.

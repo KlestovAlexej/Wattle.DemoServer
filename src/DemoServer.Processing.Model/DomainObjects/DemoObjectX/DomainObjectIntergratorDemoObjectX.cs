@@ -37,7 +37,7 @@ public class DomainObjectIntergratorDemoObjectX : BaseDomainObjectIntergrator<IU
                 domainObjectActivator);
         container.Resolve<DomainObjectRegisters>().AddRegister(domainObjectRegister);
 
-        #region DomainObjectActivator + PreCreate
+        #region Аспект создания
 
         var lockActionCreate = entryPoint.UnitOfWorkLocks.Actions.CreateDemoObjectX;
         domainObjectActivator.SetPreCreate(PreCreate, PreCreateAsync);

@@ -13,8 +13,11 @@ namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
 
 public sealed class DemoObjectXIdentitiesService : BaseIdentitiesWithContextWithAlternativeKeyService<DemoObjectXIdentitiesService.AlternativeKey, long /* Group */, DemoObjectXIdentitiesService, Demoobjectx, ProcessingDbContext>
 {
-    #region AlternativeKeyEntry - Альтернативный ключ объекта X
+    #region AlternativeKeyEntry - альтернативный ключ объекта DemoObjectX
 
+    /// <summary>
+    /// Альтернативный ключ объекта DemoObjectX.
+    /// </summary>
     [SuppressMessage("ReSharper", "NotAccessedPositionalProperty.Global")]
     public new readonly record struct AlternativeKey(
         [property: AlternativeKeyIndex(WellknownDomainObjectFields.DemoObjectX.IndexAlternateKeyValue1)] Guid Key1,
