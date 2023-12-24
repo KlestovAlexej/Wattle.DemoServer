@@ -20,7 +20,7 @@ namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
 
 [DomainObjectDataMapper(WellknownMappersAsText.DemoObjectX, DomainObjectDataTarget.Create, DomainObjectDataTarget.Update, DomainObjectDataTarget.Delete)]
 // ReSharper disable once ClassNeverInstantiated.Global
-public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutable<DomainObjectDemoObjectX>, IDomainObjectDemoObjectX,
+public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutableWithUpdateLock<DomainObjectDemoObjectX>, IDomainObjectDemoObjectX,
     IDomainObjectActivatorPostCreate
 {
     #region Template
@@ -72,8 +72,6 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutable<DomainObje
 
     #endregion
 
-    private readonly IDomainObjectUnitOfWorkLockService m_lockUpdate;
-
     [DomainObjectFieldValue(DomainObjectDataTarget.Create, DomainObjectDataTarget.Update, DtoFiledName = nameof(DemoObjectXDtoChanged.Enabled))]
     private MutableField<bool> m_enabled;
 
@@ -85,9 +83,8 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutable<DomainObje
         DemoObjectXDtoActual data,
         ICustomEntryPoint entryPoint,
         IDomainObjectUnitOfWorkLockService lockUpdate)
-        : base(entryPoint, data)
+        : base(entryPoint, data, lockUpdate)
     {
-        m_lockUpdate = lockUpdate;
         CreateDate = data.CreateDate;
         ModificationDate = data.ModificationDate;
         m_name = new MutableFieldStringLimitedEx(FieldsConstants.DemoObjectXNameMaxLength, data.Name);
@@ -103,9 +100,8 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutable<DomainObje
         Template template,
         ICustomEntryPoint entryPoint,
         IDomainObjectUnitOfWorkLockService lockUpdate)
-        : base(entryPoint, identity)
+        : base(entryPoint, identity, lockUpdate)
     {
-        m_lockUpdate = lockUpdate;
         CreateDate = m_entryPoint.TimeService.Now;
         ModificationDate = CreateDate;
         m_name = new MutableFieldStringLimitedEx(FieldsConstants.DemoObjectXNameMaxLength, template.Name);

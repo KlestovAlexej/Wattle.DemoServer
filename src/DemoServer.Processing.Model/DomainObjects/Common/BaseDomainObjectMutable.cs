@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using ShtrihM.DemoServer.Processing.Model.Interfaces;
@@ -25,7 +26,9 @@ public abstract class BaseDomainObjectMutable<TDomainObject> : BaseDomainObject<
     protected readonly ICustomEntryPoint m_entryPoint;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    protected BaseDomainObjectMutable(ICustomEntryPoint entryPoint, IMapperDtoVersion data)
+    protected BaseDomainObjectMutable(
+        ICustomEntryPoint entryPoint, 
+        IMapperDtoVersion data)
         : base(data.Id, false)
     {
         m_entryPoint = entryPoint;
@@ -33,11 +36,19 @@ public abstract class BaseDomainObjectMutable<TDomainObject> : BaseDomainObject<
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    protected BaseDomainObjectMutable(ICustomEntryPoint entryPoint, long identity)
+    protected BaseDomainObjectMutable(
+        ICustomEntryPoint entryPoint, 
+        long identity,
+        bool defineCommitVerifying = false)
         : base(identity, true)
     {
         m_entryPoint = entryPoint;
         m_revision = Wattle3.Mappers.Constants.StartRevision;
+
+        if (defineCommitVerifying)
+        {
+            DefineCommitVerifying();
+        }
     }
 
     /// <summary>
@@ -56,5 +67,31 @@ public abstract class BaseDomainObjectMutable<TDomainObject> : BaseDomainObject<
         m_entryPoint.UnitOfWorkProvider.Instance.AddUpdate(this);
 
         return ValueTask.CompletedTask;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    // ReSharper disable once MemberCanBePrivate.Global
+    protected void DefineCommitVerifying()
+    {
+        var unitOfWork = m_entryPoint.UnitOfWorkProvider.Instance;
+
+        if (unitOfWork.IsDefinedCommitVerifying)
+        {
+            return;
+        }
+
+        // Вызов CommitVerifying создаёт стратегию IUnitOfWorkCommitVerifying по умолчанию.
+        if (null == unitOfWork.CommitVerifying)
+        {
+            throw new InvalidOperationException("Это невозможно!");
+        }
+
+        // Если маппер доменного объекта поддерживает удаление то создание стратегии IUnitOfWorkCommitVerifying по Identity не безопасно.
+        // Будет использоватся стратегия IUnitOfWorkCommitVerifying по умолчанию.
+        // ReSharper disable once VirtualMemberCallInConstructor
+        if (m_entryPoint.CommitVerifyingFactory.TryCreate(TypeId, Identity, out var commitVerifying))
+        {
+            unitOfWork.CommitVerifying = commitVerifying!;
+        }
     }
 }

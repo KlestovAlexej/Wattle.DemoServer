@@ -7,6 +7,7 @@ using ShtrihM.Wattle3.DomainObjects.DomainObjectsRegisters;
 using ShtrihM.DemoServer.Processing.Generated.Interface;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectActivators;
 using Unity;
+using ShtrihM.DemoServer.Processing.Model.Implements;
 
 namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
 
@@ -23,7 +24,7 @@ public class DomainObjectIntergratorDemoObjectX : BaseDomainObjectIntergrator<IU
                 entryPoint.SystemSettings.IdentityCachesSettings.Value.DemoObjectX.Value);
         container.Resolve<DomainObjectDataMappers>().AddMapper(dataMapper);
 
-        var lockUpdate = entryPoint.UnitOfWorkLocks.UpdateDemoObjectX;
+        var lockUpdate = entryPoint.GetLock<IDomainObjectDemoObjectX>();
         var domainObjectActivator = 
             new DomainObjectActivatorDefault<DomainObjectDemoObjectX.Template, DomainObjectDemoObjectX>(
                 entryPoint.UnitOfWorkProvider, entryPoint, lockUpdate);

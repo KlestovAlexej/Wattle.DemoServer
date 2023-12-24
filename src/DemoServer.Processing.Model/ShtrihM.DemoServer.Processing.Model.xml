@@ -14,10 +14,14 @@
             Фиксация в <see cref="T:ShtrihM.Wattle3.DomainObjects.Interfaces.IUnitOfWork"/> изменений доменного объекта.
             </summary>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Model.Implements.DomainObjectRegisterExtensions.LockRegister(ShtrihM.Wattle3.DomainObjects.Interfaces.IDomainObjectRegister,System.Int64)">
+        <member name="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.Common.BaseDomainObjectMutableWithUpdateLock`1">
             <summary>
-            Регистрация критической секции доменного объекта при его получении из реестра.
-            <example>К примеру <seealso cref="M:ShtrihM.Wattle3.DomainObjects.Interfaces.IDomainObjectRegister.Find(System.Int64)" />.</example>
+            Базовая реализация доменного объекта с поддержкой изменения и блокировкой на изменение.
+            </summary>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Model.DomainObjects.Common.BaseDomainObjectMutableWithUpdateLock`1.DoCreateIUnitOfWorkCommitVerifyingAsync(System.Threading.CancellationToken)">
+            <summary>
+            Создание специализированной стратегии <see cref="T:ShtrihM.Wattle3.DomainObjects.Interfaces.IUnitOfWorkCommitVerifying"/> проверки успешности завершения <see cref="T:ShtrihM.Wattle3.DomainObjects.Interfaces.IUnitOfWork" />.
             </summary>
         </member>
         <member name="F:ShtrihM.DemoServer.Processing.Model.Implements.Metrics.RequestsIncoming">
@@ -43,6 +47,29 @@
         <member name="F:ShtrihM.DemoServer.Processing.Model.Implements.Metrics.RequestsHealthCheck">
             <summary>
             Количество входящих запросов проверки работоспособности.
+            </summary>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Model.Implements.ModelExtensions.GetLock``1(ShtrihM.DemoServer.Processing.Model.Interfaces.ICustomEntryPoint)">
+            <summary>
+            Получить сервисы лок-объекта доменного объекта по интерфейсу доменного объекта с аттрибутом <see cref="T:ShtrihM.Wattle3.DomainObjects.Interfaces.DomainObjectInterfaceAttribute"/>.
+            </summary>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Model.Implements.ModelExtensions.LockRegister``1(ShtrihM.DemoServer.Processing.Model.Interfaces.ICustomEntryPoint,System.Int64)">
+            <summary>
+            Регистрация критической секции доменного объекта при его получении из реестра.
+            Интерфейс доменного объекта <typeparamref name="TDomainObject"/> должен иметь аттрибут <see cref="T:ShtrihM.Wattle3.DomainObjects.Interfaces.DomainObjectInterfaceAttribute"/>.
+            <example>К примеру <seealso cref="M:ShtrihM.Wattle3.DomainObjects.Interfaces.IDomainObjectRegister.Find(System.Int64)" />.</example>
+            </summary>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Model.Implements.ModelExtensions.LockRegister``1(``0,System.Int64)">
+            <summary>
+            Регистрация критической секции доменного объекта при его получении из реестра.
+            <example>К примеру <seealso cref="M:ShtrihM.Wattle3.DomainObjects.Interfaces.IDomainObjectRegister.Find(System.Int64)" />.</example>
+            </summary>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Model.Implements.ModelExtensions.GetRegister``1(ShtrihM.DemoServer.Processing.Model.Interfaces.ICustomEntryPoint)">
+            <summary>
+            Получить локальный для <see cref="T:ShtrihM.Wattle3.DomainObjects.Interfaces.IUnitOfWork"/> реест доменных объектов по интерфейсу доменного объекта с аттрибутом <see cref="T:ShtrihM.Wattle3.DomainObjects.Interfaces.DomainObjectInterfaceAttribute"/>.
             </summary>
         </member>
         <member name="T:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.DomainObjectRegistersSettings">
@@ -253,6 +280,12 @@
         <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettingsLocal.ProductName">
             <summary>
             Имя продукта.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Model.Implements.UnitOfWork.ThrowOnDefaultCommitVerifying">
+            <summary>
+            Полезная проверка, что не используется стратегия IUnitOfWorkCommitVerifying по умолчанию.
+            Так как стратегия IUnitOfWorkCommitVerifying по умолчанию создаёт техническую запись в БД.
             </summary>
         </member>
         <member name="M:ShtrihM.DemoServer.Processing.Model.Interfaces.IDemoObjectControllerService.CreateAsync(ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.DemoObjectCreate,System.Threading.CancellationToken)">

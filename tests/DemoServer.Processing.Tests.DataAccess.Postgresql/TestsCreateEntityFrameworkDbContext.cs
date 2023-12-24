@@ -60,7 +60,7 @@ public class TestsCreateEntityFrameworkDbContext : BaseAutoTestsMapper
         text.AppendLine($"Remove-Item -LiteralPath \"{Path.Combine(pathDataAccess, "EfModels_old")}\" -Force -Recurse");
         text.AppendLine($"Remove-Item -LiteralPath \"{Path.Combine(pathDataAccess, "EfModelsOptimized_old")}\" -Force -Recurse");
 
-        var fileNameEntryPointExtensions = Path.Combine(Path.Combine(pathModel, "Implements"), $"{nameof(EntryPointExtensions)}.cs");
+        var fileNameEntryPointExtensions = Path.Combine(Path.Combine(pathModel, "Implements"), $"{nameof(EntryPointStartUpExtensions)}.cs");
         text.AppendLine($"(Get-Content \"{fileNameEntryPointExtensions}\").Replace('using DbContextModel', '// using DbContextModel') | Set-Content \"{fileNameEntryPointExtensions}\"");
         text.AppendLine($"(Get-Content \"{fileNameEntryPointExtensions}\").Replace('o.UseModel(DbContextModel.Instance);', '// o.UseModel(DbContextModel.Instance);') | Set-Content \"{fileNameEntryPointExtensions}\"");
 

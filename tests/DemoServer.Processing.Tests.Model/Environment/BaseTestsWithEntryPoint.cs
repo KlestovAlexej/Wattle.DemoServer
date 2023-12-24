@@ -61,7 +61,7 @@ public abstract class BaseTestsWithEntryPoint : BaseDbTests
     {
         TestsMappersFeatures.SetValidateUpdateResults(m_useMappersFeatures);
 
-        EntryPointExtensions.RegisterGlobals();
+        EntryPointStartUpExtensions.RegisterGlobals();
 
         m_useTablespaces = false;
         m_dataPathTablespace1 = new TestDirectory("Tablespace1");

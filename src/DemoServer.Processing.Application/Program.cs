@@ -183,7 +183,7 @@ public class Program
 
             EnvironmentVariablesHelpers.Define(args);
 
-            EntryPointExtensions.RegisterGlobals();
+            EntryPointStartUpExtensions.RegisterGlobals();
 
             var builder = WebApplication.CreateBuilder();
 

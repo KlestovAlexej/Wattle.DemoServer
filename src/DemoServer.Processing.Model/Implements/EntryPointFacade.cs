@@ -1,6 +1,5 @@
 ﻿using ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject;
 using ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update;
-using ShtrihM.DemoServer.Processing.Common;
 using ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObject;
 using ShtrihM.DemoServer.Processing.Model.Interfaces;
 using ShtrihM.Wattle3.DomainObjects.Interfaces;
@@ -23,19 +22,19 @@ public class EntryPointFacade : IEntryPointFacade
         long id,
         CancellationToken cancellationToken = default)
     {
-        var unitOfWork = m_entryPoint.CurrentUnitOfWork;
-        var registerDemoObject = unitOfWork.Registers.GetRegister(WellknownDomainObjects.DemoObject);
-        var demoObject = await registerDemoObject
-            .FindAsync<IDomainObjectDemoObject>(id, cancellationToken)
-            .ConfigureAwait(false);
-        if (demoObject == null)
+        var domainObject =
+            await m_entryPoint
+                .GetRegister<IDomainObjectDemoObject>()
+                .FindAsync<IDomainObjectDemoObject>(id, cancellationToken)
+                .ConfigureAwait(false);
+        if (domainObject == null)
         {
             var workflowException = m_entryPoint.WorkflowExceptionPolicy.CreateDemoObjectNotFound(id);
 
             throw workflowException;
         }
 
-        var result = demoObject.GetInfo();
+        var result = domainObject.GetInfo();
 
         return result;
     }
@@ -44,21 +43,22 @@ public class EntryPointFacade : IEntryPointFacade
         DemoObjectUpdate parameters,
         CancellationToken cancellationToken = default)
     {
-        var registerDemoObject = m_entryPoint.CurrentUnitOfWork.Registers.GetRegister(WellknownDomainObjects.DemoObject);
-        var demoObject = await registerDemoObject
-            .LockRegister(parameters.Id)
-            .FindAsync<IDomainObjectDemoObject>(parameters.Id, cancellationToken)
-            .ConfigureAwait(false);
-        if (demoObject == null)
+        var domainObject =
+            await m_entryPoint
+                .LockRegister<IDomainObjectDemoObject>(parameters.Id)
+                .GetRegister<IDomainObjectDemoObject>()
+                .FindAsync<IDomainObjectDemoObject>(parameters.Id, cancellationToken)
+                .ConfigureAwait(false);
+        if (domainObject == null)
         {
             var workflowException = m_entryPoint.WorkflowExceptionPolicy.CreateDemoObjectNotFound(parameters.Id);
 
             throw workflowException;
         }
 
-        await demoObject.UpdateAsync(parameters, cancellationToken).ConfigureAwait(false);
+        await domainObject.UpdateAsync(parameters, cancellationToken).ConfigureAwait(false);
 
-        var result = demoObject.GetInfo();
+        var result = domainObject.GetInfo();
 
         return result;
     }
@@ -67,13 +67,14 @@ public class EntryPointFacade : IEntryPointFacade
         DemoObjectCreate parameters,
         CancellationToken cancellationToken = default)
     {
-        var demoObject = await new DomainObjectDemoObject.Template(
-                parameters.Name,
-                parameters.Enabled)
-            .NewAsync(m_entryPoint, cancellationToken)
-            .ConfigureAwait(false);
+        var domainObject =
+            await new DomainObjectDemoObject.Template(
+                    parameters.Name,
+                    parameters.Enabled)
+                .NewAsync(m_entryPoint, cancellationToken)
+                .ConfigureAwait(false);
 
-        var result = demoObject.GetInfo();
+        var result = domainObject.GetInfo();
 
         return result;
     }

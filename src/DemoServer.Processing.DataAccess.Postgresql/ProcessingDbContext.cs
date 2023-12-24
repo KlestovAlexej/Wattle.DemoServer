@@ -17,7 +17,7 @@ namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
 ///  </summary>
 public partial class ProcessingDbContext : IDbContext
 {
-    // ReSharper disable once UnusedMember.Global
+    // ReSharper disable once UnusedType.Global
     public class ProcessingDbContextFactory : IDesignTimeDbContextFactory<ProcessingDbContext>
     {
         public ProcessingDbContext CreateDbContext(string[] args)
@@ -43,6 +43,7 @@ public partial class ProcessingDbContext : IDbContext
 
         if (transaction != null)
         {
+            // ReSharper disable once SuspiciousTypeConversion.Global
             Debug.Assert(ReferenceEquals(((IInfrastructure<DbTransaction>)dependencies.RelationalConnection.CurrentTransaction!).Instance, transaction), "dependencies.RelationalConnection.CurrentTransaction != null");
         }
         else

@@ -14,7 +14,7 @@ using DbContextModel = ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfMod
 
 namespace ShtrihM.DemoServer.Processing.Model.Implements;
 
-public static class EntryPointExtensions
+public static class EntryPointStartUpExtensions
 {
     public static void RegisterGlobals()
     {

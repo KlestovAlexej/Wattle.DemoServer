@@ -787,6 +787,7 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
         Assert.AreEqual(WorkflowErrorCodes.DemoObjectXKeyAlreadyExists, workflowException!.Code);
     }
 
+#if DEBUG
     [Test]
     [Timeout(TestTimeout.Unit)]
     [Category(TestCategory.Unit)]
@@ -831,6 +832,28 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
         using (var unitOfWork = m_entryPoint.CreateUnitOfWork())
         {
             var register = unitOfWork.Registers.GetRegister<IDomainObjectRegisterDemoObjectX>();
+
+            var instance = 
+                register
+                    .LockRegister(id) // Тут создаётся стратегия IUnitOfWorkCommitVerifying по умолчанию для проверки успешности завершения IUnitOfWork.
+                    .Find<IDomainObjectDemoObjectX>(id);
+            Assert.IsNotNull(instance);
+            Assert.AreEqual("Name", instance.Name);
+
+            instance.Enabled = false;
+
+            Assert.AreEqual(false, instance.Enabled);
+
+            internalException = Assert.Throws<InternalException>(() => unitOfWork.Commit());
+            Assert.AreEqual("Стратегия проверки успешности завершения IUnitOfWork не определена.", internalException!.Message, internalException.Message);
+        }
+
+        UnitOfWork.ThrowOnDefaultCommitVerifying = false;
+        try
+        {
+            using var unitOfWork = m_entryPoint.CreateUnitOfWork();
+
+            var register = unitOfWork.Registers.GetRegister<IDomainObjectRegisterDemoObjectX>();
             var instance = register.LockRegister(id).Find<IDomainObjectDemoObjectX>(id);
             Assert.IsNotNull(instance);
             Assert.AreEqual(true, instance.Enabled);
@@ -849,6 +872,10 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
 
             unitOfWork.Commit();
         }
+        finally
+        {
+            UnitOfWork.ThrowOnDefaultCommitVerifying = true;
+        }
 
         using (var unitOfWork = m_entryPoint.CreateUnitOfWork())
         {
@@ -861,4 +888,5 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
             unitOfWork.Commit();
         }
     }
+#endif
 }

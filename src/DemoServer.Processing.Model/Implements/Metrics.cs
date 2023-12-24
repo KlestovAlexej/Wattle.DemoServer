@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.Metrics;
+using ShtrihM.DemoServer.Common;
 
 namespace ShtrihM.DemoServer.Processing.Model.Implements;
 
@@ -9,27 +10,27 @@ public class Metrics
         Meter = meter;
 
         RequestsIncoming = Meter.CreateCounter<int>(
-            name: "shtrihm_DemoServer_processing_requests_incoming",
+            name: $"shtrihm_{Constants.ProductTag.ToLower()}_processing_requests_incoming",
             unit: "{requests}",
             description: "Количество входящих запросов");
 
         RequestsIncomingSuccessful = Meter.CreateCounter<int>(
-            name: "shtrihm_DemoServer_processing_requests_incoming_successful",
+            name: $"shtrihm_{Constants.ProductTag.ToLower()}_processing_requests_incoming_successful",
             unit: "{requests}",
             description: "Количество входящих запросов - успешных");
 
         ExceptionsWorkflow = Meter.CreateCounter<int>(
-            name: "shtrihm_DemoServer_processing_exceptions_workflow",
+            name: $"shtrihm_{Constants.ProductTag.ToLower()}_processing_exceptions_workflow",
             unit: "{exceptions}",
             description: "Количество штатных исключений");
 
         ExceptionsUnexpected = Meter.CreateCounter<int>(
-            name: "shtrihm_DemoServer_processing_exceptions_unexpected",
+            name: $"shtrihm_{Constants.ProductTag.ToLower()}_processing_exceptions_unexpected",
             unit: "{exceptions}",
             description: "Количество неожиданных исключений");
 
         RequestsHealthCheck = Meter.CreateCounter<int>(
-            name: "shtrihm_DemoServer_processing_requests_healthcheck",
+            name: $"shtrihm_{Constants.ProductTag.ToLower()}_processing_requests_healthcheck",
             unit: "{requests}",
             description: "Количество входящих запросов проверки работоспособности");
     }

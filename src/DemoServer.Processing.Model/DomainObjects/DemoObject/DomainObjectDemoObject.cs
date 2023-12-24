@@ -23,7 +23,7 @@ namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObject;
 
 [DomainObjectDataMapper(WellknownMappersAsText.DemoObject, DomainObjectDataTarget.Create, DomainObjectDataTarget.Update)]
 // ReSharper disable once ClassNeverInstantiated.Global
-public sealed class DomainObjectDemoObject : BaseDomainObjectMutable<DomainObjectDemoObject>, IDomainObjectDemoObject, IDomainObjectActivatorPostCreate
+public sealed class DomainObjectDemoObject : BaseDomainObjectMutableWithUpdateLock<DomainObjectDemoObject>, IDomainObjectDemoObject, IDomainObjectActivatorPostCreate
 {
     #region Template
 
@@ -53,8 +53,6 @@ public sealed class DomainObjectDemoObject : BaseDomainObjectMutable<DomainObjec
 
     #endregion
 
-    private readonly IDomainObjectUnitOfWorkLockService m_lockUpdate;
-
     [DomainObjectFieldValue(DomainObjectDataTarget.Create, DomainObjectDataTarget.Update, DtoFiledName = nameof(DemoObjectDtoChanged.Enabled))]
     private MutableField<bool> m_enabled;
 
@@ -66,9 +64,8 @@ public sealed class DomainObjectDemoObject : BaseDomainObjectMutable<DomainObjec
         DemoObjectDtoActual data,
         ICustomEntryPoint entryPoint,
         IDomainObjectUnitOfWorkLockService lockUpdate)
-        : base(entryPoint, data)
+        : base(entryPoint, data, lockUpdate)
     {
-        m_lockUpdate = lockUpdate;
         CreateDate = data.CreateDate.SpecifyKindLocal();
         ModificationDate = data.ModificationDate.SpecifyKindLocal();
         m_name = new MutableFieldStringLimitedEx(FieldsConstants.DemoObjectNameMaxLength, data.Name);
@@ -81,9 +78,8 @@ public sealed class DomainObjectDemoObject : BaseDomainObjectMutable<DomainObjec
         Template template,
         ICustomEntryPoint entryPoint,
         IDomainObjectUnitOfWorkLockService lockUpdate)
-        : base(entryPoint, identity)
+        : base(entryPoint, identity, lockUpdate, true)
     {
-        m_lockUpdate = lockUpdate;
         CreateDate = m_entryPoint.TimeService.NowDateTime;
         ModificationDate = CreateDate;
         m_name = new MutableFieldStringLimitedEx(FieldsConstants.DemoObjectNameMaxLength, template.Name);
@@ -179,7 +175,7 @@ public sealed class DomainObjectDemoObject : BaseDomainObjectMutable<DomainObjec
     {
         var identity = Identity;
         var unitOfWork = m_entryPoint.CurrentUnitOfWork;
-        var domainBehaviour = unitOfWork.CreateDomainBehaviourWithСonfirmation<IMapperDemoObject>(identity);
+        var domainBehaviour = unitOfWork.CreateDomainBehaviourWithСonfirmation();
         unitOfWork.AddBehaviour(domainBehaviour);
 
         domainBehaviour.SetFailAll(
