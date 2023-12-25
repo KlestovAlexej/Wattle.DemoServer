@@ -137,7 +137,7 @@
             <summary>
             Получить запись с указаным идентити.
             </summary>
-            <param name="mappersSession">Сессия БД.</param>
+            <param name="session">Сессия БД.</param>
             <param name="id">Идентити записи.</param>
             <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует.</returns>
         </member>
@@ -145,7 +145,7 @@
             <summary>
             Получить запись с указаным идентити.
             </summary>
-            <param name="mappersSession">Сессия БД.</param>
+            <param name="session">Сессия БД.</param>
             <param name="id">Идентити записи.</param>
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует.</returns>
@@ -401,7 +401,7 @@
             <summary>
             Получить запись с указаным идентити.
             </summary>
-            <param name="mappersSession">Сессия БД.</param>
+            <param name="session">Сессия БД.</param>
             <param name="id">Идентити записи.</param>
             <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует.</returns>
         </member>
@@ -409,7 +409,7 @@
             <summary>
             Получить запись с указаным идентити.
             </summary>
-            <param name="mappersSession">Сессия БД.</param>
+            <param name="session">Сессия БД.</param>
             <param name="id">Идентити записи.</param>
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует.</returns>
@@ -677,7 +677,7 @@
             <summary>
             Получить запись с указаным идентити.
             </summary>
-            <param name="mappersSession">Сессия БД.</param>
+            <param name="session">Сессия БД.</param>
             <param name="id">Идентити записи.</param>
             <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует.</returns>
         </member>
@@ -685,7 +685,7 @@
             <summary>
             Получить запись с указаным идентити.
             </summary>
-            <param name="mappersSession">Сессия БД.</param>
+            <param name="session">Сессия БД.</param>
             <param name="id">Идентити записи.</param>
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует.</returns>
@@ -960,7 +960,7 @@
             <summary>
             Получить запись с указаным идентити.
             </summary>
-            <param name="mappersSession">Сессия БД.</param>
+            <param name="session">Сессия БД.</param>
             <param name="id">Идентити записи.</param>
             <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует.</returns>
         </member>
@@ -968,7 +968,7 @@
             <summary>
             Получить запись с указаным идентити.
             </summary>
-            <param name="mappersSession">Сессия БД.</param>
+            <param name="session">Сессия БД.</param>
             <param name="id">Идентити записи.</param>
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует.</returns>
@@ -1286,7 +1286,7 @@
             <summary>
             Получить запись с указаным идентити.
             </summary>
-            <param name="mappersSession">Сессия БД.</param>
+            <param name="session">Сессия БД.</param>
             <param name="id">Идентити записи.</param>
             <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует.</returns>
         </member>
@@ -1294,7 +1294,7 @@
             <summary>
             Получить запись с указаным альтернативным ключом 'Уникальность по 'Альтернативный ключ - часть №1 и №2''.
             </summary>
-            <param name="mappersSession">Сессия БД.</param>
+            <param name="session">Сессия БД.</param>
             <param name="argKey1">Альтернативный ключ - часть №1</param>
             <param name="argKey2">Альтернативный ключ - часть №2</param>
             <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует.</returns>
@@ -1303,7 +1303,7 @@
             <summary>
             Получить запись с указаным идентити.
             </summary>
-            <param name="mappersSession">Сессия БД.</param>
+            <param name="session">Сессия БД.</param>
             <param name="id">Идентити записи.</param>
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует.</returns>
@@ -1312,7 +1312,7 @@
             <summary>
             Получить запись с указаным альтернативным ключом 'Уникальность по 'Альтернативный ключ - часть №1 и №2''.
             </summary>
-            <param name="mappersSession">Сессия БД.</param>
+            <param name="session">Сессия БД.</param>
             <param name="argKey1">Альтернативный ключ - часть №1</param>
             <param name="argKey2">Альтернативный ключ - часть №2</param>
             <param name="cancellationToken">Токен отмены.</param>
@@ -1473,7 +1473,7 @@
             <summary>
             Получить количество записей коллекции 'Группировка по 'Номер группы''.
             </summary>
-            <param name="mappersSession">Сессия БД.</param>
+            <param name="session">Сессия БД.</param>
             <param name="argGroup">Номер группы</param>
             <returns>Возвращает количество записей коллекции.</returns>
         </member>
@@ -1490,7 +1490,7 @@
             <summary>
             Получить количество записей коллекции 'Группировка по 'Номер группы''.
             </summary>
-            <param name="mappersSession">Сессия БД.</param>
+            <param name="session">Сессия БД.</param>
             <param name="argGroup">Номер группы</param>
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает количество записей коллекции.</returns>

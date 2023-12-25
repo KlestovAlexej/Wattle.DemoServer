@@ -70,7 +70,7 @@ public abstract class BaseDomainObjectMutableWithUpdateLock<TDomainObject> : Bas
     // ReSharper disable once UnusedParameter.Global
     protected virtual ValueTask<IUnitOfWorkCommitVerifying?> DoCreateIUnitOfWorkCommitVerifyingAsync(CancellationToken cancellationToken = default)
     {
-        // Есл маппер доменного объекта поддерживает удаление то создание стратегии IUnitOfWorkCommitVerifying по Identity не безопасно.
+        // Если маппер доменного объекта поддерживает удаление то создание стратегии IUnitOfWorkCommitVerifying по Identity не безопасно.
         if (m_entryPoint.CommitVerifyingFactory.TryCreate(TypeId, Identity, out var result))
         {
             return ValueTask.FromResult(result);

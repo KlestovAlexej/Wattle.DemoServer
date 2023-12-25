@@ -80,18 +80,19 @@ public abstract class BaseDomainObjectMutable<TDomainObject> : BaseDomainObject<
             return;
         }
 
+        // Если маппер доменного объекта поддерживает удаление то создание стратегии IUnitOfWorkCommitVerifying по Identity не безопасно.
+        // Будет использоватся стратегия IUnitOfWorkCommitVerifying по умолчанию.
+        if (m_entryPoint.CommitVerifyingFactory.TryCreate(TypeId, Identity, out var commitVerifying))
+        {
+            unitOfWork.CommitVerifying = commitVerifying!;
+
+            return;
+        }
+
         // Вызов CommitVerifying создаёт стратегию IUnitOfWorkCommitVerifying по умолчанию.
         if (null == unitOfWork.CommitVerifying)
         {
             throw new InvalidOperationException("Это невозможно!");
-        }
-
-        // Если маппер доменного объекта поддерживает удаление то создание стратегии IUnitOfWorkCommitVerifying по Identity не безопасно.
-        // Будет использоватся стратегия IUnitOfWorkCommitVerifying по умолчанию.
-        // ReSharper disable once VirtualMemberCallInConstructor
-        if (m_entryPoint.CommitVerifyingFactory.TryCreate(TypeId, Identity, out var commitVerifying))
-        {
-            unitOfWork.CommitVerifying = commitVerifying!;
         }
     }
 }
