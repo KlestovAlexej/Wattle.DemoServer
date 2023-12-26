@@ -1,30 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Collections.Generic;
 using System.Linq;
 using ShtrihM.DemoServer.Processing.Common;
 using ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
 using ShtrihM.DemoServer.Processing.Model.Interfaces;
-using ShtrihM.Wattle3.DomainObjects.DomainObjectsRegisters.IdentitiesServices;
 using ShtrihM.Wattle3.DomainObjects.IdentitiesServices;
 using ShtrihM.Wattle3.DomainObjects.Interfaces;
 
 namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
 
-public sealed class DemoObjectXIdentitiesService : BaseIdentitiesWithContextWithAlternativeKeyService<DemoObjectXIdentitiesService.AlternativeKey, long /* Group */, DemoObjectXIdentitiesService, Demoobjectx, ProcessingDbContext>
+public sealed class DemoObjectXIdentitiesService : BaseIdentitiesWithContextWithAlternativeKeyService<WellknownDomainObjectFields.DemoObjectX.AlternativeKey, long /* Group */, DemoObjectXIdentitiesService, Demoobjectx, ProcessingDbContext>
 {
-    #region AlternativeKeyEntry - альтернативный ключ объекта DemoObjectX
-
-    /// <summary>
-    /// Альтернативный ключ объекта DemoObjectX.
-    /// </summary>
-    [SuppressMessage("ReSharper", "NotAccessedPositionalProperty.Global")]
-    public new readonly record struct AlternativeKey(
-        [property: AlternativeKeyIndex(WellknownDomainObjectFields.DemoObjectX.IndexAlternateKeyValue1)] Guid Key1,
-        [property: AlternativeKeyIndex(WellknownDomainObjectFields.DemoObjectX.IndexAlternateKeyValue2)] string Key2);
-
-    #endregion
-
     private DemoObjectXIdentitiesService(IEntryPointContext entryPointContext)
         : base(entryPointContext)
     {
@@ -40,7 +25,7 @@ public sealed class DemoObjectXIdentitiesService : BaseIdentitiesWithContextWith
         return result;
     }
 
-    protected override IEnumerable<(long Identity, AlternativeKey Key, long Context)> DoGetIdentities(IQueryable<Demoobjectx> entities)
+    protected override IEnumerable<(long Identity, WellknownDomainObjectFields.DemoObjectX.AlternativeKey Key, long Context)> DoGetIdentities(IQueryable<Demoobjectx> entities)
     {
         var identities =
             entities.Select(
@@ -54,7 +39,7 @@ public sealed class DemoObjectXIdentitiesService : BaseIdentitiesWithContextWith
 
         foreach (var identity in identities)
         {
-            yield return (identity.Id, new AlternativeKey(identity.Key1, identity.Key2), identity.Group);
+            yield return (identity.Id, new WellknownDomainObjectFields.DemoObjectX.AlternativeKey(identity.Key1, identity.Key2), identity.Group);
         }
     }
 }

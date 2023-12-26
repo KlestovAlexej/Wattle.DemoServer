@@ -573,7 +573,7 @@ public sealed class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
         }
 
         result.Metrics = metrics;
-        result.UnitOfWorkLocks = new UnitOfWorkLocksHubTyped(result);
+        result.UnitOfWorkLocks = new UnitOfWorkLocksHubTyped(result.Context);
 
         result.Facade =
             container.ResolveWithDefault(

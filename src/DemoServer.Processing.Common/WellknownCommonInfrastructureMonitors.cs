@@ -38,28 +38,10 @@ public static class WellknownCommonInfrastructureMonitors
     public static readonly Guid PartitionsSponsor = new("153EF7B4-AA4C-4EE4-B5A1-82CB5C4133A9");
 
     /// <summary>
-    /// Пул лок-объектов сценария создания объекта 'Объект X'.
-    /// </summary>
-    [Description("Пул лок-объектов сценария создания объекта 'Объект X'")]
-    public static readonly Guid LocksCreateDemoObjectX = new("82157EAD-A3AA-4E9B-9CED-6631BDC2F0A5");
-
-    /// <summary>
-    /// Пул лок-объектов сценария обновления объекта 'Объект'.
-    /// </summary>
-    [Description("Пул лок-объектов сценария обновления объекта 'Объект'")]
-    public static readonly Guid LocksUpdateDemoObject = new("619026D1-E030-4DDB-A879-FF7169FE368F");
-
-    /// <summary>
     /// Маппер данных состояния доменного объекта 'Объект' в БД.
     /// </summary>
     [Description("Маппер данных состояния доменного объекта 'Объект' в БД")]
     public static readonly Guid MapperDemoObject = new("ACF0F934-7A89-4AD7-A7E5-AD6E66639B7F");
-
-    /// <summary>
-    /// Пул лок-объектов сценария обновления объекта 'Объект X'.
-    /// </summary>
-    [Description("Пул лок-объектов сценария обновления объекта 'Объект X'")]
-    public static readonly Guid LocksUpdateDemoObjectX = new("96D3DDA8-E5DB-4253-BB31-2916AE0790A6");
 
     /// <summary>
     /// Маппер данных состояния доменного объекта 'Объект X' в БД.

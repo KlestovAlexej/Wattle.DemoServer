@@ -29,16 +29,6 @@
             Создание специализированной стратегии <see cref="T:ShtrihM.Wattle3.DomainObjects.Interfaces.IUnitOfWorkCommitVerifying"/> проверки успешности завершения <see cref="T:ShtrihM.Wattle3.DomainObjects.Interfaces.IUnitOfWork" />.
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX.DemoObjectXIdentitiesService.AlternativeKey">
-            <summary>
-            Альтернативный ключ объекта DemoObjectX.
-            </summary>
-        </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX.DemoObjectXIdentitiesService.AlternativeKey.#ctor(System.Guid,System.String)">
-            <summary>
-            Альтернативный ключ объекта DemoObjectX.
-            </summary>
-        </member>
         <member name="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX.DomainObjectDemoObjectX.Template">
             <summary>
             Шаблон создания объекта <see cref="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX.DomainObjectDemoObjectX"/>.
@@ -172,19 +162,14 @@
             Настройки пулов лок-объектов.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.LocksPoolSettings.UpdateDemoObject">
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.LocksPoolSettings.Update">
             <summary>
-            Интервал ожидания получение объекта из пула лок-объектов сценария обновления объекта 'Объект'.
+            Интервал ожидания получение объекта из пула лок-объектов сценария обновления объекта.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.LocksPoolSettings.UpdateDemoObjectX">
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.LocksPoolSettings.AlternativeKey">
             <summary>
-            Интервал ожидания получение объекта из пула лок-объектов сценария обновления объекта 'Объект X'.
-            </summary>
-        </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.LocksPoolSettings.CreateDemoObjectX">
-            <summary>
-            Интервал ожидания получение объекта из пула лок-объектов сценария создания объекта 'Объект X'.
+            Интервал ожидания получение объекта из пула лок-объектов сценария действия по альтернативному ключу.
             </summary>
         </member>
         <member name="M:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.LocksPoolSettings.GetDefault">

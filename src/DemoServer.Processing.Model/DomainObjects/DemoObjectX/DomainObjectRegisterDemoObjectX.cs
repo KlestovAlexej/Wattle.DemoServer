@@ -19,12 +19,12 @@ using ShtrihM.Wattle3.Utils;
 
 namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
 
-public sealed class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWithAlternativeKeyStatelessDefault<IDomainObjectDemoObjectX, DemoObjectXIdentitiesService.AlternativeKey, long /* Group */, DemoObjectXDtoActual, IMapperDemoObjectX>
+public sealed class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWithAlternativeKeyStatelessDefault<IDomainObjectDemoObjectX, WellknownDomainObjectFields.DemoObjectX.AlternativeKey, long /* Group */, DemoObjectXDtoActual, IMapperDemoObjectX>
 {
     #region ProxyDomainObjectRegister
 
     [SuppressMessage("ReSharper", "AccessToDisposedClosure")]
-    private class ProxyDomainObjectRegister : AltProxyDomainObjectRegisterWithContextWithAlternativeKey<IDomainObjectDemoObjectX, DemoObjectXIdentitiesService.AlternativeKey, long /* Group */>, IDomainObjectRegisterDemoObjectX
+    private class ProxyDomainObjectRegister : AltProxyDomainObjectRegisterWithContextWithAlternativeKey<IDomainObjectDemoObjectX, WellknownDomainObjectFields.DemoObjectX.AlternativeKey, long /* Group */>, IDomainObjectRegisterDemoObjectX
     {
         private ICustomEntryPoint EntryPoint
         {
@@ -113,7 +113,7 @@ public sealed class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithCo
         }
 
         public IDomainObjectDemoObjectX FindByDemoAlternativeKey(
-            DemoObjectXIdentitiesService.AlternativeKey alternativeKey)
+            WellknownDomainObjectFields.DemoObjectX.AlternativeKey alternativeKey)
         {
             using var span = EntryPoint.Tracer?.StartActiveSpan(nameof(FindByDemoAlternativeKey), SpanKind.Server);
 
@@ -123,7 +123,7 @@ public sealed class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithCo
         }
 
         public ValueTask<IDomainObjectDemoObjectX> FindByDemoAlternativeKeyAsync(
-            DemoObjectXIdentitiesService.AlternativeKey alternativeKey,
+            WellknownDomainObjectFields.DemoObjectX.AlternativeKey alternativeKey,
             CancellationToken cancellationToken = default)
         {
             using var span = EntryPoint.Tracer?.StartActiveSpan(nameof(FindByDemoAlternativeKeyAsync), SpanKind.Server);
@@ -298,7 +298,7 @@ public sealed class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithCo
     {
     }
 
-    private static (DemoObjectXIdentitiesService.AlternativeKey, long) DecodeDomainObject(IDomainObject domainObject)
+    private static (WellknownDomainObjectFields.DemoObjectX.AlternativeKey, long) DecodeDomainObject(IDomainObject domainObject)
     {
         var instance = (IDomainObjectDemoObjectX)domainObject;
         var result = (instance.GetKey(), instance.Group);

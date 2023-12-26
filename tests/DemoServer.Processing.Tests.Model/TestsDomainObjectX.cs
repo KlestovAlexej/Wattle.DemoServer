@@ -12,7 +12,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using ShtrihM.DemoServer.Processing.Api.Common;
-using ShtrihM.DemoServer.Processing.Common;
 using ShtrihM.DemoServer.Processing.Generated.Interface;
 using ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
 using ShtrihM.DemoServer.Processing.Model.Implements;
@@ -827,7 +826,7 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
 
                     instance.Enabled = false;
                 });
-        Assert.AreEqual($"Для объекта '{WellknownCommonInfrastructureMonitors.LocksUpdateDemoObjectX}' для пула лок-объектов типа '{typeof(long).AssemblyQualifiedName}' для ключа '{id}' не создан лок-объект.", internalException!.Message, internalException.Message);
+        Assert.AreEqual($"Для объекта '11edfd22-32bf-4d00-847d-4023118b11df' для пула лок-объектов типа '{typeof(long).AssemblyQualifiedName}' для ключа '{id}' не создан лок-объект.", internalException!.Message, internalException.Message);
 
         using (var unitOfWork = m_entryPoint.CreateUnitOfWork())
         {

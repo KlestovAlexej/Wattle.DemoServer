@@ -49,13 +49,13 @@
 			<TreatAsUsed>true</TreatAsUsed>
 		</PackageReference>
 		<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.0" />
-		<PackageReference Include="ShtrihM.Wattle3.CodeGeneration.Generator.Implements" Version="3.9.0.3232">
+		<PackageReference Include="ShtrihM.Wattle3.CodeGeneration.Generator.Implements" Version="3.9.0.3236">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 			<TreatAsUsed>true</TreatAsUsed>
 		</PackageReference>
-		<PackageReference Include="ShtrihM.Wattle3.DomainObjects" Version="3.9.0.3232" />
-		<PackageReference Include="ShtrihM.Wattle3.Mappers.PostgreSql" Version="3.9.0.3232" />
+		<PackageReference Include="ShtrihM.Wattle3.DomainObjects" Version="3.9.0.3236" />
+		<PackageReference Include="ShtrihM.Wattle3.Mappers.PostgreSql" Version="3.9.0.3235" />
 	</ItemGroup>
 
 	<ItemGroup>

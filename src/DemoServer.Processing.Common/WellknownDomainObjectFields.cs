@@ -10,6 +10,7 @@ using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using ShtrihM.Wattle3.Common.DomainObjects;
 
 namespace ShtrihM.DemoServer.Processing.Common;
 
@@ -181,6 +182,7 @@ public static class WellknownDomainObjectFields
     [SchemaMapperIdentityFieldPostgreSql(PartitionsLevel = Constants.MappersComplexIdentityLevel, PartitionsExpandInterface = true)]
     [SchemaMapperIdentityField(DbSequenceName = "Sequence_%ObjectName%")]
     [SchemaMapperRevisionField(IsVersion = true)]
+    [DomainObjectLockUpdate("83B7873D-C853-40C7-B770-DE299B9DE4C4")]
     public static class DemoObject
     {
         /// <summary>
@@ -223,12 +225,29 @@ public static class WellknownDomainObjectFields
     [SchemaMapperRevisionField(IsVersion = true)]
     [SchemaMapperAlternateKey(NameAlternateKey, "Уникальность по 'Альтернативный ключ - часть №1 и №2'")]
     [SchemaMapperCollection(NameCollection, "Группировка по 'Номер группы'")]
+    [DomainObjectLockUpdate("11EDFD22-32BF-4D00-847D-4023118B11DF")]
+    [DomainObjectLockAlternativeKey(typeof(AlternativeKey), LockIdAlternativeKey)]
     public static class DemoObjectX
     {
+        public const string LockIdAlternativeKey = "05689F86-8EC1-4A9A-A81C-C28397047077";
         public const string NameAlternateKey = "Key";
         public const string NameCollection = nameof(Group);
-        public const int IndexAlternateKeyValue1 = 0;
-        public const int IndexAlternateKeyValue2 = 1;
+        private const int IndexAlternateKeyValue1 = 0;
+        private const int IndexAlternateKeyValue2 = 1;
+
+        #region AlternativeKey - альтернативный ключ объекта DemoObjectX
+
+        /// <summary>
+        /// Альтернативный ключ объекта DemoObjectX.
+        /// </summary>
+        public readonly record struct AlternativeKey(
+            // ReSharper disable once NotAccessedPositionalProperty.Global
+            [property: AlternativeKeyIndex(IndexAlternateKeyValue1)] Guid Key1,
+            // ReSharper disable once NotAccessedPositionalProperty.Global
+            [property: AlternativeKeyIndex(IndexAlternateKeyValue2)] string Key2);
+
+        #endregion
+
 
         /// <summary>
         /// Дата создания.

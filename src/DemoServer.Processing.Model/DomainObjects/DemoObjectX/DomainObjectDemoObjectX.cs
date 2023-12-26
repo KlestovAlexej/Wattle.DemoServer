@@ -53,9 +53,9 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutableWithUpdateL
 
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public DemoObjectXIdentitiesService.AlternativeKey GetKey()
+        public WellknownDomainObjectFields.DemoObjectX.AlternativeKey GetKey()
         {
-            var result = new DemoObjectXIdentitiesService.AlternativeKey(Key1, Key2);
+            var result = new WellknownDomainObjectFields.DemoObjectX.AlternativeKey(Key1, Key2);
 
             return result;
         }
@@ -198,9 +198,9 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutableWithUpdateL
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public DemoObjectXIdentitiesService.AlternativeKey GetKey()
+    public WellknownDomainObjectFields.DemoObjectX.AlternativeKey GetKey()
     {
-        var result = new DemoObjectXIdentitiesService.AlternativeKey(Key1, Key2);
+        var result = new WellknownDomainObjectFields.DemoObjectX.AlternativeKey(Key1, Key2);
 
         return result;
     }

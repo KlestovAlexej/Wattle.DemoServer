@@ -1,6 +1,4 @@
 ﻿using Newtonsoft.Json;
-using ShtrihM.DemoServer.Processing.Common;
-using ShtrihM.Wattle3.DomainObjects.Interfaces;
 using ShtrihM.Wattle3.Json;
 using System;
 using System.ComponentModel;
@@ -21,39 +19,28 @@ public sealed class LocksPoolSettings
     // ReSharper disable once ConvertConstructorToMemberInitializers
     public LocksPoolSettings()
     {
-        UpdateDemoObject =
+        Update =
             new SettingValue<TimeSpan?>(
                 default,
-                $"Интервал ожидания получение объекта из пула лок-объектов сценария обновления объекта '{WellknownDomainObjectDisplayNames.DisplayNamesProvider(WellknownDomainObjects.DemoObject)}'");
+                "Интервал ожидания получение объекта из пула лок-объектов сценария обновления объекта");
 
-        UpdateDemoObjectX =
+        AlternativeKey =
             new SettingValue<TimeSpan?>(
                 default,
-                $"Интервал ожидания получение объекта из пула лок-объектов сценария обновления объекта '{WellknownDomainObjectDisplayNames.DisplayNamesProvider(WellknownDomainObjects.DemoObjectX)}'");
-
-        CreateDemoObjectX =
-            new SettingValue<TimeSpan?>(
-                default,
-                $"Интервал ожидания получение объекта из пула лок-объектов сценария создания объекта '{WellknownDomainObjectDisplayNames.DisplayNamesProvider(WellknownDomainObjects.DemoObjectX)}'");
+                "Интервал ожидания получение объекта из пула лок-объектов сценария действия по альтернативному ключу");
     }
 
     /// <summary>
-    /// Интервал ожидания получение объекта из пула лок-объектов сценария обновления объекта 'Объект'.
+    /// Интервал ожидания получение объекта из пула лок-объектов сценария обновления объекта.
     /// </summary>
     [JsonRequired]
-    public SettingValue<TimeSpan?> UpdateDemoObject { get; set; }
+    public SettingValue<TimeSpan?> Update { get; set; }
 
     /// <summary>
-    /// Интервал ожидания получение объекта из пула лок-объектов сценария обновления объекта 'Объект X'.
+    /// Интервал ожидания получение объекта из пула лок-объектов сценария действия по альтернативному ключу.
     /// </summary>
     [JsonRequired]
-    public SettingValue<TimeSpan?> UpdateDemoObjectX { get; set; }
-
-    /// <summary>
-    /// Интервал ожидания получение объекта из пула лок-объектов сценария создания объекта 'Объект X'.
-    /// </summary>
-    [JsonRequired]
-    public SettingValue<TimeSpan?> CreateDemoObjectX { get; set; }
+    public SettingValue<TimeSpan?> AlternativeKey { get; set; }
 
     /// <summary>
     /// Настройки по умолчанию.
@@ -62,15 +49,11 @@ public sealed class LocksPoolSettings
     {
         return new LocksPoolSettings
         {
-            UpdateDemoObject =
+            Update =
             {
                 Value = DefaultTimeout
             },
-            UpdateDemoObjectX =
-            {
-                Value = DefaultTimeout
-            },
-            CreateDemoObjectX = 
+            AlternativeKey =
             {
                 Value = DefaultTimeout
             },

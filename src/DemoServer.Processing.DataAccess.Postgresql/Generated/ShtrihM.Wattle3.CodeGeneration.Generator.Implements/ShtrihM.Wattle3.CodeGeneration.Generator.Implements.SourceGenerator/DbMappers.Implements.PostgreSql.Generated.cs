@@ -705,7 +705,7 @@ namespace ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements
         // ReSharper disable once MemberCanBePrivate.Global
         // ReSharper disable once UnusedAutoPropertyAccessor.Global
         // ReSharper disable once AutoPropertyCanBeMadeGetOnly.Local
-        public IPartitionsManager Partitions { get; private set; }
+        public IPartitionsManager Partitions { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] private set; }
 
         /// <summary>
         /// Обработка исключения мапппера.
@@ -2578,7 +2578,7 @@ Data) FROM STDIN (FORMAT BINARY)
         // ReSharper disable once MemberCanBePrivate.Global
         // ReSharper disable once UnusedAutoPropertyAccessor.Global
         // ReSharper disable once AutoPropertyCanBeMadeGetOnly.Local
-        public IPartitionsManager Partitions { get; private set; }
+        public IPartitionsManager Partitions { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] private set; }
 
         /// <summary>
         /// Обработка исключения мапппера.
@@ -4718,7 +4718,7 @@ MaxNotIncludeId) FROM STDIN (FORMAT BINARY)
         // ReSharper disable once MemberCanBePrivate.Global
         // ReSharper disable once UnusedAutoPropertyAccessor.Global
         // ReSharper disable once AutoPropertyCanBeMadeGetOnly.Local
-        public IPartitionsManager Partitions { get; private set; }
+        public IPartitionsManager Partitions { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] private set; }
 
         /// <summary>
         /// Обработка исключения мапппера.
@@ -7015,7 +7015,7 @@ Enabled) FROM STDIN (FORMAT BINARY)
         // ReSharper disable once MemberCanBePrivate.Global
         // ReSharper disable once UnusedAutoPropertyAccessor.Global
         // ReSharper disable once AutoPropertyCanBeMadeGetOnly.Local
-        public IPartitionsManager Partitions { get; private set; }
+        public IPartitionsManager Partitions { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] private set; }
 
         /// <summary>
         /// Обработка исключения мапппера.

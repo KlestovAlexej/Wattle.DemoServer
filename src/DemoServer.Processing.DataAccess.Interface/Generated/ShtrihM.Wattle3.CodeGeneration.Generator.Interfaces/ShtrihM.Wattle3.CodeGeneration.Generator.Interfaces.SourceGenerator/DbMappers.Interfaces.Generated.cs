@@ -20,6 +20,7 @@ using ShtrihM.Wattle3.Mappers.Primitives;
 using ShtrihM.Wattle3.DomainObjects.Interfaces;
 using ShtrihM.Wattle3.Mappers.PostgreSql;
 using System.Runtime.Serialization;
+using System.Runtime.CompilerServices;
 
 #pragma warning disable 1591
 
@@ -37,7 +38,7 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
         /// <summary>
         /// Идентити.
         /// </summary>
-        public long Id { get; set; }
+        public long Id { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
 
     }
 
@@ -52,7 +53,7 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
         /// <summary>
         /// Идентити.
         /// </summary>
-        public long Id { get; set; }
+        public long Id { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
 
         /// <summary>
         /// Дата создания
@@ -92,7 +93,7 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
         /// <summary>
         /// Идентити.
         /// </summary>
-        public long Id { get; set; }
+        public long Id { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
 
         /// <summary>
         /// Дата создания
@@ -147,7 +148,7 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
         /// <summary>
         /// Идентити.
         /// </summary>
-        public long Id { get; set; }
+        public long Id { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
 
         /// <summary>
         /// Дата создания
@@ -182,7 +183,7 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
         /// <summary>
         /// Идентити.
         /// </summary>
-        public long Id { get; set; }
+        public long Id { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
 
         /// <summary>
         /// Дата создания
@@ -234,7 +235,7 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
         /// Идентити.
         /// </summary>
         [DataMember(Order = 1)]
-        public long Id { get; set; }
+        public long Id { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
 
     }
 
@@ -251,7 +252,7 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
         /// Идентити.
         /// </summary>
         [DataMember(Order = 1)]
-        public long Id { get; set; }
+        public long Id { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
 
         /// <summary>
         /// Дата создания
@@ -298,7 +299,7 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
         /// Идентити.
         /// </summary>
         [DataMember(Order = 1)]
-        public long Id { get; set; }
+        public long Id { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
 
         /// <summary>
         /// Дата создания
@@ -364,13 +365,13 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
         /// Идентити.
         /// </summary>
         [DataMember(Order = 1)]
-        public long Id { get; set; }
+        public long Id { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
 
         /// <summary>
         /// Номер ревизии данных.
         /// </summary>
         [DataMember(Order = 2)]
-        public long Revision { get; set; }
+        public long Revision { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
 
         /// <summary>
         /// Дата создания
@@ -413,13 +414,13 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
         /// Идентити.
         /// </summary>
         [DataMember(Order = 1)]
-        public long Id { get; set; }
+        public long Id { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
 
         /// <summary>
         /// Номер ревизии данных.
         /// </summary>
         [DataMember(Order = 2)]
-        public long Revision { get; set; }
+        public long Revision { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
 
         /// <summary>
         /// Дата создания
@@ -477,13 +478,13 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
         /// Идентити.
         /// </summary>
         [DataMember(Order = 1)]
-        public long Id { get; set; }
+        public long Id { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
 
         /// <summary>
         /// Номер ревизии данных.
         /// </summary>
         [DataMember(Order = 2)]
-        public long Revision { get; set; }
+        public long Revision { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
 
         /// <summary>
         /// Дата создания
@@ -519,13 +520,13 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
         /// Идентити.
         /// </summary>
         [DataMember(Order = 1)]
-        public long Id { get; set; }
+        public long Id { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
 
         /// <summary>
         /// Номер ревизии данных.
         /// </summary>
         [DataMember(Order = 2)]
-        public long Revision { get; set; }
+        public long Revision { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
 
         /// <summary>
         /// Дата создания
@@ -576,13 +577,13 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
         /// Идентити.
         /// </summary>
         [DataMember(Order = 1)]
-        public long Id { get; set; }
+        public long Id { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
 
         /// <summary>
         /// Номер ревизии данных.
         /// </summary>
         [DataMember(Order = 2)]
-        public long Revision { get; set; }
+        public long Revision { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
 
     }
 
@@ -685,7 +686,7 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
         /// <summary>
         /// Имя таблицы БД.
         /// </summary>
-        string TableName { get; }
+        string TableName { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; }
 
         /// <summary>
         /// Получение следующего значения идентити из последовательности "Sequence_ChangeTracker".
@@ -884,7 +885,7 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
         /// <summary>
         /// Имя таблицы БД.
         /// </summary>
-        string TableName { get; }
+        string TableName { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; }
 
         /// <summary>
         /// Получение следующего значения идентити из последовательности "Sequence_SystemLog".
@@ -1083,7 +1084,7 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
         /// <summary>
         /// Имя таблицы БД.
         /// </summary>
-        string TableName { get; }
+        string TableName { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; }
 
         /// <summary>
         /// Получение следующего значения идентити из последовательности "Sequence_TablePartition".
@@ -1282,7 +1283,7 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
         /// <summary>
         /// Имя таблицы БД.
         /// </summary>
-        string TableName { get; }
+        string TableName { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; }
 
         /// <summary>
         /// Получение следующего значения идентити из последовательности "Sequence_DemoObject".
@@ -1517,7 +1518,7 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
         /// <summary>
         /// Имя таблицы БД.
         /// </summary>
-        string TableName { get; }
+        string TableName { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; }
 
         /// <summary>
         /// Получение следующего значения идентити из последовательности "Sequence_DemoObjectX".

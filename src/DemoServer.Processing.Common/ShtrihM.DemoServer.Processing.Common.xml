@@ -45,24 +45,9 @@
             Создатель партиций БД.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownCommonInfrastructureMonitors.LocksCreateDemoObjectX">
-            <summary>
-            Пул лок-объектов сценария создания объекта 'Объект X'.
-            </summary>
-        </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownCommonInfrastructureMonitors.LocksUpdateDemoObject">
-            <summary>
-            Пул лок-объектов сценария обновления объекта 'Объект'.
-            </summary>
-        </member>
         <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownCommonInfrastructureMonitors.MapperDemoObject">
             <summary>
             Маппер данных состояния доменного объекта 'Объект' в БД.
-            </summary>
-        </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownCommonInfrastructureMonitors.LocksUpdateDemoObjectX">
-            <summary>
-            Пул лок-объектов сценария обновления объекта 'Объект X'.
             </summary>
         </member>
         <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownCommonInfrastructureMonitors.MapperDemoObjectX">
@@ -212,6 +197,16 @@
         <member name="T:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjectFields.DemoObjectX">
             <summary>
             Объект X.
+            </summary>
+        </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjectFields.DemoObjectX.AlternativeKey">
+            <summary>
+            Альтернативный ключ объекта DemoObjectX.
+            </summary>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjectFields.DemoObjectX.AlternativeKey.#ctor(System.Guid,System.String)">
+            <summary>
+            Альтернативный ключ объекта DemoObjectX.
             </summary>
         </member>
         <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjectFields.DemoObjectX.CreateDate">
