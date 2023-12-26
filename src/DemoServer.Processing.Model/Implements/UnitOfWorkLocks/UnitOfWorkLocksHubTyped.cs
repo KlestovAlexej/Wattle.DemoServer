@@ -14,26 +14,28 @@ public sealed class UnitOfWorkLocksHubTyped : IDisposable
 {
     #region Public Class UnitOfWorkLocksHub
 
-    public sealed class UnitOfWorkLocksHub : AbstractUnitOfWorkLocksHub<ICustomEntryPoint>
+    public sealed class UnitOfWorkLocksHub : BaseUnitOfWorkLocksHub
     {
+        private readonly IUnitOfWorkProvider m_unitOfWorkProvider;
+
         public UnitOfWorkLocksHub(IEntryPointContext entryPointContext)
             : base(
                 entryPointContext,
 #if DEBUG
                 true,
 #else
-            false,
+                false,
 #endif
                 ((ICustomEntryPoint)entryPointContext.EntryPoint).SystemSettings.LocksPoolSettings.Value.Update.Value,
                 ((ICustomEntryPoint)entryPointContext.EntryPoint).SystemSettings.LocksPoolSettings.Value.AlternativeKey.Value,
-                typeof(WellknownDomainObjectFields).GetNestedTypes(BindingFlags.Public)
-            )
+                typeof(WellknownDomainObjectFields).GetNestedTypes(BindingFlags.Public))
         {
+            m_unitOfWorkProvider = entryPointContext.EntryPoint.UnitOfWorkProvider;
         }
 
         protected override IDomainBehaviourWithСonfirmation CreateDomainBehaviourWithСonfirmation()
         {
-            var result = EntryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithСonfirmation(false);
+            var result = ((UnitOfWork)m_unitOfWorkProvider.Instance).CreateDomainBehaviourWithСonfirmation(false);
 
             return result;
         }
@@ -42,9 +44,11 @@ public sealed class UnitOfWorkLocksHubTyped : IDisposable
     #endregion
 
     private readonly Dictionary<Guid, IDomainObjectUnitOfWorkLockService> m_locks;
+    private readonly IUnitOfWorkProvider m_unitOfWorkProvider;
 
     public UnitOfWorkLocksHubTyped(IEntryPointContext entryPointContext)
     {
+        m_unitOfWorkProvider = entryPointContext.EntryPoint.UnitOfWorkProvider;
         Hub = new UnitOfWorkLocksHub(entryPointContext);
         Actions = new UnitOfWorkLocksActions(Hub);
         m_locks = new Dictionary<Guid, IDomainObjectUnitOfWorkLockService>();
@@ -77,14 +81,16 @@ public sealed class UnitOfWorkLocksHubTyped : IDisposable
 
     private void DoCreate(Guid lockId, Guid typeId)
     {
-        var unitOfWorkProvider = Hub.EntryPoint.UnitOfWorkProvider;
         var result =
             new DomainObjectUnitOfWorkLockServiceDefault(
                 Hub,
                 lockId,
                 typeId,
-                () => ((UnitOfWork)unitOfWorkProvider.Instance).CurrentLocksGetOrCreate);
+                () => ((UnitOfWork)m_unitOfWorkProvider.Instance).CurrentLocksGetOrCreate);
 
-        m_locks.Add(typeId, result);
+        if (false == m_locks.TryAdd(typeId, result))
+        {
+            throw new InternalException($"Уже существуют сервисы лок-объекта для доменного объекта с типом '{typeId}'.");
+        }
     }
 }

@@ -7,11 +7,11 @@ namespace ShtrihM.DemoServer.Processing.Model.Implements.UnitOfWorkLocks;
 public sealed class UnitOfWorkLocksActions
 {
     // ReSharper disable once ConvertToPrimaryConstructor
-    public UnitOfWorkLocksActions(IUnitOfWorkLocksHub unitOfWorkLocksHub)
+    public UnitOfWorkLocksActions(UnitOfWorkLocksHubTyped.UnitOfWorkLocksHub hub)
     {
         CreateDemoObjectX =
             new DomainObjectUnitOfWorkLockAsSimple<WellknownDomainObjectFields.DemoObjectX.AlternativeKey>(
-                unitOfWorkLocksHub,
+                hub,
                 new Guid(WellknownDomainObjectFields.DemoObjectX.LockIdAlternativeKey));
     }
 
