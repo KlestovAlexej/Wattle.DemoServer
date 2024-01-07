@@ -199,16 +199,6 @@
             Объект X.
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjectFields.DemoObjectX.AlternativeKey">
-            <summary>
-            Альтернативный ключ объекта DemoObjectX.
-            </summary>
-        </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjectFields.DemoObjectX.AlternativeKey.#ctor(System.Guid,System.String)">
-            <summary>
-            Альтернативный ключ объекта DemoObjectX.
-            </summary>
-        </member>
         <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjectFields.DemoObjectX.CreateDate">
             <summary>
             Дата создания.

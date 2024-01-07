@@ -89,7 +89,18 @@ public sealed class SystemSettings
             new SettingValue<DomainObjectRegistersSettings>(
                 default!,
                 "Настройки реестров доменных объектов");
+
+        UpdateKeyExpirationTimeout =
+            new(
+                default,
+                "Интервал действия ключа контроля изменений");
     }
+
+    /// <summary>
+    /// Интервал действия ключа контроля изменений.
+    /// </summary>
+    [Description("Интервал действия ключа контроля изменений")]
+    public SettingValue<TimeSpan> UpdateKeyExpirationTimeout { get; set; }
 
     /// <summary>
     /// Настройки реестров доменных объектов.
@@ -272,6 +283,11 @@ public sealed class SystemSettings
                 DomainObjectRegistersSettings =
                 {
                     Value = Implements.SystemSettings.DomainObjectRegistersSettings.GetDefault(),
+                },
+
+                UpdateKeyExpirationTimeout =
+                {
+                    Value = TimeSpan.FromMinutes(5),
                 },
             };
 

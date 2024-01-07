@@ -349,9 +349,9 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
         using (var unitOfWork = (UnitOfWork)m_entryPoint.CreateUnitOfWork())
         {
             var register = unitOfWork.Registers.GetRegister<IDomainObjectRegisterDemoObjectX>();
-            var instance1 = register.LockRegister(id1).Find<IDomainObjectDemoObjectX>(id1);
-            var instance2 = register.LockRegister(id2).Find<IDomainObjectDemoObjectX>(id2);
-            var instance3 = register.LockRegister(id3).Find<IDomainObjectDemoObjectX>(id3);
+            var instance1 = m_entryPoint.Find<IDomainObjectDemoObjectX>(id1, lockUpdateRegister: true);
+            var instance2 = m_entryPoint.Find<IDomainObjectDemoObjectX>(id2, lockUpdateRegister: true);
+            var instance3 = m_entryPoint.Find<IDomainObjectDemoObjectX>(id3, lockUpdateRegister: true);
 
             var instances = register.GetCollectionByNameSize(1).ToList();
             Assert.AreEqual(0, instances.Count);
@@ -404,9 +404,9 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
             // Изменяем доменные объекты
             // Теперь поиск по БД их находит
             // Но на уровне прокси-реестра проверка определяет что объекты в памяти не соответствуют критериям выборки
-            instance1.Name = newName1;
-            instance2.Name = newName2;
-            instance3.Name = newName3;
+            instance1!.Name = newName1;
+            instance2!.Name = newName2;
+            instance3!.Name = newName3;
 
             instances = register.GetCollectionByNameSize(1).ToList();
             Assert.AreEqual(0, instances.Count);
@@ -830,14 +830,9 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
 
         using (var unitOfWork = m_entryPoint.CreateUnitOfWork())
         {
-            var register = unitOfWork.Registers.GetRegister<IDomainObjectRegisterDemoObjectX>();
-
-            var instance = 
-                register
-                    .LockRegister(id) // Тут создаётся стратегия IUnitOfWorkCommitVerifying по умолчанию для проверки успешности завершения IUnitOfWork.
-                    .Find<IDomainObjectDemoObjectX>(id);
+            var instance = m_entryPoint.Find<IDomainObjectDemoObjectX>(id, lockUpdateRegister: true);
             Assert.IsNotNull(instance);
-            Assert.AreEqual("Name", instance.Name);
+            Assert.AreEqual("Name", instance!.Name);
 
             instance.Enabled = false;
 
@@ -852,10 +847,9 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
         {
             using var unitOfWork = m_entryPoint.CreateUnitOfWork();
 
-            var register = unitOfWork.Registers.GetRegister<IDomainObjectRegisterDemoObjectX>();
-            var instance = register.LockRegister(id).Find<IDomainObjectDemoObjectX>(id);
+            var instance = m_entryPoint.Find<IDomainObjectDemoObjectX>(id, lockUpdateRegister: true);
             Assert.IsNotNull(instance);
-            Assert.AreEqual(true, instance.Enabled);
+            Assert.AreEqual(true, instance!.Enabled);
             Assert.AreEqual("Name", instance.Name);
 
             instance.Enabled = false;
@@ -864,9 +858,9 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
             Assert.AreEqual(false, instance.Enabled);
             Assert.AreEqual("Name2", instance.Name);
 
-            instance = register.LockRegister(id).Find<IDomainObjectDemoObjectX>(id);
+            instance = m_entryPoint.Find<IDomainObjectDemoObjectX>(id, lockUpdateRegister: true);
             Assert.IsNotNull(instance);
-            Assert.AreEqual(false, instance.Enabled);
+            Assert.AreEqual(false, instance!.Enabled);
             Assert.AreEqual("Name2", instance.Name);
 
             unitOfWork.Commit();

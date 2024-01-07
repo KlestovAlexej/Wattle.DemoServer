@@ -226,28 +226,12 @@ public static class WellknownDomainObjectFields
     [SchemaMapperAlternateKey(NameAlternateKey, "Уникальность по 'Альтернативный ключ - часть №1 и №2'")]
     [SchemaMapperCollection(NameCollection, "Группировка по 'Номер группы'")]
     [DomainObjectLockUpdate("11EDFD22-32BF-4D00-847D-4023118B11DF")]
-    [DomainObjectLockAlternativeKey(typeof(AlternativeKey), LockIdAlternativeKey)]
     public static class DemoObjectX
     {
-        public const string LockIdAlternativeKey = "05689F86-8EC1-4A9A-A81C-C28397047077";
         public const string NameAlternateKey = "Key";
         public const string NameCollection = nameof(Group);
-        private const int IndexAlternateKeyValue1 = 0;
-        private const int IndexAlternateKeyValue2 = 1;
-
-        #region AlternativeKey - альтернативный ключ объекта DemoObjectX
-
-        /// <summary>
-        /// Альтернативный ключ объекта DemoObjectX.
-        /// </summary>
-        public readonly record struct AlternativeKey(
-            // ReSharper disable once NotAccessedPositionalProperty.Global
-            [property: AlternativeKeyIndex(IndexAlternateKeyValue1)] Guid Key1,
-            // ReSharper disable once NotAccessedPositionalProperty.Global
-            [property: AlternativeKeyIndex(IndexAlternateKeyValue2)] string Key2);
-
-        #endregion
-
+        public const int IndexAlternateKeyValue1 = 0;
+        public const int IndexAlternateKeyValue2 = 1;
 
         /// <summary>
         /// Дата создания.

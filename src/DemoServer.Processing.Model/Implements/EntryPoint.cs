@@ -639,12 +639,11 @@ public sealed class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
                 loggerFactory.CreateLogger<UnitOfWorkContext>(),
                 false,
                 result.m_unitOfWorkProvider,
-                serviceProvider.GetService<IDbContextFactory<ProcessingDbContext>>(),
+                serviceProvider.GetService<IDbContextFactory<ProcessingDbContext>>()!,
                 serviceProvider,
                 result.UnitOfWorkLocks.Hub,
                 result.m_queueEmergencyDomainBehaviour,
                 result.CommitVerifyingFactory,
-                () => new UnitOfWorkLocks.UnitOfWorkLocks(result.WorkflowExceptionPolicy, result.UnitOfWorkLocks.Hub),
                 () => DomainObjectChangeTracker.Template.Instance);
 
         return (result);

@@ -2,7 +2,6 @@
 using ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update;
 using ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObject;
 using ShtrihM.DemoServer.Processing.Model.Interfaces;
-using ShtrihM.Wattle3.DomainObjects.Interfaces;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -24,8 +23,9 @@ public sealed class EntryPointFacade : IEntryPointFacade
     {
         var domainObject =
             await m_entryPoint
-                .GetRegister<IDomainObjectDemoObject>()
-                .FindAsync<IDomainObjectDemoObject>(id, cancellationToken)
+                .FindAsync<IDomainObjectDemoObject>(
+                    id,
+                    cancellationToken: cancellationToken)
                 .ConfigureAwait(false);
         if (domainObject == null)
         {
@@ -45,9 +45,10 @@ public sealed class EntryPointFacade : IEntryPointFacade
     {
         var domainObject =
             await m_entryPoint
-                .LockRegister<IDomainObjectDemoObject>(parameters.Id)
-                .GetRegister<IDomainObjectDemoObject>()
-                .FindAsync<IDomainObjectDemoObject>(parameters.Id, cancellationToken)
+                .FindAsync<IDomainObjectDemoObject>(
+                    parameters.Id,
+                    lockUpdateRegister: true,
+                    cancellationToken: cancellationToken)
                 .ConfigureAwait(false);
         if (domainObject == null)
         {

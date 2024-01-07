@@ -12,42 +12,76 @@ namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.Common;
 /// <summary>
 /// Базовая реализация доменного объекта с поддержкой изменения.
 /// </summary>
-public abstract class BaseDomainObjectMutable<TDomainObject> : BaseDomainObject<TDomainObject>
+public abstract class BaseDomainObjectMutable<TDomainObject> : BaseDomainObjectWithVersion<TDomainObject>, IDomainObjectVersion
     where TDomainObject : BaseDomainObject<TDomainObject>
 {
     private bool m_isChanged;
-
-    [DomainObjectFieldValue(DomainObjectDataTarget.Update, DomainObjectDataTarget.Delete, DomainObjectDataTarget.Version, DtoFiledName = nameof(IMapperDtoVersion.Revision))]
-    // ReSharper disable once NotAccessedField.Local
-#pragma warning disable IDE0052
-    private readonly long m_revision;
-#pragma warning restore IDE0052
+    private readonly bool m_defineCommitVerifying;
 
     protected readonly ICustomEntryPoint m_entryPoint;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     protected BaseDomainObjectMutable(
-        ICustomEntryPoint entryPoint, 
-        IMapperDtoVersion data)
-        : base(data.Id, false)
+        ICustomEntryPoint entryPoint,
+        IMapperDtoVersion data,
+        bool defineCommitVerifying = true)
+        : base(data)
     {
         m_entryPoint = entryPoint;
-        m_revision = data.Revision;
+        m_defineCommitVerifying = defineCommitVerifying;
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     protected BaseDomainObjectMutable(
-        ICustomEntryPoint entryPoint, 
+        ICustomEntryPoint entryPoint,
         long identity,
-        bool defineCommitVerifying = false)
-        : base(identity, true)
+        bool defineCommitVerifying = true)
+        : base(identity)
     {
         m_entryPoint = entryPoint;
-        m_revision = Wattle3.Mappers.Constants.StartRevision;
+        m_defineCommitVerifying = false;
 
         if (defineCommitVerifying)
         {
-            DefineCommitVerifying();
+            var unitOfWork = m_entryPoint.UnitOfWorkProvider.Instance;
+
+            if (unitOfWork.IsDefinedCommitVerifying)
+            {
+                return;
+            }
+
+            // Если маппер доменного объекта поддерживает удаление то создание стратегии IUnitOfWorkCommitVerifying по Identity не безопасно.
+            // Будет использоватся стратегия IUnitOfWorkCommitVerifying по умолчанию.
+            // ReSharper disable once VirtualMemberCallInConstructor
+            if (m_entryPoint.CommitVerifyingFactory.TryCreate(TypeId, Identity, out var commitVerifying))
+            {
+                unitOfWork.CommitVerifying = commitVerifying!;
+
+                return;
+            }
+
+            // Вызов CommitVerifying создаёт стратегию IUnitOfWorkCommitVerifying по умолчанию.
+            if (null == unitOfWork.CommitVerifying)
+            {
+                throw new InvalidOperationException("Это невозможно!");
+            }
+        }
+    }
+
+    /// <summary>
+    /// Версия данных (инкрементальное значение от 1), чем больше значение тем актуальнее данные.
+    /// </summary>
+    public long Version
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get
+        {
+            if (IsGhost || (false == m_isChanged))
+            {
+                return m_revision;
+            }
+
+            return (m_revision + 1);
         }
     }
 
@@ -66,33 +100,35 @@ public abstract class BaseDomainObjectMutable<TDomainObject> : BaseDomainObject<
 
         m_entryPoint.UnitOfWorkProvider.Instance.AddUpdate(this);
 
+        if (m_defineCommitVerifying)
+        {
+            var unitOfWork = m_entryPoint.CurrentUnitOfWork;
+            if (unitOfWork.IsDefinedCommitVerifying)
+            {
+                return ValueTask.CompletedTask;
+            }
+
+            var commitVerifying = DoCreateUnitOfWorkCommitVerifying();
+            if (commitVerifying != null)
+            {
+                unitOfWork.CommitVerifying = commitVerifying;
+            }
+        }
+
         return ValueTask.CompletedTask;
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    // ReSharper disable once MemberCanBePrivate.Global
-    protected void DefineCommitVerifying()
+    /// <summary>
+    /// Создание специализированной стратегии <see cref="IUnitOfWorkCommitVerifying"/> проверки успешности завершения <see cref="IUnitOfWork" />.
+    /// </summary>
+    protected virtual IUnitOfWorkCommitVerifying? DoCreateUnitOfWorkCommitVerifying()
     {
-        var unitOfWork = m_entryPoint.UnitOfWorkProvider.Instance;
-
-        if (unitOfWork.IsDefinedCommitVerifying)
-        {
-            return;
-        }
-
         // Если маппер доменного объекта поддерживает удаление то создание стратегии IUnitOfWorkCommitVerifying по Identity не безопасно.
-        // Будет использоватся стратегия IUnitOfWorkCommitVerifying по умолчанию.
-        if (m_entryPoint.CommitVerifyingFactory.TryCreate(TypeId, Identity, out var commitVerifying))
+        if (m_entryPoint.CommitVerifyingFactory.TryCreate(TypeId, Identity, out var result))
         {
-            unitOfWork.CommitVerifying = commitVerifying!;
-
-            return;
+            return (result);
         }
 
-        // Вызов CommitVerifying создаёт стратегию IUnitOfWorkCommitVerifying по умолчанию.
-        if (null == unitOfWork.CommitVerifying)
-        {
-            throw new InvalidOperationException("Это невозможно!");
-        }
+        return (null);
     }
 }

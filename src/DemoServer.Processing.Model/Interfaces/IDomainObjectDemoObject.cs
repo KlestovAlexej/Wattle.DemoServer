@@ -14,7 +14,7 @@ namespace ShtrihM.DemoServer.Processing.Model.Interfaces;
 /// </summary>
 [DomainObjectInterface(WellknownDomainObjects.Text.DemoObject)]
 [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
-public interface IDomainObjectDemoObject : IDomainObject
+public interface IDomainObjectDemoObject : IDomainObject, IDomainObjectVersion
 {
     ValueTask UpdateAsync(DemoObjectUpdate parameters, CancellationToken cancellationToken = default);
     DemoObjectInfo GetInfo();

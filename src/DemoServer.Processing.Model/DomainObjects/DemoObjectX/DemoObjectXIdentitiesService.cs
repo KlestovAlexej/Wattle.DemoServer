@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using ShtrihM.DemoServer.Processing.Common;
 using ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
 using ShtrihM.DemoServer.Processing.Model.Interfaces;
 using ShtrihM.Wattle3.DomainObjects.IdentitiesServices;
@@ -8,7 +7,7 @@ using ShtrihM.Wattle3.DomainObjects.Interfaces;
 
 namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
 
-public sealed class DemoObjectXIdentitiesService : BaseIdentitiesWithContextWithAlternativeKeyService<WellknownDomainObjectFields.DemoObjectX.AlternativeKey, long /* Group */, DemoObjectXIdentitiesService, Demoobjectx, ProcessingDbContext>
+public sealed class DemoObjectXIdentitiesService : BaseIdentitiesWithContextWithAlternativeKeyService<DomainObjectDemoObjectX.AlternativeKey, long /* Group */, DemoObjectXIdentitiesService, Demoobjectx, ProcessingDbContext>
 {
     private DemoObjectXIdentitiesService(IEntryPointContext entryPointContext)
         : base(entryPointContext)
@@ -25,7 +24,7 @@ public sealed class DemoObjectXIdentitiesService : BaseIdentitiesWithContextWith
         return result;
     }
 
-    protected override IEnumerable<(long Identity, WellknownDomainObjectFields.DemoObjectX.AlternativeKey Key, long Context)> DoGetIdentities(IQueryable<Demoobjectx> entities)
+    protected override IEnumerable<(long Identity, DomainObjectDemoObjectX.AlternativeKey Key, long Context)> DoGetIdentities(IQueryable<Demoobjectx> entities)
     {
         var identities =
             entities.Select(
@@ -39,7 +38,7 @@ public sealed class DemoObjectXIdentitiesService : BaseIdentitiesWithContextWith
 
         foreach (var identity in identities)
         {
-            yield return (identity.Id, new WellknownDomainObjectFields.DemoObjectX.AlternativeKey(identity.Key1, identity.Key2), identity.Group);
+            yield return (identity.Id, new DomainObjectDemoObjectX.AlternativeKey(identity.Key1, identity.Key2), identity.Group);
         }
     }
 }

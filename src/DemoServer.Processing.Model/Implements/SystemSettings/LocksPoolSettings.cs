@@ -24,7 +24,7 @@ public sealed class LocksPoolSettings
                 default,
                 "Интервал ожидания получение объекта из пула лок-объектов сценария обновления объекта");
 
-        AlternativeKey =
+        Any =
             new SettingValue<TimeSpan?>(
                 default,
                 "Интервал ожидания получение объекта из пула лок-объектов сценария действия по альтернативному ключу");
@@ -37,10 +37,10 @@ public sealed class LocksPoolSettings
     public SettingValue<TimeSpan?> Update { get; set; }
 
     /// <summary>
-    /// Интервал ожидания получение объекта из пула лок-объектов сценария действия по альтернативному ключу.
+    /// Интервал ожидания получение объекта из пула лок-объектов произвольного сценария.
     /// </summary>
     [JsonRequired]
-    public SettingValue<TimeSpan?> AlternativeKey { get; set; }
+    public SettingValue<TimeSpan?> Any { get; set; }
 
     /// <summary>
     /// Настройки по умолчанию.
@@ -49,11 +49,11 @@ public sealed class LocksPoolSettings
     {
         return new LocksPoolSettings
         {
-            Update =
+            Any =
             {
                 Value = DefaultTimeout
             },
-            AlternativeKey =
+            Update =
             {
                 Value = DefaultTimeout
             },

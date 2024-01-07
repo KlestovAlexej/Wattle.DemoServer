@@ -3,7 +3,6 @@ using ShtrihM.Wattle3.DomainObjects.DomainObjectDataMappers;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectIntergrators;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectsRegisters;
 using ShtrihM.DemoServer.Processing.Generated.Interface;
-using ShtrihM.DemoServer.Processing.Model.Implements;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectActivators;
 using Unity;
 
@@ -23,7 +22,7 @@ public sealed class DomainObjectIntergratorDemoObject : BaseDomainObjectIntergra
                     identityGroupId: entryPoint.PartitionsDay);
         container.Resolve<DomainObjectDataMappers>().AddMapper(dataMapper);
 
-        var lockUpdate = entryPoint.GetLock<IDomainObjectDemoObject>();
+        var lockUpdate = entryPoint.UnitOfWorkLocks.GetLockService<IDomainObjectDemoObject>();
         container.Resolve<DomainObjectRegisters>().AddRegister(
             new DomainObjectRegisterStateless(
                 entryPoint.Context,

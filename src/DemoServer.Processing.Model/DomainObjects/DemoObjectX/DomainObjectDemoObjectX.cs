@@ -15,6 +15,7 @@ using ShtrihM.Wattle3.DomainObjects.DomainObjectActivators;
 using ShtrihM.DemoServer.Processing.Model.DomainObjects.Common;
 using ShtrihM.Wattle3.DomainObjects.UnitOfWorkLocks;
 using ShtrihM.Wattle3.Utils;
+using ShtrihM.Wattle3.Common.DomainObjects;
 
 namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
 
@@ -23,6 +24,21 @@ namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
 public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutableWithUpdateLock<DomainObjectDemoObjectX>, IDomainObjectDemoObjectX,
     IDomainObjectActivatorPostCreate
 {
+    #region AlternativeKey - альтернативный ключ объекта DemoObjectX
+
+    /// <summary>
+    /// Альтернативный ключ объекта DemoObjectX по : <see cref="Key1"/>, <see cref="Key2"/>.
+    /// </summary>
+    /// <param name="Key1">Альтернативный ключ - часть №1.</param>
+    /// <param name="Key2">Альтернативный ключ - часть №2/</param>
+    public readonly record struct AlternativeKey(
+        // ReSharper disable once NotAccessedPositionalProperty.Global
+        [property: AlternativeKeyIndex(WellknownDomainObjectFields.DemoObjectX.IndexAlternateKeyValue1)] Guid Key1,
+        // ReSharper disable once NotAccessedPositionalProperty.Global
+        [property: AlternativeKeyIndex(WellknownDomainObjectFields.DemoObjectX.IndexAlternateKeyValue2)] string Key2);
+
+    #endregion
+
     #region Template - шаблон создания объекта DemoObjectX
 
     /// <summary>
@@ -53,9 +69,9 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutableWithUpdateL
 
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public WellknownDomainObjectFields.DemoObjectX.AlternativeKey GetKey()
+        public AlternativeKey GetKey()
         {
-            var result = new WellknownDomainObjectFields.DemoObjectX.AlternativeKey(Key1, Key2);
+            var result = new AlternativeKey(Key1, Key2);
 
             return result;
         }
@@ -198,9 +214,9 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutableWithUpdateL
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public WellknownDomainObjectFields.DemoObjectX.AlternativeKey GetKey()
+    public AlternativeKey GetKey()
     {
-        var result = new WellknownDomainObjectFields.DemoObjectX.AlternativeKey(Key1, Key2);
+        var result = new AlternativeKey(Key1, Key2);
 
         return result;
     }
