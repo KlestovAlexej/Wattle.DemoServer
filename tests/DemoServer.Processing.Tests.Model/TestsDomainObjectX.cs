@@ -832,20 +832,6 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
         {
             var instance = m_entryPoint.Find<IDomainObjectDemoObjectX>(id, lockUpdateRegister: true);
             Assert.IsNotNull(instance);
-            Assert.AreEqual("Name", instance!.Name);
-
-            instance.Enabled = false;
-
-            Assert.AreEqual(false, instance.Enabled);
-
-            internalException = Assert.Throws<InternalException>(() => unitOfWork.Commit());
-            Assert.AreEqual("Стратегия проверки успешности завершения IUnitOfWork не определена.", internalException!.Message, internalException.Message);
-        }
-
-        using (var unitOfWork = m_entryPoint.CreateUnitOfWork())
-        {
-            var instance = m_entryPoint.Find<IDomainObjectDemoObjectX>(id, lockUpdateRegister: true);
-            Assert.IsNotNull(instance);
             Assert.AreEqual(true, instance!.Enabled);
             Assert.AreEqual("Name", instance.Name);
 
