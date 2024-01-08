@@ -337,12 +337,6 @@
             Имя продукта.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Model.Implements.UnitOfWork.ThrowOnDefaultCommitVerifying">
-            <summary>
-            Полезная проверка, что не используется стратегия IUnitOfWorkCommitVerifying по умолчанию.
-            Так как стратегия IUnitOfWorkCommitVerifying по умолчанию создаёт техническую запись в БД.
-            </summary>
-        </member>
         <member name="F:ShtrihM.DemoServer.Processing.Model.Implements.UnitOfWorkLocks.UnitOfWorkLocksActions.CreateDemoObjectX">
             <summary>
             Лок-объек сценария - создание объекта X.

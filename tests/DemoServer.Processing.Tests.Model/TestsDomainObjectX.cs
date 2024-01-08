@@ -842,11 +842,8 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
             Assert.AreEqual("Стратегия проверки успешности завершения IUnitOfWork не определена.", internalException!.Message, internalException.Message);
         }
 
-        UnitOfWork.ThrowOnDefaultCommitVerifying = false;
-        try
+        using (var unitOfWork = m_entryPoint.CreateUnitOfWork())
         {
-            using var unitOfWork = m_entryPoint.CreateUnitOfWork();
-
             var instance = m_entryPoint.Find<IDomainObjectDemoObjectX>(id, lockUpdateRegister: true);
             Assert.IsNotNull(instance);
             Assert.AreEqual(true, instance!.Enabled);
@@ -864,10 +861,6 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
             Assert.AreEqual("Name2", instance.Name);
 
             unitOfWork.Commit();
-        }
-        finally
-        {
-            UnitOfWork.ThrowOnDefaultCommitVerifying = true;
         }
 
         using (var unitOfWork = m_entryPoint.CreateUnitOfWork())
