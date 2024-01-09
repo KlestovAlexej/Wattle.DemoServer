@@ -486,6 +486,16 @@ namespace ShtrihM.DemoServer.Processing.Generated.Tests
             m_mapper = (IMapperChangeTracker) m_mappers.GetMapper(WellknownMappers.ChangeTracker);
             m_tableName = "changetracker";
             DoSetUp();
+
+            {
+                var partitions = ((IPartitionsMapper)m_mapper).Partitions;
+                using var session = m_mappers.OpenSession();
+                if (false == partitions.GetHasDefaultPartition(session))
+                {
+                    partitions.CreatedDefaultPartition(session);
+                    session.Commit();
+                }
+            }
         }
 
         [TearDown]
@@ -727,6 +737,16 @@ namespace ShtrihM.DemoServer.Processing.Generated.Tests
             m_mapper = (IMapperSystemLog) m_mappers.GetMapper(WellknownMappers.SystemLog);
             m_tableName = "systemlog";
             DoSetUp();
+
+            {
+                var partitions = ((IPartitionsMapper)m_mapper).Partitions;
+                using var session = m_mappers.OpenSession();
+                if (false == partitions.GetHasDefaultPartition(session))
+                {
+                    partitions.CreatedDefaultPartition(session);
+                    session.Commit();
+                }
+            }
         }
 
         [TearDown]
@@ -1044,6 +1064,16 @@ namespace ShtrihM.DemoServer.Processing.Generated.Tests
             m_mapper = (IMapperTablePartition) m_mappers.GetMapper(WellknownMappers.TablePartition);
             m_tableName = "tablepartition";
             DoSetUp();
+
+            {
+                var partitions = ((IPartitionsMapper)m_mapper).Partitions;
+                using var session = m_mappers.OpenSession();
+                if (false == partitions.GetHasDefaultPartition(session))
+                {
+                    partitions.CreatedDefaultPartition(session);
+                    session.Commit();
+                }
+            }
         }
 
         [TearDown]
@@ -1405,6 +1435,16 @@ namespace ShtrihM.DemoServer.Processing.Generated.Tests
             m_mapper = (IMapperDemoObject) m_mappers.GetMapper(WellknownMappers.DemoObject);
             m_tableName = "demoobject";
             DoSetUp();
+
+            {
+                var partitions = ((IPartitionsMapper)m_mapper).Partitions;
+                using var session = m_mappers.OpenSession();
+                if (false == partitions.GetHasDefaultPartition(session))
+                {
+                    partitions.CreatedDefaultPartition(session);
+                    session.Commit();
+                }
+            }
         }
 
         [TearDown]

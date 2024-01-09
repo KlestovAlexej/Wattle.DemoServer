@@ -23,11 +23,11 @@
 		<PackageReference Include="Serilog.AspNetCore" Version="8.0.0" />
 		<PackageReference Include="Serilog.Enrichers.Thread" Version="3.2.0-dev-00752" />
 		<PackageReference Include="Serilog.Sinks.Logz.Io" Version="7.2.0" />
-		<PackageReference Include="ShtrihM.Wattle3.Infrastructures.Rest.Controllers" Version="3.9.0.3297" />
-		<PackageReference Include="ShtrihM.Wattle3.OpenTelemetry" Version="3.9.0.3297" />
-		<PackageReference Include="ShtrihM.Wattle3.Swashbuckle.AspNetCore" Version="3.9.0.3297" />
-		<PackageReference Include="ShtrihM.Wattle3.Testing" Version="3.9.0.3297" />
-		<PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="7.0.12" />
+		<PackageReference Include="ShtrihM.Wattle3.Infrastructures.Rest.Controllers" Version="3.9.0.3300" />
+		<PackageReference Include="ShtrihM.Wattle3.OpenTelemetry" Version="3.9.0.3300" />
+		<PackageReference Include="ShtrihM.Wattle3.Swashbuckle.AspNetCore" Version="3.9.0.3300" />
+		<PackageReference Include="ShtrihM.Wattle3.Testing" Version="3.9.0.3300" />
+		<PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="8.0.0" />
 		<PackageReference Include="Swashbuckle.AspNetCore.ReDoc" Version="6.5.0" />
 	</ItemGroup>
 
