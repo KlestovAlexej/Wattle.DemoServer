@@ -159,7 +159,7 @@ public sealed class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithCo
                         _ =>
                             dbContext.Demoobjectx
                                 .Where(dtoSelector)
-                                .Select(entity => entity.ToMapperDto())
+                                .Select(entity => entity.ToMapperDto(EntryPoint.AutoMapper))
                                 .AsAsyncEnumerable(),
                         (domainObjects, _) =>
                             (domainObjectSelector != null)
@@ -197,7 +197,7 @@ public sealed class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithCo
                         () =>
                             dbContext.Demoobjectx
                                 .Where(dtoSelector)
-                                .Select(entity => entity.ToMapperDto()),
+                                .Select(entity => entity.ToMapperDto(EntryPoint.AutoMapper)),
                         (domainObjectSelector != null)
                             ? domainObjects =>
                                 domainObjects.Cast<IDomainObjectDemoObjectX>()
@@ -229,7 +229,7 @@ public sealed class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithCo
                 Find(() =>
                         dbContext.Demoobjectx
                             .FirstOrDefault(dtoSelector)
-                            ?.ToMapperDto(),
+                            ?.ToMapperDto(EntryPoint.AutoMapper),
                     (domainObjectSelector != null)
                         ? domainObjects =>
                             domainObjects.Cast<IDomainObjectDemoObjectX>()
@@ -258,7 +258,7 @@ public sealed class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithCo
                             (await dbContext.Demoobjectx
                                 .FirstOrDefaultAsync(dtoSelector, cancellationToken: ct)
                                 .ConfigureAwait(false))
-                            ?.ToMapperDto(),
+                            ?.ToMapperDto(EntryPoint.AutoMapper),
                         (domainObjectSelector != null)
                             ? async (domainObjects, ct) =>
                                 await domainObjects.Cast<IDomainObjectDemoObjectX>()

@@ -253,6 +253,7 @@ public sealed class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
     public IEntryPointContext Context { get; }
     public IServiceProvider ServiceProvider { get; private set; }
     public IUnitOfWorkCommitVerifyingFactory CommitVerifyingFactory { get; private set; }
+    public AutoMapper.IMapper AutoMapper { get; private set; }
 
     public MetaServerDescription ServerDescription
     {
@@ -552,6 +553,7 @@ public sealed class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
 
         result.PartitionsDay = new PartitionsDay(timeService, new DateTime(2023, 8, 1));
         result.InfrastructureMonitorRegisters = new InfrastructureMonitorRegisters();
+        result.AutoMapper = serviceProvider.GetRequiredService<AutoMapper.IMapper>();
 
         {
             var partitionsSponsorTrigger =

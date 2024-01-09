@@ -77,7 +77,7 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
                         dbContext.Demoobjectx
                             .SingleOrDefault(
                                 entity => entity.Id == id1)
-                            ?.ToMapperDto());
+                            ?.ToMapperDto(m_entryPoint.AutoMapper));
                 Assert.IsNotNull(instance);
                 Assert.AreEqual(id1, instance.Identity);
 
@@ -86,7 +86,7 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
                             (await dbContext.Demoobjectx
                                 .SingleOrDefaultAsync(
                                     entity => entity.Id == id1, ct))
-                            ?.ToMapperDto())
+                            ?.ToMapperDto(m_entryPoint.AutoMapper))
                         .SafeGetResult();
                 Assert.IsNotNull(instance);
                 Assert.AreEqual(id1, instance.Identity);
@@ -96,7 +96,7 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
                             (await dbContext.Demoobjectx
                                 .SingleOrDefaultAsync(
                                     entity => entity.Id == -1, ct))
-                            ?.ToMapperDto())
+                            ?.ToMapperDto(m_entryPoint.AutoMapper))
                         .SafeGetResult();
                 Assert.IsNull(instance);
 
@@ -104,7 +104,7 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
                     register.GetObjectEnumerator(() =>
                             dbContext.Demoobjectx
                                 .Where(entity => entity.Id == id1)
-                                .Select(entity => entity.ToMapperDto()))
+                                .Select(entity => entity.ToMapperDto(m_entryPoint.AutoMapper)))
                         .ToList();
                 Assert.IsNotNull(instances);
                 Assert.AreEqual(1, instances.Count);
@@ -130,7 +130,7 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
                                                .WithCancellation(ct)
                                                .ConfigureAwait(false))
                             {
-                                yield return entity.ToMapperDto();
+                                yield return entity.ToMapperDto(m_entryPoint.AutoMapper);
                             }
                         }
                     }
@@ -154,7 +154,7 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
                                                .WithCancellation(ct)
                                                .ConfigureAwait(false))
                             {
-                                yield return entity.ToMapperDto();
+                                yield return entity.ToMapperDto(m_entryPoint.AutoMapper);
                             }
                         }
                     }
@@ -176,7 +176,7 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
                                                .WithCancellation(ct)
                                                .ConfigureAwait(false))
                             {
-                                yield return entity.ToMapperDto();
+                                yield return entity.ToMapperDto(m_entryPoint.AutoMapper);
                             }
                         }
                     }
@@ -190,7 +190,7 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
                         dbContext.Demoobjectx
                             .SingleOrDefault(
                                 entity => entity.Id == id1)
-                            ?.ToMapperDto());
+                            ?.ToMapperDto(m_entryPoint.AutoMapper));
                 Assert.IsNotNull(instance);
                 Assert.AreEqual(id1, instance.Identity);
 
@@ -199,7 +199,7 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
                             (await dbContext.Demoobjectx
                                 .SingleOrDefaultAsync(
                                     entity => entity.Id == id1, ct))
-                            ?.ToMapperDto())
+                            ?.ToMapperDto(m_entryPoint.AutoMapper))
                         .SafeGetResult();
                 Assert.IsNotNull(instance);
                 Assert.AreEqual(id1, instance.Identity);
@@ -209,7 +209,7 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
                             (await dbContext.Demoobjectx
                                 .SingleOrDefaultAsync(
                                     entity => entity.Id == -1, ct))
-                            ?.ToMapperDto())
+                            ?.ToMapperDto(m_entryPoint.AutoMapper))
                         .SafeGetResult();
                 Assert.IsNull(instance);
 
@@ -217,7 +217,7 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
                     register.GetObjectEnumerator(() =>
                             dbContext.Demoobjectx
                                 .Where(entity => entity.Id == id1)
-                                .Select(entity => entity.ToMapperDto()))
+                                .Select(entity => entity.ToMapperDto(m_entryPoint.AutoMapper)))
                         .ToList();
                 Assert.IsNotNull(instances);
                 Assert.AreEqual(1, instances.Count);
@@ -241,7 +241,7 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
                                            .WithCancellation(ct)
                                            .ConfigureAwait(false))
                         {
-                            yield return entity.ToMapperDto();
+                            yield return entity.ToMapperDto(m_entryPoint.AutoMapper);
                         }
                     }
                 }
@@ -265,7 +265,7 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
                                            .WithCancellation(ct)
                                            .ConfigureAwait(false))
                         {
-                            yield return entity.ToMapperDto();
+                            yield return entity.ToMapperDto(m_entryPoint.AutoMapper);
                         }
                     }
                 }
@@ -287,7 +287,7 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
                                            .WithCancellation(ct)
                                            .ConfigureAwait(false))
                         {
-                            yield return entity.ToMapperDto();
+                            yield return entity.ToMapperDto(m_entryPoint.AutoMapper);
                         }
                     }
                 }

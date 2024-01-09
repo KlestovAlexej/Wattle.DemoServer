@@ -35,6 +35,8 @@ public static class EntryPointStartUpExtensions
         services.AddSingleton(
             _ => (ICustomEntryPoint)ServiceProviderHolder.Instance.GetRequiredService<IEntryPoint>());
 
+        services.AddAutoMapper(typeof(AutoMapperProfile));
+
         services.AddSingleton(
             provider =>
             {

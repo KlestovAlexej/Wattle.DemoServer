@@ -9,6 +9,7 @@ using ShtrihM.Wattle3.DomainObjects.Interfaces;
 using ShtrihM.Wattle3.DomainObjects.UnitOfWorks;
 using ShtrihM.Wattle3.Mappers.PostgreSql;
 using System;
+using AutoMapper;
 
 namespace ShtrihM.DemoServer.Processing.Model.Interfaces;
 
@@ -35,4 +36,5 @@ public interface ICustomEntryPoint : IEntryPoint
     ILoggerFactory LoggerFactory { get; }
     UnitOfWorkLocksHubTyped UnitOfWorkLocks { get; }
     IEntryPointContext Context { get; }
+    IMapper AutoMapper { get; }
 }
