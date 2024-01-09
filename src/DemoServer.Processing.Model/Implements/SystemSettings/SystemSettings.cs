@@ -4,6 +4,8 @@ using ShtrihM.Wattle3.Json;
 using System;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
+using ShtrihM.Wattle3.DomainObjects.Interfaces;
+using ShtrihM.Wattle3.DomainObjects.UnitOfWorkLocks;
 
 namespace ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
 
@@ -30,10 +32,10 @@ public sealed class SystemSettings
                 default!,
                 "Текстовый идентификатор экземпляра сервера");
 
-        LocksPoolSettings =
-            new SettingValue<LocksPoolSettings>(
+        UnitOfWorkLocksSettings =
+            new SettingValue<UnitOfWorkLocksSettings>(
                 default!,
-                "Настройки пулов лок-объектов");
+                "Настройки пулов лок-объектов уровня IUnitOfWork");
 
         ExceptionPolicySettings =
             new SettingValue<ExceptionPolicySettings>(
@@ -128,10 +130,10 @@ public sealed class SystemSettings
     public SettingValue<string> InstanceName { get; set; }
 
     /// <summary>
-    /// Настройки пулов лок-объектов.
+    /// Настройки пулов лок-объектов уровня <see cref="IUnitOfWork"/>.
     /// </summary>
     [JsonRequired]
-    public SettingValue<LocksPoolSettings> LocksPoolSettings { get; set; }
+    public SettingValue<UnitOfWorkLocksSettings> UnitOfWorkLocksSettings { get; set; }
 
     /// <summary>
     /// Настройки уведомления об исключениях системы.
@@ -198,9 +200,9 @@ public sealed class SystemSettings
         var result =
             new SystemSettings
             {
-                LocksPoolSettings =
+                UnitOfWorkLocksSettings =
                 {
-                    Value = Implements.SystemSettings.LocksPoolSettings.GetDefault()
+                    Value = Wattle3.DomainObjects.UnitOfWorkLocks.UnitOfWorkLocksSettings.GetDefault()
                 },
 
                 ExceptionPolicySettings =

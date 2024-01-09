@@ -1017,6 +1017,22 @@
 			"lines": [
 				"16d542c5-1962-4631-8afb-fa36ea02ab00"
 			]
+		},
+		"150075c0-c224-4693-9dec-ac23dc68b4f3": {
+			"id": "150075c0-c224-4693-9dec-ac23dc68b4f3",
+			"visible": true,
+			"name": "DemoObject",
+			"desc": "",
+			"lines": [],
+			"type": "SubjectArea"
+		},
+		"8e721c77-dec3-410c-beb1-b23de44b32c9": {
+			"id": "8e721c77-dec3-410c-beb1-b23de44b32c9",
+			"visible": true,
+			"name": "DemoObjectX",
+			"desc": "",
+			"lines": [],
+			"type": "SubjectArea"
 		}
 	},
 	"lines": {
@@ -1160,7 +1176,7 @@
 		"pg": {
 			"schema": ""
 		},
-		"lastSaved": 1699648693151,
+		"lastSaved": 1703155023770,
 		"writeFileParam": true,
 		"activeDiagram": "f1669b85-a87c-45bc-806a-d4c1a20593bc",
 		"sqlSettings": {
@@ -1343,7 +1359,7 @@
 					"x": 79,
 					"y": 434,
 					"gHeight": 45,
-					"gWidth": 141,
+					"gWidth": 145,
 					"color": "#ffffff",
 					"background": "#e91e63",
 					"resized": false,
@@ -1366,7 +1382,7 @@
 					"referencedItemId": "6e89fda6-6a4b-4b45-a970-786562cbfd99",
 					"x": 46,
 					"y": 30,
-					"gHeight": 33,
+					"gHeight": 32,
 					"gWidth": 295,
 					"color": "#333",
 					"background": "#e91e63",
@@ -1424,8 +1440,8 @@
 				},
 				"ab074528-fc70-4ec5-a9c9-46d348cb2c82": {
 					"referencedItemId": "ab074528-fc70-4ec5-a9c9-46d348cb2c82",
-					"x": 1023,
-					"y": 167,
+					"x": 1021,
+					"y": 181,
 					"gHeight": 26,
 					"gWidth": 50,
 					"color": "#000000",
@@ -1436,8 +1452,8 @@
 				},
 				"c2a8a5fe-6f4d-4a19-9d49-5619b3f8f3ca": {
 					"referencedItemId": "c2a8a5fe-6f4d-4a19-9d49-5619b3f8f3ca",
-					"x": 1022,
-					"y": 88,
+					"x": 1006,
+					"y": 104,
 					"gHeight": 44,
 					"gWidth": 150,
 					"color": "#eee",
@@ -1460,8 +1476,8 @@
 				},
 				"708f4192-699f-46de-afcf-d679d49bc8f2": {
 					"referencedItemId": "708f4192-699f-46de-afcf-d679d49bc8f2",
-					"x": 1020,
-					"y": 430,
+					"x": 1026,
+					"y": 456,
 					"gHeight": 26,
 					"gWidth": 50,
 					"color": "#000000",
@@ -1472,8 +1488,8 @@
 				},
 				"5eb82c75-70b1-4484-af9c-6e8723732d90": {
 					"referencedItemId": "5eb82c75-70b1-4484-af9c-6e8723732d90",
-					"x": 1019,
-					"y": 350,
+					"x": 1011,
+					"y": 375,
 					"gHeight": 44,
 					"gWidth": 157,
 					"color": "#eee",
@@ -1481,6 +1497,32 @@
 					"resized": false,
 					"autoExpand": true,
 					"backgroundOpacity": "10"
+				},
+				"150075c0-c224-4693-9dec-ac23dc68b4f3": {
+					"referencedItemId": "150075c0-c224-4693-9dec-ac23dc68b4f3",
+					"x": 677,
+					"y": 58,
+					"gHeight": 193,
+					"gWidth": 494,
+					"color": "#ffffff",
+					"background": "#607d8b",
+					"resized": true,
+					"autoExpand": true,
+					"backgroundOpacity": "8",
+					"collapsed": false
+				},
+				"8e721c77-dec3-410c-beb1-b23de44b32c9": {
+					"referencedItemId": "8e721c77-dec3-410c-beb1-b23de44b32c9",
+					"x": 671,
+					"y": 323,
+					"gHeight": 292,
+					"gWidth": 511,
+					"color": "#ffffff",
+					"background": "#607d8b",
+					"resized": true,
+					"autoExpand": true,
+					"backgroundOpacity": "8",
+					"collapsed": false
 				}
 			},
 			"type": "erd",

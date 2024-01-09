@@ -192,26 +192,6 @@
             Настройки по умолчанию.
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.LocksPoolSettings">
-            <summary>
-            Настройки пулов лок-объектов.
-            </summary>
-        </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.LocksPoolSettings.Update">
-            <summary>
-            Интервал ожидания получение объекта из пула лок-объектов сценария обновления объекта.
-            </summary>
-        </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.LocksPoolSettings.Any">
-            <summary>
-            Интервал ожидания получение объекта из пула лок-объектов произвольного сценария.
-            </summary>
-        </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.LocksPoolSettings.GetDefault">
-            <summary>
-            Настройки по умолчанию.
-            </summary>
-        </member>
         <member name="T:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.PartitionsSponsorSettings">
             <summary>
             Настройки создателя партиций БД.
@@ -262,9 +242,9 @@
             Текстовый идентификатор экземпляра сервера.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.LocksPoolSettings">
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.UnitOfWorkLocksSettings">
             <summary>
-            Настройки пулов лок-объектов.
+            Настройки пулов лок-объектов уровня <see cref="T:ShtrihM.Wattle3.DomainObjects.Interfaces.IUnitOfWork"/>.
             </summary>
         </member>
         <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.ExceptionPolicySettings">

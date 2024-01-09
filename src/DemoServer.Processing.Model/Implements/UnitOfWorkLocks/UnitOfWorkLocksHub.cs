@@ -11,9 +11,7 @@ public sealed class UnitOfWorkLocksHub : BaseUnitOfWorkLocksHub<UnitOfWorkLocksH
     public UnitOfWorkLocksHub(IEntryPointContext entryPointContext)
         : base(
             entryPointContext,
-            true,
-            ((ICustomEntryPoint)entryPointContext.EntryPoint).SystemSettings.LocksPoolSettings.Value.Update.Value,
-            ((ICustomEntryPoint)entryPointContext.EntryPoint).SystemSettings.LocksPoolSettings.Value.Any.Value,
+            ((ICustomEntryPoint)entryPointContext.EntryPoint).SystemSettings.UnitOfWorkLocksSettings.Value,
             typeof(WellknownDomainObjectFields))
     {
     }
