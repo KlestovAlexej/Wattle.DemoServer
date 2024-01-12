@@ -15,6 +15,7 @@ using System.Runtime.ExceptionServices;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Linq;
 using NpgsqlTypes;
 using Npgsql;
 using System.Diagnostics.CodeAnalysis;
@@ -1734,6 +1735,28 @@ VALUES
 
                 throw targetException;
             }
+        }
+
+        /// <summary>
+        /// Получить итератор всех записей выбранных с учётом фильтра.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+        /// <returns>Возвращает итератор всех выбраных записей.</returns>
+        IEnumerable<IMapperDto> IAbstractMapper.GetEnumerator(IMappersSession session, IMapperSelectFilter selectFilter)
+        {
+            return GetEnumerator(session, selectFilter);
+        }
+
+        /// <summary>
+        /// Получить итератор всех записей выбранных с учётом фильтра.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+        /// <returns>Возвращает итератор всех выбраных записей.</returns>
+        IEnumerable<TMapperDto> IAbstractMapper.GetEnumerator<TMapperDto>(IMappersSession session, IMapperSelectFilter selectFilter)
+        {
+            return GetEnumerator(session, selectFilter).Cast<TMapperDto>();
         }
 
         /// <summary>
@@ -3785,6 +3808,28 @@ VALUES
 
                 throw targetException;
             }
+        }
+
+        /// <summary>
+        /// Получить итератор всех записей выбранных с учётом фильтра.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+        /// <returns>Возвращает итератор всех выбраных записей.</returns>
+        IEnumerable<IMapperDto> IAbstractMapper.GetEnumerator(IMappersSession session, IMapperSelectFilter selectFilter)
+        {
+            return GetEnumerator(session, selectFilter);
+        }
+
+        /// <summary>
+        /// Получить итератор всех записей выбранных с учётом фильтра.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+        /// <returns>Возвращает итератор всех выбраных записей.</returns>
+        IEnumerable<TMapperDto> IAbstractMapper.GetEnumerator<TMapperDto>(IMappersSession session, IMapperSelectFilter selectFilter)
+        {
+            return GetEnumerator(session, selectFilter).Cast<TMapperDto>();
         }
 
         /// <summary>
@@ -6039,6 +6084,28 @@ VALUES
 
                 throw targetException;
             }
+        }
+
+        /// <summary>
+        /// Получить итератор всех записей выбранных с учётом фильтра.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+        /// <returns>Возвращает итератор всех выбраных записей.</returns>
+        IEnumerable<IMapperDto> IAbstractMapper.GetEnumerator(IMappersSession session, IMapperSelectFilter selectFilter)
+        {
+            return GetEnumerator(session, selectFilter);
+        }
+
+        /// <summary>
+        /// Получить итератор всех записей выбранных с учётом фильтра.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+        /// <returns>Возвращает итератор всех выбраных записей.</returns>
+        IEnumerable<TMapperDto> IAbstractMapper.GetEnumerator<TMapperDto>(IMappersSession session, IMapperSelectFilter selectFilter)
+        {
+            return GetEnumerator(session, selectFilter).Cast<TMapperDto>();
         }
 
         /// <summary>
@@ -8709,6 +8776,28 @@ VALUES
 
                 throw targetException;
             }
+        }
+
+        /// <summary>
+        /// Получить итератор всех записей выбранных с учётом фильтра.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+        /// <returns>Возвращает итератор всех выбраных записей.</returns>
+        IEnumerable<IMapperDto> IAbstractMapper.GetEnumerator(IMappersSession session, IMapperSelectFilter selectFilter)
+        {
+            return GetEnumerator(session, selectFilter);
+        }
+
+        /// <summary>
+        /// Получить итератор всех записей выбранных с учётом фильтра.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+        /// <returns>Возвращает итератор всех выбраных записей.</returns>
+        IEnumerable<TMapperDto> IAbstractMapper.GetEnumerator<TMapperDto>(IMappersSession session, IMapperSelectFilter selectFilter)
+        {
+            return GetEnumerator(session, selectFilter).Cast<TMapperDto>();
         }
 
         /// <summary>
@@ -11928,6 +12017,28 @@ VALUES
 
                 throw targetException;
             }
+        }
+
+        /// <summary>
+        /// Получить итератор всех записей выбранных с учётом фильтра.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+        /// <returns>Возвращает итератор всех выбраных записей.</returns>
+        IEnumerable<IMapperDto> IAbstractMapper.GetEnumerator(IMappersSession session, IMapperSelectFilter selectFilter)
+        {
+            return GetEnumerator(session, selectFilter);
+        }
+
+        /// <summary>
+        /// Получить итератор всех записей выбранных с учётом фильтра.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+        /// <returns>Возвращает итератор всех выбраных записей.</returns>
+        IEnumerable<TMapperDto> IAbstractMapper.GetEnumerator<TMapperDto>(IMappersSession session, IMapperSelectFilter selectFilter)
+        {
+            return GetEnumerator(session, selectFilter).Cast<TMapperDto>();
         }
 
         /// <summary>

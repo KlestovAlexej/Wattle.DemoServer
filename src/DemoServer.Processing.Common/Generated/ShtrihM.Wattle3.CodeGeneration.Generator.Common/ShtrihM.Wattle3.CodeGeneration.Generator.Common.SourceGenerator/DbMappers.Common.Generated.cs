@@ -10,6 +10,7 @@
 using System;
 using ShtrihM.Wattle3.Common.Queries;
 using ShtrihM.Wattle3.Common.Queries.Schema;
+using ShtrihM.Wattle3.Mappers.Primitives;
 using System.Diagnostics.CodeAnalysis;
 
 #pragma warning disable 1591
@@ -707,6 +708,7 @@ namespace ShtrihM.DemoServer.Processing.Generated.Common
         /// Создание конструктора текста запроса доменных объектов ChangeTracker.
         /// </summary>
         /// <param name="query">Запрос.</param>
+        [MapperQueryBuilder("cff5c7be-9f43-4c15-9038-55ce28e2c810")]
         public static QueryBuilder QueryForChangeTracker(string query)
         {
             if (query == null)
@@ -721,6 +723,7 @@ namespace ShtrihM.DemoServer.Processing.Generated.Common
         /// Создание конструктора текста запроса доменных объектов SystemLog.
         /// </summary>
         /// <param name="query">Запрос.</param>
+        [MapperQueryBuilder("4f3f6ccb-47c7-4ad8-b0ff-c8cbc1af003f")]
         public static QueryBuilder QueryForSystemLog(string query)
         {
             if (query == null)
@@ -735,6 +738,7 @@ namespace ShtrihM.DemoServer.Processing.Generated.Common
         /// Создание конструктора текста запроса доменных объектов TablePartition.
         /// </summary>
         /// <param name="query">Запрос.</param>
+        [MapperQueryBuilder("b426ed4e-b645-4c26-8edd-63b1e89e899c")]
         public static QueryBuilder QueryForTablePartition(string query)
         {
             if (query == null)
@@ -749,6 +753,7 @@ namespace ShtrihM.DemoServer.Processing.Generated.Common
         /// Создание конструктора текста запроса доменных объектов DemoObject.
         /// </summary>
         /// <param name="query">Запрос.</param>
+        [MapperQueryBuilder("86347ca3-b1ef-4c32-a9c0-e38e3b1d1c5d")]
         public static QueryBuilder QueryForDemoObject(string query)
         {
             if (query == null)
@@ -763,6 +768,7 @@ namespace ShtrihM.DemoServer.Processing.Generated.Common
         /// Создание конструктора текста запроса доменных объектов DemoObjectX.
         /// </summary>
         /// <param name="query">Запрос.</param>
+        [MapperQueryBuilder("322d2242-c942-4643-ba8c-9e2e1e8a7828")]
         public static QueryBuilder QueryForDemoObjectX(string query)
         {
             if (query == null)

@@ -16,14 +16,14 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using ShtrihM.DemoServer.Processing.Generated.Interface;
-using ShtrihM.Wattle3.DomainObjects.DomainObjectsRegisters;
 using ShtrihM.Wattle3.Infrastructures.Monitors;
 using ITrigger = ShtrihM.Wattle3.DomainObjects.Interfaces.ITrigger;
 using Status = OpenTelemetry.Trace.Status;
+using ShtrihM.Wattle3.DomainObjects.DomainObjectsRegisters;
 
 namespace ShtrihM.DemoServer.Processing.Model.Implements;
 
-public sealed class PartitionsSponsor : BaseServiceScheduled
+public class PartitionsSponsor : BaseServiceScheduled
 {
     private static readonly SpanAttributes SpanAttributes;
 
@@ -31,7 +31,7 @@ public sealed class PartitionsSponsor : BaseServiceScheduled
     private readonly List<(Guid Id, IPartitionsManager Manager)> m_managers;
     private readonly ICustomEntryPoint m_entryPoint;
     private readonly IMapperTablePartition m_mapperTablePartition;
-    private DateTime? m_lastDay;
+    private long? m_lastDayIndex;
 
     static PartitionsSponsor()
     {
@@ -42,7 +42,7 @@ public sealed class PartitionsSponsor : BaseServiceScheduled
     public PartitionsSponsor(
         ICustomEntryPoint entryPoint,
         ITrigger trigger,
-        ILoggerFactory loggerFactory)
+        ILoggerFactory? loggerFactory)
         : base(
             entryPoint.ExceptionPolicy,
             DomainObjectRegisterStateless.DefaultInitializeThreadEmergencyTimeout,
@@ -54,7 +54,7 @@ public sealed class PartitionsSponsor : BaseServiceScheduled
                 entryPoint.TimeService,
                 owner),
             trigger.GetSmartDisposableReference(true),
-            loggerFactory.CreateLogger<PartitionsSponsor>())
+            loggerFactory?.CreateLogger<PartitionsSponsor>())
     {
         m_entryPoint = entryPoint;
         m_managers = new List<(Guid Id, IPartitionsManager Manager)>();
@@ -79,6 +79,11 @@ public sealed class PartitionsSponsor : BaseServiceScheduled
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static IEnumerable<(IMapper Mapper, IPartitionsManager PartitionsManager)> GetAllPartitionsManagers(IMappers mappers)
     {
+        if (mappers == null)
+        {
+            throw new ArgumentNullException(nameof(mappers));
+        }
+
         foreach (var mapper in mappers)
         {
             if (mapper is IPartitionsMapper partitionsMapper)
@@ -90,11 +95,12 @@ public sealed class PartitionsSponsor : BaseServiceScheduled
 
     public void Create(Tracer? tracer)
     {
-        var nowDay = m_entryPoint.TimeService.Now.Date;
+        var nowDay = m_entryPoint.TimeService.Now;
+        var nowDayIndex = m_entryPoint.PartitionsDay.GetDayIndex(nowDay);
 
-        if (m_lastDay.HasValue)
+        if (m_lastDayIndex.HasValue)
         {
-            if (m_lastDay == nowDay)
+            if (m_lastDayIndex == nowDayIndex)
             {
                 return;
             }
@@ -102,14 +108,14 @@ public sealed class PartitionsSponsor : BaseServiceScheduled
 
         Debug.Assert(m_manager != null, nameof(m_manager) + " != null");
 
-        DoCreate(nowDay, m_manager!.Value, tracer);
+        DoCreate(nowDay, m_manager.Value, tracer);
 
         foreach (var manager in m_managers)
         {
             DoCreate(nowDay, manager, tracer);
         }
 
-        m_lastDay = nowDay;
+        m_lastDayIndex = nowDayIndex;
     }
 
     protected override bool DoInitialize(CancellationToken cancellationToken, out string? retryReason)
@@ -135,7 +141,7 @@ public sealed class PartitionsSponsor : BaseServiceScheduled
             mainSpan?.SetStatus(Status.Error);
             mainSpan?.RecordException(exception);
 
-            if (m_logger.IsErrorEnabled())
+            if (m_logger?.IsErrorEnabled() == false)
             {
                 m_logger.LogError(exception, "Ошибка создания партиций БД.");
             }
@@ -143,15 +149,18 @@ public sealed class PartitionsSponsor : BaseServiceScheduled
     }
 
     private void DoCreate(
-        DateTime nowDay,
+        DateTimeOffset nowDay,
         (Guid Id, IPartitionsManager Manager) manager,
         Tracer? tracer)
     {
         using var span = tracer?.StartActiveSpan(nameof(DoCreate) + " " + manager.Manager.TableName, initialAttributes: SpanAttributes);
 
         var nextDay = nowDay.AddDays(1);
-        var nowDayPartitionInfo = manager.Manager.CreatePartitionInfo(m_entryPoint.PartitionsDay.GetDayIndex(nowDay), m_entryPoint.PartitionsDay.GetDayIndex(nextDay));
-        var nextDayPartitionInfo = manager.Manager.CreatePartitionInfo(m_entryPoint.PartitionsDay.GetDayIndex(nextDay), m_entryPoint.PartitionsDay.GetDayIndex(nextDay.AddDays(1)));
+        var nowDayIndex = m_entryPoint.PartitionsDay.GetDayIndex(nowDay);
+        var nextDayIndex = m_entryPoint.PartitionsDay.GetDayIndex(nextDay);
+        var nextNextDayIndex = m_entryPoint.PartitionsDay.GetDayIndex(nextDay.AddDays(1));
+        var nowDayPartitionInfo = manager.Manager.CreatePartitionInfo(nowDayIndex, nextDayIndex);
+        var nextDayPartitionInfo = manager.Manager.CreatePartitionInfo(nextDayIndex, nextNextDayIndex);
 
         using (var session = m_entryPoint.Mappers.OpenSession())
         {
@@ -195,13 +204,13 @@ public sealed class PartitionsSponsor : BaseServiceScheduled
                     nowDayPartitionInfo.MaxNotIncludeGroupId,
                     tablespaceName);
 
-                var id = ComplexIdentity.Build(manager.Manager.Level, m_entryPoint.PartitionsDay.GetDayIndex(nowDay), m_mapperTablePartition.GetNextId(session));
+                var id = ComplexIdentity.Build(manager.Manager.Level, nowDayIndex, m_mapperTablePartition.GetNextId(session));
                 m_mapperTablePartition.New(
                     session,
                     new TablePartitionDtoNew
                     {
                         Id = id,
-                        Day = nowDay,
+                        Day = m_entryPoint.PartitionsDay.GetDay(nowDayIndex).Date,
                         CreateDate = m_entryPoint.TimeService.Now,
                         MaxNotIncludeGroupId = nowDayPartitionInfo.MaxNotIncludeGroupId,
                         MaxNotIncludeId = nowDayPartitionInfo.MaxNotIncludeId,
@@ -211,7 +220,7 @@ public sealed class PartitionsSponsor : BaseServiceScheduled
                         TableName = nowDayPartitionInfo.TableName,
                     });
 
-                m_logger.LogDebug($"Создана партиция БД '{partitionInfo}'.");
+                m_logger?.LogDebug($"Создана партиция БД '{partitionInfo}'.");
             }
 
             if (false == existsPartitions.Any(pi =>
@@ -252,14 +261,14 @@ public sealed class PartitionsSponsor : BaseServiceScheduled
                     nextDayPartitionInfo.MaxNotIncludeGroupId,
                     tablespaceName);
 
-                m_logger.LogDebug($"Создана партиция БД '{partitionInfo}'.");
+                m_logger?.LogDebug($"Создана партиция БД '{partitionInfo}'.");
 
                 m_mapperTablePartition.New(
                     session,
                     new TablePartitionDtoNew
                     {
-                        Id = ComplexIdentity.Build(manager.Manager.Level, m_entryPoint.PartitionsDay.GetDayIndex(nowDay), m_mapperTablePartition.GetNextId(session)),
-                        Day = nextDay,
+                        Id = ComplexIdentity.Build(manager.Manager.Level, nowDayIndex, m_mapperTablePartition.GetNextId(session)),
+                        Day = m_entryPoint.PartitionsDay.GetDay(nextDayIndex).Date,
                         CreateDate = m_entryPoint.TimeService.Now,
                         MaxNotIncludeGroupId = nextDayPartitionInfo.MaxNotIncludeGroupId,
                         MaxNotIncludeId = nextDayPartitionInfo.MaxNotIncludeId,

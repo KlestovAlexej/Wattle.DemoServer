@@ -199,6 +199,22 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает актуальное состояние записи.</returns>
         </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperChangeTracker.ShtrihM#Wattle3#Mappers#Interfaces#IAbstractMapper#GetEnumerator(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+            <summary>
+            Получить итератор всех записей выбранных с учётом фильтра.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+            <returns>Возвращает итератор всех выбраных записей.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperChangeTracker.ShtrihM#Wattle3#Mappers#Interfaces#IAbstractMapper#GetEnumerator``1(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+            <summary>
+            Получить итератор всех записей выбранных с учётом фильтра.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+            <returns>Возвращает итератор всех выбраных записей.</returns>
+        </member>
         <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperChangeTracker.GetEnumerator(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
             <summary>
             Получить итератор всех записей выбранных с учётом фильтра.
@@ -462,6 +478,22 @@
             <param name="data">Новая запись.</param>
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает актуальное состояние записи.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperSystemLog.ShtrihM#Wattle3#Mappers#Interfaces#IAbstractMapper#GetEnumerator(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+            <summary>
+            Получить итератор всех записей выбранных с учётом фильтра.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+            <returns>Возвращает итератор всех выбраных записей.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperSystemLog.ShtrihM#Wattle3#Mappers#Interfaces#IAbstractMapper#GetEnumerator``1(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+            <summary>
+            Получить итератор всех записей выбранных с учётом фильтра.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+            <returns>Возвращает итератор всех выбраных записей.</returns>
         </member>
         <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperSystemLog.GetEnumerator(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
             <summary>
@@ -738,6 +770,22 @@
             <param name="data">Новая запись.</param>
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает актуальное состояние записи.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperTablePartition.ShtrihM#Wattle3#Mappers#Interfaces#IAbstractMapper#GetEnumerator(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+            <summary>
+            Получить итератор всех записей выбранных с учётом фильтра.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+            <returns>Возвращает итератор всех выбраных записей.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperTablePartition.ShtrihM#Wattle3#Mappers#Interfaces#IAbstractMapper#GetEnumerator``1(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+            <summary>
+            Получить итератор всех записей выбранных с учётом фильтра.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+            <returns>Возвращает итератор всех выбраных записей.</returns>
         </member>
         <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperTablePartition.GetEnumerator(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
             <summary>
@@ -1038,6 +1086,22 @@
             <param name="data">Новая запись.</param>
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает актуальное состояние записи.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperDemoObject.ShtrihM#Wattle3#Mappers#Interfaces#IAbstractMapper#GetEnumerator(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+            <summary>
+            Получить итератор всех записей выбранных с учётом фильтра.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+            <returns>Возвращает итератор всех выбраных записей.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperDemoObject.ShtrihM#Wattle3#Mappers#Interfaces#IAbstractMapper#GetEnumerator``1(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+            <summary>
+            Получить итератор всех записей выбранных с учётом фильтра.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+            <returns>Возвращает итератор всех выбраных записей.</returns>
         </member>
         <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperDemoObject.GetEnumerator(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
             <summary>
@@ -1398,6 +1462,22 @@
             <param name="session">Сессия БД.</param>
             <param name="data">Данные достаточные для удаления записи.</param>
             <param name="cancellationToken">Токен отмены.</param>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperDemoObjectX.ShtrihM#Wattle3#Mappers#Interfaces#IAbstractMapper#GetEnumerator(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+            <summary>
+            Получить итератор всех записей выбранных с учётом фильтра.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+            <returns>Возвращает итератор всех выбраных записей.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperDemoObjectX.ShtrihM#Wattle3#Mappers#Interfaces#IAbstractMapper#GetEnumerator``1(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+            <summary>
+            Получить итератор всех записей выбранных с учётом фильтра.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+            <returns>Возвращает итератор всех выбраных записей.</returns>
         </member>
         <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperDemoObjectX.GetEnumerator(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
             <summary>

@@ -13,8 +13,8 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
 		<PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
-		<PackageReference Include="ShtrihM.Wattle3.CodeGeneration.Generators" Version="3.9.0.3300" />
-		<PackageReference Include="ShtrihM.Wattle3.Testing" Version="3.9.0.3300" />
+		<PackageReference Include="ShtrihM.Wattle3.CodeGeneration.Generators" Version="3.9.0.3334" />
+		<PackageReference Include="ShtrihM.Wattle3.Testing" Version="3.9.0.3334" />
 	</ItemGroup>
 
 	<ItemGroup>

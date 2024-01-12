@@ -551,7 +551,7 @@ public sealed class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
         exceptionPolicy.EntryPoint = result;
         result.ServiceProvider = serviceProvider;
 
-        result.PartitionsDay = new PartitionsDay(timeService, new DateTime(2023, 8, 1));
+        result.PartitionsDay = new PartitionsDay(timeService, new DateTime(2024, 1, 1));
         result.InfrastructureMonitorRegisters = new InfrastructureMonitorRegisters();
         result.AutoMapper = serviceProvider.GetRequiredService<AutoMapper.IMapper>();
 

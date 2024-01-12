@@ -681,7 +681,7 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
     [MapperInterface(WellknownMappersAsText.ChangeTracker)]
     [SuppressMessage("ReSharper", "UnusedMember.Global")]
     // ReSharper disable once PartialTypeWithSinglePart
-    public partial interface IMapperChangeTracker : IMapper, IPartitionsMapper
+    public partial interface IMapperChangeTracker : IMapper, IAbstractMapper, IPartitionsMapper
     {
         /// <summary>
         /// Имя таблицы БД.
@@ -752,7 +752,7 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
         /// <param name="mappersSession">Сессия БД.</param>
         /// <param name="id">Идентити записи.</param>
         /// <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует.</returns>
-        ChangeTrackerDtoActual Get(IMappersSession mappersSession, long id);
+         ChangeTrackerDtoActual Get(IMappersSession mappersSession, long id);
 
         /// <summary>
         /// Получить запись с указаным идентити.
@@ -761,7 +761,7 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
         /// <param name="id">Идентити записи.</param>
         /// <param name="cancellationToken">Токен отмены.</param>
         /// <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует.</returns>
-        ValueTask<IMapperDto> GetAsync(IMappersSession mappersSession, long id, CancellationToken cancellationToken = default);
+         ValueTask<IMapperDto> GetAsync(IMappersSession mappersSession, long id, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Получить запись с указаным идентити.
@@ -818,7 +818,7 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
         /// <param name="session">Сессия БД.</param>
         /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
         /// <returns>Возвращает итератор всех выбраных записей.</returns>
-        IEnumerable<ChangeTrackerDtoActual> GetEnumerator(IMappersSession session, IMapperSelectFilter selectFilter = null);
+        new IEnumerable<ChangeTrackerDtoActual> GetEnumerator(IMappersSession session, IMapperSelectFilter selectFilter = null);
 
         /// <summary>
         /// Получить итератор всех записей выбранных с учётом фильтра.
@@ -880,7 +880,7 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
     [MapperInterface(WellknownMappersAsText.SystemLog)]
     [SuppressMessage("ReSharper", "UnusedMember.Global")]
     // ReSharper disable once PartialTypeWithSinglePart
-    public partial interface IMapperSystemLog : IMapper, IPartitionsMapper
+    public partial interface IMapperSystemLog : IMapper, IAbstractMapper, IPartitionsMapper
     {
         /// <summary>
         /// Имя таблицы БД.
@@ -951,7 +951,7 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
         /// <param name="mappersSession">Сессия БД.</param>
         /// <param name="id">Идентити записи.</param>
         /// <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует.</returns>
-        SystemLogDtoActual Get(IMappersSession mappersSession, long id);
+         SystemLogDtoActual Get(IMappersSession mappersSession, long id);
 
         /// <summary>
         /// Получить запись с указаным идентити.
@@ -960,7 +960,7 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
         /// <param name="id">Идентити записи.</param>
         /// <param name="cancellationToken">Токен отмены.</param>
         /// <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует.</returns>
-        ValueTask<IMapperDto> GetAsync(IMappersSession mappersSession, long id, CancellationToken cancellationToken = default);
+         ValueTask<IMapperDto> GetAsync(IMappersSession mappersSession, long id, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Получить запись с указаным идентити.
@@ -1017,7 +1017,7 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
         /// <param name="session">Сессия БД.</param>
         /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
         /// <returns>Возвращает итератор всех выбраных записей.</returns>
-        IEnumerable<SystemLogDtoActual> GetEnumerator(IMappersSession session, IMapperSelectFilter selectFilter = null);
+        new IEnumerable<SystemLogDtoActual> GetEnumerator(IMappersSession session, IMapperSelectFilter selectFilter = null);
 
         /// <summary>
         /// Получить итератор всех записей выбранных с учётом фильтра.
@@ -1079,7 +1079,7 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
     [MapperInterface(WellknownMappersAsText.TablePartition)]
     [SuppressMessage("ReSharper", "UnusedMember.Global")]
     // ReSharper disable once PartialTypeWithSinglePart
-    public partial interface IMapperTablePartition : IMapper, IPartitionsMapper
+    public partial interface IMapperTablePartition : IMapper, IAbstractMapper, IPartitionsMapper
     {
         /// <summary>
         /// Имя таблицы БД.
@@ -1150,7 +1150,7 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
         /// <param name="mappersSession">Сессия БД.</param>
         /// <param name="id">Идентити записи.</param>
         /// <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует.</returns>
-        TablePartitionDtoActual Get(IMappersSession mappersSession, long id);
+         TablePartitionDtoActual Get(IMappersSession mappersSession, long id);
 
         /// <summary>
         /// Получить запись с указаным идентити.
@@ -1159,7 +1159,7 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
         /// <param name="id">Идентити записи.</param>
         /// <param name="cancellationToken">Токен отмены.</param>
         /// <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует.</returns>
-        ValueTask<IMapperDto> GetAsync(IMappersSession mappersSession, long id, CancellationToken cancellationToken = default);
+         ValueTask<IMapperDto> GetAsync(IMappersSession mappersSession, long id, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Получить запись с указаным идентити.
@@ -1216,7 +1216,7 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
         /// <param name="session">Сессия БД.</param>
         /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
         /// <returns>Возвращает итератор всех выбраных записей.</returns>
-        IEnumerable<TablePartitionDtoActual> GetEnumerator(IMappersSession session, IMapperSelectFilter selectFilter = null);
+        new IEnumerable<TablePartitionDtoActual> GetEnumerator(IMappersSession session, IMapperSelectFilter selectFilter = null);
 
         /// <summary>
         /// Получить итератор всех записей выбранных с учётом фильтра.
@@ -1278,7 +1278,7 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
     [MapperInterface(WellknownMappersAsText.DemoObject)]
     [SuppressMessage("ReSharper", "UnusedMember.Global")]
     // ReSharper disable once PartialTypeWithSinglePart
-    public partial interface IMapperDemoObject : IMapper, IPartitionsMapper
+    public partial interface IMapperDemoObject : IMapper, IAbstractMapper, IPartitionsMapper
     {
         /// <summary>
         /// Имя таблицы БД.
@@ -1368,7 +1368,7 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
         /// <param name="mappersSession">Сессия БД.</param>
         /// <param name="id">Идентити записи.</param>
         /// <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует.</returns>
-        DemoObjectDtoActual Get(IMappersSession mappersSession, long id);
+         DemoObjectDtoActual Get(IMappersSession mappersSession, long id);
 
         /// <summary>
         /// Получить запись с указаным идентити.
@@ -1377,7 +1377,7 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
         /// <param name="id">Идентити записи.</param>
         /// <param name="cancellationToken">Токен отмены.</param>
         /// <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует.</returns>
-        ValueTask<IMapperDto> GetAsync(IMappersSession mappersSession, long id, CancellationToken cancellationToken = default);
+         ValueTask<IMapperDto> GetAsync(IMappersSession mappersSession, long id, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Получить запись с указаным идентити.
@@ -1451,7 +1451,7 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
         /// <param name="session">Сессия БД.</param>
         /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
         /// <returns>Возвращает итератор всех выбраных записей.</returns>
-        IEnumerable<DemoObjectDtoActual> GetEnumerator(IMappersSession session, IMapperSelectFilter selectFilter = null);
+        new IEnumerable<DemoObjectDtoActual> GetEnumerator(IMappersSession session, IMapperSelectFilter selectFilter = null);
 
         /// <summary>
         /// Получить итератор всех записей выбранных с учётом фильтра.
@@ -1513,7 +1513,7 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
     [MapperInterface(WellknownMappersAsText.DemoObjectX)]
     [SuppressMessage("ReSharper", "UnusedMember.Global")]
     // ReSharper disable once PartialTypeWithSinglePart
-    public partial interface IMapperDemoObjectX : IMapper
+    public partial interface IMapperDemoObjectX : IMapper, IAbstractMapper
     {
         /// <summary>
         /// Имя таблицы БД.
@@ -1622,7 +1622,7 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
         /// <param name="mappersSession">Сессия БД.</param>
         /// <param name="id">Идентити записи.</param>
         /// <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует.</returns>
-        DemoObjectXDtoActual Get(IMappersSession mappersSession, long id);
+         DemoObjectXDtoActual Get(IMappersSession mappersSession, long id);
 
         /// <summary>
         /// Получить запись записи по альтернативному ключу 'Уникальность по 'Альтернативный ключ - часть №1 и №2''.
@@ -1631,7 +1631,7 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
         /// <param name="argKey1">Альтернативный ключ - часть №1</param>
         /// <param name="argKey2">Альтернативный ключ - часть №2</param>
         /// <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует.</returns>
-        DemoObjectXDtoActual GetByKey(IMappersSession mappersSession, Guid argKey1, string argKey2);
+         DemoObjectXDtoActual GetByKey(IMappersSession mappersSession, Guid argKey1, string argKey2);
 
         /// <summary>
         /// Получить запись с указаным идентити.
@@ -1640,7 +1640,7 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
         /// <param name="id">Идентити записи.</param>
         /// <param name="cancellationToken">Токен отмены.</param>
         /// <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует.</returns>
-        ValueTask<IMapperDto> GetAsync(IMappersSession mappersSession, long id, CancellationToken cancellationToken = default);
+         ValueTask<IMapperDto> GetAsync(IMappersSession mappersSession, long id, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Получить запись по альтернативному ключу 'Уникальность по 'Альтернативный ключ - часть №1 и №2''.
@@ -1650,7 +1650,7 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
         /// <param name="argKey2">Альтернативный ключ - часть №2</param>
         /// <param name="cancellationToken">Токен отмены.</param>
         /// <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует.</returns>
-        ValueTask<IMapperDto> GetByKeyAsync(IMappersSession mappersSession, Guid argKey1, string argKey2, CancellationToken cancellationToken = default);
+         ValueTask<IMapperDto> GetByKeyAsync(IMappersSession mappersSession, Guid argKey1, string argKey2, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Получить запись с указаным идентити.
@@ -1739,7 +1739,7 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
         /// <param name="session">Сессия БД.</param>
         /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
         /// <returns>Возвращает итератор всех выбраных записей.</returns>
-        IEnumerable<DemoObjectXDtoActual> GetEnumerator(IMappersSession session, IMapperSelectFilter selectFilter = null);
+        new IEnumerable<DemoObjectXDtoActual> GetEnumerator(IMappersSession session, IMapperSelectFilter selectFilter = null);
 
         /// <summary>
         /// Получить итератор всех записей коллекции 'Группировка по 'Номер группы''.
@@ -1747,7 +1747,7 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
         /// <param name="session">Сессия БД.</param>
         /// <param name="argGroup">Номер группы</param>
         /// <returns>Возвращает итератор всех выбраных записей.</returns>
-        IEnumerable<DemoObjectXDtoActual> GetEnumeratorAsGroup(IMappersSession session, long argGroup);
+         IEnumerable<DemoObjectXDtoActual> GetEnumeratorAsGroup(IMappersSession session, long argGroup);
 
         /// <summary>
         /// Получить итератор всех записей выбранных с учётом фильтра.

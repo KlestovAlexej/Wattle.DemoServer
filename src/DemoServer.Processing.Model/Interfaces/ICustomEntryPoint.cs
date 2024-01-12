@@ -7,9 +7,9 @@ using ShtrihM.DemoServer.Processing.Model.Implements.UnitOfWorkLocks;
 using ShtrihM.Wattle3.Common.Interfaces;
 using ShtrihM.Wattle3.DomainObjects.Interfaces;
 using ShtrihM.Wattle3.DomainObjects.UnitOfWorks;
-using ShtrihM.Wattle3.Mappers.PostgreSql;
 using System;
-using AutoMapper;
+using ShtrihM.Wattle3.Mappers.Interfaces;
+using IMapper = AutoMapper.IMapper;
 
 namespace ShtrihM.DemoServer.Processing.Model.Interfaces;
 
