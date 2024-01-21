@@ -229,27 +229,41 @@ public static class WebApplicationBuilderExtensions
 
     public static void AddErrorEventLogMessage(string message)
     {
-        if (OperatingSystem.IsWindows())
+        try
         {
-            EventLog.WriteEntry(EventSourceName,
-                message
-                + Environment.NewLine
-                + Assembly.GetExecutingAssembly().Location,
-                EventLogEntryType.Error,
-                WellknownSytemLogTypes.Error);
+            if (OperatingSystem.IsWindows())
+            {
+                EventLog.WriteEntry(EventSourceName,
+                    message
+                    + Environment.NewLine
+                    + Assembly.GetExecutingAssembly().Location,
+                    EventLogEntryType.Error,
+                    WellknownSytemLogTypes.Error);
+            }
+        }
+        catch
+        {
+            /* NONE */
         }
     }
 
     public static void AddInformationEventLogMessage(string message)
     {
-        if (OperatingSystem.IsWindows())
+        try
         {
-            EventLog.WriteEntry(EventSourceName,
-                message
-                + Environment.NewLine
-                + Assembly.GetExecutingAssembly().Location,
-                EventLogEntryType.Information,
-                WellknownSytemLogTypes.Information);
+            if (OperatingSystem.IsWindows())
+            {
+                EventLog.WriteEntry(EventSourceName,
+                    message
+                    + Environment.NewLine
+                    + Assembly.GetExecutingAssembly().Location,
+                    EventLogEntryType.Information,
+                    WellknownSytemLogTypes.Information);
+            }
+        }
+        catch
+        {
+            /* NONE */
         }
     }
 

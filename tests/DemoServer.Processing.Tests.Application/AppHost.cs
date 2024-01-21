@@ -16,6 +16,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net.Sockets;
 using System.Runtime.ExceptionServices;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -142,16 +143,16 @@ public class AppHost : IDisposable
         }
         catch
         {
+            DoStop(true);
+
             FreeAll();
 
             throw;
         }
     }
 
-    public void Stop(bool silentMode = false)
+    private void DoStop(bool silentMode = false)
     {
-        m_freeAll = false;
-
         if (m_process != null)
         {
             string? output = null;
@@ -178,12 +179,6 @@ public class AppHost : IDisposable
             }
             catch (Exception exception)
             {
-                Console.WriteLine("- [Processing : Консоль приложения] << -----------------------------------------------------");
-                Console.WriteLine();
-                Console.WriteLine(output);
-                Console.WriteLine();
-                Console.WriteLine("- [Processing : Консоль приложения] >> -----------------------------------------------------");
-
                 if (false == silentMode)
                 {
                     hasException = true;
@@ -193,6 +188,12 @@ public class AppHost : IDisposable
             }
             finally
             {
+                Console.WriteLine("- [Processing : Консоль приложения] << -----------------------------------------------------");
+                Console.WriteLine();
+                Console.WriteLine(output);
+                Console.WriteLine();
+                Console.WriteLine("- [Processing : Консоль приложения] >> -----------------------------------------------------");
+
                 try
                 {
                     m_process.Refresh();
@@ -223,6 +224,13 @@ public class AppHost : IDisposable
                 }
             }
         }
+    }
+
+    public void Stop(bool silentMode = false)
+    {
+        m_freeAll = false;
+
+        DoStop(silentMode);
 
         DoFinalize();
     }
