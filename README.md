@@ -29,7 +29,6 @@
 
 ## В демонстрации сервера показаны.
 
----
 ### Общее
 
 - [Реализован](src/DemoServer.Processing.Model/Implements/UnitOfWork.cs) паттерн [Unit of Work](https://martinfowler.com/eaaCatalog/unitOfWork.html)
