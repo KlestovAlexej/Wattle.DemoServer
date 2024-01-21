@@ -44,6 +44,41 @@
             Базовая реализация доменного объекта с версией.
             </summary>
         </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.DomainObjectDemoDelayTask.Template">
+            <summary>
+            Шаблон создания объекта <see cref="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.DomainObjectDemoDelayTask"/>.
+            </summary>
+        </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios.DemoDelayTaskScenario">
+            <summary>
+            Сценарий задачи с отложенным запуском.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios.DemoDelayTaskScenario.Type">
+            <summary>
+            Тип сценария.
+            </summary>
+        </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios.DemoDelayTaskScenarioAsDelay">
+            <summary>
+            Сценарий задачи с отложенным запуском - задержка исполнения.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios.DemoDelayTaskScenarioAsDelay.Delay">
+            <summary>
+            Интервал задержки исполнения.
+            </summary>
+        </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios.DemoDelayTaskScenariosType">
+            <summary>
+            Типы сценариев задач с отложенным запуском.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios.DemoDelayTaskScenariosType.Delay">
+            <summary>
+            Задержка исполнения.
+            </summary>
+        </member>
         <member name="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX.DomainObjectDemoObjectX.AlternativeKey">
             <summary>
             Альтернативный ключ объекта DemoObjectX по : <see cref="P:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX.DomainObjectDemoObjectX.AlternativeKey.Key1"/>, <see cref="P:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX.DomainObjectDemoObjectX.AlternativeKey.Key2"/>.
@@ -129,22 +164,22 @@
         </member>
         <member name="T:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.DomainObjectRegistersSettings">
             <summary>
-            Настройки реестров доменных объектов.
+            Íàñòðîéêè ðååñòðîâ äîìåííûõ îáúåêòîâ.
             </summary>
         </member>
         <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.DomainObjectRegistersSettings.MemoryCacheDemoObjectX">
             <summary>
-            Настройки кэширования реестра доменных объектов - Объект X.
+            Íàñòðîéêè êýøèðîâàíèÿ ðååñòðà äîìåííûõ îáúåêòîâ - Îáúåêò X.
             </summary>
         </member>
         <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.DomainObjectRegistersSettings.UseIdentitiesServices">
             <summary>
-            Использовать реестры идентити объектов.
+            Èñïîëüçîâàòü ðååñòðû èäåíòèòè îáúåêòîâ.
             </summary>
         </member>
         <member name="M:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.DomainObjectRegistersSettings.GetDefault">
             <summary>
-            Настройки по умолчанию.
+            Íàñòðîéêè ïî óìîë÷àíèþ.
             </summary>
         </member>
         <member name="T:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.ExceptionPolicySettings">
@@ -182,6 +217,11 @@
             Настройки маппера - Объект.
             </summary>
         </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.IdentityCachesSettings.DemoDelayTask">
+            <summary>
+            Настройки маппера - Задача с отложенным запуском.
+            </summary>
+        </member>
         <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.IdentityCachesSettings.DemoObjectX">
             <summary>
             Настройки маппера - Объект X.
@@ -215,6 +255,11 @@
         <member name="M:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.PartitionsSponsorSettings.GetDefault">
             <summary>
             Настройки по умолчанию.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.DemoDelayTaskProcessorSettings">
+            <summary>
+            Настройки службы обработки задач с отложенным запуском.
             </summary>
         </member>
         <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.UpdateKeyExpirationTimeout">
@@ -299,22 +344,22 @@
         </member>
         <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettingsLocal.ProductId">
             <summary>
-            Код продукта <seealso cref="F:ShtrihM.DemoServer.Common.WellknownCommonSystemSettings.ProductId"/>.
+            Êîä ïðîäóêòà <seealso cref="F:ShtrihM.DemoServer.Common.WellknownCommonSystemSettings.ProductId"/>.
             </summary>
         </member>
         <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettingsLocal.ProductVersion">
             <summary>
-            Версия продукта <seealso cref="F:ShtrihM.DemoServer.Common.WellknownCommonSystemSettings.ProductVersion"/>.
+            Âåðñèÿ ïðîäóêòà <seealso cref="F:ShtrihM.DemoServer.Common.WellknownCommonSystemSettings.ProductVersion"/>.
             </summary>
         </member>
         <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettingsLocal.InstallationName">
             <summary>
-            Имя инсталляции <seealso cref="F:ShtrihM.DemoServer.Common.WellknownCommonSystemSettings.InstallationName"/>.
+            Èìÿ èíñòàëëÿöèè <seealso cref="F:ShtrihM.DemoServer.Common.WellknownCommonSystemSettings.InstallationName"/>.
             </summary>
         </member>
         <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettingsLocal.ProductName">
             <summary>
-            Имя продукта.
+            Èìÿ ïðîäóêòà.
             </summary>
         </member>
         <member name="F:ShtrihM.DemoServer.Processing.Model.Implements.UnitOfWorkLocks.UnitOfWorkLocksActions.CreateDemoObjectX">
@@ -346,6 +391,31 @@
         <member name="T:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectChangeTracker">
             <summary>
             Контроль изменений.
+            </summary>
+        </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoDelayTask">
+            <summary>
+            Задача с отложенным запуском.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoDelayTask.CreateDate">
+            <summary>
+            Дата создания.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoDelayTask.ModificationDate">
+            <summary>
+            Дата модификации.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoDelayTask.Scenario">
+            <summary>
+            Сценарий.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoDelayTask.StartDate">
+            <summary>
+            Дата запуска.
             </summary>
         </member>
         <member name="T:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoObject">

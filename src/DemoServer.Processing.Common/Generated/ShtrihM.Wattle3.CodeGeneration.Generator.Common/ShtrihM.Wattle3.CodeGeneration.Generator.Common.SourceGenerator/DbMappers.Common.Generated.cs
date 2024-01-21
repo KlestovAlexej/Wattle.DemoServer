@@ -257,6 +257,49 @@ namespace ShtrihM.DemoServer.Processing.Generated.Common
             }
         }
 
+        /// <summary>
+        /// Задача с отложенным запуском
+        /// </summary>
+        public static class DemoDelayTask
+        {
+            /// <summary>
+            /// Идентификатр объекта.
+            /// </summary>
+            public static readonly Guid ObjectId = new Guid("5f729000-5139-469f-90b8-74301e342df3");
+
+            /// <summary>
+            /// Идентификатр полей объекта доступные для формирования фильтра.
+            /// </summary>
+            public static class Fields
+            {
+                /// <summary>
+                /// Дата создания
+                /// </summary>
+                public static readonly Guid CreateDate = new Guid("4437fa7d-5b09-4f22-9362-322c10e5a582");
+
+                /// <summary>
+                /// Дата модификации
+                /// </summary>
+                public static readonly Guid ModificationDate = new Guid("83816a54-32eb-448f-a755-9d14accb048a");
+
+                /// <summary>
+                /// Сценарий
+                /// </summary>
+                public static readonly Guid Scenario = new Guid("5cd4e196-ad21-4d0a-88e0-514f7f7874ad");
+
+                /// <summary>
+                /// Дата запуска
+                /// </summary>
+                public static readonly Guid StartDate = new Guid("e2856719-2986-4958-8286-00ef8c2f254f");
+
+                /// <summary>
+                /// Идентити.
+                /// </summary>
+                public static readonly Guid Id = new Guid("4f414fbb-4b25-4691-80c3-9897fc5be61b");
+
+            }
+        }
+
     }
 
     [SuppressMessage("ReSharper", "UnusedMember.Global")]
@@ -702,6 +745,82 @@ namespace ShtrihM.DemoServer.Processing.Generated.Common
             }
             #endregion Объект DemoObjectX
 
+            #region Объект DemoDelayTask
+            {
+                var schemaObjectQuey = new SchemaObjectQuey();
+                Schema.Objects.Add(schemaObjectQuey);
+
+                schemaObjectQuey.Description = @"Задача с отложенным запуском";
+                schemaObjectQuey.Id = new Guid("5f729000-5139-469f-90b8-74301e342df3");
+
+                #region Поле CreateDate
+                {
+                    var schemaObjectFieldQuey = new SchemaObjectFieldQuey();
+                    schemaObjectQuey.Fields.Add(schemaObjectFieldQuey);
+
+                    schemaObjectFieldQuey.Description = @"Дата создания";
+                    schemaObjectFieldQuey.Id = new Guid("4437fa7d-5b09-4f22-9362-322c10e5a582");
+                    schemaObjectFieldQuey.Order = true;
+                    schemaObjectFieldQuey.Where = true;
+                    schemaObjectFieldQuey.Name = @"CreateDate";
+                }
+                #endregion Поле CreateDate
+
+                #region Поле ModificationDate
+                {
+                    var schemaObjectFieldQuey = new SchemaObjectFieldQuey();
+                    schemaObjectQuey.Fields.Add(schemaObjectFieldQuey);
+
+                    schemaObjectFieldQuey.Description = @"Дата модификации";
+                    schemaObjectFieldQuey.Id = new Guid("83816a54-32eb-448f-a755-9d14accb048a");
+                    schemaObjectFieldQuey.Order = true;
+                    schemaObjectFieldQuey.Where = true;
+                    schemaObjectFieldQuey.Name = @"ModificationDate";
+                }
+                #endregion Поле ModificationDate
+
+                #region Поле Scenario
+                {
+                    var schemaObjectFieldQuey = new SchemaObjectFieldQuey();
+                    schemaObjectQuey.Fields.Add(schemaObjectFieldQuey);
+
+                    schemaObjectFieldQuey.Description = @"Сценарий";
+                    schemaObjectFieldQuey.Id = new Guid("5cd4e196-ad21-4d0a-88e0-514f7f7874ad");
+                    schemaObjectFieldQuey.Order = false;
+                    schemaObjectFieldQuey.Where = false;
+                    schemaObjectFieldQuey.Name = @"Scenario";
+                }
+                #endregion Поле Scenario
+
+                #region Поле StartDate
+                {
+                    var schemaObjectFieldQuey = new SchemaObjectFieldQuey();
+                    schemaObjectQuey.Fields.Add(schemaObjectFieldQuey);
+
+                    schemaObjectFieldQuey.Description = @"Дата запуска";
+                    schemaObjectFieldQuey.Id = new Guid("e2856719-2986-4958-8286-00ef8c2f254f");
+                    schemaObjectFieldQuey.Order = false;
+                    schemaObjectFieldQuey.Where = false;
+                    schemaObjectFieldQuey.Name = @"StartDate";
+                }
+                #endregion Поле StartDate
+
+                #region Поле Id
+                {
+                    var schemaObjectFieldQuey = new SchemaObjectFieldQuey();
+                    schemaObjectQuey.Fields.Add(schemaObjectFieldQuey);
+
+                    schemaObjectFieldQuey.Description = @"Задача с отложенным запуском";
+                    schemaObjectFieldQuey.Id = new Guid("4f414fbb-4b25-4691-80c3-9897fc5be61b");
+                    schemaObjectFieldQuey.Order = true;
+                    schemaObjectFieldQuey.Where = true;
+                    schemaObjectFieldQuey.Name = @"Id";
+                }
+                #endregion Поле Id
+
+            }
+            #endregion Объект DemoDelayTask
+
         }
 
         /// <summary>
@@ -777,6 +896,21 @@ namespace ShtrihM.DemoServer.Processing.Generated.Common
             }
 
             return QueryBuilder.New(Schema, new Guid("322d2242-c942-4643-ba8c-9e2e1e8a7828"), query);
+        }
+
+        /// <summary>
+        /// Создание конструктора текста запроса доменных объектов DemoDelayTask.
+        /// </summary>
+        /// <param name="query">Запрос.</param>
+        [MapperQueryBuilder("5f729000-5139-469f-90b8-74301e342df3")]
+        public static QueryBuilder QueryForDemoDelayTask(string query)
+        {
+            if (query == null)
+            {
+                throw new ArgumentNullException(nameof(query));
+            }
+
+            return QueryBuilder.New(Schema, new Guid("5f729000-5139-469f-90b8-74301e342df3"), query);
         }
     }
 

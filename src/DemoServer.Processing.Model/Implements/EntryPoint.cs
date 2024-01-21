@@ -42,6 +42,7 @@ using ShtrihM.DemoServer.Processing.Generated.Interface;
 using ShtrihM.DemoServer.Processing.Model.DomainObjects.ChangeTracker;
 using Unity;
 using Status = OpenTelemetry.Trace.Status;
+using ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask;
 
 namespace ShtrihM.DemoServer.Processing.Model.Implements;
 
@@ -254,6 +255,7 @@ public sealed class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
     public IServiceProvider ServiceProvider { get; private set; }
     public IUnitOfWorkCommitVerifyingFactory CommitVerifyingFactory { get; private set; }
     public AutoMapper.IMapper AutoMapper { get; private set; }
+    public IDemoDelayTaskProcessor DemoDelayTaskProcessor { get; private set; }
 
     public MetaServerDescription ServerDescription
     {
@@ -285,12 +287,14 @@ public sealed class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
 
         m_queueEmergencyDomainBehaviour.Start();
         m_partitionsSponsor.Start();
+        DemoDelayTaskProcessor.Start();
     }
 
     public override void WaitStop()
     {
         m_queueEmergencyDomainBehaviour.WaitStop();
         m_partitionsSponsor.WaitStop();
+        DemoDelayTaskProcessor.WaitStop();
 
         base.WaitStop();
     }
@@ -302,7 +306,8 @@ public sealed class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
             var result =
                 (base.GlobalIsReady
                  && m_partitionsSponsor.GlobalIsReady
-                 && m_queueEmergencyDomainBehaviour.GlobalIsReady);
+                 && m_queueEmergencyDomainBehaviour.GlobalIsReady
+                 && DemoDelayTaskProcessor.GlobalIsReady);
 
             return (result);
         }
@@ -326,11 +331,13 @@ public sealed class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
         {
             m_partitionsSponsor.BeginStop();
             m_queueEmergencyDomainBehaviour.BeginStop();
+            DemoDelayTaskProcessor.BeginStop();
         }
         else
         {
             m_partitionsSponsor.Stop();
             m_queueEmergencyDomainBehaviour.Stop();
+            DemoDelayTaskProcessor.Stop();
         }
     }
 
@@ -404,6 +411,12 @@ public sealed class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
         }
 
         {
+            var temp = DemoDelayTaskProcessor;
+            DemoDelayTaskProcessor = null;
+            temp.SilentDispose();
+        }
+        
+        {
             var temp = UnitOfWorkLocks;
             UnitOfWorkLocks = null;
             temp.SilentDispose();
@@ -425,6 +438,11 @@ public sealed class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
         if (false == m_partitionsSponsor.IsReady)
         {
             ApplyMessage(m_partitionsSponsor.InfrastructureMonitor.GetSnapShot());
+        }
+
+        if (false == DemoDelayTaskProcessor.IsReady)
+        {
+            ApplyMessage(DemoDelayTaskProcessor.InfrastructureMonitor.GetSnapShot());
         }
 
         void ApplyMessage(ISnapShotInfrastructureMonitorDrivenObject snapShot)
@@ -576,6 +594,7 @@ public sealed class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
 
         result.Metrics = metrics;
         result.UnitOfWorkLocks = new UnitOfWorkLocksHubTyped(result.Context);
+        result.DemoDelayTaskProcessor = new DemoDelayTaskProcessor(result.Context);
 
         result.Facade =
             container.ResolveWithDefault(
@@ -620,6 +639,7 @@ public sealed class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
         var infrastructureMonitor = (InfrastructureMonitorCustomEntryPoint)result.InfrastructureMonitor;
         infrastructureMonitor.AddSubMonitor(result.m_queueEmergencyDomainBehaviour.InfrastructureMonitor);
         infrastructureMonitor.AddSubMonitor(result.m_partitionsSponsor.InfrastructureMonitor);
+        infrastructureMonitor.AddSubMonitor(result.DemoDelayTaskProcessor.InfrastructureMonitor);
 
         foreach (var iMonitor in result.UnitOfWorkLocks.Hub.InfrastructureMonitorLocksPools)
         {

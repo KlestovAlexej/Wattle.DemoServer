@@ -37,6 +37,7 @@ public class DbMappersSchemaXmlBuilder
             {
                 {WellknownDomainObjects.DemoObject, SchemaMapperDeleteMode.Disabled},
                 {WellknownDomainObjects.DemoObjectX, SchemaMapperDeleteMode.Delete},
+                {WellknownDomainObjects.DemoDelayTask, SchemaMapperDeleteMode.HideUpdate},
             };
 
         m_optimisticConcurrency =

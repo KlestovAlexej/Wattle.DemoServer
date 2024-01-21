@@ -223,6 +223,46 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
     }
 
     /// <summary>
+    /// Класс данных состояния нового доменного объекта.
+    /// Задача с отложенным запуском
+    /// </summary>
+    // ReSharper disable once PartialTypeWithSinglePart
+    [MapperDtoCreate(WellknownMappersAsText.DemoDelayTask)]
+    public sealed partial class DemoDelayTaskDtoNew : IMapperDto
+    {
+        /// <summary>
+        /// Идентити.
+        /// </summary>
+        public long Id { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
+
+        /// <summary>
+        /// Доступность.
+        /// </summary>
+        public bool Available;
+
+        /// <summary>
+        /// Дата создания
+        /// </summary>
+        public DateTimeOffset CreateDate;
+
+        /// <summary>
+        /// Дата модификации
+        /// </summary>
+        public DateTimeOffset ModificationDate;
+
+        /// <summary>
+        /// Сценарий
+        /// </summary>
+        public string Scenario;
+
+        /// <summary>
+        /// Дата запуска
+        /// </summary>
+        public DateTimeOffset? StartDate;
+
+    }
+
+    /// <summary>
     /// Класс актуальных данных состояния доменного объекта в БД.
     /// Контроль изменений
     /// </summary>
@@ -467,6 +507,59 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
     }
 
     /// <summary>
+    /// Класс актуальных данных состояния доменного объекта в БД.
+    /// Задача с отложенным запуском
+    /// </summary>
+    // ReSharper disable once PartialTypeWithSinglePart
+    [MapperDtoSelect(WellknownMappersAsText.DemoDelayTask)]
+    [DataContract]
+    public sealed partial class DemoDelayTaskDtoActual : IMapperDtoVersion
+    {
+        /// <summary>
+        /// Идентити.
+        /// </summary>
+        [DataMember(Order = 1)]
+        public long Id { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
+
+        /// <summary>
+        /// Номер ревизии данных.
+        /// </summary>
+        [DataMember(Order = 2)]
+        public long Revision { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
+
+        /// <summary>
+        /// Доступность.
+        /// </summary>
+        [DataMember(Order = 3)]
+        public bool Available;
+
+        /// <summary>
+        /// Дата создания
+        /// </summary>
+        [DataMember(Order = 4)]
+        public DateTimeOffset CreateDate;
+
+        /// <summary>
+        /// Дата модификации
+        /// </summary>
+        [DataMember(Order = 5)]
+        public DateTimeOffset ModificationDate;
+
+        /// <summary>
+        /// Сценарий
+        /// </summary>
+        [DataMember(Order = 6)]
+        public string Scenario;
+
+        /// <summary>
+        /// Дата запуска
+        /// </summary>
+        [DataMember(Order = 7)]
+        public DateTimeOffset? StartDate;
+
+    }
+
+    /// <summary>
     /// Класс данных состояния изменённого доменного объекта.
     /// Объект
     /// </summary>
@@ -566,6 +659,53 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
     }
 
     /// <summary>
+    /// Класс данных состояния изменённого доменного объекта.
+    /// Задача с отложенным запуском
+    /// </summary>
+    // ReSharper disable once PartialTypeWithSinglePart
+    [MapperDtoUpdate(WellknownMappersAsText.DemoDelayTask)]
+    public sealed partial class DemoDelayTaskDtoChanged : IMapperDtoVersion
+    {
+        /// <summary>
+        /// Идентити.
+        /// </summary>
+        [DataMember(Order = 1)]
+        public long Id { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
+
+        /// <summary>
+        /// Номер ревизии данных.
+        /// </summary>
+        [DataMember(Order = 2)]
+        public long Revision { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
+
+        /// <summary>
+        /// Доступность.
+        /// </summary>
+        public bool Available;
+
+        /// <summary>
+        /// Дата создания
+        /// </summary>
+        public DateTimeOffset CreateDate;
+
+        /// <summary>
+        /// Дата модификации
+        /// </summary>
+        public DateTimeOffset ModificationDate;
+
+        /// <summary>
+        /// Сценарий
+        /// </summary>
+        public string Scenario;
+
+        /// <summary>
+        /// Дата запуска
+        /// </summary>
+        public DateTimeOffset? StartDate;
+
+    }
+
+    /// <summary>
     /// Класс данных состояния удалённого доменного объекта.
     /// Объект X
     /// </summary>
@@ -617,6 +757,11 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
         /// </summary>
         public const string DemoObjectX = "322d2242-c942-4643-ba8c-9e2e1e8a7828";
 
+        /// <summary>
+        /// Задача с отложенным запуском
+        /// </summary>
+        public const string DemoDelayTask = "5f729000-5139-469f-90b8-74301e342df3";
+
     }
 
     /// <summary>
@@ -636,6 +781,7 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
                 {new Guid(WellknownMappersAsText.TablePartition), @"Партиция таблицы БД"},
                 {new Guid(WellknownMappersAsText.DemoObject), @"Объект"},
                 {new Guid(WellknownMappersAsText.DemoObjectX), @"Объект X"},
+                {new Guid(WellknownMappersAsText.DemoDelayTask), @"Задача с отложенным запуском"},
             };
         }
 
@@ -663,6 +809,11 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
         /// Объект X
         /// </summary>
         public static readonly Guid DemoObjectX = new Guid(WellknownMappersAsText.DemoObjectX);
+
+        /// <summary>
+        /// Задача с отложенным запуском
+        /// </summary>
+        public static readonly Guid DemoDelayTask = new Guid(WellknownMappersAsText.DemoDelayTask);
 
         public static string GetDisplayName(Guid id)
         {
@@ -1827,6 +1978,234 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
         /// <returns>Возвращает количество записей коллекции.</returns>
         ValueTask<long> GetCountByGroupAsync(IMappersSession mappersSession, long argGroup, CancellationToken cancellationToken = default);
 
+    }
+
+    /// <summary>
+    /// Задача с отложенным запуском
+    /// </summary>
+    [MapperInterface(WellknownMappersAsText.DemoDelayTask)]
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
+    // ReSharper disable once PartialTypeWithSinglePart
+    public partial interface IMapperDemoDelayTask : IMapper, IAbstractMapper, IPartitionsMapper
+    {
+        /// <summary>
+        /// Имя таблицы БД.
+        /// </summary>
+        string TableName { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; }
+
+        /// <summary>
+        /// Получение следующего значения идентити из последовательности "Sequence_DemoDelayTask".
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <returns>Возвращает следующего значение идентити.</returns>
+        long GetNextId(IMappersSession session);
+
+        /// <summary>
+        /// Получение следующих значений идентити из последовательности "Sequence_DemoDelayTask".
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="count">Количество следующийх значений идентити из последовательности.</param>
+        /// <param name="cancellationToken">Кокен отмены.</param>
+        /// <returns>Возвращает коллекцию следующих значений идентити.</returns>
+        IList<long> GetNextIds(IMappersSession session, int count, CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Получение следующего значения идентити из последовательности "Sequence_DemoDelayTask".
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="cancellationToken">Токен отмены.</param>
+        /// <returns>Возвращает следующего значение идентити.</returns>
+        ValueTask<long> GetNextIdAsync(IMappersSession session, CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Проверка существования записи с указаным идентити.
+        /// ВАЖНО : Проверка не учитывает скрытые записи.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="id">Идентити записи.</param>
+        /// <returns>Возвращает <see langword="true" /> если запись существует иначе возвращает <see langword="false" /> если запись не существует или скрыта.</returns>
+        bool Exists(IMappersSession session, long id);
+
+        /// <summary>
+        /// Проверка существования записи с указаным идентити..
+        /// ВАЖНО : Проверка не учитывает скрытые записи.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="id">Идентити записи.</param>
+        /// <param name="cancellationToken">Токен отмены.</param>
+        /// <returns>Возвращает <see langword="true" /> если запись существует иначе возвращает <see langword="false" /> если запись не существует или скрыта.</returns>
+        ValueTask<bool> ExistsAsync(IMappersSession session, long id, CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Проверка существования записис с указаным идентити.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="id">Идентити записи.</param>
+        /// <returns>Возвращает <see langword="true" /> если запись существует иначе если запись не существует возвращает <see langword="false" />.</returns>
+        bool ExistsRaw(IMappersSession session, long id);
+
+        /// <summary>
+        /// Проверка существования записис с указаным идентити.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="id">Идентити записи.</param>
+        /// <param name="cancellationToken">Токен отмены.</param>
+        /// <returns>Возвращает <see langword="true" /> если запись существует иначе если запись не существует возвращает <see langword="false" />.</returns>
+        ValueTask<bool> ExistsRawAsync(IMappersSession session, long id, CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Получить запись с указаным идентити.
+        /// ВАЖНО : Получение не учитывает скрытые записи.
+        /// </summary>
+        /// <param name="mappersSession">Сессия БД.</param>
+        /// <param name="id">Идентити записи.</param>
+        /// <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует или скрыта.</returns>
+         DemoDelayTaskDtoActual Get(IMappersSession mappersSession, long id);
+
+        /// <summary>
+        /// Получить запись с указаным идентити.
+        /// ВАЖНО : Получение не учитывает скрытые записи.
+        /// </summary>
+        /// <param name="mappersSession">Сессия БД.</param>
+        /// <param name="id">Идентити записи.</param>
+        /// <param name="cancellationToken">Токен отмены.</param>
+        /// <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует или скрыта.</returns>
+         ValueTask<IMapperDto> GetAsync(IMappersSession mappersSession, long id, CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Получить запись с указаным идентити.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="id">Идентити записи.</param>
+        /// <returns>Возвращает значение если запись существует иначе если запись не существует возвращает <see langword="null" />.</returns>
+        DemoDelayTaskDtoActual GetRaw(IMappersSession session, long id);
+
+        /// <summary>
+        /// Получить запись с указаным идентити.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="id">Идентити записи.</param>
+        /// <param name="cancellationToken">Токен отмены.</param>
+        /// <returns>Возвращает значение если запись существует иначе если запись не существует возвращает <see langword="null" />.</returns>
+        ValueTask<DemoDelayTaskDtoActual> GetRawAsync(IMappersSession session, long id, CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Обновить запись.
+        /// ВАЖНО : Обновление не учитывает скрытые записи.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="data">Измененная запись.</param>
+        /// <returns>Возвращает актуальное состояние записи.</returns>
+        DemoDelayTaskDtoActual Update(IMappersSession session, DemoDelayTaskDtoChanged data);
+
+        /// <summary>
+        /// Обновить запись.
+        /// ВАЖНО : Обновление не учитывает скрытые записи.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="data">Измененная запись.</param>
+        /// <param name="cancellationToken">Токен отмены.</param>
+        /// <returns>Возвращает актуальное состояние записи.</returns>
+        ValueTask<IMapperDto> UpdateAsync(IMappersSession session, DemoDelayTaskDtoChanged data, CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Массовое создание записей.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="data">Записи.</param>
+        void BulkInsert(IMappersSession session, IEnumerable<DemoDelayTaskDtoNew> data);
+
+        /// <summary>
+        /// Массовое создание записей.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="data">Записи.</param>
+        /// <param name="cancellationToken">Токен отмены.</param>
+        ValueTask BulkInsertAsync(IMappersSession session, IEnumerable<DemoDelayTaskDtoNew> data, CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Создать запись.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="data">Новая запись.</param>
+        /// <returns>Возвращает актуальное состояние записи.</returns>
+        DemoDelayTaskDtoActual New(IMappersSession session, DemoDelayTaskDtoNew data);
+
+        /// <summary>
+        /// Создать запись.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="data">Новая запись.</param>
+        /// <param name="cancellationToken">Токен отмены.</param>
+        /// <returns>Возвращает актуальное состояние записи.</returns>
+        ValueTask<IMapperDto> NewAsync(IMappersSession session, DemoDelayTaskDtoNew data, CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Получить итератор всех записей выбранных с учётом фильтра.
+        /// ВАЖНО : Выбор не учитывает скрытые записи.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+        /// <returns>Возвращает итератор всех выбраных записей кроме скрытых записей.</returns>
+        new IEnumerable<DemoDelayTaskDtoActual> GetEnumerator(IMappersSession session, IMapperSelectFilter selectFilter = null);
+
+        /// <summary>
+        /// Получить итератор всех записей выбранных с учётом фильтра.
+        /// ВАЖНО : Выбор не учитывает скрытые записи.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+        /// <param name="cancellationToken">Токен отмены.</param>
+        /// <returns>Возвращает итератор всех выбраных записей кроме скрытых записей.</returns>
+        IAsyncEnumerable<DemoDelayTaskDtoActual> GetEnumeratorAsync(IMappersSession session, IMapperSelectFilter selectFilter = null, CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Получить итератор всех записей выбранных с учётом фильтра.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+        /// <returns>Возвращает итератор всех выбраных записей.</returns>
+        IEnumerable<DemoDelayTaskDtoActual> GetEnumeratorRaw(IMappersSession session, IMapperSelectFilter selectFilter = null);
+
+        /// <summary>
+        /// Получить итератор записей выбранных с учётом фильтра для заданной страницы указанного размера.
+        /// ВАЖНО : Выбор не учитывает скрытые записи.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="pageIndex">Индекс выбираемой страницы. Первая страница имеет индекс 1.</param>
+        /// <param name="pageSize">Размер страницы. Минимальный размер страницы 1. Максимальный размер страницы 1000.</param>
+        /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+        /// <returns>Возвращает итератор всех выбраных записей кроме скрытых записей.</returns>
+        IEnumerable<DemoDelayTaskDtoActual> GetEnumeratorPage(IMappersSession session, int pageIndex, int pageSize, IMapperSelectFilter selectFilter = null);
+
+        /// <summary>
+        /// Получить итератор идентити записей выбранных с учётом фильтра для заданной страницы указанного размера.
+        /// ВАЖНО : Выбор не учитывает скрытые записи.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="pageIndex">Индекс выбираемой страницы. Первая страница имеет индекс 1.</param>
+        /// <param name="pageSize">Размер страницы. Минимальный размер страницы 1. Максимальный размер страницы 1000.</param>
+        /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+        /// <returns>Возвращает итератор всех выбраных идентити записей кроме скрытых записей.</returns>
+        IEnumerable<long> GetEnumeratorIdentitiesPage(IMappersSession session, int pageIndex, int pageSize, IMapperSelectFilter selectFilter = null);
+
+        /// <summary>
+        /// Получить количество записей удовлетворяющих фильтру выборки.
+        /// ВАЖНО : Выбор не учитывает скрытые записи.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+        /// <returns>Возвращает количество записей удовлетворяющих фильтру выборки кроме скрытых записей.</returns>
+        long GetCount(IMappersSession session, IMapperSelectFilter selectFilter = null);
+        /// <summary>
+        /// Получить количество записей удовлетворяющих фильтру выборки.
+        /// ВАЖНО : Выбор не учитывает скрытые записи.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+        /// <param name="cancellationToken">Кокен отмены.</param>
+        /// <returns>Возвращает количество записей удовлетворяющих фильтру выборки кроме скрытых записей.</returns>
+        ValueTask<long> GetCountAsync(IMappersSession session, IMapperSelectFilter selectFilter = null, CancellationToken cancellationToken = default);
     }
 
 }

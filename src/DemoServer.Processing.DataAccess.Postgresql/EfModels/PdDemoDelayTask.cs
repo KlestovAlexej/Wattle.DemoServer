@@ -1,0 +1,20 @@
+﻿using System;
+
+namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
+
+public class PdDemoDelayTask
+{
+    public long Id { get; set; }
+
+    public long Revision { get; set; }
+
+    public DateTime Createdate { get; set; }
+
+    public DateTime Modificationdate { get; set; }
+
+    public bool Available { get; set; }
+
+    public DateTime? Startdate { get; set; }
+
+    public string Scenario { get; set; } = null!;
+}

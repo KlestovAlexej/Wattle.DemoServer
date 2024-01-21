@@ -288,6 +288,48 @@ public static class WellknownDomainObjectFields
     }
     #endregion
 
+    #region Задача с отложенным запуском
+    /// <summary>
+    /// Задача с отложенным запуском.
+    /// </summary>
+    [Description("Задача с отложенным запуском")]
+    [SchemaMapper(MapperId = WellknownDomainObjects.Text.DemoDelayTask, DeleteMode = SchemaMapperDeleteMode.HideUpdate)]
+    [SchemaMapperIdentityFieldPostgreSql(PartitionsLevel = Constants.MappersComplexIdentityLevel, PartitionsExpandInterface = true)]
+    [SchemaMapperIdentityField(DbSequenceName = "Sequence_%ObjectName%")]
+    [SchemaMapperRevisionField]
+    [SchemaMapperAvailableField]
+    public static class DemoDelayTask
+    {
+        /// <summary>
+        /// Дата создания.
+        /// </summary>
+        [Description("Дата создания")]
+        [SchemaMapperField(typeof(DateTimeOffset), Where = true, Order = true)]
+        public static readonly Guid CreateDate = new("4437FA7D-5B09-4F22-9362-322C10E5A582");
+
+        /// <summary>
+        /// Дата модификации.
+        /// </summary>
+        [Description("Дата модификации")]
+        [SchemaMapperField(typeof(DateTimeOffset), Where = true, Order = true, UpdateMode = SchemaMapperFieldUpdateMode.UpdateDirect)]
+        public static readonly Guid ModificationDate = new("83816A54-32EB-448F-A755-9D14ACCB048A");
+
+        /// <summary>
+        /// Сценарий.
+        /// </summary>
+        [Description("Сценарий")]
+        [SchemaMapperField(typeof(string))]
+        public static readonly Guid Scenario = new("5CD4E196-AD21-4D0A-88E0-514F7F7874AD");
+
+        /// <summary>
+        /// Дата запуска.
+        /// </summary>
+        [Description("Дата запуска")]
+        [SchemaMapperField(typeof(DateTimeOffset?), DbIsNull = true)]
+        public static readonly Guid StartDate = new("E2856719-2986-4958-8286-00EF8C2F254F");
+    }
+    #endregion
+
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static string GetDisplayName(Guid id)
     {

@@ -38,6 +38,17 @@ CREATE TABLE demoobjectx(
   
   CREATE INDEX demoobjectx_group_idx ON demoobjectx("group");
   
+CREATE TABLE demodelaytask(
+  id bigint NOT NULL,
+  revision bigint NOT NULL,
+  createdate timestamptz NOT NULL,
+  modificationdate timestamptz NOT NULL,
+  available boolean NOT NULL,
+  startdate timestamptz,
+  scenario text NOT NULL,
+  CONSTRAINT gw_incomingcallbackеtask_pkey PRIMARY KEY(id)
+) PARTITION BY RANGE (id);
+
 CREATE TABLE systemlog(
   id bigint NOT NULL,
   createdate timestamptz NOT NULL,
@@ -77,6 +88,8 @@ CREATE TABLE tablepartition(
   maxnotincludeid bigint NOT NULL,
   CONSTRAINT "Primary key tablepartition" PRIMARY KEY(id)
 ) PARTITION BY RANGE (id);
+
+CREATE SEQUENCE Sequence_DemoDelayTask START WITH 1 INCREMENT BY 1;
 
 CREATE SEQUENCE Sequence_DemoObject START WITH 1 INCREMENT BY 1;
 

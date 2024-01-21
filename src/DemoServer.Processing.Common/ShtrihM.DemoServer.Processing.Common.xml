@@ -234,6 +234,31 @@
             Номер группы.
             </summary>
         </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjectFields.DemoDelayTask">
+            <summary>
+            Задача с отложенным запуском.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjectFields.DemoDelayTask.CreateDate">
+            <summary>
+            Дата создания.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjectFields.DemoDelayTask.ModificationDate">
+            <summary>
+            Дата модификации.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjectFields.DemoDelayTask.Scenario">
+            <summary>
+            Сценарий.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjectFields.DemoDelayTask.StartDate">
+            <summary>
+            Дата запуска.
+            </summary>
+        </member>
         <member name="T:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjects">
             <summary>
             Идентификаторы объектов.
@@ -269,6 +294,11 @@
             Объект X.
             </summary>
         </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjects.Text.DemoDelayTask">
+            <summary>
+            Задача с отложенным запуском.
+            </summary>
+        </member>
         <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjects.DisplayNames">
             <summary>
             Все идентификаторы объектов и их описание.
@@ -297,6 +327,11 @@
         <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjects.DemoObjectX">
             <summary>
             Объект X.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjects.DemoDelayTask">
+            <summary>
+            Задача с отложенным запуском.
             </summary>
         </member>
         <member name="T:ShtrihM.DemoServer.Processing.Common.WellknownSytemLogCodes">
@@ -544,6 +579,46 @@
             Идентити.
             </summary>
         </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.DemoDelayTask">
+            <summary>
+            Задача с отложенным запуском
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.DemoDelayTask.ObjectId">
+            <summary>
+            Идентификатр объекта.
+            </summary>
+        </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.DemoDelayTask.Fields">
+            <summary>
+            Идентификатр полей объекта доступные для формирования фильтра.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.DemoDelayTask.Fields.CreateDate">
+            <summary>
+            Дата создания
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.DemoDelayTask.Fields.ModificationDate">
+            <summary>
+            Дата модификации
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.DemoDelayTask.Fields.Scenario">
+            <summary>
+            Сценарий
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.DemoDelayTask.Fields.StartDate">
+            <summary>
+            Дата запуска
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.DemoDelayTask.Fields.Id">
+            <summary>
+            Идентити.
+            </summary>
+        </member>
         <member name="M:ShtrihM.DemoServer.Processing.Generated.Common.SchemaQueriesProvider.QueryForChangeTracker(System.String)">
             <summary>
             Создание конструктора текста запроса доменных объектов ChangeTracker.
@@ -571,6 +646,12 @@
         <member name="M:ShtrihM.DemoServer.Processing.Generated.Common.SchemaQueriesProvider.QueryForDemoObjectX(System.String)">
             <summary>
             Создание конструктора текста запроса доменных объектов DemoObjectX.
+            </summary>
+            <param name="query">Запрос.</param>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.Common.SchemaQueriesProvider.QueryForDemoDelayTask(System.String)">
+            <summary>
+            Создание конструктора текста запроса доменных объектов DemoDelayTask.
             </summary>
             <param name="query">Запрос.</param>
         </member>

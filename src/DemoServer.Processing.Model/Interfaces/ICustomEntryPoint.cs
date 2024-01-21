@@ -37,4 +37,5 @@ public interface ICustomEntryPoint : IEntryPoint
     UnitOfWorkLocksHubTyped UnitOfWorkLocks { get; }
     IEntryPointContext Context { get; }
     IMapper AutoMapper { get; }
+    IDemoDelayTaskProcessor DemoDelayTaskProcessor { get; }
 }

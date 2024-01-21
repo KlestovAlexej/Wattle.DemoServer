@@ -580,6 +580,100 @@ namespace ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements
 
             #endregion Объект DemoObjectX
 
+            #region Объект DemoDelayTask
+
+            {
+                var schemaObjectQuey = new PostgreSqlSchemaObjectQuey();
+                Schema.Objects.Add(schemaObjectQuey);
+
+                schemaObjectQuey.Description = @"Задача с отложенным запуском";
+                schemaObjectQuey.Id = new Guid("5f729000-5139-469f-90b8-74301e342df3");
+                schemaObjectQuey.IdentityFieldId = new Guid("4f414fbb-4b25-4691-80c3-9897fc5be61b");
+
+                #region Поле CreateDate
+
+                {
+                    var schemaObjectFieldQuey = new PostgreSqlSchemaObjectFieldQuey();
+                    schemaObjectQuey.Fields.Add(schemaObjectFieldQuey);
+
+                    schemaObjectFieldQuey.Description = @"Дата создания";
+                    schemaObjectFieldQuey.Id = new Guid("4437fa7d-5b09-4f22-9362-322c10e5a582");
+                    schemaObjectFieldQuey.Order = true;
+                    schemaObjectFieldQuey.Where = true;
+                    schemaObjectFieldQuey.Name = @"CreateDate";
+                    schemaObjectFieldQuey.EvaluatedValue = null;
+                }
+
+                #endregion Поле CreateDate
+
+                #region Поле ModificationDate
+
+                {
+                    var schemaObjectFieldQuey = new PostgreSqlSchemaObjectFieldQuey();
+                    schemaObjectQuey.Fields.Add(schemaObjectFieldQuey);
+
+                    schemaObjectFieldQuey.Description = @"Дата модификации";
+                    schemaObjectFieldQuey.Id = new Guid("83816a54-32eb-448f-a755-9d14accb048a");
+                    schemaObjectFieldQuey.Order = true;
+                    schemaObjectFieldQuey.Where = true;
+                    schemaObjectFieldQuey.Name = @"ModificationDate";
+                    schemaObjectFieldQuey.EvaluatedValue = null;
+                }
+
+                #endregion Поле ModificationDate
+
+                #region Поле Scenario
+
+                {
+                    var schemaObjectFieldQuey = new PostgreSqlSchemaObjectFieldQuey();
+                    schemaObjectQuey.Fields.Add(schemaObjectFieldQuey);
+
+                    schemaObjectFieldQuey.Description = @"Сценарий";
+                    schemaObjectFieldQuey.Id = new Guid("5cd4e196-ad21-4d0a-88e0-514f7f7874ad");
+                    schemaObjectFieldQuey.Order = false;
+                    schemaObjectFieldQuey.Where = false;
+                    schemaObjectFieldQuey.Name = @"Scenario";
+                    schemaObjectFieldQuey.EvaluatedValue = null;
+                }
+
+                #endregion Поле Scenario
+
+                #region Поле StartDate
+
+                {
+                    var schemaObjectFieldQuey = new PostgreSqlSchemaObjectFieldQuey();
+                    schemaObjectQuey.Fields.Add(schemaObjectFieldQuey);
+
+                    schemaObjectFieldQuey.Description = @"Дата запуска";
+                    schemaObjectFieldQuey.Id = new Guid("e2856719-2986-4958-8286-00ef8c2f254f");
+                    schemaObjectFieldQuey.Order = false;
+                    schemaObjectFieldQuey.Where = false;
+                    schemaObjectFieldQuey.Name = @"StartDate";
+                    schemaObjectFieldQuey.EvaluatedValue = null;
+                }
+
+                #endregion Поле StartDate
+
+                #region Поле Id
+
+                {
+                    var schemaObjectFieldQuey = new PostgreSqlSchemaObjectFieldQuey();
+                    schemaObjectQuey.Fields.Add(schemaObjectFieldQuey);
+
+                    schemaObjectFieldQuey.Description = @"Задача с отложенным запуском";
+                    schemaObjectFieldQuey.Id = new Guid("4f414fbb-4b25-4691-80c3-9897fc5be61b");
+                    schemaObjectFieldQuey.Order = true;
+                    schemaObjectFieldQuey.Where = true;
+                    schemaObjectFieldQuey.Name = @"Id";
+                    schemaObjectFieldQuey.EvaluatedValue = null;
+                }
+
+                #endregion Поле Id
+
+            }
+
+            #endregion Объект DemoDelayTask
+
         }
     }
 
@@ -615,6 +709,8 @@ namespace ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements
             AddMapper(new MapperDemoObject(exceptionPolicy, m_selectFilterFactory));
 
             AddMapper(new MapperDemoObjectX(exceptionPolicy, m_selectFilterFactory));
+
+            AddMapper(new MapperDemoDelayTask(exceptionPolicy, m_selectFilterFactory));
 
             OnExitConstructor(context);
         }
@@ -13396,6 +13492,2547 @@ FROM DemoObjectX";
             }
         }
 
+    }
+
+    /// <summary>
+    /// Поточный читатель данных записей для массовой вставки записей в БД.
+    /// 
+    /// Задача с отложенным запуском
+    /// </summary>
+    internal class BulkInsertDataReaderDemoDelayTask : BasePostgreSqlBulkInserter<DemoDelayTaskDtoNew>
+    {
+        protected override async ValueTask DoInsertObjectAsync(NpgsqlBinaryImporter binaryImport, DemoDelayTaskDtoNew instance, CancellationToken cancellationToken = default)
+        {
+            await binaryImport.WriteAsync(instance.Id, NpgsqlDbType.Bigint, cancellationToken).ConfigureAwait(false);
+            await binaryImport.WriteAsync(instance.Available, NpgsqlDbType.Boolean, cancellationToken).ConfigureAwait(false);
+            await binaryImport.WriteAsync(Constants.StartRevision, NpgsqlDbType.Bigint, cancellationToken).ConfigureAwait(false);
+            await binaryImport.WriteAsync(instance.CreateDate.ToUniversalTime(), NpgsqlDbType.TimestampTz, cancellationToken).ConfigureAwait(false);
+            await binaryImport.WriteAsync(instance.ModificationDate.ToUniversalTime(), NpgsqlDbType.TimestampTz, cancellationToken).ConfigureAwait(false);
+            await binaryImport.WriteAsync(instance.Scenario, NpgsqlDbType.Text, cancellationToken).ConfigureAwait(false);
+            {
+                if (instance.StartDate.HasValue == false)
+                {
+                    await binaryImport.WriteNullAsync(cancellationToken).ConfigureAwait(false);
+                }
+                else
+                {
+                    await binaryImport.WriteAsync(instance.StartDate.Value.ToUniversalTime(), NpgsqlDbType.TimestampTz, cancellationToken).ConfigureAwait(false);
+                }
+            }
+        }
+
+        protected override void DoInsertObject(NpgsqlBinaryImporter binaryImport, DemoDelayTaskDtoNew instance)
+        {
+            binaryImport.Write(instance.Id, NpgsqlDbType.Bigint);
+            binaryImport.Write(instance.Available, NpgsqlDbType.Boolean);
+            binaryImport.Write(Constants.StartRevision, NpgsqlDbType.Bigint);
+            binaryImport.Write(instance.CreateDate.ToUniversalTime(), NpgsqlDbType.TimestampTz);
+            binaryImport.Write(instance.ModificationDate.ToUniversalTime(), NpgsqlDbType.TimestampTz);
+            binaryImport.Write(instance.Scenario, NpgsqlDbType.Text);
+            {
+                if (instance.StartDate.HasValue == false)
+                {
+                    binaryImport.WriteNull();
+                }
+                else
+                {
+                    binaryImport.Write(instance.StartDate.Value.ToUniversalTime(), NpgsqlDbType.TimestampTz);
+                }
+            }
+        }
+
+        protected override string GetImportCommand()
+        {
+            var result = @"COPY DemoDelayTask (Id,
+Available,
+Revision,
+CreateDate,
+ModificationDate,
+Scenario,
+StartDate) FROM STDIN (FORMAT BINARY)
+";
+
+            return (result);
+        }
+    }
+
+    /// <summary>
+    /// Задача с отложенным запуском
+    /// </summary>
+    [MapperImplementation(WellknownMappersAsText.DemoDelayTask)]
+    [SuppressMessage("ReSharper", "PartialTypeWithSinglePart")]
+    [SuppressMessage("ReSharper", "PartialMethodWithSinglePart")]
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
+    [SuppressMessage("ReSharper", "ClassWithVirtualMembersNeverInherited.Global")]
+    public partial class MapperDemoDelayTask : BasePostgreSqlMapper<DemoDelayTaskDtoActual>, IPartitionsMapper, IMapperInitializer, IMapperDemoDelayTask
+    {
+        [SuppressMessage("ReSharper", "RedundantArgumentDefaultValue")]
+        public MapperDemoDelayTask(IMappersExceptionPolicy exceptionPolicy, IPostgreSqlMapperSelectFilterFactory selectFilterFactory)
+           : base("Маппер данных состояния доменного объекта '" + @"Задача с отложенным запуском" + "' в БД", WellknownMappers.DemoDelayTask, selectFilterFactory, exceptionPolicy)
+        {
+            Partitions = new PartitionsManager(exceptionPolicy, @"DemoDelayTask", ComplexIdentity.Level.L2, false);
+        }
+
+        [SuppressMessage("ReSharper", "RedundantArgumentDefaultValue")]
+        public MapperDemoDelayTask(IMappersExceptionPolicy exceptionPolicy, IPostgreSqlMapperSelectFilterFactory selectFilterFactory, IInfrastructureMonitorMapper infrastructureMonitor = null)
+           : base("Маппер данных состояния доменного объекта '" + @"Задача с отложенным запуском" + "' в БД", WellknownMappers.DemoDelayTask, selectFilterFactory, exceptionPolicy, infrastructureMonitor)
+        {
+            Partitions = new PartitionsManager(exceptionPolicy, @"DemoDelayTask", ComplexIdentity.Level.L2, false);
+        }
+
+        /// <summary>
+        /// Имя таблицы БД.
+        /// </summary>
+        public string TableName => @"DemoDelayTask";
+
+        /// <summary>
+        /// Интерфейс управления партициями.
+        /// </summary>
+        // ReSharper disable once MemberCanBePrivate.Global
+        // ReSharper disable once UnusedAutoPropertyAccessor.Global
+        // ReSharper disable once AutoPropertyCanBeMadeGetOnly.Local
+        public IPartitionsManager Partitions { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] private set; }
+
+        /// <summary>
+        /// Обработка исключения мапппера.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="exception">Исключение мапппера.</param>
+        partial void CatchException(IMappersSession session, Exception exception);
+
+        /// <summary>
+        /// Обработка исключения мапппера в методе <see cref="Initialize"/>.
+        /// </summary>
+        /// <param name="mappers">Реестр мапперов которому принадлежит маппер.</param>
+        /// <param name="exception">Исключение мапппера.</param>
+        partial void CatchExceptionOnInitialize(IMappers mappers, Exception exception);
+
+        /// <summary>
+        /// Инициализация маппера.
+        /// </summary>
+        /// <param name="mappers">Реестр мапперов которому принадлежит маппер.</param>
+        partial void DoInitialize(IMappers mappers);
+
+        /// <summary>
+        /// Инициализация маппера.
+        /// </summary>
+        /// <param name="mappers">Реестр мапперов которому принадлежит маппер.</param>
+        public virtual void Initialize(IMappers mappers)
+        {
+            if (mappers == null)
+            {
+                throw new ArgumentNullException(nameof(mappers));
+            }
+            try
+            {
+                DoInitialize(mappers);
+            }
+            catch (Exception exception)
+            {
+
+                CatchExceptionOnInitialize(mappers, exception);
+
+                var targetException = m_exceptionPolicy.Apply(exception);
+                if (ReferenceEquals(targetException, exception))
+                {
+                    ExceptionDispatchInfo.Capture(exception).Throw();
+                }
+
+                throw targetException;
+            }
+        }
+
+        /// <summary>
+        /// Обработка исключения мапппера в методе <see cref="GetNextId"/>.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="exception">Исключение мапппера.</param>
+        partial void CatchExceptionOnGetNextId(IMappersSession session, Exception exception);
+
+        /// <summary>
+        /// Получение следующего значения идентити из последовательности "Sequence_DemoDelayTask".
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <returns>Возвращает следующего значение идентити.</returns>
+        public virtual long GetNextId(IMappersSession session)
+        {
+            if (session == null)
+            {
+                throw new ArgumentNullException(nameof(session));
+            }
+
+            try
+            {
+                var typedSession = (IPostgreSqlMappersSession) session;
+
+                // ReSharper disable once ConvertToUsingDeclaration
+                using (var command = typedSession.CreateCommand(true))
+                {
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = @"SELECT NEXTVAL('Sequence_DemoDelayTask');";
+                    var temp = command.ExecuteScalar();
+                    // ReSharper disable once PossibleNullReferenceException
+                    var result = (long)temp;
+
+                    return (result);
+                }
+            }
+            catch (Exception exception)
+            {
+                CatchExceptionOnGetNextId(session, exception);
+                CatchException(session, exception);
+
+                var targetException = m_exceptionPolicy.Apply(exception);
+                if (ReferenceEquals(targetException, exception))
+                {
+                    ExceptionDispatchInfo.Capture(exception).Throw();
+                }
+
+                throw targetException;
+            }
+        }
+
+        /// <summary>
+        /// Обработка исключения мапппера в методе <see cref="GetNextIds"/>.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="exception">Исключение мапппера.</param>
+        partial void CatchExceptionOnGetNextIds(IMappersSession session, Exception exception);
+
+        /// <summary>
+        /// Получение следующих значений идентити из последовательности "Sequence_DemoDelayTask".
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="count">Количество следующийх значений идентити из последовательности.</param>
+        /// <param name="cancellationToken">Кокен отмены.</param>
+        /// <returns>Возвращает коллекцию следующих значений идентити.</returns>
+        public virtual IList<long> GetNextIds(IMappersSession session, int count, CancellationToken cancellationToken)
+        {
+            if (session == null)
+            {
+                throw new ArgumentNullException(nameof(session));
+            }
+            if (count <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(count));
+            }
+
+            try
+            {
+                var typedSession = (IPostgreSqlMappersSession) session;
+
+                cancellationToken.ThrowIfCancellationRequested();
+
+                // ReSharper disable once ConvertToUsingDeclaration
+                using (var command = typedSession.CreateCommand(true))
+                {
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = @"SELECT NEXTVAL('Sequence_DemoDelayTask') AS Id FROM GENERATE_SERIES(1, @count);";
+                    command.Parameters.Add("@count", NpgsqlDbType.Integer).Value = count;
+
+                    using (var reader = command.ExecuteReader(CommandBehavior.SequentialAccess | CommandBehavior.SingleResult))
+                    {
+                        var indexId = reader.GetOrdinal("Id");
+
+                        var result = new List<long>(count);
+                        while (reader.Read())
+                        {
+                            cancellationToken.ThrowIfCancellationRequested();
+
+                            var id = reader.GetInt64(indexId);
+                            result.Add(id);
+                        }
+
+                        return (result);
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                CatchExceptionOnGetNextIds(session, exception);
+                CatchException(session, exception);
+
+                var targetException = m_exceptionPolicy.Apply(exception);
+                if (ReferenceEquals(targetException, exception))
+                {
+                    ExceptionDispatchInfo.Capture(exception).Throw();
+                }
+
+                throw targetException;
+            }
+        }
+
+        /// <summary>
+        /// Получение следующего значения идентити из последовательности "Sequence_DemoDelayTask".
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="cancellationToken" >Токен отмены.</param>
+        /// <returns>Возвращает следующего значение идентити.</returns>
+        public virtual async ValueTask<long> GetNextIdAsync(IMappersSession session, CancellationToken cancellationToken = default)
+        {
+            if (session == null)
+            {
+                throw new ArgumentNullException(nameof(session));
+            }
+
+            try
+            {
+                var typedSession = (IPostgreSqlMappersSession) session;
+
+                // ReSharper disable once ConvertToUsingDeclaration
+                var command = await typedSession.CreateCommandAsync(true, cancellationToken).ConfigureAwait(false);
+                await using (command.ConfigureAwait(false))
+                {
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = @"SELECT NEXTVAL('Sequence_DemoDelayTask');";
+                    var temp = await command.ExecuteScalarAsync(cancellationToken).ConfigureAwait(false);
+                    // ReSharper disable once PossibleNullReferenceException
+                    var result = (long)temp;
+
+                    return (result);
+                }
+            }
+            catch (Exception exception)
+            {
+                CatchExceptionOnGetNextId(session, exception);
+                CatchException(session, exception);
+
+                var targetException = await m_exceptionPolicy.ApplyAsync(exception, cancellationToken).ConfigureAwait(false);
+                if (ReferenceEquals(targetException, exception))
+                {
+                    ExceptionDispatchInfo.Capture(exception).Throw();
+                }
+
+                throw targetException;
+            }
+        }
+
+        /// <summary>
+        /// Обработка исключения мапппера в методе <see cref="Exists"/>.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="exception">Исключение мапппера.</param>
+        /// <param name="id">Идентити записи.</param>
+        partial void CatchExceptionOnExists(IMappersSession session, Exception exception, long id);
+
+        /// <summary>
+        /// Проверка существования записис с указаным идентити.
+        /// ВАЖНО : Проверка не учитывает скрытые записи.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="id">Идентити записи.</param>
+        /// <returns>Возвращает <see langword="true" /> если запись существует иначе возвращает <see langword="false" /> если запись не существует или скрыта.</returns>
+        public virtual bool Exists(IMappersSession session, long id)
+        {
+            if (session == null)
+            {
+                throw new ArgumentNullException(nameof(session));
+            }
+
+            try
+            {
+                var typedSession = (IPostgreSqlMappersSession) session;
+
+                // ReSharper disable once ConvertToUsingDeclaration
+                using (var command = typedSession.CreateCommand(false)) 
+                {
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = @"SELECT 1 FROM DemoDelayTask WHERE (Id = @Id) AND (Available = @Available) LIMIT 1";
+
+                    {
+                        var parameter = new NpgsqlParameter<bool>("@Available", NpgsqlDbType.Boolean) { TypedValue = true };
+                        command.Parameters.Add(parameter);
+                    }
+
+                    {
+                        var parameter = new NpgsqlParameter<long>("@Id", NpgsqlDbType.Bigint) { TypedValue = id };
+                        command.Parameters.Add(parameter);
+                    }
+
+                    using (var reader = command.ExecuteReader(CommandBehavior.SequentialAccess | CommandBehavior.SingleResult)) 
+                    {
+                        var result = reader.Read();
+
+                        return (result);
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                CatchExceptionOnExists(session, exception, id);
+                CatchException(session, exception);
+
+                var targetException = m_exceptionPolicy.Apply(exception);
+                if (ReferenceEquals(targetException, exception))
+                {
+                    ExceptionDispatchInfo.Capture(exception).Throw();
+                }
+
+                throw targetException;
+            }
+        }
+
+        /// <summary>
+        /// Проверка существования записис с указаным идентити.
+        /// ВАЖНО : Проверка не учитывает скрытые записи.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="id">Идентити записи.</param>
+        /// <param name="cancellationToken">Токен отмены.</param>
+        /// <returns>Возвращает <see langword="true" /> если запись существует иначе возвращает <see langword="false" /> если запись не существует или скрыта.</returns>
+        public virtual async ValueTask<bool> ExistsAsync(IMappersSession session, long id, CancellationToken cancellationToken = default)
+        {
+            if (session == null)
+            {
+                throw new ArgumentNullException(nameof(session));
+            }
+
+            try
+            {
+                var typedSession = (IPostgreSqlMappersSession) session;
+
+                var command = await typedSession.CreateCommandAsync(false, cancellationToken).ConfigureAwait(false);
+                // ReSharper disable once ConvertToUsingDeclaration
+                await using (command.ConfigureAwait(false))
+                {
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = @"SELECT 1 FROM DemoDelayTask WHERE (Id = @Id) AND (Available = @Available) LIMIT 1";
+
+                    {
+                        var parameter = new NpgsqlParameter<bool>("@Available", NpgsqlDbType.Boolean) { TypedValue = true };
+                        command.Parameters.Add(parameter);
+                    }
+
+                    {
+                        var parameter = new NpgsqlParameter<long>("@Id", NpgsqlDbType.Bigint) { TypedValue = id };
+                        command.Parameters.Add(parameter);
+                    }
+
+                    var reader = await command.ExecuteReaderAsync(CommandBehavior.SequentialAccess | CommandBehavior.SingleResult, cancellationToken).ConfigureAwait(false);
+                    await using (reader.ConfigureAwait(false))
+                    {
+                        var result = await reader.ReadAsync(cancellationToken).ConfigureAwait(false);
+
+                        return (result);
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                CatchExceptionOnExists(session, exception, id);
+                CatchException(session, exception);
+
+                var targetException = await m_exceptionPolicy.ApplyAsync(exception, cancellationToken).ConfigureAwait(false);
+                if (ReferenceEquals(targetException, exception))
+                {
+                    ExceptionDispatchInfo.Capture(exception).Throw();
+                }
+
+                throw targetException;
+            }
+        }
+
+        /// <summary>
+        /// Обработка исключения мапппера в методе <see cref="ExistsRaw"/>.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="exception">Исключение мапппера.</param>
+        /// <param name="id">Идентити записи.</param>
+        partial void CatchExceptionOnExistsRaw(IMappersSession session, Exception exception, long id);
+
+        /// <summary>
+        /// Проверка существования записис с указаным идентити.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="id">Идентити записи.</param>
+        /// <returns>Возвращает <see langword="true" /> если запись существует иначе если запись не существует возвращает <see langword="false" />.</returns>
+        public virtual bool ExistsRaw(IMappersSession session, long id)
+        {
+            if (session == null)
+            {
+                throw new ArgumentNullException(nameof(session));
+            }
+
+            try
+            {
+                var typedSession = (IPostgreSqlMappersSession) session;
+
+                // ReSharper disable once ConvertToUsingDeclaration
+                using (var command = typedSession.CreateCommand(false)) 
+                {
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = @"SELECT 1 FROM DemoDelayTask WHERE (Id = @Id) LIMIT 1";
+
+                    {
+                        var parameter = new NpgsqlParameter<long>("@Id", NpgsqlDbType.Bigint) { TypedValue = id };
+                        command.Parameters.Add(parameter);
+                    }
+
+                    using (var reader = command.ExecuteReader(CommandBehavior.SequentialAccess | CommandBehavior.SingleResult)) 
+                    {
+                        var result = reader.Read();
+
+                        return (result);
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                CatchExceptionOnExistsRaw(session, exception, id);
+                CatchException(session, exception);
+
+                var targetException = m_exceptionPolicy.Apply(exception);
+                if (ReferenceEquals(targetException, exception))
+                {
+                    ExceptionDispatchInfo.Capture(exception).Throw();
+                }
+
+                throw targetException;
+            }
+        }
+
+        /// <summary>
+        /// Проверка существования записис с указаным идентити.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="id">Идентити записи.</param>
+        /// <param name="cancellationToken">Токен отмены.</param>
+        /// <returns>Возвращает <see langword="true" /> если запись существует иначе если запись не существует возвращает <see langword="false" />.</returns>
+        public virtual async ValueTask<bool> ExistsRawAsync(IMappersSession session, long id, CancellationToken cancellationToken = default)
+        {
+            if (session == null)
+            {
+                throw new ArgumentNullException(nameof(session));
+            }
+
+            try
+            {
+                var typedSession = (IPostgreSqlMappersSession) session;
+
+                var command = await typedSession.CreateCommandAsync(false, cancellationToken).ConfigureAwait(false);
+                // ReSharper disable once ConvertToUsingDeclaration
+                await using (command.ConfigureAwait(false))
+                {
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = @"SELECT 1 FROM DemoDelayTask WHERE (Id = @Id) LIMIT 1";
+
+                    {
+                        var parameter = new NpgsqlParameter<long>("@Id", NpgsqlDbType.Bigint) { TypedValue = id };
+                        command.Parameters.Add(parameter);
+                    }
+
+                    var reader = await command.ExecuteReaderAsync(CommandBehavior.SequentialAccess | CommandBehavior.SingleResult, cancellationToken).ConfigureAwait(false);
+                    await using (reader.ConfigureAwait(false))
+                    {
+                        var result = await reader.ReadAsync(cancellationToken).ConfigureAwait(false);
+
+                        return (result);
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                CatchExceptionOnExistsRaw(session, exception, id);
+                CatchException(session, exception);
+
+                var targetException = await m_exceptionPolicy.ApplyAsync(exception, cancellationToken).ConfigureAwait(false);
+                if (ReferenceEquals(targetException, exception))
+                {
+                    ExceptionDispatchInfo.Capture(exception).Throw();
+                }
+
+                throw targetException;
+            }
+        }
+
+        /// <summary>
+        /// Получить индексы колонок таблицы.
+        /// </summary>
+        /// <param name="reader">Читатель данных БД.</param>
+        /// <param name="indexId">Индекс колонки 'Id'.</param>
+        /// <param name="indexAvailable">Индекс колонки 'Available'.</param>
+        /// <param name="indexRevision">Индекс колонки 'Revision'.</param>
+        /// <param name="indexCreateDate">Индекс колонки 'CreateDate'.</param>
+        /// <param name="indexModificationDate">Индекс колонки 'ModificationDate'.</param>
+        /// <param name="indexScenario">Индекс колонки 'Scenario'.</param>
+        /// <param name="indexStartDate">Индекс колонки 'StartDate'.</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void GetColumnIndexesRaw(
+            NpgsqlDataReader reader,
+            out int indexId,
+            out int indexAvailable,
+            out int indexRevision,
+            out int indexCreateDate,
+            out int indexModificationDate,
+            out int indexScenario,
+            out int indexStartDate)
+        {
+            indexId = reader.GetOrdinal("Id");
+            indexAvailable = reader.GetOrdinal("Available");
+            indexRevision = reader.GetOrdinal("Revision");
+            indexCreateDate = reader.GetOrdinal("CreateDate");
+            indexModificationDate = reader.GetOrdinal("ModificationDate");
+            indexScenario = reader.GetOrdinal("Scenario");
+            indexStartDate = reader.GetOrdinal("StartDate");
+        }
+
+        /// <summary>
+        /// Получить индексы колонок таблицы.
+        /// </summary>
+        /// <param name="reader">Читатель данных БД.</param>
+        /// <param name="indexId">Индекс колонки 'Id'.</param>
+        /// <param name="indexRevision">Индекс колонки 'Revision'.</param>
+        /// <param name="indexCreateDate">Индекс колонки 'CreateDate'.</param>
+        /// <param name="indexModificationDate">Индекс колонки 'ModificationDate'.</param>
+        /// <param name="indexScenario">Индекс колонки 'Scenario'.</param>
+        /// <param name="indexStartDate">Индекс колонки 'StartDate'.</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void GetColumnIndexes(
+            NpgsqlDataReader reader,
+            out int indexId,
+            out int indexRevision,
+            out int indexCreateDate,
+            out int indexModificationDate,
+            out int indexScenario,
+            out int indexStartDate)
+        {
+            indexId = reader.GetOrdinal("Id");
+            indexRevision = reader.GetOrdinal("Revision");
+            indexCreateDate = reader.GetOrdinal("CreateDate");
+            indexModificationDate = reader.GetOrdinal("ModificationDate");
+            indexScenario = reader.GetOrdinal("Scenario");
+            indexStartDate = reader.GetOrdinal("StartDate");
+        }
+
+        /// <summary>
+        /// Прочитать запись.
+        /// </summary>
+        /// <param name="reader">Читатель данных БД.</param>
+        /// <param name="indexId">Индекс колонки 'Id'.</param>
+        /// <param name="indexAvailable">Индекс колонки 'Available'.</param>
+        /// <param name="indexRevision">Индекс колонки 'Revision'.</param>
+        /// <param name="indexCreateDate">Индекс колонки 'CreateDate'.</param>
+        /// <param name="indexModificationDate">Индекс колонки 'ModificationDate'.</param>
+        /// <param name="indexScenario">Индекс колонки 'Scenario'.</param>
+        /// <param name="indexStartDate">Индекс колонки 'StartDate'.</param>
+        /// <returns>Созданная и прочитанная запись.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static DemoDelayTaskDtoActual ReadRaw(
+            NpgsqlDataReader reader,
+            int indexId,
+            int indexAvailable,
+            int indexRevision,
+            int indexCreateDate,
+            int indexModificationDate,
+            int indexScenario,
+            int indexStartDate)
+        {
+#pragma warning disable IDE0017 // Simplify object initialization
+            // ReSharper disable once UseObjectOrCollectionInitializer
+            var result = new DemoDelayTaskDtoActual();
+#pragma warning restore IDE0017 // Simplify object initialization
+
+            result.Id = reader.GetInt64(indexId);
+            result.Available = reader.GetBoolean(indexAvailable);
+            result.Revision = reader.GetInt64(indexRevision);
+            result.CreateDate = reader.GetFieldValue<DateTimeOffset>(indexCreateDate);
+            result.ModificationDate = reader.GetFieldValue<DateTimeOffset>(indexModificationDate);
+            result.Scenario = reader.GetString(indexScenario);
+            // ReSharper disable once ConvertIfStatementToConditionalTernaryExpression
+            if (reader.IsDBNull(indexStartDate))
+            {
+                result.StartDate = default;
+            }
+            else
+            {
+                result.StartDate = reader.GetFieldValue<DateTimeOffset>(indexStartDate);
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Прочитать запись.
+        /// </summary>
+        /// <param name="reader">Читатель данных БД.</param>
+        /// <param name="indexId">Индекс колонки 'Id'.</param>
+        /// <param name="indexRevision">Индекс колонки 'Revision'.</param>
+        /// <param name="indexCreateDate">Индекс колонки 'CreateDate'.</param>
+        /// <param name="indexModificationDate">Индекс колонки 'ModificationDate'.</param>
+        /// <param name="indexScenario">Индекс колонки 'Scenario'.</param>
+        /// <param name="indexStartDate">Индекс колонки 'StartDate'.</param>
+        /// <returns>Созданная и прочитанная запись.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static DemoDelayTaskDtoActual Read(
+            NpgsqlDataReader reader,
+            int indexId,
+            int indexRevision,
+            int indexCreateDate,
+            int indexModificationDate,
+            int indexScenario,
+            int indexStartDate)
+        {
+#pragma warning disable IDE0017 // Simplify object initialization
+            // ReSharper disable once UseObjectOrCollectionInitializer
+            var result = new DemoDelayTaskDtoActual();
+#pragma warning restore IDE0017 // Simplify object initialization
+
+            result.Id = reader.GetInt64(indexId);
+            result.Available = true;
+            result.Revision = reader.GetInt64(indexRevision);
+            result.CreateDate = reader.GetFieldValue<DateTimeOffset>(indexCreateDate);
+            result.ModificationDate = reader.GetFieldValue<DateTimeOffset>(indexModificationDate);
+            result.Scenario = reader.GetString(indexScenario);
+            // ReSharper disable once ConvertIfStatementToConditionalTernaryExpression
+            if (reader.IsDBNull(indexStartDate))
+            {
+                result.StartDate = default;
+            }
+            else
+            {
+                result.StartDate = reader.GetFieldValue<DateTimeOffset>(indexStartDate);
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Обработка исключения мапппера в методе <see cref="Get"/>.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="exception">Исключение мапппера.</param>
+        /// <param name="id">Идентити записи.</param>
+        partial void CatchExceptionOnGet(IMappersSession session, Exception exception, long id);
+
+        /// <summary>
+        /// Получить запись с указаным идентити.
+        /// ВАЖНО : Получение не учитывает скрытые записи.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="id">Идентити записи.</param>
+        /// <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует или скрыта.</returns>
+        [SuppressMessage("ReSharper", "UseObjectOrCollectionInitializer")]
+        [SuppressMessage("ReSharper", "ConvertIfStatementToConditionalTernaryExpression")]
+        [SuppressMessage("ReSharper", "RedundantCast")]
+        public virtual DemoDelayTaskDtoActual Get(IMappersSession session, long id)
+        {
+            if (session == null)
+            {
+                throw new ArgumentNullException(nameof(session));
+            }
+
+            try
+            {
+                var typedSession = (IPostgreSqlMappersSession)session;
+
+                // ReSharper disable once ConvertToUsingDeclaration
+                using (var command = typedSession.CreateCommand(false))
+                {
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = @"SELECT
+Id,
+Revision,
+CreateDate,
+ModificationDate,
+Scenario,
+StartDate
+FROM DemoDelayTask WHERE
+(Id = @Id)
+AND (Available = @Old_Available)";
+
+                    {
+                        var parameter = new NpgsqlParameter<long>("@Id", NpgsqlDbType.Bigint) { TypedValue = id };
+                        command.Parameters.Add(parameter);
+                    }
+
+                    {
+                        var parameter = new NpgsqlParameter<bool>("@Old_Available", NpgsqlDbType.Boolean) { TypedValue = true };
+                        command.Parameters.Add(parameter);
+                    }
+
+                    using (var reader = command.ExecuteReader(CommandBehavior.SequentialAccess | CommandBehavior.SingleResult))
+                    {
+                        if (reader.Read())
+                        {
+                            GetColumnIndexes(
+                                reader,
+                                out var indexId,
+                                out var indexRevision,
+                                out var indexCreateDate,
+                                out var indexModificationDate,
+                                out var indexScenario,
+                                out var indexStartDate);
+
+                            var result = Read(
+                                reader,
+                                indexId,
+                                indexRevision,
+                                indexCreateDate,
+                                indexModificationDate,
+                                indexScenario,
+                                indexStartDate);
+
+                            SeedRevision(result.Revision);
+
+                            return (result);
+                        }
+                    }
+
+                    return (null);
+                }
+            }
+            catch (Exception exception)
+            {
+                CatchExceptionOnGet(session, exception, id);
+                CatchException(session, exception);
+
+                var targetException = m_exceptionPolicy.Apply(exception);
+                if (ReferenceEquals(targetException, exception))
+                {
+                    ExceptionDispatchInfo.Capture(exception).Throw();
+                }
+
+                throw targetException;
+            }
+        }
+
+        /// <summary>
+        /// Получить запись с указаным идентити.
+        /// ВАЖНО : Получение не учитывает скрытые записи.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="id">Идентити записи.</param>
+        /// <param name="cancellationToken">Токен отмены.</param>
+        /// <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует или скрыта.</returns>
+        [SuppressMessage("ReSharper", "UseObjectOrCollectionInitializer")]
+        [SuppressMessage("ReSharper", "ConvertIfStatementToConditionalTernaryExpression")]
+        [SuppressMessage("ReSharper", "RedundantCast")]
+        public virtual async ValueTask<IMapperDto> GetAsync(IMappersSession session, long id, CancellationToken cancellationToken = default)
+        {
+            if (session == null)
+            {
+                throw new ArgumentNullException(nameof(session));
+            }
+
+            try
+            {
+                var typedSession = (IPostgreSqlMappersSession)session;
+
+                // ReSharper disable once ConvertToUsingDeclaration
+                var command = await typedSession.CreateCommandAsync(false, cancellationToken).ConfigureAwait(false);
+                await using (command.ConfigureAwait(false))
+                {
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = @"SELECT
+Id,
+Revision,
+CreateDate,
+ModificationDate,
+Scenario,
+StartDate
+FROM DemoDelayTask WHERE
+(Id = @Id)
+AND (Available = @Old_Available)";
+
+                    {
+                        var parameter = new NpgsqlParameter<long>("@Id", NpgsqlDbType.Bigint) { TypedValue = id };
+                        command.Parameters.Add(parameter);
+                    }
+
+                    {
+                        var parameter = new NpgsqlParameter<bool>("@Old_Available", NpgsqlDbType.Boolean) { TypedValue = true };
+                        command.Parameters.Add(parameter);
+                    }
+
+                    var reader = await command.ExecuteReaderAsync(CommandBehavior.SequentialAccess | CommandBehavior.SingleResult, cancellationToken).ConfigureAwait(false);
+                    await using (reader.ConfigureAwait(false))
+                    {
+                        if (await reader.ReadAsync(cancellationToken).ConfigureAwait(false))
+                        {
+                            GetColumnIndexes(
+                                reader,
+                                out var indexId,
+                                out var indexRevision,
+                                out var indexCreateDate,
+                                out var indexModificationDate,
+                                out var indexScenario,
+                                out var indexStartDate);
+
+                            var result = Read(
+                                reader,
+                                indexId,
+                                indexRevision,
+                                indexCreateDate,
+                                indexModificationDate,
+                                indexScenario,
+                                indexStartDate);
+
+                            SeedRevision(result.Revision);
+
+                            return ((IMapperDto)result);
+                        }
+                    }
+
+                    return ((IMapperDto)null);
+                }
+            }
+            catch (Exception exception)
+            {
+                CatchExceptionOnGet(session, exception, id);
+                CatchException(session, exception);
+
+                var targetException = await m_exceptionPolicy.ApplyAsync(exception, cancellationToken).ConfigureAwait(false);
+                if (ReferenceEquals(targetException, exception))
+                {
+                    ExceptionDispatchInfo.Capture(exception).Throw();
+                }
+
+                throw targetException;
+            }
+        }
+
+        /// <summary>
+        /// Обработка исключения мапппера в методе <see cref="GetRaw"/>.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="exception">Исключение мапппера.</param>
+        /// <param name="id">Идентити записи.</param>
+        partial void CatchExceptionOnGetRaw(IMappersSession session, Exception exception, long id);
+
+        /// <summary>
+        /// Получить запись с указаным идентити.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="id">Идентити записи.</param>
+        /// <returns>Возвращает значение если запись существует иначе если запись не существует возвращает <see langword="null" />.</returns>
+        [SuppressMessage("ReSharper", "UseObjectOrCollectionInitializer")]
+        [SuppressMessage("ReSharper", "ConvertIfStatementToConditionalTernaryExpression")]
+        [SuppressMessage("ReSharper", "RedundantCast")]
+        public virtual DemoDelayTaskDtoActual GetRaw(IMappersSession session, long id)
+        {
+            if (session == null)
+            {
+                throw new ArgumentNullException(nameof(session));
+            }
+
+            try
+            {
+                var typedSession = (IPostgreSqlMappersSession) session;
+
+                // ReSharper disable once ConvertToUsingDeclaration
+                using (var command = typedSession.CreateCommand(false))
+                {
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = @"SELECT
+Id,
+Available,
+Revision,
+CreateDate,
+ModificationDate,
+Scenario,
+StartDate
+FROM DemoDelayTask WHERE (Id = @Id)";
+
+                    {
+                        var parameter = new NpgsqlParameter<long>("@Id", NpgsqlDbType.Bigint) { TypedValue = id };
+                        command.Parameters.Add(parameter);
+                    }
+
+                    using (var reader = command.ExecuteReader(CommandBehavior.SequentialAccess | CommandBehavior.SingleResult))
+                    {
+                        if (reader.Read())
+                        {
+                            GetColumnIndexesRaw(
+                                reader,
+                                out var indexId,
+                                out var indexAvailable,
+                                out var indexRevision,
+                                out var indexCreateDate,
+                                out var indexModificationDate,
+                                out var indexScenario,
+                                out var indexStartDate);
+
+                            var result = ReadRaw(
+                                reader,
+                                indexId,
+                                indexAvailable,
+                                indexRevision,
+                                indexCreateDate,
+                                indexModificationDate,
+                                indexScenario,
+                                indexStartDate);
+
+                            SeedRevision(result.Revision);
+
+                            return (result);
+                        }
+                    }
+
+                    return (null);
+                }
+            }
+            catch (Exception exception)
+            {
+                CatchExceptionOnGetRaw(session, exception, id);
+                CatchException(session, exception);
+
+                var targetException = m_exceptionPolicy.Apply(exception);
+                if (ReferenceEquals(targetException, exception))
+                {
+                    ExceptionDispatchInfo.Capture(exception).Throw();
+                }
+
+                throw targetException;
+            }
+        }
+
+        /// <summary>
+        /// Получить запись с указаным идентити.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="id">Идентити записи.</param>
+        /// <param name="cancellationToken">Токен отмены.</param>
+        /// <returns>Возвращает значение если запись существует иначе если запись не существует возвращает <see langword="null" />.</returns>
+        [SuppressMessage("ReSharper", "UseObjectOrCollectionInitializer")]
+        [SuppressMessage("ReSharper", "ConvertIfStatementToConditionalTernaryExpression")]
+        [SuppressMessage("ReSharper", "RedundantCast")]
+        public virtual async ValueTask<DemoDelayTaskDtoActual> GetRawAsync(IMappersSession session, long id, CancellationToken cancellationToken = default)
+        {
+            if (session == null)
+            {
+                throw new ArgumentNullException(nameof(session));
+            }
+
+            try
+            {
+                var typedSession = (IPostgreSqlMappersSession) session;
+
+                // ReSharper disable once ConvertToUsingDeclaration
+                var command = await typedSession.CreateCommandAsync(false, cancellationToken).ConfigureAwait(false);
+                await using (command.ConfigureAwait(false))
+                {
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = @"SELECT
+Id,
+Available,
+Revision,
+CreateDate,
+ModificationDate,
+Scenario,
+StartDate
+FROM DemoDelayTask WHERE (Id = @Id)";
+
+                    {
+                        var parameter = new NpgsqlParameter<long>("@Id", NpgsqlDbType.Bigint) { TypedValue = id };
+                        command.Parameters.Add(parameter);
+                    }
+
+                    var reader = await command.ExecuteReaderAsync(CommandBehavior.SequentialAccess | CommandBehavior.SingleResult, cancellationToken).ConfigureAwait(false);
+                    await using (reader.ConfigureAwait(false))
+                    {
+                        if (await reader.ReadAsync(cancellationToken).ConfigureAwait(false))
+                        {
+                            GetColumnIndexesRaw(
+                                reader,
+                                out var indexId,
+                                out var indexAvailable,
+                                out var indexRevision,
+                                out var indexCreateDate,
+                                out var indexModificationDate,
+                                out var indexScenario,
+                                out var indexStartDate);
+
+                            var result = ReadRaw(
+                                reader,
+                                indexId,
+                                indexAvailable,
+                                indexRevision,
+                                indexCreateDate,
+                                indexModificationDate,
+                                indexScenario,
+                                indexStartDate);
+
+                            SeedRevision(result.Revision);
+
+                            return (result);
+                        }
+                    }
+
+                    return (null);
+                }
+            }
+            catch (Exception exception)
+            {
+                CatchExceptionOnGetRaw(session, exception, id);
+                CatchException(session, exception);
+
+                var targetException = await m_exceptionPolicy.ApplyAsync(exception, cancellationToken).ConfigureAwait(false);
+                if (ReferenceEquals(targetException, exception))
+                {
+                    ExceptionDispatchInfo.Capture(exception).Throw();
+                }
+
+                throw targetException;
+            }
+        }
+
+        /// <summary>
+        /// Обработка исключения мапппера в методе <see cref="Update"/>.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="exception">Исключение мапппера.</param>
+        /// <param name="data">Измененная запись.</param>
+        partial void CatchExceptionOnUpdate(IMappersSession session, Exception exception, DemoDelayTaskDtoChanged data);
+
+        /// <summary>
+        /// Обновить запись.
+        /// ВАЖНО : Обновление не учитывает скрытые записи.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="data">Измененная запись.</param>
+        /// <returns>Возвращает актуальное состояние записи.</returns>
+        public virtual DemoDelayTaskDtoActual Update(IMappersSession session, DemoDelayTaskDtoChanged data)
+        {
+            if (session == null)
+            {
+                throw new ArgumentNullException(nameof(session));
+            }
+            if (data == null)
+            {
+                throw new ArgumentNullException(nameof(data));
+            }
+
+            try
+            {
+                var typedSession = (IPostgreSqlMappersSession) session;
+
+                var result =
+                new DemoDelayTaskDtoActual
+                {
+                    Id = data.Id,
+                    Available = data.Available,
+                    Revision = NewRevision(),
+                    CreateDate = data.CreateDate,
+                    ModificationDate = data.ModificationDate,
+                    Scenario = data.Scenario,
+                    StartDate = data.StartDate,
+                };
+
+                // ReSharper disable once ConvertToUsingDeclaration
+                using (var command = typedSession.CreateCommand(true))
+                {
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = @"UPDATE DemoDelayTask SET
+Revision = @New_Revision,
+Available = @New_Available,
+ModificationDate = @ModificationDate
+WHERE
+(Id = @Id) AND (Revision < @New_Revision)
+AND (Available = @Old_Available)";
+                    {
+                        var parameter = new NpgsqlParameter<long>("@New_Revision", NpgsqlDbType.Bigint) { TypedValue = result.Revision };
+                        command.Parameters.Add(parameter);
+                    }
+                    {
+                        var parameter = new NpgsqlParameter<DateTimeOffset>("@ModificationDate", NpgsqlDbType.TimestampTz) { TypedValue = result.ModificationDate.ToUniversalTime() };
+                        command.Parameters.Add(parameter);
+                    }
+                    {
+                        var parameter = new NpgsqlParameter<bool>("@New_Available", NpgsqlDbType.Boolean) { TypedValue = result.Available };
+                        command.Parameters.Add(parameter);
+                    }
+                    {
+                        var parameter = new NpgsqlParameter<long>("@Id", NpgsqlDbType.Bigint) { TypedValue = data.Id };
+                        command.Parameters.Add(parameter);
+                    }
+                    {
+                        var parameter = new NpgsqlParameter<bool>("@Old_Available", NpgsqlDbType.Boolean) { TypedValue = true };
+                        command.Parameters.Add(parameter);
+                    }
+
+                    var updateCount = command.ExecuteNonQuery();
+                    if (updateCount != 1)
+                    {
+                        throw new InvalidOperationException($"Конкуренция при обновлении записи с идентификатором '{result.Id}' маппером '{MapperId}'.");
+                    }
+                }
+
+                if (MappersFeatures.ValidateUpdateResults)
+                {
+                    var realDto = GetRaw(session, result.Id);
+                    var realDtoText = realDto.ToJsonText(true);
+                    var resultText = result.ToJsonText(true);
+                    if (MappersFeatures.ValidateUpdateAction != null)
+                    {
+                        if (false == MappersFeatures.ValidateUpdateAction(realDto, result))
+                        {
+                            throw new InternalException($"Маппер '{GetType().FullName}' : Данные в БД{Environment.NewLine}'{realDtoText}'{Environment.NewLine}не совпадают с данными в памяти{Environment.NewLine}'{resultText}'.");
+                        }
+                    }
+                    else
+                    {
+                        if (realDtoText != resultText)
+                        {
+                            throw new InternalException($"Маппер '{GetType().FullName}' : Данные в БД{Environment.NewLine}'{realDtoText}'{Environment.NewLine}не совпадают с данными в памяти{Environment.NewLine}'{resultText}'.");
+                        }
+                    }
+                }
+
+                return (result);
+            }
+            catch (Exception exception)
+            {
+                CatchExceptionOnUpdate(session, exception, data);
+                CatchException(session, exception);
+
+                var targetException = m_exceptionPolicy.Apply(exception);
+                if (ReferenceEquals(targetException, exception))
+                {
+                    ExceptionDispatchInfo.Capture(exception).Throw();
+                }
+
+                throw targetException;
+            }
+        }
+
+        /// <summary>
+        /// Обновить запись.
+        /// ВАЖНО : Обновление не учитывает скрытые записи.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="data">Измененная запись.</param>
+        /// <param name="cancellationToken">Токен отмены.</param>
+        /// <returns>Возвращает актуальное состояние записи.</returns>
+        public virtual async ValueTask<IMapperDto> UpdateAsync(IMappersSession session, DemoDelayTaskDtoChanged data, CancellationToken cancellationToken = default)
+        {
+            if (session == null)
+            {
+                throw new ArgumentNullException(nameof(session));
+            }
+            if (data == null)
+            {
+                throw new ArgumentNullException(nameof(data));
+            }
+
+            try
+            {
+                var typedSession = (IPostgreSqlMappersSession) session;
+
+                var result =
+                new DemoDelayTaskDtoActual
+                {
+                    Id = data.Id,
+                    Available = data.Available,
+                    Revision = NewRevision(),
+                    CreateDate = data.CreateDate,
+                    ModificationDate = data.ModificationDate,
+                    Scenario = data.Scenario,
+                    StartDate = data.StartDate,
+                };
+
+                var command = await typedSession.CreateCommandAsync(true, cancellationToken).ConfigureAwait(false);
+                // ReSharper disable once ConvertToUsingDeclaration
+                await using (command.ConfigureAwait(false))
+                {
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = @"UPDATE DemoDelayTask SET
+Revision = @New_Revision,
+Available = @New_Available,
+ModificationDate = @ModificationDate
+WHERE
+(Id = @Id) AND (Revision < @New_Revision)
+AND (Available = @Old_Available)";
+                    {
+                        var parameter = new NpgsqlParameter<long>("@New_Revision", NpgsqlDbType.Bigint) { TypedValue = result.Revision };
+                        command.Parameters.Add(parameter);
+                    }
+                    {
+                        var parameter = new NpgsqlParameter<DateTimeOffset>("@ModificationDate", NpgsqlDbType.TimestampTz) { TypedValue = result.ModificationDate.ToUniversalTime() };
+                        command.Parameters.Add(parameter);
+                    }
+                    {
+                        var parameter = new NpgsqlParameter<bool>("@New_Available", NpgsqlDbType.Boolean) { TypedValue = result.Available };
+                        command.Parameters.Add(parameter);
+                    }
+                    {
+                        var parameter = new NpgsqlParameter<long>("@Id", NpgsqlDbType.Bigint) { TypedValue = data.Id };
+                        command.Parameters.Add(parameter);
+                    }
+                    {
+                        var parameter = new NpgsqlParameter<bool>("@Old_Available", NpgsqlDbType.Boolean) { TypedValue = true };
+                        command.Parameters.Add(parameter);
+                    }
+
+                    var updateCount = await command.ExecuteNonQueryAsync(cancellationToken).ConfigureAwait(false);
+                    if (updateCount != 1)
+                    {
+                        throw new InvalidOperationException($"Конкуренция при обновлении записи с идентификатором '{result.Id}' маппером '{MapperId}'.");
+                    }
+                }
+
+                if (MappersFeatures.ValidateUpdateResults)
+                {
+                    var realDto = GetRaw(session, result.Id);
+                    var realDtoText = realDto.ToJsonText(true);
+                    var resultText = result.ToJsonText(true);
+                    if (MappersFeatures.ValidateUpdateAction != null)
+                    {
+                        if (false == MappersFeatures.ValidateUpdateAction(realDto, result))
+                        {
+                            throw new InternalException($"Маппер '{GetType().FullName}' : Данные в БД{Environment.NewLine}'{realDtoText}'{Environment.NewLine}не совпадают с данными в памяти{Environment.NewLine}'{resultText}'.");
+                        }
+                    }
+                    else
+                    {
+                        if (realDtoText != resultText)
+                        {
+                            throw new InternalException($"Маппер '{GetType().FullName}' : Данные в БД{Environment.NewLine}'{realDtoText}'{Environment.NewLine}не совпадают с данными в памяти{Environment.NewLine}'{resultText}'.");
+                        }
+                    }
+                }
+
+                return ((IMapperDto)result);
+            }
+            catch (Exception exception)
+            {
+                CatchExceptionOnUpdate(session, exception, data);
+                CatchException(session, exception);
+
+                var targetException = await m_exceptionPolicy.ApplyAsync(exception, cancellationToken).ConfigureAwait(false);
+                if (ReferenceEquals(targetException, exception))
+                {
+                    ExceptionDispatchInfo.Capture(exception).Throw();
+                }
+
+                throw targetException;
+            }
+        }
+
+        /// <summary>
+        /// Обработка исключения мапппера в методе <see cref="BulkInsert"/>.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="exception">Исключение мапппера.</param>
+        partial void CatchExceptionOnBulkInsert(IMappersSession session, Exception exception);
+
+        /// <summary>
+        /// Массовое создание записей.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="data">Записи.</param>
+        public virtual void BulkInsert(
+            IMappersSession session,
+            IEnumerable<DemoDelayTaskDtoNew> data)
+        {
+            if (session == null)
+            {
+                throw new ArgumentNullException(nameof(session));
+            }
+            if (data == null)
+            {
+                throw new ArgumentNullException(nameof(data));
+            }
+
+            try
+            {
+                var typedSession = (IPostgreSqlMappersSession) session;
+
+                var postgreSqlBulkInserter = new BulkInsertDataReaderDemoDelayTask();
+                postgreSqlBulkInserter.Insert(typedSession, data);
+            }
+            catch (Exception exception)
+            {
+                CatchExceptionOnBulkInsert(session, exception);
+                CatchException(session, exception);
+
+                var targetException = m_exceptionPolicy.Apply(exception);
+                if (ReferenceEquals(targetException, exception))
+                {
+                    ExceptionDispatchInfo.Capture(exception).Throw();
+                }
+
+                throw targetException;
+            }
+        }
+
+        /// <summary>
+        /// Массовое создание записей.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="data">Записи.</param>
+        /// <param name="cancellationToken">Токен отмены.</param>
+        public virtual async ValueTask BulkInsertAsync(
+            IMappersSession session,
+            IEnumerable<DemoDelayTaskDtoNew> data,
+            CancellationToken cancellationToken = default)
+        {
+            if (session == null)
+            {
+                throw new ArgumentNullException(nameof(session));
+            }
+            if (data == null)
+            {
+                throw new ArgumentNullException(nameof(data));
+            }
+
+            try
+            {
+                var typedSession = (IPostgreSqlMappersSession) session;
+
+                var postgreSqlBulkInserter = new BulkInsertDataReaderDemoDelayTask();
+                await postgreSqlBulkInserter.InsertAsync(typedSession, data, cancellationToken).ConfigureAwait(false);
+            }
+            catch (Exception exception)
+            {
+                CatchExceptionOnBulkInsert(session, exception);
+                CatchException(session, exception);
+
+                var targetException = await m_exceptionPolicy.ApplyAsync(exception, cancellationToken).ConfigureAwait(false);
+                if (ReferenceEquals(targetException, exception))
+                {
+                    ExceptionDispatchInfo.Capture(exception).Throw();
+                }
+
+                throw targetException;
+            }
+        }
+
+        /// <summary>
+        /// Обработка исключения мапппера в методе <see cref="New"/>.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="exception">Исключение мапппера.</param>
+        /// <param name="data">Новая запись.</param>
+        partial void CatchExceptionOnNew(IMappersSession session, Exception exception, DemoDelayTaskDtoNew data);
+
+        /// <summary>
+        /// Создать запись.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="data">Новая запись.</param>
+        /// <returns>Возвращает актуальное состояние записи.</returns>
+        [SuppressMessage("ReSharper", "ConvertIfStatementToConditionalTernaryExpression")]
+        [SuppressMessage("ReSharper", "RedundantCast")]
+        public virtual DemoDelayTaskDtoActual New(IMappersSession session, DemoDelayTaskDtoNew data)
+        {
+            if (session == null)
+            {
+                throw new ArgumentNullException(nameof(session));
+            }
+            if (data == null)
+            {
+                throw new ArgumentNullException(nameof(data));
+            }
+
+            try
+            {
+                var typedSession = (IPostgreSqlMappersSession) session;
+                
+                var result =
+                new DemoDelayTaskDtoActual
+                {
+                    Id = data.Id,
+                    Available = data.Available,
+                    Revision = Constants.StartRevision,
+                    CreateDate = data.CreateDate,
+                    ModificationDate = data.ModificationDate,
+                    Scenario = data.Scenario,
+                    StartDate = data.StartDate,
+                };
+
+                // ReSharper disable once ConvertToUsingDeclaration
+                using (var command = typedSession.CreateCommand(true))
+                {
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = @"INSERT INTO DemoDelayTask
+(
+Id,
+Available,
+Revision,
+CreateDate,
+ModificationDate,
+Scenario,
+StartDate
+)
+VALUES
+(
+@Id,
+@New_Available,
+@New_Revision,
+@CreateDate,
+@ModificationDate,
+@Scenario,
+@StartDate
+)";
+                    {
+                        var parameter = new NpgsqlParameter<DateTimeOffset>(@"@CreateDate", NpgsqlDbType.TimestampTz) { TypedValue = result.CreateDate.ToUniversalTime() };
+                        command.Parameters.Add(parameter);
+                    }
+                    {
+                        var parameter = new NpgsqlParameter<DateTimeOffset>(@"@ModificationDate", NpgsqlDbType.TimestampTz) { TypedValue = result.ModificationDate.ToUniversalTime() };
+                        command.Parameters.Add(parameter);
+                    }
+                    command.Parameters.Add(@"@Scenario", NpgsqlDbType.Text).Value = result.Scenario;
+                    if (result.StartDate == null)
+                    {
+                        command.Parameters.Add("@StartDate", NpgsqlDbType.TimestampTz).Value = DBNull.Value;
+                    }
+                    else
+                    {
+                        command.Parameters.Add(@"@StartDate", NpgsqlDbType.TimestampTz).Value = result.StartDate.Value.ToUniversalTime();
+                    }
+                    {
+                        var parameter = new NpgsqlParameter<long>("@Id", NpgsqlDbType.Bigint) { TypedValue = data.Id };
+                        command.Parameters.Add(parameter);
+                    }
+                    {
+                        var parameter = new NpgsqlParameter<bool>("@New_Available", NpgsqlDbType.Boolean) { TypedValue = result.Available };
+                        command.Parameters.Add(parameter);
+                    }
+                    {
+                        var parameter = new NpgsqlParameter<long>("@New_Revision", NpgsqlDbType.Bigint) { TypedValue = Constants.StartRevision };
+                        command.Parameters.Add(parameter);
+                    }
+                    command.ExecuteNonQuery();
+                }
+
+                return (result);
+            }
+            catch (Exception exception)
+            {
+                CatchExceptionOnNew(session, exception, data);
+                CatchException(session, exception);
+
+                var targetException = m_exceptionPolicy.Apply(exception);
+                if (ReferenceEquals(targetException, exception))
+                {
+                    ExceptionDispatchInfo.Capture(exception).Throw();
+                }
+
+                throw targetException;
+            }
+        }
+
+        /// <summary>
+        /// Создать запись.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="data">Новая запись.</param>
+        /// <param name="cancellationToken">Токен отмены.</param>
+        /// <returns>Возвращает актуальное состояние записи.</returns>
+        [SuppressMessage("ReSharper", "ConvertIfStatementToConditionalTernaryExpression")]
+        [SuppressMessage("ReSharper", "RedundantCast")]
+        public virtual async ValueTask<IMapperDto> NewAsync(IMappersSession session, DemoDelayTaskDtoNew data, CancellationToken cancellationToken = default)
+        {
+            if (session == null)
+            {
+                throw new ArgumentNullException(nameof(session));
+            }
+            if (data == null)
+            {
+                throw new ArgumentNullException(nameof(data));
+            }
+
+            try
+            {
+                var typedSession = (IPostgreSqlMappersSession) session;
+                
+                var result =
+                new DemoDelayTaskDtoActual
+                {
+                    Id = data.Id,
+                    Available = data.Available,
+                    Revision = Constants.StartRevision,
+                    CreateDate = data.CreateDate,
+                    ModificationDate = data.ModificationDate,
+                    Scenario = data.Scenario,
+                    StartDate = data.StartDate,
+                };
+
+                // ReSharper disable once ConvertToUsingDeclaration
+                var command = await typedSession.CreateCommandAsync(true, cancellationToken).ConfigureAwait(false);
+                await using(command.ConfigureAwait(false))
+                {
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = @"INSERT INTO DemoDelayTask
+(
+Id,
+Available,
+Revision,
+CreateDate,
+ModificationDate,
+Scenario,
+StartDate
+)
+VALUES
+(
+@Id,
+@New_Available,
+@New_Revision,
+@CreateDate,
+@ModificationDate,
+@Scenario,
+@StartDate
+)";
+                    {
+                        var parameter = new NpgsqlParameter<DateTimeOffset>(@"@CreateDate", NpgsqlDbType.TimestampTz) { TypedValue = result.CreateDate.ToUniversalTime() };
+                        command.Parameters.Add(parameter);
+                    }
+                    {
+                        var parameter = new NpgsqlParameter<DateTimeOffset>(@"@ModificationDate", NpgsqlDbType.TimestampTz) { TypedValue = result.ModificationDate.ToUniversalTime() };
+                        command.Parameters.Add(parameter);
+                    }
+                    command.Parameters.Add(@"@Scenario", NpgsqlDbType.Text).Value = result.Scenario;
+                    if (result.StartDate == null)
+                    {
+                        command.Parameters.Add("@StartDate", NpgsqlDbType.TimestampTz).Value = DBNull.Value;
+                    }
+                    else
+                    {
+                        command.Parameters.Add(@"@StartDate", NpgsqlDbType.TimestampTz).Value = result.StartDate.Value.ToUniversalTime();
+                    }
+                    {
+                        var parameter = new NpgsqlParameter<long>("@Id", NpgsqlDbType.Bigint) { TypedValue = data.Id };
+                        command.Parameters.Add(parameter);
+                    }
+                    {
+                        var parameter = new NpgsqlParameter<bool>("@New_Available", NpgsqlDbType.Boolean) { TypedValue = result.Available };
+                        command.Parameters.Add(parameter);
+                    }
+                    {
+                        var parameter = new NpgsqlParameter<long>("@New_Revision", NpgsqlDbType.Bigint) { TypedValue = Constants.StartRevision };
+                        command.Parameters.Add(parameter);
+                    }
+                    await command.ExecuteNonQueryAsync(cancellationToken).ConfigureAwait(false);
+                }
+
+                return ((IMapperDto)result);
+            }
+            catch (Exception exception)
+            {
+                CatchExceptionOnNew(session, exception, data);
+                CatchException(session, exception);
+
+                var targetException = await m_exceptionPolicy.ApplyAsync(exception, cancellationToken).ConfigureAwait(false);
+                if (ReferenceEquals(targetException, exception))
+                {
+                    ExceptionDispatchInfo.Capture(exception).Throw();
+                }
+
+                throw targetException;
+            }
+        }
+
+        /// <summary>
+        /// Получить итератор всех записей выбранных с учётом фильтра.
+        /// ВАЖНО : Выбор не учитывает скрытые записи.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+        /// <returns>Возвращает итератор всех выбраных записей кроме скрытых записей.</returns>
+        IEnumerable<IMapperDto> IAbstractMapper.GetEnumerator(IMappersSession session, IMapperSelectFilter selectFilter)
+        {
+            return GetEnumerator(session, selectFilter);
+        }
+
+        /// <summary>
+        /// Получить итератор всех записей выбранных с учётом фильтра.
+        /// ВАЖНО : Выбор не учитывает скрытые записи.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+        /// <returns>Возвращает итератор всех выбраных записей кроме скрытых записей.</returns>
+        IEnumerable<TMapperDto> IAbstractMapper.GetEnumerator<TMapperDto>(IMappersSession session, IMapperSelectFilter selectFilter)
+        {
+            return GetEnumerator(session, selectFilter).Cast<TMapperDto>();
+        }
+
+        /// <summary>
+        /// Обработка исключения мапппера в методе <see cref="GetEnumerator"/>.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="exception">Исключение мапппера.</param>
+        /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+        partial void CatchExceptionOnGetEnumerator(IMappersSession session, Exception exception, IMapperSelectFilter selectFilter);
+
+        /// <summary>
+        /// Получить итератор всех записей выбранных с учётом фильтра.
+        /// ВАЖНО : Выбор не учитывает скрытые записи.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+        /// <returns>Возвращает итератор всех выбраных записей кроме скрытых записей.</returns>
+        [SuppressMessage("ReSharper", "UseObjectOrCollectionInitializer")]
+        [SuppressMessage("ReSharper", "ConvertIfStatementToConditionalTernaryExpression")]
+        [SuppressMessage("ReSharper", "RedundantCast")]
+        public virtual IEnumerable<DemoDelayTaskDtoActual> GetEnumerator(IMappersSession session, IMapperSelectFilter selectFilter = null)
+        {
+            if (session == null)
+            {
+                throw new ArgumentNullException(nameof(session));
+            }
+
+            NpgsqlCommand command = null;
+            try
+            {
+                try
+                {
+                    var typedSession = (IPostgreSqlMappersSession) session;
+
+                    // ReSharper disable once PossibleNullReferenceException
+                    command = typedSession.CreateCommand(false);
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = @"SELECT
+Id,
+Revision,
+CreateDate,
+ModificationDate,
+Scenario,
+StartDate
+FROM DemoDelayTask";
+                    {
+                        var parameter = new NpgsqlParameter<bool>("@Old_Available", NpgsqlDbType.Boolean) { TypedValue = true };
+                        command.Parameters.Add(parameter);
+                    }
+
+                    ExpandCommand(
+                        command,
+                        @"(Available = @Old_Available)",
+                        null,
+                        null,
+                        (IPostgreSqlMapperSelectFilter) selectFilter);
+                }
+                catch (Exception exception)
+                {
+                    CatchExceptionOnGetEnumerator(session, exception, selectFilter);
+                    CatchException(session, exception);
+
+                    var targetException = m_exceptionPolicy.Apply(exception);
+                    if (ReferenceEquals(targetException, exception))
+                    {
+                        ExceptionDispatchInfo.Capture(exception).Throw();
+                    }
+
+                    throw targetException;
+                }
+
+                NpgsqlDataReader reader = null;
+                try
+                {
+                    int indexId;
+                    int indexRevision;
+                    int indexCreateDate;
+                    int indexModificationDate;
+                    int indexScenario;
+                    int indexStartDate;
+                    try
+                    {
+                        reader = command.ExecuteReader(CommandBehavior.SequentialAccess | CommandBehavior.SingleResult);
+
+                        GetColumnIndexes(
+                            reader,
+                            out indexId,
+                            out indexRevision,
+                            out indexCreateDate,
+                            out indexModificationDate,
+                            out indexScenario,
+                            out indexStartDate);
+                    }
+                    catch (Exception exception)
+                    {
+                        CatchExceptionOnGetEnumerator(session, exception, selectFilter);
+                        CatchException(session, exception);
+
+                        var targetException = m_exceptionPolicy.Apply(exception);
+                        if (ReferenceEquals(targetException, exception))
+                        {
+                            ExceptionDispatchInfo.Capture(exception).Throw();
+                        }
+
+                        throw targetException;
+                    }
+
+                    while (true)
+                    {
+                        DemoDelayTaskDtoActual result;
+                        try
+                        {
+                            var hasRecord = reader.Read();
+                            if (hasRecord == false)
+                            {
+                                break;
+                            }
+
+                            result = Read(
+                                reader,
+                                indexId,
+                                indexRevision,
+                                indexCreateDate,
+                                indexModificationDate,
+                                indexScenario,
+                                indexStartDate);
+
+                            SeedRevision(result.Revision);
+                        }
+                        catch (Exception exception)
+                        {
+                            CatchExceptionOnGetEnumerator(session, exception, selectFilter);
+                            CatchException(session, exception);
+
+                            var targetException = m_exceptionPolicy.Apply(exception);
+                            if (ReferenceEquals(targetException, exception))
+                            {
+                                ExceptionDispatchInfo.Capture(exception).Throw();
+                            }
+
+                            throw targetException;
+                        }
+
+                        yield return (result);
+                    }
+                }
+                finally
+                {
+                    reader.SilentDispose();
+                }
+            }
+            finally
+            {
+                command.SilentDispose();
+            }
+        }
+
+        /// <summary>
+        /// Получить итератор всех записей выбранных с учётом фильтра.
+        /// ВАЖНО : Выбор не учитывает скрытые записи.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+        /// <param name="cancellationToken">Токен отмены.</param>
+        /// <returns>Возвращает итератор всех выбраных записей кроме скрытых записей.</returns>
+        [SuppressMessage("ReSharper", "UseObjectOrCollectionInitializer")]
+        [SuppressMessage("ReSharper", "ConvertIfStatementToConditionalTernaryExpression")]
+        [SuppressMessage("ReSharper", "RedundantCast")]
+        public virtual async IAsyncEnumerable<DemoDelayTaskDtoActual> GetEnumeratorAsync(IMappersSession session, IMapperSelectFilter selectFilter = null, [EnumeratorCancellation] CancellationToken cancellationToken = default)
+        {
+            if (session == null)
+            {
+                throw new ArgumentNullException(nameof(session));
+            }
+
+            NpgsqlCommand command = null;
+            try
+            {
+                try
+                {
+                    var typedSession = (IPostgreSqlMappersSession) session;
+
+                    // ReSharper disable once PossibleNullReferenceException
+                    command = await typedSession.CreateCommandAsync(false, cancellationToken).ConfigureAwait(false);
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = @"SELECT
+Id,
+Revision,
+CreateDate,
+ModificationDate,
+Scenario,
+StartDate
+FROM DemoDelayTask";
+                    {
+                        var parameter = new NpgsqlParameter<bool>("@Old_Available", NpgsqlDbType.Boolean) { TypedValue = true };
+                        command.Parameters.Add(parameter);
+                    }
+
+                    ExpandCommand(
+                        command,
+                        @"(Available = @Old_Available)",
+                        null,
+                        null,
+                        (IPostgreSqlMapperSelectFilter) selectFilter);
+                }
+                catch (Exception exception)
+                {
+                    CatchExceptionOnGetEnumerator(session, exception, selectFilter);
+                    CatchException(session, exception);
+
+                    var targetException = await m_exceptionPolicy.ApplyAsync(exception, cancellationToken).ConfigureAwait(false);
+                    if (ReferenceEquals(targetException, exception))
+                    {
+                        ExceptionDispatchInfo.Capture(exception).Throw();
+                    }
+
+                    throw targetException;
+                }
+
+                NpgsqlDataReader reader = null;
+                try
+                {
+                    int indexId;
+                    int indexRevision;
+                    int indexCreateDate;
+                    int indexModificationDate;
+                    int indexScenario;
+                    int indexStartDate;
+                    try
+                    {
+                        reader = await command.ExecuteReaderAsync(CommandBehavior.SequentialAccess | CommandBehavior.SingleResult, cancellationToken).ConfigureAwait(false);
+
+                        GetColumnIndexes(
+                            reader,
+                            out indexId,
+                            out indexRevision,
+                            out indexCreateDate,
+                            out indexModificationDate,
+                            out indexScenario,
+                            out indexStartDate);
+                    }
+                    catch (Exception exception)
+                    {
+                        CatchExceptionOnGetEnumerator(session, exception, selectFilter);
+                        CatchException(session, exception);
+
+                        var targetException = await m_exceptionPolicy.ApplyAsync(exception, cancellationToken).ConfigureAwait(false);
+                        if (ReferenceEquals(targetException, exception))
+                        {
+                            ExceptionDispatchInfo.Capture(exception).Throw();
+                        }
+
+                        throw targetException;
+                    }
+
+                    while (true)
+                    {
+                        DemoDelayTaskDtoActual result;
+                        try
+                        {
+                            var hasRecord = await reader.ReadAsync(cancellationToken).ConfigureAwait(false);
+                            if (hasRecord == false)
+                            {
+                                break;
+                            }
+
+                            result = Read(
+                                reader,
+                                indexId,
+                                indexRevision,
+                                indexCreateDate,
+                                indexModificationDate,
+                                indexScenario,
+                                indexStartDate);
+
+                            SeedRevision(result.Revision);
+                        }
+                        catch (Exception exception)
+                        {
+                            CatchExceptionOnGetEnumerator(session, exception, selectFilter);
+                            CatchException(session, exception);
+
+                            var targetException = await m_exceptionPolicy.ApplyAsync(exception, cancellationToken).ConfigureAwait(false);
+                            if (ReferenceEquals(targetException, exception))
+                            {
+                                ExceptionDispatchInfo.Capture(exception).Throw();
+                            }
+
+                            throw targetException;
+                        }
+
+                        yield return (result);
+                    }
+                }
+                finally
+                {
+                    await reader.SilentDisposeAsync().ConfigureAwait(false);
+                }
+            }
+            finally
+            {
+                await command.SilentDisposeAsync().ConfigureAwait(false);
+            }
+        }
+
+        /// <summary>
+        /// Обработка исключения мапппера в методе <see cref="GetEnumeratorRaw"/>.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="exception">Исключение мапппера.</param>
+        /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+        partial void CatchExceptionOnGetEnumeratorRaw(IMappersSession session, Exception exception, IMapperSelectFilter selectFilter);
+
+        /// <summary>
+        /// Получить итератор всех записей выбранных с учётом фильтра.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+        /// <returns>Возвращает итератор всех выбраных записей.</returns>
+        [SuppressMessage("ReSharper", "UseObjectOrCollectionInitializer")]
+        [SuppressMessage("ReSharper", "ConvertIfStatementToConditionalTernaryExpression")]
+        [SuppressMessage("ReSharper", "RedundantCast")]
+        public virtual IEnumerable<DemoDelayTaskDtoActual> GetEnumeratorRaw(IMappersSession session, IMapperSelectFilter selectFilter = null)
+        {
+            if (session == null)
+            {
+                throw new ArgumentNullException(nameof(session));
+            }
+
+            NpgsqlCommand command = null;
+            try
+            {
+                try
+                {
+                    var typedSession = (IPostgreSqlMappersSession) session;
+
+                    // ReSharper disable once PossibleNullReferenceException
+                    command = typedSession.CreateCommand(false);
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = @"SELECT
+Id,
+Available,
+Revision,
+CreateDate,
+ModificationDate,
+Scenario,
+StartDate
+FROM DemoDelayTask";
+
+                    ExpandCommand(
+                        command,
+                        null,
+                        null,
+                        null,
+                        (IPostgreSqlMapperSelectFilter) selectFilter)
+                    ;
+                }
+                catch (Exception exception)
+                {
+                    CatchExceptionOnGetEnumeratorRaw(session, exception, selectFilter);
+                    CatchException(session, exception);
+
+                    var targetException = m_exceptionPolicy.Apply(exception);
+                    if (ReferenceEquals(targetException, exception))
+                    {
+                        ExceptionDispatchInfo.Capture(exception).Throw();
+                    }
+
+                    throw targetException;
+                }
+
+                NpgsqlDataReader reader = null;
+                try
+                {
+                    int indexId;
+                    int indexRevision;
+                    int indexAvailable;
+                    int indexCreateDate;
+                    int indexModificationDate;
+                    int indexScenario;
+                    int indexStartDate;
+                    try
+                    {
+                        reader = command.ExecuteReader(CommandBehavior.SequentialAccess | CommandBehavior.SingleResult);
+
+                        GetColumnIndexesRaw(
+                            reader,
+                            out indexId,
+                            out indexAvailable,
+                            out indexRevision,
+                            out indexCreateDate,
+                            out indexModificationDate,
+                            out indexScenario,
+                            out indexStartDate);
+                    }
+                    catch (Exception exception)
+                    {
+                        CatchExceptionOnGetEnumeratorRaw(session, exception, selectFilter);
+                        CatchException(session, exception);
+
+                        var targetException = m_exceptionPolicy.Apply(exception);
+                        if (ReferenceEquals(targetException, exception))
+                        {
+                            ExceptionDispatchInfo.Capture(exception).Throw();
+                        }
+
+                        throw targetException;
+                    }
+
+                    while (true)
+                    {
+                        DemoDelayTaskDtoActual result;
+                        try
+                        {
+                            var hasRecord = reader.Read();
+                            if (hasRecord == false)
+                            {
+                                break;
+                            }
+
+                            result = ReadRaw(
+                                reader,
+                                indexId,
+                                indexAvailable,
+                                indexRevision,
+                                indexCreateDate,
+                                indexModificationDate,
+                                indexScenario,
+                                indexStartDate);
+
+                            SeedRevision(result.Revision);
+                        }
+                        catch (Exception exception)
+                        {
+                            CatchExceptionOnGetEnumeratorRaw(session, exception, selectFilter);
+                            CatchException(session, exception);
+
+                            var targetException = m_exceptionPolicy.Apply(exception);
+                            if (ReferenceEquals(targetException, exception))
+                            {
+                                ExceptionDispatchInfo.Capture(exception).Throw();
+                            }
+
+                            throw targetException;
+                        }
+
+                        yield return (result);
+                    }
+                }
+                finally
+                {
+                    reader.SilentDispose();
+                }
+            }
+            finally
+            {
+                command.SilentDispose();
+            }
+        }
+
+        /// <summary>
+        /// Обработка исключения мапппера в методе <see cref="GetEnumeratorPage"/>.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="exception">Исключение мапппера.</param>
+        /// <param name="pageIndex">Индекс выбираемой страницы. Первая страница имеет индекс 1.</param>
+        /// <param name="pageSize">Размер страницы. Минимальный размер страницы 1. Максимальный размер страницы {schemaMapper.MaxPageSize.AsLiteral()}.</param>
+        /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+        partial void CatchExceptionOnGetEnumeratorPage(IMappersSession session, Exception exception, int pageIndex, int pageSize, IMapperSelectFilter selectFilter);
+
+        /// <summary>
+        /// Получить итератор записей выбранных с учётом фильтра для заданной страницы указанного размера.
+        /// ВАЖНО : Выбор не учитывает скрытые записи.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="pageIndex">Индекс выбираемой страницы. Первая страница имеет индекс 1.</param>
+        /// <param name="pageSize">Размер страницы. Минимальный размер страницы 1. Максимальный размер страницы 1000.</param>
+        /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+        /// <returns>Возвращает итератор всех выбраных записей кроме скрытых записей.</returns>
+        [SuppressMessage("ReSharper", "UseObjectOrCollectionInitializer")]
+        [SuppressMessage("ReSharper", "ConvertIfStatementToConditionalTernaryExpression")]
+        [SuppressMessage("ReSharper", "RedundantCast")]
+        public virtual IEnumerable<DemoDelayTaskDtoActual> GetEnumeratorPage(IMappersSession session, int pageIndex, int pageSize, IMapperSelectFilter selectFilter = null)
+        {
+            if (session == null)
+            {
+                throw new ArgumentNullException(nameof(session));
+            }
+            if (pageIndex < 1)
+            {
+                throw new ArgumentOutOfRangeException(nameof(pageIndex));
+            }
+            if (((pageSize < 1) || (pageSize > 1000)))
+            {
+                throw new ArgumentOutOfRangeException(nameof(pageSize));
+            }
+
+            NpgsqlCommand command = null;
+            try
+            {
+                try
+                {
+                    var typedSession = (IPostgreSqlMappersSession) session;
+
+                    // ReSharper disable once PossibleNullReferenceException
+                    command = typedSession.CreateCommand(false);
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = @"SELECT
+Id,
+Revision,
+CreateDate,
+ModificationDate,
+Scenario,
+StartDate
+FROM DemoDelayTask";
+                    {
+                        var parameter = new NpgsqlParameter<long>("@__SkipCount", NpgsqlDbType.Bigint) { TypedValue = (pageIndex - 1L) * pageSize };
+                        command.Parameters.Add(parameter);
+                    }
+                    {
+                        var parameter = new NpgsqlParameter<int>("@__PageSize", NpgsqlDbType.Integer) { TypedValue = pageSize };
+                        command.Parameters.Add(parameter);
+                    }
+                    {
+                        var parameter = new NpgsqlParameter<bool>("@Old_Available", NpgsqlDbType.Boolean) { TypedValue = true };
+                        command.Parameters.Add(parameter);
+                    }
+
+                    ExpandCommand(
+                        command,
+                        @"(Available = @Old_Available)",
+                        @" Id DESC ",
+                        @" LIMIT @__PageSize OFFSET @__SkipCount ",
+                        (IPostgreSqlMapperSelectFilter) selectFilter);
+                }
+                catch (Exception exception)
+                {
+                    CatchExceptionOnGetEnumeratorPage(session, exception, pageIndex, pageSize, selectFilter);
+                    CatchException(session, exception);
+
+                    var targetException = m_exceptionPolicy.Apply(exception);
+                    if (ReferenceEquals(targetException, exception))
+                    {
+                        ExceptionDispatchInfo.Capture(exception).Throw();
+                    }
+
+                    throw targetException;
+                }
+
+                NpgsqlDataReader reader = null;
+                try
+                {
+                    int indexId;
+                    int indexRevision;
+                    int indexCreateDate;
+                    int indexModificationDate;
+                    int indexScenario;
+                    int indexStartDate;
+                    try
+                    {
+                        reader = command.ExecuteReader(CommandBehavior.SequentialAccess | CommandBehavior.SingleResult);
+
+                        GetColumnIndexes(
+                            reader,
+                            out indexId,
+                            out indexRevision,
+                            out indexCreateDate,
+                            out indexModificationDate,
+                            out indexScenario,
+                            out indexStartDate);
+                    }
+                    catch (Exception exception)
+                    {
+                        CatchExceptionOnGetEnumeratorPage(session, exception, pageIndex, pageSize, selectFilter);
+                        CatchException(session, exception);
+
+                        var targetException = m_exceptionPolicy.Apply(exception);
+                        if (ReferenceEquals(targetException, exception))
+                        {
+                            ExceptionDispatchInfo.Capture(exception).Throw();
+                        }
+
+                        throw targetException;
+                    }
+
+                    while (true)
+                    {
+                        DemoDelayTaskDtoActual result;
+                        try
+                        {
+                            var hasRecord = reader.Read();
+                            if (hasRecord == false)
+                            {
+                                break;
+                            }
+
+                            result = Read(
+                                reader,
+                                indexId,
+                                indexRevision,
+                                indexCreateDate,
+                                indexModificationDate,
+                                indexScenario,
+                                indexStartDate);
+
+                            SeedRevision(result.Revision);
+                        }
+                        catch (Exception exception)
+                        {
+                            CatchExceptionOnGetEnumeratorPage(session, exception, pageIndex, pageSize, selectFilter);
+                            CatchException(session, exception);
+
+                            var targetException = m_exceptionPolicy.Apply(exception);
+                            if (ReferenceEquals(targetException, exception))
+                            {
+                                ExceptionDispatchInfo.Capture(exception).Throw();
+                            }
+
+                            throw targetException;
+                        }
+
+                        yield return (result);
+                    }
+                }
+                finally
+                {
+                    reader.SilentDispose();
+                }
+            }
+            finally
+            {
+                command.SilentDispose();
+            }
+        }
+
+        /// <summary>
+        /// Обработка исключения мапппера в методе <see cref="GetEnumeratorIdentitiesPage"/>.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="exception">Исключение мапппера.</param>
+        /// <param name="pageIndex">Индекс выбираемой страницы. Первая страница имеет индекс 1.</param>
+        /// <param name="pageSize">Размер страницы. Минимальный размер страницы 1. Максимальный размер страницы {schemaMapper.MaxPageSize.AsLiteral()}.</param>
+        /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+        partial void CatchExceptionOnGetEnumeratorIdentitiesPage(IMappersSession session, Exception exception, int pageIndex, int pageSize, IMapperSelectFilter selectFilter);
+
+        /// <summary>
+        /// Получить итератор идентити записей выбранных с учётом фильтра для заданной страницы указанного размера.
+        /// ВАЖНО : Выбор не учитывает скрытые записи.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="pageIndex">Индекс выбираемой страницы. Первая страница имеет индекс 1.</param>
+        /// <param name="pageSize">Размер страницы. Минимальный размер страницы 1. Максимальный размер страницы 1000.</param>
+        /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+        /// <returns>Возвращает итератор всех выбраных идентити записей кроме скрытых записей.</returns>
+        public virtual IEnumerable<long> GetEnumeratorIdentitiesPage(IMappersSession session, int pageIndex, int pageSize, IMapperSelectFilter selectFilter = null)
+        {
+            if (session == null)
+            {
+                throw new ArgumentNullException(nameof(session));
+            }
+            if (pageIndex < 1)
+            {
+                throw new ArgumentOutOfRangeException(nameof(pageIndex));
+            }
+            if (((pageSize < 1) || (pageSize > 1000)))
+            {
+                throw new ArgumentOutOfRangeException(nameof(pageSize));
+            }
+
+            NpgsqlCommand command = null;
+            try
+            {
+                try
+                {
+                    var typedSession = (IPostgreSqlMappersSession) session;
+
+                    // ReSharper disable once PossibleNullReferenceException
+                    command = typedSession.CreateCommand(false);
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = @"SELECT Id FROM DemoDelayTask";
+                    {
+                        var parameter = new NpgsqlParameter<long>("@__SkipCount", NpgsqlDbType.Bigint) { TypedValue = (pageIndex - 1L) * pageSize };
+                        command.Parameters.Add(parameter);
+                    }
+                    {
+                        var parameter = new NpgsqlParameter<int>("@__PageSize", NpgsqlDbType.Integer) { TypedValue = pageSize };
+                        command.Parameters.Add(parameter);
+                    }
+                    {
+                        var parameter = new NpgsqlParameter<bool>("@Old_Available", NpgsqlDbType.Boolean) { TypedValue = true };
+                        command.Parameters.Add(parameter);
+                    }
+
+                    ExpandCommand(
+                        command,
+                        @"(Available = @Old_Available)",
+                        @" Id DESC ",
+                        @" LIMIT @__PageSize OFFSET @__SkipCount ",
+                        (IPostgreSqlMapperSelectFilter) selectFilter);
+                }
+                catch (Exception exception)
+                {
+                    CatchExceptionOnGetEnumeratorIdentitiesPage(session, exception, pageIndex, pageSize, selectFilter);
+                    CatchException(session, exception);
+
+                    var targetException = m_exceptionPolicy.Apply(exception);
+                    if (ReferenceEquals(targetException, exception))
+                    {
+                        ExceptionDispatchInfo.Capture(exception).Throw();
+                    }
+
+                    throw targetException;
+                }
+
+                NpgsqlDataReader reader = null;
+                try
+                {
+                    int indexId;
+                    try
+                    {
+                        reader = command.ExecuteReader(CommandBehavior.SequentialAccess | CommandBehavior.SingleResult);
+                        indexId = reader.GetOrdinal("Id");
+                    }
+                    catch (Exception exception)
+                    {
+                        CatchExceptionOnGetEnumeratorIdentitiesPage(session, exception, pageIndex, pageSize, selectFilter);
+                        CatchException(session, exception);
+
+                        var targetException = m_exceptionPolicy.Apply(exception);
+                        if (ReferenceEquals(targetException, exception))
+                        {
+                            ExceptionDispatchInfo.Capture(exception).Throw();
+                        }
+
+                        throw targetException;
+                    }
+
+                    while (true)
+                    {
+                        long item;
+                        try
+                        {
+                            var hasRecord = reader.Read();
+                            if (hasRecord == false)
+                            {
+                                break;
+                            }
+                            item = reader.GetInt64(indexId);
+                        }
+                        catch (Exception exception)
+                        {
+                            CatchExceptionOnGetEnumeratorIdentitiesPage(session, exception, pageIndex, pageSize, selectFilter);
+                            CatchException(session, exception);
+
+                            var targetException = m_exceptionPolicy.Apply(exception);
+                            if (ReferenceEquals(targetException, exception))
+                            {
+                                ExceptionDispatchInfo.Capture(exception).Throw();
+                            }
+
+                            throw targetException;
+                        }
+
+                        yield return (item);
+                    }
+                }
+                finally
+                {
+                    reader.SilentDispose();
+                }
+            }
+            finally
+            {
+                command.SilentDispose();
+            }
+        }
+
+        /// <summary>
+        /// Обработка исключения мапппера в методе <see cref="GetCount"/>.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="exception">Исключение мапппера.</param>
+        /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+        partial void CatchExceptionOnGetCount(IMappersSession session, Exception exception, IMapperSelectFilter selectFilter);
+
+        /// <summary>
+        /// Получить количество записей удовлетворяющих фильтру выборки.
+        /// ВАЖНО : Выбор не учитывает скрытые записи.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+        /// <returns>Возвращает количество записей удовлетворяющих фильтру выборки кроме скрытых записей.</returns>
+        public virtual long GetCount(IMappersSession session, IMapperSelectFilter selectFilter = null)
+        {
+            if (session == null)
+            {
+                throw new ArgumentNullException(nameof(session));
+            }
+
+            try
+            {
+                var typedSession = (IPostgreSqlMappersSession) session;
+
+                // ReSharper disable once ConvertToUsingDeclaration
+                using (var command = typedSession.CreateCommand(false))
+                {
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = @"SELECT COUNT(*) FROM DemoDelayTask";
+
+                    ExpandCommand(command, (selectFilter as IPostgreSqlMapperSelectFilter), @"(Available = @Available)");
+                    {
+                        var parameter = new NpgsqlParameter<bool>("@Available", NpgsqlDbType.Boolean) { TypedValue = true };
+                        command.Parameters.Add(parameter);
+                    }
+
+                    var temp = command.ExecuteScalar();
+                    // ReSharper disable once PossibleNullReferenceException
+                    var result = (long)temp;
+
+                    return (result);
+                }
+            }
+            catch (Exception exception)
+            {
+                CatchExceptionOnGetCount(session, exception, selectFilter);
+                CatchException(session, exception);
+
+                var targetException = m_exceptionPolicy.Apply(exception);
+                if (ReferenceEquals(targetException, exception))
+                {
+                    ExceptionDispatchInfo.Capture(exception).Throw();
+                }
+
+                throw targetException;
+            }
+        }
+        /// <summary>
+        /// Получить количество записей удовлетворяющих фильтру выборки.
+        /// ВАЖНО : Выбор не учитывает скрытые записи.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+        /// <param name="cancellationToken">Кокен отмены.</param>
+        /// <returns>Возвращает количество записей удовлетворяющих фильтру выборки кроме скрытых записей.</returns>
+        public virtual async ValueTask<long> GetCountAsync(IMappersSession session, IMapperSelectFilter selectFilter = null, CancellationToken cancellationToken = default)
+        {
+            if (session == null)
+            {
+                throw new ArgumentNullException(nameof(session));
+            }
+
+            try
+            {
+                var typedSession = (IPostgreSqlMappersSession) session;
+
+                // ReSharper disable once ConvertToUsingDeclaration
+                await using (var command = await typedSession.CreateCommandAsync(false, cancellationToken).ConfigureAwait(false))
+                {
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = @"SELECT COUNT(*) FROM DemoDelayTask";
+
+                    ExpandCommand(command, (selectFilter as IPostgreSqlMapperSelectFilter), @"(Available = @Available)");
+                    {
+                        var parameter = new NpgsqlParameter<bool>("@Available", NpgsqlDbType.Boolean) { TypedValue = true };
+                        command.Parameters.Add(parameter);
+                    }
+
+                    var temp = await command.ExecuteScalarAsync(cancellationToken).ConfigureAwait(false);
+                    // ReSharper disable once PossibleNullReferenceException
+                    var result = (long)temp;
+
+                    return (result);
+                }
+            }
+            catch (Exception exception)
+            {
+                CatchExceptionOnGetCount(session, exception, selectFilter);
+                CatchException(session, exception);
+
+                var targetException = await m_exceptionPolicy.ApplyAsync(exception, cancellationToken).ConfigureAwait(false);
+                if (ReferenceEquals(targetException, exception))
+                {
+                    ExceptionDispatchInfo.Capture(exception).Throw();
+                }
+
+                throw targetException;
+            }
+        }
     }
 
 }

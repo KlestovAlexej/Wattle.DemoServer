@@ -13,6 +13,8 @@ public partial class ProcessingDbContext : DbContext
 
     public virtual DbSet<PdChangeTracker> PdChangeTracker { get; set; }
 
+    public virtual DbSet<PdDemoDelayTask> PdDemoDelayTask { get; set; }
+
     public virtual DbSet<PdDemoObject> PdDemoObject { get; set; }
 
     public virtual DbSet<PdSystemLog> PdSystemLog { get; set; }
@@ -59,6 +61,23 @@ public partial class ProcessingDbContext : DbContext
             entity.Property(e => e.Id)
                 .ValueGeneratedNever()
                 .HasColumnName("id");
+        });
+
+        modelBuilder.Entity<PdDemoDelayTask>(entity =>
+        {
+            // entity.HasKey(e => e.Id).HasName("DemoDelayTask_pkey");
+
+            entity.ToTableLowerCase("DemoDelayTask");
+
+            entity.Property(e => e.Id)
+                .ValueGeneratedNever()
+                .HasColumnName("id");
+            entity.Property(e => e.Available).HasColumnName("available");
+            entity.Property(e => e.Createdate).HasColumnName("createdate");
+            entity.Property(e => e.Modificationdate).HasColumnName("modificationdate");
+            entity.Property(e => e.Revision).HasColumnName("revision");
+            entity.Property(e => e.Scenario).HasColumnName("scenario");
+            entity.Property(e => e.Startdate).HasColumnName("startdate");
         });
 
         modelBuilder.Entity<PdDemoObject>(entity =>
@@ -139,6 +158,7 @@ public partial class ProcessingDbContext : DbContext
             entity.Property(e => e.Value).HasColumnName("value");
         });
         modelBuilder.HasSequence("sequence_changetracker");
+        modelBuilder.HasSequence("sequence_demodelaytask");
         modelBuilder.HasSequence("sequence_demoobject");
         modelBuilder.HasSequence("sequence_demoobjectx");
         modelBuilder.HasSequence("sequence_systemlog");

@@ -204,6 +204,42 @@
             Номер группы
             </summary>
         </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoNew">
+            <summary>
+            Класс данных состояния нового доменного объекта.
+            Задача с отложенным запуском
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoNew.Id">
+            <summary>
+            Идентити.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoNew.Available">
+            <summary>
+            Доступность.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoNew.CreateDate">
+            <summary>
+            Дата создания
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoNew.ModificationDate">
+            <summary>
+            Дата модификации
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoNew.Scenario">
+            <summary>
+            Сценарий
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoNew.StartDate">
+            <summary>
+            Дата запуска
+            </summary>
+        </member>
         <member name="T:ShtrihM.DemoServer.Processing.Generated.Interface.ChangeTrackerDtoActual">
             <summary>
             Класс актуальных данных состояния доменного объекта в БД.
@@ -389,6 +425,47 @@
             Номер группы
             </summary>
         </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoActual">
+            <summary>
+            Класс актуальных данных состояния доменного объекта в БД.
+            Задача с отложенным запуском
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoActual.Id">
+            <summary>
+            Идентити.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoActual.Revision">
+            <summary>
+            Номер ревизии данных.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoActual.Available">
+            <summary>
+            Доступность.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoActual.CreateDate">
+            <summary>
+            Дата создания
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoActual.ModificationDate">
+            <summary>
+            Дата модификации
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoActual.Scenario">
+            <summary>
+            Сценарий
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoActual.StartDate">
+            <summary>
+            Дата запуска
+            </summary>
+        </member>
         <member name="T:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectDtoChanged">
             <summary>
             Класс данных состояния изменённого доменного объекта.
@@ -476,6 +553,47 @@
             Номер группы
             </summary>
         </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoChanged">
+            <summary>
+            Класс данных состояния изменённого доменного объекта.
+            Задача с отложенным запуском
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoChanged.Id">
+            <summary>
+            Идентити.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoChanged.Revision">
+            <summary>
+            Номер ревизии данных.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoChanged.Available">
+            <summary>
+            Доступность.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoChanged.CreateDate">
+            <summary>
+            Дата создания
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoChanged.ModificationDate">
+            <summary>
+            Дата модификации
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoChanged.Scenario">
+            <summary>
+            Сценарий
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoChanged.StartDate">
+            <summary>
+            Дата запуска
+            </summary>
+        </member>
         <member name="T:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectXDtoDeleted">
             <summary>
             Класс данных состояния удалённого доменного объекта.
@@ -522,6 +640,11 @@
             Объект X
             </summary>
         </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.WellknownMappersAsText.DemoDelayTask">
+            <summary>
+            Задача с отложенным запуском
+            </summary>
+        </member>
         <member name="T:ShtrihM.DemoServer.Processing.Generated.Interface.WellknownMappers">
             <summary>
             Идентификаторы мапперов.
@@ -550,6 +673,11 @@
         <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.WellknownMappers.DemoObjectX">
             <summary>
             Объект X
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.WellknownMappers.DemoDelayTask">
+            <summary>
+            Задача с отложенным запуском
             </summary>
         </member>
         <member name="T:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperChangeTracker">
@@ -1690,6 +1818,231 @@
             <param name="argGroup">Номер группы</param>
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает количество записей коллекции.</returns>
+        </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask">
+            <summary>
+            Задача с отложенным запуском
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.TableName">
+            <summary>
+            Имя таблицы БД.
+            </summary>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.GetNextId(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession)">
+            <summary>
+            Получение следующего значения идентити из последовательности "Sequence_DemoDelayTask".
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <returns>Возвращает следующего значение идентити.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.GetNextIds(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Получение следующих значений идентити из последовательности "Sequence_DemoDelayTask".
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="count">Количество следующийх значений идентити из последовательности.</param>
+            <param name="cancellationToken">Кокен отмены.</param>
+            <returns>Возвращает коллекцию следующих значений идентити.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.GetNextIdAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Threading.CancellationToken)">
+            <summary>
+            Получение следующего значения идентити из последовательности "Sequence_DemoDelayTask".
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="cancellationToken">Токен отмены.</param>
+            <returns>Возвращает следующего значение идентити.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.Exists(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64)">
+            <summary>
+            Проверка существования записи с указаным идентити.
+            ВАЖНО : Проверка не учитывает скрытые записи.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="id">Идентити записи.</param>
+            <returns>Возвращает <see langword="true" /> если запись существует иначе возвращает <see langword="false" /> если запись не существует или скрыта.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.ExistsAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
+            <summary>
+            Проверка существования записи с указаным идентити..
+            ВАЖНО : Проверка не учитывает скрытые записи.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="id">Идентити записи.</param>
+            <param name="cancellationToken">Токен отмены.</param>
+            <returns>Возвращает <see langword="true" /> если запись существует иначе возвращает <see langword="false" /> если запись не существует или скрыта.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.ExistsRaw(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64)">
+            <summary>
+            Проверка существования записис с указаным идентити.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="id">Идентити записи.</param>
+            <returns>Возвращает <see langword="true" /> если запись существует иначе если запись не существует возвращает <see langword="false" />.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.ExistsRawAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
+            <summary>
+            Проверка существования записис с указаным идентити.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="id">Идентити записи.</param>
+            <param name="cancellationToken">Токен отмены.</param>
+            <returns>Возвращает <see langword="true" /> если запись существует иначе если запись не существует возвращает <see langword="false" />.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.Get(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64)">
+            <summary>
+            Получить запись с указаным идентити.
+            ВАЖНО : Получение не учитывает скрытые записи.
+            </summary>
+            <param name="mappersSession">Сессия БД.</param>
+            <param name="id">Идентити записи.</param>
+            <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует или скрыта.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.GetAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
+            <summary>
+            Получить запись с указаным идентити.
+            ВАЖНО : Получение не учитывает скрытые записи.
+            </summary>
+            <param name="mappersSession">Сессия БД.</param>
+            <param name="id">Идентити записи.</param>
+            <param name="cancellationToken">Токен отмены.</param>
+            <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует или скрыта.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.GetRaw(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64)">
+            <summary>
+            Получить запись с указаным идентити.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="id">Идентити записи.</param>
+            <returns>Возвращает значение если запись существует иначе если запись не существует возвращает <see langword="null" />.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.GetRawAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
+            <summary>
+            Получить запись с указаным идентити.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="id">Идентити записи.</param>
+            <param name="cancellationToken">Токен отмены.</param>
+            <returns>Возвращает значение если запись существует иначе если запись не существует возвращает <see langword="null" />.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.Update(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoChanged)">
+            <summary>
+            Обновить запись.
+            ВАЖНО : Обновление не учитывает скрытые записи.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="data">Измененная запись.</param>
+            <returns>Возвращает актуальное состояние записи.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.UpdateAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoChanged,System.Threading.CancellationToken)">
+            <summary>
+            Обновить запись.
+            ВАЖНО : Обновление не учитывает скрытые записи.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="data">Измененная запись.</param>
+            <param name="cancellationToken">Токен отмены.</param>
+            <returns>Возвращает актуальное состояние записи.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.BulkInsert(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Collections.Generic.IEnumerable{ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoNew})">
+            <summary>
+            Массовое создание записей.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="data">Записи.</param>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.BulkInsertAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Collections.Generic.IEnumerable{ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoNew},System.Threading.CancellationToken)">
+            <summary>
+            Массовое создание записей.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="data">Записи.</param>
+            <param name="cancellationToken">Токен отмены.</param>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.New(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoNew)">
+            <summary>
+            Создать запись.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="data">Новая запись.</param>
+            <returns>Возвращает актуальное состояние записи.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.NewAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoNew,System.Threading.CancellationToken)">
+            <summary>
+            Создать запись.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="data">Новая запись.</param>
+            <param name="cancellationToken">Токен отмены.</param>
+            <returns>Возвращает актуальное состояние записи.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.GetEnumerator(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+            <summary>
+            Получить итератор всех записей выбранных с учётом фильтра.
+            ВАЖНО : Выбор не учитывает скрытые записи.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+            <returns>Возвращает итератор всех выбраных записей кроме скрытых записей.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.GetEnumeratorAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter,System.Threading.CancellationToken)">
+            <summary>
+            Получить итератор всех записей выбранных с учётом фильтра.
+            ВАЖНО : Выбор не учитывает скрытые записи.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+            <param name="cancellationToken">Токен отмены.</param>
+            <returns>Возвращает итератор всех выбраных записей кроме скрытых записей.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.GetEnumeratorRaw(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+            <summary>
+            Получить итератор всех записей выбранных с учётом фильтра.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+            <returns>Возвращает итератор всех выбраных записей.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.GetEnumeratorPage(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int32,System.Int32,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+            <summary>
+            Получить итератор записей выбранных с учётом фильтра для заданной страницы указанного размера.
+            ВАЖНО : Выбор не учитывает скрытые записи.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="pageIndex">Индекс выбираемой страницы. Первая страница имеет индекс 1.</param>
+            <param name="pageSize">Размер страницы. Минимальный размер страницы 1. Максимальный размер страницы 1000.</param>
+            <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+            <returns>Возвращает итератор всех выбраных записей кроме скрытых записей.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.GetEnumeratorIdentitiesPage(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int32,System.Int32,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+            <summary>
+            Получить итератор идентити записей выбранных с учётом фильтра для заданной страницы указанного размера.
+            ВАЖНО : Выбор не учитывает скрытые записи.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="pageIndex">Индекс выбираемой страницы. Первая страница имеет индекс 1.</param>
+            <param name="pageSize">Размер страницы. Минимальный размер страницы 1. Максимальный размер страницы 1000.</param>
+            <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+            <returns>Возвращает итератор всех выбраных идентити записей кроме скрытых записей.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.GetCount(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+            <summary>
+            Получить количество записей удовлетворяющих фильтру выборки.
+            ВАЖНО : Выбор не учитывает скрытые записи.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+            <returns>Возвращает количество записей удовлетворяющих фильтру выборки кроме скрытых записей.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.GetCountAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter,System.Threading.CancellationToken)">
+            <summary>
+            Получить количество записей удовлетворяющих фильтру выборки.
+            ВАЖНО : Выбор не учитывает скрытые записи.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+            <param name="cancellationToken">Кокен отмены.</param>
+            <returns>Возвращает количество записей удовлетворяющих фильтру выборки кроме скрытых записей.</returns>
         </member>
     </members>
 </doc>

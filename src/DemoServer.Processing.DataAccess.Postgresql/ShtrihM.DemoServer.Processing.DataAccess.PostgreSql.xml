@@ -1575,5 +1575,318 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает количество записей коллекции.</returns>
         </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.BulkInsertDataReaderDemoDelayTask">
+            <summary>
+            Поточный читатель данных записей для массовой вставки записей в БД.
+            
+            Задача с отложенным запуском
+            </summary>
+        </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperDemoDelayTask">
+            <summary>
+            Задача с отложенным запуском
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperDemoDelayTask.TableName">
+            <summary>
+            Имя таблицы БД.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperDemoDelayTask.Partitions">
+            <summary>
+            Интерфейс управления партициями.
+            </summary>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperDemoDelayTask.Initialize(ShtrihM.Wattle3.Mappers.Interfaces.IMappers)">
+            <summary>
+            Инициализация маппера.
+            </summary>
+            <param name="mappers">Реестр мапперов которому принадлежит маппер.</param>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperDemoDelayTask.GetNextId(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession)">
+            <summary>
+            Получение следующего значения идентити из последовательности "Sequence_DemoDelayTask".
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <returns>Возвращает следующего значение идентити.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperDemoDelayTask.GetNextIds(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Получение следующих значений идентити из последовательности "Sequence_DemoDelayTask".
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="count">Количество следующийх значений идентити из последовательности.</param>
+            <param name="cancellationToken">Кокен отмены.</param>
+            <returns>Возвращает коллекцию следующих значений идентити.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperDemoDelayTask.GetNextIdAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Threading.CancellationToken)">
+            <summary>
+            Получение следующего значения идентити из последовательности "Sequence_DemoDelayTask".
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="cancellationToken" >Токен отмены.</param>
+            <returns>Возвращает следующего значение идентити.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperDemoDelayTask.Exists(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64)">
+            <summary>
+            Проверка существования записис с указаным идентити.
+            ВАЖНО : Проверка не учитывает скрытые записи.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="id">Идентити записи.</param>
+            <returns>Возвращает <see langword="true" /> если запись существует иначе возвращает <see langword="false" /> если запись не существует или скрыта.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperDemoDelayTask.ExistsAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
+            <summary>
+            Проверка существования записис с указаным идентити.
+            ВАЖНО : Проверка не учитывает скрытые записи.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="id">Идентити записи.</param>
+            <param name="cancellationToken">Токен отмены.</param>
+            <returns>Возвращает <see langword="true" /> если запись существует иначе возвращает <see langword="false" /> если запись не существует или скрыта.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperDemoDelayTask.ExistsRaw(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64)">
+            <summary>
+            Проверка существования записис с указаным идентити.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="id">Идентити записи.</param>
+            <returns>Возвращает <see langword="true" /> если запись существует иначе если запись не существует возвращает <see langword="false" />.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperDemoDelayTask.ExistsRawAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
+            <summary>
+            Проверка существования записис с указаным идентити.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="id">Идентити записи.</param>
+            <param name="cancellationToken">Токен отмены.</param>
+            <returns>Возвращает <see langword="true" /> если запись существует иначе если запись не существует возвращает <see langword="false" />.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperDemoDelayTask.GetColumnIndexesRaw(Npgsql.NpgsqlDataReader,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@)">
+            <summary>
+            Получить индексы колонок таблицы.
+            </summary>
+            <param name="reader">Читатель данных БД.</param>
+            <param name="indexId">Индекс колонки 'Id'.</param>
+            <param name="indexAvailable">Индекс колонки 'Available'.</param>
+            <param name="indexRevision">Индекс колонки 'Revision'.</param>
+            <param name="indexCreateDate">Индекс колонки 'CreateDate'.</param>
+            <param name="indexModificationDate">Индекс колонки 'ModificationDate'.</param>
+            <param name="indexScenario">Индекс колонки 'Scenario'.</param>
+            <param name="indexStartDate">Индекс колонки 'StartDate'.</param>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperDemoDelayTask.GetColumnIndexes(Npgsql.NpgsqlDataReader,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@)">
+            <summary>
+            Получить индексы колонок таблицы.
+            </summary>
+            <param name="reader">Читатель данных БД.</param>
+            <param name="indexId">Индекс колонки 'Id'.</param>
+            <param name="indexRevision">Индекс колонки 'Revision'.</param>
+            <param name="indexCreateDate">Индекс колонки 'CreateDate'.</param>
+            <param name="indexModificationDate">Индекс колонки 'ModificationDate'.</param>
+            <param name="indexScenario">Индекс колонки 'Scenario'.</param>
+            <param name="indexStartDate">Индекс колонки 'StartDate'.</param>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperDemoDelayTask.ReadRaw(Npgsql.NpgsqlDataReader,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Прочитать запись.
+            </summary>
+            <param name="reader">Читатель данных БД.</param>
+            <param name="indexId">Индекс колонки 'Id'.</param>
+            <param name="indexAvailable">Индекс колонки 'Available'.</param>
+            <param name="indexRevision">Индекс колонки 'Revision'.</param>
+            <param name="indexCreateDate">Индекс колонки 'CreateDate'.</param>
+            <param name="indexModificationDate">Индекс колонки 'ModificationDate'.</param>
+            <param name="indexScenario">Индекс колонки 'Scenario'.</param>
+            <param name="indexStartDate">Индекс колонки 'StartDate'.</param>
+            <returns>Созданная и прочитанная запись.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperDemoDelayTask.Read(Npgsql.NpgsqlDataReader,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Прочитать запись.
+            </summary>
+            <param name="reader">Читатель данных БД.</param>
+            <param name="indexId">Индекс колонки 'Id'.</param>
+            <param name="indexRevision">Индекс колонки 'Revision'.</param>
+            <param name="indexCreateDate">Индекс колонки 'CreateDate'.</param>
+            <param name="indexModificationDate">Индекс колонки 'ModificationDate'.</param>
+            <param name="indexScenario">Индекс колонки 'Scenario'.</param>
+            <param name="indexStartDate">Индекс колонки 'StartDate'.</param>
+            <returns>Созданная и прочитанная запись.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperDemoDelayTask.Get(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64)">
+            <summary>
+            Получить запись с указаным идентити.
+            ВАЖНО : Получение не учитывает скрытые записи.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="id">Идентити записи.</param>
+            <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует или скрыта.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperDemoDelayTask.GetAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
+            <summary>
+            Получить запись с указаным идентити.
+            ВАЖНО : Получение не учитывает скрытые записи.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="id">Идентити записи.</param>
+            <param name="cancellationToken">Токен отмены.</param>
+            <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует или скрыта.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperDemoDelayTask.GetRaw(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64)">
+            <summary>
+            Получить запись с указаным идентити.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="id">Идентити записи.</param>
+            <returns>Возвращает значение если запись существует иначе если запись не существует возвращает <see langword="null" />.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperDemoDelayTask.GetRawAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
+            <summary>
+            Получить запись с указаным идентити.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="id">Идентити записи.</param>
+            <param name="cancellationToken">Токен отмены.</param>
+            <returns>Возвращает значение если запись существует иначе если запись не существует возвращает <see langword="null" />.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperDemoDelayTask.Update(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoChanged)">
+            <summary>
+            Обновить запись.
+            ВАЖНО : Обновление не учитывает скрытые записи.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="data">Измененная запись.</param>
+            <returns>Возвращает актуальное состояние записи.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperDemoDelayTask.UpdateAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoChanged,System.Threading.CancellationToken)">
+            <summary>
+            Обновить запись.
+            ВАЖНО : Обновление не учитывает скрытые записи.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="data">Измененная запись.</param>
+            <param name="cancellationToken">Токен отмены.</param>
+            <returns>Возвращает актуальное состояние записи.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperDemoDelayTask.BulkInsert(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Collections.Generic.IEnumerable{ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoNew})">
+            <summary>
+            Массовое создание записей.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="data">Записи.</param>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperDemoDelayTask.BulkInsertAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Collections.Generic.IEnumerable{ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoNew},System.Threading.CancellationToken)">
+            <summary>
+            Массовое создание записей.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="data">Записи.</param>
+            <param name="cancellationToken">Токен отмены.</param>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperDemoDelayTask.New(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoNew)">
+            <summary>
+            Создать запись.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="data">Новая запись.</param>
+            <returns>Возвращает актуальное состояние записи.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperDemoDelayTask.NewAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoNew,System.Threading.CancellationToken)">
+            <summary>
+            Создать запись.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="data">Новая запись.</param>
+            <param name="cancellationToken">Токен отмены.</param>
+            <returns>Возвращает актуальное состояние записи.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperDemoDelayTask.ShtrihM#Wattle3#Mappers#Interfaces#IAbstractMapper#GetEnumerator(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+            <summary>
+            Получить итератор всех записей выбранных с учётом фильтра.
+            ВАЖНО : Выбор не учитывает скрытые записи.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+            <returns>Возвращает итератор всех выбраных записей кроме скрытых записей.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperDemoDelayTask.ShtrihM#Wattle3#Mappers#Interfaces#IAbstractMapper#GetEnumerator``1(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+            <summary>
+            Получить итератор всех записей выбранных с учётом фильтра.
+            ВАЖНО : Выбор не учитывает скрытые записи.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+            <returns>Возвращает итератор всех выбраных записей кроме скрытых записей.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperDemoDelayTask.GetEnumerator(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+            <summary>
+            Получить итератор всех записей выбранных с учётом фильтра.
+            ВАЖНО : Выбор не учитывает скрытые записи.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+            <returns>Возвращает итератор всех выбраных записей кроме скрытых записей.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperDemoDelayTask.GetEnumeratorAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter,System.Threading.CancellationToken)">
+            <summary>
+            Получить итератор всех записей выбранных с учётом фильтра.
+            ВАЖНО : Выбор не учитывает скрытые записи.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+            <param name="cancellationToken">Токен отмены.</param>
+            <returns>Возвращает итератор всех выбраных записей кроме скрытых записей.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperDemoDelayTask.GetEnumeratorRaw(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+            <summary>
+            Получить итератор всех записей выбранных с учётом фильтра.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+            <returns>Возвращает итератор всех выбраных записей.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperDemoDelayTask.GetEnumeratorPage(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int32,System.Int32,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+            <summary>
+            Получить итератор записей выбранных с учётом фильтра для заданной страницы указанного размера.
+            ВАЖНО : Выбор не учитывает скрытые записи.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="pageIndex">Индекс выбираемой страницы. Первая страница имеет индекс 1.</param>
+            <param name="pageSize">Размер страницы. Минимальный размер страницы 1. Максимальный размер страницы 1000.</param>
+            <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+            <returns>Возвращает итератор всех выбраных записей кроме скрытых записей.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperDemoDelayTask.GetEnumeratorIdentitiesPage(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int32,System.Int32,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+            <summary>
+            Получить итератор идентити записей выбранных с учётом фильтра для заданной страницы указанного размера.
+            ВАЖНО : Выбор не учитывает скрытые записи.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="pageIndex">Индекс выбираемой страницы. Первая страница имеет индекс 1.</param>
+            <param name="pageSize">Размер страницы. Минимальный размер страницы 1. Максимальный размер страницы 1000.</param>
+            <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+            <returns>Возвращает итератор всех выбраных идентити записей кроме скрытых записей.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperDemoDelayTask.GetCount(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+            <summary>
+            Получить количество записей удовлетворяющих фильтру выборки.
+            ВАЖНО : Выбор не учитывает скрытые записи.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+            <returns>Возвращает количество записей удовлетворяющих фильтру выборки кроме скрытых записей.</returns>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperDemoDelayTask.GetCountAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter,System.Threading.CancellationToken)">
+            <summary>
+            Получить количество записей удовлетворяющих фильтру выборки.
+            ВАЖНО : Выбор не учитывает скрытые записи.
+            </summary>
+            <param name="session">Сессия БД.</param>
+            <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+            <param name="cancellationToken">Кокен отмены.</param>
+            <returns>Возвращает количество записей удовлетворяющих фильтру выборки кроме скрытых записей.</returns>
+        </member>
     </members>
 </doc>

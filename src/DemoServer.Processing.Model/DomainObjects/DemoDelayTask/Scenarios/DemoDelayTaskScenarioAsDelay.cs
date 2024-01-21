@@ -1,0 +1,27 @@
+﻿using System;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using Newtonsoft.Json;
+
+namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios;
+
+/// <summary>
+/// Сценарий задачи с отложенным запуском - задержка исполнения.
+/// </summary>
+[Description("Сценарий задачи с отложенным запуском - задержка исполнения")]
+public sealed class DemoDelayTaskScenarioAsDelay : DemoDelayTaskScenario
+{
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    // ReSharper disable once ConvertToPrimaryConstructor
+    public DemoDelayTaskScenarioAsDelay()
+        : base(DemoDelayTaskScenariosType.Delay)
+    {
+    }
+
+    /// <summary>
+    /// Интервал задержки исполнения.
+    /// </summary>
+    [JsonProperty(Required = Required.Always)]
+    [Description("Интервал задержки исполнения")]
+    public TimeSpan Delay;
+}

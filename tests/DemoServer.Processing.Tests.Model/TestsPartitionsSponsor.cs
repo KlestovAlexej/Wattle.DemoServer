@@ -28,7 +28,7 @@ public class TestsPartitionsSponsor : BaseTestsDomainObjects
         var mapperTablePartition = m_entryPoint.Mappers.GetMapper<IMapperTablePartition>();
         using var mappersSession = m_entryPoint.Mappers.OpenSession();
         var list = mapperTablePartition.GetEnumeratorRaw(mappersSession).ToList();
-        Assert.AreEqual(8, list.Count);
+        Assert.AreEqual(10, list.Count);
 
         var existsPartitions = mapperTablePartition.Partitions.GetExistsPartitions(mappersSession);
         Assert.LessOrEqual(2, existsPartitions.Count);

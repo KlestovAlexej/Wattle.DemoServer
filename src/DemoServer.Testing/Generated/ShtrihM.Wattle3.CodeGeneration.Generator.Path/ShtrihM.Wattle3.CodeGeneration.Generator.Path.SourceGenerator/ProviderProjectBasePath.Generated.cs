@@ -14,7 +14,7 @@ namespace ShtrihM.DemoServer.Testing
         public string Path => ProjectPath;
 
         // ReSharper disable once MemberCanBePrivate.Global
-        public static readonly string ProjectPath = @"C:\Dev\Wattle3.DemoServer\";
+        public static readonly string ProjectPath = @"E:\Dev\Wattle3.DemoServer\";
 
         public static void Register()
         {

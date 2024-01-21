@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using ShtrihM.Wattle3.DomainObjects.Interfaces;
 using ShtrihM.Wattle3.DomainObjects.UnitOfWorkLocks;
+using ShtrihM.Wattle3.DomainObjects.AsyncTasks;
 
 namespace ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
 
@@ -96,8 +97,19 @@ public sealed class SystemSettings
             new(
                 default,
                 "Интервал действия ключа контроля изменений");
+
+        DemoDelayTaskProcessorSettings =
+            new(
+                default!,
+                "Настройки службы обработки задач с отложенным запуском");
     }
 
+    /// <summary>
+    /// Настройки службы обработки задач с отложенным запуском.
+    /// </summary>
+    [Description("Настройки службы обработки задач с отложенным запуском")]
+    public SettingValue<AsyncTaskServiceSettings> DemoDelayTaskProcessorSettings { get; set; }
+    
     /// <summary>
     /// Интервал действия ключа контроля изменений.
     /// </summary>
@@ -291,7 +303,14 @@ public sealed class SystemSettings
                 {
                     Value = TimeSpan.FromMinutes(5),
                 },
+
+                DemoDelayTaskProcessorSettings =
+                {
+                    Value = AsyncTaskServiceSettings.GetDefault(),
+                },
             };
+
+        result.DemoDelayTaskProcessorSettings.Value.MaxActive.Value = 3;
 
         return result;
     }

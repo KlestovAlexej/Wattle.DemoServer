@@ -38,6 +38,11 @@ public sealed class IdentityCachesSettings
             new SettingValue<IdentityCacheSettings>(
                 default!,
                 $"Маппер '{WellknownDomainObjectDisplayNames.DisplayNamesProvider(WellknownDomainObjects.DemoObjectX)}'");
+
+        DemoDelayTask =
+            new SettingValue<IdentityCacheSettings>(
+                default!,
+                $"Маппер '{WellknownDomainObjectDisplayNames.DisplayNamesProvider(WellknownDomainObjects.DemoDelayTask)}'");
     }
 
     /// <summary>
@@ -60,6 +65,13 @@ public sealed class IdentityCachesSettings
     [Description("Настройки маппера - Объект")]
     [JsonRequired]
     public SettingValue<IdentityCacheSettings> DemoObject { get; set; }
+
+    /// <summary>
+    /// Настройки маппера - Задача с отложенным запуском.
+    /// </summary>
+    [Description("Настройки маппера - Задача с отложенным запуском")]
+    [JsonRequired]
+    public SettingValue<IdentityCacheSettings> DemoDelayTask { get; set; }
 
     /// <summary>
     /// Настройки маппера - Объект X.
@@ -96,6 +108,12 @@ public sealed class IdentityCachesSettings
             },
 
             ChangeTracker =
+            {
+                Value =
+                    IdentityCacheSettings.GetDefault(100_000, fillFactor)
+            },
+
+            DemoDelayTask =
             {
                 Value =
                     IdentityCacheSettings.GetDefault(100_000, fillFactor)

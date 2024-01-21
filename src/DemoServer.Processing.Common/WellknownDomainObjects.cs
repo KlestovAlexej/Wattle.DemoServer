@@ -46,6 +46,11 @@ public static class WellknownDomainObjects
         /// Объект X.
         /// </summary>
         public const string DemoObjectX = "322D2242-C942-4643-BA8C-9E2E1E8A7828";
+
+        /// <summary>
+        /// Задача с отложенным запуском.
+        /// </summary>
+        public const string DemoDelayTask = "5F729000-5139-469F-90B8-74301E342DF3";
     }
 
     /// <summary>
@@ -89,6 +94,12 @@ public static class WellknownDomainObjects
     /// </summary>
     [Description("Объект X")]
     public static readonly Guid DemoObjectX = new(Text.DemoObjectX);
+
+    /// <summary>
+    /// Задача с отложенным запуском.
+    /// </summary>
+    [Description("Задача с отложенным запуском")]
+    public static readonly Guid DemoDelayTask = new(Text.DemoDelayTask);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     // ReSharper disable once MemberCanBePrivate.Global
