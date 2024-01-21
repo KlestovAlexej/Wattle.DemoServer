@@ -594,7 +594,7 @@ public sealed class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
 
         result.Metrics = metrics;
         result.UnitOfWorkLocks = new UnitOfWorkLocksHubTyped(result.Context);
-        result.DemoDelayTaskProcessor = new DemoDelayTaskProcessor(result.Context);
+        result.DemoDelayTaskProcessor = new DemoDelayTaskProcessor(result);
 
         result.Facade =
             container.ResolveWithDefault(

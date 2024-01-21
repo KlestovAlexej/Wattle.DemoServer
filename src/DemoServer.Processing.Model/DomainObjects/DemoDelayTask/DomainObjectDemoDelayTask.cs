@@ -16,6 +16,7 @@ using ShtrihM.Wattle3.Mappers.Primitives.MutableFields;
 namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask;
 
 [DomainObjectDataMapper(WellknownMappersAsText.DemoDelayTask, DomainObjectDataTarget.Create, DomainObjectDataTarget.Update)]
+// ReSharper disable once ClassNeverInstantiated.Global
 public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutable<DomainObjectDemoDelayTask>, IDomainObjectDemoDelayTask
 {
     #region Template - шаблон создания объекта DemoDelayTask
@@ -51,6 +52,7 @@ public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutable<DomainOb
     #region Конструкторы
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    // ReSharper disable once UnusedMember.Global
     public DomainObjectDemoDelayTask(
         DemoDelayTaskDtoActual data,
         ICustomEntryPoint entryPoint)
@@ -64,6 +66,7 @@ public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutable<DomainOb
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    // ReSharper disable once UnusedMember.Global
     public DomainObjectDemoDelayTask(
         long identity,
         Template template,

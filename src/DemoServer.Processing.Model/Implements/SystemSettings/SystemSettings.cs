@@ -310,6 +310,7 @@ public sealed class SystemSettings
                 },
             };
 
+        // Для нужд тестов. По умолчанию значение 1_000_000.
         result.DemoDelayTaskProcessorSettings.Value.MaxActive.Value = 3;
 
         return result;
