@@ -19,6 +19,11 @@
 
 </details>
 
+# Содержание
+- [Общее](#общее)
+- [Доменный объект DemoDelayTask](#доменный-объект-demodelaytask)
+- [Доменный объект DemoObject](#доменный-объект-demoobject)
+- [Доменный объект DemoObjectX](#доменный-объект-demoobjectx)
 
 ---
 
