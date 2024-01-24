@@ -20,8 +20,8 @@
 	<ItemGroup>
 		<PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.1.0" />
-		<PackageReference Include="ShtrihM.Wattle3.DomainObjects" Version="3.9.0.3456" />
-		<PackageReference Include="ShtrihM.Wattle3.QueueProcessors" Version="3.9.0.3456" />
+		<PackageReference Include="ShtrihM.Wattle3.DomainObjects" Version="3.9.0.3473" />
+		<PackageReference Include="ShtrihM.Wattle3.QueueProcessors" Version="3.9.0.3473" />
 		<PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="8.0.0" />
 		<PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.5.0" />
 	</ItemGroup>

@@ -19,7 +19,7 @@ using ShtrihM.Wattle3.Common.DomainObjects;
 
 namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
 
-[DomainObjectDataMapper(WellknownMappersAsText.DemoObjectX, DomainObjectDataTarget.Create, DomainObjectDataTarget.Update, DomainObjectDataTarget.Delete)]
+[DomainObjectDataMapper]
 // ReSharper disable once ClassNeverInstantiated.Global
 public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutableWithUpdateLock<DomainObjectDemoObjectX>, IDomainObjectDemoObjectX,
     IDomainObjectActivatorPostCreate
@@ -93,10 +93,10 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutableWithUpdateL
 
     #region Изменяемы поля
 
-    [DomainObjectFieldValue(DomainObjectDataTarget.Create, DomainObjectDataTarget.Update, DtoFiledName = nameof(DemoObjectXDtoChanged.Enabled))]
+    [DomainObjectFieldValue]
     private MutableField<bool> m_enabled;
 
-    [DomainObjectFieldValue(DomainObjectDataTarget.Create, DomainObjectDataTarget.Update, DtoFiledName = nameof(DemoObjectXDtoChanged.Name))]
+    [DomainObjectFieldValue]
     private MutableFieldStringLimitedEx m_name;
 
     #endregion
@@ -176,35 +176,35 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutableWithUpdateL
         }
     }
 
-    [DomainObjectFieldValue(DomainObjectDataTarget.Create, DomainObjectDataTarget.Update)]
+    [DomainObjectFieldValue]
     public DateTimeOffset CreateDate
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         get;
     }
 
-    [DomainObjectFieldValue(DomainObjectDataTarget.Create, DomainObjectDataTarget.Update)]
+    [DomainObjectFieldValue]
     public Guid Key1
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         get;
     }
 
-    [DomainObjectFieldValue(DomainObjectDataTarget.Create, DomainObjectDataTarget.Update)]
+    [DomainObjectFieldValue]
     public string Key2
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         get;
     }
 
-    [DomainObjectFieldValue(DomainObjectDataTarget.Create, DomainObjectDataTarget.Update)]
+    [DomainObjectFieldValue]
     public long Group
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         get;
     }
 
-    [DomainObjectFieldValue(DomainObjectDataTarget.Create, DomainObjectDataTarget.Update)]
+    [DomainObjectFieldValue]
     public DateTimeOffset ModificationDate
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

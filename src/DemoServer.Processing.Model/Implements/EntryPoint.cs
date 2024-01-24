@@ -43,6 +43,9 @@ using ShtrihM.DemoServer.Processing.Model.DomainObjects.ChangeTracker;
 using Unity;
 using Status = OpenTelemetry.Trace.Status;
 using ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask;
+using ShtrihM.Wattle3.DomainObjects.DomainObjects;
+
+[assembly: SchemaModelResource("DbMappers.Schema.xml")]
 
 namespace ShtrihM.DemoServer.Processing.Model.Implements;
 

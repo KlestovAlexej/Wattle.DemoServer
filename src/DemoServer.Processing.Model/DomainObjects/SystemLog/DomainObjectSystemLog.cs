@@ -8,7 +8,7 @@ using ShtrihM.DemoServer.Processing.Generated.Interface;
 
 namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.SystemLog;
 
-[DomainObjectDataMapper(WellknownMappersAsText.SystemLog, DomainObjectDataTarget.Create)]
+[DomainObjectDataMapper]
 // ReSharper disable once ClassNeverInstantiated.Global
 public sealed class DomainObjectSystemLog : BaseDomainObject<DomainObjectSystemLog>, IDomainObjectSystemLog
 {
@@ -75,35 +75,35 @@ public sealed class DomainObjectSystemLog : BaseDomainObject<DomainObjectSystemL
 
     public override Guid TypeId => WellknownDomainObjects.SystemLog;
 
-    [DomainObjectFieldValue(DomainObjectDataTarget.Create)]
+    [DomainObjectFieldValue]
     public int Code
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         get;
     }
 
-    [DomainObjectFieldValue(DomainObjectDataTarget.Create)]
+    [DomainObjectFieldValue]
     public DateTimeOffset CreateDate
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         get;
     }
 
-    [DomainObjectFieldValue(DomainObjectDataTarget.Create)]
+    [DomainObjectFieldValue]
     public string Data
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         get;
     }
 
-    [DomainObjectFieldValue(DomainObjectDataTarget.Create)]
+    [DomainObjectFieldValue]
     public string Message
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         get;
     }
 
-    [DomainObjectFieldValue(DomainObjectDataTarget.Create)]
+    [DomainObjectFieldValue]
     public int Type
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

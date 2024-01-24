@@ -15,7 +15,7 @@ using ShtrihM.Wattle3.Mappers.Primitives.MutableFields;
 
 namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask;
 
-[DomainObjectDataMapper(WellknownMappersAsText.DemoDelayTask, DomainObjectDataTarget.Create, DomainObjectDataTarget.Update)]
+[DomainObjectDataMapper]
 // ReSharper disable once ClassNeverInstantiated.Global
 public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutable<DomainObjectDemoDelayTask>, IDomainObjectDemoDelayTask
 {
@@ -44,7 +44,7 @@ public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutable<DomainOb
 
     #region Изменяемы поля
 
-    [DomainObjectFieldValue(DomainObjectDataTarget.Create, DomainObjectDataTarget.Update, DtoFiledName = nameof(DemoDelayTaskDtoChanged.Available))]
+    [DomainObjectFieldValue]
     private MutableField<bool> m_available;
 
     #endregion
@@ -84,14 +84,14 @@ public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutable<DomainOb
 
     public override Guid TypeId => WellknownDomainObjects.DemoDelayTask;
 
-    [DomainObjectFieldValue(DomainObjectDataTarget.Create, DomainObjectDataTarget.Update)]
+    [DomainObjectFieldValue]
     public DateTimeOffset CreateDate
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         get;
     }
 
-    [DomainObjectFieldValue(DomainObjectDataTarget.Create, DomainObjectDataTarget.Update)]
+    [DomainObjectFieldValue]
     public DateTimeOffset ModificationDate
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -100,14 +100,14 @@ public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutable<DomainOb
         private set;
     }
 
-    [DomainObjectFieldValue(DomainObjectDataTarget.Create, DomainObjectDataTarget.Update)]
+    [DomainObjectFieldValue]
     public string Scenario
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         get;
     }
 
-    [DomainObjectFieldValue(DomainObjectDataTarget.Create, DomainObjectDataTarget.Update)]
+    [DomainObjectFieldValue]
     public DateTimeOffset? StartDate
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

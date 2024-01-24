@@ -16,7 +16,7 @@ namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.Common;
 public abstract class BaseDomainObjectMutableWithUpdateLockWithUpdateKey<TDomainObject> : BaseDomainObjectMutableWithUpdateLock<TDomainObject>, IDomainObjectUpdateKey
     where TDomainObject : BaseDomainObject<TDomainObject>
 {
-    [DomainObjectFieldValue(DomainObjectDataTarget.Create, DomainObjectDataTarget.Update, DtoFiledName = nameof(IDomainObjectUpdateKey.UpdateKey))]
+    [DomainObjectFieldValue]
     private byte[]? m_updateKey;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]

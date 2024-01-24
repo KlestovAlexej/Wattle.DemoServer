@@ -7,7 +7,7 @@ using ShtrihM.DemoServer.Processing.Generated.Interface;
 
 namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.ChangeTracker;
 
-[DomainObjectDataMapper(WellknownMappersAsText.ChangeTracker, DomainObjectDataTarget.Create)]
+[DomainObjectDataMapper]
 // ReSharper disable once ClassNeverInstantiated.Global
 public sealed class DomainObjectChangeTracker : BaseDomainObject<DomainObjectChangeTracker>, IDomainObjectChangeTracker
 {

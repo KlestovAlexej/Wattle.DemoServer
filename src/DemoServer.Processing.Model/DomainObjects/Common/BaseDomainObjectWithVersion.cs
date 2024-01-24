@@ -1,6 +1,5 @@
 ﻿using System.Runtime.CompilerServices;
 using ShtrihM.Wattle3.DomainObjects.DomainObjects;
-using ShtrihM.Wattle3.DomainObjects.Interfaces;
 using ShtrihM.Wattle3.Mappers.Primitives;
 
 namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.Common;
@@ -11,7 +10,7 @@ namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.Common;
 public abstract class BaseDomainObjectWithVersion<TDomainObject> : BaseDomainObject<TDomainObject>
     where TDomainObject : BaseDomainObject<TDomainObject>
 {
-    [DomainObjectFieldValue(DomainObjectDataTarget.Update, DomainObjectDataTarget.Delete, DomainObjectDataTarget.Version, DtoFiledName = nameof(IMapperDtoVersion.Revision))]
+    [DomainObjectFieldValue]
     protected readonly long m_revision;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]

@@ -21,7 +21,7 @@ using ShtrihM.Wattle3.DomainObjects.UnitOfWorkLocks;
 
 namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObject;
 
-[DomainObjectDataMapper(WellknownMappersAsText.DemoObject, DomainObjectDataTarget.Create, DomainObjectDataTarget.Update)]
+[DomainObjectDataMapper]
 // ReSharper disable once ClassNeverInstantiated.Global
 public sealed class DomainObjectDemoObject : BaseDomainObjectMutableWithUpdateLock<DomainObjectDemoObject>, IDomainObjectDemoObject, IDomainObjectActivatorPostCreate
 {
@@ -58,10 +58,10 @@ public sealed class DomainObjectDemoObject : BaseDomainObjectMutableWithUpdateLo
 
     #region Изменяемы поля
 
-    [DomainObjectFieldValue(DomainObjectDataTarget.Create, DomainObjectDataTarget.Update, DtoFiledName = nameof(DemoObjectDtoChanged.Enabled))]
+    [DomainObjectFieldValue]
     private MutableField<bool> m_enabled;
 
-    [DomainObjectFieldValue(DomainObjectDataTarget.Create, DomainObjectDataTarget.Update, DtoFiledName = nameof(DemoObjectDtoChanged.Name))]
+    [DomainObjectFieldValue]
     private MutableFieldStringLimitedEx m_name;
 
     #endregion
@@ -111,14 +111,14 @@ public sealed class DomainObjectDemoObject : BaseDomainObjectMutableWithUpdateLo
         get => m_name.Value;
     }
 
-    [DomainObjectFieldValue(DomainObjectDataTarget.Create, DomainObjectDataTarget.Update)]
+    [DomainObjectFieldValue]
     public DateTime CreateDate
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         get;
     }
 
-    [DomainObjectFieldValue(DomainObjectDataTarget.Create, DomainObjectDataTarget.Update)]
+    [DomainObjectFieldValue]
     public DateTime ModificationDate
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
