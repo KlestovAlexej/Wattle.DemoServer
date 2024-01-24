@@ -24,7 +24,7 @@ namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
 public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutableWithUpdateLock<DomainObjectDemoObjectX>, IDomainObjectDemoObjectX,
     IDomainObjectActivatorPostCreate
 {
-    #region AlternativeKey - альтернативный ключ объекта DemoObjectX
+    #region AlternativeKey - альтернативный ключ объекта
 
     /// <summary>
     /// Альтернативный ключ объекта DemoObjectX по : <see cref="Key1"/>, <see cref="Key2"/>.
@@ -39,7 +39,7 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutableWithUpdateL
 
     #endregion
 
-    #region Template - шаблон создания объекта DemoObjectX
+    #region Template - шаблон создания объекта
 
     /// <summary>
     /// Шаблон создания объекта <see cref="DomainObjectDemoObjectX"/>.

@@ -19,7 +19,7 @@ namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask;
 // ReSharper disable once ClassNeverInstantiated.Global
 public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutable<DomainObjectDemoDelayTask>, IDomainObjectDemoDelayTask
 {
-    #region Template - шаблон создания объекта DemoDelayTask
+    #region Template - шаблон создания объекта
 
     /// <summary>
     /// Шаблон создания объекта <see cref="DomainObjectDemoDelayTask"/>.

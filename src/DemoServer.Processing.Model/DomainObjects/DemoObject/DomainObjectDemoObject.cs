@@ -25,7 +25,7 @@ namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObject;
 // ReSharper disable once ClassNeverInstantiated.Global
 public sealed class DomainObjectDemoObject : BaseDomainObjectMutableWithUpdateLock<DomainObjectDemoObject>, IDomainObjectDemoObject, IDomainObjectActivatorPostCreate
 {
-    #region Template - шаблон создания объекта DemoObject
+    #region Template - шаблон создания объекта
 
     /// <summary>
     /// Шаблон создания объекта <see cref="DomainObjectDemoObject"/>.

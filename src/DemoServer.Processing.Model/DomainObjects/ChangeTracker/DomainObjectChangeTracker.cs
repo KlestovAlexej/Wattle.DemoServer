@@ -11,7 +11,7 @@ namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.ChangeTracker;
 // ReSharper disable once ClassNeverInstantiated.Global
 public sealed class DomainObjectChangeTracker : BaseDomainObject<DomainObjectChangeTracker>, IDomainObjectChangeTracker
 {
-    #region Template - шаблон создания объекта ChangeTracker
+    #region Template - шаблон создания объекта
 
     /// <summary>
     /// Шаблон создания объекта <see cref="DomainObjectChangeTracker"/>.
