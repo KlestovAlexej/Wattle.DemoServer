@@ -56,7 +56,8 @@
 	- Задачи [исполняются асинхронно](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/f70f479ef1868150d1bade9c7f7b416d9a6a568a/src/DemoServer.Processing.Model/DomainObjects/DemoDelayTask/DomainObjectDemoDelayTask.cs#L117)
 	- Для любой задачи можно [получить обекта](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/11e9a1fa5f5b57d3126f1e09d93128fd6a0dbfc7/tests/DemoServer.Processing.Tests.Model/TestsDemoDelayTask.cs#L79) для асинхронного [ожидания завершения](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/11e9a1fa5f5b57d3126f1e09d93128fd6a0dbfc7/tests/DemoServer.Processing.Tests.Model/TestsDemoDelayTask.cs#L81C7-L82C1) её исполнения
 	- Есть произвольные [настройки](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/f70f479ef1868150d1bade9c7f7b416d9a6a568a/src/DemoServer.Processing.Model/Implements/SystemSettings/SystemSettings.cs#L309) для [обработчика задач](src/DemoServer.Processing.Model/DomainObjects/DemoDelayTask/DemoDelayTaskProcessor.cs)
-	- Есть [контроль лимита](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/b9d831390c432ec7727073f5e1985c45e914a163/tests/DemoServer.Processing.Tests.Model/TestsDemoDelayTask.cs#L147) числа активных задач
+	- При создании задач есть [контроль лимита активных задач](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/b9d831390c432ec7727073f5e1985c45e914a163/tests/DemoServer.Processing.Tests.Model/TestsDemoDelayTask.cs#L147)
+		- [Можно игнорировать](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/54f6742858ff56eb8ccbaa43683885621db9b748/tests/DemoServer.Processing.Tests.Model/TestsDemoDelayTask.cs#L301) контроль лимита активных задач
 
 ---
 ### Доменный объект DemoObject
