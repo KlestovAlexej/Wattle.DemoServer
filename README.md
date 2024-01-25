@@ -65,7 +65,7 @@
 	- Есть произвольные [настройки](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/f70f479ef1868150d1bade9c7f7b416d9a6a568a/src/DemoServer.Processing.Model/Implements/SystemSettings/SystemSettings.cs#L309) для [обработчика задач](src/DemoServer.Processing.Model/DomainObjects/DemoDelayTask/DemoDelayTaskProcessor.cs)
 	- При создании задач есть [контроль лимита активных задач](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/b9d831390c432ec7727073f5e1985c45e914a163/tests/DemoServer.Processing.Tests.Model/TestsDemoDelayTask.cs#L147)
 		- [Можно игнорировать](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/54f6742858ff56eb8ccbaa43683885621db9b748/tests/DemoServer.Processing.Tests.Model/TestsDemoDelayTask.cs#L301) контроль лимита активных задач
-	- Каждая задача исполняется в своем автоматически созданном Unit of Work
+	- Каждая задача исполняется в своём автоматически созданном Unit of Work
 
 ---
 ### Доменный объект DemoObject
