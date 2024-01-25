@@ -54,6 +54,7 @@
 	- Все задачи хранятся в БД в [партиционированной таблице](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/cd9ed1261bd7944083f78fd90c148d0c40727db0/src/DemoServer.Processing.Common/WellknownDomainObjectFields.cs#L297)
 	- У задачи есть возможностью [немедленного запуска (фоново)](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/fc850b33387d768d2354c595d2663f217ca70bbb/tests/DemoServer.Processing.Tests.Model/TestsDemoDelayTask.cs#L36) или [отложенного запуска на указанную дату-время](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/11e9a1fa5f5b57d3126f1e09d93128fd6a0dbfc7/tests/DemoServer.Processing.Tests.Model/TestsDemoDelayTask.cs#L71) 
 		- Задача сохраняется в БД и исполняется только при успешном подтверждении Unit of Work
+		- Задача начинает исполнение только после успешного подтверждения Unit of Work в котром она была создана
 		- При отмене Unit of Work задача в БД не сохраняется и не исполняется
 	- Все [неисполненные задачи](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/697700aca8309cfa4c651006909a9ca8dc0cd005/src/DemoServer.Processing.Model/DomainObjects/DemoDelayTask/DomainObjectDemoDelayTask.cs#L129) при рестарте в фоновом режиме [автоматически загружаются из БД](src/DemoServer.Processing.Model/DomainObjects/DemoDelayTask/DemoDelayTaskProcessor.cs) и ставятся на исполнение
 	- Задачи [исполняются асинхронно](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/f70f479ef1868150d1bade9c7f7b416d9a6a568a/src/DemoServer.Processing.Model/DomainObjects/DemoDelayTask/DomainObjectDemoDelayTask.cs#L117)
