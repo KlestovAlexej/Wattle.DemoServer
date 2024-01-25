@@ -21,7 +21,7 @@
 
 # Содержание
 - [Общее](#общее)
-- [Доменный объект DemoDelayTask - хранимая в БД задача для её фонового исполнения](#доменный-объект-demodelaytask---хранимая-в-бд-задача-для-её-фонового-исполнения)
+- [Доменный объект DemoDelayTask - хранимая в БД задача для фонового исполнения](#доменный-объект-demodelaytask---хранимая-в-бд-задача-для-фонового-исполнения)
 - [Доменный объект DemoObject](#доменный-объект-demoobject)
 - [Доменный объект DemoObjectX](#доменный-объект-demoobjectx)
 
@@ -47,9 +47,9 @@
 - Пример [логирующего прокси](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/be5865d7e9567f8f85819e19ddec843e2ad45567/src/DemoServer.Processing.Model/Implements/EntryPointExtensions.cs#L44) с поддержкой вызова [асинхронных методов](https://learn.microsoft.com/ru-ru/dotnet/csharp/asynchronous-programming/)
 
 ---
-### Доменный объект DemoDelayTask - хранимая в БД задача для её фонового исполнения
+### Доменный объект DemoDelayTask - хранимая в БД задача для фонового исполнения
 
-- [На пример](tests/DemoServer.Processing.Tests.Model/TestsDemoDelayTask.cs) доменного объекта [DemoDelayTask](src/DemoServer.Processing.Model/DomainObjects/DemoDelayTask/DomainObjectDemoDelayTask.cs) показана реализаци хранимой в БД задачи для её фонового исполнения
+- [На пример](tests/DemoServer.Processing.Tests.Model/TestsDemoDelayTask.cs) доменного объекта [DemoDelayTask](src/DemoServer.Processing.Model/DomainObjects/DemoDelayTask/DomainObjectDemoDelayTask.cs) показана реализаци хранимой в БД задачи для фонового исполнения
 	- Показан пример полиморфного [сценария выполнения задачи](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/3229448fcb474d627585c7260578a5524e573620/src/DemoServer.Processing.Model/DomainObjects/DemoDelayTask/DomainObjectDemoDelayTask.cs#L121)
 	- Все задачи хранятся в БД в [партиционированной таблице](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/cd9ed1261bd7944083f78fd90c148d0c40727db0/src/DemoServer.Processing.Common/WellknownDomainObjectFields.cs#L297)
 	- У задачи есть возможностью [немедленного запуска (фоново)](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/fc850b33387d768d2354c595d2663f217ca70bbb/tests/DemoServer.Processing.Tests.Model/TestsDemoDelayTask.cs#L36) или [отложенного запуска на указанную дату-время](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/11e9a1fa5f5b57d3126f1e09d93128fd6a0dbfc7/tests/DemoServer.Processing.Tests.Model/TestsDemoDelayTask.cs#L71) 
