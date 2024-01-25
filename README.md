@@ -47,7 +47,7 @@
 - Пример [логирующего прокси](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/be5865d7e9567f8f85819e19ddec843e2ad45567/src/DemoServer.Processing.Model/Implements/EntryPointExtensions.cs#L44) с поддержкой вызова [асинхронных методов](https://learn.microsoft.com/ru-ru/dotnet/csharp/asynchronous-programming/)
 
 ---
-### Доменный объект DemoDelayTask
+### Доменный объект DemoDelayTask - хранимая в БД задача для её фонового исполнения
 
 - [На пример](tests/DemoServer.Processing.Tests.Model/TestsDemoDelayTask.cs) доменного объекта [DemoDelayTask](src/DemoServer.Processing.Model/DomainObjects/DemoDelayTask/DomainObjectDemoDelayTask.cs) показана реализаци хранимой в БД задачи для её фонового исполнения
 	- Показан пример полиморфного [сценария выполнения задачи](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/3229448fcb474d627585c7260578a5524e573620/src/DemoServer.Processing.Model/DomainObjects/DemoDelayTask/DomainObjectDemoDelayTask.cs#L121)
