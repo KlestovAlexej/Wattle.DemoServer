@@ -21,9 +21,9 @@
 
 # Содержание
 - [Общее](#общее)
-- [Доменный объект DemoDelayTask](#доменный-объект-demodelaytask)
-- [Доменный объект DemoObject](#доменный-объект-demoobject)
-- [Доменный объект DemoObjectX](#доменный-объект-demoobjectx)
+- [Доменный объект **DemoDelayTask** - хранимая в БД задача для фонового исполнения](#доменный-объект-demodelaytask---хранимая-в-бд-задача-для-фонового-исполнения)
+- [Доменный объект **DemoObject**](#доменный-объект-demoobject)
+- [Доменный объект **DemoObjectX**](#доменный-объект-demoobjectx)
 
 
 
@@ -47,11 +47,25 @@
 - Пример [логирующего прокси](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/be5865d7e9567f8f85819e19ddec843e2ad45567/src/DemoServer.Processing.Model/Implements/EntryPointExtensions.cs#L44) с поддержкой вызова [асинхронных методов](https://learn.microsoft.com/ru-ru/dotnet/csharp/asynchronous-programming/)
 
 ---
-### Доменный объект DemoDelayTask
+### Доменный объект DemoDelayTask - хранимая в БД задача для фонового исполнения
 
-- [На пример](tests/DemoServer.Processing.Tests.Model/TestsDemoDelayTask.cs) доменного объекта [DemoDelayTask](src/DemoServer.Processing.Model/DomainObjects/DemoDelayTask/DomainObjectDemoDelayTask.cs) показана реализаци хранимой в БД [задачи](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/11e9a1fa5f5b57d3126f1e09d93128fd6a0dbfc7/src/DemoServer.Processing.Model/DomainObjects/DemoDelayTask/DomainObjectDemoDelayTask.cs#L114) для её [асинхронного исполнения](src/DemoServer.Processing.Model/DomainObjects/DemoDelayTask/DemoDelayTaskProcessor.cs) с возможностью [отложенного запуска](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/11e9a1fa5f5b57d3126f1e09d93128fd6a0dbfc7/tests/DemoServer.Processing.Tests.Model/TestsDemoDelayTask.cs#L71) и [получения обекта](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/11e9a1fa5f5b57d3126f1e09d93128fd6a0dbfc7/tests/DemoServer.Processing.Tests.Model/TestsDemoDelayTask.cs#L79) для [ожидания завершения](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/11e9a1fa5f5b57d3126f1e09d93128fd6a0dbfc7/tests/DemoServer.Processing.Tests.Model/TestsDemoDelayTask.cs#L81C7-L82C1) её исполнения
-	- Все [неисполненные задачи](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/697700aca8309cfa4c651006909a9ca8dc0cd005/src/DemoServer.Processing.Model/DomainObjects/DemoDelayTask/DomainObjectDemoDelayTask.cs#L129) при рестарте автоматически загружаются из БД и ставятся на исполнение
- 	- Есть [контроль лимита](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/b9d831390c432ec7727073f5e1985c45e914a163/tests/DemoServer.Processing.Tests.Model/TestsDemoDelayTask.cs#L147) числа активных задач
+- [На пример](tests/DemoServer.Processing.Tests.Model/TestsDemoDelayTask.cs) доменного объекта [DemoDelayTask](src/DemoServer.Processing.Model/DomainObjects/DemoDelayTask/DomainObjectDemoDelayTask.cs) показана реализаци хранимой в БД задачи для фонового исполнения
+	- Показан пример полиморфного [сценария выполнения задачи](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/3229448fcb474d627585c7260578a5524e573620/src/DemoServer.Processing.Model/DomainObjects/DemoDelayTask/DomainObjectDemoDelayTask.cs#L121)
+	- Все задачи хранятся в БД в [партиционированной таблице](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/cd9ed1261bd7944083f78fd90c148d0c40727db0/src/DemoServer.Processing.Common/WellknownDomainObjectFields.cs#L297)
+	- У задачи есть возможностью [немедленного запуска (фоново)](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/fc850b33387d768d2354c595d2663f217ca70bbb/tests/DemoServer.Processing.Tests.Model/TestsDemoDelayTask.cs#L36) или [отложенного запуска на указанную дату-время](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/11e9a1fa5f5b57d3126f1e09d93128fd6a0dbfc7/tests/DemoServer.Processing.Tests.Model/TestsDemoDelayTask.cs#L71) 
+		- Задача сохраняется в БД и исполняется только при успешном подтверждении Unit of Work
+		- Задача начинает исполнение только после успешного подтверждения Unit of Work в котром она была создана
+		- При отмене Unit of Work задача в БД не сохраняется и не исполняется
+	- Все [неисполненные задачи](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/697700aca8309cfa4c651006909a9ca8dc0cd005/src/DemoServer.Processing.Model/DomainObjects/DemoDelayTask/DomainObjectDemoDelayTask.cs#L129) при рестарте в фоновом режиме [автоматически загружаются из БД](src/DemoServer.Processing.Model/DomainObjects/DemoDelayTask/DemoDelayTaskProcessor.cs) и ставятся на исполнение
+	- Задачи [исполняются асинхронно](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/f70f479ef1868150d1bade9c7f7b416d9a6a568a/src/DemoServer.Processing.Model/DomainObjects/DemoDelayTask/DomainObjectDemoDelayTask.cs#L117)
+	- Задачи можно исполнять повторно и менять дату-время отложенного (или немедленного) повторного запуска (в другом Unit of Work)
+	- При [аварийном исключении](https://learn.microsoft.com/ru-ru/dotnet/csharp/fundamentals/exceptions/) задача автоматически отправляется на повторную обработку с предварительных отстоем указанный интервал времени
+	- Для любой задачи можно [получить обекта](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/11e9a1fa5f5b57d3126f1e09d93128fd6a0dbfc7/tests/DemoServer.Processing.Tests.Model/TestsDemoDelayTask.cs#L79) для асинхронного [ожидания завершения](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/11e9a1fa5f5b57d3126f1e09d93128fd6a0dbfc7/tests/DemoServer.Processing.Tests.Model/TestsDemoDelayTask.cs#L81C7-L82C1) (указанное время или бесконечно) её исполнения
+		- Есть [настройка](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/f70f479ef1868150d1bade9c7f7b416d9a6a568a/src/DemoServer.Processing.Model/Implements/SystemSettings/SystemSettings.cs#L309) для интервала ожидания по умолчанию если программист явно не указал интервал ожидания
+	- Есть произвольные [настройки](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/f70f479ef1868150d1bade9c7f7b416d9a6a568a/src/DemoServer.Processing.Model/Implements/SystemSettings/SystemSettings.cs#L309) для [обработчика задач](src/DemoServer.Processing.Model/DomainObjects/DemoDelayTask/DemoDelayTaskProcessor.cs)
+	- При создании задач есть [контроль лимита активных задач](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/b9d831390c432ec7727073f5e1985c45e914a163/tests/DemoServer.Processing.Tests.Model/TestsDemoDelayTask.cs#L147)
+		- [Можно игнорировать](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/54f6742858ff56eb8ccbaa43683885621db9b748/tests/DemoServer.Processing.Tests.Model/TestsDemoDelayTask.cs#L301) контроль лимита активных задач
+	- Каждая задача исполняется в своём автоматически созданном Unit of Work
 
 ---
 ### Доменный объект DemoObject
