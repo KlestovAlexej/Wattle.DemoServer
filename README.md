@@ -66,6 +66,7 @@
 	- При создании задач есть [контроль лимита активных задач](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/b9d831390c432ec7727073f5e1985c45e914a163/tests/DemoServer.Processing.Tests.Model/TestsDemoDelayTask.cs#L147)
 		- [Можно игнорировать](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/54f6742858ff56eb8ccbaa43683885621db9b748/tests/DemoServer.Processing.Tests.Model/TestsDemoDelayTask.cs#L301) контроль лимита активных задач
 	- Каждая задача исполняется в своём автоматически созданном Unit of Work
+		- Стратегию создания Unit of Work можно переопределить
 
 ---
 ### Доменный объект DemoObject
