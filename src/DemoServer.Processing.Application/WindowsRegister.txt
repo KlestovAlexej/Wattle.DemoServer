@@ -7,9 +7,11 @@
 
 - Тестовый стенд --------------------------------------
 LOGS_DIR=C:\DemoServer\logs
+DemoServer_SystemSettings__ConnectionString__Value=Host=localhost;Database=<DB>;Read Buffer Size=102400;Write Buffer Size=102400;Pooling=True;Minimum Pool Size=50;Maximum Pool Size=300;Enlist=False;No Reset On Close=True;Timeout=1000;Command Timeout=1000;SSL Mode=Disable;Trust Server Certificate=True;Persist Security Info=True;Username=postgres;Password=<Password>
 
 - Боевой --------------------------------------
 LOGS_DIR=C:\Prod_DemoServer\logs
+DemoServer_SystemSettings__ConnectionString__Value=Host=localhost;Database=<DB>;Read Buffer Size=102400;Write Buffer Size=102400;Pooling=True;Minimum Pool Size=50;Maximum Pool Size=300;Enlist=False;No Reset On Close=True;Timeout=1000;Command Timeout=1000;SSL Mode=Disable;Trust Server Certificate=True;Persist Security Info=True;Username=postgres;Password=<Password>
 
 - Тестовый стенд --------------------------------------
 sc.exe create "ШТРИХ-М : DemoServer.Processing" binpath="C:\DemoServer\Processing\bin\Debug\ShtrihM.DemoServer.Processing.Application.exe -Service"

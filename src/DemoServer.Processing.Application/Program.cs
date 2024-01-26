@@ -185,7 +185,10 @@ public class Program
 
             EntryPointStartUpExtensions.RegisterGlobals();
 
-            var builder = WebApplication.CreateBuilder();
+            var builder =
+                WebApplication
+                    .CreateBuilder()
+                    .AddEnvironmentVariablesCustom();
 
             var systemSettings =
                 builder.Configuration

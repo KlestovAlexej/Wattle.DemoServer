@@ -70,6 +70,14 @@ public static class WebApplicationBuilderExtensions
         }
     }
 
+    public static WebApplicationBuilder AddEnvironmentVariablesCustom(
+        this WebApplicationBuilder builder)
+    {
+        builder.Configuration.AddEnvironmentVariables(prefix: "DemoServer_");
+
+        return builder;
+    }
+
     public static Mutex CreateMutex(Guid instanceId, out bool mutexCreatedNew)
     {
         return new Mutex(

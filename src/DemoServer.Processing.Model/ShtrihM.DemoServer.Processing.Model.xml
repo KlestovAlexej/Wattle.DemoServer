@@ -164,22 +164,22 @@
         </member>
         <member name="T:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.DomainObjectRegistersSettings">
             <summary>
-            Íàñòðîéêè ðååñòðîâ äîìåííûõ îáúåêòîâ.
+            Настройки реестров доменных объектов.
             </summary>
         </member>
         <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.DomainObjectRegistersSettings.MemoryCacheDemoObjectX">
             <summary>
-            Íàñòðîéêè êýøèðîâàíèÿ ðååñòðà äîìåííûõ îáúåêòîâ - Îáúåêò X.
+            Настройки кэширования реестра доменных объектов - Объект X.
             </summary>
         </member>
         <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.DomainObjectRegistersSettings.UseIdentitiesServices">
             <summary>
-            Èñïîëüçîâàòü ðååñòðû èäåíòèòè îáúåêòîâ.
+            Использовать реестры идентити объектов.
             </summary>
         </member>
         <member name="M:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.DomainObjectRegistersSettings.GetDefault">
             <summary>
-            Íàñòðîéêè ïî óìîë÷àíèþ.
+            Настройки по умолчанию.
             </summary>
         </member>
         <member name="T:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.ExceptionPolicySettings">
@@ -344,22 +344,22 @@
         </member>
         <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettingsLocal.ProductId">
             <summary>
-            Êîä ïðîäóêòà <seealso cref="F:ShtrihM.DemoServer.Common.WellknownCommonSystemSettings.ProductId"/>.
+            Код продукта <seealso cref="F:ShtrihM.DemoServer.Common.WellknownCommonSystemSettings.ProductId"/>.
             </summary>
         </member>
         <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettingsLocal.ProductVersion">
             <summary>
-            Âåðñèÿ ïðîäóêòà <seealso cref="F:ShtrihM.DemoServer.Common.WellknownCommonSystemSettings.ProductVersion"/>.
+            Версия продукта <seealso cref="F:ShtrihM.DemoServer.Common.WellknownCommonSystemSettings.ProductVersion"/>.
             </summary>
         </member>
         <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettingsLocal.InstallationName">
             <summary>
-            Èìÿ èíñòàëëÿöèè <seealso cref="F:ShtrihM.DemoServer.Common.WellknownCommonSystemSettings.InstallationName"/>.
+            Имя инсталляции <seealso cref="F:ShtrihM.DemoServer.Common.WellknownCommonSystemSettings.InstallationName"/>.
             </summary>
         </member>
         <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettingsLocal.ProductName">
             <summary>
-            Èìÿ ïðîäóêòà.
+            Имя продукта.
             </summary>
         </member>
         <member name="F:ShtrihM.DemoServer.Processing.Model.Implements.UnitOfWorkLocks.UnitOfWorkLocksActions.CreateDemoObjectX">
