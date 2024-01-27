@@ -73,7 +73,7 @@ public static class WebApplicationBuilderExtensions
     public static WebApplicationBuilder AddEnvironmentVariablesCustom(
         this WebApplicationBuilder builder)
     {
-        builder.Configuration.AddEnvironmentVariables(prefix: "DemoServer_");
+        builder.Configuration.AddEnvironmentVariables(prefix: $"{Constants.ProductTag}_");
 
         return builder;
     }
