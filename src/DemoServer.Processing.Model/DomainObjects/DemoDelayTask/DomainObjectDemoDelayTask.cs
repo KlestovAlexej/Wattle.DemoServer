@@ -138,7 +138,7 @@ public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutable<DomainOb
 
     protected override ValueTask DoUpdateAsync(CancellationToken cancellationToken = default)
     {
-        ModificationDate = m_entryPoint.TimeService.NowDateTime;
+        ModificationDate = m_entryPoint.TimeService.Now;
 
         return base.DoUpdateAsync(cancellationToken);
     }
