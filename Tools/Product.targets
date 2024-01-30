@@ -12,7 +12,9 @@
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageProjectUrl>https://github.com/KlestovAlexej/Wattle3.DemoServer</PackageProjectUrl>
                 <PackageIcon>..\Product.png</PackageIcon>
-        <ProductComment>$(Description)</ProductComment>
+                <ProductComment>$(Description)</ProductComment>
+                <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+                <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(DefineConstants.Contains(BUILD_PROD))'">
@@ -25,6 +27,7 @@
 
 	<ItemGroup>
 		<None Include="..\..\README.md" Link="README.md" Pack="true" PackagePath="\"/>
+		<None Include="..\..\Tools\LICENSE.txt" Pack="true" PackagePath="LICENSE.txt"/>
 	</ItemGroup>
 
 </Project>
