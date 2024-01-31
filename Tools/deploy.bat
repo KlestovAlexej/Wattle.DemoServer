@@ -33,10 +33,10 @@ IF %ERRORLEVEL% NEQ 0 EXIT 1
 xcopy src\DemoServer.Processing.DataAccess.Postgresql\DemoServer.Processing.sql Deploy\Test\Processing\
 IF %ERRORLEVEL% NEQ 0 EXIT 1
 
-xcopy src\DemoServer.Processing.Application\bin\Release\net8.0-windows\win-x64\ Deploy\Test\Processing\bin\Release\
+xcopy /Y /E src\DemoServer.Processing.Application\bin\Release\net8.0-windows\win-x64\ Deploy\Test\Processing\bin\Release\
 IF %ERRORLEVEL% NEQ 0 EXIT 1
 
-xcopy src\DemoServer.Processing.Application\bin\Debug\net8.0-windows\win-x64\ Deploy\Test\Processing\bin\Debug\
+xcopy /Y /E src\DemoServer.Processing.Application\bin\Debug\net8.0-windows\win-x64\ Deploy\Test\Processing\bin\Debug\
 IF %ERRORLEVEL% NEQ 0 EXIT 1
 
 rem --- BUILD_PROD -----------------
@@ -65,10 +65,10 @@ IF %ERRORLEVEL% NEQ 0 EXIT 1
 xcopy src\DemoServer.Processing.DataAccess.Postgresql\DemoServer.Processing.sql Deploy\Prod\Processing\
 IF %ERRORLEVEL% NEQ 0 EXIT 1
 
-xcopy src\DemoServer.Processing.Application\bin\Release\net8.0-windows\win-x64\ Deploy\Prod\Processing\bin\Release\
+xcopy /Y /E src\DemoServer.Processing.Application\bin\Release\net8.0-windows\win-x64\ Deploy\Prod\Processing\bin\Release\
 IF %ERRORLEVEL% NEQ 0 EXIT 1
 
-xcopy src\DemoServer.Processing.Application\bin\Debug\net8.0-windows\win-x64\ Deploy\Prod\Processing\bin\Debug\
+xcopy /Y /E src\DemoServer.Processing.Application\bin\Debug\net8.0-windows\win-x64\ Deploy\Prod\Processing\bin\Debug\
 IF %ERRORLEVEL% NEQ 0 EXIT 1
 
 echo Сборка успешно выполнена > Publish/ReadMe.txt
