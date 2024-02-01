@@ -85,9 +85,10 @@ public sealed class ExceptionPolicy : BaseExceptionPolicy
 
     protected override void DoNotfyUnexpectedException(Exception exception)
     {
-        m_metrics?.ExceptionsUnexpected.Add(1);
-
-        DoExceptionLogger(exception);
+        if (DoExceptionLogger(exception))
+        {
+            m_metrics?.ExceptionsUnexpected.Add(1);
+        }
     }
 
     protected override void DoNotfyNotfication(ExceptionPolicyNotfication notfication)
@@ -150,9 +151,10 @@ public sealed class ExceptionPolicy : BaseExceptionPolicy
 
     protected override WorkflowException DoApplyUnexpectedException(Exception exception)
     {
-        m_metrics?.ExceptionsUnexpected.Add(1);
-
-        DoExceptionLogger(exception);
+        if (DoExceptionLogger(exception))
+        {
+            m_metrics?.ExceptionsUnexpected.Add(1);
+        }
 
         var result =
             m_workflowExceptionPolicy.Create(
@@ -235,7 +237,7 @@ public sealed class ExceptionPolicy : BaseExceptionPolicy
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private void DoExceptionLogger(Exception exception)
+    private bool DoExceptionLogger(Exception exception)
     {
         if (m_tracer != null)
         {
@@ -251,7 +253,7 @@ public sealed class ExceptionPolicy : BaseExceptionPolicy
                 m_logger.LogDebug(exception, "Не предвиденная ошибка.");
             }
 
-            return;
+            return false;
         }
 
         if (m_logger.IsWarningEnabled())
@@ -264,7 +266,7 @@ public sealed class ExceptionPolicy : BaseExceptionPolicy
             var exceptionScourceModule = exception.Data[ExceptionSourceModule];
             if ((exceptionScourceModule != null) && (exceptionScourceModule.ToString() == ExceptionSourceModuleAsController))
             {
-                return;
+                return false;
             }
         }
 
@@ -298,6 +300,8 @@ public sealed class ExceptionPolicy : BaseExceptionPolicy
                 m_logger.LogCritical(exception2, "Ошибка логирования не предвиденной ошибки." + Environment.NewLine + exception);
             }
         }
+
+        return true;
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]

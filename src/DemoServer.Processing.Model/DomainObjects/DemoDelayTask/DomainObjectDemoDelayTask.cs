@@ -114,8 +114,13 @@ public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutable<DomainOb
         get;
     }
 
-    public async ValueTask<(bool IsCompleted, CancellationToken? CommitCancellationToken)> ProcessAsync(bool isRemoved, CancellationToken cancellationToken)
+    public async ValueTask<(bool IsCompleted, CancellationToken? CommitCancellationToken)> ProcessAsync(bool isRemoved, long count, CancellationToken cancellationToken)
     {
+        if (count > 1)
+        {
+            throw new InternalException("Что-то сломалось, задача исполняется несколько раз.");
+        }
+
         var scenario = Scenario.FromJson<DemoDelayTaskScenario>();
 
         if (scenario is DemoDelayTaskScenarioAsDelay scenarioAsDelay)
