@@ -25,13 +25,13 @@
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="8.0.1" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
 		<PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
-		<PackageReference Include="ShtrihM.Wattle3.CodeGeneration.Generator.Tests" Version="3.9.0.3572">
+		<PackageReference Include="ShtrihM.Wattle3.CodeGeneration.Generator.Tests" Version="3.9.0.3586">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 			<TreatAsUsed>true</TreatAsUsed>
 		</PackageReference>
-		<PackageReference Include="ShtrihM.Wattle3.CodeGeneration.Generators" Version="3.9.0.3572" />
-		<PackageReference Include="ShtrihM.Wattle3.Testing.Databases.PostgreSql" Version="3.9.0.3572" />
+		<PackageReference Include="ShtrihM.Wattle3.CodeGeneration.Generators" Version="3.9.0.3586" />
+		<PackageReference Include="ShtrihM.Wattle3.Testing.Databases.PostgreSql" Version="3.9.0.3586" />
 	</ItemGroup>
 
 	<ItemGroup>
