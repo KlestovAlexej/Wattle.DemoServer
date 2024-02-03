@@ -29,49 +29,133 @@ public partial class ProcessingDbContext : DbContext
         {
             // entity.HasKey(e => e.Id).HasName("demoobjectx_pkey");
 
-            entity.Property(e => e.Id).ValueGeneratedNever();
+            entity.ToTableLowerCase("demoobjectx");
+
+            // entity.HasIndex(e => e.Group, "demoobjectx_group_idx");
+
+            // entity.HasIndex(e => new { e.Key1, e.Key2 }, "demoobjectx_key_u_idx").IsUnique();
+
+            entity.Property(e => e.Id)
+                .ValueGeneratedNever()
+                .HasColumnName("id");
+            entity.Property(e => e.Createdate).HasColumnName("createdate");
+            entity.Property(e => e.Enabled).HasColumnName("enabled");
+            entity.Property(e => e.Group).HasColumnName("group");
+            entity.Property(e => e.Key1).HasColumnName("key1");
+            entity.Property(e => e.Key2)
+                .HasMaxLength(10)
+                .HasColumnName("key2");
+            entity.Property(e => e.Modificationdate).HasColumnName("modificationdate");
+            entity.Property(e => e.Name)
+                .HasMaxLength(1024)
+                .HasColumnName("name");
+            entity.Property(e => e.Revision).HasColumnName("revision");
         });
 
         modelBuilder.Entity<PdChangeTracker>(entity =>
         {
             // entity.HasKey(e => e.Id).HasName("ChangeTracker_pkey");
 
-            entity.Property(e => e.Id).ValueGeneratedNever();
+            entity.ToTableLowerCase("ChangeTracker");
+
+            entity.Property(e => e.Id)
+                .ValueGeneratedNever()
+                .HasColumnName("id");
         });
 
         modelBuilder.Entity<PdDemoDelayTask>(entity =>
         {
             // entity.HasKey(e => e.Id).HasName("DemoDelayTask_pkey");
 
-            entity.Property(e => e.Id).ValueGeneratedNever();
+            entity.ToTableLowerCase("DemoDelayTask");
+
+            entity.Property(e => e.Id)
+                .ValueGeneratedNever()
+                .HasColumnName("id");
+            entity.Property(e => e.Available).HasColumnName("available");
+            entity.Property(e => e.Createdate).HasColumnName("createdate");
+            entity.Property(e => e.Modificationdate).HasColumnName("modificationdate");
+            entity.Property(e => e.Revision).HasColumnName("revision");
+            entity.Property(e => e.Scenario).HasColumnName("scenario");
+            entity.Property(e => e.Startdate).HasColumnName("startdate");
         });
 
         modelBuilder.Entity<PdDemoObject>(entity =>
         {
             // entity.HasKey(e => e.Id).HasName("DemoObject_pkey");
 
-            entity.Property(e => e.Id).ValueGeneratedNever();
+            entity.ToTableLowerCase("DemoObject");
+
+            entity.Property(e => e.Id)
+                .ValueGeneratedNever()
+                .HasColumnName("id");
+            entity.Property(e => e.Createdate)
+                .HasColumnType("timestamp without time zone")
+                .HasColumnName("createdate");
+            entity.Property(e => e.Enabled).HasColumnName("enabled");
+            entity.Property(e => e.Modificationdate)
+                .HasColumnType("timestamp without time zone")
+                .HasColumnName("modificationdate");
+            entity.Property(e => e.Name)
+                .HasMaxLength(1024)
+                .HasColumnName("name");
+            entity.Property(e => e.Revision).HasColumnName("revision");
         });
 
         modelBuilder.Entity<PdSystemLog>(entity =>
         {
             // entity.HasKey(e => e.Id).HasName("SystemLog_pkey");
 
-            entity.Property(e => e.Id).ValueGeneratedNever();
+            entity.ToTableLowerCase("SystemLog");
+
+            entity.Property(e => e.Id)
+                .ValueGeneratedNever()
+                .HasColumnName("id");
+            entity.Property(e => e.Code).HasColumnName("code");
+            entity.Property(e => e.Createdate).HasColumnName("createdate");
+            entity.Property(e => e.Data).HasColumnName("data");
+            entity.Property(e => e.Message)
+                .HasMaxLength(1024)
+                .HasColumnName("message");
+            entity.Property(e => e.Type).HasColumnName("type");
         });
 
         modelBuilder.Entity<PdTablePartition>(entity =>
         {
             // entity.HasKey(e => e.Id).HasName("TablePartition_pkey");
 
-            entity.Property(e => e.Id).ValueGeneratedNever();
+            entity.ToTableLowerCase("TablePartition");
+
+            entity.Property(e => e.Id)
+                .ValueGeneratedNever()
+                .HasColumnName("id");
+            entity.Property(e => e.Createdate).HasColumnName("createdate");
+            entity.Property(e => e.Day).HasColumnName("day");
+            entity.Property(e => e.Maxnotincludegroupid).HasColumnName("maxnotincludegroupid");
+            entity.Property(e => e.Maxnotincludeid).HasColumnName("maxnotincludeid");
+            entity.Property(e => e.Mingroupid).HasColumnName("mingroupid");
+            entity.Property(e => e.Minid).HasColumnName("minid");
+            entity.Property(e => e.Partitionname)
+                .HasColumnType("character varying")
+                .HasColumnName("partitionname");
+            entity.Property(e => e.Tablename)
+                .HasColumnType("character varying")
+                .HasColumnName("tablename");
         });
 
         modelBuilder.Entity<Systemsetting>(entity =>
         {
             // entity.HasKey(e => e.Id).HasName("Primary key systemsetting");
 
-            entity.Property(e => e.Id).ValueGeneratedNever();
+            entity.ToTableLowerCase("systemsetting");
+
+            entity.Property(e => e.Id)
+                .ValueGeneratedNever()
+                .HasColumnName("id");
+            entity.Property(e => e.Name)
+                .HasMaxLength(1024)
+                .HasColumnName("name");
+            entity.Property(e => e.Value).HasColumnName("value");
         });
         modelBuilder.HasSequence("sequence_changetracker");
         modelBuilder.HasSequence("sequence_demodelaytask");

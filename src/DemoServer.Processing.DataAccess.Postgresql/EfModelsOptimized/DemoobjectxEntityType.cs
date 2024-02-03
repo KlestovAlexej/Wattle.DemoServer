@@ -235,15 +235,6 @@ namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModelsOptimized
         new[] { id });
     runtimeEntityType.SetPrimaryKey(key);
 
-    var demoobjectx_group_idx = runtimeEntityType.AddIndex(
-        new[] { group },
-        name: "demoobjectx_group_idx");
-
-    var demoobjectx_key_u_idx = runtimeEntityType.AddIndex(
-        new[] { key1, key2 },
-        name: "demoobjectx_key_u_idx",
-        unique: true);
-
     return runtimeEntityType;
 }
 

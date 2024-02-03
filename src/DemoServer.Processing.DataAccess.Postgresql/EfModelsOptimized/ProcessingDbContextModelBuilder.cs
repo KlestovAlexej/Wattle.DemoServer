@@ -152,22 +152,6 @@ namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModelsOptimized
             pK_demoobjectx.MappedKeys.Add(pK_demoobjectxUc);
             RelationalModel.GetOrCreateUniqueConstraints(pK_demoobjectxUc).Add(pK_demoobjectx);
             demoobjectxTable.UniqueConstraints.Add("PK_demoobjectx", pK_demoobjectx);
-            var demoobjectx_group_idx = new TableIndex(
-            "demoobjectx_group_idx", demoobjectxTable, new[] { groupColumn }, false);
-            var demoobjectx_group_idxIx = RelationalModel.GetIndex(this,
-                "ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels.Demoobjectx",
-                "demoobjectx_group_idx");
-            demoobjectx_group_idx.MappedIndexes.Add(demoobjectx_group_idxIx);
-            RelationalModel.GetOrCreateTableIndexes(demoobjectx_group_idxIx).Add(demoobjectx_group_idx);
-            demoobjectxTable.Indexes.Add("demoobjectx_group_idx", demoobjectx_group_idx);
-            var demoobjectx_key_u_idx = new TableIndex(
-            "demoobjectx_key_u_idx", demoobjectxTable, new[] { key1Column, key2Column }, true);
-            var demoobjectx_key_u_idxIx = RelationalModel.GetIndex(this,
-                "ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels.Demoobjectx",
-                "demoobjectx_key_u_idx");
-            demoobjectx_key_u_idx.MappedIndexes.Add(demoobjectx_key_u_idxIx);
-            RelationalModel.GetOrCreateTableIndexes(demoobjectx_key_u_idxIx).Add(demoobjectx_key_u_idx);
-            demoobjectxTable.Indexes.Add("demoobjectx_key_u_idx", demoobjectx_key_u_idx);
             relationalModel.Tables.Add(("demoobjectx", null), demoobjectxTable);
             var demoobjectxTableMapping = new TableMapping(demoobjectx, demoobjectxTable, true);
             demoobjectxTable.AddTypeMapping(demoobjectxTableMapping, false);
@@ -197,22 +181,22 @@ namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModelsOptimized
 
             var tableMappings0 = new List<TableMapping>();
             pdChangeTracker.SetRuntimeAnnotation("Relational:TableMappings", tableMappings0);
-            var pD_ChangeTrackerTable = new Table("$PD_ChangeTracker", null, relationalModel);
-            var idColumn0 = new Column("id", "bigint", pD_ChangeTrackerTable);
-            pD_ChangeTrackerTable.Columns.Add("id", idColumn0);
-            var pK_PD_ChangeTracker = new UniqueConstraint("PK_$PD_ChangeTracker", pD_ChangeTrackerTable, new[] { idColumn0 });
-            pD_ChangeTrackerTable.PrimaryKey = pK_PD_ChangeTracker;
-            var pK_PD_ChangeTrackerUc = RelationalModel.GetKey(this,
+            var changetrackerTable = new Table("changetracker", null, relationalModel);
+            var idColumn0 = new Column("id", "bigint", changetrackerTable);
+            changetrackerTable.Columns.Add("id", idColumn0);
+            var pK_changetracker = new UniqueConstraint("PK_changetracker", changetrackerTable, new[] { idColumn0 });
+            changetrackerTable.PrimaryKey = pK_changetracker;
+            var pK_changetrackerUc = RelationalModel.GetKey(this,
                 "ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdChangeTracker",
                 new[] { "Id" });
-            pK_PD_ChangeTracker.MappedKeys.Add(pK_PD_ChangeTrackerUc);
-            RelationalModel.GetOrCreateUniqueConstraints(pK_PD_ChangeTrackerUc).Add(pK_PD_ChangeTracker);
-            pD_ChangeTrackerTable.UniqueConstraints.Add("PK_$PD_ChangeTracker", pK_PD_ChangeTracker);
-            relationalModel.Tables.Add(("$PD_ChangeTracker", null), pD_ChangeTrackerTable);
-            var pD_ChangeTrackerTableMapping = new TableMapping(pdChangeTracker, pD_ChangeTrackerTable, true);
-            pD_ChangeTrackerTable.AddTypeMapping(pD_ChangeTrackerTableMapping, false);
-            tableMappings0.Add(pD_ChangeTrackerTableMapping);
-            RelationalModel.CreateColumnMapping(idColumn0, pdChangeTracker.FindProperty("Id")!, pD_ChangeTrackerTableMapping);
+            pK_changetracker.MappedKeys.Add(pK_changetrackerUc);
+            RelationalModel.GetOrCreateUniqueConstraints(pK_changetrackerUc).Add(pK_changetracker);
+            changetrackerTable.UniqueConstraints.Add("PK_changetracker", pK_changetracker);
+            relationalModel.Tables.Add(("changetracker", null), changetrackerTable);
+            var changetrackerTableMapping = new TableMapping(pdChangeTracker, changetrackerTable, true);
+            changetrackerTable.AddTypeMapping(changetrackerTableMapping, false);
+            tableMappings0.Add(changetrackerTableMapping);
+            RelationalModel.CreateColumnMapping(idColumn0, pdChangeTracker.FindProperty("Id")!, changetrackerTableMapping);
 
             var pdDemoDelayTask = FindEntityType("ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdDemoDelayTask")!;
 
@@ -250,43 +234,43 @@ namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModelsOptimized
 
             var tableMappings1 = new List<TableMapping>();
             pdDemoDelayTask.SetRuntimeAnnotation("Relational:TableMappings", tableMappings1);
-            var pD_DemoDelayTaskTable = new Table("$PD_DemoDelayTask", null, relationalModel);
-            var idColumn1 = new Column("id", "bigint", pD_DemoDelayTaskTable);
-            pD_DemoDelayTaskTable.Columns.Add("id", idColumn1);
-            var availableColumn = new Column("available", "boolean", pD_DemoDelayTaskTable);
-            pD_DemoDelayTaskTable.Columns.Add("available", availableColumn);
-            var createdateColumn0 = new Column("createdate", "timestamp with time zone", pD_DemoDelayTaskTable);
-            pD_DemoDelayTaskTable.Columns.Add("createdate", createdateColumn0);
-            var modificationdateColumn0 = new Column("modificationdate", "timestamp with time zone", pD_DemoDelayTaskTable);
-            pD_DemoDelayTaskTable.Columns.Add("modificationdate", modificationdateColumn0);
-            var revisionColumn0 = new Column("revision", "bigint", pD_DemoDelayTaskTable);
-            pD_DemoDelayTaskTable.Columns.Add("revision", revisionColumn0);
-            var scenarioColumn = new Column("scenario", "text", pD_DemoDelayTaskTable);
-            pD_DemoDelayTaskTable.Columns.Add("scenario", scenarioColumn);
-            var startdateColumn = new Column("startdate", "timestamp with time zone", pD_DemoDelayTaskTable)
+            var demodelaytaskTable = new Table("demodelaytask", null, relationalModel);
+            var idColumn1 = new Column("id", "bigint", demodelaytaskTable);
+            demodelaytaskTable.Columns.Add("id", idColumn1);
+            var availableColumn = new Column("available", "boolean", demodelaytaskTable);
+            demodelaytaskTable.Columns.Add("available", availableColumn);
+            var createdateColumn0 = new Column("createdate", "timestamp with time zone", demodelaytaskTable);
+            demodelaytaskTable.Columns.Add("createdate", createdateColumn0);
+            var modificationdateColumn0 = new Column("modificationdate", "timestamp with time zone", demodelaytaskTable);
+            demodelaytaskTable.Columns.Add("modificationdate", modificationdateColumn0);
+            var revisionColumn0 = new Column("revision", "bigint", demodelaytaskTable);
+            demodelaytaskTable.Columns.Add("revision", revisionColumn0);
+            var scenarioColumn = new Column("scenario", "text", demodelaytaskTable);
+            demodelaytaskTable.Columns.Add("scenario", scenarioColumn);
+            var startdateColumn = new Column("startdate", "timestamp with time zone", demodelaytaskTable)
             {
                 IsNullable = true
             };
-            pD_DemoDelayTaskTable.Columns.Add("startdate", startdateColumn);
-            var pK_PD_DemoDelayTask = new UniqueConstraint("PK_$PD_DemoDelayTask", pD_DemoDelayTaskTable, new[] { idColumn1 });
-            pD_DemoDelayTaskTable.PrimaryKey = pK_PD_DemoDelayTask;
-            var pK_PD_DemoDelayTaskUc = RelationalModel.GetKey(this,
+            demodelaytaskTable.Columns.Add("startdate", startdateColumn);
+            var pK_demodelaytask = new UniqueConstraint("PK_demodelaytask", demodelaytaskTable, new[] { idColumn1 });
+            demodelaytaskTable.PrimaryKey = pK_demodelaytask;
+            var pK_demodelaytaskUc = RelationalModel.GetKey(this,
                 "ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdDemoDelayTask",
                 new[] { "Id" });
-            pK_PD_DemoDelayTask.MappedKeys.Add(pK_PD_DemoDelayTaskUc);
-            RelationalModel.GetOrCreateUniqueConstraints(pK_PD_DemoDelayTaskUc).Add(pK_PD_DemoDelayTask);
-            pD_DemoDelayTaskTable.UniqueConstraints.Add("PK_$PD_DemoDelayTask", pK_PD_DemoDelayTask);
-            relationalModel.Tables.Add(("$PD_DemoDelayTask", null), pD_DemoDelayTaskTable);
-            var pD_DemoDelayTaskTableMapping = new TableMapping(pdDemoDelayTask, pD_DemoDelayTaskTable, true);
-            pD_DemoDelayTaskTable.AddTypeMapping(pD_DemoDelayTaskTableMapping, false);
-            tableMappings1.Add(pD_DemoDelayTaskTableMapping);
-            RelationalModel.CreateColumnMapping(idColumn1, pdDemoDelayTask.FindProperty("Id")!, pD_DemoDelayTaskTableMapping);
-            RelationalModel.CreateColumnMapping(availableColumn, pdDemoDelayTask.FindProperty("Available")!, pD_DemoDelayTaskTableMapping);
-            RelationalModel.CreateColumnMapping(createdateColumn0, pdDemoDelayTask.FindProperty("Createdate")!, pD_DemoDelayTaskTableMapping);
-            RelationalModel.CreateColumnMapping(modificationdateColumn0, pdDemoDelayTask.FindProperty("Modificationdate")!, pD_DemoDelayTaskTableMapping);
-            RelationalModel.CreateColumnMapping(revisionColumn0, pdDemoDelayTask.FindProperty("Revision")!, pD_DemoDelayTaskTableMapping);
-            RelationalModel.CreateColumnMapping(scenarioColumn, pdDemoDelayTask.FindProperty("Scenario")!, pD_DemoDelayTaskTableMapping);
-            RelationalModel.CreateColumnMapping(startdateColumn, pdDemoDelayTask.FindProperty("Startdate")!, pD_DemoDelayTaskTableMapping);
+            pK_demodelaytask.MappedKeys.Add(pK_demodelaytaskUc);
+            RelationalModel.GetOrCreateUniqueConstraints(pK_demodelaytaskUc).Add(pK_demodelaytask);
+            demodelaytaskTable.UniqueConstraints.Add("PK_demodelaytask", pK_demodelaytask);
+            relationalModel.Tables.Add(("demodelaytask", null), demodelaytaskTable);
+            var demodelaytaskTableMapping = new TableMapping(pdDemoDelayTask, demodelaytaskTable, true);
+            demodelaytaskTable.AddTypeMapping(demodelaytaskTableMapping, false);
+            tableMappings1.Add(demodelaytaskTableMapping);
+            RelationalModel.CreateColumnMapping(idColumn1, pdDemoDelayTask.FindProperty("Id")!, demodelaytaskTableMapping);
+            RelationalModel.CreateColumnMapping(availableColumn, pdDemoDelayTask.FindProperty("Available")!, demodelaytaskTableMapping);
+            RelationalModel.CreateColumnMapping(createdateColumn0, pdDemoDelayTask.FindProperty("Createdate")!, demodelaytaskTableMapping);
+            RelationalModel.CreateColumnMapping(modificationdateColumn0, pdDemoDelayTask.FindProperty("Modificationdate")!, demodelaytaskTableMapping);
+            RelationalModel.CreateColumnMapping(revisionColumn0, pdDemoDelayTask.FindProperty("Revision")!, demodelaytaskTableMapping);
+            RelationalModel.CreateColumnMapping(scenarioColumn, pdDemoDelayTask.FindProperty("Scenario")!, demodelaytaskTableMapping);
+            RelationalModel.CreateColumnMapping(startdateColumn, pdDemoDelayTask.FindProperty("Startdate")!, demodelaytaskTableMapping);
 
             var pdDemoObject = FindEntityType("ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdDemoObject")!;
 
@@ -318,37 +302,37 @@ namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModelsOptimized
 
             var tableMappings2 = new List<TableMapping>();
             pdDemoObject.SetRuntimeAnnotation("Relational:TableMappings", tableMappings2);
-            var pD_DemoObjectTable = new Table("$PD_DemoObject", null, relationalModel);
-            var idColumn2 = new Column("id", "bigint", pD_DemoObjectTable);
-            pD_DemoObjectTable.Columns.Add("id", idColumn2);
-            var createdateColumn1 = new Column("createdate", "timestamp without time zone", pD_DemoObjectTable);
-            pD_DemoObjectTable.Columns.Add("createdate", createdateColumn1);
-            var enabledColumn0 = new Column("enabled", "boolean", pD_DemoObjectTable);
-            pD_DemoObjectTable.Columns.Add("enabled", enabledColumn0);
-            var modificationdateColumn1 = new Column("modificationdate", "timestamp without time zone", pD_DemoObjectTable);
-            pD_DemoObjectTable.Columns.Add("modificationdate", modificationdateColumn1);
-            var nameColumn0 = new Column("name", "character varying(1024)", pD_DemoObjectTable);
-            pD_DemoObjectTable.Columns.Add("name", nameColumn0);
-            var revisionColumn1 = new Column("revision", "bigint", pD_DemoObjectTable);
-            pD_DemoObjectTable.Columns.Add("revision", revisionColumn1);
-            var pK_PD_DemoObject = new UniqueConstraint("PK_$PD_DemoObject", pD_DemoObjectTable, new[] { idColumn2 });
-            pD_DemoObjectTable.PrimaryKey = pK_PD_DemoObject;
-            var pK_PD_DemoObjectUc = RelationalModel.GetKey(this,
+            var demoobjectTable = new Table("demoobject", null, relationalModel);
+            var idColumn2 = new Column("id", "bigint", demoobjectTable);
+            demoobjectTable.Columns.Add("id", idColumn2);
+            var createdateColumn1 = new Column("createdate", "timestamp without time zone", demoobjectTable);
+            demoobjectTable.Columns.Add("createdate", createdateColumn1);
+            var enabledColumn0 = new Column("enabled", "boolean", demoobjectTable);
+            demoobjectTable.Columns.Add("enabled", enabledColumn0);
+            var modificationdateColumn1 = new Column("modificationdate", "timestamp without time zone", demoobjectTable);
+            demoobjectTable.Columns.Add("modificationdate", modificationdateColumn1);
+            var nameColumn0 = new Column("name", "character varying(1024)", demoobjectTable);
+            demoobjectTable.Columns.Add("name", nameColumn0);
+            var revisionColumn1 = new Column("revision", "bigint", demoobjectTable);
+            demoobjectTable.Columns.Add("revision", revisionColumn1);
+            var pK_demoobject = new UniqueConstraint("PK_demoobject", demoobjectTable, new[] { idColumn2 });
+            demoobjectTable.PrimaryKey = pK_demoobject;
+            var pK_demoobjectUc = RelationalModel.GetKey(this,
                 "ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdDemoObject",
                 new[] { "Id" });
-            pK_PD_DemoObject.MappedKeys.Add(pK_PD_DemoObjectUc);
-            RelationalModel.GetOrCreateUniqueConstraints(pK_PD_DemoObjectUc).Add(pK_PD_DemoObject);
-            pD_DemoObjectTable.UniqueConstraints.Add("PK_$PD_DemoObject", pK_PD_DemoObject);
-            relationalModel.Tables.Add(("$PD_DemoObject", null), pD_DemoObjectTable);
-            var pD_DemoObjectTableMapping = new TableMapping(pdDemoObject, pD_DemoObjectTable, true);
-            pD_DemoObjectTable.AddTypeMapping(pD_DemoObjectTableMapping, false);
-            tableMappings2.Add(pD_DemoObjectTableMapping);
-            RelationalModel.CreateColumnMapping(idColumn2, pdDemoObject.FindProperty("Id")!, pD_DemoObjectTableMapping);
-            RelationalModel.CreateColumnMapping(createdateColumn1, pdDemoObject.FindProperty("Createdate")!, pD_DemoObjectTableMapping);
-            RelationalModel.CreateColumnMapping(enabledColumn0, pdDemoObject.FindProperty("Enabled")!, pD_DemoObjectTableMapping);
-            RelationalModel.CreateColumnMapping(modificationdateColumn1, pdDemoObject.FindProperty("Modificationdate")!, pD_DemoObjectTableMapping);
-            RelationalModel.CreateColumnMapping(nameColumn0, pdDemoObject.FindProperty("Name")!, pD_DemoObjectTableMapping);
-            RelationalModel.CreateColumnMapping(revisionColumn1, pdDemoObject.FindProperty("Revision")!, pD_DemoObjectTableMapping);
+            pK_demoobject.MappedKeys.Add(pK_demoobjectUc);
+            RelationalModel.GetOrCreateUniqueConstraints(pK_demoobjectUc).Add(pK_demoobject);
+            demoobjectTable.UniqueConstraints.Add("PK_demoobject", pK_demoobject);
+            relationalModel.Tables.Add(("demoobject", null), demoobjectTable);
+            var demoobjectTableMapping = new TableMapping(pdDemoObject, demoobjectTable, true);
+            demoobjectTable.AddTypeMapping(demoobjectTableMapping, false);
+            tableMappings2.Add(demoobjectTableMapping);
+            RelationalModel.CreateColumnMapping(idColumn2, pdDemoObject.FindProperty("Id")!, demoobjectTableMapping);
+            RelationalModel.CreateColumnMapping(createdateColumn1, pdDemoObject.FindProperty("Createdate")!, demoobjectTableMapping);
+            RelationalModel.CreateColumnMapping(enabledColumn0, pdDemoObject.FindProperty("Enabled")!, demoobjectTableMapping);
+            RelationalModel.CreateColumnMapping(modificationdateColumn1, pdDemoObject.FindProperty("Modificationdate")!, demoobjectTableMapping);
+            RelationalModel.CreateColumnMapping(nameColumn0, pdDemoObject.FindProperty("Name")!, demoobjectTableMapping);
+            RelationalModel.CreateColumnMapping(revisionColumn1, pdDemoObject.FindProperty("Revision")!, demoobjectTableMapping);
 
             var pdSystemLog = FindEntityType("ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdSystemLog")!;
 
@@ -380,37 +364,37 @@ namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModelsOptimized
 
             var tableMappings3 = new List<TableMapping>();
             pdSystemLog.SetRuntimeAnnotation("Relational:TableMappings", tableMappings3);
-            var pD_SystemLogTable = new Table("$PD_SystemLog", null, relationalModel);
-            var idColumn3 = new Column("id", "bigint", pD_SystemLogTable);
-            pD_SystemLogTable.Columns.Add("id", idColumn3);
-            var codeColumn = new Column("code", "integer", pD_SystemLogTable);
-            pD_SystemLogTable.Columns.Add("code", codeColumn);
-            var createdateColumn2 = new Column("createdate", "timestamp with time zone", pD_SystemLogTable);
-            pD_SystemLogTable.Columns.Add("createdate", createdateColumn2);
-            var dataColumn = new Column("data", "text", pD_SystemLogTable);
-            pD_SystemLogTable.Columns.Add("data", dataColumn);
-            var messageColumn = new Column("message", "character varying(1024)", pD_SystemLogTable);
-            pD_SystemLogTable.Columns.Add("message", messageColumn);
-            var typeColumn = new Column("type", "integer", pD_SystemLogTable);
-            pD_SystemLogTable.Columns.Add("type", typeColumn);
-            var pK_PD_SystemLog = new UniqueConstraint("PK_$PD_SystemLog", pD_SystemLogTable, new[] { idColumn3 });
-            pD_SystemLogTable.PrimaryKey = pK_PD_SystemLog;
-            var pK_PD_SystemLogUc = RelationalModel.GetKey(this,
+            var systemlogTable = new Table("systemlog", null, relationalModel);
+            var idColumn3 = new Column("id", "bigint", systemlogTable);
+            systemlogTable.Columns.Add("id", idColumn3);
+            var codeColumn = new Column("code", "integer", systemlogTable);
+            systemlogTable.Columns.Add("code", codeColumn);
+            var createdateColumn2 = new Column("createdate", "timestamp with time zone", systemlogTable);
+            systemlogTable.Columns.Add("createdate", createdateColumn2);
+            var dataColumn = new Column("data", "text", systemlogTable);
+            systemlogTable.Columns.Add("data", dataColumn);
+            var messageColumn = new Column("message", "character varying(1024)", systemlogTable);
+            systemlogTable.Columns.Add("message", messageColumn);
+            var typeColumn = new Column("type", "integer", systemlogTable);
+            systemlogTable.Columns.Add("type", typeColumn);
+            var pK_systemlog = new UniqueConstraint("PK_systemlog", systemlogTable, new[] { idColumn3 });
+            systemlogTable.PrimaryKey = pK_systemlog;
+            var pK_systemlogUc = RelationalModel.GetKey(this,
                 "ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdSystemLog",
                 new[] { "Id" });
-            pK_PD_SystemLog.MappedKeys.Add(pK_PD_SystemLogUc);
-            RelationalModel.GetOrCreateUniqueConstraints(pK_PD_SystemLogUc).Add(pK_PD_SystemLog);
-            pD_SystemLogTable.UniqueConstraints.Add("PK_$PD_SystemLog", pK_PD_SystemLog);
-            relationalModel.Tables.Add(("$PD_SystemLog", null), pD_SystemLogTable);
-            var pD_SystemLogTableMapping = new TableMapping(pdSystemLog, pD_SystemLogTable, true);
-            pD_SystemLogTable.AddTypeMapping(pD_SystemLogTableMapping, false);
-            tableMappings3.Add(pD_SystemLogTableMapping);
-            RelationalModel.CreateColumnMapping(idColumn3, pdSystemLog.FindProperty("Id")!, pD_SystemLogTableMapping);
-            RelationalModel.CreateColumnMapping(codeColumn, pdSystemLog.FindProperty("Code")!, pD_SystemLogTableMapping);
-            RelationalModel.CreateColumnMapping(createdateColumn2, pdSystemLog.FindProperty("Createdate")!, pD_SystemLogTableMapping);
-            RelationalModel.CreateColumnMapping(dataColumn, pdSystemLog.FindProperty("Data")!, pD_SystemLogTableMapping);
-            RelationalModel.CreateColumnMapping(messageColumn, pdSystemLog.FindProperty("Message")!, pD_SystemLogTableMapping);
-            RelationalModel.CreateColumnMapping(typeColumn, pdSystemLog.FindProperty("Type")!, pD_SystemLogTableMapping);
+            pK_systemlog.MappedKeys.Add(pK_systemlogUc);
+            RelationalModel.GetOrCreateUniqueConstraints(pK_systemlogUc).Add(pK_systemlog);
+            systemlogTable.UniqueConstraints.Add("PK_systemlog", pK_systemlog);
+            relationalModel.Tables.Add(("systemlog", null), systemlogTable);
+            var systemlogTableMapping = new TableMapping(pdSystemLog, systemlogTable, true);
+            systemlogTable.AddTypeMapping(systemlogTableMapping, false);
+            tableMappings3.Add(systemlogTableMapping);
+            RelationalModel.CreateColumnMapping(idColumn3, pdSystemLog.FindProperty("Id")!, systemlogTableMapping);
+            RelationalModel.CreateColumnMapping(codeColumn, pdSystemLog.FindProperty("Code")!, systemlogTableMapping);
+            RelationalModel.CreateColumnMapping(createdateColumn2, pdSystemLog.FindProperty("Createdate")!, systemlogTableMapping);
+            RelationalModel.CreateColumnMapping(dataColumn, pdSystemLog.FindProperty("Data")!, systemlogTableMapping);
+            RelationalModel.CreateColumnMapping(messageColumn, pdSystemLog.FindProperty("Message")!, systemlogTableMapping);
+            RelationalModel.CreateColumnMapping(typeColumn, pdSystemLog.FindProperty("Type")!, systemlogTableMapping);
 
             var pdTablePartition = FindEntityType("ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdTablePartition")!;
 
@@ -451,46 +435,46 @@ namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModelsOptimized
 
             var tableMappings4 = new List<TableMapping>();
             pdTablePartition.SetRuntimeAnnotation("Relational:TableMappings", tableMappings4);
-            var pD_TablePartitionTable = new Table("$PD_TablePartition", null, relationalModel);
-            var idColumn4 = new Column("id", "bigint", pD_TablePartitionTable);
-            pD_TablePartitionTable.Columns.Add("id", idColumn4);
-            var createdateColumn3 = new Column("createdate", "timestamp with time zone", pD_TablePartitionTable);
-            pD_TablePartitionTable.Columns.Add("createdate", createdateColumn3);
-            var dayColumn = new Column("day", "date", pD_TablePartitionTable);
-            pD_TablePartitionTable.Columns.Add("day", dayColumn);
-            var maxnotincludegroupidColumn = new Column("maxnotincludegroupid", "bigint", pD_TablePartitionTable);
-            pD_TablePartitionTable.Columns.Add("maxnotincludegroupid", maxnotincludegroupidColumn);
-            var maxnotincludeidColumn = new Column("maxnotincludeid", "bigint", pD_TablePartitionTable);
-            pD_TablePartitionTable.Columns.Add("maxnotincludeid", maxnotincludeidColumn);
-            var mingroupidColumn = new Column("mingroupid", "bigint", pD_TablePartitionTable);
-            pD_TablePartitionTable.Columns.Add("mingroupid", mingroupidColumn);
-            var minidColumn = new Column("minid", "bigint", pD_TablePartitionTable);
-            pD_TablePartitionTable.Columns.Add("minid", minidColumn);
-            var partitionnameColumn = new Column("partitionname", "character varying", pD_TablePartitionTable);
-            pD_TablePartitionTable.Columns.Add("partitionname", partitionnameColumn);
-            var tablenameColumn = new Column("tablename", "character varying", pD_TablePartitionTable);
-            pD_TablePartitionTable.Columns.Add("tablename", tablenameColumn);
-            var pK_PD_TablePartition = new UniqueConstraint("PK_$PD_TablePartition", pD_TablePartitionTable, new[] { idColumn4 });
-            pD_TablePartitionTable.PrimaryKey = pK_PD_TablePartition;
-            var pK_PD_TablePartitionUc = RelationalModel.GetKey(this,
+            var tablepartitionTable = new Table("tablepartition", null, relationalModel);
+            var idColumn4 = new Column("id", "bigint", tablepartitionTable);
+            tablepartitionTable.Columns.Add("id", idColumn4);
+            var createdateColumn3 = new Column("createdate", "timestamp with time zone", tablepartitionTable);
+            tablepartitionTable.Columns.Add("createdate", createdateColumn3);
+            var dayColumn = new Column("day", "date", tablepartitionTable);
+            tablepartitionTable.Columns.Add("day", dayColumn);
+            var maxnotincludegroupidColumn = new Column("maxnotincludegroupid", "bigint", tablepartitionTable);
+            tablepartitionTable.Columns.Add("maxnotincludegroupid", maxnotincludegroupidColumn);
+            var maxnotincludeidColumn = new Column("maxnotincludeid", "bigint", tablepartitionTable);
+            tablepartitionTable.Columns.Add("maxnotincludeid", maxnotincludeidColumn);
+            var mingroupidColumn = new Column("mingroupid", "bigint", tablepartitionTable);
+            tablepartitionTable.Columns.Add("mingroupid", mingroupidColumn);
+            var minidColumn = new Column("minid", "bigint", tablepartitionTable);
+            tablepartitionTable.Columns.Add("minid", minidColumn);
+            var partitionnameColumn = new Column("partitionname", "character varying", tablepartitionTable);
+            tablepartitionTable.Columns.Add("partitionname", partitionnameColumn);
+            var tablenameColumn = new Column("tablename", "character varying", tablepartitionTable);
+            tablepartitionTable.Columns.Add("tablename", tablenameColumn);
+            var pK_tablepartition = new UniqueConstraint("PK_tablepartition", tablepartitionTable, new[] { idColumn4 });
+            tablepartitionTable.PrimaryKey = pK_tablepartition;
+            var pK_tablepartitionUc = RelationalModel.GetKey(this,
                 "ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdTablePartition",
                 new[] { "Id" });
-            pK_PD_TablePartition.MappedKeys.Add(pK_PD_TablePartitionUc);
-            RelationalModel.GetOrCreateUniqueConstraints(pK_PD_TablePartitionUc).Add(pK_PD_TablePartition);
-            pD_TablePartitionTable.UniqueConstraints.Add("PK_$PD_TablePartition", pK_PD_TablePartition);
-            relationalModel.Tables.Add(("$PD_TablePartition", null), pD_TablePartitionTable);
-            var pD_TablePartitionTableMapping = new TableMapping(pdTablePartition, pD_TablePartitionTable, true);
-            pD_TablePartitionTable.AddTypeMapping(pD_TablePartitionTableMapping, false);
-            tableMappings4.Add(pD_TablePartitionTableMapping);
-            RelationalModel.CreateColumnMapping(idColumn4, pdTablePartition.FindProperty("Id")!, pD_TablePartitionTableMapping);
-            RelationalModel.CreateColumnMapping(createdateColumn3, pdTablePartition.FindProperty("Createdate")!, pD_TablePartitionTableMapping);
-            RelationalModel.CreateColumnMapping(dayColumn, pdTablePartition.FindProperty("Day")!, pD_TablePartitionTableMapping);
-            RelationalModel.CreateColumnMapping(maxnotincludegroupidColumn, pdTablePartition.FindProperty("Maxnotincludegroupid")!, pD_TablePartitionTableMapping);
-            RelationalModel.CreateColumnMapping(maxnotincludeidColumn, pdTablePartition.FindProperty("Maxnotincludeid")!, pD_TablePartitionTableMapping);
-            RelationalModel.CreateColumnMapping(mingroupidColumn, pdTablePartition.FindProperty("Mingroupid")!, pD_TablePartitionTableMapping);
-            RelationalModel.CreateColumnMapping(minidColumn, pdTablePartition.FindProperty("Minid")!, pD_TablePartitionTableMapping);
-            RelationalModel.CreateColumnMapping(partitionnameColumn, pdTablePartition.FindProperty("Partitionname")!, pD_TablePartitionTableMapping);
-            RelationalModel.CreateColumnMapping(tablenameColumn, pdTablePartition.FindProperty("Tablename")!, pD_TablePartitionTableMapping);
+            pK_tablepartition.MappedKeys.Add(pK_tablepartitionUc);
+            RelationalModel.GetOrCreateUniqueConstraints(pK_tablepartitionUc).Add(pK_tablepartition);
+            tablepartitionTable.UniqueConstraints.Add("PK_tablepartition", pK_tablepartition);
+            relationalModel.Tables.Add(("tablepartition", null), tablepartitionTable);
+            var tablepartitionTableMapping = new TableMapping(pdTablePartition, tablepartitionTable, true);
+            tablepartitionTable.AddTypeMapping(tablepartitionTableMapping, false);
+            tableMappings4.Add(tablepartitionTableMapping);
+            RelationalModel.CreateColumnMapping(idColumn4, pdTablePartition.FindProperty("Id")!, tablepartitionTableMapping);
+            RelationalModel.CreateColumnMapping(createdateColumn3, pdTablePartition.FindProperty("Createdate")!, tablepartitionTableMapping);
+            RelationalModel.CreateColumnMapping(dayColumn, pdTablePartition.FindProperty("Day")!, tablepartitionTableMapping);
+            RelationalModel.CreateColumnMapping(maxnotincludegroupidColumn, pdTablePartition.FindProperty("Maxnotincludegroupid")!, tablepartitionTableMapping);
+            RelationalModel.CreateColumnMapping(maxnotincludeidColumn, pdTablePartition.FindProperty("Maxnotincludeid")!, tablepartitionTableMapping);
+            RelationalModel.CreateColumnMapping(mingroupidColumn, pdTablePartition.FindProperty("Mingroupid")!, tablepartitionTableMapping);
+            RelationalModel.CreateColumnMapping(minidColumn, pdTablePartition.FindProperty("Minid")!, tablepartitionTableMapping);
+            RelationalModel.CreateColumnMapping(partitionnameColumn, pdTablePartition.FindProperty("Partitionname")!, tablepartitionTableMapping);
+            RelationalModel.CreateColumnMapping(tablenameColumn, pdTablePartition.FindProperty("Tablename")!, tablepartitionTableMapping);
 
             var systemsetting = FindEntityType("ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels.Systemsetting")!;
 
