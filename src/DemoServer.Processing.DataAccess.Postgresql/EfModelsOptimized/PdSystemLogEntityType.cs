@@ -176,7 +176,7 @@ namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModelsOptimized
         runtimeEntityType.AddAnnotation("Relational:FunctionName", null);
         runtimeEntityType.AddAnnotation("Relational:Schema", null);
         runtimeEntityType.AddAnnotation("Relational:SqlQuery", null);
-        runtimeEntityType.AddAnnotation("Relational:TableName", "systemlog");
+        runtimeEntityType.AddAnnotation("Relational:TableName", "$PD_SystemLog");
         runtimeEntityType.AddAnnotation("Relational:ViewName", null);
         runtimeEntityType.AddAnnotation("Relational:ViewSchema", null);
 
