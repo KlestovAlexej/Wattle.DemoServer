@@ -10,7 +10,6 @@ using ShtrihM.DemoServer.Processing.Model.Interfaces;
 using ShtrihM.Wattle3.Common.Exceptions;
 using ShtrihM.Wattle3.DomainObjects.DomainObjects;
 using ShtrihM.Wattle3.DomainObjects.Interfaces;
-using ShtrihM.Wattle3.Json.Extensions;
 using ShtrihM.Wattle3.Mappers.Primitives.MutableFields;
 
 namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask;
@@ -29,14 +28,18 @@ public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutable<DomainOb
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         // ReSharper disable once ConvertToPrimaryConstructor
         public Template(
-            DemoDelayTaskScenario scenario, 
+            string scenario, 
             DateTimeOffset? startDate)
         {
             Scenario = scenario;
             StartDate = startDate;
         }
 
-        public readonly DemoDelayTaskScenario Scenario;
+        /// <summary>
+        /// <seealso cref="DemoDelayTaskScenario"/>.
+        /// </summary>
+        public readonly string Scenario;
+
         public readonly DateTimeOffset? StartDate;
     }
 
@@ -76,7 +79,7 @@ public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutable<DomainOb
         m_available = new MutableField<bool>(true);
         CreateDate = entryPoint.TimeService.Now;
         ModificationDate = CreateDate;
-        Scenario = template.Scenario.ToJsonText();
+        Scenario = template.Scenario;
         StartDate = template.StartDate;
     }
 
@@ -121,7 +124,7 @@ public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutable<DomainOb
             throw new InternalException("Что-то сломалось, задача исполняется несколько раз.");
         }
 
-        var scenario = Scenario.FromJson<DemoDelayTaskScenario>();
+        var scenario = m_entryPoint.JsonDeserializer.DeserializeReadOnly<DemoDelayTaskScenario>(Scenario);
 
         if (scenario is DemoDelayTaskScenarioAsDelay scenarioAsDelay)
         {

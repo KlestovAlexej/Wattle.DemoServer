@@ -12,6 +12,13 @@ namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenar
 public sealed class DemoDelayTaskScenarioAsDelay : DemoDelayTaskScenario
 {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    private DemoDelayTaskScenarioAsDelay(DemoDelayTaskScenarioAsDelay other)
+        : this()
+    {
+        Delay = other.Delay;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     // ReSharper disable once ConvertToPrimaryConstructor
     public DemoDelayTaskScenarioAsDelay()
         : base(DemoDelayTaskScenariosType.Delay)
@@ -24,4 +31,11 @@ public sealed class DemoDelayTaskScenarioAsDelay : DemoDelayTaskScenario
     [JsonProperty(Required = Required.Always)]
     [Description("Интервал задержки исполнения")]
     public TimeSpan Delay;
+
+    public override object Clone()
+    {
+        var result = new DemoDelayTaskScenarioAsDelay(this);
+
+        return result;
+    }
 }

@@ -44,6 +44,7 @@ using Unity;
 using Status = OpenTelemetry.Trace.Status;
 using ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask;
 using ShtrihM.Wattle3.DomainObjects.DomainObjects;
+using ShtrihM.Wattle3.DomainObjects.Json;
 
 [assembly: SchemaModelResource("DbMappers.Schema.xml")]
 
@@ -259,6 +260,7 @@ public sealed class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
     public IUnitOfWorkCommitVerifyingFactory CommitVerifyingFactory { get; private set; }
     public AutoMapper.IMapper AutoMapper { get; private set; }
     public IDemoDelayTaskProcessor DemoDelayTaskProcessor { get; private set; }
+    public ISmartJsonDeserializer JsonDeserializer { get; private set; }
 
     public MetaServerDescription ServerDescription
     {
@@ -416,6 +418,12 @@ public sealed class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
         {
             var temp = DemoDelayTaskProcessor;
             DemoDelayTaskProcessor = null;
+            temp.SilentDispose();
+        }
+
+        {
+            var temp = JsonDeserializer;
+            JsonDeserializer = null;
             temp.SilentDispose();
         }
         
@@ -598,6 +606,11 @@ public sealed class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
         result.Metrics = metrics;
         result.UnitOfWorkLocks = new UnitOfWorkLocksHubTyped(result.Context);
         result.DemoDelayTaskProcessor = new DemoDelayTaskProcessor(result);
+        result.JsonDeserializer = 
+            new SmartJsonDeserializer(
+                result.Context,
+                result.SystemSettings.SmartJsonDeserializerSettings.Value,
+                result.SystemSettings.DebugMode.Value);
 
         result.Facade =
             container.ResolveWithDefault(
@@ -643,7 +656,8 @@ public sealed class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
         infrastructureMonitor.AddSubMonitor(result.m_queueEmergencyDomainBehaviour.InfrastructureMonitor);
         infrastructureMonitor.AddSubMonitor(result.m_partitionsSponsor.InfrastructureMonitor);
         infrastructureMonitor.AddSubMonitor(result.DemoDelayTaskProcessor.InfrastructureMonitor);
-
+        infrastructureMonitor.AddSubMonitor(result.JsonDeserializer.InfrastructureMonitor);
+        
         foreach (var iMonitor in result.UnitOfWorkLocks.Hub.InfrastructureMonitorLocksPools)
         {
             infrastructureMonitor.AddSubMonitor(iMonitor);

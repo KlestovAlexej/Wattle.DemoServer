@@ -10,6 +10,7 @@ using ShtrihM.Wattle3.DomainObjects.UnitOfWorks;
 using System;
 using ShtrihM.Wattle3.Mappers.Interfaces;
 using IMapper = AutoMapper.IMapper;
+using ShtrihM.Wattle3.DomainObjects.Json;
 
 namespace ShtrihM.DemoServer.Processing.Model.Interfaces;
 
@@ -38,4 +39,5 @@ public interface ICustomEntryPoint : IEntryPoint
     IEntryPointContext Context { get; }
     IMapper AutoMapper { get; }
     IDemoDelayTaskProcessor DemoDelayTaskProcessor { get; }
+    ISmartJsonDeserializer JsonDeserializer { get; }
 }

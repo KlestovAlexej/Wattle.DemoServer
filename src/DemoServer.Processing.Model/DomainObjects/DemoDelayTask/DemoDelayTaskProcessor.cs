@@ -28,7 +28,8 @@ public class DemoDelayTaskProcessor : BaseAsyncTaskServiceDefault<UnitOfWork, IC
     {
         DoCheckIsReady();
 
-        var template = new DomainObjectDemoDelayTask.Template(scenario, startDate);
+        var scenarioText = m_entryPoint.JsonDeserializer.SerializeVolatile(scenario);
+        var template = new DomainObjectDemoDelayTask.Template(scenarioText, startDate);
         var taskId =
             await DoAddAsync(
                     template,

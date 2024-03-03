@@ -1,9 +1,11 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.CompilerServices;
 using JsonSubTypes;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using ShtrihM.Wattle3.Json;
 
 namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios;
 
@@ -13,7 +15,8 @@ namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenar
 [JsonConverter(typeof(JsonSubtypes), nameof(Type))]
 [JsonSubtypes.KnownSubType(typeof(DemoDelayTaskScenarioAsDelay), DemoDelayTaskScenariosType.Delay)]
 [Description("Сценарий задачи с отложенным запуском")]
-public abstract class DemoDelayTaskScenario
+[SmartJsonDeserializerBase(typeof(DemoDelayTaskScenario))]
+public abstract class DemoDelayTaskScenario : ICloneable
 {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     // ReSharper disable once ConvertToPrimaryConstructor
@@ -30,4 +33,6 @@ public abstract class DemoDelayTaskScenario
     [EnumDataType(typeof(DemoDelayTaskScenariosType))]
     [JsonConverter(typeof(StringEnumConverter))]
     public readonly DemoDelayTaskScenariosType Type;
+
+    public abstract object Clone();
 }

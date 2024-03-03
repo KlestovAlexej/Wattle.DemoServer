@@ -7,6 +7,7 @@ using System.Diagnostics.CodeAnalysis;
 using ShtrihM.Wattle3.DomainObjects.Interfaces;
 using ShtrihM.Wattle3.DomainObjects.UnitOfWorkLocks;
 using ShtrihM.Wattle3.DomainObjects.AsyncTasks;
+using ShtrihM.Wattle3.DomainObjects.Json;
 
 namespace ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
 
@@ -102,7 +103,19 @@ public sealed class SystemSettings
             new(
                 default!,
                 "Настройки службы обработки задач с отложенным запуском");
+
+        SmartJsonDeserializerSettings =
+            new(
+                default!,
+                "Настройки умного десериализации JSON");
     }
+
+    /// <summary>
+    /// Настройки умного десериализации JSON.
+    /// </summary>
+    [Description("Настройки умного десериализации JSON")]
+    [JsonRequired]
+    public SettingValue<SmartJsonDeserializerSettings> SmartJsonDeserializerSettings { get; set; }
 
     /// <summary>
     /// Настройки службы обработки задач с отложенным запуском.
@@ -307,6 +320,11 @@ public sealed class SystemSettings
                 DemoDelayTaskProcessorSettings =
                 {
                     Value = AsyncTaskServiceSettings.GetDefault(),
+                },
+
+                SmartJsonDeserializerSettings =
+                {
+                    Value = Wattle3.DomainObjects.Json.SmartJsonDeserializerSettings.GetDefault(),
                 },
             };
 

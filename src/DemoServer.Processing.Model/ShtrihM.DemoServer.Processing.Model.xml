@@ -49,6 +49,11 @@
             Шаблон создания объекта <see cref="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.DomainObjectDemoDelayTask"/>.
             </summary>
         </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.DomainObjectDemoDelayTask.Template.Scenario">
+            <summary>
+            <seealso cref="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios.DemoDelayTaskScenario"/>.
+            </summary>
+        </member>
         <member name="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios.DemoDelayTaskScenario">
             <summary>
             Сценарий задачи с отложенным запуском.
@@ -255,6 +260,11 @@
         <member name="M:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.PartitionsSponsorSettings.GetDefault">
             <summary>
             Настройки по умолчанию.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.SmartJsonDeserializerSettings">
+            <summary>
+            Настройки умного десериализации JSON.
             </summary>
         </member>
         <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.DemoDelayTaskProcessorSettings">

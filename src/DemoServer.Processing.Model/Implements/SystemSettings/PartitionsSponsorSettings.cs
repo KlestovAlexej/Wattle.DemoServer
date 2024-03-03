@@ -74,7 +74,7 @@ public sealed class PartitionsSponsorSettings
                         }
 
                     ]
-                }.ToJsonText()}");
+                }.ToJsonText(true)}");
 
         DomainObjectsTablespaceNames =
             new SettingValue<DomainObjectsEntry>(
@@ -126,7 +126,7 @@ public sealed class PartitionsSponsorSettings
                         }
 
                     ]
-                }.ToJsonText()}");
+                }.ToJsonText(true)}");
     }
 
     /// <summary>
