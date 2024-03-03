@@ -14,6 +14,7 @@ namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenar
 /// </summary>
 [JsonConverter(typeof(JsonSubtypes), nameof(Type))]
 [JsonSubtypes.KnownSubType(typeof(DemoDelayTaskScenarioAsDelay), DemoDelayTaskScenariosType.Delay)]
+[JsonSubtypes.KnownSubType(typeof(DemoDelayTaskScenarioAsCycle), DemoDelayTaskScenariosType.Cycle)]
 [Description("Сценарий задачи с отложенным запуском")]
 [SmartJsonDeserializerBase(typeof(DemoDelayTaskScenario))]
 public abstract class DemoDelayTaskScenario : ICloneable

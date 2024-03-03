@@ -94,10 +94,10 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutableWithUpdateL
     #region Изменяемы поля
 
     [DomainObjectFieldValue]
-    private MutableField<bool> m_enabled;
+    private readonly MutableField<bool> m_enabled;
 
     [DomainObjectFieldValue]
-    private MutableFieldStringLimitedEx m_name;
+    private readonly MutableFieldStringLimitedEx m_name;
 
     #endregion
 

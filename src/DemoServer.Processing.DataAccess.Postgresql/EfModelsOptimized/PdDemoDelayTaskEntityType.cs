@@ -156,6 +156,29 @@ namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModelsOptimized
             scenario.AddAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.None);
             scenario.AddAnnotation("Relational:ColumnName", "scenario");
 
+            var scenariostate = runtimeEntityType.AddProperty(
+                "Scenariostate",
+                typeof(string),
+                propertyInfo: typeof(PdDemoDelayTask).GetProperty("Scenariostate", BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly),
+                fieldInfo: typeof(PdDemoDelayTask).GetField("<Scenariostate>k__BackingField", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly));
+            scenariostate.TypeMapping = StringTypeMapping.Default.Clone(
+                comparer: new ValueComparer<string>(
+                    (string v1, string v2) => v1 == v2,
+                    (string v) => v.GetHashCode(),
+                    (string v) => v),
+                keyComparer: new ValueComparer<string>(
+                    (string v1, string v2) => v1 == v2,
+                    (string v) => v.GetHashCode(),
+                    (string v) => v),
+                providerValueComparer: new ValueComparer<string>(
+                    (string v1, string v2) => v1 == v2,
+                    (string v) => v.GetHashCode(),
+                    (string v) => v),
+                mappingInfo: new RelationalTypeMappingInfo(
+                    dbType: System.Data.DbType.String));
+            scenariostate.AddAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.None);
+            scenariostate.AddAnnotation("Relational:ColumnName", "scenariostate");
+
             var startdate = runtimeEntityType.AddProperty(
                 "Startdate",
                 typeof(DateTime?),

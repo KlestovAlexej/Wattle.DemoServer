@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
 
-public class PdSystemLog
+public partial class PdSystemLog
 {
     public long Id { get; set; }
 

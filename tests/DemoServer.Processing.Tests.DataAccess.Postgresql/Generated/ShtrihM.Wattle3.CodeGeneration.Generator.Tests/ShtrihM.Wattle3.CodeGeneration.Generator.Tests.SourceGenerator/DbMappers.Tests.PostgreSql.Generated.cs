@@ -2402,6 +2402,18 @@ namespace ShtrihM.DemoServer.Processing.Generated.Tests
 
             #endregion
 
+            #region ScenarioState
+
+            {
+                Assert.IsTrue(columns.ContainsKey(@"scenariostate"), @"ScenarioState" + Environment.NewLine + columnsText);
+                var columnInfo = columns[@"scenariostate"];
+                columns.Remove(@"scenariostate");
+                Assert.IsFalse(columnInfo.IsNullable, columnsText);
+                Assert.IsNull(columnInfo.MaxLength, columnsText);
+            }
+
+            #endregion
+
             #region StartDate
 
             {
@@ -2464,6 +2476,7 @@ namespace ShtrihM.DemoServer.Processing.Generated.Tests
             result.CreateDate = PostgreSqlRandomValuesProvider.GetRandomValue<DateTimeOffset>(NpgsqlDbType.TimestampTz);
             result.ModificationDate = PostgreSqlRandomValuesProvider.GetRandomValue<DateTimeOffset>(NpgsqlDbType.TimestampTz);
             result.Scenario = PostgreSqlRandomValuesProvider.GetRandomValue<string>(NpgsqlDbType.Text);
+            result.ScenarioState = PostgreSqlRandomValuesProvider.GetRandomValue<string>(NpgsqlDbType.Text);
             result.StartDate = PostgreSqlRandomValuesProvider.GetRandomValue<DateTimeOffset?>(NpgsqlDbType.TimestampTz, true);
             result.Available = true;
 
@@ -2480,6 +2493,7 @@ namespace ShtrihM.DemoServer.Processing.Generated.Tests
             Assert.AreEqual(expected.CreateDate, actual.CreateDate);
             Assert.AreEqual(expected.ModificationDate, actual.ModificationDate);
             Assert.AreEqual(expected.Scenario, actual.Scenario);
+            Assert.AreEqual(expected.ScenarioState, actual.ScenarioState);
             Assert.AreEqual(expected.StartDate, actual.StartDate);
             Assert.AreEqual(expected.Available, actual.Available);
 
@@ -2494,6 +2508,7 @@ namespace ShtrihM.DemoServer.Processing.Generated.Tests
             Assert.AreEqual(expected.CreateDate, actual.CreateDate);
             Assert.AreEqual(expected.ModificationDate, actual.ModificationDate);
             Assert.AreEqual(expected.Scenario, actual.Scenario);
+            Assert.AreEqual(expected.ScenarioState, actual.ScenarioState);
             Assert.AreEqual(expected.StartDate, actual.StartDate);
             Assert.AreEqual(expected.Available, actual.Available);
 

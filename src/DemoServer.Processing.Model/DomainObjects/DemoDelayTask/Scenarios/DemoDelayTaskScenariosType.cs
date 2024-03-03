@@ -13,4 +13,10 @@ public enum DemoDelayTaskScenariosType
     /// </summary>
     [Description("Задержка исполнения")]
     Delay = 1,
+
+    /// <summary>
+    /// Циклическое исполнение.
+    /// </summary>
+    [Description("Циклическое исполнение")]
+    Cycle = 2,
 }

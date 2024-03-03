@@ -54,6 +54,41 @@
             <seealso cref="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios.DemoDelayTaskScenario"/>.
             </summary>
         </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.ScenarioStates.DemoCycleTaskScenarioState">
+            <summary>
+            Состояние сценария задачи с отложенным запуском.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.ScenarioStates.DemoCycleTaskScenarioState.Type">
+            <summary>
+            Тип состояния сценария.
+            </summary>
+        </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.ScenarioStates.DemoCycleTaskScenarioStateAsCycle">
+            <summary>
+            Состояние сценария задачи с отложенным запуском - циклическое исполнение.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.ScenarioStates.DemoCycleTaskScenarioStateAsCycle.Index">
+            <summary>
+            Индекс.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.ScenarioStates.DemoCycleTaskScenarioStateAsCycle.RunDate">
+            <summary>
+            Дата-время запуска циклов.
+            </summary>
+        </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.ScenarioStates.DemoDelayTaskScenarioStatesType">
+            <summary>
+            Типы состояний сценариев задач с отложенным запуском.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.ScenarioStates.DemoDelayTaskScenarioStatesType.Cycle">
+            <summary>
+            Циклическое исполнение.
+            </summary>
+        </member>
         <member name="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios.DemoDelayTaskScenario">
             <summary>
             Сценарий задачи с отложенным запуском.
@@ -62,6 +97,21 @@
         <member name="F:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios.DemoDelayTaskScenario.Type">
             <summary>
             Тип сценария.
+            </summary>
+        </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios.DemoDelayTaskScenarioAsCycle">
+            <summary>
+            Сценарий задачи с отложенным запуском - циклическое исполнение.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios.DemoDelayTaskScenarioAsCycle.Count">
+            <summary>
+            Количество шагов цикла.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios.DemoDelayTaskScenarioAsCycle.NextRunTimeout">
+            <summary>
+            Интервал задержки исполнения следующего шага цикла.
             </summary>
         </member>
         <member name="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios.DemoDelayTaskScenarioAsDelay">
@@ -82,6 +132,11 @@
         <member name="F:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios.DemoDelayTaskScenariosType.Delay">
             <summary>
             Задержка исполнения.
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios.DemoDelayTaskScenariosType.Cycle">
+            <summary>
+            Циклическое исполнение.
             </summary>
         </member>
         <member name="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX.DomainObjectDemoObjectX.AlternativeKey">
@@ -421,6 +476,11 @@
         <member name="P:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoDelayTask.Scenario">
             <summary>
             Сценарий.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoDelayTask.ScenarioState">
+            <summary>
+            Состояние сценария.
             </summary>
         </member>
         <member name="P:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoDelayTask.StartDate">

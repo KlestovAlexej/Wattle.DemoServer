@@ -77,7 +77,7 @@ namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModelsOptimized
 
             AddAnnotation("Relational:Sequences", sequences);
             AddAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-            AddAnnotation("ProductVersion", "8.0.1");
+            AddAnnotation("ProductVersion", "8.0.2");
             AddAnnotation("Relational:MaxIdentifierLength", 63);
             AddRuntimeAnnotation("Relational:RelationalModel", CreateRelationalModel());
         }
@@ -215,6 +215,8 @@ namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModelsOptimized
             shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskTableBase.Columns.Add("revision", revisionColumnBase0);
             var scenarioColumnBase = new ColumnBase<ColumnMappingBase>("scenario", "text", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskTableBase);
             shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskTableBase.Columns.Add("scenario", scenarioColumnBase);
+            var scenariostateColumnBase = new ColumnBase<ColumnMappingBase>("scenariostate", "text", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskTableBase);
+            shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskTableBase.Columns.Add("scenariostate", scenariostateColumnBase);
             var startdateColumnBase = new ColumnBase<ColumnMappingBase>("startdate", "timestamp with time zone", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskTableBase)
             {
                 IsNullable = true
@@ -230,6 +232,7 @@ namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModelsOptimized
             RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)modificationdateColumnBase0, pdDemoDelayTask.FindProperty("Modificationdate")!, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskMappingBase);
             RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)revisionColumnBase0, pdDemoDelayTask.FindProperty("Revision")!, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskMappingBase);
             RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)scenarioColumnBase, pdDemoDelayTask.FindProperty("Scenario")!, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskMappingBase);
+            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)scenariostateColumnBase, pdDemoDelayTask.FindProperty("Scenariostate")!, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskMappingBase);
             RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)startdateColumnBase, pdDemoDelayTask.FindProperty("Startdate")!, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskMappingBase);
 
             var tableMappings1 = new List<TableMapping>();
@@ -247,6 +250,8 @@ namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModelsOptimized
             demodelaytaskTable.Columns.Add("revision", revisionColumn0);
             var scenarioColumn = new Column("scenario", "text", demodelaytaskTable);
             demodelaytaskTable.Columns.Add("scenario", scenarioColumn);
+            var scenariostateColumn = new Column("scenariostate", "text", demodelaytaskTable);
+            demodelaytaskTable.Columns.Add("scenariostate", scenariostateColumn);
             var startdateColumn = new Column("startdate", "timestamp with time zone", demodelaytaskTable)
             {
                 IsNullable = true
@@ -270,6 +275,7 @@ namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModelsOptimized
             RelationalModel.CreateColumnMapping(modificationdateColumn0, pdDemoDelayTask.FindProperty("Modificationdate")!, demodelaytaskTableMapping);
             RelationalModel.CreateColumnMapping(revisionColumn0, pdDemoDelayTask.FindProperty("Revision")!, demodelaytaskTableMapping);
             RelationalModel.CreateColumnMapping(scenarioColumn, pdDemoDelayTask.FindProperty("Scenario")!, demodelaytaskTableMapping);
+            RelationalModel.CreateColumnMapping(scenariostateColumn, pdDemoDelayTask.FindProperty("Scenariostate")!, demodelaytaskTableMapping);
             RelationalModel.CreateColumnMapping(startdateColumn, pdDemoDelayTask.FindProperty("Startdate")!, demodelaytaskTableMapping);
 
             var pdDemoObject = FindEntityType("ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdDemoObject")!;

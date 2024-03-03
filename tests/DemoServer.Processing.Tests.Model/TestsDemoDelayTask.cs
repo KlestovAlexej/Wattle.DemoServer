@@ -6,17 +6,72 @@ using ShtrihM.DemoServer.Processing.Tests.Model.Environment;
 using ShtrihM.Wattle3.DomainObjects.Interfaces;
 using ShtrihM.Wattle3.Testing;
 using System.Threading.Tasks;
+using ShtrihM.DemoServer.Processing.Generated.Interface;
 using ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios;
 using ShtrihM.Wattle3.Common.Exceptions;
 using ShtrihM.Wattle3.Json.Extensions;
+using ShtrihM.Wattle3.Utils;
+using ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.ScenarioStates;
+using ShtrihM.DemoServer.Processing.Model.Implements;
+using ShtrihM.DemoServer.Processing.Model.Interfaces;
 
 namespace ShtrihM.DemoServer.Processing.Tests.Model;
 
 [TestFixture]
 [SuppressMessage("ReSharper", "AccessToDisposedClosure")]
+[SuppressMessage("ReSharper", "MethodSupportsCancellation")]
 public class TestsDemoDelayTask : BaseTestsDomainObjects
 {
     private static readonly TimeSpan Magic = TimeSpan.FromSeconds(2);
+
+    [Test]
+    [Timeout(TestTimeout.Unit)]
+    [Category(TestCategory.Unit)]
+    [Description("Ожидание конца исполнения задачи. Задача запускается немедленно с повторением 3 раза с интервалом 4 секунды.")]
+    public async Task Test_TaskWaitEnd_Cycle()
+    {
+        var taskId =
+            await m_entryPoint.CreateAndUsingUnitOfWorkAsync(
+                async (_, _) =>
+                    await m_entryPoint.DemoDelayTaskProcessor.AddAsync(
+                        new DemoDelayTaskScenarioAsCycle
+                        {
+                            Count = 3,
+                            NextRunTimeout = TimeSpan.FromSeconds(4),
+                        },
+                        null,
+                        false),
+                autoCommit: true);
+
+        Assert.IsTrue(m_entryPoint.DemoDelayTaskProcessor.TryGet(taskId, out var taskWaitHandler));
+
+        WaitHelpers.TimeOut(
+            () => taskWaitHandler!.WaitAsync().SafeGetResult(),
+            WaitTimeout);
+
+        Assert.IsFalse(m_entryPoint.DemoDelayTaskProcessor.Exists(taskId));
+
+        await m_entryPoint.CreateAndUsingUnitOfWorkAsync(
+            async (unitOfWork, _) =>
+            {
+                var task = await m_entryPoint.FindAsync<IDomainObjectDemoDelayTask>(taskId);
+                Assert.IsNull(task);
+
+                var mapper = m_entryPoint.Mappers.GetMapper<IMapperDemoDelayTask>();
+                var dto = await mapper.GetRawAsync(unitOfWork.MappersSession, taskId);
+                Assert.IsNotNull(dto);
+                var scenarioState =
+                    (DemoCycleTaskScenarioStateAsCycle)m_entryPoint.JsonDeserializer
+                        .DeserializeReadOnly<DemoCycleTaskScenarioState>(dto.ScenarioState);
+                Assert.AreEqual(3, scenarioState.Index);
+                Assert.AreEqual(3, scenarioState.RunDate.Count);
+                foreach (var runDate in scenarioState.RunDate)
+                {
+                    Console.WriteLine($"RunDate {runDate:O}");
+                }
+            },
+            autoCommit: true);
+    }
 
     [Test]
     [Timeout(TestTimeout.Unit)]

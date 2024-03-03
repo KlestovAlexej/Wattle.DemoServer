@@ -1134,6 +1134,27 @@
 						"compression": ""
 					},
 					"estimatedSize": ""
+				},
+				{
+					"id": "fe58a4e0-32f4-4a12-850b-f50d01538719",
+					"name": "scenariostate",
+					"datatype": "text",
+					"param": "",
+					"pk": false,
+					"nn": true,
+					"list": false,
+					"comment": "",
+					"defaultvalue": "",
+					"data": "",
+					"after": "",
+					"collation": null,
+					"pg": {
+						"generatedIdentity": "no",
+						"generated": "",
+						"storage": "",
+						"compression": ""
+					},
+					"estimatedSize": ""
 				}
 			],
 			"relations": [],
@@ -1389,7 +1410,7 @@
 		"pg": {
 			"schema": ""
 		},
-		"lastSaved": 1705839741669,
+		"lastSaved": 1705839857581,
 		"writeFileParam": true,
 		"activeDiagram": "f1669b85-a87c-45bc-806a-d4c1a20593bc",
 		"sqlSettings": {
@@ -1772,7 +1793,7 @@
 					"referencedItemId": "5f6e2dbb-bc19-4a30-9436-f191abd01b20",
 					"x": 704,
 					"y": 697,
-					"gHeight": 153,
+					"gHeight": 171,
 					"gWidth": 261,
 					"color": "#ffffff",
 					"background": "#e91e63",

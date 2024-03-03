@@ -46,6 +46,7 @@ CREATE TABLE demodelaytask(
   available boolean NOT NULL,
   startdate timestamptz,
   scenario text NOT NULL,
+  scenariostate text NOT NULL,
   CONSTRAINT gw_incomingcallbackеtask_pkey PRIMARY KEY(id)
 ) PARTITION BY RANGE (id);
 

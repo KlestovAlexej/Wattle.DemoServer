@@ -638,6 +638,22 @@ namespace ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements
 
                 #endregion Поле Scenario
 
+                #region Поле ScenarioState
+
+                {
+                    var schemaObjectFieldQuey = new PostgreSqlSchemaObjectFieldQuey();
+                    schemaObjectQuey.Fields.Add(schemaObjectFieldQuey);
+
+                    schemaObjectFieldQuey.Description = @"Состояние сценария";
+                    schemaObjectFieldQuey.Id = new Guid("2ce70876-f169-4129-ae06-dac87c5e2686");
+                    schemaObjectFieldQuey.Order = false;
+                    schemaObjectFieldQuey.Where = false;
+                    schemaObjectFieldQuey.Name = @"ScenarioState";
+                    schemaObjectFieldQuey.EvaluatedValue = null;
+                }
+
+                #endregion Поле ScenarioState
+
                 #region Поле StartDate
 
                 {
@@ -13509,6 +13525,7 @@ FROM DemoObjectX";
             await binaryImport.WriteAsync(instance.CreateDate.ToUniversalTime(), NpgsqlDbType.TimestampTz, cancellationToken).ConfigureAwait(false);
             await binaryImport.WriteAsync(instance.ModificationDate.ToUniversalTime(), NpgsqlDbType.TimestampTz, cancellationToken).ConfigureAwait(false);
             await binaryImport.WriteAsync(instance.Scenario, NpgsqlDbType.Text, cancellationToken).ConfigureAwait(false);
+            await binaryImport.WriteAsync(instance.ScenarioState, NpgsqlDbType.Text, cancellationToken).ConfigureAwait(false);
             {
                 if (instance.StartDate.HasValue == false)
                 {
@@ -13529,6 +13546,7 @@ FROM DemoObjectX";
             binaryImport.Write(instance.CreateDate.ToUniversalTime(), NpgsqlDbType.TimestampTz);
             binaryImport.Write(instance.ModificationDate.ToUniversalTime(), NpgsqlDbType.TimestampTz);
             binaryImport.Write(instance.Scenario, NpgsqlDbType.Text);
+            binaryImport.Write(instance.ScenarioState, NpgsqlDbType.Text);
             {
                 if (instance.StartDate.HasValue == false)
                 {
@@ -13549,6 +13567,7 @@ Revision,
 CreateDate,
 ModificationDate,
 Scenario,
+ScenarioState,
 StartDate) FROM STDIN (FORMAT BINARY)
 ";
 
@@ -14055,6 +14074,7 @@ StartDate) FROM STDIN (FORMAT BINARY)
         /// <param name="indexCreateDate">Индекс колонки 'CreateDate'.</param>
         /// <param name="indexModificationDate">Индекс колонки 'ModificationDate'.</param>
         /// <param name="indexScenario">Индекс колонки 'Scenario'.</param>
+        /// <param name="indexScenarioState">Индекс колонки 'ScenarioState'.</param>
         /// <param name="indexStartDate">Индекс колонки 'StartDate'.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void GetColumnIndexesRaw(
@@ -14065,6 +14085,7 @@ StartDate) FROM STDIN (FORMAT BINARY)
             out int indexCreateDate,
             out int indexModificationDate,
             out int indexScenario,
+            out int indexScenarioState,
             out int indexStartDate)
         {
             indexId = reader.GetOrdinal("Id");
@@ -14073,6 +14094,7 @@ StartDate) FROM STDIN (FORMAT BINARY)
             indexCreateDate = reader.GetOrdinal("CreateDate");
             indexModificationDate = reader.GetOrdinal("ModificationDate");
             indexScenario = reader.GetOrdinal("Scenario");
+            indexScenarioState = reader.GetOrdinal("ScenarioState");
             indexStartDate = reader.GetOrdinal("StartDate");
         }
 
@@ -14085,6 +14107,7 @@ StartDate) FROM STDIN (FORMAT BINARY)
         /// <param name="indexCreateDate">Индекс колонки 'CreateDate'.</param>
         /// <param name="indexModificationDate">Индекс колонки 'ModificationDate'.</param>
         /// <param name="indexScenario">Индекс колонки 'Scenario'.</param>
+        /// <param name="indexScenarioState">Индекс колонки 'ScenarioState'.</param>
         /// <param name="indexStartDate">Индекс колонки 'StartDate'.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void GetColumnIndexes(
@@ -14094,6 +14117,7 @@ StartDate) FROM STDIN (FORMAT BINARY)
             out int indexCreateDate,
             out int indexModificationDate,
             out int indexScenario,
+            out int indexScenarioState,
             out int indexStartDate)
         {
             indexId = reader.GetOrdinal("Id");
@@ -14101,6 +14125,7 @@ StartDate) FROM STDIN (FORMAT BINARY)
             indexCreateDate = reader.GetOrdinal("CreateDate");
             indexModificationDate = reader.GetOrdinal("ModificationDate");
             indexScenario = reader.GetOrdinal("Scenario");
+            indexScenarioState = reader.GetOrdinal("ScenarioState");
             indexStartDate = reader.GetOrdinal("StartDate");
         }
 
@@ -14114,6 +14139,7 @@ StartDate) FROM STDIN (FORMAT BINARY)
         /// <param name="indexCreateDate">Индекс колонки 'CreateDate'.</param>
         /// <param name="indexModificationDate">Индекс колонки 'ModificationDate'.</param>
         /// <param name="indexScenario">Индекс колонки 'Scenario'.</param>
+        /// <param name="indexScenarioState">Индекс колонки 'ScenarioState'.</param>
         /// <param name="indexStartDate">Индекс колонки 'StartDate'.</param>
         /// <returns>Созданная и прочитанная запись.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -14125,6 +14151,7 @@ StartDate) FROM STDIN (FORMAT BINARY)
             int indexCreateDate,
             int indexModificationDate,
             int indexScenario,
+            int indexScenarioState,
             int indexStartDate)
         {
 #pragma warning disable IDE0017 // Simplify object initialization
@@ -14138,6 +14165,7 @@ StartDate) FROM STDIN (FORMAT BINARY)
             result.CreateDate = reader.GetFieldValue<DateTimeOffset>(indexCreateDate);
             result.ModificationDate = reader.GetFieldValue<DateTimeOffset>(indexModificationDate);
             result.Scenario = reader.GetString(indexScenario);
+            result.ScenarioState = reader.GetString(indexScenarioState);
             // ReSharper disable once ConvertIfStatementToConditionalTernaryExpression
             if (reader.IsDBNull(indexStartDate))
             {
@@ -14160,6 +14188,7 @@ StartDate) FROM STDIN (FORMAT BINARY)
         /// <param name="indexCreateDate">Индекс колонки 'CreateDate'.</param>
         /// <param name="indexModificationDate">Индекс колонки 'ModificationDate'.</param>
         /// <param name="indexScenario">Индекс колонки 'Scenario'.</param>
+        /// <param name="indexScenarioState">Индекс колонки 'ScenarioState'.</param>
         /// <param name="indexStartDate">Индекс колонки 'StartDate'.</param>
         /// <returns>Созданная и прочитанная запись.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -14170,6 +14199,7 @@ StartDate) FROM STDIN (FORMAT BINARY)
             int indexCreateDate,
             int indexModificationDate,
             int indexScenario,
+            int indexScenarioState,
             int indexStartDate)
         {
 #pragma warning disable IDE0017 // Simplify object initialization
@@ -14183,6 +14213,7 @@ StartDate) FROM STDIN (FORMAT BINARY)
             result.CreateDate = reader.GetFieldValue<DateTimeOffset>(indexCreateDate);
             result.ModificationDate = reader.GetFieldValue<DateTimeOffset>(indexModificationDate);
             result.Scenario = reader.GetString(indexScenario);
+            result.ScenarioState = reader.GetString(indexScenarioState);
             // ReSharper disable once ConvertIfStatementToConditionalTernaryExpression
             if (reader.IsDBNull(indexStartDate))
             {
@@ -14235,6 +14266,7 @@ Revision,
 CreateDate,
 ModificationDate,
 Scenario,
+ScenarioState,
 StartDate
 FROM DemoDelayTask WHERE
 (Id = @Id)
@@ -14261,6 +14293,7 @@ AND (Available = @Old_Available)";
                                 out var indexCreateDate,
                                 out var indexModificationDate,
                                 out var indexScenario,
+                                out var indexScenarioState,
                                 out var indexStartDate);
 
                             var result = Read(
@@ -14270,6 +14303,7 @@ AND (Available = @Old_Available)";
                                 indexCreateDate,
                                 indexModificationDate,
                                 indexScenario,
+                                indexScenarioState,
                                 indexStartDate);
 
                             SeedRevision(result.Revision);
@@ -14329,6 +14363,7 @@ Revision,
 CreateDate,
 ModificationDate,
 Scenario,
+ScenarioState,
 StartDate
 FROM DemoDelayTask WHERE
 (Id = @Id)
@@ -14356,6 +14391,7 @@ AND (Available = @Old_Available)";
                                 out var indexCreateDate,
                                 out var indexModificationDate,
                                 out var indexScenario,
+                                out var indexScenarioState,
                                 out var indexStartDate);
 
                             var result = Read(
@@ -14365,6 +14401,7 @@ AND (Available = @Old_Available)";
                                 indexCreateDate,
                                 indexModificationDate,
                                 indexScenario,
+                                indexScenarioState,
                                 indexStartDate);
 
                             SeedRevision(result.Revision);
@@ -14430,6 +14467,7 @@ Revision,
 CreateDate,
 ModificationDate,
 Scenario,
+ScenarioState,
 StartDate
 FROM DemoDelayTask WHERE (Id = @Id)";
 
@@ -14450,6 +14488,7 @@ FROM DemoDelayTask WHERE (Id = @Id)";
                                 out var indexCreateDate,
                                 out var indexModificationDate,
                                 out var indexScenario,
+                                out var indexScenarioState,
                                 out var indexStartDate);
 
                             var result = ReadRaw(
@@ -14460,6 +14499,7 @@ FROM DemoDelayTask WHERE (Id = @Id)";
                                 indexCreateDate,
                                 indexModificationDate,
                                 indexScenario,
+                                indexScenarioState,
                                 indexStartDate);
 
                             SeedRevision(result.Revision);
@@ -14519,6 +14559,7 @@ Revision,
 CreateDate,
 ModificationDate,
 Scenario,
+ScenarioState,
 StartDate
 FROM DemoDelayTask WHERE (Id = @Id)";
 
@@ -14540,6 +14581,7 @@ FROM DemoDelayTask WHERE (Id = @Id)";
                                 out var indexCreateDate,
                                 out var indexModificationDate,
                                 out var indexScenario,
+                                out var indexScenarioState,
                                 out var indexStartDate);
 
                             var result = ReadRaw(
@@ -14550,6 +14592,7 @@ FROM DemoDelayTask WHERE (Id = @Id)";
                                 indexCreateDate,
                                 indexModificationDate,
                                 indexScenario,
+                                indexScenarioState,
                                 indexStartDate);
 
                             SeedRevision(result.Revision);
@@ -14615,6 +14658,7 @@ FROM DemoDelayTask WHERE (Id = @Id)";
                     CreateDate = data.CreateDate,
                     ModificationDate = data.ModificationDate,
                     Scenario = data.Scenario,
+                    ScenarioState = data.ScenarioState,
                     StartDate = data.StartDate,
                 };
 
@@ -14625,7 +14669,9 @@ FROM DemoDelayTask WHERE (Id = @Id)";
                     command.CommandText = @"UPDATE DemoDelayTask SET
 Revision = @New_Revision,
 Available = @New_Available,
-ModificationDate = @ModificationDate
+ModificationDate = @ModificationDate,
+ScenarioState = @ScenarioState,
+StartDate = @StartDate
 WHERE
 (Id = @Id) AND (Revision < @New_Revision)
 AND (Available = @Old_Available)";
@@ -14636,6 +14682,15 @@ AND (Available = @Old_Available)";
                     {
                         var parameter = new NpgsqlParameter<DateTimeOffset>("@ModificationDate", NpgsqlDbType.TimestampTz) { TypedValue = result.ModificationDate.ToUniversalTime() };
                         command.Parameters.Add(parameter);
+                    }
+                    command.Parameters.Add("@ScenarioState", NpgsqlDbType.Text).Value = result.ScenarioState;
+                    if (result.StartDate == null)
+                    {
+                        command.Parameters.Add("@StartDate", NpgsqlDbType.TimestampTz).Value = DBNull.Value;
+                    }
+                    else
+                    {
+                        command.Parameters.Add("@StartDate", NpgsqlDbType.TimestampTz).Value = result.StartDate.Value.ToUniversalTime();
                     }
                     {
                         var parameter = new NpgsqlParameter<bool>("@New_Available", NpgsqlDbType.Boolean) { TypedValue = result.Available };
@@ -14727,6 +14782,7 @@ AND (Available = @Old_Available)";
                     CreateDate = data.CreateDate,
                     ModificationDate = data.ModificationDate,
                     Scenario = data.Scenario,
+                    ScenarioState = data.ScenarioState,
                     StartDate = data.StartDate,
                 };
 
@@ -14738,7 +14794,9 @@ AND (Available = @Old_Available)";
                     command.CommandText = @"UPDATE DemoDelayTask SET
 Revision = @New_Revision,
 Available = @New_Available,
-ModificationDate = @ModificationDate
+ModificationDate = @ModificationDate,
+ScenarioState = @ScenarioState,
+StartDate = @StartDate
 WHERE
 (Id = @Id) AND (Revision < @New_Revision)
 AND (Available = @Old_Available)";
@@ -14749,6 +14807,15 @@ AND (Available = @Old_Available)";
                     {
                         var parameter = new NpgsqlParameter<DateTimeOffset>("@ModificationDate", NpgsqlDbType.TimestampTz) { TypedValue = result.ModificationDate.ToUniversalTime() };
                         command.Parameters.Add(parameter);
+                    }
+                    command.Parameters.Add("@ScenarioState", NpgsqlDbType.Text).Value = result.ScenarioState;
+                    if (result.StartDate == null)
+                    {
+                        command.Parameters.Add("@StartDate", NpgsqlDbType.TimestampTz).Value = DBNull.Value;
+                    }
+                    else
+                    {
+                        command.Parameters.Add("@StartDate", NpgsqlDbType.TimestampTz).Value = result.StartDate.Value.ToUniversalTime();
                     }
                     {
                         var parameter = new NpgsqlParameter<bool>("@New_Available", NpgsqlDbType.Boolean) { TypedValue = result.Available };
@@ -14937,6 +15004,7 @@ AND (Available = @Old_Available)";
                     CreateDate = data.CreateDate,
                     ModificationDate = data.ModificationDate,
                     Scenario = data.Scenario,
+                    ScenarioState = data.ScenarioState,
                     StartDate = data.StartDate,
                 };
 
@@ -14952,6 +15020,7 @@ Revision,
 CreateDate,
 ModificationDate,
 Scenario,
+ScenarioState,
 StartDate
 )
 VALUES
@@ -14962,6 +15031,7 @@ VALUES
 @CreateDate,
 @ModificationDate,
 @Scenario,
+@ScenarioState,
 @StartDate
 )";
                     {
@@ -14973,6 +15043,7 @@ VALUES
                         command.Parameters.Add(parameter);
                     }
                     command.Parameters.Add(@"@Scenario", NpgsqlDbType.Text).Value = result.Scenario;
+                    command.Parameters.Add(@"@ScenarioState", NpgsqlDbType.Text).Value = result.ScenarioState;
                     if (result.StartDate == null)
                     {
                         command.Parameters.Add("@StartDate", NpgsqlDbType.TimestampTz).Value = DBNull.Value;
@@ -15046,6 +15117,7 @@ VALUES
                     CreateDate = data.CreateDate,
                     ModificationDate = data.ModificationDate,
                     Scenario = data.Scenario,
+                    ScenarioState = data.ScenarioState,
                     StartDate = data.StartDate,
                 };
 
@@ -15062,6 +15134,7 @@ Revision,
 CreateDate,
 ModificationDate,
 Scenario,
+ScenarioState,
 StartDate
 )
 VALUES
@@ -15072,6 +15145,7 @@ VALUES
 @CreateDate,
 @ModificationDate,
 @Scenario,
+@ScenarioState,
 @StartDate
 )";
                     {
@@ -15083,6 +15157,7 @@ VALUES
                         command.Parameters.Add(parameter);
                     }
                     command.Parameters.Add(@"@Scenario", NpgsqlDbType.Text).Value = result.Scenario;
+                    command.Parameters.Add(@"@ScenarioState", NpgsqlDbType.Text).Value = result.ScenarioState;
                     if (result.StartDate == null)
                     {
                         command.Parameters.Add("@StartDate", NpgsqlDbType.TimestampTz).Value = DBNull.Value;
@@ -15188,6 +15263,7 @@ Revision,
 CreateDate,
 ModificationDate,
 Scenario,
+ScenarioState,
 StartDate
 FROM DemoDelayTask";
                     {
@@ -15224,6 +15300,7 @@ FROM DemoDelayTask";
                     int indexCreateDate;
                     int indexModificationDate;
                     int indexScenario;
+                    int indexScenarioState;
                     int indexStartDate;
                     try
                     {
@@ -15236,6 +15313,7 @@ FROM DemoDelayTask";
                             out indexCreateDate,
                             out indexModificationDate,
                             out indexScenario,
+                            out indexScenarioState,
                             out indexStartDate);
                     }
                     catch (Exception exception)
@@ -15270,6 +15348,7 @@ FROM DemoDelayTask";
                                 indexCreateDate,
                                 indexModificationDate,
                                 indexScenario,
+                                indexScenarioState,
                                 indexStartDate);
 
                             SeedRevision(result.Revision);
@@ -15336,6 +15415,7 @@ Revision,
 CreateDate,
 ModificationDate,
 Scenario,
+ScenarioState,
 StartDate
 FROM DemoDelayTask";
                     {
@@ -15372,6 +15452,7 @@ FROM DemoDelayTask";
                     int indexCreateDate;
                     int indexModificationDate;
                     int indexScenario;
+                    int indexScenarioState;
                     int indexStartDate;
                     try
                     {
@@ -15384,6 +15465,7 @@ FROM DemoDelayTask";
                             out indexCreateDate,
                             out indexModificationDate,
                             out indexScenario,
+                            out indexScenarioState,
                             out indexStartDate);
                     }
                     catch (Exception exception)
@@ -15418,6 +15500,7 @@ FROM DemoDelayTask";
                                 indexCreateDate,
                                 indexModificationDate,
                                 indexScenario,
+                                indexScenarioState,
                                 indexStartDate);
 
                             SeedRevision(result.Revision);
@@ -15491,6 +15574,7 @@ Revision,
 CreateDate,
 ModificationDate,
 Scenario,
+ScenarioState,
 StartDate
 FROM DemoDelayTask";
 
@@ -15525,6 +15609,7 @@ FROM DemoDelayTask";
                     int indexCreateDate;
                     int indexModificationDate;
                     int indexScenario;
+                    int indexScenarioState;
                     int indexStartDate;
                     try
                     {
@@ -15538,6 +15623,7 @@ FROM DemoDelayTask";
                             out indexCreateDate,
                             out indexModificationDate,
                             out indexScenario,
+                            out indexScenarioState,
                             out indexStartDate);
                     }
                     catch (Exception exception)
@@ -15573,6 +15659,7 @@ FROM DemoDelayTask";
                                 indexCreateDate,
                                 indexModificationDate,
                                 indexScenario,
+                                indexScenarioState,
                                 indexStartDate);
 
                             SeedRevision(result.Revision);
@@ -15658,6 +15745,7 @@ Revision,
 CreateDate,
 ModificationDate,
 Scenario,
+ScenarioState,
 StartDate
 FROM DemoDelayTask";
                     {
@@ -15702,6 +15790,7 @@ FROM DemoDelayTask";
                     int indexCreateDate;
                     int indexModificationDate;
                     int indexScenario;
+                    int indexScenarioState;
                     int indexStartDate;
                     try
                     {
@@ -15714,6 +15803,7 @@ FROM DemoDelayTask";
                             out indexCreateDate,
                             out indexModificationDate,
                             out indexScenario,
+                            out indexScenarioState,
                             out indexStartDate);
                     }
                     catch (Exception exception)
@@ -15748,6 +15838,7 @@ FROM DemoDelayTask";
                                 indexCreateDate,
                                 indexModificationDate,
                                 indexScenario,
+                                indexScenarioState,
                                 indexStartDate);
 
                             SeedRevision(result.Revision);

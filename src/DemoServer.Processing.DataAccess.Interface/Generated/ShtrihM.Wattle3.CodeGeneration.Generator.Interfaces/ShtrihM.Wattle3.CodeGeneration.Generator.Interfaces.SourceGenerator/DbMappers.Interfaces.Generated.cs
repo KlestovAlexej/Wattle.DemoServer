@@ -256,6 +256,11 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
         public string Scenario;
 
         /// <summary>
+        /// Состояние сценария
+        /// </summary>
+        public string ScenarioState;
+
+        /// <summary>
         /// Дата запуска
         /// </summary>
         public DateTimeOffset? StartDate;
@@ -552,9 +557,15 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
         public string Scenario;
 
         /// <summary>
-        /// Дата запуска
+        /// Состояние сценария
         /// </summary>
         [DataMember(Order = 7)]
+        public string ScenarioState;
+
+        /// <summary>
+        /// Дата запуска
+        /// </summary>
+        [DataMember(Order = 8)]
         public DateTimeOffset? StartDate;
 
     }
@@ -691,6 +702,11 @@ namespace ShtrihM.DemoServer.Processing.Generated.Interface
         /// Сценарий
         /// </summary>
         public string Scenario;
+
+        /// <summary>
+        /// Состояние сценария
+        /// </summary>
+        public string ScenarioState;
 
         /// <summary>
         /// Дата запуска

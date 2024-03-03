@@ -235,6 +235,11 @@
             Сценарий
             </summary>
         </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoNew.ScenarioState">
+            <summary>
+            Состояние сценария
+            </summary>
+        </member>
         <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoNew.StartDate">
             <summary>
             Дата запуска
@@ -461,6 +466,11 @@
             Сценарий
             </summary>
         </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoActual.ScenarioState">
+            <summary>
+            Состояние сценария
+            </summary>
+        </member>
         <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoActual.StartDate">
             <summary>
             Дата запуска
@@ -587,6 +597,11 @@
         <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoChanged.Scenario">
             <summary>
             Сценарий
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoChanged.ScenarioState">
+            <summary>
+            Состояние сценария
             </summary>
         </member>
         <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoChanged.StartDate">

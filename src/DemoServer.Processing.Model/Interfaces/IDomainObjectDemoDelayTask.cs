@@ -29,6 +29,11 @@ public interface IDomainObjectDemoDelayTask : IDomainObject, IDomainObjectVersio
     string Scenario { get; }
 
     /// <summary>
+    /// Состояние сценария.
+    /// </summary>
+    string ScenarioState { get; }
+
+    /// <summary>
     /// Дата запуска.
     /// </summary>
     [AsyncTaskRunDateTime]

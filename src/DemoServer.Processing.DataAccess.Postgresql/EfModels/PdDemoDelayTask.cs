@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
 
-public class PdDemoDelayTask
+public partial class PdDemoDelayTask
 {
     public long Id { get; set; }
 
@@ -17,4 +18,6 @@ public class PdDemoDelayTask
     public DateTime? Startdate { get; set; }
 
     public string Scenario { get; set; } = null!;
+
+    public string Scenariostate { get; set; } = null!;
 }

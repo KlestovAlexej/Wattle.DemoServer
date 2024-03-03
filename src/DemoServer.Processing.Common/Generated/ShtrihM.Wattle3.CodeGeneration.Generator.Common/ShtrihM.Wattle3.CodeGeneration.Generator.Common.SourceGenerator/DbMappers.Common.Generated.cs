@@ -288,6 +288,11 @@ namespace ShtrihM.DemoServer.Processing.Generated.Common
                 public static readonly Guid Scenario = new Guid("5cd4e196-ad21-4d0a-88e0-514f7f7874ad");
 
                 /// <summary>
+                /// Состояние сценария
+                /// </summary>
+                public static readonly Guid ScenarioState = new Guid("2ce70876-f169-4129-ae06-dac87c5e2686");
+
+                /// <summary>
                 /// Дата запуска
                 /// </summary>
                 public static readonly Guid StartDate = new Guid("e2856719-2986-4958-8286-00ef8c2f254f");
@@ -791,6 +796,19 @@ namespace ShtrihM.DemoServer.Processing.Generated.Common
                     schemaObjectFieldQuey.Name = @"Scenario";
                 }
                 #endregion Поле Scenario
+
+                #region Поле ScenarioState
+                {
+                    var schemaObjectFieldQuey = new SchemaObjectFieldQuey();
+                    schemaObjectQuey.Fields.Add(schemaObjectFieldQuey);
+
+                    schemaObjectFieldQuey.Description = @"Состояние сценария";
+                    schemaObjectFieldQuey.Id = new Guid("2ce70876-f169-4129-ae06-dac87c5e2686");
+                    schemaObjectFieldQuey.Order = false;
+                    schemaObjectFieldQuey.Where = false;
+                    schemaObjectFieldQuey.Name = @"ScenarioState";
+                }
+                #endregion Поле ScenarioState
 
                 #region Поле StartDate
                 {

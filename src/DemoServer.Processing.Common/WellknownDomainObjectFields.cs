@@ -322,10 +322,17 @@ public static class WellknownDomainObjectFields
         public static readonly Guid Scenario = new("5CD4E196-AD21-4D0A-88E0-514F7F7874AD");
 
         /// <summary>
+        /// Состояние сценария.
+        /// </summary>
+        [Description("Состояние сценария")]
+        [SchemaMapperField(typeof(string), UpdateMode = SchemaMapperFieldUpdateMode.Update)]
+        public static readonly Guid ScenarioState = new("2CE70876-F169-4129-AE06-DAC87C5E2686");
+        
+        /// <summary>
         /// Дата запуска.
         /// </summary>
         [Description("Дата запуска")]
-        [SchemaMapperField(typeof(DateTimeOffset?), DbIsNull = true)]
+        [SchemaMapperField(typeof(DateTimeOffset?), DbIsNull = true, UpdateMode = SchemaMapperFieldUpdateMode.Update)]
         public static readonly Guid StartDate = new("E2856719-2986-4958-8286-00EF8C2F254F");
     }
     #endregion

@@ -1663,7 +1663,7 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает <see langword="true" /> если запись существует иначе если запись не существует возвращает <see langword="false" />.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperDemoDelayTask.GetColumnIndexesRaw(Npgsql.NpgsqlDataReader,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@)">
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperDemoDelayTask.GetColumnIndexesRaw(Npgsql.NpgsqlDataReader,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@)">
             <summary>
             Получить индексы колонок таблицы.
             </summary>
@@ -1674,9 +1674,10 @@
             <param name="indexCreateDate">Индекс колонки 'CreateDate'.</param>
             <param name="indexModificationDate">Индекс колонки 'ModificationDate'.</param>
             <param name="indexScenario">Индекс колонки 'Scenario'.</param>
+            <param name="indexScenarioState">Индекс колонки 'ScenarioState'.</param>
             <param name="indexStartDate">Индекс колонки 'StartDate'.</param>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperDemoDelayTask.GetColumnIndexes(Npgsql.NpgsqlDataReader,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@)">
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperDemoDelayTask.GetColumnIndexes(Npgsql.NpgsqlDataReader,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@)">
             <summary>
             Получить индексы колонок таблицы.
             </summary>
@@ -1686,9 +1687,10 @@
             <param name="indexCreateDate">Индекс колонки 'CreateDate'.</param>
             <param name="indexModificationDate">Индекс колонки 'ModificationDate'.</param>
             <param name="indexScenario">Индекс колонки 'Scenario'.</param>
+            <param name="indexScenarioState">Индекс колонки 'ScenarioState'.</param>
             <param name="indexStartDate">Индекс колонки 'StartDate'.</param>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperDemoDelayTask.ReadRaw(Npgsql.NpgsqlDataReader,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperDemoDelayTask.ReadRaw(Npgsql.NpgsqlDataReader,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
             Прочитать запись.
             </summary>
@@ -1699,10 +1701,11 @@
             <param name="indexCreateDate">Индекс колонки 'CreateDate'.</param>
             <param name="indexModificationDate">Индекс колонки 'ModificationDate'.</param>
             <param name="indexScenario">Индекс колонки 'Scenario'.</param>
+            <param name="indexScenarioState">Индекс колонки 'ScenarioState'.</param>
             <param name="indexStartDate">Индекс колонки 'StartDate'.</param>
             <returns>Созданная и прочитанная запись.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperDemoDelayTask.Read(Npgsql.NpgsqlDataReader,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+        <member name="M:ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements.MapperDemoDelayTask.Read(Npgsql.NpgsqlDataReader,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
             Прочитать запись.
             </summary>
@@ -1712,6 +1715,7 @@
             <param name="indexCreateDate">Индекс колонки 'CreateDate'.</param>
             <param name="indexModificationDate">Индекс колонки 'ModificationDate'.</param>
             <param name="indexScenario">Индекс колонки 'Scenario'.</param>
+            <param name="indexScenarioState">Индекс колонки 'ScenarioState'.</param>
             <param name="indexStartDate">Индекс колонки 'StartDate'.</param>
             <returns>Созданная и прочитанная запись.</returns>
         </member>

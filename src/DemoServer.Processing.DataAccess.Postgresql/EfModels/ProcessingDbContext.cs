@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
 namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
@@ -77,6 +79,7 @@ public partial class ProcessingDbContext : DbContext
             entity.Property(e => e.Modificationdate).HasColumnName("modificationdate");
             entity.Property(e => e.Revision).HasColumnName("revision");
             entity.Property(e => e.Scenario).HasColumnName("scenario");
+            entity.Property(e => e.Scenariostate).HasColumnName("scenariostate");
             entity.Property(e => e.Startdate).HasColumnName("startdate");
         });
 

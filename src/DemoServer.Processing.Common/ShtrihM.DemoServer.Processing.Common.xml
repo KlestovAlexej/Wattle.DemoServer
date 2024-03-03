@@ -254,6 +254,11 @@
             Сценарий.
             </summary>
         </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjectFields.DemoDelayTask.ScenarioState">
+            <summary>
+            Состояние сценария.
+            </summary>
+        </member>
         <member name="F:ShtrihM.DemoServer.Processing.Common.WellknownDomainObjectFields.DemoDelayTask.StartDate">
             <summary>
             Дата запуска.
@@ -607,6 +612,11 @@
         <member name="F:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.DemoDelayTask.Fields.Scenario">
             <summary>
             Сценарий
+            </summary>
+        </member>
+        <member name="F:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.DemoDelayTask.Fields.ScenarioState">
+            <summary>
+            Состояние сценария
             </summary>
         </member>
         <member name="F:ShtrihM.DemoServer.Processing.Generated.Common.WellknownSchemaQueriesFields.DemoDelayTask.Fields.StartDate">
