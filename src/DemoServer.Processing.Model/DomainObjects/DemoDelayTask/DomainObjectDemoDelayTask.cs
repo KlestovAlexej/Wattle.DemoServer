@@ -8,6 +8,7 @@ using ShtrihM.DemoServer.Processing.Model.DomainObjects.Common;
 using ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios;
 using ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.ScenarioStates;
 using ShtrihM.DemoServer.Processing.Model.Interfaces;
+using ShtrihM.Wattle3.CodeGeneration.Generators;
 using ShtrihM.Wattle3.Common.Exceptions;
 using ShtrihM.Wattle3.DomainObjects.DomainObjects;
 using ShtrihM.Wattle3.DomainObjects.Interfaces;
@@ -73,7 +74,12 @@ public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutable<DomainOb
         CreateDate = data.CreateDate;
         ModificationDate = data.ModificationDate;
         Scenario = data.Scenario;
-        m_startDate = new MutableFieldNullable<DateTimeOffset>(data.StartDate);
+
+        m_startDate = 
+            new MutableFieldNullable<DateTimeOffset>(
+                // Дата-время в БД хранится с ограниченной точность.
+                DbTypesCorrector.DateTimeOffset(data.StartDate));
+
         m_scenarioState =
             new FieldWithModel<string, DemoCycleTaskScenarioState>(
                 m_entryPoint.JsonDeserializer,
@@ -203,7 +209,9 @@ public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutable<DomainOb
 
                 if (scenarioAsCycle.NextRunTimeout.HasValue)
                 {
-                    m_startDate.SetValue(now + scenarioAsCycle.NextRunTimeout.Value);
+                    m_startDate.SetValue(
+                        // Дата-время в БД хранится с ограниченной точность.
+                        DbTypesCorrector.DateTimeOffset(now + scenarioAsCycle.NextRunTimeout.Value));
                 }
                 else
                 {
