@@ -2,7 +2,7 @@
 
 namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
 
-public partial class PdDemoDelayTask
+public class PdDemoDelayTask
 {
     public long Id { get; set; }
 

@@ -28,15 +28,15 @@
 
 	<ItemGroup>
 		<PackageReference Include="Npgsql" Version="8.0.2" />
-		<PackageReference Include="ShtrihM.Wattle3.CodeGeneration.Common" Version="3.9.0.3717" />
-		<PackageReference Include="ShtrihM.Wattle3.CodeGeneration.Generator.Common" Version="3.9.0.3717">
+		<PackageReference Include="ShtrihM.Wattle3.CodeGeneration.Common" Version="3.9.0.3809" />
+		<PackageReference Include="ShtrihM.Wattle3.CodeGeneration.Generator.Common" Version="3.9.0.3809">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 			<TreatAsUsed>true</TreatAsUsed>
 		</PackageReference>
-		<PackageReference Include="ShtrihM.Wattle3.Common" Version="3.9.0.3717" />
-		<PackageReference Include="ShtrihM.Wattle3.DomainObjects.Interfaces" Version="3.9.0.3717" />
-		<PackageReference Include="ShtrihM.Wattle3.Utils" Version="3.9.0.3717" />
+		<PackageReference Include="ShtrihM.Wattle3.Common" Version="3.9.0.3809" />
+		<PackageReference Include="ShtrihM.Wattle3.DomainObjects.Interfaces" Version="3.9.0.3809" />
+		<PackageReference Include="ShtrihM.Wattle3.Utils" Version="3.9.0.3809" />
 	</ItemGroup>
 
 	<ItemGroup>

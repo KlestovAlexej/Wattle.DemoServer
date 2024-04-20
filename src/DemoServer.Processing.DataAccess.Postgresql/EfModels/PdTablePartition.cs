@@ -2,7 +2,7 @@
 
 namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
 
-public partial class PdTablePartition
+public class PdTablePartition
 {
     public long Id { get; set; }
 

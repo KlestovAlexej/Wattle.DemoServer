@@ -2,7 +2,7 @@
 
 namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
 
-public partial class Systemsetting
+public class Systemsetting
 {
     public Guid Id { get; set; }
 
