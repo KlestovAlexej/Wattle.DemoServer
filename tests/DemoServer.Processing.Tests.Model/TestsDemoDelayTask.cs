@@ -14,6 +14,7 @@ using ShtrihM.Wattle3.Utils;
 using ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.ScenarioStates;
 using ShtrihM.DemoServer.Processing.Model.Implements;
 using ShtrihM.DemoServer.Processing.Model.Interfaces;
+using System.Security.Principal;
 
 namespace ShtrihM.DemoServer.Processing.Tests.Model;
 
@@ -104,6 +105,130 @@ public class TestsDemoDelayTask : BaseTestsDomainObjects
         Assert.Greater(scenarioDelay + Magic, sw.Elapsed);
 
         Assert.IsFalse(m_entryPoint.DemoDelayTaskProcessor.Exists(taskId));
+    }
+
+    [Test]
+    [Timeout(TestTimeout.Unit)]
+    [Category(TestCategory.Unit)]
+    [Description("Немедленная остановка задания в БД.")]
+    public async Task Test_StopNow()
+    {
+        var scenarioDelay = TimeSpan.FromSeconds(5);
+        var runDelay = TimeSpan.FromSeconds(20);
+        var fullDelay = scenarioDelay + runDelay;
+        var taskId =
+            await m_entryPoint.CreateAndUsingUnitOfWorkAsync(
+                async (_, cancellationToken) =>
+                    await m_entryPoint.DemoDelayTaskProcessor.AddAsync(
+                        new DemoDelayTaskScenarioAsDelay
+                        {
+                            Delay = scenarioDelay,
+                        },
+                        m_entryPoint.TimeService.Now + fullDelay,
+                        false,
+                        cancellationToken),
+                autoCommit: true);
+
+        Assert.IsTrue(m_entryPoint.DemoDelayTaskProcessor.Exists(taskId));
+        Assert.IsTrue(m_entryPoint.DemoDelayTaskProcessor.TryGet(taskId, out var taskWaitHandler));
+
+        await m_entryPoint.CreateAndUsingUnitOfWorkAsync(
+            async (_, cancellationToken) =>
+                await m_entryPoint.DemoDelayTaskProcessor
+                    // Немедленная остановка задания в БД при подтверждении UnitOfWork.
+                    .RemoveAsync(taskId, cancellationToken),
+            autoCommit: true);
+
+        Console.WriteLine($"[{m_entryPoint.TimeService.NowDateTime:O}] DemoDelayTask.Id:{taskId} - После удаления.");
+
+        // Проверка что задача в БД остановлена.
+        await m_entryPoint.CreateAndUsingUnitOfWorkAsync(
+            async (unitOfWork, cancellationToken) =>
+            {
+                var mapper = unitOfWork.MappersSession.Mappers.GetMapper<IMapperDemoDelayTask>();
+                var dto = await mapper.GetRawAsync(unitOfWork.MappersSession, taskId, cancellationToken);
+                Assert.IsNotNull(dto);
+                Assert.IsFalse(dto.Available);
+            },
+            autoCommit: true);
+
+        Assert.IsTrue(m_entryPoint.DemoDelayTaskProcessor.Exists(taskId));
+
+        var sw = Stopwatch.StartNew();
+
+        Assert.IsTrue(await taskWaitHandler!.WaitAsync(fullDelay + Magic));
+
+        sw.Stop();
+        Assert.Less(fullDelay - Magic, sw.Elapsed);
+        Assert.Greater(fullDelay + Magic, sw.Elapsed);
+
+        Assert.IsFalse(m_entryPoint.DemoDelayTaskProcessor.Exists(taskId));
+    }
+
+    [Test]
+    [Timeout(TestTimeout.Unit)]
+    [Category(TestCategory.Unit)]
+    [Description("Остановка задания в БД в момент её исполнения.")]
+    public async Task Test_StopLazy()
+    {
+        var scenarioDelay = TimeSpan.FromSeconds(5);
+        var runDelay = TimeSpan.FromSeconds(20);
+        var fullDelay = scenarioDelay + runDelay;
+        var taskId =
+            await m_entryPoint.CreateAndUsingUnitOfWorkAsync(
+                async (_, cancellationToken) =>
+                    await m_entryPoint.DemoDelayTaskProcessor.AddAsync(
+                        new DemoDelayTaskScenarioAsDelay
+                        {
+                            Delay = scenarioDelay,
+                        },
+                        m_entryPoint.TimeService.Now + fullDelay,
+                        false,
+                        cancellationToken),
+                autoCommit: true);
+
+        Assert.IsTrue(m_entryPoint.DemoDelayTaskProcessor.Exists(taskId));
+        Assert.IsTrue(m_entryPoint.DemoDelayTaskProcessor.TryGet(taskId, out var taskWaitHandler));
+
+        // Пометить задание для остановки в БД в момент её исполнения.
+        // ReSharper disable once MethodHasAsyncOverload
+        m_entryPoint.DemoDelayTaskProcessor.Remove(taskId);
+
+        // Проверка что задача в БД не остановлена.
+        await m_entryPoint.CreateAndUsingUnitOfWorkAsync(
+            async (unitOfWork, cancellationToken) =>
+            {
+                var mapper = unitOfWork.MappersSession.Mappers.GetMapper<IMapperDemoDelayTask>();
+                var dto = await mapper.GetRawAsync(unitOfWork.MappersSession, taskId, cancellationToken);
+                Assert.IsNotNull(dto);
+                Assert.IsTrue(dto.Available);
+            },
+        autoCommit: true);
+
+        Console.WriteLine($"[{m_entryPoint.TimeService.NowDateTime:O}] DemoDelayTask.Id:{taskId} - После удаления.");
+
+        Assert.IsTrue(m_entryPoint.DemoDelayTaskProcessor.Exists(taskId));
+
+        var sw = Stopwatch.StartNew();
+
+        Assert.IsTrue(await taskWaitHandler!.WaitAsync(fullDelay + Magic));
+
+        sw.Stop();
+        Assert.Less(fullDelay - Magic, sw.Elapsed);
+        Assert.Greater(fullDelay + Magic, sw.Elapsed);
+
+        Assert.IsFalse(m_entryPoint.DemoDelayTaskProcessor.Exists(taskId));
+
+        // Проверка что задача в БД остановлена.
+        await m_entryPoint.CreateAndUsingUnitOfWorkAsync(
+            async (unitOfWork, cancellationToken) =>
+            {
+                var mapper = unitOfWork.MappersSession.Mappers.GetMapper<IMapperDemoDelayTask>();
+                var dto = await mapper.GetRawAsync(unitOfWork.MappersSession, taskId, cancellationToken);
+                Assert.IsNotNull(dto);
+                Assert.IsFalse(dto.Available);
+            },
+            autoCommit: true);
     }
 
     [Test]

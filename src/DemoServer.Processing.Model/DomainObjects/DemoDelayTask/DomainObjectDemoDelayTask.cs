@@ -174,6 +174,36 @@ public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutable<DomainOb
 
     public async ValueTask<(bool IsCompleted, CancellationToken? CommitCancellationToken)> ProcessAsync(bool isRemoved, long count, CancellationToken cancellationToken)
     {
+        if (isRemoved)
+        {
+            Console.WriteLine($"[{m_entryPoint.TimeService.NowDateTime:O}] DemoDelayTask.Id:{Identity} - Удалена.");
+
+            m_available.SetValue(false);
+        }
+        else
+        {
+            await DoRunScenarioAsync(count, cancellationToken).ConfigureAwait(false);
+        }
+
+        await DoUpdateAsync(cancellationToken).ConfigureAwait(false);
+
+        if (m_available.Value)
+        {
+            return (false, null);
+        }
+
+        return (true, null);
+    }
+
+    protected override ValueTask DoUpdateAsync(CancellationToken cancellationToken = default)
+    {
+        ModificationDate = m_entryPoint.TimeService.Now;
+
+        return base.DoUpdateAsync(cancellationToken);
+    }
+
+    private async ValueTask DoRunScenarioAsync(long count, CancellationToken cancellationToken)
+    {
         var scenario = m_entryPoint.JsonDeserializer.DeserializeReadOnly<DemoDelayTaskScenario>(Scenario);
 
         if (scenario is DemoDelayTaskScenarioAsDelay scenarioAsDelay)
@@ -227,21 +257,5 @@ public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutable<DomainOb
         {
             throw new InternalException($"Неизвестный тип сценария '{scenario.GetType().Assembly}'.");
         }
-
-        await DoUpdateAsync(cancellationToken).ConfigureAwait(false);
-
-        if (m_available.Value)
-        {
-            return (false, null);
-        }
-
-        return (true, null);
-    }
-
-    protected override ValueTask DoUpdateAsync(CancellationToken cancellationToken = default)
-    {
-        ModificationDate = m_entryPoint.TimeService.Now;
-
-        return base.DoUpdateAsync(cancellationToken);
     }
 }
