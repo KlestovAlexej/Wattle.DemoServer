@@ -298,6 +298,7 @@ public static class WellknownDomainObjectFields
     [SchemaMapperIdentityField(DbSequenceName = "Sequence_%ObjectName%")]
     [SchemaMapperRevisionField]
     [SchemaMapperAvailableField]
+    [DomainObjectLockUpdate("EA5953E9-EEE7-4639-8748-558DD532FD7C")]
     public static class DemoDelayTask
     {
         /// <summary>

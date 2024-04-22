@@ -14,7 +14,7 @@ using ShtrihM.Wattle3.Utils;
 using ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.ScenarioStates;
 using ShtrihM.DemoServer.Processing.Model.Implements;
 using ShtrihM.DemoServer.Processing.Model.Interfaces;
-using System.Security.Principal;
+using System.Threading;
 
 namespace ShtrihM.DemoServer.Processing.Tests.Model;
 
@@ -110,6 +110,82 @@ public class TestsDemoDelayTask : BaseTestsDomainObjects
     [Test]
     [Timeout(TestTimeout.Unit)]
     [Category(TestCategory.Unit)]
+    [Description("Немедленная остановка задания в БД в момент исполнения задачи.")]
+    public async Task Test_StopNow_Running()
+    {
+        var scenarioDelay = TimeSpan.FromSeconds(30);
+        var runDelay = TimeSpan.FromSeconds(4);
+        var fullDelay = scenarioDelay + runDelay;
+        var taskId =
+            await m_entryPoint.CreateAndUsingUnitOfWorkAsync(
+                async (_, cancellationToken) =>
+                    await m_entryPoint.DemoDelayTaskProcessor.AddAsync(
+                        new DemoDelayTaskScenarioAsDelay
+                        {
+                            Delay = scenarioDelay,
+                        },
+                        m_entryPoint.TimeService.Now + runDelay,
+                        false,
+                        cancellationToken),
+                autoCommit: true);
+
+        Assert.IsTrue(m_entryPoint.DemoDelayTaskProcessor.Exists(taskId));
+        Assert.IsTrue(m_entryPoint.DemoDelayTaskProcessor.TryGet(taskId, out var taskWaitHandler));
+
+        // Ждём начала запуска задачи - исполнение задачи происходит в монопольной критической секции.
+        Thread.Sleep(runDelay * 2);
+
+        Console.WriteLine($"[{m_entryPoint.TimeService.NowDateTime:O}] DemoDelayTask.Id:{taskId} - До удаления.");
+
+        var sw = Stopwatch.StartNew();
+
+        // Удаление исполняемой задачи происходит в критической секции.
+        // Но секция уже занята (есть ожидание входя в секций, сконфигурированное время), поэтому удаления в БД не будет, но задача пометится на удаление.
+        await m_entryPoint.CreateAndUsingUnitOfWorkAsync(
+            async (_, cancellationToken) =>
+                await m_entryPoint.DemoDelayTaskProcessor
+                    // Попытка немедленной остановки задания в БД при подтверждении UnitOfWork.
+                    .RemoveAsync(taskId, cancellationToken),
+            autoCommit: true);
+
+        sw.Stop();
+
+        // Проверяем что ожидание входа в критическую секцию соответствует сконфигурированному времени.
+        Assert.Less(sw.Elapsed, m_entryPoint.SystemSettings.UnitOfWorkLocksSettings.Value.UpdateTimeout.Value + Magic);
+        Assert.Greater(sw.Elapsed, m_entryPoint.SystemSettings.UnitOfWorkLocksSettings.Value.UpdateTimeout.Value - Magic);
+
+        Console.WriteLine($"[{m_entryPoint.TimeService.NowDateTime:O}] DemoDelayTask.Id:{taskId} - После удаления.");
+
+        // Проверка что задача в БД не остановлена.
+        await m_entryPoint.CreateAndUsingUnitOfWorkAsync(
+            async (unitOfWork, cancellationToken) =>
+            {
+                var mapper = unitOfWork.MappersSession.Mappers.GetMapper<IMapperDemoDelayTask>();
+                var dto = await mapper.GetRawAsync(unitOfWork.MappersSession, taskId, cancellationToken);
+                Assert.IsNotNull(dto);
+                Assert.IsTrue(dto.Available);
+            },
+            autoCommit: true);
+
+        Assert.IsTrue(m_entryPoint.DemoDelayTaskProcessor.Exists(taskId));
+        Assert.IsTrue(await taskWaitHandler!.WaitAsync(fullDelay + Magic));
+        Assert.IsFalse(m_entryPoint.DemoDelayTaskProcessor.Exists(taskId));
+
+        // Проверка что задача в БД остановлена.
+        await m_entryPoint.CreateAndUsingUnitOfWorkAsync(
+            async (unitOfWork, cancellationToken) =>
+            {
+                var mapper = unitOfWork.MappersSession.Mappers.GetMapper<IMapperDemoDelayTask>();
+                var dto = await mapper.GetRawAsync(unitOfWork.MappersSession, taskId, cancellationToken);
+                Assert.IsNotNull(dto);
+                Assert.IsFalse(dto.Available);
+            },
+            autoCommit: true);
+    }
+
+    [Test]
+    [Timeout(TestTimeout.Unit)]
+    [Category(TestCategory.Unit)]
     [Description("Немедленная остановка задания в БД.")]
     public async Task Test_StopNow()
     {
@@ -124,7 +200,7 @@ public class TestsDemoDelayTask : BaseTestsDomainObjects
                         {
                             Delay = scenarioDelay,
                         },
-                        m_entryPoint.TimeService.Now + fullDelay,
+                        m_entryPoint.TimeService.Now + runDelay,
                         false,
                         cancellationToken),
                 autoCommit: true);
@@ -132,12 +208,19 @@ public class TestsDemoDelayTask : BaseTestsDomainObjects
         Assert.IsTrue(m_entryPoint.DemoDelayTaskProcessor.Exists(taskId));
         Assert.IsTrue(m_entryPoint.DemoDelayTaskProcessor.TryGet(taskId, out var taskWaitHandler));
 
+        Console.WriteLine($"[{m_entryPoint.TimeService.NowDateTime:O}] DemoDelayTask.Id:{taskId} - До удаления.");
+
+        var sw = Stopwatch.StartNew();
+
         await m_entryPoint.CreateAndUsingUnitOfWorkAsync(
             async (_, cancellationToken) =>
                 await m_entryPoint.DemoDelayTaskProcessor
                     // Немедленная остановка задания в БД при подтверждении UnitOfWork.
                     .RemoveAsync(taskId, cancellationToken),
             autoCommit: true);
+
+        sw.Stop();
+        Assert.Less(sw.Elapsed, TimeSpan.FromSeconds(2));
 
         Console.WriteLine($"[{m_entryPoint.TimeService.NowDateTime:O}] DemoDelayTask.Id:{taskId} - После удаления.");
 
@@ -154,12 +237,12 @@ public class TestsDemoDelayTask : BaseTestsDomainObjects
 
         Assert.IsTrue(m_entryPoint.DemoDelayTaskProcessor.Exists(taskId));
 
-        var sw = Stopwatch.StartNew();
+        sw = Stopwatch.StartNew();
 
         Assert.IsTrue(await taskWaitHandler!.WaitAsync(fullDelay + Magic));
 
         sw.Stop();
-        Assert.Less(fullDelay - Magic, sw.Elapsed);
+        Assert.LessOrEqual(runDelay, sw.Elapsed);
         Assert.Greater(fullDelay + Magic, sw.Elapsed);
 
         Assert.IsFalse(m_entryPoint.DemoDelayTaskProcessor.Exists(taskId));
@@ -182,7 +265,7 @@ public class TestsDemoDelayTask : BaseTestsDomainObjects
                         {
                             Delay = scenarioDelay,
                         },
-                        m_entryPoint.TimeService.Now + fullDelay,
+                        m_entryPoint.TimeService.Now + runDelay,
                         false,
                         cancellationToken),
                 autoCommit: true);
@@ -214,7 +297,7 @@ public class TestsDemoDelayTask : BaseTestsDomainObjects
         Assert.IsTrue(await taskWaitHandler!.WaitAsync(fullDelay + Magic));
 
         sw.Stop();
-        Assert.Less(fullDelay - Magic, sw.Elapsed);
+        Assert.LessOrEqual(runDelay, sw.Elapsed);
         Assert.Greater(fullDelay + Magic, sw.Elapsed);
 
         Assert.IsFalse(m_entryPoint.DemoDelayTaskProcessor.Exists(taskId));

@@ -16,7 +16,8 @@ public class DemoDelayTaskProcessor : BaseAsyncTaskServiceDefault<UnitOfWork, IC
         : base(
             customEntryPoint.Context,
             customEntryPoint.SystemSettings.DemoDelayTaskProcessorSettings.Value,
-            tracer: customEntryPoint.Tracer)
+            tracer: customEntryPoint.Tracer,
+            hub: customEntryPoint.UnitOfWorkLocks)
     {
     }
 

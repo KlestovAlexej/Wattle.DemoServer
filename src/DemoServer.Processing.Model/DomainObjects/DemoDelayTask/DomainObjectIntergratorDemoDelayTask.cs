@@ -22,11 +22,14 @@ public class DomainObjectIntergratorDemoDelayTask : BaseDomainObjectIntergrator<
                 identityGroupId: entryPoint.PartitionsDay);
         container.Resolve<DomainObjectDataMappers>().AddMapper(dataMapper);
 
+        var lockUpdate = entryPoint.UnitOfWorkLocks.GetLockService<IDomainObjectDemoDelayTask>();
         container.Resolve<DomainObjectRegisters>().AddRegister(
             new DomainObjectRegisterStateless(
                 entryPoint.Context,
                 dataMapper,
-                new DomainObjectDataActivatorForActualStateDtoDefault<DemoDelayTaskDtoActual, DomainObjectDemoDelayTask>(entryPoint),
-                new DomainObjectActivatorDefault<DomainObjectDemoDelayTask.Template, DomainObjectDemoDelayTask>(entryPoint.UnitOfWorkProvider, entryPoint)));
+                new DomainObjectDataActivatorForActualStateDtoDefault<DemoDelayTaskDtoActual, DomainObjectDemoDelayTask>(
+                    entryPoint, lockUpdate),
+                new DomainObjectActivatorDefault<DomainObjectDemoDelayTask.Template, DomainObjectDemoDelayTask>(
+                    entryPoint.UnitOfWorkProvider, lockUpdate, entryPoint, lockUpdate)));
     }
 }

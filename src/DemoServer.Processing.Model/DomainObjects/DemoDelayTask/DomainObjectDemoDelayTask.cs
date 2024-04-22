@@ -13,13 +13,14 @@ using ShtrihM.Wattle3.Common.Exceptions;
 using ShtrihM.Wattle3.DomainObjects.DomainObjects;
 using ShtrihM.Wattle3.DomainObjects.Interfaces;
 using ShtrihM.Wattle3.DomainObjects.Json;
+using ShtrihM.Wattle3.DomainObjects.UnitOfWorkLocks;
 using ShtrihM.Wattle3.Mappers.Primitives.MutableFields;
 
 namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask;
 
 [DomainObjectDataMapper]
 // ReSharper disable once ClassNeverInstantiated.Global
-public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutable<DomainObjectDemoDelayTask>, IDomainObjectDemoDelayTask
+public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutableWithUpdateLock<DomainObjectDemoDelayTask>, IDomainObjectDemoDelayTask
 {
     #region Template - шаблон создания объекта
 
@@ -67,8 +68,9 @@ public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutable<DomainOb
     // ReSharper disable once UnusedMember.Global
     public DomainObjectDemoDelayTask(
         DemoDelayTaskDtoActual data,
-        ICustomEntryPoint entryPoint)
-        : base(entryPoint, data)
+        ICustomEntryPoint entryPoint,
+        IDomainObjectUnitOfWorkLockService lockUpdate)
+        : base(entryPoint, data, lockUpdate)
     {
         m_available = new MutableField<bool>(data.Available);
         CreateDate = data.CreateDate;
@@ -91,8 +93,9 @@ public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutable<DomainOb
     public DomainObjectDemoDelayTask(
         long identity,
         Template template,
-        ICustomEntryPoint entryPoint)
-        : base(entryPoint, identity)
+        ICustomEntryPoint entryPoint,
+        IDomainObjectUnitOfWorkLockService lockUpdate)
+        : base(entryPoint, identity, lockUpdate)
     {
         m_available = new MutableField<bool>(true);
         CreateDate = entryPoint.TimeService.Now;
@@ -174,6 +177,8 @@ public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutable<DomainOb
 
     public async ValueTask<(bool IsCompleted, CancellationToken? CommitCancellationToken)> ProcessAsync(bool isRemoved, long count, CancellationToken cancellationToken)
     {
+        m_lockUpdate.Has(Identity);
+
         if (isRemoved)
         {
             Console.WriteLine($"[{m_entryPoint.TimeService.NowDateTime:O}] DemoDelayTask.Id:{Identity} - Удалена.");
