@@ -261,6 +261,7 @@ public sealed class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
     public AutoMapper.IMapper AutoMapper { get; private set; }
     public IDemoDelayTaskProcessor DemoDelayTaskProcessor { get; private set; }
     public ISmartJsonDeserializer JsonDeserializer { get; private set; }
+    public SystemSettingsLocal SystemSettingsLocal => m_systemSettingsLocal;
 
     public MetaServerDescription ServerDescription
     {
@@ -548,7 +549,9 @@ public sealed class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
                 timeService,
                 loggerFactory.CreateLogger<ExceptionPolicy>(),
                 tracer,
-                metrics);
+                metrics,
+                systemSettingsLocal, 
+                serviceProvider);
         var result =
             new EntryPoint(
                 templateServerDescription,

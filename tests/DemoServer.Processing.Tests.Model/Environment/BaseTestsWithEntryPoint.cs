@@ -295,7 +295,7 @@ public abstract class BaseTestsWithEntryPoint : BaseDbTests
 
         var serviceCollection = new ServiceCollection();
 
-        serviceCollection.AddEntryPointServices();
+        serviceCollection.AddEntryPointServices(systemSettings);
 
         serviceCollection.AddSingleton(m_loggerFactory);
 

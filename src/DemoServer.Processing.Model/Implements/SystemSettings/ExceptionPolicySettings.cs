@@ -1,4 +1,5 @@
 ﻿using ShtrihM.Wattle3.Json;
+using System;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 
@@ -11,13 +12,19 @@ namespace ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
 [SuppressMessage("ReSharper", "AutoPropertyCanBeMadeGetOnly.Global")]
 public sealed class ExceptionPolicySettings
 {
-    // ReSharper disable once MemberCanBePrivate.Global
-    // ReSharper disable once ConvertConstructorToMemberInitializers
     public ExceptionPolicySettings()
     {
         ControllersEnabledUnexpectedException =
             new SettingValue<bool>(default,
                 "Разрешение контроллерам уведомлять о неожиданных исключениях");
+
+        UnexpectedExceptionSendToTelegram =
+            new SettingValue<bool>(default,
+                @"Разрешение уведомлять о неожиданных исключениях в Telegram");
+
+        TimeoutUnexpectedExceptionSendToTelegram =
+            new(default,
+                "Интервал отправки уведомлений о неожиданных исключениях в Telegram");
     }
 
     /// <summary>
@@ -25,6 +32,18 @@ public sealed class ExceptionPolicySettings
     /// </summary>
     [Description("Разрешение контроллерам уведомлять о неожиданных исключениях")]
     public SettingValue<bool> ControllersEnabledUnexpectedException { get; set; }
+
+    /// <summary>
+    /// Разрешение уведомлять о неожиданных исключениях в Telegram.
+    /// </summary>
+    [Description("Разрешение уведомлять о неожиданных исключениях в Telegram")]
+    public SettingValue<bool> UnexpectedExceptionSendToTelegram { get; set; }
+
+    /// <summary>
+    /// Интервал отправки уведомлений о неожиданных исключениях в Telegram.
+    /// </summary>
+    [Description("Интервал отправки уведомлений о неожиданных исключениях в Telegram")]
+    public SettingValue<TimeSpan> TimeoutUnexpectedExceptionSendToTelegram { get; set; }
 
     /// <summary>
     /// Настройки по умолчанию.
@@ -35,7 +54,17 @@ public sealed class ExceptionPolicySettings
         {
             ControllersEnabledUnexpectedException =
             {
-                Value = false,
+                Value = true,
+            },
+
+            TimeoutUnexpectedExceptionSendToTelegram =
+            {
+                Value = TimeSpan.FromMinutes(30),
+            },
+
+            UnexpectedExceptionSendToTelegram =
+            {
+                Value = true,
             },
         };
     }

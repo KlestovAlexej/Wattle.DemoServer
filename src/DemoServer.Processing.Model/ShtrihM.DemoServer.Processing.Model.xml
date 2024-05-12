@@ -252,6 +252,16 @@
             Разрешение контроллерам уведомлять о неожиданных исключениях.
             </summary>
         </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.ExceptionPolicySettings.UnexpectedExceptionSendToTelegram">
+            <summary>
+            Разрешение уведомлять о неожиданных исключениях в Telegram.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.ExceptionPolicySettings.TimeoutUnexpectedExceptionSendToTelegram">
+            <summary>
+            Интервал отправки уведомлений о неожиданных исключениях в Telegram.
+            </summary>
+        </member>
         <member name="M:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.ExceptionPolicySettings.GetDefault">
             <summary>
             Настройки по умолчанию.
@@ -315,6 +325,16 @@
         <member name="M:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.PartitionsSponsorSettings.GetDefault">
             <summary>
             Настройки по умолчанию.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.UseLoggingProxy">
+            <summary>
+            Использовать прокси логирующий все вызовы методов с логированием параметров и результатов вызовов методов.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.TelegramSettings">
+            <summary>
+            Настройки Telegram.
             </summary>
         </member>
         <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.SmartJsonDeserializerSettings">
@@ -407,6 +427,11 @@
             Интервал аккумуляции статистики.
             </summary>
         </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.TelegramShowApplicationStartStop">
+            <summary>
+            Отправлять в Telegram уведомления о запуске/остановке приложения.
+            </summary>
+        </member>
         <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettingsLocal.ProductId">
             <summary>
             Код продукта <seealso cref="F:ShtrihM.DemoServer.Common.WellknownCommonSystemSettings.ProductId"/>.
@@ -425,6 +450,36 @@
         <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettingsLocal.ProductName">
             <summary>
             Имя продукта.
+            </summary>
+        </member>
+        <member name="T:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.TelegramSettings">
+            <summary>
+            Настройки Telegram.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.TelegramSettings.Enabled">
+            <summary>
+            Разрешает отправку сообщений.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.TelegramSettings.ApiKey">
+            <summary>
+            Ключ API.
+            </summary>
+        </member>
+        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.TelegramSettings.ChatId">
+            <summary>
+            Идентификатор чата.
+            </summary>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.TelegramSettings.GetDefault">
+            <summary>
+            Настройки по умолчанию.
+            </summary>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Model.Implements.Telegram.EscapeTextMarkdownV2(System.String)">
+            <summary>
+            Экранирование символов дл стиля <seealso cref="F:Telegram.Bot.Types.Enums.ParseMode.MarkdownV2"/>> <seealso><cref>https://core.telegram.org/bots/api#formatting-options</cref></seealso>.
             </summary>
         </member>
         <member name="F:ShtrihM.DemoServer.Processing.Model.Implements.UnitOfWorkLocks.UnitOfWorkLocksActions.CreateDemoObjectX">
@@ -603,6 +658,22 @@
             <summary>
             Признак работы сервера в отладочном режиме.
             </summary>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Model.Interfaces.ITelegram.SendAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Отправить сообщение.
+            </summary>
+            <param name="message">Причина показа динамического идентификатор покупателя с форматированием <see cref="F:Telegram.Bot.Types.Enums.ParseMode.MarkdownV2"/>.</param>
+            <param name="cancellationToken">Токен отмены.</param>
+        </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Model.Interfaces.ITelegram.SendFileAsync(System.String,System.String,System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Отправить файл с сообщением.
+            </summary>
+            <param name="message">Причина показа динамического идентификатор покупателя с форматированием <see cref="F:Telegram.Bot.Types.Enums.ParseMode.MarkdownV2"/>.</param>
+            <param name="fileName">Имя файла.</param>
+            <param name="fileContent">Содержимое файла.</param>
+            <param name="cancellationToken">Токен отмены.</param>
         </member>
     </members>
 </doc>

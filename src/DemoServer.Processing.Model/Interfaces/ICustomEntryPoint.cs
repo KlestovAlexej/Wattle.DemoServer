@@ -22,6 +22,7 @@ public interface ICustomEntryPoint : IEntryPoint
     // ReSharper disable once UnusedMemberInSuper.Global
     IServiceProvider ServiceProvider { get; }
 
+    SystemSettingsLocal SystemSettingsLocal { get; }
     IUnitOfWorkCommitVerifyingFactory CommitVerifyingFactory { get; }
     UnitOfWork CurrentUnitOfWork { get; }
     ITimeService TimeService { get; }

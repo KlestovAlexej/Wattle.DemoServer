@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
+﻿#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using OpenTelemetry.Trace;
 using ShtrihM.DemoServer.Common;
 using ShtrihM.DemoServer.Processing.Api.Common;
@@ -13,7 +16,11 @@ using ShtrihM.Wattle3.Mappers;
 using ShtrihM.Wattle3.OpenTelemetry;
 using ShtrihM.Wattle3.Primitives;
 using System;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using System.Text;
+using ShtrihM.Wattle3.Utils;
+using Constants = ShtrihM.DemoServer.Common.Constants;
 
 namespace ShtrihM.DemoServer.Processing.Model.Implements;
 
@@ -31,6 +38,10 @@ public sealed class ExceptionPolicy : BaseExceptionPolicy
     private readonly ExceptionPolicySettings m_settings;
     private readonly Tracer? m_tracer;
     private readonly Metrics? m_metrics;
+    private readonly SystemSettingsLocal m_systemSettingsLocal;
+    private readonly Dictionary<string, DateTime> m_unexpectedExceptionSendToTelegram;
+    private readonly IServiceProvider m_serviceProvider;
+    private readonly SystemSettings.SystemSettings m_systemSettings;
 
     static ExceptionPolicy()
     {
@@ -38,24 +49,29 @@ public sealed class ExceptionPolicy : BaseExceptionPolicy
             .AddModuleType<ExceptionPolicy>();
     }
 
-#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+    // ReSharper disable once ConvertToPrimaryConstructor
     public ExceptionPolicy(
-#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         SystemSettings.SystemSettings systemSettings,
         IWorkflowExceptionPolicy workflowExceptionPolicy,
         ITimeService timeService,
         ILogger logger,
         Tracer? tracer,
-        Metrics? metrics)
+        Metrics? metrics,
+        SystemSettingsLocal systemSettingsLocal,
+        IServiceProvider serviceProvider)
         : base(
             timeService,
             logger)
     {
+        m_systemSettings = systemSettings;
         m_workflowExceptionPolicy = workflowExceptionPolicy;
         m_settings = systemSettings.ExceptionPolicySettings.Value;
         m_debugMode = systemSettings.DebugMode.Value;
         m_tracer = tracer;
         m_metrics = metrics;
+        m_systemSettingsLocal = systemSettingsLocal;
+        m_unexpectedExceptionSendToTelegram = new Dictionary<string, DateTime>();
+        m_serviceProvider = serviceProvider;
     }
 
     public ICustomEntryPoint EntryPoint;
@@ -234,6 +250,8 @@ public sealed class ExceptionPolicy : BaseExceptionPolicy
                 m_logger.LogCritical(exception2, "Ошибка логирования не предвиденной ошибки поведения доменных объектов." + Environment.NewLine + exception);
             }
         }
+
+        UnexpectedExceptionSendToTelegram(exception);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -301,6 +319,8 @@ public sealed class ExceptionPolicy : BaseExceptionPolicy
             }
         }
 
+        UnexpectedExceptionSendToTelegram(exception);
+
         return true;
     }
 
@@ -349,6 +369,8 @@ public sealed class ExceptionPolicy : BaseExceptionPolicy
                 m_logger.LogCritical(exception2, "Ошибка логирования не предвиденной ошибки мапперов БД." + Environment.NewLine + exception);
             }
         }
+
+        UnexpectedExceptionSendToTelegram(exception);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -364,6 +386,8 @@ public sealed class ExceptionPolicy : BaseExceptionPolicy
         {
             m_logger.Log(notfication.Level, $"Неожиданное уведомление.{Environment.NewLine}{notfication}");
         }
+
+        UnexpectedExceptionSendToTelegram(notfication);
 
         int type;
         if (notfication.Level == LogLevel.Warning)
@@ -415,5 +439,70 @@ public sealed class ExceptionPolicy : BaseExceptionPolicy
                 m_logger.LogCritical(exception2, "Ошибка логирования неожиданного уведомления." + Environment.NewLine + notfication);
             }
         }
+    }
+
+    private void UnexpectedExceptionSendToTelegram(ExceptionPolicyNotfication notfication)
+    {
+        if ((notfication.Level == LogLevel.Critical)
+            || (notfication.Level == LogLevel.Error))
+        {
+            UnexpectedExceptionSendToTelegram(
+                notfication.Message,
+                notfication.ToString());
+        }
+    }
+
+    private void UnexpectedExceptionSendToTelegram(Exception exception)
+    {
+        UnexpectedExceptionSendToTelegram(
+            exception.GetType().AssemblyQualifiedName + exception.StackTrace,
+            exception.ToString());
+    }
+
+    private void UnexpectedExceptionSendToTelegram(string key, string message)
+    {
+        try
+        {
+            if (m_settings.UnexpectedExceptionSendToTelegram.Value)
+            {
+                var time = EntryPoint.TimeService.NowDateTime;
+                lock (m_unexpectedExceptionSendToTelegram)
+                {
+                    if (m_unexpectedExceptionSendToTelegram.TryGetValue(key, out var existsTime))
+                    {
+                        if ((time - existsTime) < m_settings.TimeoutUnexpectedExceptionSendToTelegram.Value)
+                        {
+                            return;
+                        }
+                    }
+
+                    m_unexpectedExceptionSendToTelegram[key] = time;
+                }
+
+                var telegram = m_serviceProvider.GetRequiredService<ITelegram>();
+                telegram.SendFileAsync(@$"🐷 Сервер сломался!
+
+{GetProductDetails(m_systemSettingsLocal, m_systemSettings)}",
+                        "details.txt",
+                        Encoding.UTF8.GetBytes(message))
+                    .SafeGetResult();
+            }
+        }
+        catch
+        {
+            /* NONE */
+        }
+    }
+
+    public static string GetProductDetails(
+        SystemSettingsLocal systemSettingsLocal,
+        SystemSettings.SystemSettings systemSettings)
+    {
+        return @$"Название = '{systemSettingsLocal.InstallationName}'
+Установка = '{systemSettings.InstanceName.Value}'
+Версия = {Constants.ProductVersion}
+Версия сборки = {Constants.ProductBuildVersion}
+Идентификатор = '{systemSettings.InstanceId.Value}'
+Продукт = '{systemSettingsLocal.ProductName}'";
     }
 }

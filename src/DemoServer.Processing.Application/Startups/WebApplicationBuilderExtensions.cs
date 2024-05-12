@@ -39,6 +39,7 @@ using System.Threading;
 using System.Xml.XPath;
 using Asp.Versioning;
 using Microsoft.OpenApi.Models;
+using ShtrihM.Wattle3.Utils;
 using Constants = ShtrihM.DemoServer.Common.Constants;
 using ILogger = Microsoft.Extensions.Logging.ILogger;
 
@@ -104,7 +105,7 @@ public static class WebApplicationBuilderExtensions
 
         var configuration = builder.Configuration;
         builder.Services.AddSingleton(configuration);
-        builder.Services.AddEntryPointServices();
+        builder.Services.AddEntryPointServices(systemSettings);
 
         builder
             .UseCustomSerilog(builder.Configuration, systemSettings)
@@ -198,6 +199,16 @@ public static class WebApplicationBuilderExtensions
                     Console.WriteLine("Сервер запущен.");
                     AddInformationEventLogMessage("Сервер запущен.");
                     logger.LogDebug("Сервер запущен.");
+
+                    if (entryPoint.SystemSettings.TelegramShowApplicationStartStop.Value)
+                    {
+                        var telegram = entryPoint.ServiceProvider.GetRequiredService<ITelegram>();
+                        telegram.SendAsync(@$"👍 Полёт нормальный!
+
+Сервер запущен.
+
+{ExceptionPolicy.GetProductDetails(entryPoint.SystemSettingsLocal, entryPoint.SystemSettings)}").SafeGetResult();
+                    }
                 });
 
         application.Lifetime
@@ -231,6 +242,16 @@ public static class WebApplicationBuilderExtensions
                     Console.WriteLine("Сервер остановлен.");
                     AddInformationEventLogMessage("Сервер остановлен.");
                     logger.LogDebug("Сервер остановлен.");
+
+                    if (entryPoint.SystemSettings.TelegramShowApplicationStartStop.Value)
+                    {
+                        var telegram = entryPoint.ServiceProvider.GetRequiredService<ITelegram>();
+                        telegram.SendAsync(@$"🗣 Без паники!
+
+Сервер остановлен.
+
+{ExceptionPolicy.GetProductDetails(entryPoint.SystemSettingsLocal, entryPoint.SystemSettings)}").SafeGetResult();
+                    }
                 });
 
         return application;

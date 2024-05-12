@@ -30,7 +30,9 @@ public static class EntryPointStartUpExtensions
     }
 
     // ReSharper disable once UnusedMethodReturnValue.Global
-    public static IServiceCollection AddEntryPointServices(this IServiceCollection services)
+    public static IServiceCollection AddEntryPointServices(
+        this IServiceCollection services,
+        SystemSettings.SystemSettings systemSettings)
     {
         services.AddSingleton(
             _ => (ICustomEntryPoint)ServiceProviderHolder.Instance.GetRequiredService<IEntryPoint>());
@@ -41,7 +43,33 @@ public static class EntryPointStartUpExtensions
             provider =>
             {
                 var entryPoint = provider.GetRequiredService<ICustomEntryPoint>();
+                var service = new Telegram(entryPoint);
+
+                if (false == systemSettings.UseLoggingProxy.Value)
+                {
+                    return service;
+                }
+
+                var result =
+                    LoggingDispatchProxy<ITelegram>.CreateProxy(
+                        service,
+                        entryPoint.LoggerFactory.CreateLogger<Telegram>(),
+                        entryPoint.Tracer);
+
+                return result;
+            });
+
+        services.AddSingleton(
+            provider =>
+            {
+                var entryPoint = provider.GetRequiredService<ICustomEntryPoint>();
                 var service = new DemoObjectControllerService(entryPoint);
+
+                if (false == systemSettings.UseLoggingProxy.Value)
+                {
+                    return service;
+                }
+
                 var result = 
                     LoggingDispatchProxy<IDemoObjectControllerService>.CreateProxy(
                         service, 
@@ -56,6 +84,12 @@ public static class EntryPointStartUpExtensions
             {
                 var entryPoint = provider.GetRequiredService<ICustomEntryPoint>();
                 var service = new ServerControllerService(entryPoint);
+
+                if (false == systemSettings.UseLoggingProxy.Value)
+                {
+                    return service;
+                }
+
                 var result =
                     LoggingDispatchProxy<IServerControllerService>.CreateProxy(
                         service,

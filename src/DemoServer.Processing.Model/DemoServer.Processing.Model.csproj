@@ -37,6 +37,7 @@
 		<PackageReference Include="ShtrihM.Wattle3.Triggers" Version="3.9.0.3891" />
 		<PackageReference Include="ShtrihM.Wattle3.UniqueRegisters" Version="3.9.0.3891" />
 		<PackageReference Include="System.Linq.Async" Version="6.0.1" />
+		<PackageReference Include="Telegram.Bot" Version="19.0.0" />
 		<PackageReference Include="Unity" Version="5.11.10" />
 	</ItemGroup>
 

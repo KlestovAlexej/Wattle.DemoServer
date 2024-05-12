@@ -108,7 +108,34 @@ public sealed class SystemSettings
             new(
                 default!,
                 "Настройки умного десериализации JSON");
+
+        TelegramSettings =
+            new SettingValue<TelegramSettings>(
+                default!,
+                "Настройки Telegram");
+
+        UseLoggingProxy =
+            new(
+                default,
+                "Использовать прокси логирующий все вызовы методов с логированием параметров и результатов вызовов методов");
+
+        TelegramShowApplicationStartStop =
+            new SettingValue<bool>(
+                default,
+                "Отправлять в Telegram уведомления о запуске/остановке приложения");
     }
+
+    /// <summary>
+    /// Использовать прокси логирующий все вызовы методов с логированием параметров и результатов вызовов методов.
+    /// </summary>
+    [Description("Использовать прокси логирующий все вызовы методов с логированием параметров и результатов вызовов методов")]
+    public SettingValue<bool> UseLoggingProxy { get; set; }
+
+    /// <summary>
+    /// Настройки Telegram.
+    /// </summary>
+    [Description("Настройки Telegram")]
+    public SettingValue<TelegramSettings> TelegramSettings { get; set; }
 
     /// <summary>
     /// Настройки умного десериализации JSON.
@@ -220,6 +247,12 @@ public sealed class SystemSettings
     [JsonRequired]
     public SettingValue<TimeSpan> TimeStatisticsStep { get; set; }
 
+    /// <summary>
+    /// Отправлять в Telegram уведомления о запуске/остановке приложения.
+    /// </summary>
+    [JsonRequired]
+    public SettingValue<bool> TelegramShowApplicationStartStop { get; set; }
+
     public static SystemSettings GetDefault()
     {
         var result =
@@ -325,6 +358,21 @@ public sealed class SystemSettings
                 SmartJsonDeserializerSettings =
                 {
                     Value = Wattle3.DomainObjects.Json.SmartJsonDeserializerSettings.GetDefault(),
+                },
+
+                TelegramSettings =
+                {
+                    Value = Implements.SystemSettings.TelegramSettings.GetDefault(),
+                },
+
+                UseLoggingProxy =
+                {
+                    Value = true,
+                },
+
+                TelegramShowApplicationStartStop =
+                {
+                    Value = true,
                 },
             };
 

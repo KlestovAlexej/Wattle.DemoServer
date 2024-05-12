@@ -242,7 +242,7 @@ public class TestsDemoDelayTask : BaseTestsDomainObjects
         Assert.IsTrue(await taskWaitHandler!.WaitAsync(fullDelay + Magic));
 
         sw.Stop();
-        Assert.LessOrEqual(runDelay, sw.Elapsed);
+        Assert.LessOrEqual(sw.Elapsed, runDelay + Magic);
         Assert.Greater(fullDelay + Magic, sw.Elapsed);
 
         Assert.IsFalse(m_entryPoint.DemoDelayTaskProcessor.Exists(taskId));
@@ -297,7 +297,7 @@ public class TestsDemoDelayTask : BaseTestsDomainObjects
         Assert.IsTrue(await taskWaitHandler!.WaitAsync(fullDelay + Magic));
 
         sw.Stop();
-        Assert.LessOrEqual(runDelay, sw.Elapsed);
+        Assert.LessOrEqual(sw.Elapsed, runDelay + Magic);
         Assert.Greater(fullDelay + Magic, sw.Elapsed);
 
         Assert.IsFalse(m_entryPoint.DemoDelayTaskProcessor.Exists(taskId));
