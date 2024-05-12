@@ -45,6 +45,7 @@
 	- [Интеграционные тесты](tests/DemoServer.Processing.Tests.Application/TestsApiServer.cs) REST интерфейса
 - Интеграция с Entity Framework в рамках Unit of Work [c тестами](tests/DemoServer.Processing.Tests.Model/TestsUnitOfWork.cs)
 - Пример [логирующего прокси](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/be5865d7e9567f8f85819e19ddec843e2ad45567/src/DemoServer.Processing.Model/Implements/EntryPointExtensions.cs#L44) с поддержкой вызова [асинхронных методов](https://learn.microsoft.com/ru-ru/dotnet/csharp/asynchronous-programming/)
+- Пример интеграции с [Telegram](https://telegram.org/) для [оперативного уведомления](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/68f17448d93b4e75607d2783e30c2a024afc2d93/src/DemoServer.Processing.Model/Implements/ExceptionPolicy.cs#L462) об ошибках сервера и отправки [диагностических сообщений](https://github.com/KlestovAlexej/Wattle3.DemoServer/blob/68f17448d93b4e75607d2783e30c2a024afc2d93/tests/DemoServer.Processing.Tests.Model/TestsTelegram.cs#L38)
 
 ---
 ### Доменный объект DemoDelayTask - хранимая в БД задача для фонового исполнения
