@@ -263,4 +263,12 @@ public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutableWithUpdat
             throw new InternalException($"Неизвестный тип сценария '{scenario.GetType().Assembly}'.");
         }
     }
+
+    /// <summary>
+    /// Указание (<see langword="null"/>) для создание специализированной стратегии <see cref="IUnitOfWorkCommitVerifying"/> проверки успешности завершения <see cref="IUnitOfWork"/> при обновлении доменного объекта по умолчанию (за счёт создания технического объекта <see cref="IDomainObjectChangeTracker"/>).
+    /// </summary>
+    protected override IUnitOfWorkCommitVerifying? DoCreateUnitOfWorkCommitVerifyingOnUpdate()
+    {
+        return null;
+    }
 }

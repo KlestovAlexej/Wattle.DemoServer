@@ -19,6 +19,11 @@
             <seealso cref="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios.DemoDelayTaskScenario"/>.
             </summary>
         </member>
+        <member name="M:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.DomainObjectDemoDelayTask.DoCreateUnitOfWorkCommitVerifyingOnUpdate">
+            <summary>
+            Указание (<see langword="null"/>) для создание специализированной стратегии <see cref="T:ShtrihM.Wattle3.DomainObjects.Interfaces.IUnitOfWorkCommitVerifying"/> проверки успешности завершения <see cref="T:ShtrihM.Wattle3.DomainObjects.Interfaces.IUnitOfWork"/> при обновлении доменного объекта по умолчанию (за счёт создания технического объекта <see cref="T:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectChangeTracker"/>).
+            </summary>
+        </member>
         <member name="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.ScenarioStates.DemoCycleTaskScenarioState">
             <summary>
             Состояние сценария задачи с отложенным запуском.

@@ -73,7 +73,7 @@ public sealed class DomainObjectDemoObject : BaseDomainObjectMutableWithUpdateLo
         DemoObjectDtoActual data,
         IEntryPointContext<ICustomEntryPoint> entryPointContext,
         IDomainObjectUnitOfWorkLockService lockUpdate)
-        : base(entryPointContext, data, lockUpdate)
+        : base(entryPointContext, data, lockUpdate, false)
     {
         CreateDate = data.CreateDate.SpecifyKindLocal();
         ModificationDate = data.ModificationDate.SpecifyKindLocal();
