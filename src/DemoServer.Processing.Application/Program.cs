@@ -128,12 +128,6 @@ public class Program
                                                 Headers = $"lightstep-access-token={lightstepAccessToken}",
                                                 Endpoint = "https://ingest.lightstep.com:443",
                                             },
-                                        Jaeger =
-                                            new JaegerSettings
-                                            {
-                                                Enabled = false,
-                                                Endpoint = "",
-                                            },
                                         EntityFrameworkCoreInstrumentation =
                                             new EntityFrameworkCoreInstrumentationSettings
                                             {

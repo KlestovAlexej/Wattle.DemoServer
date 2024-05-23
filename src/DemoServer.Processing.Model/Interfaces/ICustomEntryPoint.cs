@@ -6,7 +6,6 @@ using ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
 using ShtrihM.DemoServer.Processing.Model.Implements.UnitOfWorkLocks;
 using ShtrihM.Wattle3.Common.Interfaces;
 using ShtrihM.Wattle3.DomainObjects.Interfaces;
-using ShtrihM.Wattle3.DomainObjects.UnitOfWorks;
 using System;
 using ShtrihM.Wattle3.Mappers.Interfaces;
 using IMapper = AutoMapper.IMapper;
@@ -23,7 +22,6 @@ public interface ICustomEntryPoint : IEntryPoint
     IServiceProvider ServiceProvider { get; }
 
     SystemSettingsLocal SystemSettingsLocal { get; }
-    IUnitOfWorkCommitVerifyingFactory CommitVerifyingFactory { get; }
     UnitOfWork CurrentUnitOfWork { get; }
     ITimeService TimeService { get; }
     WorkflowExceptionPolicy WorkflowExceptionPolicy { get; }
@@ -37,7 +35,7 @@ public interface ICustomEntryPoint : IEntryPoint
     Tracer? Tracer { get; }
     ILoggerFactory LoggerFactory { get; }
     UnitOfWorkLocksHubTyped UnitOfWorkLocks { get; }
-    IEntryPointContext Context { get; }
+    IEntryPointContext<ICustomEntryPoint> Context { get; }
     IMapper AutoMapper { get; }
     IDemoDelayTaskProcessor DemoDelayTaskProcessor { get; }
     ISmartJsonDeserializer JsonDeserializer { get; }

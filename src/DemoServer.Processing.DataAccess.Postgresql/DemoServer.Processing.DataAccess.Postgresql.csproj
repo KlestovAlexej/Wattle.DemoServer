@@ -39,24 +39,24 @@
 
 	<ItemGroup>
 		<PackageReference Include="AutoMapper" Version="13.0.1" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.4">
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.5">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 			<TreatAsUsed>true</TreatAsUsed>
 		</PackageReference>
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.4">
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.5">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 			<TreatAsUsed>true</TreatAsUsed>
 		</PackageReference>
-		<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.2" />
-		<PackageReference Include="ShtrihM.Wattle3.CodeGeneration.Generator.Implements" Version="3.9.0.3891">
+		<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.4" />
+		<PackageReference Include="ShtrihM.Wattle3.CodeGeneration.Generator.Implements" Version="3.9.0.3968">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 			<TreatAsUsed>true</TreatAsUsed>
 		</PackageReference>
-		<PackageReference Include="ShtrihM.Wattle3.DomainObjects" Version="3.9.0.3891" />
-		<PackageReference Include="ShtrihM.Wattle3.Mappers.PostgreSql" Version="3.9.0.3891" />
+		<PackageReference Include="ShtrihM.Wattle3.DomainObjects" Version="3.9.0.3968" />
+		<PackageReference Include="ShtrihM.Wattle3.Mappers.PostgreSql" Version="3.9.0.3968" />
 	</ItemGroup>
 
 	<ItemGroup>

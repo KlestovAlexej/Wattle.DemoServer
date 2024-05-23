@@ -1,6 +1,4 @@
-﻿#nullable enable
-
-using System;
+﻿using System;
 using ShtrihM.DemoServer.Processing.Model.Interfaces;
 using System.IO;
 using System.Runtime.CompilerServices;

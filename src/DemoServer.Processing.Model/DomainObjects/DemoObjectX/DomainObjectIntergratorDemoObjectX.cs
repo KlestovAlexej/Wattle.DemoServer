@@ -26,13 +26,13 @@ public sealed class DomainObjectIntergratorDemoObjectX : BaseDomainObjectIntergr
         var lockUpdate = entryPoint.UnitOfWorkLocks.GetLockService<IDomainObjectDemoObjectX>();
         var domainObjectActivator = 
             new DomainObjectActivatorDefault<DomainObjectDemoObjectX.Template, DomainObjectDemoObjectX>(
-                entryPoint.UnitOfWorkProvider, entryPoint, lockUpdate);
+                entryPoint.UnitOfWorkProvider, entryPoint.Context, lockUpdate);
         var domainObjectRegister
             = new DomainObjectRegisterDemoObjectX(
                 entryPoint,
                 dataMapper,
                 new DomainObjectDataActivatorForActualStateDtoDefault<DemoObjectXDtoActual, DomainObjectDemoObjectX>(
-                    entryPoint, lockUpdate),
+                    entryPoint.Context, lockUpdate),
                 domainObjectActivator);
         container.Resolve<DomainObjectRegisters>().AddRegister(domainObjectRegister);
 

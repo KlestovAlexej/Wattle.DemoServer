@@ -28,8 +28,8 @@ public class DomainObjectIntergratorDemoDelayTask : BaseDomainObjectIntergrator<
                 entryPoint.Context,
                 dataMapper,
                 new DomainObjectDataActivatorForActualStateDtoDefault<DemoDelayTaskDtoActual, DomainObjectDemoDelayTask>(
-                    entryPoint, lockUpdate),
+                    entryPoint.Context, lockUpdate),
                 new DomainObjectActivatorDefault<DomainObjectDemoDelayTask.Template, DomainObjectDemoDelayTask>(
-                    entryPoint.UnitOfWorkProvider, lockUpdate, entryPoint, lockUpdate)));
+                    entryPoint.UnitOfWorkProvider, lockUpdate, entryPoint.Context, lockUpdate)));
     }
 }

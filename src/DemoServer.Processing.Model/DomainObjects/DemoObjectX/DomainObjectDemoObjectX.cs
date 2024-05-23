@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
-using ShtrihM.DemoServer.Processing.Api.Common;
+﻿using ShtrihM.DemoServer.Processing.Api.Common;
 using ShtrihM.DemoServer.Processing.Common;
 using ShtrihM.DemoServer.Processing.Model.Interfaces;
 using ShtrihM.Wattle3.DomainObjects.DomainObjects;
@@ -9,19 +8,20 @@ using System;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 using ShtrihM.DemoServer.Processing.Generated.Interface;
 using ShtrihM.Wattle3.DomainObjects;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectActivators;
-using ShtrihM.DemoServer.Processing.Model.DomainObjects.Common;
 using ShtrihM.Wattle3.DomainObjects.UnitOfWorkLocks;
 using ShtrihM.Wattle3.Utils;
 using ShtrihM.Wattle3.Common.DomainObjects;
+using ShtrihM.Wattle3.DomainObjects.DomainObjects.BaseDomainObjects;
 
 namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
 
 [DomainObjectDataMapper]
 // ReSharper disable once ClassNeverInstantiated.Global
-public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutableWithUpdateLock<DomainObjectDemoObjectX>, IDomainObjectDemoObjectX,
+public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutableWithUpdateLock<DomainObjectDemoObjectX, IEntryPointContext<ICustomEntryPoint>>, IDomainObjectDemoObjectX,
     IDomainObjectActivatorPostCreate
 {
     #region AlternativeKey - альтернативный ключ объекта
@@ -106,9 +106,9 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutableWithUpdateL
     // ReSharper disable once UnusedMember.Global
     public DomainObjectDemoObjectX(
         DemoObjectXDtoActual data,
-        ICustomEntryPoint entryPoint,
+        IEntryPointContext<ICustomEntryPoint> entryPointContext,
         IDomainObjectUnitOfWorkLockService lockUpdate)
-        : base(entryPoint, data, lockUpdate)
+        : base(entryPointContext, data, lockUpdate)
     {
         CreateDate = data.CreateDate;
         ModificationDate = data.ModificationDate;
@@ -123,11 +123,11 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutableWithUpdateL
     public DomainObjectDemoObjectX(
         long identity,
         Template template,
-        ICustomEntryPoint entryPoint,
+        IEntryPointContext<ICustomEntryPoint> entryPointContext,
         IDomainObjectUnitOfWorkLockService lockUpdate)
-        : base(entryPoint, identity, lockUpdate)
+        : base(entryPointContext, identity, lockUpdate)
     {
-        CreateDate = m_entryPoint.TimeService.Now;
+        CreateDate = m_entryPointContext.TimeService.Now;
         ModificationDate = CreateDate;
         m_name = new MutableFieldStringLimitedEx(FieldsConstants.DemoObjectXNameMaxLength, template.Name);
         m_enabled = new MutableField<bool>(template.Enabled);
@@ -223,12 +223,12 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutableWithUpdateL
 
     public void Delete()
     {
-        m_entryPoint.CurrentUnitOfWork.AddDelete(this);
+        m_entryPointContext.EntryPoint.CurrentUnitOfWork.AddDelete(this);
     }
 
     protected override ValueTask DoUpdateAsync(CancellationToken cancellationToken = default)
     {
-        ModificationDate = m_entryPoint.TimeService.Now;
+        ModificationDate = m_entryPointContext.TimeService.Now;
 
         return base.DoUpdateAsync(cancellationToken);
     }
@@ -238,7 +238,7 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutableWithUpdateL
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void PostCreate()
     {
-        var unitOfWork = m_entryPoint.CurrentUnitOfWork;
+        var unitOfWork = m_entryPointContext.EntryPoint.CurrentUnitOfWork;
         var domainBehaviour = unitOfWork.CreateDomainBehaviourWithСonfirmation();
         unitOfWork.AddBehaviour(domainBehaviour);
 
@@ -247,7 +247,7 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutableWithUpdateL
         domainBehaviour.SetFailAll(
             () =>
             {
-                var logger = m_entryPoint.LoggerFactory.CreateLogger<DomainObjectDemoObjectX>();
+                var logger = m_entryPointContext.EntryPoint.LoggerFactory.CreateLogger<DomainObjectDemoObjectX>();
                 var messgae = $"Не удалось создать объект X с идентификатором '{identity}'.";
                 logger.LogError(messgae);
                 Console.WriteLine(messgae);
@@ -256,7 +256,7 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutableWithUpdateL
         domainBehaviour.SetSuccessfulAll(
             () =>
             {
-                var logger = m_entryPoint.LoggerFactory.CreateLogger<DomainObjectDemoObjectX>();
+                var logger = m_entryPointContext.EntryPoint.LoggerFactory.CreateLogger<DomainObjectDemoObjectX>();
                 var messgae = $"Создан объект X с идентификатором '{identity}'.";
                 logger.LogError(messgae);
                 Console.WriteLine(messgae);

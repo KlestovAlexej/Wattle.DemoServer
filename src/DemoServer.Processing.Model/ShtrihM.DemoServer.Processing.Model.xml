@@ -9,41 +9,6 @@
             Шаблон создания объекта <see cref="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.ChangeTracker.DomainObjectChangeTracker"/>.
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.Common.BaseDomainObjectMutable`1">
-            <summary>
-            Базовая реализация доменного объекта с поддержкой изменения.
-            </summary>
-        </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.DomainObjects.Common.BaseDomainObjectMutable`1.Version">
-            <summary>
-            Версия данных (инкрементальное значение от 1), чем больше значение тем актуальнее данные.
-            </summary>
-        </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Model.DomainObjects.Common.BaseDomainObjectMutable`1.DoUpdateAsync(System.Threading.CancellationToken)">
-            <summary>
-            Фиксация в <see cref="T:ShtrihM.Wattle3.DomainObjects.Interfaces.IUnitOfWork"/> изменений доменного объекта.
-            </summary>
-        </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Model.DomainObjects.Common.BaseDomainObjectMutable`1.DoCreateUnitOfWorkCommitVerifying">
-            <summary>
-            Создание специализированной стратегии <see cref="T:ShtrihM.Wattle3.DomainObjects.Interfaces.IUnitOfWorkCommitVerifying"/> проверки успешности завершения <see cref="T:ShtrihM.Wattle3.DomainObjects.Interfaces.IUnitOfWork" />.
-            </summary>
-        </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.Common.BaseDomainObjectMutableWithUpdateLock`1">
-            <summary>
-            Базовая реализация доменного объекта с поддержкой изменения и блокировкой на изменение.
-            </summary>
-        </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.Common.BaseDomainObjectMutableWithUpdateLockWithUpdateKey`1">
-            <summary>
-            Базовая реализация доменного объекта с поддержкой изменения и блокировкой на изменение и ключом контроля обновления.
-            </summary>
-        </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.Common.BaseDomainObjectWithVersion`1">
-            <summary>
-            Базовая реализация доменного объекта с версией.
-            </summary>
-        </member>
         <member name="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.DomainObjectDemoDelayTask.Template">
             <summary>
             Шаблон создания объекта <see cref="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.DomainObjectDemoDelayTask"/>.

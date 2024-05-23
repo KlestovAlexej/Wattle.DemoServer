@@ -54,7 +54,7 @@ public sealed class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
 {
     #region Private Class EntryPointContext
 
-    private class EntryPointContext : IEntryPointContext
+    private class EntryPointContext : IEntryPointContext<ICustomEntryPoint>
     {
         private readonly EntryPoint m_entryPoint;
 
@@ -70,6 +70,8 @@ public sealed class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
         public IWorkflowExceptionPolicy WorkflowExceptionPolicy => m_entryPoint.WorkflowExceptionPolicy;
         public ILoggerFactory LoggerFactory => m_entryPoint.LoggerFactory;
         public IMappers Mappers => m_entryPoint.Mappers;
+        public IUnitOfWorkCommitVerifyingFactory UnitOfWorkCommitVerifyingFactory => m_entryPoint.m_unitOfWorkCommitVerifyingFactory;
+        ICustomEntryPoint IEntryPointContext<ICustomEntryPoint>.EntryPoint => m_entryPoint;
 
         public string GetDisplayNameDomainObject(Guid typeId) => WellknownDomainObjectDisplayNames.DisplayNamesProvider(typeId);
     }
@@ -190,6 +192,7 @@ public sealed class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
     private PartitionsSponsor m_partitionsSponsor;
     private IQueueItemProcessor m_queueEmergencyDomainBehaviour;
     private readonly SystemSettingsLocal m_systemSettingsLocal;
+    private readonly UnitOfWorkCommitVerifyingFactory m_unitOfWorkCommitVerifyingFactory;
 
     static EntryPoint()
     {
@@ -232,6 +235,7 @@ public sealed class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
         LoggerFactory = loggerFactory;
         Context = new EntryPointContext(this);
         Tracer = tracer;
+        m_unitOfWorkCommitVerifyingFactory = new UnitOfWorkCommitVerifyingFactory(m_mappers);
 
         m_proxyDomainObjectRegisterFactories.AddFactories(GetType().Assembly);
         m_systemSettingsLocal = systemSettingsLocal;
@@ -255,9 +259,8 @@ public sealed class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
     public Tracer? Tracer { get; }
     public ILoggerFactory LoggerFactory { get; }
     public UnitOfWorkLocksHubTyped UnitOfWorkLocks { get; private set; }
-    public IEntryPointContext Context { get; }
+    public IEntryPointContext<ICustomEntryPoint> Context { get; }
     public IServiceProvider ServiceProvider { get; private set; }
-    public IUnitOfWorkCommitVerifyingFactory CommitVerifyingFactory { get; private set; }
     public AutoMapper.IMapper AutoMapper { get; private set; }
     public IDemoDelayTaskProcessor DemoDelayTaskProcessor { get; private set; }
     public ISmartJsonDeserializer JsonDeserializer { get; private set; }
@@ -579,7 +582,6 @@ public sealed class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
                 loggerFactory,
                 tracer,
                 systemSettingsLocal);
-        result.CommitVerifyingFactory = new UnitOfWorkCommitVerifyingFactory(result.m_mappers);
         exceptionPolicy.EntryPoint = result;
         result.ServiceProvider = serviceProvider;
 
@@ -685,7 +687,7 @@ public sealed class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
                 serviceProvider,
                 result.UnitOfWorkLocks.Hub,
                 result.m_queueEmergencyDomainBehaviour,
-                result.CommitVerifyingFactory,
+                result.Context.UnitOfWorkCommitVerifyingFactory,
                 () => DomainObjectChangeTracker.Template.Instance);
 
         return (result);

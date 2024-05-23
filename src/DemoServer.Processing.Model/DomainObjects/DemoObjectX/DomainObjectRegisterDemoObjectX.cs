@@ -293,7 +293,7 @@ public sealed class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithCo
             WellknownDomainObjectFields.DemoObjectX.NameAlternateKey,
             WellknownDomainObjectFields.DemoObjectX.NameCollection,
             DecodeDomainObject,
-            entryPoint.CommitVerifyingFactory,
+            entryPoint.Context.UnitOfWorkCommitVerifyingFactory,
             () => new ProxyDomainObjectRegister())
     {
     }

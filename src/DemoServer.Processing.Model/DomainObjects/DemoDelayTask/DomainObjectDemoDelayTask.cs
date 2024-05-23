@@ -4,13 +4,13 @@ using System.Threading;
 using System.Threading.Tasks;
 using ShtrihM.DemoServer.Processing.Common;
 using ShtrihM.DemoServer.Processing.Generated.Interface;
-using ShtrihM.DemoServer.Processing.Model.DomainObjects.Common;
 using ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios;
 using ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.ScenarioStates;
 using ShtrihM.DemoServer.Processing.Model.Interfaces;
 using ShtrihM.Wattle3.CodeGeneration.Generators;
 using ShtrihM.Wattle3.Common.Exceptions;
 using ShtrihM.Wattle3.DomainObjects.DomainObjects;
+using ShtrihM.Wattle3.DomainObjects.DomainObjects.BaseDomainObjects;
 using ShtrihM.Wattle3.DomainObjects.Interfaces;
 using ShtrihM.Wattle3.DomainObjects.Json;
 using ShtrihM.Wattle3.DomainObjects.UnitOfWorkLocks;
@@ -20,7 +20,7 @@ namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask;
 
 [DomainObjectDataMapper]
 // ReSharper disable once ClassNeverInstantiated.Global
-public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutableWithUpdateLock<DomainObjectDemoDelayTask>, IDomainObjectDemoDelayTask
+public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutableWithUpdateLock<DomainObjectDemoDelayTask, IEntryPointContext<ICustomEntryPoint>>, IDomainObjectDemoDelayTask
 {
     #region Template - шаблон создания объекта
 
@@ -68,9 +68,9 @@ public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutableWithUpdat
     // ReSharper disable once UnusedMember.Global
     public DomainObjectDemoDelayTask(
         DemoDelayTaskDtoActual data,
-        ICustomEntryPoint entryPoint,
+        IEntryPointContext<ICustomEntryPoint> entryPointContext,
         IDomainObjectUnitOfWorkLockService lockUpdate)
-        : base(entryPoint, data, lockUpdate)
+        : base(entryPointContext, data, lockUpdate)
     {
         m_available = new MutableField<bool>(data.Available);
         CreateDate = data.CreateDate;
@@ -84,7 +84,7 @@ public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutableWithUpdat
 
         m_scenarioState =
             new FieldWithModel<string, DemoCycleTaskScenarioState>(
-                m_entryPoint.JsonDeserializer,
+                m_entryPointContext.EntryPoint.JsonDeserializer,
                 new MutableField<string>(data.ScenarioState));
     }
 
@@ -93,17 +93,17 @@ public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutableWithUpdat
     public DomainObjectDemoDelayTask(
         long identity,
         Template template,
-        ICustomEntryPoint entryPoint,
+        IEntryPointContext<ICustomEntryPoint> entryPointContext,
         IDomainObjectUnitOfWorkLockService lockUpdate)
-        : base(entryPoint, identity, lockUpdate)
+        : base(entryPointContext, identity, lockUpdate)
     {
         m_available = new MutableField<bool>(true);
-        CreateDate = entryPoint.TimeService.Now;
+        CreateDate = m_entryPointContext.TimeService.Now;
         ModificationDate = CreateDate;
         Scenario = template.Scenario;
         m_startDate = new MutableFieldNullable<DateTimeOffset>(template.StartDate);
 
-        var scenario = m_entryPoint.JsonDeserializer.DeserializeReadOnly<DemoDelayTaskScenario>(Scenario);
+        var scenario = m_entryPointContext.EntryPoint.JsonDeserializer.DeserializeReadOnly<DemoDelayTaskScenario>(Scenario);
         var scenarioState = string.Empty;
 
         switch (scenario)
@@ -121,7 +121,7 @@ public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutableWithUpdat
                         Index = 0,
                         RunDate = [],
                     };
-                scenarioState = m_entryPoint.JsonDeserializer.SerializeReadOnly(scenarioStateAsCycle);
+                scenarioState = m_entryPointContext.EntryPoint.JsonDeserializer.SerializeReadOnly(scenarioStateAsCycle);
 
                 break;
             }
@@ -132,7 +132,7 @@ public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutableWithUpdat
 
         m_scenarioState =
             new FieldWithModel<string, DemoCycleTaskScenarioState>(
-                m_entryPoint.JsonDeserializer,
+                m_entryPointContext.EntryPoint.JsonDeserializer,
                 new MutableField<string>(scenarioState));
     }
 
@@ -181,7 +181,7 @@ public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutableWithUpdat
 
         if (isRemoved)
         {
-            Console.WriteLine($"[{m_entryPoint.TimeService.NowDateTime:O}] DemoDelayTask.Id:{Identity} - Удалена.");
+            Console.WriteLine($"[{m_entryPointContext.TimeService.NowDateTime:O}] DemoDelayTask.Id:{Identity} - Удалена.");
 
             m_available.SetValue(false);
         }
@@ -202,14 +202,14 @@ public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutableWithUpdat
 
     protected override ValueTask DoUpdateAsync(CancellationToken cancellationToken = default)
     {
-        ModificationDate = m_entryPoint.TimeService.Now;
+        ModificationDate = m_entryPointContext.TimeService.Now;
 
         return base.DoUpdateAsync(cancellationToken);
     }
 
     private async ValueTask DoRunScenarioAsync(long count, CancellationToken cancellationToken)
     {
-        var scenario = m_entryPoint.JsonDeserializer.DeserializeReadOnly<DemoDelayTaskScenario>(Scenario);
+        var scenario = m_entryPointContext.EntryPoint.JsonDeserializer.DeserializeReadOnly<DemoDelayTaskScenario>(Scenario);
 
         if (scenario is DemoDelayTaskScenarioAsDelay scenarioAsDelay)
         {
@@ -218,9 +218,9 @@ public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutableWithUpdat
                 throw new InternalException("Что-то сломалось, задача исполняется несколько раз.");
             }
 
-            Console.WriteLine($"[{m_entryPoint.TimeService.NowDateTime:O}] DemoDelayTask.Id:{Identity} ({scenarioAsDelay.Type}) - Начало ожидания '{scenarioAsDelay.Delay}' ...");
+            Console.WriteLine($"[{m_entryPointContext.TimeService.NowDateTime:O}] DemoDelayTask.Id:{Identity} ({scenarioAsDelay.Type}) - Начало ожидания '{scenarioAsDelay.Delay}' ...");
             await Task.Delay(scenarioAsDelay.Delay, cancellationToken).ConfigureAwait(false);
-            Console.WriteLine($"[{m_entryPoint.TimeService.NowDateTime:O}] DemoDelayTask.Id:{Identity} ({scenarioAsDelay.Type}) - Конец ожидания.");
+            Console.WriteLine($"[{m_entryPointContext.TimeService.NowDateTime:O}] DemoDelayTask.Id:{Identity} ({scenarioAsDelay.Type}) - Конец ожидания.");
 
             m_available.SetValue(false);
         }
@@ -233,13 +233,13 @@ public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutableWithUpdat
 
             var scenariostate = (DemoCycleTaskScenarioStateAsCycle)m_scenarioState.AsWrite;
 
-            Console.WriteLine($"[{m_entryPoint.TimeService.NowDateTime:O}] DemoDelayTask.Id:{Identity} ({scenarioAsCycle.Type}) - Начало исполнения '{scenariostate.Index}' ...");
+            Console.WriteLine($"[{m_entryPointContext.TimeService.NowDateTime:O}] DemoDelayTask.Id:{Identity} ({scenarioAsCycle.Type}) - Начало исполнения '{scenariostate.Index}' ...");
 
             if (scenariostate.Index < scenarioAsCycle.Count)
             {
                 scenariostate.Index++;
 
-                var now = m_entryPoint.TimeService.Now;
+                var now = m_entryPointContext.TimeService.Now;
                 scenariostate.RunDate.Add(now);
 
                 if (scenarioAsCycle.NextRunTimeout.HasValue)
@@ -254,7 +254,7 @@ public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutableWithUpdat
                 }
             }
 
-            Console.WriteLine($"[{m_entryPoint.TimeService.NowDateTime:O}] DemoDelayTask.Id:{Identity} ({scenarioAsCycle.Type}) - Конец исполнения '{scenariostate.Index}' [{(m_startDate.Value?.ToString("O") ?? "НЕТ ДАТЫ")}].");
+            Console.WriteLine($"[{m_entryPointContext.TimeService.NowDateTime:O}] DemoDelayTask.Id:{Identity} ({scenarioAsCycle.Type}) - Конец исполнения '{scenariostate.Index}' [{(m_startDate.Value?.ToString("O") ?? "НЕТ ДАТЫ")}].");
 
             m_available.SetValue(scenariostate.Index < scenarioAsCycle.Count);
         }

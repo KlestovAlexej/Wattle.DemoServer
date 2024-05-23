@@ -28,8 +28,8 @@ public sealed class DomainObjectIntergratorDemoObject : BaseDomainObjectIntergra
                 entryPoint.Context,
                 dataMapper,
                 new DomainObjectDataActivatorForActualStateDtoDefault<DemoObjectDtoActual, DomainObjectDemoObject>(
-                    entryPoint, lockUpdate),
+                    entryPoint.Context, lockUpdate),
                 new DomainObjectActivatorDefault<DomainObjectDemoObject.Template, DomainObjectDemoObject>(
-                    entryPoint.UnitOfWorkProvider, lockUpdate, entryPoint, lockUpdate)));
+                    entryPoint.UnitOfWorkProvider, lockUpdate, entryPoint.Context, lockUpdate)));
     }
 }

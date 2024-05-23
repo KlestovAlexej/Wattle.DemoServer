@@ -16,14 +16,14 @@ using ShtrihM.DemoServer.Processing.Generated.Interface;
 using ShtrihM.Wattle3.DomainObjects;
 using ShtrihM.Wattle3.DomainObjects.DomainObjectActivators;
 using ShtrihM.Wattle3.Primitives;
-using ShtrihM.DemoServer.Processing.Model.DomainObjects.Common;
 using ShtrihM.Wattle3.DomainObjects.UnitOfWorkLocks;
+using ShtrihM.Wattle3.DomainObjects.DomainObjects.BaseDomainObjects;
 
 namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObject;
 
 [DomainObjectDataMapper]
 // ReSharper disable once ClassNeverInstantiated.Global
-public sealed class DomainObjectDemoObject : BaseDomainObjectMutableWithUpdateLock<DomainObjectDemoObject>, IDomainObjectDemoObject, IDomainObjectActivatorPostCreate
+public sealed class DomainObjectDemoObject : BaseDomainObjectMutableWithUpdateLock<DomainObjectDemoObject, IEntryPointContext<ICustomEntryPoint>>, IDomainObjectDemoObject, IDomainObjectActivatorPostCreate
 {
     #region Template - шаблон создания объекта
 
@@ -71,9 +71,9 @@ public sealed class DomainObjectDemoObject : BaseDomainObjectMutableWithUpdateLo
     // ReSharper disable once UnusedMember.Global
     public DomainObjectDemoObject(
         DemoObjectDtoActual data,
-        ICustomEntryPoint entryPoint,
+        IEntryPointContext<ICustomEntryPoint> entryPointContext,
         IDomainObjectUnitOfWorkLockService lockUpdate)
-        : base(entryPoint, data, lockUpdate)
+        : base(entryPointContext, data, lockUpdate)
     {
         CreateDate = data.CreateDate.SpecifyKindLocal();
         ModificationDate = data.ModificationDate.SpecifyKindLocal();
@@ -85,11 +85,11 @@ public sealed class DomainObjectDemoObject : BaseDomainObjectMutableWithUpdateLo
     public DomainObjectDemoObject(
         long identity,
         Template template,
-        ICustomEntryPoint entryPoint,
+        IEntryPointContext<ICustomEntryPoint> entryPointContext,
         IDomainObjectUnitOfWorkLockService lockUpdate)
-        : base(entryPoint, identity, lockUpdate)
+        : base(entryPointContext, identity, lockUpdate)
     {
-        CreateDate = m_entryPoint.TimeService.NowDateTime;
+        CreateDate = m_entryPointContext.TimeService.NowDateTime;
         ModificationDate = CreateDate;
         m_name = new MutableFieldStringLimitedEx(FieldsConstants.DemoObjectNameMaxLength, template.Name);
         m_enabled = new MutableField<bool>(template.Enabled);
@@ -184,7 +184,7 @@ public sealed class DomainObjectDemoObject : BaseDomainObjectMutableWithUpdateLo
 
     protected override ValueTask DoUpdateAsync(CancellationToken cancellationToken = default)
     {
-        ModificationDate = m_entryPoint.TimeService.NowDateTime;
+        ModificationDate = m_entryPointContext.TimeService.NowDateTime;
 
         return base.DoUpdateAsync(cancellationToken);
     }
@@ -194,14 +194,14 @@ public sealed class DomainObjectDemoObject : BaseDomainObjectMutableWithUpdateLo
     public void PostCreate()
     {
         var identity = Identity;
-        var unitOfWork = m_entryPoint.CurrentUnitOfWork;
+        var unitOfWork = m_entryPointContext.EntryPoint.CurrentUnitOfWork;
         var domainBehaviour = unitOfWork.CreateDomainBehaviourWithСonfirmation();
         unitOfWork.AddBehaviour(domainBehaviour);
 
         domainBehaviour.SetFailAll(
             () =>
             {
-                var logger = m_entryPoint.LoggerFactory.CreateLogger<DomainObjectDemoObject>();
+                var logger = m_entryPointContext.EntryPoint.LoggerFactory.CreateLogger<DomainObjectDemoObject>();
                 var messgae = $"Не удалось создать объект с идентификатором '{identity}'.";
                 logger.LogError(messgae);
                 Console.WriteLine(messgae);
@@ -210,7 +210,7 @@ public sealed class DomainObjectDemoObject : BaseDomainObjectMutableWithUpdateLo
         domainBehaviour.SetSuccessfulAll(
             () =>
             {
-                var logger = m_entryPoint.LoggerFactory.CreateLogger<DomainObjectDemoObject>();
+                var logger = m_entryPointContext.EntryPoint.LoggerFactory.CreateLogger<DomainObjectDemoObject>();
                 var messgae = $"Создан объект с идентификатором '{identity}'.";
                 logger.LogError(messgae);
                 Console.WriteLine(messgae);
