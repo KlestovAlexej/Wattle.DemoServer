@@ -70,7 +70,7 @@ public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutableWithUpdat
         DemoDelayTaskDtoActual data,
         IEntryPointContext<ICustomEntryPoint> entryPointContext,
         IDomainObjectUnitOfWorkLockService lockUpdate)
-        : base(entryPointContext, data, lockUpdate)
+        : base(entryPointContext, data, lockUpdate, true)
     {
         m_available = new MutableField<bool>(data.Available);
         CreateDate = data.CreateDate;
@@ -95,7 +95,7 @@ public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutableWithUpdat
         Template template,
         IEntryPointContext<ICustomEntryPoint> entryPointContext,
         IDomainObjectUnitOfWorkLockService lockUpdate)
-        : base(entryPointContext, identity, lockUpdate)
+        : base(entryPointContext, identity, lockUpdate, true)
     {
         m_available = new MutableField<bool>(true);
         CreateDate = m_entryPointContext.TimeService.Now;

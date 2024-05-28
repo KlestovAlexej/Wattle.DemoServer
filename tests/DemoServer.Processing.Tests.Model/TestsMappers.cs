@@ -22,7 +22,7 @@ public class TestsMappers : BaseTestsWithEntryPoint
             var mapper = m_entryPoint.Mappers.GetMapper(id);
             var infrastructureMonitor = mapper.InfrastructureMonitor;
             Assert.IsNotNull(infrastructureMonitor, id.ToString());
-            Assert.IsNotNull(infrastructureMonitor.MapperId, id.ToString());
+            Assert.IsNotNull(infrastructureMonitor!.MapperId, id.ToString());
         }
     }
 }

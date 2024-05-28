@@ -87,7 +87,7 @@ public sealed class DomainObjectDemoObject : BaseDomainObjectMutableWithUpdateLo
         Template template,
         IEntryPointContext<ICustomEntryPoint> entryPointContext,
         IDomainObjectUnitOfWorkLockService lockUpdate)
-        : base(entryPointContext, identity, lockUpdate)
+        : base(entryPointContext, identity, lockUpdate, true)
     {
         CreateDate = m_entryPointContext.TimeService.NowDateTime;
         ModificationDate = CreateDate;
