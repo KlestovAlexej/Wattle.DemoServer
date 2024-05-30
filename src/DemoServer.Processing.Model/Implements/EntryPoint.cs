@@ -169,7 +169,7 @@ public sealed class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
 
     #endregion
 
-    #region Private Class InfrastructureMonitorCustomEntryPoint
+    #region Private Class TemplateMetaServerDescription
 
     private class TemplateMetaServerDescription
     {
