@@ -19,8 +19,8 @@
 	<ItemGroup>
 		<PackageReference Include="RestSharp" Version="111.2.0" />
 		<PackageReference Include="RestSharp.Serializers.NewtonsoftJson" Version="111.2.0" />
-		<PackageReference Include="ShtrihM.Wattle3.Common" Version="3.9.0.3973" />
-		<PackageReference Include="ShtrihM.Wattle3.Json" Version="3.9.0.3973" />
+		<PackageReference Include="ShtrihM.Wattle3.Common" Version="3.9.0.3980" />
+		<PackageReference Include="ShtrihM.Wattle3.Json" Version="3.9.0.3980" />
 	</ItemGroup>
 
 	<ItemGroup>
