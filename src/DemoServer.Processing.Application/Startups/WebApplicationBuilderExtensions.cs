@@ -42,6 +42,7 @@ using Microsoft.OpenApi.Models;
 using ShtrihM.Wattle3.Utils;
 using Constants = ShtrihM.DemoServer.Common.Constants;
 using ILogger = Microsoft.Extensions.Logging.ILogger;
+using ShtrihM.DemoServer.Processing.Application.Startups.HealthChecks;
 
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 

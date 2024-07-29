@@ -3,29 +3,49 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Swashbuckle.AspNetCore.SwaggerGen;
-using System;
 using System.IO;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
-namespace ShtrihM.DemoServer.Processing.Application.Startups;
+namespace ShtrihM.DemoServer.Processing.Application.Startups.HealthChecks;
 
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
 public static class HealthCheckExtensions
 {
-    public const string Path = "/health";
+    public const string PathLive = "/health/live";
+    public const string PathReady = "/health/ready";
+    public const string PathGlobalReady = "/health/ready/full";
 
     public static WebApplication UseCustomHealthCheck(this WebApplication builder)
     {
         builder.MapHealthChecks(
-            Path,
+            PathLive,
             new HealthCheckOptions
             {
                 AllowCachingResponses = false,
-                ResponseWriter = WriteResponse
+                ResponseWriter = WriteResponse,
+                Predicate = _ => false
+            });
+
+        builder.MapHealthChecks(
+            PathReady,
+            new HealthCheckOptions
+            {
+                AllowCachingResponses = false,
+                ResponseWriter = WriteResponse,
+                Predicate = healthCheck => healthCheck.Tags.Contains("ready")
+            });
+
+        builder.MapHealthChecks(
+            PathGlobalReady,
+            new HealthCheckOptions
+            {
+                AllowCachingResponses = false,
+                ResponseWriter = WriteResponse,
+                Predicate = healthCheck => healthCheck.Tags.Contains("globalready")
             });
 
         return builder;
@@ -33,12 +53,22 @@ public static class HealthCheckExtensions
 
     // ReSharper disable once UnusedMethodReturnValue.Global
     public static WebApplicationBuilder AddCustomHealthCheck(
-        this WebApplicationBuilder builder,
-        string name = "Entrypoint")
+        this WebApplicationBuilder builder)
     {
+
+        builder.Services.AddHostedService<EntryPointReadyBackgroundService>();
+        builder.Services.AddSingleton<EntryPointReadyHealthCheck>();
+
         builder.Services
             .AddHealthChecks()
-            .AddCheck<HealthCheck>(name, failureStatus: HealthStatus.Degraded, timeout: TimeSpan.FromSeconds(1));
+            .AddCheck<EntryPointReadyHealthCheck>("Ready", tags: ["ready"]);
+
+        builder.Services.AddHostedService<EntryPointGlobalReadyBackgroundService>();
+        builder.Services.AddSingleton<EntryPointGlobalReadyHealthCheck>();
+
+        builder.Services
+            .AddHealthChecks()
+            .AddCheck<EntryPointGlobalReadyHealthCheck>("ReadyFull", tags: ["globalready"]);
 
         builder.Services.Configure<SwaggerGenOptions>(
             options =>
