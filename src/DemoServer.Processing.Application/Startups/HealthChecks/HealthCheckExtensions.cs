@@ -28,7 +28,8 @@ public static class HealthCheckExtensions
                 AllowCachingResponses = false,
                 ResponseWriter = WriteResponse,
                 Predicate = _ => false
-            });
+            })
+            .ShortCircuit();
 
         builder.MapHealthChecks(
             PathReady,
@@ -37,7 +38,8 @@ public static class HealthCheckExtensions
                 AllowCachingResponses = false,
                 ResponseWriter = WriteResponse,
                 Predicate = healthCheck => healthCheck.Tags.Contains("ready")
-            });
+            })
+            .ShortCircuit();
 
         builder.MapHealthChecks(
             PathGlobalReady,
@@ -46,7 +48,8 @@ public static class HealthCheckExtensions
                 AllowCachingResponses = false,
                 ResponseWriter = WriteResponse,
                 Predicate = healthCheck => healthCheck.Tags.Contains("globalready")
-            });
+            })
+            .ShortCircuit();
 
         return builder;
     }
