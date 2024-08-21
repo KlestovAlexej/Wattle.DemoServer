@@ -17,7 +17,7 @@ public sealed class DemoObjectInfo
     /// </summary>
     [JsonRequired]
     [Description("Идентификатор")]
-    public long Id;
+    public required long Id { get; init; }
 
     /// <summary>
     /// Название.
@@ -25,12 +25,12 @@ public sealed class DemoObjectInfo
     [JsonRequired] 
     [Description("Название")] 
     [StringLength(FieldsConstants.DemoObjectNameMaxLength)]
-    public string Name;
+    public required string Name { get; init; }
 
     /// <summary>
     /// Признак разрешения работы.
     /// </summary>
     [JsonRequired]
     [Description("Признак разрешения работы")]
-    public bool Enabled;
+    public required bool Enabled { get; init; }
 }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
@@ -15,11 +16,11 @@ public static class WellknownCommonSystemSettings
     /// <summary>
     /// Все идентификаторы стандартных, общих для всех систем настроек и их описания.
     /// </summary>
-    private static readonly IReadOnlyDictionary<Guid, string> DisplayNames;
+    private static readonly IReadOnlyDictionary<Guid, string>? DisplayNames;
 
     static WellknownCommonSystemSettings()
     {
-        WellknowConstantsHelper.CollectDisplayNames(out DisplayNames, MethodBase.GetCurrentMethod()!.DeclaringType);
+        WellknowConstantsHelper.CollectDisplayNames(out DisplayNames, MethodBase.GetCurrentMethod()!.DeclaringType!);
     }
 
     /// <summary>
@@ -43,6 +44,8 @@ public static class WellknownCommonSystemSettings
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static string GetDisplayName(Guid id)
     {
+        Debug.Assert(DisplayNames != null, nameof(DisplayNames) + " != null");
+
         if (DisplayNames.TryGetValue(id, out var result))
         {
             return (result);

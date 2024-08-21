@@ -1,6 +1,7 @@
 ﻿using ShtrihM.Wattle3.Primitives;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
@@ -16,11 +17,11 @@ public static class WellknownSytemLogTypes
     /// <summary>
     /// Все типы событий системного лога и их описание.
     /// </summary>
-    private static readonly IReadOnlyDictionary<int, string> DisplayNames;
+    private static readonly IReadOnlyDictionary<int, string>? DisplayNames;
 
     static WellknownSytemLogTypes()
     {
-        WellknowConstantsHelper.CollectDisplayNames(out DisplayNames, MethodBase.GetCurrentMethod()!.DeclaringType);
+        WellknowConstantsHelper.CollectDisplayNames(out DisplayNames, MethodBase.GetCurrentMethod()!.DeclaringType!);
     }
 
     /// <summary>
@@ -51,6 +52,8 @@ public static class WellknownSytemLogTypes
     // ReSharper disable once UnusedMember.Global
     public static string GetDisplayName(int id)
     {
+        Debug.Assert(DisplayNames != null, nameof(DisplayNames) + " != null");
+
         if (DisplayNames.TryGetValue(id, out var result))
         {
             return (result);

@@ -17,12 +17,12 @@ public sealed class DemoObjectUpdate
     /// </summary>
     [JsonRequired]
     [Description("Идентификатор")]
-    public long Id;
+    public required long Id { get; init; }
 
     /// <summary>
     /// Значения полей объекта для обновления.
     /// </summary>
     [JsonRequired]
     [Description("Значения полей объекта для обновления")]
-    public List<BaseDemoObjectUpdateFieldValue> Fields;
+    public required List<BaseDemoObjectUpdateFieldValue> Fields { get; init; }
 }

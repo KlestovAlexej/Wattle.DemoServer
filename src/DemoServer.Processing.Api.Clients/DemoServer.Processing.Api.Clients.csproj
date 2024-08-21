@@ -17,10 +17,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="RestSharp" Version="111.4.0" />
-		<PackageReference Include="RestSharp.Serializers.NewtonsoftJson" Version="111.4.0" />
-		<PackageReference Include="ShtrihM.Wattle3.Common" Version="3.9.0.4062" />
-		<PackageReference Include="ShtrihM.Wattle3.Json" Version="3.9.0.4062" />
+		<PackageReference Include="RestSharp" Version="111.4.1" />
+		<PackageReference Include="RestSharp.Serializers.NewtonsoftJson" Version="111.4.1" />
+		<PackageReference Include="ShtrihM.Wattle3.Common" Version="3.9.0.4081" />
+		<PackageReference Include="ShtrihM.Wattle3.Json" Version="3.9.0.4081" />
 	</ItemGroup>
 
 	<ItemGroup>

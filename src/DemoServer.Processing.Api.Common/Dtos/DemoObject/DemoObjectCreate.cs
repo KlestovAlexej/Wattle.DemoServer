@@ -18,12 +18,12 @@ public sealed class DemoObjectCreate
     [JsonRequired]
     [Description("Название")]
     [StringLength(FieldsConstants.DemoObjectNameMaxLength)]
-    public string Name;
+    public required string Name { get; init; }
 
     /// <summary>
     /// Признак разрешения работы.
     /// </summary>
     [JsonRequired]
     [Description("Признак разрешения работы")]
-    public bool Enabled;
+    public required bool Enabled { get; init; }
 }

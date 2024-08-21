@@ -22,5 +22,5 @@ public sealed class DemoObjectUpdateFieldValueOfEnabled : BaseDemoObjectUpdateFi
     /// </summary>
     [JsonRequired]
     [Description("Признак разрешения работы")]
-    public bool Enabled;
+    public required bool Enabled { get; init; }
 }

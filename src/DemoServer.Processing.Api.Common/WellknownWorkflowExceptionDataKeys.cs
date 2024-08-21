@@ -1,6 +1,7 @@
 ﻿using ShtrihM.Wattle3.Primitives;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
@@ -14,11 +15,11 @@ public static class WellknownWorkflowExceptionDataKeys
     /// <summary>
     /// Все ключи с описаниями.
     /// </summary>
-    private static readonly IReadOnlyDictionary<string, string> DisplayNames;
+    private static readonly IReadOnlyDictionary<string, string>? DisplayNames;
 
     static WellknownWorkflowExceptionDataKeys()
     {
-        WellknowConstantsHelper.CollectDisplayNames(out DisplayNames, MethodBase.GetCurrentMethod()!.DeclaringType);
+        WellknowConstantsHelper.CollectDisplayNames(out DisplayNames, MethodBase.GetCurrentMethod()!.DeclaringType!);
     }
 
     /// <summary>
@@ -48,6 +49,8 @@ public static class WellknownWorkflowExceptionDataKeys
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static string GetDisplayName(string id)
     {
+        Debug.Assert(DisplayNames != null, nameof(DisplayNames) + " != null");
+
         if (DisplayNames.TryGetValue(id, out var str))
         {
             return str;

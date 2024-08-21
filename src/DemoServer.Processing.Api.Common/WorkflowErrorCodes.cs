@@ -3,6 +3,7 @@ using ShtrihM.Wattle3.Primitives;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Globalization;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -17,23 +18,23 @@ public static class WorkflowErrorCodes
     /// <summary>
     /// Все коды ошибок с описаниями.
     /// </summary>
-    public static readonly IReadOnlyDictionary<int, string> DisplayNames;
+    public static readonly IReadOnlyDictionary<int, string>? DisplayNames;
 
     /// <summary>
     /// Все коды ошибок с уровнями серьезности.
     /// </summary>
-    public static readonly IReadOnlyDictionary<int, int> Severities;
+    public static readonly IReadOnlyDictionary<int, int>? Severities;
 
     /// <summary>
     /// Коды ошибок с замечаниями.
     /// </summary>
-    public static readonly IReadOnlyDictionary<int, string> Remarks;
+    public static readonly IReadOnlyDictionary<int, string>? Remarks;
 
     static WorkflowErrorCodes()
     {
-        WellknowConstantsHelper.CollectDisplayNames(out DisplayNames, MethodBase.GetCurrentMethod()!.DeclaringType);
-        WorkflowExceptionErrorSeverityAttribute.CollectSeverities(out Severities, MethodBase.GetCurrentMethod()!.DeclaringType);
-        WellknowConstantsHelper.CollectRemarks(out Remarks, MethodBase.GetCurrentMethod()!.DeclaringType);
+        WellknowConstantsHelper.CollectDisplayNames(out DisplayNames, MethodBase.GetCurrentMethod()!.DeclaringType!);
+        WorkflowExceptionErrorSeverityAttribute.CollectSeverities(out Severities, MethodBase.GetCurrentMethod()!.DeclaringType!);
+        WellknowConstantsHelper.CollectRemarks(out Remarks, MethodBase.GetCurrentMethod()!.DeclaringType!);
     }
 
     /// <summary>
@@ -65,6 +66,8 @@ public static class WorkflowErrorCodes
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static string GetDisplayName(int id)
     {
+        Debug.Assert(DisplayNames != null, nameof(DisplayNames) + " != null");
+
         if (DisplayNames.TryGetValue(id, out var result))
         {
             return (result);
@@ -82,6 +85,8 @@ public static class WorkflowErrorCodes
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static int GetSeverity(int id)
     {
+        Debug.Assert(Severities != null, nameof(Severities) + " != null");
+
         if (Severities.TryGetValue(id, out var result))
         {
             return (result);

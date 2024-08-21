@@ -28,13 +28,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="ShtrihM.Wattle3.CodeGeneration.Generator.Interfaces" Version="3.9.0.4062">
+		<PackageReference Include="ShtrihM.Wattle3.CodeGeneration.Generator.Interfaces" Version="3.9.0.4081">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 			<TreatAsUsed>true</TreatAsUsed>
 		</PackageReference>
-		<PackageReference Include="ShtrihM.Wattle3.Mappers.Interfaces" Version="3.9.0.4062" />
-		<PackageReference Include="ShtrihM.Wattle3.Mappers.PostgreSql" Version="3.9.0.4062" />
+		<PackageReference Include="ShtrihM.Wattle3.Mappers.Interfaces" Version="3.9.0.4081" />
+		<PackageReference Include="ShtrihM.Wattle3.Mappers.PostgreSql" Version="3.9.0.4081" />
 	</ItemGroup>
 
 	<ItemGroup>

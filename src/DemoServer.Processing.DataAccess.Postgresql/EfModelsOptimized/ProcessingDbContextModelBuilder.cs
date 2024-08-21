@@ -77,7 +77,7 @@ namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModelsOptimized
 
             AddAnnotation("Relational:Sequences", sequences);
             AddAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-            AddAnnotation("ProductVersion", "8.0.2");
+            AddAnnotation("ProductVersion", "8.0.8");
             AddAnnotation("Relational:MaxIdentifierLength", 63);
             AddRuntimeAnnotation("Relational:RelationalModel", CreateRelationalModel());
         }

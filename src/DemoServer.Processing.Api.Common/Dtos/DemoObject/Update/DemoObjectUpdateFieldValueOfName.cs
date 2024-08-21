@@ -26,5 +26,5 @@ public sealed class DemoObjectUpdateFieldValueOfName : BaseDemoObjectUpdateField
     [JsonRequired]
     [Description("Название")]
     [StringLength(FieldsConstants.DemoObjectNameMaxLength)]
-    public string Name;
+    public required string Name { get; init; }
 }

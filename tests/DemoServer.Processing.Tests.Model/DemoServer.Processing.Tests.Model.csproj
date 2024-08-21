@@ -11,9 +11,9 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.10.0" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.0" />
 		<PackageReference Include="NUnit3TestAdapter" Version="4.6.0" />
-		<PackageReference Include="ShtrihM.Wattle3.Testing.DomainObjects" Version="3.9.0.4062" />
+		<PackageReference Include="ShtrihM.Wattle3.Testing.DomainObjects" Version="3.9.0.4081" />
 		<PackageReference Include="System.Linq.Async" Version="6.0.1" />
 	</ItemGroup>
 

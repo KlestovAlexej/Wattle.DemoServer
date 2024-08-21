@@ -52,6 +52,6 @@ public static class WellknownCommonSnapShotInfrastructureMonitorValues
 
         ThrowsHelper.ThrowInvalidOperationException($"Описание '{id}' не найдено.");
 
-        return default;
+        return default!;
     }
 }
