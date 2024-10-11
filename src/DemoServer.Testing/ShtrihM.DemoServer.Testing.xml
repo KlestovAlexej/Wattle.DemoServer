@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>ShtrihM.DemoServer.Testing</name>
+        <name>Acme.DemoServer.Testing</name>
     </assembly>
     <members>
-        <member name="F:ShtrihM.DemoServer.Testing.Loggers.LoggerSerilog.EnvironmentVariableAsLogsDir">
+        <member name="F:Acme.DemoServer.Testing.Loggers.LoggerSerilog.EnvironmentVariableAsLogsDir">
             <summary>
             Путь хранения логов приложения.
             </summary>

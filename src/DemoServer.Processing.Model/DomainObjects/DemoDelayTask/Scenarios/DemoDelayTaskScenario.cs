@@ -5,9 +5,9 @@ using System.Runtime.CompilerServices;
 using JsonSubTypes;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using ShtrihM.Wattle3.Json;
+using Acme.Wattle.Json;
 
-namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios;
+namespace Acme.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios;
 
 /// <summary>
 /// Сценарий задачи с отложенным запуском.

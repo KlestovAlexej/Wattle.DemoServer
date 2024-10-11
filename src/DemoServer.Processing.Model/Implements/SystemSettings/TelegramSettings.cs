@@ -1,8 +1,8 @@
-﻿using ShtrihM.Wattle3.Json;
+﻿using Acme.Wattle.Json;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 
-namespace ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
+namespace Acme.DemoServer.Processing.Model.Implements.SystemSettings;
 
 /// <summary>
 /// Настройки Telegram.

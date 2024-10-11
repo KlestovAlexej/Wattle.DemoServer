@@ -1,11 +1,11 @@
-﻿using ShtrihM.DemoServer.Processing.Api.Common;
-using ShtrihM.Wattle3.Common.Exceptions;
-using ShtrihM.Wattle3.DomainObjects.Common;
+﻿using Acme.DemoServer.Processing.Api.Common;
+using Acme.Wattle.Common.Exceptions;
+using Acme.Wattle.DomainObjects.Common;
 using System.Globalization;
 using System.Runtime.CompilerServices;
-using ShtrihM.Wattle3.Swashbuckle.AspNetCore;
+using Acme.Wattle.Swashbuckle.AspNetCore;
 
-namespace ShtrihM.DemoServer.Processing.Model.Implements;
+namespace Acme.DemoServer.Processing.Model.Implements;
 
 public sealed class WorkflowExceptionPolicy() : DefaultWorkflowExceptionPolicy(CommonWorkflowExceptionErrorCodesBuilder.New())
 {

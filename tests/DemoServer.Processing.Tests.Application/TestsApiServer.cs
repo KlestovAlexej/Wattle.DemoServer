@@ -1,15 +1,15 @@
 ﻿using NUnit.Framework;
-using ShtrihM.DemoServer.Processing.Api.Clients;
-using ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update;
-using ShtrihM.DemoServer.Testing;
-using ShtrihM.Wattle3.Testing;
-using ShtrihM.Wattle3.Utils;
+using Acme.DemoServer.Processing.Api.Clients;
+using Acme.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update;
+using Acme.DemoServer.Testing;
+using Acme.Wattle.Testing;
+using Acme.Wattle.Utils;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-using ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject;
+using Acme.DemoServer.Processing.Api.Common.Dtos.DemoObject;
 
-namespace ShtrihM.DemoServer.Processing.Tests.Application;
+namespace Acme.DemoServer.Processing.Tests.Application;
 
 [TestFixture]
 public class TestsApiServer : BaseSlimTests

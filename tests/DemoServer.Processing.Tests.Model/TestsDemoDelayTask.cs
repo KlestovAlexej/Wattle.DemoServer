@@ -2,21 +2,21 @@
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using NUnit.Framework;
-using ShtrihM.DemoServer.Processing.Tests.Model.Environment;
-using ShtrihM.Wattle3.DomainObjects.Interfaces;
-using ShtrihM.Wattle3.Testing;
+using Acme.DemoServer.Processing.Tests.Model.Environment;
+using Acme.Wattle.DomainObjects.Interfaces;
+using Acme.Wattle.Testing;
 using System.Threading.Tasks;
-using ShtrihM.DemoServer.Processing.Generated.Interface;
-using ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios;
-using ShtrihM.Wattle3.Common.Exceptions;
-using ShtrihM.Wattle3.Json.Extensions;
-using ShtrihM.Wattle3.Utils;
-using ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.ScenarioStates;
-using ShtrihM.DemoServer.Processing.Model.Implements;
-using ShtrihM.DemoServer.Processing.Model.Interfaces;
+using Acme.DemoServer.Processing.Generated.Interface;
+using Acme.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios;
+using Acme.Wattle.Common.Exceptions;
+using Acme.Wattle.Json.Extensions;
+using Acme.Wattle.Utils;
+using Acme.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.ScenarioStates;
+using Acme.DemoServer.Processing.Model.Implements;
+using Acme.DemoServer.Processing.Model.Interfaces;
 using System.Threading;
 
-namespace ShtrihM.DemoServer.Processing.Tests.Model;
+namespace Acme.DemoServer.Processing.Tests.Model;
 
 [TestFixture]
 [SuppressMessage("ReSharper", "AccessToDisposedClosure")]

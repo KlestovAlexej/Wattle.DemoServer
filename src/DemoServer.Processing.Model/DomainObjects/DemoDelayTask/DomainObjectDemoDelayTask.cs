@@ -2,21 +2,21 @@
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
-using ShtrihM.DemoServer.Processing.Common;
-using ShtrihM.DemoServer.Processing.Generated.Interface;
-using ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios;
-using ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.ScenarioStates;
-using ShtrihM.DemoServer.Processing.Model.Interfaces;
-using ShtrihM.Wattle3.CodeGeneration.Generators;
-using ShtrihM.Wattle3.Common.Exceptions;
-using ShtrihM.Wattle3.DomainObjects.DomainObjects;
-using ShtrihM.Wattle3.DomainObjects.DomainObjects.BaseDomainObjects;
-using ShtrihM.Wattle3.DomainObjects.Interfaces;
-using ShtrihM.Wattle3.DomainObjects.Json;
-using ShtrihM.Wattle3.DomainObjects.UnitOfWorkLocks;
-using ShtrihM.Wattle3.Mappers.Primitives.MutableFields;
+using Acme.DemoServer.Processing.Common;
+using Acme.DemoServer.Processing.Generated.Interface;
+using Acme.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios;
+using Acme.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.ScenarioStates;
+using Acme.DemoServer.Processing.Model.Interfaces;
+using Acme.Wattle.CodeGeneration.Generators;
+using Acme.Wattle.Common.Exceptions;
+using Acme.Wattle.DomainObjects.DomainObjects;
+using Acme.Wattle.DomainObjects.DomainObjects.BaseDomainObjects;
+using Acme.Wattle.DomainObjects.Interfaces;
+using Acme.Wattle.DomainObjects.Json;
+using Acme.Wattle.DomainObjects.UnitOfWorkLocks;
+using Acme.Wattle.Mappers.Primitives.MutableFields;
 
-namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask;
+namespace Acme.DemoServer.Processing.Model.DomainObjects.DemoDelayTask;
 
 [DomainObjectDataMapper]
 // ReSharper disable once ClassNeverInstantiated.Global

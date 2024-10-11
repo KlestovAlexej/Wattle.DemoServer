@@ -1,10 +1,10 @@
 ﻿using Microsoft.Extensions.Logging;
-using ShtrihM.DemoServer.Common;
+using Acme.DemoServer.Common;
 using System;
 using System.IO;
 using System.Linq;
 
-namespace ShtrihM.DemoServer.Processing.Application.Startups;
+namespace Acme.DemoServer.Processing.Application.Startups;
 
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 

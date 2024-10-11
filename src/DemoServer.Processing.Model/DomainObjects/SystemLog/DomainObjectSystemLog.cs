@@ -1,12 +1,12 @@
-﻿using ShtrihM.DemoServer.Processing.Common;
-using ShtrihM.DemoServer.Processing.Model.Interfaces;
-using ShtrihM.Wattle3.DomainObjects.DomainObjects;
-using ShtrihM.Wattle3.DomainObjects.Interfaces;
+﻿using Acme.DemoServer.Processing.Common;
+using Acme.DemoServer.Processing.Model.Interfaces;
+using Acme.Wattle.DomainObjects.DomainObjects;
+using Acme.Wattle.DomainObjects.Interfaces;
 using System;
 using System.Runtime.CompilerServices;
-using ShtrihM.DemoServer.Processing.Generated.Interface;
+using Acme.DemoServer.Processing.Generated.Interface;
 
-namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.SystemLog;
+namespace Acme.DemoServer.Processing.Model.DomainObjects.SystemLog;
 
 [DomainObjectDataMapper]
 // ReSharper disable once ClassNeverInstantiated.Global

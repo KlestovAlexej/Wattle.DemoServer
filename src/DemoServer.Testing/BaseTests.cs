@@ -1,13 +1,13 @@
 ﻿using NUnit.Framework;
-using ShtrihM.Wattle3.Testing;
+using Acme.Wattle.Testing;
 using System.Globalization;
 using System.Text;
 
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
-namespace ShtrihM.DemoServer.Testing;
+namespace Acme.DemoServer.Testing;
 
-public class BaseTests : Wattle3.Testing.BaseTests
+public class BaseTests : Wattle.Testing.BaseTests
 {
     public const string Configuration =
 #if RELEASE

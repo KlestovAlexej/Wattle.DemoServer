@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Http;
 using OpenTelemetry.Trace;
-using ShtrihM.DemoServer.Processing.Api.Common;
-using ShtrihM.DemoServer.Processing.Model.Implements;
-using ShtrihM.DemoServer.Processing.Model.Interfaces;
-using ShtrihM.Wattle3.Common.Exceptions;
-using ShtrihM.Wattle3.DomainObjects.Interfaces;
-using ShtrihM.Wattle3.Json.Extensions;
-using ShtrihM.Wattle3.OpenTelemetry;
+using Acme.DemoServer.Processing.Api.Common;
+using Acme.DemoServer.Processing.Model.Implements;
+using Acme.DemoServer.Processing.Model.Interfaces;
+using Acme.Wattle.Common.Exceptions;
+using Acme.Wattle.DomainObjects.Interfaces;
+using Acme.Wattle.Json.Extensions;
+using Acme.Wattle.OpenTelemetry;
 using System;
 using System.Net;
 using System.Threading.Tasks;
@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 #pragma warning disable IDE0290
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
-namespace ShtrihM.DemoServer.Processing.Application.Startups;
+namespace Acme.DemoServer.Processing.Application.Startups;
 
 public class ExceptionMiddleware
 {

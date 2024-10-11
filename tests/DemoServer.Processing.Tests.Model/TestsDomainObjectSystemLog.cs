@@ -1,14 +1,14 @@
 ﻿using NUnit.Framework;
-using ShtrihM.DemoServer.Processing.Common;
-using ShtrihM.DemoServer.Processing.Model.Interfaces;
-using ShtrihM.DemoServer.Processing.Tests.Model.Environment;
-using ShtrihM.Wattle3.DomainObjects.Interfaces;
-using ShtrihM.Wattle3.Testing;
+using Acme.DemoServer.Processing.Common;
+using Acme.DemoServer.Processing.Model.Interfaces;
+using Acme.DemoServer.Processing.Tests.Model.Environment;
+using Acme.Wattle.DomainObjects.Interfaces;
+using Acme.Wattle.Testing;
 using System.Linq;
 using System.Threading.Tasks;
-using ShtrihM.DemoServer.Processing.Model.DomainObjects.SystemLog;
+using Acme.DemoServer.Processing.Model.DomainObjects.SystemLog;
 
-namespace ShtrihM.DemoServer.Processing.Tests.Model;
+namespace Acme.DemoServer.Processing.Tests.Model;
 
 [TestFixture]
 public class TestsDomainObjectSystemLog : BaseTestsDomainObjects

@@ -1,23 +1,23 @@
-﻿using ShtrihM.DemoServer.Processing.Common;
-using ShtrihM.DemoServer.Processing.DataAccess.Interface;
-using ShtrihM.DemoServer.Processing.DataAccess.PostgreSql;
-using ShtrihM.DemoServer.Processing.Generated.Interface;
-using ShtrihM.Wattle3.DomainObjects;
-using ShtrihM.Wattle3.Mappers;
-using ShtrihM.Wattle3.Mappers.Interfaces;
-using ShtrihM.Wattle3.Mappers.PostgreSql;
-using ShtrihM.Wattle3.Primitives;
-using ShtrihM.Wattle3.Utils;
+﻿using Acme.DemoServer.Processing.Common;
+using Acme.DemoServer.Processing.DataAccess.Interface;
+using Acme.DemoServer.Processing.DataAccess.PostgreSql;
+using Acme.DemoServer.Processing.Generated.Interface;
+using Acme.Wattle.DomainObjects;
+using Acme.Wattle.Mappers;
+using Acme.Wattle.Mappers.Interfaces;
+using Acme.Wattle.Mappers.PostgreSql;
+using Acme.Wattle.Primitives;
+using Acme.Wattle.Utils;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using ShtrihM.Wattle3.Mappers.Primitives;
-using ShtrihM.Wattle3.Caching;
-using ShtrihM.Wattle3.Caching.Interfaces;
-using ShtrihM.Wattle3.Infrastructures.Interfaces.Monitors;
+using Acme.Wattle.Mappers.Primitives;
+using Acme.Wattle.Caching;
+using Acme.Wattle.Caching.Interfaces;
+using Acme.Wattle.Infrastructures.Interfaces.Monitors;
 
 // ReSharper disable once CheckNamespace
-namespace ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements;
+namespace Acme.DemoServer.Processing.Generated.PostgreSql.Implements;
 
 public partial class Mappers : ICustomMappers
 {

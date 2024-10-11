@@ -1,15 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-	<Import Project="..\..\Tools\MSBuild\ShtrihM.MSBuild.Common.targets" />
+	<Import Project="..\..\Tools\MSBuild\Acme.MSBuild.Common.targets" />
 
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<AnalysisLevel>latest</AnalysisLevel>
-		<AssemblyName>ShtrihM.DemoServer.Processing.DataAccess.PostgreSql</AssemblyName>
-		<RootNamespace>ShtrihM.DemoServer.Processing.DataAccess.PostgreSql</RootNamespace>
+		<AssemblyName>Acme.DemoServer.Processing.DataAccess.PostgreSql</AssemblyName>
+		<RootNamespace>Acme.DemoServer.Processing.DataAccess.PostgreSql</RootNamespace>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<PackageTags>ShtrihM DemoServer Processing DataAccess PostgreSql</PackageTags>
+		<PackageTags>Acme DemoServer Processing DataAccess PostgreSql</PackageTags>
 		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
 		<CompilerGeneratedFilesOutputPath>Generated</CompilerGeneratedFilesOutputPath>
 		<NoWarn>$(NoWarn);1701;1702;CS1591</NoWarn>
@@ -39,24 +39,24 @@
 
 	<ItemGroup>
 		<PackageReference Include="AutoMapper" Version="13.0.1" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.8">
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.10">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 			<TreatAsUsed>true</TreatAsUsed>
 		</PackageReference>
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.8">
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.10">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 			<TreatAsUsed>true</TreatAsUsed>
 		</PackageReference>
-		<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.4" />
-		<PackageReference Include="ShtrihM.Wattle3.CodeGeneration.Generator.Implements" Version="3.9.0.4081">
+		<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.8" />
+		<PackageReference Include="Acme.Wattle.CodeGeneration.Generator.Implements" Version="1.0.0.4096">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 			<TreatAsUsed>true</TreatAsUsed>
 		</PackageReference>
-		<PackageReference Include="ShtrihM.Wattle3.DomainObjects" Version="3.9.0.4081" />
-		<PackageReference Include="ShtrihM.Wattle3.Mappers.PostgreSql" Version="3.9.0.4081" />
+		<PackageReference Include="Acme.Wattle.DomainObjects" Version="1.0.0.4096" />
+		<PackageReference Include="Acme.Wattle.Mappers.PostgreSql" Version="1.0.0.4096" />
 	</ItemGroup>
 
 	<ItemGroup>

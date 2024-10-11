@@ -1,13 +1,13 @@
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json;
-using ShtrihM.DemoServer.Processing.Common;
-using ShtrihM.DemoServer.Processing.DataAccess.Interface;
-using ShtrihM.Wattle3.Caching;
-using ShtrihM.Wattle3.DomainObjects.Interfaces;
-using ShtrihM.Wattle3.Json;
+using Acme.DemoServer.Processing.Common;
+using Acme.DemoServer.Processing.DataAccess.Interface;
+using Acme.Wattle.Caching;
+using Acme.Wattle.DomainObjects.Interfaces;
+using Acme.Wattle.Json;
 
-namespace ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
+namespace Acme.DemoServer.Processing.Model.Implements.SystemSettings;
 
 /// <summary>
 /// Настройки реестров доменных объектов.

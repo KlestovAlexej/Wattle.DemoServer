@@ -11,20 +11,20 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json.Converters;
 using Serilog;
-using ShtrihM.DemoServer.Common;
-using ShtrihM.DemoServer.Processing.Api;
-using ShtrihM.DemoServer.Processing.Api.Common;
-using ShtrihM.DemoServer.Processing.Api.Validators;
-using ShtrihM.DemoServer.Processing.Model.Implements;
-using ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
-using ShtrihM.DemoServer.Processing.Model.Interfaces;
-using ShtrihM.Wattle3.DomainObjects.Interfaces;
-using ShtrihM.Wattle3.Infrastructures.Rest.Common.SwaggerTypes;
-using ShtrihM.Wattle3.Infrastructures.Rest.Controllers.Monitors;
-using ShtrihM.Wattle3.Json.Extensions;
-using ShtrihM.Wattle3.OpenTelemetry;
-using ShtrihM.Wattle3.Primitives;
-using ShtrihM.Wattle3.Swashbuckle.AspNetCore;
+using Acme.DemoServer.Common;
+using Acme.DemoServer.Processing.Api;
+using Acme.DemoServer.Processing.Api.Common;
+using Acme.DemoServer.Processing.Api.Validators;
+using Acme.DemoServer.Processing.Model.Implements;
+using Acme.DemoServer.Processing.Model.Implements.SystemSettings;
+using Acme.DemoServer.Processing.Model.Interfaces;
+using Acme.Wattle.DomainObjects.Interfaces;
+using Acme.Wattle.Infrastructures.Rest.Common.SwaggerTypes;
+using Acme.Wattle.Infrastructures.Rest.Controllers.Monitors;
+using Acme.Wattle.Json.Extensions;
+using Acme.Wattle.OpenTelemetry;
+using Acme.Wattle.Primitives;
+using Acme.Wattle.Swashbuckle.AspNetCore;
 using Swashbuckle.AspNetCore.Filters;
 using Swashbuckle.AspNetCore.Newtonsoft;
 using Swashbuckle.AspNetCore.SwaggerGen;
@@ -39,18 +39,18 @@ using System.Threading;
 using System.Xml.XPath;
 using Asp.Versioning;
 using Microsoft.OpenApi.Models;
-using ShtrihM.Wattle3.Utils;
-using Constants = ShtrihM.DemoServer.Common.Constants;
+using Acme.Wattle.Utils;
+using Constants = Acme.DemoServer.Common.Constants;
 using ILogger = Microsoft.Extensions.Logging.ILogger;
-using ShtrihM.DemoServer.Processing.Application.Startups.HealthChecks;
+using Acme.DemoServer.Processing.Application.Startups.HealthChecks;
 
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
-namespace ShtrihM.DemoServer.Processing.Application.Startups;
+namespace Acme.DemoServer.Processing.Application.Startups;
 
 public static class WebApplicationBuilderExtensions
 {
-    private static readonly string ServiceName = "ShtrihM.DemoServer.Processing";
+    private static readonly string ServiceName = "Acme.DemoServer.Processing";
     private static readonly string EventSourceName = $"{ServiceName} [{Constants.ProductVersion.ToString(Constants.VersionComparePrecision)}]";
 
     private static readonly List<string> XmlCommentsText;
@@ -58,10 +58,10 @@ public static class WebApplicationBuilderExtensions
     static WebApplicationBuilderExtensions()
     {
         XmlCommentsText = new List<string>();
-        foreach (var assembly in Wattle3.Utils.ExtensionsReflection.GetAssemblies())
+        foreach (var assembly in Wattle.Utils.ExtensionsReflection.GetAssemblies())
         {
             var filename = Path.Combine(AppContext.BaseDirectory, $"{assembly.GetName().Name}.xml");
-            if (false == filename.ToLower().Contains("shtrihm"))
+            if (false == filename.ToLower().Contains("acme"))
             {
                 continue;
             }

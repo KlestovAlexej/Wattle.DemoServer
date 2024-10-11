@@ -2,13 +2,13 @@
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
-using ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
-using ShtrihM.DemoServer.Processing.Model.Interfaces;
-using ShtrihM.DemoServer.Processing.Tests.Model.Environment;
-using ShtrihM.Wattle3.Testing;
-using ShtrihM.Wattle3.Utils;
+using Acme.DemoServer.Processing.Model.Implements.SystemSettings;
+using Acme.DemoServer.Processing.Model.Interfaces;
+using Acme.DemoServer.Processing.Tests.Model.Environment;
+using Acme.Wattle.Testing;
+using Acme.Wattle.Utils;
 
-namespace ShtrihM.DemoServer.Processing.Tests.Model;
+namespace Acme.DemoServer.Processing.Tests.Model;
 
 [TestFixture]
 [Explicit]

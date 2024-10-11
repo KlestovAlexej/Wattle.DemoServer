@@ -1,13 +1,13 @@
 ﻿using Newtonsoft.Json;
-using ShtrihM.DemoServer.Processing.Common;
-using ShtrihM.Wattle3.Caching;
-using ShtrihM.Wattle3.DomainObjects.Interfaces;
-using ShtrihM.Wattle3.Json;
+using Acme.DemoServer.Processing.Common;
+using Acme.Wattle.Caching;
+using Acme.Wattle.DomainObjects.Interfaces;
+using Acme.Wattle.Json;
 using System;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 
-namespace ShtrihM.DemoServer.Processing.DataAccess.Interface;
+namespace Acme.DemoServer.Processing.DataAccess.Interface;
 
 /// <summary>
 /// Настройки кэшей актуальных данных состояний доменнй объектов в БД.

@@ -3,29 +3,29 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Npgsql;
-using ShtrihM.DemoServer.Processing.Api;
-using ShtrihM.DemoServer.Processing.Application.Startups;
-using ShtrihM.DemoServer.Processing.Model.Implements;
-using ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
-using ShtrihM.DemoServer.Processing.Model.Interfaces;
-using ShtrihM.Wattle3.DomainObjects;
-using ShtrihM.Wattle3.DomainObjects.Common;
-using ShtrihM.Wattle3.DomainObjects.Interfaces;
-using ShtrihM.Wattle3.Infrastructures.Rest.Controllers.Monitors;
-using ShtrihM.Wattle3.Json.Extensions;
-using ShtrihM.Wattle3.OpenTelemetry;
-using ShtrihM.Wattle3.Primitives;
-using ShtrihM.Wattle3.Testing;
-using ShtrihM.Wattle3.Utils;
+using Acme.DemoServer.Processing.Api;
+using Acme.DemoServer.Processing.Application.Startups;
+using Acme.DemoServer.Processing.Model.Implements;
+using Acme.DemoServer.Processing.Model.Implements.SystemSettings;
+using Acme.DemoServer.Processing.Model.Interfaces;
+using Acme.Wattle.DomainObjects;
+using Acme.Wattle.DomainObjects.Common;
+using Acme.Wattle.DomainObjects.Interfaces;
+using Acme.Wattle.Infrastructures.Rest.Controllers.Monitors;
+using Acme.Wattle.Json.Extensions;
+using Acme.Wattle.OpenTelemetry;
+using Acme.Wattle.Primitives;
+using Acme.Wattle.Testing;
+using Acme.Wattle.Utils;
 using System;
 using System.Globalization;
 using System.Text;
 using System.Threading;
 using Unity;
 using ILogger = Microsoft.Extensions.Logging.ILogger;
-using WebApplicationBuilderExtensions = ShtrihM.DemoServer.Processing.Application.Startups.WebApplicationBuilderExtensions;
+using WebApplicationBuilderExtensions = Acme.DemoServer.Processing.Application.Startups.WebApplicationBuilderExtensions;
 
-namespace ShtrihM.DemoServer.Processing.Application;
+namespace Acme.DemoServer.Processing.Application;
 
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 

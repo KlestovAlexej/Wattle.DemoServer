@@ -1,5 +1,5 @@
 ﻿using System;
-using ShtrihM.DemoServer.Processing.Model.Interfaces;
+using Acme.DemoServer.Processing.Model.Interfaces;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -10,7 +10,7 @@ using Telegram.Bot.Types.Enums;
 using Telegram.Bot.Types;
 using Telegram.Bot;
 
-namespace ShtrihM.DemoServer.Processing.Model.Implements;
+namespace Acme.DemoServer.Processing.Model.Implements;
 
 public class Telegram : ITelegram
 {

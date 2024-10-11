@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios;
+namespace Acme.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios;
 
 /// <summary>
 /// Типы сценариев задач с отложенным запуском.

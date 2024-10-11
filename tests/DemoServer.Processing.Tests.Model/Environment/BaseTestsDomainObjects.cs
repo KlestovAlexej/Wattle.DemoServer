@@ -1,8 +1,8 @@
 ﻿using NUnit.Framework;
-using ShtrihM.Wattle3.Json.Extensions;
-using ShtrihM.Wattle3.Testing;
+using Acme.Wattle.Json.Extensions;
+using Acme.Wattle.Testing;
 
-namespace ShtrihM.DemoServer.Processing.Tests.Model.Environment;
+namespace Acme.DemoServer.Processing.Tests.Model.Environment;
 
 public abstract class BaseTestsDomainObjects : BaseTestsWithEntryPoint
 {

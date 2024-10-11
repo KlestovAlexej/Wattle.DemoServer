@@ -15,7 +15,7 @@ Write-Host "--------------------------------------------------------------------
 Write-Host "| $($arg)"
 
 $cmd = "dotnet"
-$output = & $cmd "$($projectPath)ShtrihM.DemoServer.Processing.Application.dll" $arg
+$output = & $cmd "$($projectPath)Acme.DemoServer.Processing.Application.dll" $arg
 $settings = $output | ConvertFrom-Json
 $config.SystemSettings = $settings
 # } SystemSettings
@@ -27,7 +27,7 @@ Write-Host "--------------------------------------------------------------------
 Write-Host "| $($arg)"
 
 $cmd = "dotnet"
-$output = & $cmd "$($projectPath)ShtrihM.DemoServer.Processing.Application.dll" $arg
+$output = & $cmd "$($projectPath)Acme.DemoServer.Processing.Application.dll" $arg
 $settings = $output | ConvertFrom-Json
 $config.OpenTelemetry = $settings
 # } OpenTelemetry

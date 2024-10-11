@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using ShtrihM.DemoServer.Processing.Api.Common;
-using ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject;
-using ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update;
-using ShtrihM.DemoServer.Processing.Api.Examples;
-using ShtrihM.DemoServer.Processing.Model.Interfaces;
+using Acme.DemoServer.Processing.Api.Common;
+using Acme.DemoServer.Processing.Api.Common.Dtos.DemoObject;
+using Acme.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update;
+using Acme.DemoServer.Processing.Api.Examples;
+using Acme.DemoServer.Processing.Model.Interfaces;
 using Swashbuckle.AspNetCore.Annotations;
 using Swashbuckle.AspNetCore.Filters;
 using System.ComponentModel.DataAnnotations;
@@ -15,7 +15,7 @@ using Asp.Versioning;
 
 #pragma warning disable CS1573 // Parameter has no matching param tag in the XML comment (but other parameters do)
 
-namespace ShtrihM.DemoServer.Processing.Api;
+namespace Acme.DemoServer.Processing.Api;
 
 [ApiVersion("1")]
 [ApiExplorerSettings(GroupName = "v1")]

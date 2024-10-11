@@ -1,7 +1,7 @@
-﻿using ShtrihM.Wattle3.DomainObjects.Interfaces;
-using ShtrihM.Wattle3.DomainObjects.UnitOfWorkLocks;
+﻿using Acme.Wattle.DomainObjects.Interfaces;
+using Acme.Wattle.DomainObjects.UnitOfWorkLocks;
 
-namespace ShtrihM.DemoServer.Processing.Model.Implements.UnitOfWorkLocks;
+namespace Acme.DemoServer.Processing.Model.Implements.UnitOfWorkLocks;
 
 public sealed class UnitOfWorkLocksHubTyped : BaseUnitOfWorkLocksHubTyped<UnitOfWorkLocksHubTyped, UnitOfWorkLocksHub>
 {

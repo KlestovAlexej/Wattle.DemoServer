@@ -1,9 +1,9 @@
-﻿using ShtrihM.Wattle3.Common.Interfaces;
+﻿using Acme.Wattle.Common.Interfaces;
 using Swashbuckle.AspNetCore.Filters;
 using System;
 using System.Collections.Generic;
 
-namespace ShtrihM.DemoServer.Processing.Api.Examples;
+namespace Acme.DemoServer.Processing.Api.Examples;
 
 public sealed class ExamplesMetaServerDescription : IExamplesProvider<MetaServerDescription>
 {

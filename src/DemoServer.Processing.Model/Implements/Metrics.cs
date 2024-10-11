@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics.Metrics;
-using ShtrihM.DemoServer.Common;
+using Acme.DemoServer.Common;
 
-namespace ShtrihM.DemoServer.Processing.Model.Implements;
+namespace Acme.DemoServer.Processing.Model.Implements;
 
 public sealed class Metrics
 {
@@ -10,27 +10,27 @@ public sealed class Metrics
         Meter = meter;
 
         RequestsIncoming = Meter.CreateCounter<int>(
-            name: $"shtrihm_{Constants.ProductTag.ToLower()}_processing_requests_incoming",
+            name: $"acme_{Constants.ProductTag.ToLower()}_processing_requests_incoming",
             unit: "{requests}",
             description: "Количество входящих запросов");
 
         RequestsIncomingSuccessful = Meter.CreateCounter<int>(
-            name: $"shtrihm_{Constants.ProductTag.ToLower()}_processing_requests_incoming_successful",
+            name: $"acme_{Constants.ProductTag.ToLower()}_processing_requests_incoming_successful",
             unit: "{requests}",
             description: "Количество входящих запросов - успешных");
 
         ExceptionsWorkflow = Meter.CreateCounter<int>(
-            name: $"shtrihm_{Constants.ProductTag.ToLower()}_processing_exceptions_workflow",
+            name: $"acme_{Constants.ProductTag.ToLower()}_processing_exceptions_workflow",
             unit: "{exceptions}",
             description: "Количество штатных исключений");
 
         ExceptionsUnexpected = Meter.CreateCounter<int>(
-            name: $"shtrihm_{Constants.ProductTag.ToLower()}_processing_exceptions_unexpected",
+            name: $"acme_{Constants.ProductTag.ToLower()}_processing_exceptions_unexpected",
             unit: "{exceptions}",
             description: "Количество неожиданных исключений");
 
         RequestsHealthCheck = Meter.CreateCounter<int>(
-            name: $"shtrihm_{Constants.ProductTag.ToLower()}_processing_requests_healthcheck",
+            name: $"acme_{Constants.ProductTag.ToLower()}_processing_requests_healthcheck",
             unit: "{requests}",
             description: "Количество входящих запросов проверки работоспособности");
     }

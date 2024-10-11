@@ -3,26 +3,26 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using OpenTelemetry.Trace;
-using ShtrihM.DemoServer.Common;
-using ShtrihM.DemoServer.Processing.Api.Common;
-using ShtrihM.DemoServer.Processing.Common;
-using ShtrihM.DemoServer.Processing.Model.DomainObjects.SystemLog;
-using ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
-using ShtrihM.DemoServer.Processing.Model.Interfaces;
-using ShtrihM.Wattle3.Common.Exceptions;
-using ShtrihM.Wattle3.DomainObjects.EntryPoints;
-using ShtrihM.Wattle3.DomainObjects.Interfaces;
-using ShtrihM.Wattle3.Mappers;
-using ShtrihM.Wattle3.OpenTelemetry;
-using ShtrihM.Wattle3.Primitives;
+using Acme.DemoServer.Common;
+using Acme.DemoServer.Processing.Api.Common;
+using Acme.DemoServer.Processing.Common;
+using Acme.DemoServer.Processing.Model.DomainObjects.SystemLog;
+using Acme.DemoServer.Processing.Model.Implements.SystemSettings;
+using Acme.DemoServer.Processing.Model.Interfaces;
+using Acme.Wattle.Common.Exceptions;
+using Acme.Wattle.DomainObjects.EntryPoints;
+using Acme.Wattle.DomainObjects.Interfaces;
+using Acme.Wattle.Mappers;
+using Acme.Wattle.OpenTelemetry;
+using Acme.Wattle.Primitives;
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Text;
-using ShtrihM.Wattle3.Utils;
-using Constants = ShtrihM.DemoServer.Common.Constants;
+using Acme.Wattle.Utils;
+using Constants = Acme.DemoServer.Common.Constants;
 
-namespace ShtrihM.DemoServer.Processing.Model.Implements;
+namespace Acme.DemoServer.Processing.Model.Implements;
 
 public sealed class ExceptionPolicy : BaseExceptionPolicy
 {

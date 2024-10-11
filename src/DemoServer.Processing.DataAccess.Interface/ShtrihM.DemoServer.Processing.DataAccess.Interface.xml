@@ -1,718 +1,718 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>ShtrihM.DemoServer.Processing.DataAccess.Interface</name>
+        <name>Acme.DemoServer.Processing.DataAccess.Interface</name>
     </assembly>
     <members>
-        <member name="T:ShtrihM.DemoServer.Processing.DataAccess.Interface.MappersCacheActualStateDtoSettings">
+        <member name="T:Acme.DemoServer.Processing.DataAccess.Interface.MappersCacheActualStateDtoSettings">
             <summary>
             Настройки кэшей актуальных данных состояний доменнй объектов в БД.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.DataAccess.Interface.MappersCacheActualStateDtoSettings.Enabled">
+        <member name="P:Acme.DemoServer.Processing.DataAccess.Interface.MappersCacheActualStateDtoSettings.Enabled">
             <summary>
             Разрешение для кэширования.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.DataAccess.Interface.MappersCacheActualStateDtoSettings.DemoObject">
+        <member name="P:Acme.DemoServer.Processing.DataAccess.Interface.MappersCacheActualStateDtoSettings.DemoObject">
             <summary>
             Настройки маппера - Объект.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.DataAccess.Interface.MappersCacheActualStateDtoSettings.DemoObjectX">
+        <member name="P:Acme.DemoServer.Processing.DataAccess.Interface.MappersCacheActualStateDtoSettings.DemoObjectX">
             <summary>
             Настройки маппера - Объект X.
             </summary>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.DataAccess.Interface.MappersCacheActualStateDtoSettings.GetDefault">
+        <member name="M:Acme.DemoServer.Processing.DataAccess.Interface.MappersCacheActualStateDtoSettings.GetDefault">
             <summary>
             Настройки по умолчанию.
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Generated.Interface.ChangeTrackerDtoNew">
+        <member name="T:Acme.DemoServer.Processing.Generated.Interface.ChangeTrackerDtoNew">
             <summary>
             Класс данных состояния нового доменного объекта.
             Контроль изменений
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Generated.Interface.ChangeTrackerDtoNew.Id">
+        <member name="P:Acme.DemoServer.Processing.Generated.Interface.ChangeTrackerDtoNew.Id">
             <summary>
             Идентити.
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Generated.Interface.SystemLogDtoNew">
+        <member name="T:Acme.DemoServer.Processing.Generated.Interface.SystemLogDtoNew">
             <summary>
             Класс данных состояния нового доменного объекта.
             Системный лог
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Generated.Interface.SystemLogDtoNew.Id">
+        <member name="P:Acme.DemoServer.Processing.Generated.Interface.SystemLogDtoNew.Id">
             <summary>
             Идентити.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.SystemLogDtoNew.CreateDate">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.SystemLogDtoNew.CreateDate">
             <summary>
             Дата создания
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.SystemLogDtoNew.Code">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.SystemLogDtoNew.Code">
             <summary>
             Код записи
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.SystemLogDtoNew.Type">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.SystemLogDtoNew.Type">
             <summary>
             Тип записи
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.SystemLogDtoNew.Message">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.SystemLogDtoNew.Message">
             <summary>
             Сообщение
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.SystemLogDtoNew.Data">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.SystemLogDtoNew.Data">
             <summary>
             Данные
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Generated.Interface.TablePartitionDtoNew">
+        <member name="T:Acme.DemoServer.Processing.Generated.Interface.TablePartitionDtoNew">
             <summary>
             Класс данных состояния нового доменного объекта.
             Партиция таблицы БД
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Generated.Interface.TablePartitionDtoNew.Id">
+        <member name="P:Acme.DemoServer.Processing.Generated.Interface.TablePartitionDtoNew.Id">
             <summary>
             Идентити.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.TablePartitionDtoNew.CreateDate">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.TablePartitionDtoNew.CreateDate">
             <summary>
             Дата создания
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.TablePartitionDtoNew.TableName">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.TablePartitionDtoNew.TableName">
             <summary>
             Имя таблицы БД
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.TablePartitionDtoNew.PartitionName">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.TablePartitionDtoNew.PartitionName">
             <summary>
             Имя партиции таблицы БД
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.TablePartitionDtoNew.Day">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.TablePartitionDtoNew.Day">
             <summary>
             День партиции таблицы БД
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.TablePartitionDtoNew.MinGroupId">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.TablePartitionDtoNew.MinGroupId">
             <summary>
             Минимальный идентификатор группы идентити хранимый в партиции
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.TablePartitionDtoNew.MaxNotIncludeGroupId">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.TablePartitionDtoNew.MaxNotIncludeGroupId">
             <summary>
             Максимальный идентификатор группы идентити не хранимый в партиции
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.TablePartitionDtoNew.MinId">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.TablePartitionDtoNew.MinId">
             <summary>
             Минимальный идентити хранимый в партиции
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.TablePartitionDtoNew.MaxNotIncludeId">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.TablePartitionDtoNew.MaxNotIncludeId">
             <summary>
             Максимальный идентити не хранимый в партиции
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectDtoNew">
+        <member name="T:Acme.DemoServer.Processing.Generated.Interface.DemoObjectDtoNew">
             <summary>
             Класс данных состояния нового доменного объекта.
             Объект
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectDtoNew.Id">
+        <member name="P:Acme.DemoServer.Processing.Generated.Interface.DemoObjectDtoNew.Id">
             <summary>
             Идентити.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectDtoNew.CreateDate">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoObjectDtoNew.CreateDate">
             <summary>
             Дата создания
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectDtoNew.ModificationDate">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoObjectDtoNew.ModificationDate">
             <summary>
             Дата модификации
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectDtoNew.Name">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoObjectDtoNew.Name">
             <summary>
             Название
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectDtoNew.Enabled">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoObjectDtoNew.Enabled">
             <summary>
             Признак разрешения работы
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectXDtoNew">
+        <member name="T:Acme.DemoServer.Processing.Generated.Interface.DemoObjectXDtoNew">
             <summary>
             Класс данных состояния нового доменного объекта.
             Объект X
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectXDtoNew.Id">
+        <member name="P:Acme.DemoServer.Processing.Generated.Interface.DemoObjectXDtoNew.Id">
             <summary>
             Идентити.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectXDtoNew.CreateDate">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoObjectXDtoNew.CreateDate">
             <summary>
             Дата создания
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectXDtoNew.ModificationDate">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoObjectXDtoNew.ModificationDate">
             <summary>
             Дата модификации
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectXDtoNew.Name">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoObjectXDtoNew.Name">
             <summary>
             Название
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectXDtoNew.Enabled">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoObjectXDtoNew.Enabled">
             <summary>
             Признак разрешения работы
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectXDtoNew.Key1">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoObjectXDtoNew.Key1">
             <summary>
             Альтернативный ключ - часть №1
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectXDtoNew.Key2">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoObjectXDtoNew.Key2">
             <summary>
             Альтернативный ключ - часть №2
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectXDtoNew.Group">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoObjectXDtoNew.Group">
             <summary>
             Номер группы
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoNew">
+        <member name="T:Acme.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoNew">
             <summary>
             Класс данных состояния нового доменного объекта.
             Задача с отложенным запуском
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoNew.Id">
+        <member name="P:Acme.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoNew.Id">
             <summary>
             Идентити.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoNew.Available">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoNew.Available">
             <summary>
             Доступность.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoNew.CreateDate">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoNew.CreateDate">
             <summary>
             Дата создания
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoNew.ModificationDate">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoNew.ModificationDate">
             <summary>
             Дата модификации
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoNew.Scenario">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoNew.Scenario">
             <summary>
             Сценарий
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoNew.ScenarioState">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoNew.ScenarioState">
             <summary>
             Состояние сценария
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoNew.StartDate">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoNew.StartDate">
             <summary>
             Дата запуска
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Generated.Interface.ChangeTrackerDtoActual">
+        <member name="T:Acme.DemoServer.Processing.Generated.Interface.ChangeTrackerDtoActual">
             <summary>
             Класс актуальных данных состояния доменного объекта в БД.
             Контроль изменений
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Generated.Interface.ChangeTrackerDtoActual.Id">
+        <member name="P:Acme.DemoServer.Processing.Generated.Interface.ChangeTrackerDtoActual.Id">
             <summary>
             Идентити.
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Generated.Interface.SystemLogDtoActual">
+        <member name="T:Acme.DemoServer.Processing.Generated.Interface.SystemLogDtoActual">
             <summary>
             Класс актуальных данных состояния доменного объекта в БД.
             Системный лог
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Generated.Interface.SystemLogDtoActual.Id">
+        <member name="P:Acme.DemoServer.Processing.Generated.Interface.SystemLogDtoActual.Id">
             <summary>
             Идентити.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.SystemLogDtoActual.CreateDate">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.SystemLogDtoActual.CreateDate">
             <summary>
             Дата создания
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.SystemLogDtoActual.Code">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.SystemLogDtoActual.Code">
             <summary>
             Код записи
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.SystemLogDtoActual.Type">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.SystemLogDtoActual.Type">
             <summary>
             Тип записи
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.SystemLogDtoActual.Message">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.SystemLogDtoActual.Message">
             <summary>
             Сообщение
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.SystemLogDtoActual.Data">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.SystemLogDtoActual.Data">
             <summary>
             Данные
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Generated.Interface.TablePartitionDtoActual">
+        <member name="T:Acme.DemoServer.Processing.Generated.Interface.TablePartitionDtoActual">
             <summary>
             Класс актуальных данных состояния доменного объекта в БД.
             Партиция таблицы БД
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Generated.Interface.TablePartitionDtoActual.Id">
+        <member name="P:Acme.DemoServer.Processing.Generated.Interface.TablePartitionDtoActual.Id">
             <summary>
             Идентити.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.TablePartitionDtoActual.CreateDate">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.TablePartitionDtoActual.CreateDate">
             <summary>
             Дата создания
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.TablePartitionDtoActual.TableName">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.TablePartitionDtoActual.TableName">
             <summary>
             Имя таблицы БД
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.TablePartitionDtoActual.PartitionName">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.TablePartitionDtoActual.PartitionName">
             <summary>
             Имя партиции таблицы БД
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.TablePartitionDtoActual.Day">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.TablePartitionDtoActual.Day">
             <summary>
             День партиции таблицы БД
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.TablePartitionDtoActual.MinGroupId">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.TablePartitionDtoActual.MinGroupId">
             <summary>
             Минимальный идентификатор группы идентити хранимый в партиции
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.TablePartitionDtoActual.MaxNotIncludeGroupId">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.TablePartitionDtoActual.MaxNotIncludeGroupId">
             <summary>
             Максимальный идентификатор группы идентити не хранимый в партиции
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.TablePartitionDtoActual.MinId">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.TablePartitionDtoActual.MinId">
             <summary>
             Минимальный идентити хранимый в партиции
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.TablePartitionDtoActual.MaxNotIncludeId">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.TablePartitionDtoActual.MaxNotIncludeId">
             <summary>
             Максимальный идентити не хранимый в партиции
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectDtoActual">
+        <member name="T:Acme.DemoServer.Processing.Generated.Interface.DemoObjectDtoActual">
             <summary>
             Класс актуальных данных состояния доменного объекта в БД.
             Объект
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectDtoActual.Id">
+        <member name="P:Acme.DemoServer.Processing.Generated.Interface.DemoObjectDtoActual.Id">
             <summary>
             Идентити.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectDtoActual.Revision">
+        <member name="P:Acme.DemoServer.Processing.Generated.Interface.DemoObjectDtoActual.Revision">
             <summary>
             Номер ревизии данных.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectDtoActual.CreateDate">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoObjectDtoActual.CreateDate">
             <summary>
             Дата создания
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectDtoActual.ModificationDate">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoObjectDtoActual.ModificationDate">
             <summary>
             Дата модификации
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectDtoActual.Name">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoObjectDtoActual.Name">
             <summary>
             Название
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectDtoActual.Enabled">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoObjectDtoActual.Enabled">
             <summary>
             Признак разрешения работы
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectXDtoActual">
+        <member name="T:Acme.DemoServer.Processing.Generated.Interface.DemoObjectXDtoActual">
             <summary>
             Класс актуальных данных состояния доменного объекта в БД.
             Объект X
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectXDtoActual.Id">
+        <member name="P:Acme.DemoServer.Processing.Generated.Interface.DemoObjectXDtoActual.Id">
             <summary>
             Идентити.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectXDtoActual.Revision">
+        <member name="P:Acme.DemoServer.Processing.Generated.Interface.DemoObjectXDtoActual.Revision">
             <summary>
             Номер ревизии данных.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectXDtoActual.CreateDate">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoObjectXDtoActual.CreateDate">
             <summary>
             Дата создания
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectXDtoActual.ModificationDate">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoObjectXDtoActual.ModificationDate">
             <summary>
             Дата модификации
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectXDtoActual.Name">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoObjectXDtoActual.Name">
             <summary>
             Название
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectXDtoActual.Enabled">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoObjectXDtoActual.Enabled">
             <summary>
             Признак разрешения работы
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectXDtoActual.Key1">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoObjectXDtoActual.Key1">
             <summary>
             Альтернативный ключ - часть №1
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectXDtoActual.Key2">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoObjectXDtoActual.Key2">
             <summary>
             Альтернативный ключ - часть №2
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectXDtoActual.Group">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoObjectXDtoActual.Group">
             <summary>
             Номер группы
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoActual">
+        <member name="T:Acme.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoActual">
             <summary>
             Класс актуальных данных состояния доменного объекта в БД.
             Задача с отложенным запуском
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoActual.Id">
+        <member name="P:Acme.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoActual.Id">
             <summary>
             Идентити.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoActual.Revision">
+        <member name="P:Acme.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoActual.Revision">
             <summary>
             Номер ревизии данных.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoActual.Available">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoActual.Available">
             <summary>
             Доступность.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoActual.CreateDate">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoActual.CreateDate">
             <summary>
             Дата создания
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoActual.ModificationDate">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoActual.ModificationDate">
             <summary>
             Дата модификации
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoActual.Scenario">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoActual.Scenario">
             <summary>
             Сценарий
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoActual.ScenarioState">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoActual.ScenarioState">
             <summary>
             Состояние сценария
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoActual.StartDate">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoActual.StartDate">
             <summary>
             Дата запуска
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectDtoChanged">
+        <member name="T:Acme.DemoServer.Processing.Generated.Interface.DemoObjectDtoChanged">
             <summary>
             Класс данных состояния изменённого доменного объекта.
             Объект
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectDtoChanged.Id">
+        <member name="P:Acme.DemoServer.Processing.Generated.Interface.DemoObjectDtoChanged.Id">
             <summary>
             Идентити.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectDtoChanged.Revision">
+        <member name="P:Acme.DemoServer.Processing.Generated.Interface.DemoObjectDtoChanged.Revision">
             <summary>
             Номер ревизии данных.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectDtoChanged.CreateDate">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoObjectDtoChanged.CreateDate">
             <summary>
             Дата создания
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectDtoChanged.ModificationDate">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoObjectDtoChanged.ModificationDate">
             <summary>
             Дата модификации
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectDtoChanged.Name">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoObjectDtoChanged.Name">
             <summary>
             Название
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectDtoChanged.Enabled">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoObjectDtoChanged.Enabled">
             <summary>
             Признак разрешения работы
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectXDtoChanged">
+        <member name="T:Acme.DemoServer.Processing.Generated.Interface.DemoObjectXDtoChanged">
             <summary>
             Класс данных состояния изменённого доменного объекта.
             Объект X
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectXDtoChanged.Id">
+        <member name="P:Acme.DemoServer.Processing.Generated.Interface.DemoObjectXDtoChanged.Id">
             <summary>
             Идентити.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectXDtoChanged.Revision">
+        <member name="P:Acme.DemoServer.Processing.Generated.Interface.DemoObjectXDtoChanged.Revision">
             <summary>
             Номер ревизии данных.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectXDtoChanged.CreateDate">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoObjectXDtoChanged.CreateDate">
             <summary>
             Дата создания
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectXDtoChanged.ModificationDate">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoObjectXDtoChanged.ModificationDate">
             <summary>
             Дата модификации
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectXDtoChanged.Name">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoObjectXDtoChanged.Name">
             <summary>
             Название
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectXDtoChanged.Enabled">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoObjectXDtoChanged.Enabled">
             <summary>
             Признак разрешения работы
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectXDtoChanged.Key1">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoObjectXDtoChanged.Key1">
             <summary>
             Альтернативный ключ - часть №1
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectXDtoChanged.Key2">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoObjectXDtoChanged.Key2">
             <summary>
             Альтернативный ключ - часть №2
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectXDtoChanged.Group">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoObjectXDtoChanged.Group">
             <summary>
             Номер группы
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoChanged">
+        <member name="T:Acme.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoChanged">
             <summary>
             Класс данных состояния изменённого доменного объекта.
             Задача с отложенным запуском
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoChanged.Id">
+        <member name="P:Acme.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoChanged.Id">
             <summary>
             Идентити.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoChanged.Revision">
+        <member name="P:Acme.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoChanged.Revision">
             <summary>
             Номер ревизии данных.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoChanged.Available">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoChanged.Available">
             <summary>
             Доступность.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoChanged.CreateDate">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoChanged.CreateDate">
             <summary>
             Дата создания
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoChanged.ModificationDate">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoChanged.ModificationDate">
             <summary>
             Дата модификации
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoChanged.Scenario">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoChanged.Scenario">
             <summary>
             Сценарий
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoChanged.ScenarioState">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoChanged.ScenarioState">
             <summary>
             Состояние сценария
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoChanged.StartDate">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoChanged.StartDate">
             <summary>
             Дата запуска
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectXDtoDeleted">
+        <member name="T:Acme.DemoServer.Processing.Generated.Interface.DemoObjectXDtoDeleted">
             <summary>
             Класс данных состояния удалённого доменного объекта.
             Объект X
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectXDtoDeleted.Id">
+        <member name="P:Acme.DemoServer.Processing.Generated.Interface.DemoObjectXDtoDeleted.Id">
             <summary>
             Идентити.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectXDtoDeleted.Revision">
+        <member name="P:Acme.DemoServer.Processing.Generated.Interface.DemoObjectXDtoDeleted.Revision">
             <summary>
             Номер ревизии данных.
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Generated.Interface.WellknownMappersAsText">
+        <member name="T:Acme.DemoServer.Processing.Generated.Interface.WellknownMappersAsText">
             <summary>
             Идентификаторы мапперов в тектовом виде.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.WellknownMappersAsText.ChangeTracker">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.WellknownMappersAsText.ChangeTracker">
             <summary>
             Контроль изменений
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.WellknownMappersAsText.SystemLog">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.WellknownMappersAsText.SystemLog">
             <summary>
             Системный лог
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.WellknownMappersAsText.TablePartition">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.WellknownMappersAsText.TablePartition">
             <summary>
             Партиция таблицы БД
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.WellknownMappersAsText.DemoObject">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.WellknownMappersAsText.DemoObject">
             <summary>
             Объект
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.WellknownMappersAsText.DemoObjectX">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.WellknownMappersAsText.DemoObjectX">
             <summary>
             Объект X
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.WellknownMappersAsText.DemoDelayTask">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.WellknownMappersAsText.DemoDelayTask">
             <summary>
             Задача с отложенным запуском
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Generated.Interface.WellknownMappers">
+        <member name="T:Acme.DemoServer.Processing.Generated.Interface.WellknownMappers">
             <summary>
             Идентификаторы мапперов.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.WellknownMappers.ChangeTracker">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.WellknownMappers.ChangeTracker">
             <summary>
             Контроль изменений
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.WellknownMappers.SystemLog">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.WellknownMappers.SystemLog">
             <summary>
             Системный лог
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.WellknownMappers.TablePartition">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.WellknownMappers.TablePartition">
             <summary>
             Партиция таблицы БД
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.WellknownMappers.DemoObject">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.WellknownMappers.DemoObject">
             <summary>
             Объект
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.WellknownMappers.DemoObjectX">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.WellknownMappers.DemoObjectX">
             <summary>
             Объект X
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Generated.Interface.WellknownMappers.DemoDelayTask">
+        <member name="F:Acme.DemoServer.Processing.Generated.Interface.WellknownMappers.DemoDelayTask">
             <summary>
             Задача с отложенным запуском
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperChangeTracker">
+        <member name="T:Acme.DemoServer.Processing.Generated.Interface.IMapperChangeTracker">
             <summary>
             Контроль изменений
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperChangeTracker.TableName">
+        <member name="P:Acme.DemoServer.Processing.Generated.Interface.IMapperChangeTracker.TableName">
             <summary>
             Имя таблицы БД.
             </summary>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperChangeTracker.GetNextId(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperChangeTracker.GetNextId(Acme.Wattle.Mappers.Interfaces.IMappersSession)">
             <summary>
             Получение следующего значения идентити из последовательности "Sequence_ChangeTracker".
             </summary>
             <param name="session">Сессия БД.</param>
             <returns>Возвращает следующего значение идентити.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperChangeTracker.GetNextIds(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int32,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperChangeTracker.GetNextIds(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int32,System.Threading.CancellationToken)">
             <summary>
             Получение следующих значений идентити из последовательности "Sequence_ChangeTracker".
             </summary>
@@ -721,7 +721,7 @@
             <param name="cancellationToken">Кокен отмены.</param>
             <returns>Возвращает коллекцию следующих значений идентити.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperChangeTracker.GetNextIdAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperChangeTracker.GetNextIdAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Threading.CancellationToken)">
             <summary>
             Получение следующего значения идентити из последовательности "Sequence_ChangeTracker".
             </summary>
@@ -729,7 +729,7 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает следующего значение идентити.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperChangeTracker.Exists(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperChangeTracker.Exists(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64)">
             <summary>
             Проверка существования записи с указаным идентити.
             </summary>
@@ -737,7 +737,7 @@
             <param name="id">Идентити записи.</param>
             <returns>Возвращает <see langword="true" /> если запись существует иначе возвращает <see langword="false" /> если запись не существует.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperChangeTracker.ExistsAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperChangeTracker.ExistsAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
             <summary>
             Проверка существования записи с указаным идентити..
             </summary>
@@ -746,7 +746,7 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает <see langword="true" /> если запись существует иначе возвращает <see langword="false" /> если запись не существует.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperChangeTracker.ExistsRaw(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperChangeTracker.ExistsRaw(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64)">
             <summary>
             Проверка существования записис с указаным идентити.
             </summary>
@@ -754,7 +754,7 @@
             <param name="id">Идентити записи.</param>
             <returns>Возвращает <see langword="true" /> если запись существует иначе если запись не существует возвращает <see langword="false" />.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperChangeTracker.ExistsRawAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperChangeTracker.ExistsRawAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
             <summary>
             Проверка существования записис с указаным идентити.
             </summary>
@@ -763,7 +763,7 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает <see langword="true" /> если запись существует иначе если запись не существует возвращает <see langword="false" />.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperChangeTracker.Get(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperChangeTracker.Get(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64)">
             <summary>
             Получить запись с указаным идентити.
             </summary>
@@ -771,7 +771,7 @@
             <param name="id">Идентити записи.</param>
             <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperChangeTracker.GetAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperChangeTracker.GetAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
             <summary>
             Получить запись с указаным идентити.
             </summary>
@@ -780,7 +780,7 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperChangeTracker.GetRaw(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperChangeTracker.GetRaw(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64)">
             <summary>
             Получить запись с указаным идентити.
             </summary>
@@ -788,7 +788,7 @@
             <param name="id">Идентити записи.</param>
             <returns>Возвращает значение если запись существует иначе если запись не существует возвращает <see langword="null" />.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperChangeTracker.GetRawAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperChangeTracker.GetRawAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
             <summary>
             Получить запись с указаным идентити.
             </summary>
@@ -797,14 +797,14 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает значение если запись существует иначе если запись не существует возвращает <see langword="null" />.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperChangeTracker.BulkInsert(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Collections.Generic.IEnumerable{ShtrihM.DemoServer.Processing.Generated.Interface.ChangeTrackerDtoNew})">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperChangeTracker.BulkInsert(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Collections.Generic.IEnumerable{Acme.DemoServer.Processing.Generated.Interface.ChangeTrackerDtoNew})">
             <summary>
             Массовое создание записей.
             </summary>
             <param name="session">Сессия БД.</param>
             <param name="data">Записи.</param>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperChangeTracker.BulkInsertAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Collections.Generic.IEnumerable{ShtrihM.DemoServer.Processing.Generated.Interface.ChangeTrackerDtoNew},System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperChangeTracker.BulkInsertAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Collections.Generic.IEnumerable{Acme.DemoServer.Processing.Generated.Interface.ChangeTrackerDtoNew},System.Threading.CancellationToken)">
             <summary>
             Массовое создание записей.
             </summary>
@@ -812,7 +812,7 @@
             <param name="data">Записи.</param>
             <param name="cancellationToken">Токен отмены.</param>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperChangeTracker.New(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.DemoServer.Processing.Generated.Interface.ChangeTrackerDtoNew)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperChangeTracker.New(Acme.Wattle.Mappers.Interfaces.IMappersSession,Acme.DemoServer.Processing.Generated.Interface.ChangeTrackerDtoNew)">
             <summary>
             Создать запись.
             </summary>
@@ -820,7 +820,7 @@
             <param name="data">Новая запись.</param>
             <returns>Возвращает актуальное состояние записи.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperChangeTracker.NewAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.DemoServer.Processing.Generated.Interface.ChangeTrackerDtoNew,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperChangeTracker.NewAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,Acme.DemoServer.Processing.Generated.Interface.ChangeTrackerDtoNew,System.Threading.CancellationToken)">
             <summary>
             Создать запись.
             </summary>
@@ -829,7 +829,7 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает актуальное состояние записи.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperChangeTracker.GetEnumerator(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperChangeTracker.GetEnumerator(Acme.Wattle.Mappers.Interfaces.IMappersSession,Acme.Wattle.Mappers.Interfaces.IMapperSelectFilter)">
             <summary>
             Получить итератор всех записей выбранных с учётом фильтра.
             </summary>
@@ -837,7 +837,7 @@
             <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
             <returns>Возвращает итератор всех выбраных записей.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperChangeTracker.GetEnumeratorAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperChangeTracker.GetEnumeratorAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,Acme.Wattle.Mappers.Interfaces.IMapperSelectFilter,System.Threading.CancellationToken)">
             <summary>
             Получить итератор всех записей выбранных с учётом фильтра.
             </summary>
@@ -846,7 +846,7 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает итератор всех выбраных записей.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperChangeTracker.GetEnumeratorRaw(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperChangeTracker.GetEnumeratorRaw(Acme.Wattle.Mappers.Interfaces.IMappersSession,Acme.Wattle.Mappers.Interfaces.IMapperSelectFilter)">
             <summary>
             Получить итератор всех записей выбранных с учётом фильтра.
             </summary>
@@ -854,7 +854,7 @@
             <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
             <returns>Возвращает итератор всех выбраных записей.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperChangeTracker.GetEnumeratorPage(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int32,System.Int32,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperChangeTracker.GetEnumeratorPage(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int32,System.Int32,Acme.Wattle.Mappers.Interfaces.IMapperSelectFilter)">
             <summary>
             Получить итератор записей выбранных с учётом фильтра для заданной страницы указанного размера.
             </summary>
@@ -864,7 +864,7 @@
             <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
             <returns>Возвращает итератор всех выбраных записей.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperChangeTracker.GetEnumeratorIdentitiesPage(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int32,System.Int32,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperChangeTracker.GetEnumeratorIdentitiesPage(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int32,System.Int32,Acme.Wattle.Mappers.Interfaces.IMapperSelectFilter)">
             <summary>
             Получить итератор идентити записей выбранных с учётом фильтра для заданной страницы указанного размера.
             </summary>
@@ -874,7 +874,7 @@
             <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
             <returns>Возвращает итератор всех выбраных идентити записей.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperChangeTracker.GetCount(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperChangeTracker.GetCount(Acme.Wattle.Mappers.Interfaces.IMappersSession,Acme.Wattle.Mappers.Interfaces.IMapperSelectFilter)">
             <summary>
             Получить количество записей удовлетворяющих фильтру выборки.
             </summary>
@@ -882,7 +882,7 @@
             <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
             <returns>Возвращает количество записей удовлетворяющих фильтру выборки.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperChangeTracker.GetCountAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperChangeTracker.GetCountAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,Acme.Wattle.Mappers.Interfaces.IMapperSelectFilter,System.Threading.CancellationToken)">
             <summary>
             Получить количество записей удовлетворяющих фильтру выборки.
             </summary>
@@ -891,24 +891,24 @@
             <param name="cancellationToken">Кокен отмены.</param>
             <returns>Возвращает количество записей удовлетворяющих фильтру выборки.</returns>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperSystemLog">
+        <member name="T:Acme.DemoServer.Processing.Generated.Interface.IMapperSystemLog">
             <summary>
             Системный лог
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperSystemLog.TableName">
+        <member name="P:Acme.DemoServer.Processing.Generated.Interface.IMapperSystemLog.TableName">
             <summary>
             Имя таблицы БД.
             </summary>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperSystemLog.GetNextId(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperSystemLog.GetNextId(Acme.Wattle.Mappers.Interfaces.IMappersSession)">
             <summary>
             Получение следующего значения идентити из последовательности "Sequence_SystemLog".
             </summary>
             <param name="session">Сессия БД.</param>
             <returns>Возвращает следующего значение идентити.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperSystemLog.GetNextIds(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int32,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperSystemLog.GetNextIds(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int32,System.Threading.CancellationToken)">
             <summary>
             Получение следующих значений идентити из последовательности "Sequence_SystemLog".
             </summary>
@@ -917,7 +917,7 @@
             <param name="cancellationToken">Кокен отмены.</param>
             <returns>Возвращает коллекцию следующих значений идентити.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperSystemLog.GetNextIdAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperSystemLog.GetNextIdAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Threading.CancellationToken)">
             <summary>
             Получение следующего значения идентити из последовательности "Sequence_SystemLog".
             </summary>
@@ -925,7 +925,7 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает следующего значение идентити.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperSystemLog.Exists(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperSystemLog.Exists(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64)">
             <summary>
             Проверка существования записи с указаным идентити.
             </summary>
@@ -933,7 +933,7 @@
             <param name="id">Идентити записи.</param>
             <returns>Возвращает <see langword="true" /> если запись существует иначе возвращает <see langword="false" /> если запись не существует.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperSystemLog.ExistsAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperSystemLog.ExistsAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
             <summary>
             Проверка существования записи с указаным идентити..
             </summary>
@@ -942,7 +942,7 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает <see langword="true" /> если запись существует иначе возвращает <see langword="false" /> если запись не существует.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperSystemLog.ExistsRaw(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperSystemLog.ExistsRaw(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64)">
             <summary>
             Проверка существования записис с указаным идентити.
             </summary>
@@ -950,7 +950,7 @@
             <param name="id">Идентити записи.</param>
             <returns>Возвращает <see langword="true" /> если запись существует иначе если запись не существует возвращает <see langword="false" />.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperSystemLog.ExistsRawAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperSystemLog.ExistsRawAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
             <summary>
             Проверка существования записис с указаным идентити.
             </summary>
@@ -959,7 +959,7 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает <see langword="true" /> если запись существует иначе если запись не существует возвращает <see langword="false" />.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperSystemLog.Get(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperSystemLog.Get(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64)">
             <summary>
             Получить запись с указаным идентити.
             </summary>
@@ -967,7 +967,7 @@
             <param name="id">Идентити записи.</param>
             <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperSystemLog.GetAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperSystemLog.GetAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
             <summary>
             Получить запись с указаным идентити.
             </summary>
@@ -976,7 +976,7 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperSystemLog.GetRaw(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperSystemLog.GetRaw(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64)">
             <summary>
             Получить запись с указаным идентити.
             </summary>
@@ -984,7 +984,7 @@
             <param name="id">Идентити записи.</param>
             <returns>Возвращает значение если запись существует иначе если запись не существует возвращает <see langword="null" />.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperSystemLog.GetRawAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperSystemLog.GetRawAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
             <summary>
             Получить запись с указаным идентити.
             </summary>
@@ -993,14 +993,14 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает значение если запись существует иначе если запись не существует возвращает <see langword="null" />.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperSystemLog.BulkInsert(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Collections.Generic.IEnumerable{ShtrihM.DemoServer.Processing.Generated.Interface.SystemLogDtoNew})">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperSystemLog.BulkInsert(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Collections.Generic.IEnumerable{Acme.DemoServer.Processing.Generated.Interface.SystemLogDtoNew})">
             <summary>
             Массовое создание записей.
             </summary>
             <param name="session">Сессия БД.</param>
             <param name="data">Записи.</param>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperSystemLog.BulkInsertAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Collections.Generic.IEnumerable{ShtrihM.DemoServer.Processing.Generated.Interface.SystemLogDtoNew},System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperSystemLog.BulkInsertAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Collections.Generic.IEnumerable{Acme.DemoServer.Processing.Generated.Interface.SystemLogDtoNew},System.Threading.CancellationToken)">
             <summary>
             Массовое создание записей.
             </summary>
@@ -1008,7 +1008,7 @@
             <param name="data">Записи.</param>
             <param name="cancellationToken">Токен отмены.</param>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperSystemLog.New(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.DemoServer.Processing.Generated.Interface.SystemLogDtoNew)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperSystemLog.New(Acme.Wattle.Mappers.Interfaces.IMappersSession,Acme.DemoServer.Processing.Generated.Interface.SystemLogDtoNew)">
             <summary>
             Создать запись.
             </summary>
@@ -1016,7 +1016,7 @@
             <param name="data">Новая запись.</param>
             <returns>Возвращает актуальное состояние записи.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperSystemLog.NewAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.DemoServer.Processing.Generated.Interface.SystemLogDtoNew,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperSystemLog.NewAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,Acme.DemoServer.Processing.Generated.Interface.SystemLogDtoNew,System.Threading.CancellationToken)">
             <summary>
             Создать запись.
             </summary>
@@ -1025,7 +1025,7 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает актуальное состояние записи.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperSystemLog.GetEnumerator(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperSystemLog.GetEnumerator(Acme.Wattle.Mappers.Interfaces.IMappersSession,Acme.Wattle.Mappers.Interfaces.IMapperSelectFilter)">
             <summary>
             Получить итератор всех записей выбранных с учётом фильтра.
             </summary>
@@ -1033,7 +1033,7 @@
             <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
             <returns>Возвращает итератор всех выбраных записей.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperSystemLog.GetEnumeratorAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperSystemLog.GetEnumeratorAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,Acme.Wattle.Mappers.Interfaces.IMapperSelectFilter,System.Threading.CancellationToken)">
             <summary>
             Получить итератор всех записей выбранных с учётом фильтра.
             </summary>
@@ -1042,7 +1042,7 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает итератор всех выбраных записей.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperSystemLog.GetEnumeratorRaw(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperSystemLog.GetEnumeratorRaw(Acme.Wattle.Mappers.Interfaces.IMappersSession,Acme.Wattle.Mappers.Interfaces.IMapperSelectFilter)">
             <summary>
             Получить итератор всех записей выбранных с учётом фильтра.
             </summary>
@@ -1050,7 +1050,7 @@
             <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
             <returns>Возвращает итератор всех выбраных записей.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperSystemLog.GetEnumeratorPage(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int32,System.Int32,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperSystemLog.GetEnumeratorPage(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int32,System.Int32,Acme.Wattle.Mappers.Interfaces.IMapperSelectFilter)">
             <summary>
             Получить итератор записей выбранных с учётом фильтра для заданной страницы указанного размера.
             </summary>
@@ -1060,7 +1060,7 @@
             <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
             <returns>Возвращает итератор всех выбраных записей.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperSystemLog.GetEnumeratorIdentitiesPage(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int32,System.Int32,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperSystemLog.GetEnumeratorIdentitiesPage(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int32,System.Int32,Acme.Wattle.Mappers.Interfaces.IMapperSelectFilter)">
             <summary>
             Получить итератор идентити записей выбранных с учётом фильтра для заданной страницы указанного размера.
             </summary>
@@ -1070,7 +1070,7 @@
             <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
             <returns>Возвращает итератор всех выбраных идентити записей.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperSystemLog.GetCount(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperSystemLog.GetCount(Acme.Wattle.Mappers.Interfaces.IMappersSession,Acme.Wattle.Mappers.Interfaces.IMapperSelectFilter)">
             <summary>
             Получить количество записей удовлетворяющих фильтру выборки.
             </summary>
@@ -1078,7 +1078,7 @@
             <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
             <returns>Возвращает количество записей удовлетворяющих фильтру выборки.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperSystemLog.GetCountAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperSystemLog.GetCountAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,Acme.Wattle.Mappers.Interfaces.IMapperSelectFilter,System.Threading.CancellationToken)">
             <summary>
             Получить количество записей удовлетворяющих фильтру выборки.
             </summary>
@@ -1087,24 +1087,24 @@
             <param name="cancellationToken">Кокен отмены.</param>
             <returns>Возвращает количество записей удовлетворяющих фильтру выборки.</returns>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperTablePartition">
+        <member name="T:Acme.DemoServer.Processing.Generated.Interface.IMapperTablePartition">
             <summary>
             Партиция таблицы БД
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperTablePartition.TableName">
+        <member name="P:Acme.DemoServer.Processing.Generated.Interface.IMapperTablePartition.TableName">
             <summary>
             Имя таблицы БД.
             </summary>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperTablePartition.GetNextId(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperTablePartition.GetNextId(Acme.Wattle.Mappers.Interfaces.IMappersSession)">
             <summary>
             Получение следующего значения идентити из последовательности "Sequence_TablePartition".
             </summary>
             <param name="session">Сессия БД.</param>
             <returns>Возвращает следующего значение идентити.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperTablePartition.GetNextIds(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int32,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperTablePartition.GetNextIds(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int32,System.Threading.CancellationToken)">
             <summary>
             Получение следующих значений идентити из последовательности "Sequence_TablePartition".
             </summary>
@@ -1113,7 +1113,7 @@
             <param name="cancellationToken">Кокен отмены.</param>
             <returns>Возвращает коллекцию следующих значений идентити.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperTablePartition.GetNextIdAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperTablePartition.GetNextIdAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Threading.CancellationToken)">
             <summary>
             Получение следующего значения идентити из последовательности "Sequence_TablePartition".
             </summary>
@@ -1121,7 +1121,7 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает следующего значение идентити.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperTablePartition.Exists(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperTablePartition.Exists(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64)">
             <summary>
             Проверка существования записи с указаным идентити.
             </summary>
@@ -1129,7 +1129,7 @@
             <param name="id">Идентити записи.</param>
             <returns>Возвращает <see langword="true" /> если запись существует иначе возвращает <see langword="false" /> если запись не существует.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperTablePartition.ExistsAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperTablePartition.ExistsAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
             <summary>
             Проверка существования записи с указаным идентити..
             </summary>
@@ -1138,7 +1138,7 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает <see langword="true" /> если запись существует иначе возвращает <see langword="false" /> если запись не существует.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperTablePartition.ExistsRaw(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperTablePartition.ExistsRaw(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64)">
             <summary>
             Проверка существования записис с указаным идентити.
             </summary>
@@ -1146,7 +1146,7 @@
             <param name="id">Идентити записи.</param>
             <returns>Возвращает <see langword="true" /> если запись существует иначе если запись не существует возвращает <see langword="false" />.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperTablePartition.ExistsRawAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperTablePartition.ExistsRawAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
             <summary>
             Проверка существования записис с указаным идентити.
             </summary>
@@ -1155,7 +1155,7 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает <see langword="true" /> если запись существует иначе если запись не существует возвращает <see langword="false" />.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperTablePartition.Get(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperTablePartition.Get(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64)">
             <summary>
             Получить запись с указаным идентити.
             </summary>
@@ -1163,7 +1163,7 @@
             <param name="id">Идентити записи.</param>
             <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperTablePartition.GetAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperTablePartition.GetAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
             <summary>
             Получить запись с указаным идентити.
             </summary>
@@ -1172,7 +1172,7 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperTablePartition.GetRaw(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperTablePartition.GetRaw(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64)">
             <summary>
             Получить запись с указаным идентити.
             </summary>
@@ -1180,7 +1180,7 @@
             <param name="id">Идентити записи.</param>
             <returns>Возвращает значение если запись существует иначе если запись не существует возвращает <see langword="null" />.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperTablePartition.GetRawAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperTablePartition.GetRawAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
             <summary>
             Получить запись с указаным идентити.
             </summary>
@@ -1189,14 +1189,14 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает значение если запись существует иначе если запись не существует возвращает <see langword="null" />.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperTablePartition.BulkInsert(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Collections.Generic.IEnumerable{ShtrihM.DemoServer.Processing.Generated.Interface.TablePartitionDtoNew})">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperTablePartition.BulkInsert(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Collections.Generic.IEnumerable{Acme.DemoServer.Processing.Generated.Interface.TablePartitionDtoNew})">
             <summary>
             Массовое создание записей.
             </summary>
             <param name="session">Сессия БД.</param>
             <param name="data">Записи.</param>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperTablePartition.BulkInsertAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Collections.Generic.IEnumerable{ShtrihM.DemoServer.Processing.Generated.Interface.TablePartitionDtoNew},System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperTablePartition.BulkInsertAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Collections.Generic.IEnumerable{Acme.DemoServer.Processing.Generated.Interface.TablePartitionDtoNew},System.Threading.CancellationToken)">
             <summary>
             Массовое создание записей.
             </summary>
@@ -1204,7 +1204,7 @@
             <param name="data">Записи.</param>
             <param name="cancellationToken">Токен отмены.</param>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperTablePartition.New(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.DemoServer.Processing.Generated.Interface.TablePartitionDtoNew)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperTablePartition.New(Acme.Wattle.Mappers.Interfaces.IMappersSession,Acme.DemoServer.Processing.Generated.Interface.TablePartitionDtoNew)">
             <summary>
             Создать запись.
             </summary>
@@ -1212,7 +1212,7 @@
             <param name="data">Новая запись.</param>
             <returns>Возвращает актуальное состояние записи.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperTablePartition.NewAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.DemoServer.Processing.Generated.Interface.TablePartitionDtoNew,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperTablePartition.NewAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,Acme.DemoServer.Processing.Generated.Interface.TablePartitionDtoNew,System.Threading.CancellationToken)">
             <summary>
             Создать запись.
             </summary>
@@ -1221,7 +1221,7 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает актуальное состояние записи.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperTablePartition.GetEnumerator(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperTablePartition.GetEnumerator(Acme.Wattle.Mappers.Interfaces.IMappersSession,Acme.Wattle.Mappers.Interfaces.IMapperSelectFilter)">
             <summary>
             Получить итератор всех записей выбранных с учётом фильтра.
             </summary>
@@ -1229,7 +1229,7 @@
             <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
             <returns>Возвращает итератор всех выбраных записей.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperTablePartition.GetEnumeratorAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperTablePartition.GetEnumeratorAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,Acme.Wattle.Mappers.Interfaces.IMapperSelectFilter,System.Threading.CancellationToken)">
             <summary>
             Получить итератор всех записей выбранных с учётом фильтра.
             </summary>
@@ -1238,7 +1238,7 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает итератор всех выбраных записей.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperTablePartition.GetEnumeratorRaw(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperTablePartition.GetEnumeratorRaw(Acme.Wattle.Mappers.Interfaces.IMappersSession,Acme.Wattle.Mappers.Interfaces.IMapperSelectFilter)">
             <summary>
             Получить итератор всех записей выбранных с учётом фильтра.
             </summary>
@@ -1246,7 +1246,7 @@
             <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
             <returns>Возвращает итератор всех выбраных записей.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperTablePartition.GetEnumeratorPage(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int32,System.Int32,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperTablePartition.GetEnumeratorPage(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int32,System.Int32,Acme.Wattle.Mappers.Interfaces.IMapperSelectFilter)">
             <summary>
             Получить итератор записей выбранных с учётом фильтра для заданной страницы указанного размера.
             </summary>
@@ -1256,7 +1256,7 @@
             <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
             <returns>Возвращает итератор всех выбраных записей.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperTablePartition.GetEnumeratorIdentitiesPage(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int32,System.Int32,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperTablePartition.GetEnumeratorIdentitiesPage(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int32,System.Int32,Acme.Wattle.Mappers.Interfaces.IMapperSelectFilter)">
             <summary>
             Получить итератор идентити записей выбранных с учётом фильтра для заданной страницы указанного размера.
             </summary>
@@ -1266,7 +1266,7 @@
             <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
             <returns>Возвращает итератор всех выбраных идентити записей.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperTablePartition.GetCount(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperTablePartition.GetCount(Acme.Wattle.Mappers.Interfaces.IMappersSession,Acme.Wattle.Mappers.Interfaces.IMapperSelectFilter)">
             <summary>
             Получить количество записей удовлетворяющих фильтру выборки.
             </summary>
@@ -1274,7 +1274,7 @@
             <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
             <returns>Возвращает количество записей удовлетворяющих фильтру выборки.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperTablePartition.GetCountAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperTablePartition.GetCountAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,Acme.Wattle.Mappers.Interfaces.IMapperSelectFilter,System.Threading.CancellationToken)">
             <summary>
             Получить количество записей удовлетворяющих фильтру выборки.
             </summary>
@@ -1283,24 +1283,24 @@
             <param name="cancellationToken">Кокен отмены.</param>
             <returns>Возвращает количество записей удовлетворяющих фильтру выборки.</returns>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObject">
+        <member name="T:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObject">
             <summary>
             Объект
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObject.TableName">
+        <member name="P:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObject.TableName">
             <summary>
             Имя таблицы БД.
             </summary>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObject.GetNextId(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObject.GetNextId(Acme.Wattle.Mappers.Interfaces.IMappersSession)">
             <summary>
             Получение следующего значения идентити из последовательности "Sequence_DemoObject".
             </summary>
             <param name="session">Сессия БД.</param>
             <returns>Возвращает следующего значение идентити.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObject.GetNextIds(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int32,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObject.GetNextIds(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int32,System.Threading.CancellationToken)">
             <summary>
             Получение следующих значений идентити из последовательности "Sequence_DemoObject".
             </summary>
@@ -1309,7 +1309,7 @@
             <param name="cancellationToken">Кокен отмены.</param>
             <returns>Возвращает коллекцию следующих значений идентити.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObject.GetNextIdAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObject.GetNextIdAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Threading.CancellationToken)">
             <summary>
             Получение следующего значения идентити из последовательности "Sequence_DemoObject".
             </summary>
@@ -1317,7 +1317,7 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает следующего значение идентити.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObject.Exists(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObject.Exists(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64)">
             <summary>
             Проверка существования записи с указаным идентити.
             </summary>
@@ -1325,7 +1325,7 @@
             <param name="id">Идентити записи.</param>
             <returns>Возвращает <see langword="true" /> если запись существует иначе возвращает <see langword="false" /> если запись не существует.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObject.ExistsAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObject.ExistsAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
             <summary>
             Проверка существования записи с указаным идентити..
             </summary>
@@ -1334,7 +1334,7 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает <see langword="true" /> если запись существует иначе возвращает <see langword="false" /> если запись не существует.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObject.ExistsRaw(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObject.ExistsRaw(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64)">
             <summary>
             Проверка существования записис с указаным идентити.
             </summary>
@@ -1342,7 +1342,7 @@
             <param name="id">Идентити записи.</param>
             <returns>Возвращает <see langword="true" /> если запись существует иначе если запись не существует возвращает <see langword="false" />.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObject.ExistsRawAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObject.ExistsRawAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
             <summary>
             Проверка существования записис с указаным идентити.
             </summary>
@@ -1351,7 +1351,7 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает <see langword="true" /> если запись существует иначе если запись не существует возвращает <see langword="false" />.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObject.ExistsRevision(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64,System.Int64)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObject.ExistsRevision(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64,System.Int64)">
             <summary>
             Проверка существования записис с указаным идентити и указаной версией данных.
             </summary>
@@ -1360,7 +1360,7 @@
             <param name="revision">Ожидаемая версия данных записи.</param>
             <returns>Возвращает <see langword="true" /> если запись существует иначе если запись не существует возвращает <see langword="false" />.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObject.ExistsRevisionAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64,System.Int64,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObject.ExistsRevisionAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64,System.Int64,System.Threading.CancellationToken)">
             <summary>
             Проверка существования записис с указаным идентити и указаной версией данных.
             </summary>
@@ -1370,7 +1370,7 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает <see langword="true" /> если запись существует иначе если запись не существует возвращает <see langword="false" />.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObject.Get(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObject.Get(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64)">
             <summary>
             Получить запись с указаным идентити.
             </summary>
@@ -1378,7 +1378,7 @@
             <param name="id">Идентити записи.</param>
             <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObject.GetAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObject.GetAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
             <summary>
             Получить запись с указаным идентити.
             </summary>
@@ -1387,7 +1387,7 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObject.GetRaw(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObject.GetRaw(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64)">
             <summary>
             Получить запись с указаным идентити.
             </summary>
@@ -1395,7 +1395,7 @@
             <param name="id">Идентити записи.</param>
             <returns>Возвращает значение если запись существует иначе если запись не существует возвращает <see langword="null" />.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObject.GetRawAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObject.GetRawAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
             <summary>
             Получить запись с указаным идентити.
             </summary>
@@ -1404,7 +1404,7 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает значение если запись существует иначе если запись не существует возвращает <see langword="null" />.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObject.Update(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectDtoChanged)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObject.Update(Acme.Wattle.Mappers.Interfaces.IMappersSession,Acme.DemoServer.Processing.Generated.Interface.DemoObjectDtoChanged)">
             <summary>
             Обновить запись.
             </summary>
@@ -1412,7 +1412,7 @@
             <param name="data">Измененная запись.</param>
             <returns>Возвращает актуальное состояние записи.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObject.UpdateAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectDtoChanged,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObject.UpdateAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,Acme.DemoServer.Processing.Generated.Interface.DemoObjectDtoChanged,System.Threading.CancellationToken)">
             <summary>
             Обновить запись.
             </summary>
@@ -1421,14 +1421,14 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает актуальное состояние записи.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObject.BulkInsert(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Collections.Generic.IEnumerable{ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectDtoNew})">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObject.BulkInsert(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Collections.Generic.IEnumerable{Acme.DemoServer.Processing.Generated.Interface.DemoObjectDtoNew})">
             <summary>
             Массовое создание записей.
             </summary>
             <param name="session">Сессия БД.</param>
             <param name="data">Записи.</param>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObject.BulkInsertAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Collections.Generic.IEnumerable{ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectDtoNew},System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObject.BulkInsertAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Collections.Generic.IEnumerable{Acme.DemoServer.Processing.Generated.Interface.DemoObjectDtoNew},System.Threading.CancellationToken)">
             <summary>
             Массовое создание записей.
             </summary>
@@ -1436,7 +1436,7 @@
             <param name="data">Записи.</param>
             <param name="cancellationToken">Токен отмены.</param>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObject.New(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectDtoNew)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObject.New(Acme.Wattle.Mappers.Interfaces.IMappersSession,Acme.DemoServer.Processing.Generated.Interface.DemoObjectDtoNew)">
             <summary>
             Создать запись.
             </summary>
@@ -1444,7 +1444,7 @@
             <param name="data">Новая запись.</param>
             <returns>Возвращает актуальное состояние записи.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObject.NewAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectDtoNew,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObject.NewAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,Acme.DemoServer.Processing.Generated.Interface.DemoObjectDtoNew,System.Threading.CancellationToken)">
             <summary>
             Создать запись.
             </summary>
@@ -1453,7 +1453,7 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает актуальное состояние записи.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObject.GetEnumerator(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObject.GetEnumerator(Acme.Wattle.Mappers.Interfaces.IMappersSession,Acme.Wattle.Mappers.Interfaces.IMapperSelectFilter)">
             <summary>
             Получить итератор всех записей выбранных с учётом фильтра.
             </summary>
@@ -1461,7 +1461,7 @@
             <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
             <returns>Возвращает итератор всех выбраных записей.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObject.GetEnumeratorAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObject.GetEnumeratorAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,Acme.Wattle.Mappers.Interfaces.IMapperSelectFilter,System.Threading.CancellationToken)">
             <summary>
             Получить итератор всех записей выбранных с учётом фильтра.
             </summary>
@@ -1470,7 +1470,7 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает итератор всех выбраных записей.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObject.GetEnumeratorRaw(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObject.GetEnumeratorRaw(Acme.Wattle.Mappers.Interfaces.IMappersSession,Acme.Wattle.Mappers.Interfaces.IMapperSelectFilter)">
             <summary>
             Получить итератор всех записей выбранных с учётом фильтра.
             </summary>
@@ -1478,7 +1478,7 @@
             <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
             <returns>Возвращает итератор всех выбраных записей.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObject.GetEnumeratorPage(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int32,System.Int32,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObject.GetEnumeratorPage(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int32,System.Int32,Acme.Wattle.Mappers.Interfaces.IMapperSelectFilter)">
             <summary>
             Получить итератор записей выбранных с учётом фильтра для заданной страницы указанного размера.
             </summary>
@@ -1488,7 +1488,7 @@
             <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
             <returns>Возвращает итератор всех выбраных записей.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObject.GetEnumeratorIdentitiesPage(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int32,System.Int32,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObject.GetEnumeratorIdentitiesPage(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int32,System.Int32,Acme.Wattle.Mappers.Interfaces.IMapperSelectFilter)">
             <summary>
             Получить итератор идентити записей выбранных с учётом фильтра для заданной страницы указанного размера.
             </summary>
@@ -1498,7 +1498,7 @@
             <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
             <returns>Возвращает итератор всех выбраных идентити записей.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObject.GetCount(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObject.GetCount(Acme.Wattle.Mappers.Interfaces.IMappersSession,Acme.Wattle.Mappers.Interfaces.IMapperSelectFilter)">
             <summary>
             Получить количество записей удовлетворяющих фильтру выборки.
             </summary>
@@ -1506,7 +1506,7 @@
             <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
             <returns>Возвращает количество записей удовлетворяющих фильтру выборки.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObject.GetCountAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObject.GetCountAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,Acme.Wattle.Mappers.Interfaces.IMapperSelectFilter,System.Threading.CancellationToken)">
             <summary>
             Получить количество записей удовлетворяющих фильтру выборки.
             </summary>
@@ -1515,24 +1515,24 @@
             <param name="cancellationToken">Кокен отмены.</param>
             <returns>Возвращает количество записей удовлетворяющих фильтру выборки.</returns>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX">
+        <member name="T:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX">
             <summary>
             Объект X
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.TableName">
+        <member name="P:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.TableName">
             <summary>
             Имя таблицы БД.
             </summary>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.GetNextId(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.GetNextId(Acme.Wattle.Mappers.Interfaces.IMappersSession)">
             <summary>
             Получение следующего значения идентити из последовательности "Sequence_DemoObjectX".
             </summary>
             <param name="session">Сессия БД.</param>
             <returns>Возвращает следующего значение идентити.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.GetNextIds(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int32,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.GetNextIds(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int32,System.Threading.CancellationToken)">
             <summary>
             Получение следующих значений идентити из последовательности "Sequence_DemoObjectX".
             </summary>
@@ -1541,7 +1541,7 @@
             <param name="cancellationToken">Кокен отмены.</param>
             <returns>Возвращает коллекцию следующих значений идентити.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.GetNextIdAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.GetNextIdAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Threading.CancellationToken)">
             <summary>
             Получение следующего значения идентити из последовательности "Sequence_DemoObjectX".
             </summary>
@@ -1549,7 +1549,7 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает следующего значение идентити.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.Exists(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.Exists(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64)">
             <summary>
             Проверка существования записи с указаным идентити.
             </summary>
@@ -1557,7 +1557,7 @@
             <param name="id">Идентити записи.</param>
             <returns>Возвращает <see langword="true" /> если запись существует иначе возвращает <see langword="false" /> если запись не существует.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.ExistsByKey(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Guid,System.String)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.ExistsByKey(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Guid,System.String)">
             <summary>
             Проверка существования записи по альтернативному ключу 'Уникальность по 'Альтернативный ключ - часть №1 и №2''.
             </summary>
@@ -1566,7 +1566,7 @@
             <param name="argKey2">Альтернативный ключ - часть №2</param>
             <returns>Возвращает <see langword="true" /> если запись существует иначе возвращает <see langword="false" /> если запись не существует.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.ExistsAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.ExistsAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
             <summary>
             Проверка существования записи с указаным идентити..
             </summary>
@@ -1575,7 +1575,7 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает <see langword="true" /> если запись существует иначе возвращает <see langword="false" /> если запись не существует.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.ExistsByKeyAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Guid,System.String,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.ExistsByKeyAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Guid,System.String,System.Threading.CancellationToken)">
             <summary>
             Проверка существования записи по альтернативному ключу 'Уникальность по 'Альтернативный ключ - часть №1 и №2''..
             </summary>
@@ -1585,7 +1585,7 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает <see langword="true" /> если запись существует иначе возвращает <see langword="false" /> если запись не существует.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.ExistsRaw(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.ExistsRaw(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64)">
             <summary>
             Проверка существования записис с указаным идентити.
             </summary>
@@ -1593,7 +1593,7 @@
             <param name="id">Идентити записи.</param>
             <returns>Возвращает <see langword="true" /> если запись существует иначе если запись не существует возвращает <see langword="false" />.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.ExistsRawAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.ExistsRawAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
             <summary>
             Проверка существования записис с указаным идентити.
             </summary>
@@ -1602,7 +1602,7 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает <see langword="true" /> если запись существует иначе если запись не существует возвращает <see langword="false" />.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.ExistsRevision(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64,System.Int64)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.ExistsRevision(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64,System.Int64)">
             <summary>
             Проверка существования записис с указаным идентити и указаной версией данных.
             </summary>
@@ -1611,7 +1611,7 @@
             <param name="revision">Ожидаемая версия данных записи.</param>
             <returns>Возвращает <see langword="true" /> если запись существует иначе если запись не существует возвращает <see langword="false" />.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.ExistsRevisionAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64,System.Int64,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.ExistsRevisionAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64,System.Int64,System.Threading.CancellationToken)">
             <summary>
             Проверка существования записис с указаным идентити и указаной версией данных.
             </summary>
@@ -1621,7 +1621,7 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает <see langword="true" /> если запись существует иначе если запись не существует возвращает <see langword="false" />.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.Get(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.Get(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64)">
             <summary>
             Получить запись с указаным идентити.
             </summary>
@@ -1629,7 +1629,7 @@
             <param name="id">Идентити записи.</param>
             <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.GetByKey(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Guid,System.String)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.GetByKey(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Guid,System.String)">
             <summary>
             Получить запись записи по альтернативному ключу 'Уникальность по 'Альтернативный ключ - часть №1 и №2''.
             </summary>
@@ -1638,7 +1638,7 @@
             <param name="argKey2">Альтернативный ключ - часть №2</param>
             <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.GetAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.GetAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
             <summary>
             Получить запись с указаным идентити.
             </summary>
@@ -1647,7 +1647,7 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.GetByKeyAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Guid,System.String,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.GetByKeyAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Guid,System.String,System.Threading.CancellationToken)">
             <summary>
             Получить запись по альтернативному ключу 'Уникальность по 'Альтернативный ключ - часть №1 и №2''.
             </summary>
@@ -1657,7 +1657,7 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.GetRaw(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.GetRaw(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64)">
             <summary>
             Получить запись с указаным идентити.
             </summary>
@@ -1665,7 +1665,7 @@
             <param name="id">Идентити записи.</param>
             <returns>Возвращает значение если запись существует иначе если запись не существует возвращает <see langword="null" />.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.GetRawAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.GetRawAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
             <summary>
             Получить запись с указаным идентити.
             </summary>
@@ -1674,7 +1674,7 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает значение если запись существует иначе если запись не существует возвращает <see langword="null" />.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.Update(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectXDtoChanged)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.Update(Acme.Wattle.Mappers.Interfaces.IMappersSession,Acme.DemoServer.Processing.Generated.Interface.DemoObjectXDtoChanged)">
             <summary>
             Обновить запись.
             </summary>
@@ -1682,7 +1682,7 @@
             <param name="data">Измененная запись.</param>
             <returns>Возвращает актуальное состояние записи.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.UpdateAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectXDtoChanged,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.UpdateAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,Acme.DemoServer.Processing.Generated.Interface.DemoObjectXDtoChanged,System.Threading.CancellationToken)">
             <summary>
             Обновить запись.
             </summary>
@@ -1691,14 +1691,14 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает актуальное состояние записи.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.BulkInsert(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Collections.Generic.IEnumerable{ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectXDtoNew})">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.BulkInsert(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Collections.Generic.IEnumerable{Acme.DemoServer.Processing.Generated.Interface.DemoObjectXDtoNew})">
             <summary>
             Массовое создание записей.
             </summary>
             <param name="session">Сессия БД.</param>
             <param name="data">Записи.</param>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.BulkInsertAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Collections.Generic.IEnumerable{ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectXDtoNew},System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.BulkInsertAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Collections.Generic.IEnumerable{Acme.DemoServer.Processing.Generated.Interface.DemoObjectXDtoNew},System.Threading.CancellationToken)">
             <summary>
             Массовое создание записей.
             </summary>
@@ -1706,7 +1706,7 @@
             <param name="data">Записи.</param>
             <param name="cancellationToken">Токен отмены.</param>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.New(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectXDtoNew)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.New(Acme.Wattle.Mappers.Interfaces.IMappersSession,Acme.DemoServer.Processing.Generated.Interface.DemoObjectXDtoNew)">
             <summary>
             Создать запись.
             </summary>
@@ -1714,7 +1714,7 @@
             <param name="data">Новая запись.</param>
             <returns>Возвращает актуальное состояние записи.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.NewAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectXDtoNew,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.NewAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,Acme.DemoServer.Processing.Generated.Interface.DemoObjectXDtoNew,System.Threading.CancellationToken)">
             <summary>
             Создать запись.
             </summary>
@@ -1723,14 +1723,14 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает актуальное состояние записи.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.Delete(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectXDtoDeleted)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.Delete(Acme.Wattle.Mappers.Interfaces.IMappersSession,Acme.DemoServer.Processing.Generated.Interface.DemoObjectXDtoDeleted)">
             <summary>
             Удаление записи.
             </summary>
             <param name="session">Сессия БД.</param>
             <param name="data">Данные достаточные для удаления записи.</param>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.DeleteAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.DemoServer.Processing.Generated.Interface.DemoObjectXDtoDeleted,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.DeleteAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,Acme.DemoServer.Processing.Generated.Interface.DemoObjectXDtoDeleted,System.Threading.CancellationToken)">
             <summary>
             Удаление записи.
             </summary>
@@ -1738,7 +1738,7 @@
             <param name="data">Данные достаточные для удаления записи.</param>
             <param name="cancellationToken">Токен отмены.</param>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.GetEnumerator(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.GetEnumerator(Acme.Wattle.Mappers.Interfaces.IMappersSession,Acme.Wattle.Mappers.Interfaces.IMapperSelectFilter)">
             <summary>
             Получить итератор всех записей выбранных с учётом фильтра.
             </summary>
@@ -1746,7 +1746,7 @@
             <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
             <returns>Возвращает итератор всех выбраных записей.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.GetEnumeratorAsGroup(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.GetEnumeratorAsGroup(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64)">
             <summary>
             Получить итератор всех записей коллекции 'Группировка по 'Номер группы''.
             </summary>
@@ -1754,7 +1754,7 @@
             <param name="argGroup">Номер группы</param>
             <returns>Возвращает итератор всех выбраных записей.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.GetEnumeratorAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.GetEnumeratorAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,Acme.Wattle.Mappers.Interfaces.IMapperSelectFilter,System.Threading.CancellationToken)">
             <summary>
             Получить итератор всех записей выбранных с учётом фильтра.
             </summary>
@@ -1763,7 +1763,7 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает итератор всех выбраных записей.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.GetEnumeratorAsGroupAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.GetEnumeratorAsGroupAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
             <summary>
             Получить итератор всех записей коллекции 'Группировка по 'Номер группы''.
             </summary>
@@ -1772,7 +1772,7 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает итератор всех выбраных записей.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.GetEnumeratorRaw(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.GetEnumeratorRaw(Acme.Wattle.Mappers.Interfaces.IMappersSession,Acme.Wattle.Mappers.Interfaces.IMapperSelectFilter)">
             <summary>
             Получить итератор всех записей выбранных с учётом фильтра.
             </summary>
@@ -1780,7 +1780,7 @@
             <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
             <returns>Возвращает итератор всех выбраных записей.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.GetEnumeratorPage(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int32,System.Int32,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.GetEnumeratorPage(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int32,System.Int32,Acme.Wattle.Mappers.Interfaces.IMapperSelectFilter)">
             <summary>
             Получить итератор записей выбранных с учётом фильтра для заданной страницы указанного размера.
             </summary>
@@ -1790,7 +1790,7 @@
             <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
             <returns>Возвращает итератор всех выбраных записей.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.GetEnumeratorIdentitiesPage(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int32,System.Int32,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.GetEnumeratorIdentitiesPage(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int32,System.Int32,Acme.Wattle.Mappers.Interfaces.IMapperSelectFilter)">
             <summary>
             Получить итератор идентити записей выбранных с учётом фильтра для заданной страницы указанного размера.
             </summary>
@@ -1800,7 +1800,7 @@
             <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
             <returns>Возвращает итератор всех выбраных идентити записей.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.GetCount(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.GetCount(Acme.Wattle.Mappers.Interfaces.IMappersSession,Acme.Wattle.Mappers.Interfaces.IMapperSelectFilter)">
             <summary>
             Получить количество записей удовлетворяющих фильтру выборки.
             </summary>
@@ -1808,7 +1808,7 @@
             <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
             <returns>Возвращает количество записей удовлетворяющих фильтру выборки.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.GetCountByGroup(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.GetCountByGroup(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64)">
             <summary>
             Получить количество записей коллекции 'Группировка по 'Номер группы''.
             </summary>
@@ -1816,7 +1816,7 @@
             <param name="argGroup">Номер группы</param>
             <returns>Возвращает количество записей коллекции.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.GetCountAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.GetCountAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,Acme.Wattle.Mappers.Interfaces.IMapperSelectFilter,System.Threading.CancellationToken)">
             <summary>
             Получить количество записей удовлетворяющих фильтру выборки.
             </summary>
@@ -1825,7 +1825,7 @@
             <param name="cancellationToken">Кокен отмены.</param>
             <returns>Возвращает количество записей удовлетворяющих фильтру выборки.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.GetCountByGroupAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoObjectX.GetCountByGroupAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
             <summary>
             Получить количество записей коллекции 'Группировка по 'Номер группы''.
             </summary>
@@ -1834,24 +1834,24 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает количество записей коллекции.</returns>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask">
+        <member name="T:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask">
             <summary>
             Задача с отложенным запуском
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.TableName">
+        <member name="P:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.TableName">
             <summary>
             Имя таблицы БД.
             </summary>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.GetNextId(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.GetNextId(Acme.Wattle.Mappers.Interfaces.IMappersSession)">
             <summary>
             Получение следующего значения идентити из последовательности "Sequence_DemoDelayTask".
             </summary>
             <param name="session">Сессия БД.</param>
             <returns>Возвращает следующего значение идентити.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.GetNextIds(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int32,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.GetNextIds(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int32,System.Threading.CancellationToken)">
             <summary>
             Получение следующих значений идентити из последовательности "Sequence_DemoDelayTask".
             </summary>
@@ -1860,7 +1860,7 @@
             <param name="cancellationToken">Кокен отмены.</param>
             <returns>Возвращает коллекцию следующих значений идентити.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.GetNextIdAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.GetNextIdAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Threading.CancellationToken)">
             <summary>
             Получение следующего значения идентити из последовательности "Sequence_DemoDelayTask".
             </summary>
@@ -1868,7 +1868,7 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает следующего значение идентити.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.Exists(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.Exists(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64)">
             <summary>
             Проверка существования записи с указаным идентити.
             ВАЖНО : Проверка не учитывает скрытые записи.
@@ -1877,7 +1877,7 @@
             <param name="id">Идентити записи.</param>
             <returns>Возвращает <see langword="true" /> если запись существует иначе возвращает <see langword="false" /> если запись не существует или скрыта.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.ExistsAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.ExistsAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
             <summary>
             Проверка существования записи с указаным идентити..
             ВАЖНО : Проверка не учитывает скрытые записи.
@@ -1887,7 +1887,7 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает <see langword="true" /> если запись существует иначе возвращает <see langword="false" /> если запись не существует или скрыта.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.ExistsRaw(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.ExistsRaw(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64)">
             <summary>
             Проверка существования записис с указаным идентити.
             </summary>
@@ -1895,7 +1895,7 @@
             <param name="id">Идентити записи.</param>
             <returns>Возвращает <see langword="true" /> если запись существует иначе если запись не существует возвращает <see langword="false" />.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.ExistsRawAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.ExistsRawAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
             <summary>
             Проверка существования записис с указаным идентити.
             </summary>
@@ -1904,7 +1904,7 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает <see langword="true" /> если запись существует иначе если запись не существует возвращает <see langword="false" />.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.Get(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.Get(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64)">
             <summary>
             Получить запись с указаным идентити.
             ВАЖНО : Получение не учитывает скрытые записи.
@@ -1913,7 +1913,7 @@
             <param name="id">Идентити записи.</param>
             <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует или скрыта.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.GetAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.GetAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
             <summary>
             Получить запись с указаным идентити.
             ВАЖНО : Получение не учитывает скрытые записи.
@@ -1923,7 +1923,7 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует или скрыта.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.GetRaw(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.GetRaw(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64)">
             <summary>
             Получить запись с указаным идентити.
             </summary>
@@ -1931,7 +1931,7 @@
             <param name="id">Идентити записи.</param>
             <returns>Возвращает значение если запись существует иначе если запись не существует возвращает <see langword="null" />.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.GetRawAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.GetRawAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int64,System.Threading.CancellationToken)">
             <summary>
             Получить запись с указаным идентити.
             </summary>
@@ -1940,7 +1940,7 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает значение если запись существует иначе если запись не существует возвращает <see langword="null" />.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.Update(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoChanged)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.Update(Acme.Wattle.Mappers.Interfaces.IMappersSession,Acme.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoChanged)">
             <summary>
             Обновить запись.
             ВАЖНО : Обновление не учитывает скрытые записи.
@@ -1949,7 +1949,7 @@
             <param name="data">Измененная запись.</param>
             <returns>Возвращает актуальное состояние записи.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.UpdateAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoChanged,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.UpdateAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,Acme.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoChanged,System.Threading.CancellationToken)">
             <summary>
             Обновить запись.
             ВАЖНО : Обновление не учитывает скрытые записи.
@@ -1959,14 +1959,14 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает актуальное состояние записи.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.BulkInsert(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Collections.Generic.IEnumerable{ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoNew})">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.BulkInsert(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Collections.Generic.IEnumerable{Acme.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoNew})">
             <summary>
             Массовое создание записей.
             </summary>
             <param name="session">Сессия БД.</param>
             <param name="data">Записи.</param>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.BulkInsertAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Collections.Generic.IEnumerable{ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoNew},System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.BulkInsertAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Collections.Generic.IEnumerable{Acme.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoNew},System.Threading.CancellationToken)">
             <summary>
             Массовое создание записей.
             </summary>
@@ -1974,7 +1974,7 @@
             <param name="data">Записи.</param>
             <param name="cancellationToken">Токен отмены.</param>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.New(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoNew)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.New(Acme.Wattle.Mappers.Interfaces.IMappersSession,Acme.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoNew)">
             <summary>
             Создать запись.
             </summary>
@@ -1982,7 +1982,7 @@
             <param name="data">Новая запись.</param>
             <returns>Возвращает актуальное состояние записи.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.NewAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoNew,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.NewAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,Acme.DemoServer.Processing.Generated.Interface.DemoDelayTaskDtoNew,System.Threading.CancellationToken)">
             <summary>
             Создать запись.
             </summary>
@@ -1991,7 +1991,7 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает актуальное состояние записи.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.GetEnumerator(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.GetEnumerator(Acme.Wattle.Mappers.Interfaces.IMappersSession,Acme.Wattle.Mappers.Interfaces.IMapperSelectFilter)">
             <summary>
             Получить итератор всех записей выбранных с учётом фильтра.
             ВАЖНО : Выбор не учитывает скрытые записи.
@@ -2000,7 +2000,7 @@
             <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
             <returns>Возвращает итератор всех выбраных записей кроме скрытых записей.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.GetEnumeratorAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.GetEnumeratorAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,Acme.Wattle.Mappers.Interfaces.IMapperSelectFilter,System.Threading.CancellationToken)">
             <summary>
             Получить итератор всех записей выбранных с учётом фильтра.
             ВАЖНО : Выбор не учитывает скрытые записи.
@@ -2010,7 +2010,7 @@
             <param name="cancellationToken">Токен отмены.</param>
             <returns>Возвращает итератор всех выбраных записей кроме скрытых записей.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.GetEnumeratorRaw(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.GetEnumeratorRaw(Acme.Wattle.Mappers.Interfaces.IMappersSession,Acme.Wattle.Mappers.Interfaces.IMapperSelectFilter)">
             <summary>
             Получить итератор всех записей выбранных с учётом фильтра.
             </summary>
@@ -2018,7 +2018,7 @@
             <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
             <returns>Возвращает итератор всех выбраных записей.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.GetEnumeratorPage(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int32,System.Int32,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.GetEnumeratorPage(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int32,System.Int32,Acme.Wattle.Mappers.Interfaces.IMapperSelectFilter)">
             <summary>
             Получить итератор записей выбранных с учётом фильтра для заданной страницы указанного размера.
             ВАЖНО : Выбор не учитывает скрытые записи.
@@ -2029,7 +2029,7 @@
             <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
             <returns>Возвращает итератор всех выбраных записей кроме скрытых записей.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.GetEnumeratorIdentitiesPage(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,System.Int32,System.Int32,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.GetEnumeratorIdentitiesPage(Acme.Wattle.Mappers.Interfaces.IMappersSession,System.Int32,System.Int32,Acme.Wattle.Mappers.Interfaces.IMapperSelectFilter)">
             <summary>
             Получить итератор идентити записей выбранных с учётом фильтра для заданной страницы указанного размера.
             ВАЖНО : Выбор не учитывает скрытые записи.
@@ -2040,7 +2040,7 @@
             <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
             <returns>Возвращает итератор всех выбраных идентити записей кроме скрытых записей.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.GetCount(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.GetCount(Acme.Wattle.Mappers.Interfaces.IMappersSession,Acme.Wattle.Mappers.Interfaces.IMapperSelectFilter)">
             <summary>
             Получить количество записей удовлетворяющих фильтру выборки.
             ВАЖНО : Выбор не учитывает скрытые записи.
@@ -2049,7 +2049,7 @@
             <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
             <returns>Возвращает количество записей удовлетворяющих фильтру выборки кроме скрытых записей.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.GetCountAsync(ShtrihM.Wattle3.Mappers.Interfaces.IMappersSession,ShtrihM.Wattle3.Mappers.Interfaces.IMapperSelectFilter,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Generated.Interface.IMapperDemoDelayTask.GetCountAsync(Acme.Wattle.Mappers.Interfaces.IMappersSession,Acme.Wattle.Mappers.Interfaces.IMapperSelectFilter,System.Threading.CancellationToken)">
             <summary>
             Получить количество записей удовлетворяющих фильтру выборки.
             ВАЖНО : Выбор не учитывает скрытые записи.

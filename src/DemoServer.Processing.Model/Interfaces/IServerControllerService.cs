@@ -1,6 +1,6 @@
-﻿using ShtrihM.Wattle3.Common.Interfaces;
+﻿using Acme.Wattle.Common.Interfaces;
 
-namespace ShtrihM.DemoServer.Processing.Model.Interfaces;
+namespace Acme.DemoServer.Processing.Model.Interfaces;
 
 public interface IServerControllerService
 {

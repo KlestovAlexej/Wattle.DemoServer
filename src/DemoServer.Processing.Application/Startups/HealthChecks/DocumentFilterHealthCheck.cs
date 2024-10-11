@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.OpenApi.Models;
-using ShtrihM.DemoServer.Processing.Api;
+using Acme.DemoServer.Processing.Api;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Collections.Generic;
 using System.Globalization;
 
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
-namespace ShtrihM.DemoServer.Processing.Application.Startups.HealthChecks;
+namespace Acme.DemoServer.Processing.Application.Startups.HealthChecks;
 
 // ReSharper disable once ClassNeverInstantiated.Global
 public class DocumentFilterHealthCheck : IDocumentFilter

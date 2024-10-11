@@ -1,11 +1,11 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
-using ShtrihM.DemoServer.Processing.Model.Interfaces;
+using Acme.DemoServer.Processing.Model.Interfaces;
 
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
-namespace ShtrihM.DemoServer.Processing.Application.Startups.HealthChecks;
+namespace Acme.DemoServer.Processing.Application.Startups.HealthChecks;
 
 public class EntryPointReadyHealthCheck : IHealthCheck
 {

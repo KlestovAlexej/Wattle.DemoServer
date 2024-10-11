@@ -1,15 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-	<Import Project="..\..\Tools\MSBuild\ShtrihM.MSBuild.Common.targets" />
+	<Import Project="..\..\Tools\MSBuild\Acme.MSBuild.Common.targets" />
 
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<AnalysisLevel>latest</AnalysisLevel>
-		<AssemblyName>ShtrihM.DemoServer.Processing.Api</AssemblyName>
-		<RootNamespace>ShtrihM.DemoServer.Processing.Api</RootNamespace>
+		<AssemblyName>Acme.DemoServer.Processing.Api</AssemblyName>
+		<RootNamespace>Acme.DemoServer.Processing.Api</RootNamespace>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<PackageTags>ShtrihM DemoServer Processing Api</PackageTags>
+		<PackageTags>Acme DemoServer Processing Api</PackageTags>
 		<OutputType>Library</OutputType>
 		<IsPackable>true</IsPackable>
 		<NoWarn>$(NoWarn);1701;1702;CS1591;NU5104</NoWarn>
@@ -20,10 +20,10 @@
 	<ItemGroup>
 		<PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" Version="8.1.0" />
 		<PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
-		<PackageReference Include="ShtrihM.Wattle3.DomainObjects" Version="3.9.0.4081" />
-		<PackageReference Include="ShtrihM.Wattle3.QueueProcessors" Version="3.9.0.4081" />
+		<PackageReference Include="Acme.Wattle.DomainObjects" Version="1.0.0.4096" />
+		<PackageReference Include="Acme.Wattle.QueueProcessors" Version="1.0.0.4096" />
 		<PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="8.0.2" />
-		<PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.7.1" />
+		<PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.8.1" />
 	</ItemGroup>
 
 	<ItemGroup>

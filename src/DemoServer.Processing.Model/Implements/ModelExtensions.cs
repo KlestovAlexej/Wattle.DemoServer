@@ -1,12 +1,12 @@
 ﻿using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Threading;
-using ShtrihM.DemoServer.Processing.Model.Interfaces;
-using ShtrihM.Wattle3.Common.Exceptions;
-using ShtrihM.Wattle3.DomainObjects;
-using ShtrihM.Wattle3.DomainObjects.Interfaces;
+using Acme.DemoServer.Processing.Model.Interfaces;
+using Acme.Wattle.Common.Exceptions;
+using Acme.Wattle.DomainObjects;
+using Acme.Wattle.DomainObjects.Interfaces;
 
-namespace ShtrihM.DemoServer.Processing.Model.Implements;
+namespace Acme.DemoServer.Processing.Model.Implements;
 
 public static class ModelExtensions
 {

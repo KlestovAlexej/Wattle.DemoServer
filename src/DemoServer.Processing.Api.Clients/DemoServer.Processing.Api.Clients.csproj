@@ -1,15 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-	<Import Project="..\..\Tools\MSBuild\ShtrihM.MSBuild.Common.targets" />
+	<Import Project="..\..\Tools\MSBuild\Acme.MSBuild.Common.targets" />
 
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<AnalysisLevel>latest</AnalysisLevel>
-		<AssemblyName>ShtrihM.DemoServer.Processing.Api.Clients</AssemblyName>
-		<RootNamespace>ShtrihM.DemoServer.Processing.Api.Clients</RootNamespace>
+		<AssemblyName>Acme.DemoServer.Processing.Api.Clients</AssemblyName>
+		<RootNamespace>Acme.DemoServer.Processing.Api.Clients</RootNamespace>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<PackageTags>ShtrihM DemoServer Processing Api Clients</PackageTags>
+		<PackageTags>Acme DemoServer Processing Api Clients</PackageTags>
 		<DocumentationFile>$(AssemblyName).xml</DocumentationFile>
 		<NoWarn>$(NoWarn);1701;1702;CS1591;CS8032;CS8784</NoWarn>
 		<DocumentationFile>$(AssemblyName).xml</DocumentationFile>
@@ -17,10 +17,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="RestSharp" Version="111.4.1" />
-		<PackageReference Include="RestSharp.Serializers.NewtonsoftJson" Version="111.4.1" />
-		<PackageReference Include="ShtrihM.Wattle3.Common" Version="3.9.0.4081" />
-		<PackageReference Include="ShtrihM.Wattle3.Json" Version="3.9.0.4081" />
+		<PackageReference Include="RestSharp" Version="112.1.0" />
+		<PackageReference Include="RestSharp.Serializers.NewtonsoftJson" Version="112.1.0" />
+		<PackageReference Include="Acme.Wattle.Common" Version="1.0.0.4096" />
+		<PackageReference Include="Acme.Wattle.Json" Version="1.0.0.4096" />
 	</ItemGroup>
 
 	<ItemGroup>

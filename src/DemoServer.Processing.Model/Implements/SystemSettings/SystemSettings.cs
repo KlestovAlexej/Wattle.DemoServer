@@ -1,15 +1,15 @@
 ﻿using Newtonsoft.Json;
-using ShtrihM.DemoServer.Processing.DataAccess.Interface;
-using ShtrihM.Wattle3.Json;
+using Acme.DemoServer.Processing.DataAccess.Interface;
+using Acme.Wattle.Json;
 using System;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
-using ShtrihM.Wattle3.DomainObjects.Interfaces;
-using ShtrihM.Wattle3.DomainObjects.UnitOfWorkLocks;
-using ShtrihM.Wattle3.DomainObjects.AsyncTasks;
-using ShtrihM.Wattle3.DomainObjects.Json;
+using Acme.Wattle.DomainObjects.Interfaces;
+using Acme.Wattle.DomainObjects.UnitOfWorkLocks;
+using Acme.Wattle.DomainObjects.AsyncTasks;
+using Acme.Wattle.DomainObjects.Json;
 
-namespace ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
+namespace Acme.DemoServer.Processing.Model.Implements.SystemSettings;
 
 [SuppressMessage("ReSharper", "PropertyCanBeMadeInitOnly.Global")]
 public sealed class SystemSettings
@@ -260,7 +260,7 @@ public sealed class SystemSettings
             {
                 UnitOfWorkLocksSettings =
                 {
-                    Value = Wattle3.DomainObjects.UnitOfWorkLocks.UnitOfWorkLocksSettings.GetDefault()
+                    Value = Wattle.DomainObjects.UnitOfWorkLocks.UnitOfWorkLocksSettings.GetDefault()
                 },
 
                 ExceptionPolicySettings =
@@ -357,7 +357,7 @@ public sealed class SystemSettings
 
                 SmartJsonDeserializerSettings =
                 {
-                    Value = Wattle3.DomainObjects.Json.SmartJsonDeserializerSettings.GetDefault(),
+                    Value = Wattle.DomainObjects.Json.SmartJsonDeserializerSettings.GetDefault(),
                 },
 
                 TelegramSettings =

@@ -1,8 +1,8 @@
-﻿using ShtrihM.DemoServer.Processing.DataAccess.Interface;
-using ShtrihM.Wattle3.DomainObjects.Interfaces;
+﻿using Acme.DemoServer.Processing.DataAccess.Interface;
+using Acme.Wattle.DomainObjects.Interfaces;
 using System;
 
-namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql;
+namespace Acme.DemoServer.Processing.DataAccess.PostgreSql;
 
 public class MappersContext
 {

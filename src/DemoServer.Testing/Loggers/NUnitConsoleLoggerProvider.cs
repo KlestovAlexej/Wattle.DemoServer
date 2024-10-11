@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace ShtrihM.DemoServer.Testing.Loggers;
+namespace Acme.DemoServer.Testing.Loggers;
 
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 

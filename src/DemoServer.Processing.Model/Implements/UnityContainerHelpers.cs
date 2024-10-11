@@ -1,7 +1,7 @@
 ﻿using System;
 using Unity;
 
-namespace ShtrihM.DemoServer.Processing.Model.Implements;
+namespace Acme.DemoServer.Processing.Model.Implements;
 
 public static class UnityContainerHelpers
 {

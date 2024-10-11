@@ -1,22 +1,22 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-	<Import Project="..\..\Tools\MSBuild\ShtrihM.MSBuild.Common.targets" />
+	<Import Project="..\..\Tools\MSBuild\Acme.MSBuild.Common.targets" />
 
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<AnalysisLevel>latest</AnalysisLevel>
-		<AssemblyName>ShtrihM.DemoServer.Common</AssemblyName>
-		<RootNamespace>ShtrihM.DemoServer.Common</RootNamespace>
+		<AssemblyName>Acme.DemoServer.Common</AssemblyName>
+		<RootNamespace>Acme.DemoServer.Common</RootNamespace>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<PackageTags>ShtrihM DemoServer Common</PackageTags>
+		<PackageTags>Acme DemoServer Common</PackageTags>
 		<NoWarn>$(NoWarn);1701;1702;CS1591;CS8784</NoWarn>
 		<DocumentationFile>$(AssemblyName).xml</DocumentationFile>
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="ShtrihM.Wattle3.Primitives" Version="3.9.0.4081" />
+		<PackageReference Include="Acme.Wattle.Primitives" Version="1.0.0.4096" />
 	</ItemGroup>
 
 </Project>

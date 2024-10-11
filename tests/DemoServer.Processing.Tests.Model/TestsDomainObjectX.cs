@@ -2,25 +2,25 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using NUnit.Framework;
-using ShtrihM.DemoServer.Processing.Model.Interfaces;
-using ShtrihM.DemoServer.Processing.Tests.Model.Environment;
-using ShtrihM.Wattle3.DomainObjects.Interfaces;
-using ShtrihM.Wattle3.Testing;
+using Acme.DemoServer.Processing.Model.Interfaces;
+using Acme.DemoServer.Processing.Tests.Model.Environment;
+using Acme.Wattle.DomainObjects.Interfaces;
+using Acme.Wattle.Testing;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using ShtrihM.DemoServer.Processing.Api.Common;
-using ShtrihM.DemoServer.Processing.Generated.Interface;
-using ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
-using ShtrihM.DemoServer.Processing.Model.Implements;
-using ShtrihM.Wattle3.Common.Exceptions;
-using ShtrihM.Wattle3.Mappers.Primitives;
-using ShtrihM.Wattle3.Utils;
-using ShtrihM.Wattle3.DomainObjects.IdentitiesServices;
+using Acme.DemoServer.Processing.Api.Common;
+using Acme.DemoServer.Processing.Generated.Interface;
+using Acme.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
+using Acme.DemoServer.Processing.Model.Implements;
+using Acme.Wattle.Common.Exceptions;
+using Acme.Wattle.Mappers.Primitives;
+using Acme.Wattle.Utils;
+using Acme.Wattle.DomainObjects.IdentitiesServices;
 
-namespace ShtrihM.DemoServer.Processing.Tests.Model;
+namespace Acme.DemoServer.Processing.Tests.Model;
 
 [TestFixture]
 [SuppressMessage("ReSharper", "AccessToDisposedClosure")]

@@ -1,17 +1,17 @@
 ﻿using Newtonsoft.Json;
-using ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements;
-using ShtrihM.Wattle3.Common.Interfaces;
-using ShtrihM.Wattle3.DomainObjects.Common;
-using ShtrihM.Wattle3.DomainObjects.Interfaces;
-using ShtrihM.Wattle3.Json;
-using ShtrihM.Wattle3.Json.Extensions;
-using ShtrihM.Wattle3.Mappers;
+using Acme.DemoServer.Processing.Generated.PostgreSql.Implements;
+using Acme.Wattle.Common.Interfaces;
+using Acme.Wattle.DomainObjects.Common;
+using Acme.Wattle.DomainObjects.Interfaces;
+using Acme.Wattle.Json;
+using Acme.Wattle.Json.Extensions;
+using Acme.Wattle.Mappers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 
-namespace ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
+namespace Acme.DemoServer.Processing.Model.Implements.SystemSettings;
 
 /// <summary>
 /// Настройки создателя партиций БД.

@@ -1,9 +1,9 @@
-﻿using ShtrihM.DemoServer.Common;
-using ShtrihM.DemoServer.Processing.Common;
-using ShtrihM.Wattle3.DomainObjects.Interfaces;
+﻿using Acme.DemoServer.Common;
+using Acme.DemoServer.Processing.Common;
+using Acme.Wattle.DomainObjects.Interfaces;
 using System;
 
-namespace ShtrihM.DemoServer.Processing.Model.Interfaces;
+namespace Acme.DemoServer.Processing.Model.Interfaces;
 
 /// <summary>
 /// Системный лог.

@@ -1,5 +1,5 @@
-﻿using ShtrihM.Wattle3.Common.Exceptions;
-using ShtrihM.Wattle3.Primitives;
+﻿using Acme.Wattle.Common.Exceptions;
+using Acme.Wattle.Primitives;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +8,7 @@ using System.Globalization;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
-namespace ShtrihM.DemoServer.Processing.Api.Common;
+namespace Acme.DemoServer.Processing.Api.Common;
 
 /// <summary>
 /// Коды ошибок поведения доменных объектов.

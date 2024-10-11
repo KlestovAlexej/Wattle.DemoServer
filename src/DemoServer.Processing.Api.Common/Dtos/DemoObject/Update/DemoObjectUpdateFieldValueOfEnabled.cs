@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update;
+namespace Acme.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update;
 
 /// <summary>
 /// Значение поля объекта для обновления - признак разрешения работы.

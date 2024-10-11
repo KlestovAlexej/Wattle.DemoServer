@@ -1,9 +1,9 @@
 ﻿using System;
-using ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
-using ShtrihM.Wattle3.Common.DomainObjects;
-using ShtrihM.Wattle3.DomainObjects.UnitOfWorkLocks;
+using Acme.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
+using Acme.Wattle.Common.DomainObjects;
+using Acme.Wattle.DomainObjects.UnitOfWorkLocks;
 
-namespace ShtrihM.DemoServer.Processing.Model.Implements.UnitOfWorkLocks;
+namespace Acme.DemoServer.Processing.Model.Implements.UnitOfWorkLocks;
 
 public sealed class UnitOfWorkLocksActions
 {

@@ -1,27 +1,27 @@
 ﻿using Microsoft.Extensions.Logging;
 using OpenTelemetry.Trace;
-using ShtrihM.DemoServer.Processing.Common;
-using ShtrihM.DemoServer.Processing.Model.Interfaces;
-using ShtrihM.Wattle3.Common.Exceptions;
-using ShtrihM.Wattle3.DomainObjects.Interfaces;
-using ShtrihM.Wattle3.Mappers.Interfaces;
-using ShtrihM.Wattle3.OpenTelemetry;
-using ShtrihM.Wattle3.Primitives;
-using ShtrihM.Wattle3.Services;
-using ShtrihM.Wattle3.Utils;
+using Acme.DemoServer.Processing.Common;
+using Acme.DemoServer.Processing.Model.Interfaces;
+using Acme.Wattle.Common.Exceptions;
+using Acme.Wattle.DomainObjects.Interfaces;
+using Acme.Wattle.Mappers.Interfaces;
+using Acme.Wattle.OpenTelemetry;
+using Acme.Wattle.Primitives;
+using Acme.Wattle.Services;
+using Acme.Wattle.Utils;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
-using ShtrihM.DemoServer.Processing.Generated.Interface;
-using ShtrihM.Wattle3.Infrastructures.Monitors;
-using ITrigger = ShtrihM.Wattle3.DomainObjects.Interfaces.ITrigger;
+using Acme.DemoServer.Processing.Generated.Interface;
+using Acme.Wattle.Infrastructures.Monitors;
+using ITrigger = Acme.Wattle.DomainObjects.Interfaces.ITrigger;
 using Status = OpenTelemetry.Trace.Status;
-using ShtrihM.Wattle3.DomainObjects.DomainObjectsRegisters;
+using Acme.Wattle.DomainObjects.DomainObjectsRegisters;
 
-namespace ShtrihM.DemoServer.Processing.Model.Implements;
+namespace Acme.DemoServer.Processing.Model.Implements;
 
 public class PartitionsSponsor : BaseServiceScheduled
 {

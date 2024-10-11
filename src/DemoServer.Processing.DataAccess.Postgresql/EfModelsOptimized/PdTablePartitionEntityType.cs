@@ -6,19 +6,19 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping;
-using ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
+using Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
 
 #pragma warning disable 219, 612, 618
 #nullable disable
 
-namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModelsOptimized
+namespace Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModelsOptimized
 {
     internal partial class PdTablePartitionEntityType
     {
         public static RuntimeEntityType Create(RuntimeModel model, RuntimeEntityType baseEntityType = null)
         {
             var runtimeEntityType = model.AddEntityType(
-                "ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdTablePartition",
+                "Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdTablePartition",
                 typeof(PdTablePartition),
                 baseEntityType);
 

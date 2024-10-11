@@ -1,12 +1,12 @@
 ﻿using NUnit.Framework;
-using ShtrihM.DemoServer.Processing.Api.Clients;
-using ShtrihM.DemoServer.Testing;
-using ShtrihM.Wattle3.Testing;
+using Acme.DemoServer.Processing.Api.Clients;
+using Acme.DemoServer.Testing;
+using Acme.Wattle.Testing;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace ShtrihM.DemoServer.Processing.Tests.Application;
+namespace Acme.DemoServer.Processing.Tests.Application;
 
 [TestFixture]
 public class TestsAppHost : BaseSlimTests

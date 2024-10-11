@@ -1,12 +1,12 @@
-﻿using ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject;
-using ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update;
-using ShtrihM.DemoServer.Processing.Model.Interfaces;
-using ShtrihM.Wattle3.DomainObjects.Interfaces;
+﻿using Acme.DemoServer.Processing.Api.Common.Dtos.DemoObject;
+using Acme.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update;
+using Acme.DemoServer.Processing.Model.Interfaces;
+using Acme.Wattle.DomainObjects.Interfaces;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ShtrihM.DemoServer.Processing.Model.Implements.ControllersServices;
+namespace Acme.DemoServer.Processing.Model.Implements.ControllersServices;
 
 public sealed class DemoObjectControllerService : IDemoObjectControllerService
 {

@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 #pragma warning disable 219, 612, 618
 #nullable disable
 
-namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModelsOptimized
+namespace Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModelsOptimized
 {
     public partial class ProcessingDbContextModel
     {
@@ -86,42 +86,42 @@ namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModelsOptimized
         {
             var relationalModel = new RelationalModel(this);
 
-            var demoobjectx = FindEntityType("ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels.Demoobjectx")!;
+            var demoobjectx = FindEntityType("Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModels.Demoobjectx")!;
 
             var defaultTableMappings = new List<TableMappingBase<ColumnMappingBase>>();
             demoobjectx.SetRuntimeAnnotation("Relational:DefaultMappings", defaultTableMappings);
-            var shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxTableBase = new TableBase("ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels.Demoobjectx", null, relationalModel);
-            var createdateColumnBase = new ColumnBase<ColumnMappingBase>("createdate", "timestamp with time zone", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxTableBase);
-            shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxTableBase.Columns.Add("createdate", createdateColumnBase);
-            var enabledColumnBase = new ColumnBase<ColumnMappingBase>("enabled", "boolean", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxTableBase);
-            shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxTableBase.Columns.Add("enabled", enabledColumnBase);
-            var groupColumnBase = new ColumnBase<ColumnMappingBase>("group", "bigint", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxTableBase);
-            shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxTableBase.Columns.Add("group", groupColumnBase);
-            var idColumnBase = new ColumnBase<ColumnMappingBase>("id", "bigint", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxTableBase);
-            shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxTableBase.Columns.Add("id", idColumnBase);
-            var key1ColumnBase = new ColumnBase<ColumnMappingBase>("key1", "uuid", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxTableBase);
-            shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxTableBase.Columns.Add("key1", key1ColumnBase);
-            var key2ColumnBase = new ColumnBase<ColumnMappingBase>("key2", "character varying(10)", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxTableBase);
-            shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxTableBase.Columns.Add("key2", key2ColumnBase);
-            var modificationdateColumnBase = new ColumnBase<ColumnMappingBase>("modificationdate", "timestamp with time zone", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxTableBase);
-            shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxTableBase.Columns.Add("modificationdate", modificationdateColumnBase);
-            var nameColumnBase = new ColumnBase<ColumnMappingBase>("name", "character varying(1024)", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxTableBase);
-            shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxTableBase.Columns.Add("name", nameColumnBase);
-            var revisionColumnBase = new ColumnBase<ColumnMappingBase>("revision", "bigint", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxTableBase);
-            shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxTableBase.Columns.Add("revision", revisionColumnBase);
-            relationalModel.DefaultTables.Add("ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels.Demoobjectx", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxTableBase);
-            var shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxMappingBase = new TableMappingBase<ColumnMappingBase>(demoobjectx, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxTableBase, true);
-            shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxTableBase.AddTypeMapping(shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxMappingBase, false);
-            defaultTableMappings.Add(shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxMappingBase);
-            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)idColumnBase, demoobjectx.FindProperty("Id")!, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxMappingBase);
-            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)createdateColumnBase, demoobjectx.FindProperty("Createdate")!, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxMappingBase);
-            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)enabledColumnBase, demoobjectx.FindProperty("Enabled")!, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxMappingBase);
-            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)groupColumnBase, demoobjectx.FindProperty("Group")!, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxMappingBase);
-            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)key1ColumnBase, demoobjectx.FindProperty("Key1")!, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxMappingBase);
-            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)key2ColumnBase, demoobjectx.FindProperty("Key2")!, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxMappingBase);
-            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)modificationdateColumnBase, demoobjectx.FindProperty("Modificationdate")!, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxMappingBase);
-            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)nameColumnBase, demoobjectx.FindProperty("Name")!, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxMappingBase);
-            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)revisionColumnBase, demoobjectx.FindProperty("Revision")!, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxMappingBase);
+            var acmeDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxTableBase = new TableBase("Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModels.Demoobjectx", null, relationalModel);
+            var createdateColumnBase = new ColumnBase<ColumnMappingBase>("createdate", "timestamp with time zone", acmeDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxTableBase);
+            acmeDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxTableBase.Columns.Add("createdate", createdateColumnBase);
+            var enabledColumnBase = new ColumnBase<ColumnMappingBase>("enabled", "boolean", acmeDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxTableBase);
+            acmeDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxTableBase.Columns.Add("enabled", enabledColumnBase);
+            var groupColumnBase = new ColumnBase<ColumnMappingBase>("group", "bigint", acmeDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxTableBase);
+            acmeDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxTableBase.Columns.Add("group", groupColumnBase);
+            var idColumnBase = new ColumnBase<ColumnMappingBase>("id", "bigint", acmeDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxTableBase);
+            acmeDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxTableBase.Columns.Add("id", idColumnBase);
+            var key1ColumnBase = new ColumnBase<ColumnMappingBase>("key1", "uuid", acmeDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxTableBase);
+            acmeDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxTableBase.Columns.Add("key1", key1ColumnBase);
+            var key2ColumnBase = new ColumnBase<ColumnMappingBase>("key2", "character varying(10)", acmeDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxTableBase);
+            acmeDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxTableBase.Columns.Add("key2", key2ColumnBase);
+            var modificationdateColumnBase = new ColumnBase<ColumnMappingBase>("modificationdate", "timestamp with time zone", acmeDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxTableBase);
+            acmeDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxTableBase.Columns.Add("modificationdate", modificationdateColumnBase);
+            var nameColumnBase = new ColumnBase<ColumnMappingBase>("name", "character varying(1024)", acmeDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxTableBase);
+            acmeDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxTableBase.Columns.Add("name", nameColumnBase);
+            var revisionColumnBase = new ColumnBase<ColumnMappingBase>("revision", "bigint", acmeDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxTableBase);
+            acmeDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxTableBase.Columns.Add("revision", revisionColumnBase);
+            relationalModel.DefaultTables.Add("Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModels.Demoobjectx", acmeDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxTableBase);
+            var acmeDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxMappingBase = new TableMappingBase<ColumnMappingBase>(demoobjectx, acmeDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxTableBase, true);
+            acmeDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxTableBase.AddTypeMapping(acmeDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxMappingBase, false);
+            defaultTableMappings.Add(acmeDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxMappingBase);
+            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)idColumnBase, demoobjectx.FindProperty("Id")!, acmeDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxMappingBase);
+            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)createdateColumnBase, demoobjectx.FindProperty("Createdate")!, acmeDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxMappingBase);
+            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)enabledColumnBase, demoobjectx.FindProperty("Enabled")!, acmeDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxMappingBase);
+            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)groupColumnBase, demoobjectx.FindProperty("Group")!, acmeDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxMappingBase);
+            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)key1ColumnBase, demoobjectx.FindProperty("Key1")!, acmeDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxMappingBase);
+            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)key2ColumnBase, demoobjectx.FindProperty("Key2")!, acmeDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxMappingBase);
+            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)modificationdateColumnBase, demoobjectx.FindProperty("Modificationdate")!, acmeDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxMappingBase);
+            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)nameColumnBase, demoobjectx.FindProperty("Name")!, acmeDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxMappingBase);
+            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)revisionColumnBase, demoobjectx.FindProperty("Revision")!, acmeDemoServerProcessingDataAccessPostgreSqlEfModelsDemoobjectxMappingBase);
 
             var tableMappings = new List<TableMapping>();
             demoobjectx.SetRuntimeAnnotation("Relational:TableMappings", tableMappings);
@@ -147,7 +147,7 @@ namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModelsOptimized
             var pK_demoobjectx = new UniqueConstraint("PK_demoobjectx", demoobjectxTable, new[] { idColumn });
             demoobjectxTable.PrimaryKey = pK_demoobjectx;
             var pK_demoobjectxUc = RelationalModel.GetKey(this,
-                "ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels.Demoobjectx",
+                "Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModels.Demoobjectx",
                 new[] { "Id" });
             pK_demoobjectx.MappedKeys.Add(pK_demoobjectxUc);
             RelationalModel.GetOrCreateUniqueConstraints(pK_demoobjectxUc).Add(pK_demoobjectx);
@@ -166,18 +166,18 @@ namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModelsOptimized
             RelationalModel.CreateColumnMapping(nameColumn, demoobjectx.FindProperty("Name")!, demoobjectxTableMapping);
             RelationalModel.CreateColumnMapping(revisionColumn, demoobjectx.FindProperty("Revision")!, demoobjectxTableMapping);
 
-            var pdChangeTracker = FindEntityType("ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdChangeTracker")!;
+            var pdChangeTracker = FindEntityType("Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdChangeTracker")!;
 
             var defaultTableMappings0 = new List<TableMappingBase<ColumnMappingBase>>();
             pdChangeTracker.SetRuntimeAnnotation("Relational:DefaultMappings", defaultTableMappings0);
-            var shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdChangeTrackerTableBase = new TableBase("ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdChangeTracker", null, relationalModel);
-            var idColumnBase0 = new ColumnBase<ColumnMappingBase>("id", "bigint", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdChangeTrackerTableBase);
-            shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdChangeTrackerTableBase.Columns.Add("id", idColumnBase0);
-            relationalModel.DefaultTables.Add("ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdChangeTracker", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdChangeTrackerTableBase);
-            var shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdChangeTrackerMappingBase = new TableMappingBase<ColumnMappingBase>(pdChangeTracker, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdChangeTrackerTableBase, true);
-            shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdChangeTrackerTableBase.AddTypeMapping(shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdChangeTrackerMappingBase, false);
-            defaultTableMappings0.Add(shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdChangeTrackerMappingBase);
-            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)idColumnBase0, pdChangeTracker.FindProperty("Id")!, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdChangeTrackerMappingBase);
+            var acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdChangeTrackerTableBase = new TableBase("Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdChangeTracker", null, relationalModel);
+            var idColumnBase0 = new ColumnBase<ColumnMappingBase>("id", "bigint", acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdChangeTrackerTableBase);
+            acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdChangeTrackerTableBase.Columns.Add("id", idColumnBase0);
+            relationalModel.DefaultTables.Add("Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdChangeTracker", acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdChangeTrackerTableBase);
+            var acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdChangeTrackerMappingBase = new TableMappingBase<ColumnMappingBase>(pdChangeTracker, acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdChangeTrackerTableBase, true);
+            acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdChangeTrackerTableBase.AddTypeMapping(acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdChangeTrackerMappingBase, false);
+            defaultTableMappings0.Add(acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdChangeTrackerMappingBase);
+            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)idColumnBase0, pdChangeTracker.FindProperty("Id")!, acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdChangeTrackerMappingBase);
 
             var tableMappings0 = new List<TableMapping>();
             pdChangeTracker.SetRuntimeAnnotation("Relational:TableMappings", tableMappings0);
@@ -187,7 +187,7 @@ namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModelsOptimized
             var pK_changetracker = new UniqueConstraint("PK_changetracker", changetrackerTable, new[] { idColumn0 });
             changetrackerTable.PrimaryKey = pK_changetracker;
             var pK_changetrackerUc = RelationalModel.GetKey(this,
-                "ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdChangeTracker",
+                "Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdChangeTracker",
                 new[] { "Id" });
             pK_changetracker.MappedKeys.Add(pK_changetrackerUc);
             RelationalModel.GetOrCreateUniqueConstraints(pK_changetrackerUc).Add(pK_changetracker);
@@ -198,42 +198,42 @@ namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModelsOptimized
             tableMappings0.Add(changetrackerTableMapping);
             RelationalModel.CreateColumnMapping(idColumn0, pdChangeTracker.FindProperty("Id")!, changetrackerTableMapping);
 
-            var pdDemoDelayTask = FindEntityType("ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdDemoDelayTask")!;
+            var pdDemoDelayTask = FindEntityType("Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdDemoDelayTask")!;
 
             var defaultTableMappings1 = new List<TableMappingBase<ColumnMappingBase>>();
             pdDemoDelayTask.SetRuntimeAnnotation("Relational:DefaultMappings", defaultTableMappings1);
-            var shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskTableBase = new TableBase("ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdDemoDelayTask", null, relationalModel);
-            var availableColumnBase = new ColumnBase<ColumnMappingBase>("available", "boolean", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskTableBase);
-            shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskTableBase.Columns.Add("available", availableColumnBase);
-            var createdateColumnBase0 = new ColumnBase<ColumnMappingBase>("createdate", "timestamp with time zone", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskTableBase);
-            shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskTableBase.Columns.Add("createdate", createdateColumnBase0);
-            var idColumnBase1 = new ColumnBase<ColumnMappingBase>("id", "bigint", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskTableBase);
-            shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskTableBase.Columns.Add("id", idColumnBase1);
-            var modificationdateColumnBase0 = new ColumnBase<ColumnMappingBase>("modificationdate", "timestamp with time zone", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskTableBase);
-            shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskTableBase.Columns.Add("modificationdate", modificationdateColumnBase0);
-            var revisionColumnBase0 = new ColumnBase<ColumnMappingBase>("revision", "bigint", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskTableBase);
-            shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskTableBase.Columns.Add("revision", revisionColumnBase0);
-            var scenarioColumnBase = new ColumnBase<ColumnMappingBase>("scenario", "text", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskTableBase);
-            shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskTableBase.Columns.Add("scenario", scenarioColumnBase);
-            var scenariostateColumnBase = new ColumnBase<ColumnMappingBase>("scenariostate", "text", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskTableBase);
-            shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskTableBase.Columns.Add("scenariostate", scenariostateColumnBase);
-            var startdateColumnBase = new ColumnBase<ColumnMappingBase>("startdate", "timestamp with time zone", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskTableBase)
+            var acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskTableBase = new TableBase("Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdDemoDelayTask", null, relationalModel);
+            var availableColumnBase = new ColumnBase<ColumnMappingBase>("available", "boolean", acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskTableBase);
+            acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskTableBase.Columns.Add("available", availableColumnBase);
+            var createdateColumnBase0 = new ColumnBase<ColumnMappingBase>("createdate", "timestamp with time zone", acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskTableBase);
+            acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskTableBase.Columns.Add("createdate", createdateColumnBase0);
+            var idColumnBase1 = new ColumnBase<ColumnMappingBase>("id", "bigint", acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskTableBase);
+            acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskTableBase.Columns.Add("id", idColumnBase1);
+            var modificationdateColumnBase0 = new ColumnBase<ColumnMappingBase>("modificationdate", "timestamp with time zone", acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskTableBase);
+            acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskTableBase.Columns.Add("modificationdate", modificationdateColumnBase0);
+            var revisionColumnBase0 = new ColumnBase<ColumnMappingBase>("revision", "bigint", acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskTableBase);
+            acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskTableBase.Columns.Add("revision", revisionColumnBase0);
+            var scenarioColumnBase = new ColumnBase<ColumnMappingBase>("scenario", "text", acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskTableBase);
+            acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskTableBase.Columns.Add("scenario", scenarioColumnBase);
+            var scenariostateColumnBase = new ColumnBase<ColumnMappingBase>("scenariostate", "text", acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskTableBase);
+            acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskTableBase.Columns.Add("scenariostate", scenariostateColumnBase);
+            var startdateColumnBase = new ColumnBase<ColumnMappingBase>("startdate", "timestamp with time zone", acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskTableBase)
             {
                 IsNullable = true
             };
-            shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskTableBase.Columns.Add("startdate", startdateColumnBase);
-            relationalModel.DefaultTables.Add("ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdDemoDelayTask", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskTableBase);
-            var shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskMappingBase = new TableMappingBase<ColumnMappingBase>(pdDemoDelayTask, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskTableBase, true);
-            shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskTableBase.AddTypeMapping(shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskMappingBase, false);
-            defaultTableMappings1.Add(shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskMappingBase);
-            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)idColumnBase1, pdDemoDelayTask.FindProperty("Id")!, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskMappingBase);
-            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)availableColumnBase, pdDemoDelayTask.FindProperty("Available")!, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskMappingBase);
-            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)createdateColumnBase0, pdDemoDelayTask.FindProperty("Createdate")!, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskMappingBase);
-            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)modificationdateColumnBase0, pdDemoDelayTask.FindProperty("Modificationdate")!, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskMappingBase);
-            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)revisionColumnBase0, pdDemoDelayTask.FindProperty("Revision")!, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskMappingBase);
-            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)scenarioColumnBase, pdDemoDelayTask.FindProperty("Scenario")!, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskMappingBase);
-            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)scenariostateColumnBase, pdDemoDelayTask.FindProperty("Scenariostate")!, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskMappingBase);
-            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)startdateColumnBase, pdDemoDelayTask.FindProperty("Startdate")!, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskMappingBase);
+            acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskTableBase.Columns.Add("startdate", startdateColumnBase);
+            relationalModel.DefaultTables.Add("Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdDemoDelayTask", acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskTableBase);
+            var acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskMappingBase = new TableMappingBase<ColumnMappingBase>(pdDemoDelayTask, acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskTableBase, true);
+            acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskTableBase.AddTypeMapping(acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskMappingBase, false);
+            defaultTableMappings1.Add(acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskMappingBase);
+            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)idColumnBase1, pdDemoDelayTask.FindProperty("Id")!, acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskMappingBase);
+            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)availableColumnBase, pdDemoDelayTask.FindProperty("Available")!, acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskMappingBase);
+            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)createdateColumnBase0, pdDemoDelayTask.FindProperty("Createdate")!, acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskMappingBase);
+            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)modificationdateColumnBase0, pdDemoDelayTask.FindProperty("Modificationdate")!, acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskMappingBase);
+            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)revisionColumnBase0, pdDemoDelayTask.FindProperty("Revision")!, acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskMappingBase);
+            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)scenarioColumnBase, pdDemoDelayTask.FindProperty("Scenario")!, acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskMappingBase);
+            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)scenariostateColumnBase, pdDemoDelayTask.FindProperty("Scenariostate")!, acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskMappingBase);
+            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)startdateColumnBase, pdDemoDelayTask.FindProperty("Startdate")!, acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoDelayTaskMappingBase);
 
             var tableMappings1 = new List<TableMapping>();
             pdDemoDelayTask.SetRuntimeAnnotation("Relational:TableMappings", tableMappings1);
@@ -260,7 +260,7 @@ namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModelsOptimized
             var pK_demodelaytask = new UniqueConstraint("PK_demodelaytask", demodelaytaskTable, new[] { idColumn1 });
             demodelaytaskTable.PrimaryKey = pK_demodelaytask;
             var pK_demodelaytaskUc = RelationalModel.GetKey(this,
-                "ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdDemoDelayTask",
+                "Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdDemoDelayTask",
                 new[] { "Id" });
             pK_demodelaytask.MappedKeys.Add(pK_demodelaytaskUc);
             RelationalModel.GetOrCreateUniqueConstraints(pK_demodelaytaskUc).Add(pK_demodelaytask);
@@ -278,33 +278,33 @@ namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModelsOptimized
             RelationalModel.CreateColumnMapping(scenariostateColumn, pdDemoDelayTask.FindProperty("Scenariostate")!, demodelaytaskTableMapping);
             RelationalModel.CreateColumnMapping(startdateColumn, pdDemoDelayTask.FindProperty("Startdate")!, demodelaytaskTableMapping);
 
-            var pdDemoObject = FindEntityType("ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdDemoObject")!;
+            var pdDemoObject = FindEntityType("Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdDemoObject")!;
 
             var defaultTableMappings2 = new List<TableMappingBase<ColumnMappingBase>>();
             pdDemoObject.SetRuntimeAnnotation("Relational:DefaultMappings", defaultTableMappings2);
-            var shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoObjectTableBase = new TableBase("ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdDemoObject", null, relationalModel);
-            var createdateColumnBase1 = new ColumnBase<ColumnMappingBase>("createdate", "timestamp without time zone", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoObjectTableBase);
-            shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoObjectTableBase.Columns.Add("createdate", createdateColumnBase1);
-            var enabledColumnBase0 = new ColumnBase<ColumnMappingBase>("enabled", "boolean", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoObjectTableBase);
-            shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoObjectTableBase.Columns.Add("enabled", enabledColumnBase0);
-            var idColumnBase2 = new ColumnBase<ColumnMappingBase>("id", "bigint", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoObjectTableBase);
-            shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoObjectTableBase.Columns.Add("id", idColumnBase2);
-            var modificationdateColumnBase1 = new ColumnBase<ColumnMappingBase>("modificationdate", "timestamp without time zone", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoObjectTableBase);
-            shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoObjectTableBase.Columns.Add("modificationdate", modificationdateColumnBase1);
-            var nameColumnBase0 = new ColumnBase<ColumnMappingBase>("name", "character varying(1024)", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoObjectTableBase);
-            shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoObjectTableBase.Columns.Add("name", nameColumnBase0);
-            var revisionColumnBase1 = new ColumnBase<ColumnMappingBase>("revision", "bigint", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoObjectTableBase);
-            shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoObjectTableBase.Columns.Add("revision", revisionColumnBase1);
-            relationalModel.DefaultTables.Add("ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdDemoObject", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoObjectTableBase);
-            var shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoObjectMappingBase = new TableMappingBase<ColumnMappingBase>(pdDemoObject, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoObjectTableBase, true);
-            shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoObjectTableBase.AddTypeMapping(shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoObjectMappingBase, false);
-            defaultTableMappings2.Add(shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoObjectMappingBase);
-            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)idColumnBase2, pdDemoObject.FindProperty("Id")!, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoObjectMappingBase);
-            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)createdateColumnBase1, pdDemoObject.FindProperty("Createdate")!, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoObjectMappingBase);
-            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)enabledColumnBase0, pdDemoObject.FindProperty("Enabled")!, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoObjectMappingBase);
-            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)modificationdateColumnBase1, pdDemoObject.FindProperty("Modificationdate")!, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoObjectMappingBase);
-            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)nameColumnBase0, pdDemoObject.FindProperty("Name")!, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoObjectMappingBase);
-            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)revisionColumnBase1, pdDemoObject.FindProperty("Revision")!, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoObjectMappingBase);
+            var acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoObjectTableBase = new TableBase("Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdDemoObject", null, relationalModel);
+            var createdateColumnBase1 = new ColumnBase<ColumnMappingBase>("createdate", "timestamp without time zone", acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoObjectTableBase);
+            acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoObjectTableBase.Columns.Add("createdate", createdateColumnBase1);
+            var enabledColumnBase0 = new ColumnBase<ColumnMappingBase>("enabled", "boolean", acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoObjectTableBase);
+            acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoObjectTableBase.Columns.Add("enabled", enabledColumnBase0);
+            var idColumnBase2 = new ColumnBase<ColumnMappingBase>("id", "bigint", acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoObjectTableBase);
+            acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoObjectTableBase.Columns.Add("id", idColumnBase2);
+            var modificationdateColumnBase1 = new ColumnBase<ColumnMappingBase>("modificationdate", "timestamp without time zone", acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoObjectTableBase);
+            acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoObjectTableBase.Columns.Add("modificationdate", modificationdateColumnBase1);
+            var nameColumnBase0 = new ColumnBase<ColumnMappingBase>("name", "character varying(1024)", acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoObjectTableBase);
+            acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoObjectTableBase.Columns.Add("name", nameColumnBase0);
+            var revisionColumnBase1 = new ColumnBase<ColumnMappingBase>("revision", "bigint", acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoObjectTableBase);
+            acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoObjectTableBase.Columns.Add("revision", revisionColumnBase1);
+            relationalModel.DefaultTables.Add("Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdDemoObject", acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoObjectTableBase);
+            var acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoObjectMappingBase = new TableMappingBase<ColumnMappingBase>(pdDemoObject, acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoObjectTableBase, true);
+            acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoObjectTableBase.AddTypeMapping(acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoObjectMappingBase, false);
+            defaultTableMappings2.Add(acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoObjectMappingBase);
+            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)idColumnBase2, pdDemoObject.FindProperty("Id")!, acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoObjectMappingBase);
+            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)createdateColumnBase1, pdDemoObject.FindProperty("Createdate")!, acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoObjectMappingBase);
+            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)enabledColumnBase0, pdDemoObject.FindProperty("Enabled")!, acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoObjectMappingBase);
+            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)modificationdateColumnBase1, pdDemoObject.FindProperty("Modificationdate")!, acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoObjectMappingBase);
+            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)nameColumnBase0, pdDemoObject.FindProperty("Name")!, acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoObjectMappingBase);
+            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)revisionColumnBase1, pdDemoObject.FindProperty("Revision")!, acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdDemoObjectMappingBase);
 
             var tableMappings2 = new List<TableMapping>();
             pdDemoObject.SetRuntimeAnnotation("Relational:TableMappings", tableMappings2);
@@ -324,7 +324,7 @@ namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModelsOptimized
             var pK_demoobject = new UniqueConstraint("PK_demoobject", demoobjectTable, new[] { idColumn2 });
             demoobjectTable.PrimaryKey = pK_demoobject;
             var pK_demoobjectUc = RelationalModel.GetKey(this,
-                "ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdDemoObject",
+                "Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdDemoObject",
                 new[] { "Id" });
             pK_demoobject.MappedKeys.Add(pK_demoobjectUc);
             RelationalModel.GetOrCreateUniqueConstraints(pK_demoobjectUc).Add(pK_demoobject);
@@ -340,33 +340,33 @@ namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModelsOptimized
             RelationalModel.CreateColumnMapping(nameColumn0, pdDemoObject.FindProperty("Name")!, demoobjectTableMapping);
             RelationalModel.CreateColumnMapping(revisionColumn1, pdDemoObject.FindProperty("Revision")!, demoobjectTableMapping);
 
-            var pdSystemLog = FindEntityType("ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdSystemLog")!;
+            var pdSystemLog = FindEntityType("Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdSystemLog")!;
 
             var defaultTableMappings3 = new List<TableMappingBase<ColumnMappingBase>>();
             pdSystemLog.SetRuntimeAnnotation("Relational:DefaultMappings", defaultTableMappings3);
-            var shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdSystemLogTableBase = new TableBase("ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdSystemLog", null, relationalModel);
-            var codeColumnBase = new ColumnBase<ColumnMappingBase>("code", "integer", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdSystemLogTableBase);
-            shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdSystemLogTableBase.Columns.Add("code", codeColumnBase);
-            var createdateColumnBase2 = new ColumnBase<ColumnMappingBase>("createdate", "timestamp with time zone", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdSystemLogTableBase);
-            shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdSystemLogTableBase.Columns.Add("createdate", createdateColumnBase2);
-            var dataColumnBase = new ColumnBase<ColumnMappingBase>("data", "text", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdSystemLogTableBase);
-            shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdSystemLogTableBase.Columns.Add("data", dataColumnBase);
-            var idColumnBase3 = new ColumnBase<ColumnMappingBase>("id", "bigint", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdSystemLogTableBase);
-            shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdSystemLogTableBase.Columns.Add("id", idColumnBase3);
-            var messageColumnBase = new ColumnBase<ColumnMappingBase>("message", "character varying(1024)", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdSystemLogTableBase);
-            shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdSystemLogTableBase.Columns.Add("message", messageColumnBase);
-            var typeColumnBase = new ColumnBase<ColumnMappingBase>("type", "integer", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdSystemLogTableBase);
-            shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdSystemLogTableBase.Columns.Add("type", typeColumnBase);
-            relationalModel.DefaultTables.Add("ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdSystemLog", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdSystemLogTableBase);
-            var shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdSystemLogMappingBase = new TableMappingBase<ColumnMappingBase>(pdSystemLog, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdSystemLogTableBase, true);
-            shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdSystemLogTableBase.AddTypeMapping(shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdSystemLogMappingBase, false);
-            defaultTableMappings3.Add(shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdSystemLogMappingBase);
-            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)idColumnBase3, pdSystemLog.FindProperty("Id")!, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdSystemLogMappingBase);
-            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)codeColumnBase, pdSystemLog.FindProperty("Code")!, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdSystemLogMappingBase);
-            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)createdateColumnBase2, pdSystemLog.FindProperty("Createdate")!, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdSystemLogMappingBase);
-            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)dataColumnBase, pdSystemLog.FindProperty("Data")!, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdSystemLogMappingBase);
-            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)messageColumnBase, pdSystemLog.FindProperty("Message")!, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdSystemLogMappingBase);
-            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)typeColumnBase, pdSystemLog.FindProperty("Type")!, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdSystemLogMappingBase);
+            var acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdSystemLogTableBase = new TableBase("Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdSystemLog", null, relationalModel);
+            var codeColumnBase = new ColumnBase<ColumnMappingBase>("code", "integer", acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdSystemLogTableBase);
+            acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdSystemLogTableBase.Columns.Add("code", codeColumnBase);
+            var createdateColumnBase2 = new ColumnBase<ColumnMappingBase>("createdate", "timestamp with time zone", acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdSystemLogTableBase);
+            acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdSystemLogTableBase.Columns.Add("createdate", createdateColumnBase2);
+            var dataColumnBase = new ColumnBase<ColumnMappingBase>("data", "text", acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdSystemLogTableBase);
+            acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdSystemLogTableBase.Columns.Add("data", dataColumnBase);
+            var idColumnBase3 = new ColumnBase<ColumnMappingBase>("id", "bigint", acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdSystemLogTableBase);
+            acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdSystemLogTableBase.Columns.Add("id", idColumnBase3);
+            var messageColumnBase = new ColumnBase<ColumnMappingBase>("message", "character varying(1024)", acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdSystemLogTableBase);
+            acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdSystemLogTableBase.Columns.Add("message", messageColumnBase);
+            var typeColumnBase = new ColumnBase<ColumnMappingBase>("type", "integer", acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdSystemLogTableBase);
+            acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdSystemLogTableBase.Columns.Add("type", typeColumnBase);
+            relationalModel.DefaultTables.Add("Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdSystemLog", acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdSystemLogTableBase);
+            var acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdSystemLogMappingBase = new TableMappingBase<ColumnMappingBase>(pdSystemLog, acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdSystemLogTableBase, true);
+            acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdSystemLogTableBase.AddTypeMapping(acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdSystemLogMappingBase, false);
+            defaultTableMappings3.Add(acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdSystemLogMappingBase);
+            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)idColumnBase3, pdSystemLog.FindProperty("Id")!, acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdSystemLogMappingBase);
+            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)codeColumnBase, pdSystemLog.FindProperty("Code")!, acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdSystemLogMappingBase);
+            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)createdateColumnBase2, pdSystemLog.FindProperty("Createdate")!, acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdSystemLogMappingBase);
+            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)dataColumnBase, pdSystemLog.FindProperty("Data")!, acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdSystemLogMappingBase);
+            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)messageColumnBase, pdSystemLog.FindProperty("Message")!, acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdSystemLogMappingBase);
+            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)typeColumnBase, pdSystemLog.FindProperty("Type")!, acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdSystemLogMappingBase);
 
             var tableMappings3 = new List<TableMapping>();
             pdSystemLog.SetRuntimeAnnotation("Relational:TableMappings", tableMappings3);
@@ -386,7 +386,7 @@ namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModelsOptimized
             var pK_systemlog = new UniqueConstraint("PK_systemlog", systemlogTable, new[] { idColumn3 });
             systemlogTable.PrimaryKey = pK_systemlog;
             var pK_systemlogUc = RelationalModel.GetKey(this,
-                "ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdSystemLog",
+                "Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdSystemLog",
                 new[] { "Id" });
             pK_systemlog.MappedKeys.Add(pK_systemlogUc);
             RelationalModel.GetOrCreateUniqueConstraints(pK_systemlogUc).Add(pK_systemlog);
@@ -402,42 +402,42 @@ namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModelsOptimized
             RelationalModel.CreateColumnMapping(messageColumn, pdSystemLog.FindProperty("Message")!, systemlogTableMapping);
             RelationalModel.CreateColumnMapping(typeColumn, pdSystemLog.FindProperty("Type")!, systemlogTableMapping);
 
-            var pdTablePartition = FindEntityType("ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdTablePartition")!;
+            var pdTablePartition = FindEntityType("Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdTablePartition")!;
 
             var defaultTableMappings4 = new List<TableMappingBase<ColumnMappingBase>>();
             pdTablePartition.SetRuntimeAnnotation("Relational:DefaultMappings", defaultTableMappings4);
-            var shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionTableBase = new TableBase("ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdTablePartition", null, relationalModel);
-            var createdateColumnBase3 = new ColumnBase<ColumnMappingBase>("createdate", "timestamp with time zone", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionTableBase);
-            shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionTableBase.Columns.Add("createdate", createdateColumnBase3);
-            var dayColumnBase = new ColumnBase<ColumnMappingBase>("day", "date", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionTableBase);
-            shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionTableBase.Columns.Add("day", dayColumnBase);
-            var idColumnBase4 = new ColumnBase<ColumnMappingBase>("id", "bigint", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionTableBase);
-            shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionTableBase.Columns.Add("id", idColumnBase4);
-            var maxnotincludegroupidColumnBase = new ColumnBase<ColumnMappingBase>("maxnotincludegroupid", "bigint", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionTableBase);
-            shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionTableBase.Columns.Add("maxnotincludegroupid", maxnotincludegroupidColumnBase);
-            var maxnotincludeidColumnBase = new ColumnBase<ColumnMappingBase>("maxnotincludeid", "bigint", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionTableBase);
-            shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionTableBase.Columns.Add("maxnotincludeid", maxnotincludeidColumnBase);
-            var mingroupidColumnBase = new ColumnBase<ColumnMappingBase>("mingroupid", "bigint", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionTableBase);
-            shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionTableBase.Columns.Add("mingroupid", mingroupidColumnBase);
-            var minidColumnBase = new ColumnBase<ColumnMappingBase>("minid", "bigint", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionTableBase);
-            shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionTableBase.Columns.Add("minid", minidColumnBase);
-            var partitionnameColumnBase = new ColumnBase<ColumnMappingBase>("partitionname", "character varying", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionTableBase);
-            shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionTableBase.Columns.Add("partitionname", partitionnameColumnBase);
-            var tablenameColumnBase = new ColumnBase<ColumnMappingBase>("tablename", "character varying", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionTableBase);
-            shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionTableBase.Columns.Add("tablename", tablenameColumnBase);
-            relationalModel.DefaultTables.Add("ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdTablePartition", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionTableBase);
-            var shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionMappingBase = new TableMappingBase<ColumnMappingBase>(pdTablePartition, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionTableBase, true);
-            shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionTableBase.AddTypeMapping(shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionMappingBase, false);
-            defaultTableMappings4.Add(shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionMappingBase);
-            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)idColumnBase4, pdTablePartition.FindProperty("Id")!, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionMappingBase);
-            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)createdateColumnBase3, pdTablePartition.FindProperty("Createdate")!, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionMappingBase);
-            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)dayColumnBase, pdTablePartition.FindProperty("Day")!, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionMappingBase);
-            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)maxnotincludegroupidColumnBase, pdTablePartition.FindProperty("Maxnotincludegroupid")!, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionMappingBase);
-            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)maxnotincludeidColumnBase, pdTablePartition.FindProperty("Maxnotincludeid")!, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionMappingBase);
-            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)mingroupidColumnBase, pdTablePartition.FindProperty("Mingroupid")!, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionMappingBase);
-            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)minidColumnBase, pdTablePartition.FindProperty("Minid")!, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionMappingBase);
-            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)partitionnameColumnBase, pdTablePartition.FindProperty("Partitionname")!, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionMappingBase);
-            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)tablenameColumnBase, pdTablePartition.FindProperty("Tablename")!, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionMappingBase);
+            var acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionTableBase = new TableBase("Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdTablePartition", null, relationalModel);
+            var createdateColumnBase3 = new ColumnBase<ColumnMappingBase>("createdate", "timestamp with time zone", acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionTableBase);
+            acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionTableBase.Columns.Add("createdate", createdateColumnBase3);
+            var dayColumnBase = new ColumnBase<ColumnMappingBase>("day", "date", acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionTableBase);
+            acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionTableBase.Columns.Add("day", dayColumnBase);
+            var idColumnBase4 = new ColumnBase<ColumnMappingBase>("id", "bigint", acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionTableBase);
+            acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionTableBase.Columns.Add("id", idColumnBase4);
+            var maxnotincludegroupidColumnBase = new ColumnBase<ColumnMappingBase>("maxnotincludegroupid", "bigint", acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionTableBase);
+            acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionTableBase.Columns.Add("maxnotincludegroupid", maxnotincludegroupidColumnBase);
+            var maxnotincludeidColumnBase = new ColumnBase<ColumnMappingBase>("maxnotincludeid", "bigint", acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionTableBase);
+            acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionTableBase.Columns.Add("maxnotincludeid", maxnotincludeidColumnBase);
+            var mingroupidColumnBase = new ColumnBase<ColumnMappingBase>("mingroupid", "bigint", acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionTableBase);
+            acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionTableBase.Columns.Add("mingroupid", mingroupidColumnBase);
+            var minidColumnBase = new ColumnBase<ColumnMappingBase>("minid", "bigint", acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionTableBase);
+            acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionTableBase.Columns.Add("minid", minidColumnBase);
+            var partitionnameColumnBase = new ColumnBase<ColumnMappingBase>("partitionname", "character varying", acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionTableBase);
+            acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionTableBase.Columns.Add("partitionname", partitionnameColumnBase);
+            var tablenameColumnBase = new ColumnBase<ColumnMappingBase>("tablename", "character varying", acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionTableBase);
+            acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionTableBase.Columns.Add("tablename", tablenameColumnBase);
+            relationalModel.DefaultTables.Add("Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdTablePartition", acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionTableBase);
+            var acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionMappingBase = new TableMappingBase<ColumnMappingBase>(pdTablePartition, acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionTableBase, true);
+            acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionTableBase.AddTypeMapping(acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionMappingBase, false);
+            defaultTableMappings4.Add(acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionMappingBase);
+            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)idColumnBase4, pdTablePartition.FindProperty("Id")!, acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionMappingBase);
+            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)createdateColumnBase3, pdTablePartition.FindProperty("Createdate")!, acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionMappingBase);
+            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)dayColumnBase, pdTablePartition.FindProperty("Day")!, acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionMappingBase);
+            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)maxnotincludegroupidColumnBase, pdTablePartition.FindProperty("Maxnotincludegroupid")!, acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionMappingBase);
+            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)maxnotincludeidColumnBase, pdTablePartition.FindProperty("Maxnotincludeid")!, acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionMappingBase);
+            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)mingroupidColumnBase, pdTablePartition.FindProperty("Mingroupid")!, acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionMappingBase);
+            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)minidColumnBase, pdTablePartition.FindProperty("Minid")!, acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionMappingBase);
+            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)partitionnameColumnBase, pdTablePartition.FindProperty("Partitionname")!, acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionMappingBase);
+            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)tablenameColumnBase, pdTablePartition.FindProperty("Tablename")!, acmeDemoServerProcessingDataAccessPostgreSqlEfModelsPdTablePartitionMappingBase);
 
             var tableMappings4 = new List<TableMapping>();
             pdTablePartition.SetRuntimeAnnotation("Relational:TableMappings", tableMappings4);
@@ -463,7 +463,7 @@ namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModelsOptimized
             var pK_tablepartition = new UniqueConstraint("PK_tablepartition", tablepartitionTable, new[] { idColumn4 });
             tablepartitionTable.PrimaryKey = pK_tablepartition;
             var pK_tablepartitionUc = RelationalModel.GetKey(this,
-                "ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdTablePartition",
+                "Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModels.PdTablePartition",
                 new[] { "Id" });
             pK_tablepartition.MappedKeys.Add(pK_tablepartitionUc);
             RelationalModel.GetOrCreateUniqueConstraints(pK_tablepartitionUc).Add(pK_tablepartition);
@@ -482,24 +482,24 @@ namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModelsOptimized
             RelationalModel.CreateColumnMapping(partitionnameColumn, pdTablePartition.FindProperty("Partitionname")!, tablepartitionTableMapping);
             RelationalModel.CreateColumnMapping(tablenameColumn, pdTablePartition.FindProperty("Tablename")!, tablepartitionTableMapping);
 
-            var systemsetting = FindEntityType("ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels.Systemsetting")!;
+            var systemsetting = FindEntityType("Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModels.Systemsetting")!;
 
             var defaultTableMappings5 = new List<TableMappingBase<ColumnMappingBase>>();
             systemsetting.SetRuntimeAnnotation("Relational:DefaultMappings", defaultTableMappings5);
-            var shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsSystemsettingTableBase = new TableBase("ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels.Systemsetting", null, relationalModel);
-            var idColumnBase5 = new ColumnBase<ColumnMappingBase>("id", "uuid", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsSystemsettingTableBase);
-            shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsSystemsettingTableBase.Columns.Add("id", idColumnBase5);
-            var nameColumnBase1 = new ColumnBase<ColumnMappingBase>("name", "character varying(1024)", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsSystemsettingTableBase);
-            shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsSystemsettingTableBase.Columns.Add("name", nameColumnBase1);
-            var valueColumnBase = new ColumnBase<ColumnMappingBase>("value", "text", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsSystemsettingTableBase);
-            shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsSystemsettingTableBase.Columns.Add("value", valueColumnBase);
-            relationalModel.DefaultTables.Add("ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels.Systemsetting", shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsSystemsettingTableBase);
-            var shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsSystemsettingMappingBase = new TableMappingBase<ColumnMappingBase>(systemsetting, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsSystemsettingTableBase, true);
-            shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsSystemsettingTableBase.AddTypeMapping(shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsSystemsettingMappingBase, false);
-            defaultTableMappings5.Add(shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsSystemsettingMappingBase);
-            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)idColumnBase5, systemsetting.FindProperty("Id")!, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsSystemsettingMappingBase);
-            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)nameColumnBase1, systemsetting.FindProperty("Name")!, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsSystemsettingMappingBase);
-            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)valueColumnBase, systemsetting.FindProperty("Value")!, shtrihMDemoServerProcessingDataAccessPostgreSqlEfModelsSystemsettingMappingBase);
+            var acmeDemoServerProcessingDataAccessPostgreSqlEfModelsSystemsettingTableBase = new TableBase("Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModels.Systemsetting", null, relationalModel);
+            var idColumnBase5 = new ColumnBase<ColumnMappingBase>("id", "uuid", acmeDemoServerProcessingDataAccessPostgreSqlEfModelsSystemsettingTableBase);
+            acmeDemoServerProcessingDataAccessPostgreSqlEfModelsSystemsettingTableBase.Columns.Add("id", idColumnBase5);
+            var nameColumnBase1 = new ColumnBase<ColumnMappingBase>("name", "character varying(1024)", acmeDemoServerProcessingDataAccessPostgreSqlEfModelsSystemsettingTableBase);
+            acmeDemoServerProcessingDataAccessPostgreSqlEfModelsSystemsettingTableBase.Columns.Add("name", nameColumnBase1);
+            var valueColumnBase = new ColumnBase<ColumnMappingBase>("value", "text", acmeDemoServerProcessingDataAccessPostgreSqlEfModelsSystemsettingTableBase);
+            acmeDemoServerProcessingDataAccessPostgreSqlEfModelsSystemsettingTableBase.Columns.Add("value", valueColumnBase);
+            relationalModel.DefaultTables.Add("Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModels.Systemsetting", acmeDemoServerProcessingDataAccessPostgreSqlEfModelsSystemsettingTableBase);
+            var acmeDemoServerProcessingDataAccessPostgreSqlEfModelsSystemsettingMappingBase = new TableMappingBase<ColumnMappingBase>(systemsetting, acmeDemoServerProcessingDataAccessPostgreSqlEfModelsSystemsettingTableBase, true);
+            acmeDemoServerProcessingDataAccessPostgreSqlEfModelsSystemsettingTableBase.AddTypeMapping(acmeDemoServerProcessingDataAccessPostgreSqlEfModelsSystemsettingMappingBase, false);
+            defaultTableMappings5.Add(acmeDemoServerProcessingDataAccessPostgreSqlEfModelsSystemsettingMappingBase);
+            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)idColumnBase5, systemsetting.FindProperty("Id")!, acmeDemoServerProcessingDataAccessPostgreSqlEfModelsSystemsettingMappingBase);
+            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)nameColumnBase1, systemsetting.FindProperty("Name")!, acmeDemoServerProcessingDataAccessPostgreSqlEfModelsSystemsettingMappingBase);
+            RelationalModel.CreateColumnMapping((ColumnBase<ColumnMappingBase>)valueColumnBase, systemsetting.FindProperty("Value")!, acmeDemoServerProcessingDataAccessPostgreSqlEfModelsSystemsettingMappingBase);
 
             var tableMappings5 = new List<TableMapping>();
             systemsetting.SetRuntimeAnnotation("Relational:TableMappings", tableMappings5);
@@ -513,7 +513,7 @@ namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModelsOptimized
             var pK_systemsetting = new UniqueConstraint("PK_systemsetting", systemsettingTable, new[] { idColumn5 });
             systemsettingTable.PrimaryKey = pK_systemsetting;
             var pK_systemsettingUc = RelationalModel.GetKey(this,
-                "ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels.Systemsetting",
+                "Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModels.Systemsetting",
                 new[] { "Id" });
             pK_systemsetting.MappedKeys.Add(pK_systemsettingUc);
             RelationalModel.GetOrCreateUniqueConstraints(pK_systemsettingUc).Add(pK_systemsetting);

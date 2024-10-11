@@ -1,17 +1,17 @@
 ﻿using Microsoft.Extensions.Logging;
 using OpenTelemetry.Trace;
-using ShtrihM.DemoServer.Processing.DataAccess.Interface;
-using ShtrihM.DemoServer.Processing.Model.Implements;
-using ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
-using ShtrihM.DemoServer.Processing.Model.Implements.UnitOfWorkLocks;
-using ShtrihM.Wattle3.Common.Interfaces;
-using ShtrihM.Wattle3.DomainObjects.Interfaces;
+using Acme.DemoServer.Processing.DataAccess.Interface;
+using Acme.DemoServer.Processing.Model.Implements;
+using Acme.DemoServer.Processing.Model.Implements.SystemSettings;
+using Acme.DemoServer.Processing.Model.Implements.UnitOfWorkLocks;
+using Acme.Wattle.Common.Interfaces;
+using Acme.Wattle.DomainObjects.Interfaces;
 using System;
-using ShtrihM.Wattle3.Mappers.Interfaces;
+using Acme.Wattle.Mappers.Interfaces;
 using IMapper = AutoMapper.IMapper;
-using ShtrihM.Wattle3.DomainObjects.Json;
+using Acme.Wattle.DomainObjects.Json;
 
-namespace ShtrihM.DemoServer.Processing.Model.Interfaces;
+namespace Acme.DemoServer.Processing.Model.Interfaces;
 
 public interface ICustomEntryPoint : IEntryPoint
 {

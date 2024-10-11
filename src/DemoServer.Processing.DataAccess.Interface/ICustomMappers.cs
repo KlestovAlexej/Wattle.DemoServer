@@ -1,8 +1,8 @@
-﻿using ShtrihM.Wattle3.Mappers.Interfaces;
+﻿using Acme.Wattle.Mappers.Interfaces;
 using System;
 using System.Collections.Generic;
 
-namespace ShtrihM.DemoServer.Processing.DataAccess.Interface;
+namespace Acme.DemoServer.Processing.DataAccess.Interface;
 
 public interface ICustomMappers : IMappers
 {

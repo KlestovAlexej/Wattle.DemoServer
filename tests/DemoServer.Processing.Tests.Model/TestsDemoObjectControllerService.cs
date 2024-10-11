@@ -1,13 +1,13 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
-using ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update;
-using ShtrihM.DemoServer.Processing.Model.Interfaces;
-using ShtrihM.DemoServer.Processing.Tests.Model.Environment;
-using ShtrihM.Wattle3.Testing;
+using Acme.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update;
+using Acme.DemoServer.Processing.Model.Interfaces;
+using Acme.DemoServer.Processing.Tests.Model.Environment;
+using Acme.Wattle.Testing;
 using System.Threading.Tasks;
-using ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject;
+using Acme.DemoServer.Processing.Api.Common.Dtos.DemoObject;
 
-namespace ShtrihM.DemoServer.Processing.Tests.Model;
+namespace Acme.DemoServer.Processing.Tests.Model;
 
 public class TestsDemoObjectControllerService : BaseTestsDomainObjects
 {

@@ -1,12 +1,12 @@
 ﻿using Newtonsoft.Json;
-using ShtrihM.DemoServer.Processing.Common;
-using ShtrihM.Wattle3.DomainObjects.DomainObjectDataMappers;
-using ShtrihM.Wattle3.Json;
+using Acme.DemoServer.Processing.Common;
+using Acme.Wattle.DomainObjects.DomainObjectDataMappers;
+using Acme.Wattle.Json;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
-using ShtrihM.Wattle3.DomainObjects.Interfaces;
+using Acme.Wattle.DomainObjects.Interfaces;
 
-namespace ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
+namespace Acme.DemoServer.Processing.Model.Implements.SystemSettings;
 
 /// <summary>
 /// Настройки кэширующих провайдеров идентити объектов.

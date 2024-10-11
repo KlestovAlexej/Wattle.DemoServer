@@ -1,14 +1,14 @@
 ﻿using NUnit.Framework;
-using ShtrihM.DemoServer.Processing.Common;
-using ShtrihM.DemoServer.Testing;
-using ShtrihM.Wattle3.CodeGeneration.Common;
-using ShtrihM.Wattle3.CodeGeneration.Generators.Schem;
-using ShtrihM.Wattle3.Testing;
+using Acme.DemoServer.Processing.Common;
+using Acme.DemoServer.Testing;
+using Acme.Wattle.CodeGeneration.Common;
+using Acme.Wattle.CodeGeneration.Generators.Schem;
+using Acme.Wattle.Testing;
 using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace ShtrihM.DemoServer.Processing.Tests;
+namespace Acme.DemoServer.Processing.Tests;
 
 [TestFixture]
 [Explicit]

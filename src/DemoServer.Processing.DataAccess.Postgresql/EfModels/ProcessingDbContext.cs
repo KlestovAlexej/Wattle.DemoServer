@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
+namespace Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
 
 public partial class ProcessingDbContext : DbContext
 {

@@ -1,15 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-	<Import Project="..\..\Tools\MSBuild\ShtrihM.MSBuild.Common.targets" />
+	<Import Project="..\..\Tools\MSBuild\Acme.MSBuild.Common.targets" />
 
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<AnalysisLevel>latest</AnalysisLevel>
-		<AssemblyName>ShtrihM.DemoServer.Processing.Api.Common</AssemblyName>
-		<RootNamespace>ShtrihM.DemoServer.Processing.Api.Common</RootNamespace>
+		<AssemblyName>Acme.DemoServer.Processing.Api.Common</AssemblyName>
+		<RootNamespace>Acme.DemoServer.Processing.Api.Common</RootNamespace>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<PackageTags>ShtrihM DemoServer Processing Api Common</PackageTags>
+		<PackageTags>Acme DemoServer Processing Api Common</PackageTags>
 		<NoWarn>$(NoWarn);1701;1702;CS1591;CS8032;CS8784</NoWarn>
 		<DocumentationFile>$(AssemblyName).xml</DocumentationFile>
 		<Nullable>enable</Nullable>
@@ -17,8 +17,8 @@
 
 	<ItemGroup>
 		<PackageReference Include="JsonSubTypes" Version="2.0.1" />
-		<PackageReference Include="ShtrihM.Wattle3.Json" Version="3.9.0.4081" />
-		<PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.7.1" />
+		<PackageReference Include="Acme.Wattle.Json" Version="1.0.0.4096" />
+		<PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.8.1" />
 	</ItemGroup>
 
 </Project>

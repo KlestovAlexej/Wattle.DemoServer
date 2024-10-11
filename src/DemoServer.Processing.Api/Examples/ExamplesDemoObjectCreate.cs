@@ -1,7 +1,7 @@
-﻿using ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject;
+﻿using Acme.DemoServer.Processing.Api.Common.Dtos.DemoObject;
 using Swashbuckle.AspNetCore.Filters;
 
-namespace ShtrihM.DemoServer.Processing.Api.Examples;
+namespace Acme.DemoServer.Processing.Api.Examples;
 
 public sealed class ExamplesDemoObjectCreate : IExamplesProvider<DemoObjectCreate>
 {

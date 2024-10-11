@@ -1,28 +1,28 @@
 ﻿using NpgsqlTypes;
-using ShtrihM.DemoServer.Common;
-using ShtrihM.DemoServer.Processing.Api.Common;
-using ShtrihM.Wattle3.CodeGeneration.Common;
-using ShtrihM.Wattle3.Common;
-using ShtrihM.Wattle3.Primitives;
+using Acme.DemoServer.Common;
+using Acme.DemoServer.Processing.Api.Common;
+using Acme.Wattle.CodeGeneration.Common;
+using Acme.Wattle.Common;
+using Acme.Wattle.Primitives;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using ShtrihM.Wattle3.Common.DomainObjects;
+using Acme.Wattle.Common.DomainObjects;
 
-namespace ShtrihM.DemoServer.Processing.Common;
+namespace Acme.DemoServer.Processing.Common;
 
 /// <summary>
 /// Поля доменных объектов.
 /// <remarks>
-/// При изменении руками запутить тест <code>ShtrihM.DemoServer.Processing.Tests.DbMappersSchemaXmlBuilder.Test</code>
+/// При изменении руками запутить тест <code>Acme.DemoServer.Processing.Tests.DbMappersSchemaXmlBuilder.Test</code>
 /// Для пересоздания XML схемы мапперов <code>src\DemoServer.Processing.Model\DbMappers.Schema.xml</code>.
 /// </remarks>
 /// </summary>
 [Description("Мапперы")]
-[SchemaMappers(SchemaMapperStorage.PostgreSql, Namespace = "ShtrihM.DemoServer.Processing")]
+[SchemaMappers(SchemaMapperStorage.PostgreSql, Namespace = "Acme.DemoServer.Processing")]
 [SuppressMessage("ReSharper", "UnusedType.Global")]
 [SuppressMessage("ReSharper", "UnusedMember.Global")]
 public static class WellknownDomainObjectFields

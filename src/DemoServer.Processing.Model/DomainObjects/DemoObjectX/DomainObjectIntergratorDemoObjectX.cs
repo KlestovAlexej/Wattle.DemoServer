@@ -1,14 +1,14 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using ShtrihM.DemoServer.Processing.Model.Interfaces;
-using ShtrihM.Wattle3.DomainObjects.DomainObjectDataMappers;
-using ShtrihM.Wattle3.DomainObjects.DomainObjectIntergrators;
-using ShtrihM.Wattle3.DomainObjects.DomainObjectsRegisters;
-using ShtrihM.DemoServer.Processing.Generated.Interface;
-using ShtrihM.Wattle3.DomainObjects.DomainObjectActivators;
+using Acme.DemoServer.Processing.Model.Interfaces;
+using Acme.Wattle.DomainObjects.DomainObjectDataMappers;
+using Acme.Wattle.DomainObjects.DomainObjectIntergrators;
+using Acme.Wattle.DomainObjects.DomainObjectsRegisters;
+using Acme.DemoServer.Processing.Generated.Interface;
+using Acme.Wattle.DomainObjects.DomainObjectActivators;
 using Unity;
 
-namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
+namespace Acme.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
 
 [DomainObjectIntergrator]
 // ReSharper disable once UnusedType.Global

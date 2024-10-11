@@ -1,15 +1,15 @@
 ﻿using NUnit.Framework;
-using ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
-using ShtrihM.DemoServer.Processing.Generated.Tests;
-using ShtrihM.DemoServer.Testing;
-using ShtrihM.Wattle3.Testing;
+using Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
+using Acme.DemoServer.Processing.Generated.Tests;
+using Acme.DemoServer.Testing;
+using Acme.Wattle.Testing;
 using System;
 using System.IO;
 using System.Text;
-using ShtrihM.DemoServer.Processing.Model.Implements;
-using ShtrihM.Wattle3.Mappers.Interfaces;
+using Acme.DemoServer.Processing.Model.Implements;
+using Acme.Wattle.Mappers.Interfaces;
 
-namespace ShtrihM.DemoServer.Processing.Tests.DataAccess.PostgreSql;
+namespace Acme.DemoServer.Processing.Tests.DataAccess.PostgreSql;
 
 [TestFixture]
 public class TestsCreateEntityFrameworkDbContext : BaseAutoTestsMapper
@@ -56,7 +56,7 @@ public class TestsCreateEntityFrameworkDbContext : BaseAutoTestsMapper
         text.AppendLine("$ErrorActionPreference = \"Stop\"");
         text.AppendLine($"Rename-Item -Path \"{Path.Combine(pathDataAccess, "EfModels")}\" -NewName EfModels_old");
         text.AppendLine($"Rename-Item -Path \"{Path.Combine(pathDataAccess, "EfModelsOptimized")}\" -NewName EfModelsOptimized_old");
-        text.AppendLine($@"Scaffold-DbContext -Connection ""{m_dbConnectionString}"" -Provider ""Npgsql.EntityFrameworkCore.PostgreSQL"" -OutputDir ""EfModels"" -ContextDir ""EfModels"" -Namespace ""ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels"" -ContextNamespace ""ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels"" -Context ""{nameof(ProcessingDbContext)}"" -NoOnConfiguring -Force -StartupProject DemoServer.Processing.DataAccess.Postgresql -Project DemoServer.Processing.DataAccess.Postgresql -NoPluralize");
+        text.AppendLine($@"Scaffold-DbContext -Connection ""{m_dbConnectionString}"" -Provider ""Npgsql.EntityFrameworkCore.PostgreSQL"" -OutputDir ""EfModels"" -ContextDir ""EfModels"" -Namespace ""Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModels"" -ContextNamespace ""Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModels"" -Context ""{nameof(ProcessingDbContext)}"" -NoOnConfiguring -Force -StartupProject DemoServer.Processing.DataAccess.Postgresql -Project DemoServer.Processing.DataAccess.Postgresql -NoPluralize");
         text.AppendLine($"Remove-Item -LiteralPath \"{Path.Combine(pathDataAccess, "EfModels_old")}\" -Force -Recurse");
         text.AppendLine($"Remove-Item -LiteralPath \"{Path.Combine(pathDataAccess, "EfModelsOptimized_old")}\" -Force -Recurse");
 

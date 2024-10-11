@@ -1,16 +1,16 @@
-using ShtrihM.DemoServer.Common;
-using ShtrihM.Wattle3.Common.Exceptions;
+using Acme.DemoServer.Common;
+using Acme.Wattle.Common.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 
-namespace ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
+namespace Acme.DemoServer.Processing.Model.Implements.SystemSettings;
 
 [SuppressMessage("ReSharper", "AutoPropertyCanBeMadeGetOnly.Global")]
 [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
 public sealed class SystemSettingsLocal
 {
-    public static readonly string ProductNameText = "Полнофункциональный демонстрационный сервер на базе библиотеки Wattle3";
+    public static readonly string ProductNameText = "Полнофункциональный демонстрационный сервер на базе библиотеки Wattle";
 
     public SystemSettingsLocal(IDictionary<Guid, string> values)
     {

@@ -1,10 +1,10 @@
 ﻿using NUnit.Framework;
-using ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
-using ShtrihM.DemoServer.Testing;
-using ShtrihM.Wattle3.Json.Extensions;
-using ShtrihM.Wattle3.Testing;
+using Acme.DemoServer.Processing.Model.Implements.SystemSettings;
+using Acme.DemoServer.Testing;
+using Acme.Wattle.Json.Extensions;
+using Acme.Wattle.Testing;
 
-namespace ShtrihM.DemoServer.Processing.Tests.Model;
+namespace Acme.DemoServer.Processing.Tests.Model;
 
 [TestFixture]
 public class TestsSystemSettings : BaseSlimTests

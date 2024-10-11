@@ -1,7 +1,7 @@
-﻿using ShtrihM.Wattle3.Primitives;
+﻿using Acme.Wattle.Primitives;
 using System;
 
-namespace ShtrihM.DemoServer.Processing.Common;
+namespace Acme.DemoServer.Processing.Common;
 
 /// <summary>
 /// Общие константы.

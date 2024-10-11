@@ -1,9 +1,9 @@
 ﻿using System.Runtime.CompilerServices;
 using AutoMapper;
-using ShtrihM.DemoServer.Processing.Generated.Interface;
+using Acme.DemoServer.Processing.Generated.Interface;
 
 // ReSharper disable once CheckNamespace
-namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
+namespace Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
 
 public partial class Demoobjectx
 {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update;
+namespace Acme.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update;
 
 /// <summary>
 /// Типы полей объекта доступные для обновления.

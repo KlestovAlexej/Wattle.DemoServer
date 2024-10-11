@@ -2,8 +2,8 @@
 
 	<PropertyGroup>
 		<TargetFramework>net8.0-windows</TargetFramework>
-		<AssemblyName>ShtrihM.DemoServer.Processing.Tests.Application</AssemblyName>
-		<RootNamespace>ShtrihM.DemoServer.Processing.Tests.Application</RootNamespace>
+		<AssemblyName>Acme.DemoServer.Processing.Tests.Application</AssemblyName>
+		<RootNamespace>Acme.DemoServer.Processing.Tests.Application</RootNamespace>
 		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
 		<UseWindowsForms>true</UseWindowsForms>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -11,8 +11,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.0" />
-		<PackageReference Include="ShtrihM.Wattle3.Infrastructures.Rest.Clients" Version="3.9.0.4081" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
+		<PackageReference Include="Acme.Wattle.Infrastructures.Rest.Clients" Version="1.0.0.4096" />
 	</ItemGroup>
 
 	<ItemGroup>

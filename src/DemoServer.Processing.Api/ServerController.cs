@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using ShtrihM.DemoServer.Processing.Api.Common;
-using ShtrihM.DemoServer.Processing.Api.Examples;
-using ShtrihM.DemoServer.Processing.Model.Interfaces;
-using ShtrihM.Wattle3.Common.Interfaces;
+using Acme.DemoServer.Processing.Api.Common;
+using Acme.DemoServer.Processing.Api.Examples;
+using Acme.DemoServer.Processing.Model.Interfaces;
+using Acme.Wattle.Common.Interfaces;
 using Swashbuckle.AspNetCore.Annotations;
 using Swashbuckle.AspNetCore.Filters;
 using System.Net.Mime;
 
-namespace ShtrihM.DemoServer.Processing.Api;
+namespace Acme.DemoServer.Processing.Api;
 
 [Route(ServerControllerConstants.Route)]
 [Consumes(MediaTypeNames.Application.Json)]

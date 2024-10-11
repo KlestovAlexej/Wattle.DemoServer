@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="CreatePublish" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="Current">
+
+  <Import Project="Acme.MSBuild.Common.targets" />
+
+  <PropertyGroup>
+    <BuildDate>$([System.DateTime]::Now.ToString("yyyy.MM.dd"))</BuildDate>
+    <PublishPath>$(SolutionDir)Publish</PublishPath>
+    <NuGetPublishPath>$(PublishPath)\NuGet</NuGetPublishPath>
+    <NuGetServerKey/>
+    <NuGetServerUrl/>
+  </PropertyGroup>
+  
+  <Target Name="CreatePublish">
+    <RemoveDir Directories="$(PublishPath)" />
+    <MakeDir Directories="$(PublishPath)" />
+    <MakeDir Directories="$(NuGetPublishPath)" />
+	
+    <CallTarget Targets="BuildAllProjectsV2" />
+
+    <ItemGroup>
+    	<NuGetPublishFiles Include="$(NuGetPublishPath)\*.nupkg" />
+    </ItemGroup>
+
+    <RemoveDir Directories="$(NuGetPublishPath)" Condition="'@(NuGetPublishFiles)'==''" />
+
+    <Message Importance="high" Text="Найден пакет NuGet - %(NuGetPublishFiles.FullPath)" Condition="'@(NuGetPublishFiles)'!=''" />  
+    <Message Importance="high" Text="Нет пакетов NuGet." Condition="'@(NuGetPublishFiles)'==''" />  
+
+    <Exec Command="dotnet nuget push &quot;$(NuGetPublishPath)\*.nupkg&quot; --skip-duplicate -k $(NuGetServerKey) -s $(NuGetServerUrl) -ss $(NuGetServerUrl) -t 300 -d" Condition="'$(NuGetServerUrl)'!='' AND '@(NuGetPublishFiles)'!=''"/>
+  </Target>
+  
+  <!-- Для произвольной публикации сборки.
+	<Target Name="CustomPublish" AfterTargets="CreatePublish">
+	</Target>
+  -->
+  
+</Project>

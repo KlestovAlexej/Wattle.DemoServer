@@ -1,10 +1,10 @@
-﻿using ShtrihM.DemoServer.Processing.Common;
-using ShtrihM.Wattle3.DomainObjects.AsyncTasks;
-using ShtrihM.Wattle3.DomainObjects.Interfaces;
+﻿using Acme.DemoServer.Processing.Common;
+using Acme.Wattle.DomainObjects.AsyncTasks;
+using Acme.Wattle.DomainObjects.Interfaces;
 using System;
 using System.Diagnostics.CodeAnalysis;
 
-namespace ShtrihM.DemoServer.Processing.Model.Interfaces;
+namespace Acme.DemoServer.Processing.Model.Interfaces;
 
 /// <summary>
 /// Задача с отложенным запуском.

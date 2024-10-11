@@ -210,7 +210,7 @@
           </Fields>
         </Mapper>
       </Mappers>
-      <CodeGeneration IntefacesNamespaceName="ShtrihM.DemoServer.Processing.Generated.Interface" ImplementsNamespaceName="ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements" CommonNamespaceName="ShtrihM.DemoServer.Processing.Generated.Common" TestsNamespaceName="ShtrihM.DemoServer.Processing.Generated.Tests" UnitTestCategory="Unit" UnitTestTimeout="300000" />
+      <CodeGeneration IntefacesNamespaceName="Acme.DemoServer.Processing.Generated.Interface" ImplementsNamespaceName="Acme.DemoServer.Processing.Generated.PostgreSql.Implements" CommonNamespaceName="Acme.DemoServer.Processing.Generated.Common" TestsNamespaceName="Acme.DemoServer.Processing.Generated.Tests" UnitTestCategory="Unit" UnitTestTimeout="300000" />
     </Mappers>
   </Mappers>
 </Model>

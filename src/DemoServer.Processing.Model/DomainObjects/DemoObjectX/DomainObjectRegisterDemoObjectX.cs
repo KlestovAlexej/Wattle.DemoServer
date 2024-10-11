@@ -1,23 +1,23 @@
 ﻿using System;
-using ShtrihM.DemoServer.Processing.Common;
-using ShtrihM.DemoServer.Processing.Generated.Interface;
-using ShtrihM.DemoServer.Processing.Model.Interfaces;
-using ShtrihM.Wattle3.DomainObjects.DomainObjectsRegisters.IdentitiesServices;
-using ShtrihM.Wattle3.DomainObjects.Interfaces;
+using Acme.DemoServer.Processing.Common;
+using Acme.DemoServer.Processing.Generated.Interface;
+using Acme.DemoServer.Processing.Model.Interfaces;
+using Acme.Wattle.DomainObjects.DomainObjectsRegisters.IdentitiesServices;
+using Acme.Wattle.DomainObjects.Interfaces;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using System.Threading;
-using ShtrihM.DemoServer.Processing.Model.Implements;
+using Acme.DemoServer.Processing.Model.Implements;
 using System.Runtime.CompilerServices;
 using Microsoft.EntityFrameworkCore;
 using OpenTelemetry.Trace;
-using ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
-using ShtrihM.Wattle3.Utils;
+using Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
+using Acme.Wattle.Utils;
 
-namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
+namespace Acme.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
 
 public sealed class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithContextWithAlternativeKeyStatelessDefault<IDomainObjectDemoObjectX, DomainObjectDemoObjectX.AlternativeKey, long /* Group */, DemoObjectXDtoActual, IMapperDemoObjectX>
 {

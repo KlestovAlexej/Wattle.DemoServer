@@ -1,4 +1,4 @@
-﻿using ShtrihM.Wattle3.Primitives;
+﻿using Acme.Wattle.Primitives;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 
 // ReSharper disable All
 
-namespace ShtrihM.DemoServer.Common;
+namespace Acme.DemoServer.Common;
 
 /// <summary>
 /// Типы событий системного лога.

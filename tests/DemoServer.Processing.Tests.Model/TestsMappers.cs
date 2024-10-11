@@ -1,9 +1,9 @@
 ﻿using NUnit.Framework;
-using ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements;
-using ShtrihM.DemoServer.Processing.Tests.Model.Environment;
-using ShtrihM.Wattle3.Testing;
+using Acme.DemoServer.Processing.Generated.PostgreSql.Implements;
+using Acme.DemoServer.Processing.Tests.Model.Environment;
+using Acme.Wattle.Testing;
 
-namespace ShtrihM.DemoServer.Processing.Tests.Model;
+namespace Acme.DemoServer.Processing.Tests.Model;
 
 [TestFixture]
 public class TestsMappers : BaseTestsWithEntryPoint

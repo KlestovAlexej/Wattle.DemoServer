@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using ShtrihM.DemoServer.Processing.Api.Examples;
-using ShtrihM.Wattle3.Common.Exceptions;
+using Acme.DemoServer.Processing.Api.Examples;
+using Acme.Wattle.Common.Exceptions;
 using Swashbuckle.AspNetCore.Annotations;
 using Swashbuckle.AspNetCore.Filters;
 
-namespace ShtrihM.DemoServer.Processing.Api;
+namespace Acme.DemoServer.Processing.Api;
 
 [ApiController]
 [SwaggerResponse(StatusCodes.Status409Conflict, "Штатная ошибка", typeof(WorkflowExceptionData))]

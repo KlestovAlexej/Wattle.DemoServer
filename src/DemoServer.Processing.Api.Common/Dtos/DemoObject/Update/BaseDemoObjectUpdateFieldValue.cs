@@ -6,7 +6,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.CompilerServices;
 
-namespace ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update;
+namespace Acme.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update;
 
 /// <summary>
 /// Базовое значение поля объекта для обновления.

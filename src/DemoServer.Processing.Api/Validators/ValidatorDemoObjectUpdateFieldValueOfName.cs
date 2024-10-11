@@ -1,8 +1,8 @@
 ﻿using FluentValidation;
-using ShtrihM.DemoServer.Processing.Api.Common;
-using ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update;
+using Acme.DemoServer.Processing.Api.Common;
+using Acme.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update;
 
-namespace ShtrihM.DemoServer.Processing.Api.Validators;
+namespace Acme.DemoServer.Processing.Api.Validators;
 
 public sealed class ValidatorDemoObjectUpdateFieldValueOfName : AbstractValidator<DemoObjectUpdateFieldValueOfName>
 {

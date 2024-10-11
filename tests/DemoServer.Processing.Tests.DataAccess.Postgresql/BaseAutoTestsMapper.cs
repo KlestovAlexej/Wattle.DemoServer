@@ -1,13 +1,13 @@
 ﻿using NUnit.Framework;
-using ShtrihM.DemoServer.Common;
-using ShtrihM.DemoServer.Processing.DataAccess.PostgreSql;
-using ShtrihM.Wattle3.Testing.Databases.PostgreSql;
+using Acme.DemoServer.Common;
+using Acme.DemoServer.Processing.DataAccess.PostgreSql;
+using Acme.Wattle.Testing.Databases.PostgreSql;
 using System;
 using System.Diagnostics.CodeAnalysis;
-using ShtrihM.DemoServer.Testing;
+using Acme.DemoServer.Testing;
 
 // ReSharper disable once CheckNamespace
-namespace ShtrihM.DemoServer.Processing.Generated.Tests;
+namespace Acme.DemoServer.Processing.Generated.Tests;
 
 [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
 [SuppressMessage("ReSharper", "InconsistentNaming")]

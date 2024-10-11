@@ -1,23 +1,23 @@
-﻿using ShtrihM.DemoServer.Processing.Api.Common;
-using ShtrihM.DemoServer.Processing.Common;
-using ShtrihM.DemoServer.Processing.Model.Interfaces;
-using ShtrihM.Wattle3.DomainObjects.DomainObjects;
-using ShtrihM.Wattle3.DomainObjects.Interfaces;
-using ShtrihM.Wattle3.Mappers.Primitives.MutableFields;
+﻿using Acme.DemoServer.Processing.Api.Common;
+using Acme.DemoServer.Processing.Common;
+using Acme.DemoServer.Processing.Model.Interfaces;
+using Acme.Wattle.DomainObjects.DomainObjects;
+using Acme.Wattle.DomainObjects.Interfaces;
+using Acme.Wattle.Mappers.Primitives.MutableFields;
 using System;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
-using ShtrihM.DemoServer.Processing.Generated.Interface;
-using ShtrihM.Wattle3.DomainObjects;
-using ShtrihM.Wattle3.DomainObjects.DomainObjectActivators;
-using ShtrihM.Wattle3.DomainObjects.UnitOfWorkLocks;
-using ShtrihM.Wattle3.Utils;
-using ShtrihM.Wattle3.Common.DomainObjects;
-using ShtrihM.Wattle3.DomainObjects.DomainObjects.BaseDomainObjects;
+using Acme.DemoServer.Processing.Generated.Interface;
+using Acme.Wattle.DomainObjects;
+using Acme.Wattle.DomainObjects.DomainObjectActivators;
+using Acme.Wattle.DomainObjects.UnitOfWorkLocks;
+using Acme.Wattle.Utils;
+using Acme.Wattle.Common.DomainObjects;
+using Acme.Wattle.DomainObjects.DomainObjects.BaseDomainObjects;
 
-namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
+namespace Acme.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
 
 [DomainObjectDataMapper]
 // ReSharper disable once ClassNeverInstantiated.Global

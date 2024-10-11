@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
-using ShtrihM.DemoServer.Processing.Model.Interfaces;
-using ShtrihM.Wattle3.DomainObjects.IdentitiesServices;
-using ShtrihM.Wattle3.DomainObjects.Interfaces;
+using Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
+using Acme.DemoServer.Processing.Model.Interfaces;
+using Acme.Wattle.DomainObjects.IdentitiesServices;
+using Acme.Wattle.DomainObjects.Interfaces;
 
-namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
+namespace Acme.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
 
 public sealed class DemoObjectXIdentitiesService : BaseIdentitiesWithContextWithAlternativeKeyService<DomainObjectDemoObjectX.AlternativeKey, long /* Group */, DemoObjectXIdentitiesService, Demoobjectx, ProcessingDbContext>
 {

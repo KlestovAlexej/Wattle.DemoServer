@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Telegram.Bot.Types.Enums;
 
-namespace ShtrihM.DemoServer.Processing.Model.Interfaces;
+namespace Acme.DemoServer.Processing.Model.Interfaces;
 
 public interface ITelegram
 {

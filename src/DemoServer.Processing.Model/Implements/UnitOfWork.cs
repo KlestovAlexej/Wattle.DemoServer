@@ -1,12 +1,12 @@
-﻿using ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
-using ShtrihM.Wattle3.DomainObjects.DomainObjectsRegisters;
-using ShtrihM.Wattle3.DomainObjects.Interfaces;
-using ShtrihM.Wattle3.DomainObjects.UnitOfWorks;
+﻿using Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
+using Acme.Wattle.DomainObjects.DomainObjectsRegisters;
+using Acme.Wattle.DomainObjects.Interfaces;
+using Acme.Wattle.DomainObjects.UnitOfWorks;
 using System;
 using System.Runtime.CompilerServices;
-using ShtrihM.DemoServer.Processing.Generated.Interface;
+using Acme.DemoServer.Processing.Generated.Interface;
 
-namespace ShtrihM.DemoServer.Processing.Model.Implements;
+namespace Acme.DemoServer.Processing.Model.Implements;
 
 public sealed class UnitOfWork : UnitOfWorkFull<ProcessingDbContext, IMapperChangeTracker>
 {

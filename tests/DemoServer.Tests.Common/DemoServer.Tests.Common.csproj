@@ -3,15 +3,15 @@
 	<PropertyGroup>
 		<TargetFramework>net8.0-windows</TargetFramework>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-		<AssemblyName>ShtrihM.DemoServer.Tests.Common</AssemblyName>
-		<RootNamespace>ShtrihM.DemoServer.Tests.Common</RootNamespace>
+		<AssemblyName>Acme.DemoServer.Tests.Common</AssemblyName>
+		<RootNamespace>Acme.DemoServer.Tests.Common</RootNamespace>
 		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
 		<NoWarn>$(NoWarn);CS8032;CS8784</NoWarn>
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.0" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
 		<PackageReference Include="NUnit3TestAdapter" Version="4.6.0" />
 	</ItemGroup>
 

@@ -4,15 +4,15 @@ using System.Data.Common;
 using Microsoft.EntityFrameworkCore.Design;
 using System.Diagnostics;
 using Microsoft.EntityFrameworkCore.Storage;
-using ShtrihM.Wattle3.DomainObjects.UnitOfWorks;
+using Acme.Wattle.DomainObjects.UnitOfWorks;
 
 // ReSharper disable once CheckNamespace
-namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
+namespace Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
 
 /// <summary>
 /// Контекст.
 /// <remarks>
-/// Для перегенерации контекста надо запустить руками тест <code>ShtrihM.DemoServer.Processing.Tests.DataAccess.PostgreSql.TestsCreateEntityFrameworkDbContext</code>
+/// Для перегенерации контекста надо запустить руками тест <code>Acme.DemoServer.Processing.Tests.DataAccess.PostgreSql.TestsCreateEntityFrameworkDbContext</code>
 /// </remarks>
 ///  </summary>
 public partial class ProcessingDbContext : IDbContext

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace ShtrihM.DemoServer.Common;
+namespace Acme.DemoServer.Common;
 
 /// <summary>
 /// Общие константы.

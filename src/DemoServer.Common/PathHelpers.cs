@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Runtime.CompilerServices;
 
-namespace ShtrihM.DemoServer.Common;
+namespace Acme.DemoServer.Common;
 
 public static class PathHelpers
 {

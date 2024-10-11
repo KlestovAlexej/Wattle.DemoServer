@@ -1,5 +1,5 @@
-﻿using ShtrihM.Wattle3.DomainObjects.Interfaces;
-using ShtrihM.Wattle3.Primitives;
+﻿using Acme.Wattle.DomainObjects.Interfaces;
+using Acme.Wattle.Primitives;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,7 +10,7 @@ using System.Runtime.CompilerServices;
 
 // ReSharper disable MemberHidesStaticFromOuterClass
 
-namespace ShtrihM.DemoServer.Processing.Common;
+namespace Acme.DemoServer.Processing.Common;
 
 /// <summary>
 /// Идентификаторы объектов.

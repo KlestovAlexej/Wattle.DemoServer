@@ -2,17 +2,17 @@
 using Microsoft.Extensions.Logging;
 using Npgsql;
 using NUnit.Framework;
-using ShtrihM.DemoServer.Processing.Generated.PostgreSql.Implements;
-using ShtrihM.DemoServer.Processing.Model.Implements;
-using ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
-using ShtrihM.Wattle3.Common.Interfaces;
-using ShtrihM.Wattle3.DomainObjects;
-using ShtrihM.Wattle3.DomainObjects.Common;
-using ShtrihM.Wattle3.DomainObjects.Interfaces;
-using ShtrihM.Wattle3.Mappers;
-using ShtrihM.Wattle3.Testing;
-using ShtrihM.Wattle3.Testing.DomainObjects;
-using ShtrihM.Wattle3.Utils;
+using Acme.DemoServer.Processing.Generated.PostgreSql.Implements;
+using Acme.DemoServer.Processing.Model.Implements;
+using Acme.DemoServer.Processing.Model.Implements.SystemSettings;
+using Acme.Wattle.Common.Interfaces;
+using Acme.Wattle.DomainObjects;
+using Acme.Wattle.DomainObjects.Common;
+using Acme.Wattle.DomainObjects.Interfaces;
+using Acme.Wattle.Mappers;
+using Acme.Wattle.Testing;
+using Acme.Wattle.Testing.DomainObjects;
+using Acme.Wattle.Utils;
 using System;
 using System.Data;
 using System.Diagnostics.CodeAnalysis;
@@ -20,16 +20,16 @@ using System.IO;
 using System.Linq;
 using System.Runtime.ExceptionServices;
 using System.Text;
-using ShtrihM.DemoServer.Processing.Application.Startups;
-using ShtrihM.DemoServer.Processing.Generated.Interface;
-using ShtrihM.Wattle3.Json.Extensions;
+using Acme.DemoServer.Processing.Application.Startups;
+using Acme.DemoServer.Processing.Generated.Interface;
+using Acme.Wattle.Json.Extensions;
 using Unity;
-using Constants = ShtrihM.DemoServer.Common.Constants;
+using Constants = Acme.DemoServer.Common.Constants;
 using System.Threading;
 
 // ReSharper disable MemberCanBePrivate.Global
 
-namespace ShtrihM.DemoServer.Processing.Tests.Model.Environment;
+namespace Acme.DemoServer.Processing.Tests.Model.Environment;
 
 [SuppressMessage("ReSharper", "FieldCanBeMadeReadOnly.Global")]
 public abstract class BaseTestsWithEntryPoint : BaseDbTests

@@ -1,170 +1,170 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>ShtrihM.DemoServer.Processing.Model</name>
+        <name>Acme.DemoServer.Processing.Model</name>
     </assembly>
     <members>
-        <member name="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.ChangeTracker.DomainObjectChangeTracker.Template">
+        <member name="T:Acme.DemoServer.Processing.Model.DomainObjects.ChangeTracker.DomainObjectChangeTracker.Template">
             <summary>
-            Шаблон создания объекта <see cref="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.ChangeTracker.DomainObjectChangeTracker"/>.
+            Шаблон создания объекта <see cref="T:Acme.DemoServer.Processing.Model.DomainObjects.ChangeTracker.DomainObjectChangeTracker"/>.
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.DomainObjectDemoDelayTask.Template">
+        <member name="T:Acme.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.DomainObjectDemoDelayTask.Template">
             <summary>
-            Шаблон создания объекта <see cref="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.DomainObjectDemoDelayTask"/>.
+            Шаблон создания объекта <see cref="T:Acme.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.DomainObjectDemoDelayTask"/>.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.DomainObjectDemoDelayTask.Template.Scenario">
+        <member name="F:Acme.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.DomainObjectDemoDelayTask.Template.Scenario">
             <summary>
-            <seealso cref="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios.DemoDelayTaskScenario"/>.
+            <seealso cref="T:Acme.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios.DemoDelayTaskScenario"/>.
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.ScenarioStates.DemoCycleTaskScenarioState">
+        <member name="T:Acme.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.ScenarioStates.DemoCycleTaskScenarioState">
             <summary>
             Состояние сценария задачи с отложенным запуском.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.ScenarioStates.DemoCycleTaskScenarioState.Type">
+        <member name="F:Acme.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.ScenarioStates.DemoCycleTaskScenarioState.Type">
             <summary>
             Тип состояния сценария.
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.ScenarioStates.DemoCycleTaskScenarioStateAsCycle">
+        <member name="T:Acme.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.ScenarioStates.DemoCycleTaskScenarioStateAsCycle">
             <summary>
             Состояние сценария задачи с отложенным запуском - циклическое исполнение.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.ScenarioStates.DemoCycleTaskScenarioStateAsCycle.Index">
+        <member name="F:Acme.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.ScenarioStates.DemoCycleTaskScenarioStateAsCycle.Index">
             <summary>
             Индекс.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.ScenarioStates.DemoCycleTaskScenarioStateAsCycle.RunDate">
+        <member name="F:Acme.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.ScenarioStates.DemoCycleTaskScenarioStateAsCycle.RunDate">
             <summary>
             Дата-время запуска циклов.
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.ScenarioStates.DemoDelayTaskScenarioStatesType">
+        <member name="T:Acme.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.ScenarioStates.DemoDelayTaskScenarioStatesType">
             <summary>
             Типы состояний сценариев задач с отложенным запуском.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.ScenarioStates.DemoDelayTaskScenarioStatesType.Cycle">
+        <member name="F:Acme.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.ScenarioStates.DemoDelayTaskScenarioStatesType.Cycle">
             <summary>
             Циклическое исполнение.
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios.DemoDelayTaskScenario">
+        <member name="T:Acme.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios.DemoDelayTaskScenario">
             <summary>
             Сценарий задачи с отложенным запуском.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios.DemoDelayTaskScenario.Type">
+        <member name="F:Acme.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios.DemoDelayTaskScenario.Type">
             <summary>
             Тип сценария.
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios.DemoDelayTaskScenarioAsCycle">
+        <member name="T:Acme.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios.DemoDelayTaskScenarioAsCycle">
             <summary>
             Сценарий задачи с отложенным запуском - циклическое исполнение.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios.DemoDelayTaskScenarioAsCycle.Count">
+        <member name="F:Acme.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios.DemoDelayTaskScenarioAsCycle.Count">
             <summary>
             Количество шагов цикла.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios.DemoDelayTaskScenarioAsCycle.NextRunTimeout">
+        <member name="F:Acme.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios.DemoDelayTaskScenarioAsCycle.NextRunTimeout">
             <summary>
             Интервал задержки исполнения следующего шага цикла.
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios.DemoDelayTaskScenarioAsDelay">
+        <member name="T:Acme.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios.DemoDelayTaskScenarioAsDelay">
             <summary>
             Сценарий задачи с отложенным запуском - задержка исполнения.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios.DemoDelayTaskScenarioAsDelay.Delay">
+        <member name="F:Acme.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios.DemoDelayTaskScenarioAsDelay.Delay">
             <summary>
             Интервал задержки исполнения.
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios.DemoDelayTaskScenariosType">
+        <member name="T:Acme.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios.DemoDelayTaskScenariosType">
             <summary>
             Типы сценариев задач с отложенным запуском.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios.DemoDelayTaskScenariosType.Delay">
+        <member name="F:Acme.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios.DemoDelayTaskScenariosType.Delay">
             <summary>
             Задержка исполнения.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios.DemoDelayTaskScenariosType.Cycle">
+        <member name="F:Acme.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios.DemoDelayTaskScenariosType.Cycle">
             <summary>
             Циклическое исполнение.
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX.DomainObjectDemoObjectX.AlternativeKey">
+        <member name="T:Acme.DemoServer.Processing.Model.DomainObjects.DemoObjectX.DomainObjectDemoObjectX.AlternativeKey">
             <summary>
-            Альтернативный ключ объекта DemoObjectX по : <see cref="P:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX.DomainObjectDemoObjectX.AlternativeKey.Key1"/>, <see cref="P:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX.DomainObjectDemoObjectX.AlternativeKey.Key2"/>.
+            Альтернативный ключ объекта DemoObjectX по : <see cref="P:Acme.DemoServer.Processing.Model.DomainObjects.DemoObjectX.DomainObjectDemoObjectX.AlternativeKey.Key1"/>, <see cref="P:Acme.DemoServer.Processing.Model.DomainObjects.DemoObjectX.DomainObjectDemoObjectX.AlternativeKey.Key2"/>.
             </summary>
             <param name="Key1">Альтернативный ключ - часть №1.</param>
             <param name="Key2">Альтернативный ключ - часть №2/</param>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX.DomainObjectDemoObjectX.AlternativeKey.#ctor(System.Guid,System.String)">
+        <member name="M:Acme.DemoServer.Processing.Model.DomainObjects.DemoObjectX.DomainObjectDemoObjectX.AlternativeKey.#ctor(System.Guid,System.String)">
             <summary>
-            Альтернативный ключ объекта DemoObjectX по : <see cref="P:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX.DomainObjectDemoObjectX.AlternativeKey.Key1"/>, <see cref="P:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX.DomainObjectDemoObjectX.AlternativeKey.Key2"/>.
+            Альтернативный ключ объекта DemoObjectX по : <see cref="P:Acme.DemoServer.Processing.Model.DomainObjects.DemoObjectX.DomainObjectDemoObjectX.AlternativeKey.Key1"/>, <see cref="P:Acme.DemoServer.Processing.Model.DomainObjects.DemoObjectX.DomainObjectDemoObjectX.AlternativeKey.Key2"/>.
             </summary>
             <param name="Key1">Альтернативный ключ - часть №1.</param>
             <param name="Key2">Альтернативный ключ - часть №2/</param>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX.DomainObjectDemoObjectX.AlternativeKey.Key1">
+        <member name="P:Acme.DemoServer.Processing.Model.DomainObjects.DemoObjectX.DomainObjectDemoObjectX.AlternativeKey.Key1">
             <summary>Альтернативный ключ - часть №1.</summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX.DomainObjectDemoObjectX.AlternativeKey.Key2">
+        <member name="P:Acme.DemoServer.Processing.Model.DomainObjects.DemoObjectX.DomainObjectDemoObjectX.AlternativeKey.Key2">
             <summary>Альтернативный ключ - часть №2/</summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX.DomainObjectDemoObjectX.Template">
+        <member name="T:Acme.DemoServer.Processing.Model.DomainObjects.DemoObjectX.DomainObjectDemoObjectX.Template">
             <summary>
-            Шаблон создания объекта <see cref="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX.DomainObjectDemoObjectX"/>.
+            Шаблон создания объекта <see cref="T:Acme.DemoServer.Processing.Model.DomainObjects.DemoObjectX.DomainObjectDemoObjectX"/>.
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObject.DomainObjectDemoObject.Template">
+        <member name="T:Acme.DemoServer.Processing.Model.DomainObjects.DemoObject.DomainObjectDemoObject.Template">
             <summary>
-            Шаблон создания объекта <see cref="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObject.DomainObjectDemoObject"/>.
+            Шаблон создания объекта <see cref="T:Acme.DemoServer.Processing.Model.DomainObjects.DemoObject.DomainObjectDemoObject"/>.
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.SystemLog.DomainObjectSystemLog.Template">
+        <member name="T:Acme.DemoServer.Processing.Model.DomainObjects.SystemLog.DomainObjectSystemLog.Template">
             <summary>
-            Шаблон создания объекта <see cref="T:ShtrihM.DemoServer.Processing.Model.DomainObjects.SystemLog.DomainObjectSystemLog"/>.
+            Шаблон создания объекта <see cref="T:Acme.DemoServer.Processing.Model.DomainObjects.SystemLog.DomainObjectSystemLog"/>.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Model.Implements.Metrics.RequestsIncoming">
+        <member name="F:Acme.DemoServer.Processing.Model.Implements.Metrics.RequestsIncoming">
             <summary>
             Количество входящих запросов.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Model.Implements.Metrics.RequestsIncomingSuccessful">
+        <member name="F:Acme.DemoServer.Processing.Model.Implements.Metrics.RequestsIncomingSuccessful">
             <summary>
             Количество входящих запросов - успешных.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Model.Implements.Metrics.ExceptionsWorkflow">
+        <member name="F:Acme.DemoServer.Processing.Model.Implements.Metrics.ExceptionsWorkflow">
             <summary>
             Количество штатных исключений.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Model.Implements.Metrics.ExceptionsUnexpected">
+        <member name="F:Acme.DemoServer.Processing.Model.Implements.Metrics.ExceptionsUnexpected">
             <summary>
             Количество неожиданных исключений.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Model.Implements.Metrics.RequestsHealthCheck">
+        <member name="F:Acme.DemoServer.Processing.Model.Implements.Metrics.RequestsHealthCheck">
             <summary>
             Количество входящих запросов проверки работоспособности.
             </summary>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Model.Implements.ModelExtensions.FindAsync``1(ShtrihM.DemoServer.Processing.Model.Interfaces.ICustomEntryPoint,System.Int64,System.Boolean,System.Boolean,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Model.Implements.ModelExtensions.FindAsync``1(Acme.DemoServer.Processing.Model.Interfaces.ICustomEntryPoint,System.Int64,System.Boolean,System.Boolean,System.Threading.CancellationToken)">
             <summary>
             Найти доменный объект по идентитити.
             </summary>
@@ -172,11 +172,11 @@
             <param name="entryPoint">Точка входа.</param>
             <param name="identity">Идентитити доменного объекта.</param>
             <param name="lockUpdateRegister">Выполнить регистрацию критической секции доменного объекта при его получении из реестра.</param>
-            <param name="throwIfNotFound">Создать исключение <see cref="T:ShtrihM.Wattle3.Common.Exceptions.InternalException"/> если доменнный объект не найден.</param>
+            <param name="throwIfNotFound">Создать исключение <see cref="T:Acme.Wattle.Common.Exceptions.InternalException"/> если доменнный объект не найден.</param>
             <param name="cancellationToken">Токен отмены.</param>
-            <exception cref="T:ShtrihM.Wattle3.Common.Exceptions.InternalException">Если доменнный объект не найден.</exception>
+            <exception cref="T:Acme.Wattle.Common.Exceptions.InternalException">Если доменнный объект не найден.</exception>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Model.Implements.ModelExtensions.Find``1(ShtrihM.DemoServer.Processing.Model.Interfaces.ICustomEntryPoint,System.Int64,System.Boolean,System.Boolean)">
+        <member name="M:Acme.DemoServer.Processing.Model.Implements.ModelExtensions.Find``1(Acme.DemoServer.Processing.Model.Interfaces.ICustomEntryPoint,System.Int64,System.Boolean,System.Boolean)">
             <summary>
             Найти доменный объект по идентитити.
             </summary>
@@ -184,454 +184,454 @@
             <param name="entryPoint">Точка входа.</param>
             <param name="identity">Идентитити доменного объекта.</param>
             <param name="lockUpdateRegister">Выполнить регистрацию критической секции доменного объекта при его получении из реестра.</param>
-            <param name="throwIfNotFound">Создать исключение <see cref="T:ShtrihM.Wattle3.Common.Exceptions.InternalException"/> если доменнный объект не найден.</param>
-            <exception cref="T:ShtrihM.Wattle3.Common.Exceptions.InternalException">Если доменнный объект не найден.</exception>
+            <param name="throwIfNotFound">Создать исключение <see cref="T:Acme.Wattle.Common.Exceptions.InternalException"/> если доменнный объект не найден.</param>
+            <exception cref="T:Acme.Wattle.Common.Exceptions.InternalException">Если доменнный объект не найден.</exception>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.DomainObjectRegistersSettings">
+        <member name="T:Acme.DemoServer.Processing.Model.Implements.SystemSettings.DomainObjectRegistersSettings">
             <summary>
             Настройки реестров доменных объектов.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.DomainObjectRegistersSettings.MemoryCacheDemoObjectX">
+        <member name="P:Acme.DemoServer.Processing.Model.Implements.SystemSettings.DomainObjectRegistersSettings.MemoryCacheDemoObjectX">
             <summary>
             Настройки кэширования реестра доменных объектов - Объект X.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.DomainObjectRegistersSettings.UseIdentitiesServices">
+        <member name="P:Acme.DemoServer.Processing.Model.Implements.SystemSettings.DomainObjectRegistersSettings.UseIdentitiesServices">
             <summary>
             Использовать реестры идентити объектов.
             </summary>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.DomainObjectRegistersSettings.GetDefault">
+        <member name="M:Acme.DemoServer.Processing.Model.Implements.SystemSettings.DomainObjectRegistersSettings.GetDefault">
             <summary>
             Настройки по умолчанию.
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.ExceptionPolicySettings">
+        <member name="T:Acme.DemoServer.Processing.Model.Implements.SystemSettings.ExceptionPolicySettings">
             <summary>
             Настройки уведомления об исключениях системы.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.ExceptionPolicySettings.ControllersEnabledUnexpectedException">
+        <member name="P:Acme.DemoServer.Processing.Model.Implements.SystemSettings.ExceptionPolicySettings.ControllersEnabledUnexpectedException">
             <summary>
             Разрешение контроллерам уведомлять о неожиданных исключениях.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.ExceptionPolicySettings.UnexpectedExceptionSendToTelegram">
+        <member name="P:Acme.DemoServer.Processing.Model.Implements.SystemSettings.ExceptionPolicySettings.UnexpectedExceptionSendToTelegram">
             <summary>
             Разрешение уведомлять о неожиданных исключениях в Telegram.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.ExceptionPolicySettings.TimeoutUnexpectedExceptionSendToTelegram">
+        <member name="P:Acme.DemoServer.Processing.Model.Implements.SystemSettings.ExceptionPolicySettings.TimeoutUnexpectedExceptionSendToTelegram">
             <summary>
             Интервал отправки уведомлений о неожиданных исключениях в Telegram.
             </summary>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.ExceptionPolicySettings.GetDefault">
+        <member name="M:Acme.DemoServer.Processing.Model.Implements.SystemSettings.ExceptionPolicySettings.GetDefault">
             <summary>
             Настройки по умолчанию.
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.IdentityCachesSettings">
+        <member name="T:Acme.DemoServer.Processing.Model.Implements.SystemSettings.IdentityCachesSettings">
             <summary>
             Настройки кэширующих провайдеров идентити объектов.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.IdentityCachesSettings.SystemLog">
+        <member name="P:Acme.DemoServer.Processing.Model.Implements.SystemSettings.IdentityCachesSettings.SystemLog">
             <summary>
             Настройки маппера - Системный лог.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.IdentityCachesSettings.ChangeTracker">
+        <member name="P:Acme.DemoServer.Processing.Model.Implements.SystemSettings.IdentityCachesSettings.ChangeTracker">
             <summary>
             Настройки маппера - Контроль изменений.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.IdentityCachesSettings.DemoObject">
+        <member name="P:Acme.DemoServer.Processing.Model.Implements.SystemSettings.IdentityCachesSettings.DemoObject">
             <summary>
             Настройки маппера - Объект.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.IdentityCachesSettings.DemoDelayTask">
+        <member name="P:Acme.DemoServer.Processing.Model.Implements.SystemSettings.IdentityCachesSettings.DemoDelayTask">
             <summary>
             Настройки маппера - Задача с отложенным запуском.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.IdentityCachesSettings.DemoObjectX">
+        <member name="P:Acme.DemoServer.Processing.Model.Implements.SystemSettings.IdentityCachesSettings.DemoObjectX">
             <summary>
             Настройки маппера - Объект X.
             </summary>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.IdentityCachesSettings.GetDefault">
+        <member name="M:Acme.DemoServer.Processing.Model.Implements.SystemSettings.IdentityCachesSettings.GetDefault">
             <summary>
             Настройки по умолчанию.
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.PartitionsSponsorSettings">
+        <member name="T:Acme.DemoServer.Processing.Model.Implements.SystemSettings.PartitionsSponsorSettings">
             <summary>
             Настройки создателя партиций БД.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.PartitionsSponsorSettings.ActivateTimeout">
+        <member name="P:Acme.DemoServer.Processing.Model.Implements.SystemSettings.PartitionsSponsorSettings.ActivateTimeout">
             <summary>
             Интервал активации.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.PartitionsSponsorSettings.TablespaceNames">
+        <member name="P:Acme.DemoServer.Processing.Model.Implements.SystemSettings.PartitionsSponsorSettings.TablespaceNames">
             <summary>
             Карта имён табличных пространств БД для партиций БД.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.PartitionsSponsorSettings.DomainObjectsTablespaceNames">
+        <member name="P:Acme.DemoServer.Processing.Model.Implements.SystemSettings.PartitionsSponsorSettings.DomainObjectsTablespaceNames">
             <summary>
             Карта имён табличных пространств БД для партиций БД для конкретных доменных объектов.
             </summary>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.PartitionsSponsorSettings.GetDefault">
+        <member name="M:Acme.DemoServer.Processing.Model.Implements.SystemSettings.PartitionsSponsorSettings.GetDefault">
             <summary>
             Настройки по умолчанию.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.UseLoggingProxy">
+        <member name="P:Acme.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.UseLoggingProxy">
             <summary>
             Использовать прокси логирующий все вызовы методов с логированием параметров и результатов вызовов методов.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.TelegramSettings">
+        <member name="P:Acme.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.TelegramSettings">
             <summary>
             Настройки Telegram.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.SmartJsonDeserializerSettings">
+        <member name="P:Acme.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.SmartJsonDeserializerSettings">
             <summary>
             Настройки умного десериализации JSON.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.DemoDelayTaskProcessorSettings">
+        <member name="P:Acme.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.DemoDelayTaskProcessorSettings">
             <summary>
             Настройки службы обработки задач с отложенным запуском.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.UpdateKeyExpirationTimeout">
+        <member name="P:Acme.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.UpdateKeyExpirationTimeout">
             <summary>
             Интервал действия ключа контроля изменений.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.DomainObjectRegistersSettings">
+        <member name="P:Acme.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.DomainObjectRegistersSettings">
             <summary>
             Настройки реестров доменных объектов.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.PartitionsSponsorSettings">
+        <member name="P:Acme.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.PartitionsSponsorSettings">
             <summary>
             Настройки создателя партиций БД.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.InstanceId">
+        <member name="P:Acme.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.InstanceId">
             <summary>
             Идентификатор экземпляра сервера.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.InstanceName">
+        <member name="P:Acme.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.InstanceName">
             <summary>
             Текстовый идентификатор экземпляра сервера.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.UnitOfWorkLocksSettings">
+        <member name="P:Acme.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.UnitOfWorkLocksSettings">
             <summary>
-            Настройки пулов лок-объектов уровня <see cref="T:ShtrihM.Wattle3.DomainObjects.Interfaces.IUnitOfWork"/>.
+            Настройки пулов лок-объектов уровня <see cref="T:Acme.Wattle.DomainObjects.Interfaces.IUnitOfWork"/>.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.ExceptionPolicySettings">
+        <member name="P:Acme.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.ExceptionPolicySettings">
             <summary>
             Настройки уведомления об исключениях системы.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.MappersCacheActualStateDtoSettings">
+        <member name="P:Acme.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.MappersCacheActualStateDtoSettings">
             <summary>
             Настройки кэшей актуальных данных состояний доменнй объектов в БД.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.QueueThreadsSizeEmergencyDomainBehaviour">
+        <member name="P:Acme.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.QueueThreadsSizeEmergencyDomainBehaviour">
             <summary>
             Очередь обработки аварийных ситуаций доменного поведения - количество потоков обработки.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.QueueEmergencyTimeoutEmergencyDomainBehaviour">
+        <member name="P:Acme.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.QueueEmergencyTimeoutEmergencyDomainBehaviour">
             <summary>
             Очередь обработки аварийных ситуаций доменного поведения - интервал аварийного ожидания повторной обработки.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.IdentityCachesSettings">
+        <member name="P:Acme.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.IdentityCachesSettings">
             <summary>
             Настройки кэширующих провайдеров идентити объектов.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.ConnectionString">
+        <member name="P:Acme.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.ConnectionString">
             <summary>
             Строка подключения к БД.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.SqlCommandTimeout">
+        <member name="P:Acme.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.SqlCommandTimeout">
             <summary>
             Интервал ожидания исполнения SQL-команд.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.MappersFeaturesValidateUpdateResults">
+        <member name="P:Acme.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.MappersFeaturesValidateUpdateResults">
             <summary>
             Проверять каждое обновление БД на корректность брутальным способом.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.DebugMode">
+        <member name="P:Acme.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.DebugMode">
             <summary>
             Отладочный режим.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.TimeStatisticsStep">
+        <member name="P:Acme.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.TimeStatisticsStep">
             <summary>
             Интервал аккумуляции статистики.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.TelegramShowApplicationStartStop">
+        <member name="P:Acme.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettings.TelegramShowApplicationStartStop">
             <summary>
             Отправлять в Telegram уведомления о запуске/остановке приложения.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettingsLocal.ProductId">
+        <member name="P:Acme.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettingsLocal.ProductId">
             <summary>
-            Код продукта <seealso cref="F:ShtrihM.DemoServer.Common.WellknownCommonSystemSettings.ProductId"/>.
+            Код продукта <seealso cref="F:Acme.DemoServer.Common.WellknownCommonSystemSettings.ProductId"/>.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettingsLocal.ProductVersion">
+        <member name="P:Acme.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettingsLocal.ProductVersion">
             <summary>
-            Версия продукта <seealso cref="F:ShtrihM.DemoServer.Common.WellknownCommonSystemSettings.ProductVersion"/>.
+            Версия продукта <seealso cref="F:Acme.DemoServer.Common.WellknownCommonSystemSettings.ProductVersion"/>.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettingsLocal.InstallationName">
+        <member name="P:Acme.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettingsLocal.InstallationName">
             <summary>
-            Имя инсталляции <seealso cref="F:ShtrihM.DemoServer.Common.WellknownCommonSystemSettings.InstallationName"/>.
+            Имя инсталляции <seealso cref="F:Acme.DemoServer.Common.WellknownCommonSystemSettings.InstallationName"/>.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettingsLocal.ProductName">
+        <member name="P:Acme.DemoServer.Processing.Model.Implements.SystemSettings.SystemSettingsLocal.ProductName">
             <summary>
             Имя продукта.
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.TelegramSettings">
+        <member name="T:Acme.DemoServer.Processing.Model.Implements.SystemSettings.TelegramSettings">
             <summary>
             Настройки Telegram.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.TelegramSettings.Enabled">
+        <member name="P:Acme.DemoServer.Processing.Model.Implements.SystemSettings.TelegramSettings.Enabled">
             <summary>
             Разрешает отправку сообщений.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.TelegramSettings.ApiKey">
+        <member name="P:Acme.DemoServer.Processing.Model.Implements.SystemSettings.TelegramSettings.ApiKey">
             <summary>
             Ключ API.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.TelegramSettings.ChatId">
+        <member name="P:Acme.DemoServer.Processing.Model.Implements.SystemSettings.TelegramSettings.ChatId">
             <summary>
             Идентификатор чата.
             </summary>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings.TelegramSettings.GetDefault">
+        <member name="M:Acme.DemoServer.Processing.Model.Implements.SystemSettings.TelegramSettings.GetDefault">
             <summary>
             Настройки по умолчанию.
             </summary>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Model.Implements.Telegram.EscapeTextMarkdownV2(System.String)">
+        <member name="M:Acme.DemoServer.Processing.Model.Implements.Telegram.EscapeTextMarkdownV2(System.String)">
             <summary>
             Экранирование символов дл стиля <seealso cref="F:Telegram.Bot.Types.Enums.ParseMode.MarkdownV2"/>> <seealso><cref>https://core.telegram.org/bots/api#formatting-options</cref></seealso>.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Model.Implements.UnitOfWorkLocks.UnitOfWorkLocksActions.CreateDemoObjectX">
+        <member name="F:Acme.DemoServer.Processing.Model.Implements.UnitOfWorkLocks.UnitOfWorkLocksActions.CreateDemoObjectX">
             <summary>
             Лок-объек сценария - создание объекта X.
             </summary>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Model.Interfaces.IDemoObjectControllerService.CreateAsync(ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.DemoObjectCreate,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Model.Interfaces.IDemoObjectControllerService.CreateAsync(Acme.DemoServer.Processing.Api.Common.Dtos.DemoObject.DemoObjectCreate,System.Threading.CancellationToken)">
             <summary>
             Создание объекта.
             </summary>
             <param name="parameters">Параметры создание объекта.</param>
             <param name="cancellationToken">Токен отмены.</param>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Model.Interfaces.IDemoObjectControllerService.ReadAsync(System.Int64,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Model.Interfaces.IDemoObjectControllerService.ReadAsync(System.Int64,System.Threading.CancellationToken)">
             <summary>
             Чтение объекта.
             </summary>
             <param name="id">Идентификатор объекта.</param>
             <param name="cancellationToken">Токен отмены.</param>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Model.Interfaces.IDemoObjectControllerService.UpdateAsync(ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update.DemoObjectUpdate,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Model.Interfaces.IDemoObjectControllerService.UpdateAsync(Acme.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update.DemoObjectUpdate,System.Threading.CancellationToken)">
             <summary>
             Обновление объекта.
             </summary>
             <param name="parameters">Параметры обновления объекта.</param>
             <param name="cancellationToken">Токен отмены.</param>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectChangeTracker">
+        <member name="T:Acme.DemoServer.Processing.Model.Interfaces.IDomainObjectChangeTracker">
             <summary>
             Контроль изменений.
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoDelayTask">
+        <member name="T:Acme.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoDelayTask">
             <summary>
             Задача с отложенным запуском.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoDelayTask.CreateDate">
+        <member name="P:Acme.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoDelayTask.CreateDate">
             <summary>
             Дата создания.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoDelayTask.ModificationDate">
+        <member name="P:Acme.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoDelayTask.ModificationDate">
             <summary>
             Дата модификации.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoDelayTask.Scenario">
+        <member name="P:Acme.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoDelayTask.Scenario">
             <summary>
             Сценарий.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoDelayTask.ScenarioState">
+        <member name="P:Acme.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoDelayTask.ScenarioState">
             <summary>
             Состояние сценария.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoDelayTask.StartDate">
+        <member name="P:Acme.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoDelayTask.StartDate">
             <summary>
             Дата запуска.
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoObject">
+        <member name="T:Acme.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoObject">
             <summary>
             Объект.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoObject.CreateDate">
+        <member name="P:Acme.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoObject.CreateDate">
             <summary>
             Дата создания.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoObject.ModificationDate">
+        <member name="P:Acme.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoObject.ModificationDate">
             <summary>
             Дата модификации.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoObject.Name">
+        <member name="P:Acme.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoObject.Name">
             <summary>
             Название.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoObject.Enabled">
+        <member name="P:Acme.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoObject.Enabled">
             <summary>
             Признак разрешения работы.
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoObjectX">
+        <member name="T:Acme.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoObjectX">
             <summary>
             Объект X.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoObjectX.CreateDate">
+        <member name="P:Acme.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoObjectX.CreateDate">
             <summary>
             Дата создания.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoObjectX.ModificationDate">
+        <member name="P:Acme.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoObjectX.ModificationDate">
             <summary>
             Дата модификации.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoObjectX.Name">
+        <member name="P:Acme.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoObjectX.Name">
             <summary>
             Название.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoObjectX.Enabled">
+        <member name="P:Acme.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoObjectX.Enabled">
             <summary>
             Признак разрешения работы.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoObjectX.Key1">
+        <member name="P:Acme.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoObjectX.Key1">
             <summary>
             Альтернативный ключ - часть №1.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoObjectX.Key2">
+        <member name="P:Acme.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoObjectX.Key2">
             <summary>
             Альтернативный ключ - часть №2.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoObjectX.Group">
+        <member name="P:Acme.DemoServer.Processing.Model.Interfaces.IDomainObjectDemoObjectX.Group">
             <summary>
             Номер группы.
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectSystemLog">
+        <member name="T:Acme.DemoServer.Processing.Model.Interfaces.IDomainObjectSystemLog">
             <summary>
             Системный лог.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectSystemLog.Code">
+        <member name="P:Acme.DemoServer.Processing.Model.Interfaces.IDomainObjectSystemLog.Code">
             <summary>
-            Код записи <seealso cref="T:ShtrihM.DemoServer.Processing.Common.WellknownSytemLogCodes"/>.
+            Код записи <seealso cref="T:Acme.DemoServer.Processing.Common.WellknownSytemLogCodes"/>.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectSystemLog.CreateDate">
+        <member name="P:Acme.DemoServer.Processing.Model.Interfaces.IDomainObjectSystemLog.CreateDate">
             <summary>
             Дата создания.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectSystemLog.Data">
+        <member name="P:Acme.DemoServer.Processing.Model.Interfaces.IDomainObjectSystemLog.Data">
             <summary>
             Данные.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectSystemLog.Message">
+        <member name="P:Acme.DemoServer.Processing.Model.Interfaces.IDomainObjectSystemLog.Message">
             <summary>
             Сообщение.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Interfaces.IDomainObjectSystemLog.Type">
+        <member name="P:Acme.DemoServer.Processing.Model.Interfaces.IDomainObjectSystemLog.Type">
             <summary>
-            Тип записи <seealso cref="T:ShtrihM.DemoServer.Common.WellknownSytemLogTypes"/>.
+            Тип записи <seealso cref="T:Acme.DemoServer.Common.WellknownSytemLogTypes"/>.
             </summary>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Model.Interfaces.IInfrastructureMonitorCustomEntryPoint.GetSnapShot">
+        <member name="M:Acme.DemoServer.Processing.Model.Interfaces.IInfrastructureMonitorCustomEntryPoint.GetSnapShot">
             <summary>
             Получить текущий снимок стостояния.
             </summary>
             <returns>Состояние.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Model.Interfaces.IServerControllerService.GetDescription">
+        <member name="M:Acme.DemoServer.Processing.Model.Interfaces.IServerControllerService.GetDescription">
             <summary>
             Получить описание сервера.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Interfaces.ISnapShotInfrastructureMonitorCustomEntryPoint.ProcessId">
+        <member name="P:Acme.DemoServer.Processing.Model.Interfaces.ISnapShotInfrastructureMonitorCustomEntryPoint.ProcessId">
             <summary>
             Идентификатор процесса сервера.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Model.Interfaces.ISnapShotInfrastructureMonitorCustomEntryPoint.DebugMode">
+        <member name="P:Acme.DemoServer.Processing.Model.Interfaces.ISnapShotInfrastructureMonitorCustomEntryPoint.DebugMode">
             <summary>
             Признак работы сервера в отладочном режиме.
             </summary>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Model.Interfaces.ITelegram.SendAsync(System.String,System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Model.Interfaces.ITelegram.SendAsync(System.String,System.Threading.CancellationToken)">
             <summary>
             Отправить сообщение.
             </summary>
             <param name="message">Причина показа динамического идентификатор покупателя с форматированием <see cref="F:Telegram.Bot.Types.Enums.ParseMode.MarkdownV2"/>.</param>
             <param name="cancellationToken">Токен отмены.</param>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Model.Interfaces.ITelegram.SendFileAsync(System.String,System.String,System.Byte[],System.Threading.CancellationToken)">
+        <member name="M:Acme.DemoServer.Processing.Model.Interfaces.ITelegram.SendFileAsync(System.String,System.String,System.Byte[],System.Threading.CancellationToken)">
             <summary>
             Отправить файл с сообщением.
             </summary>

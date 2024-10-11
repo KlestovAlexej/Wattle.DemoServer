@@ -1,4 +1,4 @@
-﻿namespace ShtrihM.DemoServer.Processing.Api.Common;
+﻿namespace Acme.DemoServer.Processing.Api.Common;
 
 public static class DemoObjectControllerConstants
 {

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>ShtrihM.DemoServer.Processing.Application</name>
+        <name>Acme.DemoServer.Processing.Application</name>
     </assembly>
     <members>
     </members>

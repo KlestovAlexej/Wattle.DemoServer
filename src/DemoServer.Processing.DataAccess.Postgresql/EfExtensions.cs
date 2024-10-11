@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql;
+namespace Acme.DemoServer.Processing.DataAccess.PostgreSql;
 
 public static class EfExtensions
 {

@@ -1,11 +1,11 @@
-﻿using ShtrihM.Wattle3.Primitives;
+﻿using Acme.Wattle.Primitives;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
-namespace ShtrihM.DemoServer.Processing.Api.Common;
+namespace Acme.DemoServer.Processing.Api.Common;
 
 /// <summary>
 /// Ключи произвольных данных иключения доменной области.

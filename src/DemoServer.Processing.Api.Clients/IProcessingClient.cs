@@ -1,13 +1,13 @@
-﻿using ShtrihM.DemoServer.Processing.Api.Common;
-using ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject;
-using ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update;
-using ShtrihM.Wattle3.Common.Exceptions;
-using ShtrihM.Wattle3.Common.Interfaces;
+﻿using Acme.DemoServer.Processing.Api.Common;
+using Acme.DemoServer.Processing.Api.Common.Dtos.DemoObject;
+using Acme.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update;
+using Acme.Wattle.Common.Exceptions;
+using Acme.Wattle.Common.Interfaces;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ShtrihM.DemoServer.Processing.Api.Clients;
+namespace Acme.DemoServer.Processing.Api.Clients;
 
 public interface IProcessingClient : IDisposable
 {

@@ -1,13 +1,13 @@
 ﻿using Npgsql;
 using NUnit.Framework;
-using ShtrihM.DemoServer.Common;
-using ShtrihM.DemoServer.Processing.DataAccess.PostgreSql;
-using ShtrihM.Wattle3.Testing;
+using Acme.DemoServer.Common;
+using Acme.DemoServer.Processing.DataAccess.PostgreSql;
+using Acme.Wattle.Testing;
 using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
 
-namespace ShtrihM.DemoServer.Processing.Tests.Model.Environment;
+namespace Acme.DemoServer.Processing.Tests.Model.Environment;
 
 public abstract class BaseDbTests : Testing.BaseDbTests
 {

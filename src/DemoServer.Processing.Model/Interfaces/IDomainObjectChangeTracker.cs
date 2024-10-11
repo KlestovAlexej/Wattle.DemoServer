@@ -1,7 +1,7 @@
-﻿using ShtrihM.DemoServer.Processing.Common;
-using ShtrihM.Wattle3.DomainObjects.Interfaces;
+﻿using Acme.DemoServer.Processing.Common;
+using Acme.Wattle.DomainObjects.Interfaces;
 
-namespace ShtrihM.DemoServer.Processing.Model.Interfaces;
+namespace Acme.DemoServer.Processing.Model.Interfaces;
 
 /// <summary>
 /// Контроль изменений.

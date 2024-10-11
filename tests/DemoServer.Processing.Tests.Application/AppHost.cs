@@ -1,17 +1,17 @@
 ﻿using Newtonsoft.Json;
 using NUnit.Framework;
-using ShtrihM.DemoServer.Common;
-using ShtrihM.DemoServer.Processing.Application;
-using ShtrihM.DemoServer.Processing.Application.Startups;
-using ShtrihM.DemoServer.Processing.DataAccess.PostgreSql;
-using ShtrihM.DemoServer.Processing.Model.Implements.SystemSettings;
-using ShtrihM.DemoServer.Testing;
-using ShtrihM.Wattle3.Common.Interfaces;
-using ShtrihM.Wattle3.Infrastructures.Rest.Clients.Monitors;
-using ShtrihM.Wattle3.Json.Extensions;
-using ShtrihM.Wattle3.Testing;
-using ShtrihM.Wattle3.Testing.Databases.PostgreSql;
-using ShtrihM.Wattle3.Utils;
+using Acme.DemoServer.Common;
+using Acme.DemoServer.Processing.Application;
+using Acme.DemoServer.Processing.Application.Startups;
+using Acme.DemoServer.Processing.DataAccess.PostgreSql;
+using Acme.DemoServer.Processing.Model.Implements.SystemSettings;
+using Acme.DemoServer.Testing;
+using Acme.Wattle.Common.Interfaces;
+using Acme.Wattle.Infrastructures.Rest.Clients.Monitors;
+using Acme.Wattle.Json.Extensions;
+using Acme.Wattle.Testing;
+using Acme.Wattle.Testing.Databases.PostgreSql;
+using Acme.Wattle.Utils;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -23,7 +23,7 @@ using Path = System.IO.Path;
 
 #pragma warning disable SYSLIB1054
 
-namespace ShtrihM.DemoServer.Processing.Tests.Application;
+namespace Acme.DemoServer.Processing.Tests.Application;
 
 public class AppHost : IDisposable
 {
@@ -332,7 +332,7 @@ public class AppHost : IDisposable
             {
                 StartInfo =
                 {
-                    FileName = Path.Combine(m_appPath, "ShtrihM.DemoServer.Processing.Application.exe"),
+                    FileName = Path.Combine(m_appPath, "Acme.DemoServer.Processing.Application.exe"),
                     WorkingDirectory = m_appPath,
                     RedirectStandardInput = true,
                     RedirectStandardOutput = true,
@@ -467,7 +467,7 @@ public class AppHost : IDisposable
     public string CollectLogs()
     {
         var text = new StringBuilder();
-        foreach (var file in Directory.GetFiles(m_appPath, "ShtrihM.DemoServer.Processing.Application.log.*.txt"))
+        foreach (var file in Directory.GetFiles(m_appPath, "Acme.DemoServer.Processing.Application.log.*.txt"))
         {
             try
             {

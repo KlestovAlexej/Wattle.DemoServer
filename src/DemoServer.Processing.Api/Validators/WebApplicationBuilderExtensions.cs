@@ -2,9 +2,9 @@
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update;
+using Acme.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update;
 
-namespace ShtrihM.DemoServer.Processing.Api.Validators;
+namespace Acme.DemoServer.Processing.Api.Validators;
 
 public static class WebApplicationBuilderExtensions
 {

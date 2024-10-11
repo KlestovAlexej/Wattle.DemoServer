@@ -1,18 +1,18 @@
-using ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
-using ShtrihM.DemoServer.Processing.Model.Implements.ControllersServices;
-using ShtrihM.DemoServer.Processing.Model.Interfaces;
-using ShtrihM.Wattle3.DomainObjects.Interfaces;
-using ShtrihM.Wattle3.Primitives;
+using Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
+using Acme.DemoServer.Processing.Model.Implements.ControllersServices;
+using Acme.DemoServer.Processing.Model.Interfaces;
+using Acme.Wattle.DomainObjects.Interfaces;
+using Acme.Wattle.Primitives;
 using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using ShtrihM.Wattle3.DomainObjects;
-using DbContextModel = ShtrihM.DemoServer.Processing.DataAccess.PostgreSql.EfModelsOptimized.ProcessingDbContextModel;
+using Acme.Wattle.DomainObjects;
+using DbContextModel = Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModelsOptimized.ProcessingDbContextModel;
 
-namespace ShtrihM.DemoServer.Processing.Model.Implements;
+namespace Acme.DemoServer.Processing.Model.Implements;
 
 public static class EntryPointStartUpExtensions
 {

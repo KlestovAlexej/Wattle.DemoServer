@@ -1,4 +1,4 @@
-﻿using ShtrihM.Wattle3.Primitives;
+﻿using Acme.Wattle.Primitives;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,7 +6,7 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
-namespace ShtrihM.DemoServer.Common;
+namespace Acme.DemoServer.Common;
 
 /// <summary>
 /// Идентификаторы стандартных, общих для всех систем настроек.

@@ -4,15 +4,15 @@ using Microsoft.Extensions.Logging;
 using Npgsql;
 using NUnit.Framework;
 using Serilog;
-using ShtrihM.DemoServer.Testing.Loggers;
-using ShtrihM.Wattle3.Utils;
+using Acme.DemoServer.Testing.Loggers;
+using Acme.Wattle.Utils;
 using System.IO;
 using ILogger = Microsoft.Extensions.Logging.ILogger;
 
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
-namespace ShtrihM.DemoServer.Testing;
+namespace Acme.DemoServer.Testing;
 
 [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
 public abstract class BaseSlimTests : BaseTests

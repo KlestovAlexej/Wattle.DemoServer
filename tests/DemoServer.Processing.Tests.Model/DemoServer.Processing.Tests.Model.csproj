@@ -2,8 +2,8 @@
 
 	<PropertyGroup>
 		<TargetFramework>net8.0-windows</TargetFramework>
-		<AssemblyName>ShtrihM.DemoServer.Processing.Tests.Model</AssemblyName>
-		<RootNamespace>ShtrihM.DemoServer.Processing.Tests.Model</RootNamespace>
+		<AssemblyName>Acme.DemoServer.Processing.Tests.Model</AssemblyName>
+		<RootNamespace>Acme.DemoServer.Processing.Tests.Model</RootNamespace>
 		<UseWpf>true</UseWpf>
 		<UseWindowsForms>true</UseWindowsForms>
 		<NoWarn>$(NoWarn);MSB3270</NoWarn>
@@ -11,9 +11,9 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.0" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
 		<PackageReference Include="NUnit3TestAdapter" Version="4.6.0" />
-		<PackageReference Include="ShtrihM.Wattle3.Testing.DomainObjects" Version="3.9.0.4081" />
+		<PackageReference Include="Acme.Wattle.Testing.DomainObjects" Version="1.0.0.4096" />
 		<PackageReference Include="System.Linq.Async" Version="6.0.1" />
 	</ItemGroup>
 

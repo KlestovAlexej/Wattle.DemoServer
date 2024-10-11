@@ -1,10 +1,10 @@
 ﻿using NUnit.Framework;
-using ShtrihM.DemoServer.Common;
-using ShtrihM.DemoServer.Testing;
-using ShtrihM.Wattle3.Testing;
-using ShtrihM.Wattle3.Utils;
+using Acme.DemoServer.Common;
+using Acme.DemoServer.Testing;
+using Acme.Wattle.Testing;
+using Acme.Wattle.Utils;
 
-namespace ShtrihM.DemoServer.Processing.Tests.Application;
+namespace Acme.DemoServer.Processing.Tests.Application;
 
 [TestFixture]
 public class TestsBuildEnviroment : BaseSlimTests

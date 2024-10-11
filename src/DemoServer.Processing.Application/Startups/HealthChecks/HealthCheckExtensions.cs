@@ -9,7 +9,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
-namespace ShtrihM.DemoServer.Processing.Application.Startups.HealthChecks;
+namespace Acme.DemoServer.Processing.Application.Startups.HealthChecks;
 
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 

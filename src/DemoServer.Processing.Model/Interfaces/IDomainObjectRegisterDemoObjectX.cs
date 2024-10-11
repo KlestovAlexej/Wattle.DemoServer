@@ -1,11 +1,11 @@
-﻿using ShtrihM.DemoServer.Processing.Common;
-using ShtrihM.Wattle3.DomainObjects.Interfaces;
+﻿using Acme.DemoServer.Processing.Common;
+using Acme.Wattle.DomainObjects.Interfaces;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Threading;
-using ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
+using Acme.DemoServer.Processing.Model.DomainObjects.DemoObjectX;
 
-namespace ShtrihM.DemoServer.Processing.Model.Interfaces;
+namespace Acme.DemoServer.Processing.Model.Interfaces;
 
 [DomainObjectRegistersInterface(WellknownDomainObjects.Text.DemoObjectX)]
 public interface IDomainObjectRegisterDemoObjectX : IDomainObjectRegisterWithContextWithAlternativeKey<IDomainObjectDemoObjectX, DomainObjectDemoObjectX.AlternativeKey, long /* Group */>

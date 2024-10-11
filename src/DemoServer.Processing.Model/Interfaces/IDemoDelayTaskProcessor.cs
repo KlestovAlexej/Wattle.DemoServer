@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios;
-using ShtrihM.Wattle3.DomainObjects.AsyncTasks;
+using Acme.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios;
+using Acme.Wattle.DomainObjects.AsyncTasks;
 
-namespace ShtrihM.DemoServer.Processing.Model.Interfaces;
+namespace Acme.DemoServer.Processing.Model.Interfaces;
 
 public interface IDemoDelayTaskProcessor : IAsyncTaskService
 {

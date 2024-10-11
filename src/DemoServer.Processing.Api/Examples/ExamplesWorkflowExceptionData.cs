@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using ShtrihM.Wattle3.Common.Exceptions;
+using Acme.Wattle.Common.Exceptions;
 using Swashbuckle.AspNetCore.Filters;
 
-namespace ShtrihM.DemoServer.Processing.Api.Examples;
+namespace Acme.DemoServer.Processing.Api.Examples;
 
 public sealed class ExamplesWorkflowExceptionData : IExamplesProvider<WorkflowExceptionData>
 {

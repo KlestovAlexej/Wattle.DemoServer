@@ -3,8 +3,8 @@
 	<PropertyGroup>
 		<TargetFramework>net8.0-windows</TargetFramework>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-		<AssemblyName>ShtrihM.DemoServer.Processing.Tests.DataAccess.PostgreSql</AssemblyName>
-		<RootNamespace>ShtrihM.DemoServer.Processing.Tests.DataAccess.PostgreSql</RootNamespace>
+		<AssemblyName>Acme.DemoServer.Processing.Tests.DataAccess.PostgreSql</AssemblyName>
+		<RootNamespace>Acme.DemoServer.Processing.Tests.DataAccess.PostgreSql</RootNamespace>
 		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
 		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
 		<CompilerGeneratedFilesOutputPath>Generated</CompilerGeneratedFilesOutputPath>
@@ -22,16 +22,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="8.0.8" />
-		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="8.0.10" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
 		<PackageReference Include="NUnit3TestAdapter" Version="4.6.0" />
-		<PackageReference Include="ShtrihM.Wattle3.CodeGeneration.Generator.Tests" Version="3.9.0.4081">
+		<PackageReference Include="Acme.Wattle.CodeGeneration.Generator.Tests" Version="1.0.0.4096">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 			<TreatAsUsed>true</TreatAsUsed>
 		</PackageReference>
-		<PackageReference Include="ShtrihM.Wattle3.CodeGeneration.Generators" Version="3.9.0.4081" />
-		<PackageReference Include="ShtrihM.Wattle3.Testing.Databases.PostgreSql" Version="3.9.0.4081" />
+		<PackageReference Include="Acme.Wattle.CodeGeneration.Generators" Version="1.0.0.4096" />
+		<PackageReference Include="Acme.Wattle.Testing.Databases.PostgreSql" Version="1.0.0.4096" />
 	</ItemGroup>
 
 	<ItemGroup>

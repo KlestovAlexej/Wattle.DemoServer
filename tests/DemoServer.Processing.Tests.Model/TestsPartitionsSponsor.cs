@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Linq;
 using NUnit.Framework;
-using ShtrihM.DemoServer.Processing.Generated.Interface;
-using ShtrihM.DemoServer.Processing.Tests.Model.Environment;
-using ShtrihM.Wattle3.DomainObjects.Interfaces;
-using ShtrihM.Wattle3.Testing;
+using Acme.DemoServer.Processing.Generated.Interface;
+using Acme.DemoServer.Processing.Tests.Model.Environment;
+using Acme.Wattle.DomainObjects.Interfaces;
+using Acme.Wattle.Testing;
 
-namespace ShtrihM.DemoServer.Processing.Tests.Model;
+namespace Acme.DemoServer.Processing.Tests.Model;
 
 [TestFixture]
 public class TestsPartitionsSponsor : BaseTestsDomainObjects

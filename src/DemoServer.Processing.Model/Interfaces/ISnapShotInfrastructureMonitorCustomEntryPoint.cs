@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using ShtrihM.Wattle3.Infrastructures.Interfaces.Monitors;
+using Acme.Wattle.Infrastructures.Interfaces.Monitors;
 
-namespace ShtrihM.DemoServer.Processing.Model.Interfaces;
+namespace Acme.DemoServer.Processing.Model.Interfaces;
 
 [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
 public interface ISnapShotInfrastructureMonitorCustomEntryPoint : ISnapShotInfrastructureMonitorEntryPoint

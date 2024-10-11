@@ -1,197 +1,197 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>ShtrihM.DemoServer.Processing.Api.Common</name>
+        <name>Acme.DemoServer.Processing.Api.Common</name>
     </assembly>
     <members>
-        <member name="T:ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.DemoObjectCreate">
+        <member name="T:Acme.DemoServer.Processing.Api.Common.Dtos.DemoObject.DemoObjectCreate">
             <summary>
             Создание объекта.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.DemoObjectCreate.Name">
+        <member name="P:Acme.DemoServer.Processing.Api.Common.Dtos.DemoObject.DemoObjectCreate.Name">
             <summary>
             Название.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.DemoObjectCreate.Enabled">
+        <member name="P:Acme.DemoServer.Processing.Api.Common.Dtos.DemoObject.DemoObjectCreate.Enabled">
             <summary>
             Признак разрешения работы.
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.DemoObjectInfo">
+        <member name="T:Acme.DemoServer.Processing.Api.Common.Dtos.DemoObject.DemoObjectInfo">
             <summary>
             Данные объекта.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.DemoObjectInfo.Id">
+        <member name="P:Acme.DemoServer.Processing.Api.Common.Dtos.DemoObject.DemoObjectInfo.Id">
             <summary>
             Идентификатор.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.DemoObjectInfo.Name">
+        <member name="P:Acme.DemoServer.Processing.Api.Common.Dtos.DemoObject.DemoObjectInfo.Name">
             <summary>
             Название.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.DemoObjectInfo.Enabled">
+        <member name="P:Acme.DemoServer.Processing.Api.Common.Dtos.DemoObject.DemoObjectInfo.Enabled">
             <summary>
             Признак разрешения работы.
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update.BaseDemoObjectUpdateFieldValue">
+        <member name="T:Acme.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update.BaseDemoObjectUpdateFieldValue">
             <summary>
             Базовое значение поля объекта для обновления.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update.BaseDemoObjectUpdateFieldValue.Field">
+        <member name="F:Acme.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update.BaseDemoObjectUpdateFieldValue.Field">
             <summary>
             Тип поля.
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update.DemoObjectUpdate">
+        <member name="T:Acme.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update.DemoObjectUpdate">
             <summary>
             Обновление объекта.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update.DemoObjectUpdate.Id">
+        <member name="P:Acme.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update.DemoObjectUpdate.Id">
             <summary>
             Идентификатор.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update.DemoObjectUpdate.Fields">
+        <member name="P:Acme.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update.DemoObjectUpdate.Fields">
             <summary>
             Значения полей объекта для обновления.
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update.DemoObjectUpdateFields">
+        <member name="T:Acme.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update.DemoObjectUpdateFields">
             <summary>
             Типы полей объекта доступные для обновления.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update.DemoObjectUpdateFields.Name">
+        <member name="F:Acme.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update.DemoObjectUpdateFields.Name">
             <summary>
             Название.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update.DemoObjectUpdateFields.Enabled">
+        <member name="F:Acme.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update.DemoObjectUpdateFields.Enabled">
             <summary>
             Признак разрешения работы.
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update.DemoObjectUpdateFieldValueOfEnabled">
+        <member name="T:Acme.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update.DemoObjectUpdateFieldValueOfEnabled">
             <summary>
             Значение поля объекта для обновления - признак разрешения работы.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update.DemoObjectUpdateFieldValueOfEnabled.Enabled">
+        <member name="P:Acme.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update.DemoObjectUpdateFieldValueOfEnabled.Enabled">
             <summary>
             Признак разрешения работы.
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update.DemoObjectUpdateFieldValueOfName">
+        <member name="T:Acme.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update.DemoObjectUpdateFieldValueOfName">
             <summary>
             Значение поля объекта для обновления - название.
             </summary>
         </member>
-        <member name="P:ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update.DemoObjectUpdateFieldValueOfName.Name">
+        <member name="P:Acme.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update.DemoObjectUpdateFieldValueOfName.Name">
             <summary>
             Название.
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Api.Common.FieldsConstants">
+        <member name="T:Acme.DemoServer.Processing.Api.Common.FieldsConstants">
             <summary>
             Общие константы.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Api.Common.FieldsConstants.DemoObjectNameMaxLength">
+        <member name="F:Acme.DemoServer.Processing.Api.Common.FieldsConstants.DemoObjectNameMaxLength">
             <summary>
             Длина названия объекта - максимальная.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Api.Common.FieldsConstants.DemoObjectXNameMaxLength">
+        <member name="F:Acme.DemoServer.Processing.Api.Common.FieldsConstants.DemoObjectXNameMaxLength">
             <summary>
             Длина названия объекта X - максимальная.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Api.Common.FieldsConstants.DemoObjectXKey2MaxLength">
+        <member name="F:Acme.DemoServer.Processing.Api.Common.FieldsConstants.DemoObjectXKey2MaxLength">
             <summary>
             Длина альтернативного ключа (часть №2) объекта X - максимальная.
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Api.Common.WellknownWorkflowExceptionDataKeys">
+        <member name="T:Acme.DemoServer.Processing.Api.Common.WellknownWorkflowExceptionDataKeys">
             <summary>
             Ключи произвольных данных иключения доменной области.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Api.Common.WellknownWorkflowExceptionDataKeys.DisplayNames">
+        <member name="F:Acme.DemoServer.Processing.Api.Common.WellknownWorkflowExceptionDataKeys.DisplayNames">
             <summary>
             Все ключи с описаниями.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Api.Common.WellknownWorkflowExceptionDataKeys.Exception">
+        <member name="F:Acme.DemoServer.Processing.Api.Common.WellknownWorkflowExceptionDataKeys.Exception">
             <summary>
             Исключение.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Api.Common.WellknownWorkflowExceptionDataKeys.Exception2">
+        <member name="F:Acme.DemoServer.Processing.Api.Common.WellknownWorkflowExceptionDataKeys.Exception2">
             <summary>
             Исключение 2.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Api.Common.WellknownWorkflowExceptionDataKeys.Id">
+        <member name="F:Acme.DemoServer.Processing.Api.Common.WellknownWorkflowExceptionDataKeys.Id">
             <summary>
             Идентифкатор.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Api.Common.WellknownWorkflowExceptionDataKeys.LockId">
+        <member name="F:Acme.DemoServer.Processing.Api.Common.WellknownWorkflowExceptionDataKeys.LockId">
             <summary>
             Идентификатор пула лок-объектов.
             </summary>
         </member>
-        <member name="T:ShtrihM.DemoServer.Processing.Api.Common.WorkflowErrorCodes">
+        <member name="T:Acme.DemoServer.Processing.Api.Common.WorkflowErrorCodes">
             <summary>
             Коды ошибок поведения доменных объектов.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Api.Common.WorkflowErrorCodes.DisplayNames">
+        <member name="F:Acme.DemoServer.Processing.Api.Common.WorkflowErrorCodes.DisplayNames">
             <summary>
             Все коды ошибок с описаниями.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Api.Common.WorkflowErrorCodes.Severities">
+        <member name="F:Acme.DemoServer.Processing.Api.Common.WorkflowErrorCodes.Severities">
             <summary>
             Все коды ошибок с уровнями серьезности.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Api.Common.WorkflowErrorCodes.Remarks">
+        <member name="F:Acme.DemoServer.Processing.Api.Common.WorkflowErrorCodes.Remarks">
             <summary>
             Коды ошибок с замечаниями.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Api.Common.WorkflowErrorCodes.TooBusy">
+        <member name="F:Acme.DemoServer.Processing.Api.Common.WorkflowErrorCodes.TooBusy">
             <summary>
             Сервер перегружен.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Api.Common.WorkflowErrorCodes.DemoObjectNotFound">
+        <member name="F:Acme.DemoServer.Processing.Api.Common.WorkflowErrorCodes.DemoObjectNotFound">
             <summary>
             Объект не найден.
             </summary>
         </member>
-        <member name="F:ShtrihM.DemoServer.Processing.Api.Common.WorkflowErrorCodes.DemoObjectXKeyAlreadyExists">
+        <member name="F:Acme.DemoServer.Processing.Api.Common.WorkflowErrorCodes.DemoObjectXKeyAlreadyExists">
             <summary>
             Альтернативный ключ объекта X уже существует.
             </summary>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Api.Common.WorkflowErrorCodes.GetDisplayName(System.Int32)">
+        <member name="M:Acme.DemoServer.Processing.Api.Common.WorkflowErrorCodes.GetDisplayName(System.Int32)">
             <summary>
             Получить текстовое описание кода ошибки.
             </summary>
             <param name="id">Код ошибоки.</param>
             <returns>Текстовое описание кода ошибки.</returns>
         </member>
-        <member name="M:ShtrihM.DemoServer.Processing.Api.Common.WorkflowErrorCodes.GetSeverity(System.Int32)">
+        <member name="M:Acme.DemoServer.Processing.Api.Common.WorkflowErrorCodes.GetSeverity(System.Int32)">
             <summary>
             Получить уровень серьезности по коду ошибки.
             </summary>

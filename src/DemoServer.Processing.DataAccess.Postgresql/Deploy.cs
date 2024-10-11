@@ -1,6 +1,6 @@
-﻿using ShtrihM.Wattle3.Primitives;
+﻿using Acme.Wattle.Primitives;
 
-namespace ShtrihM.DemoServer.Processing.DataAccess.PostgreSql;
+namespace Acme.DemoServer.Processing.DataAccess.PostgreSql;
 
 public static class Deploy
 {

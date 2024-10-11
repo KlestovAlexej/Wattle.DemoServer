@@ -6,7 +6,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Newtonsoft.Json;
 
-namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.ScenarioStates;
+namespace Acme.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.ScenarioStates;
 
 /// <summary>
 /// Состояние сценария задачи с отложенным запуском - циклическое исполнение.

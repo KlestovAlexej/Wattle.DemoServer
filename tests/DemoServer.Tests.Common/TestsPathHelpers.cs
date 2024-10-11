@@ -1,11 +1,11 @@
 ﻿using System;
 using System.IO;
 using NUnit.Framework;
-using ShtrihM.DemoServer.Common;
-using ShtrihM.Wattle3.Testing;
-using BaseTests = ShtrihM.DemoServer.Testing.BaseTests;
+using Acme.DemoServer.Common;
+using Acme.Wattle.Testing;
+using BaseTests = Acme.DemoServer.Testing.BaseTests;
 
-namespace ShtrihM.DemoServer.Tests.Common;
+namespace Acme.DemoServer.Tests.Common;
 
 [TestFixture]
 public class TestsPathHelpers : BaseTests

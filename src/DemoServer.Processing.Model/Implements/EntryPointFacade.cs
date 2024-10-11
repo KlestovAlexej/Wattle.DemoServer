@@ -1,11 +1,11 @@
-﻿using ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject;
-using ShtrihM.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update;
-using ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoObject;
-using ShtrihM.DemoServer.Processing.Model.Interfaces;
+﻿using Acme.DemoServer.Processing.Api.Common.Dtos.DemoObject;
+using Acme.DemoServer.Processing.Api.Common.Dtos.DemoObject.Update;
+using Acme.DemoServer.Processing.Model.DomainObjects.DemoObject;
+using Acme.DemoServer.Processing.Model.Interfaces;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ShtrihM.DemoServer.Processing.Model.Implements;
+namespace Acme.DemoServer.Processing.Model.Implements;
 
 public sealed class EntryPointFacade : IEntryPointFacade
 {

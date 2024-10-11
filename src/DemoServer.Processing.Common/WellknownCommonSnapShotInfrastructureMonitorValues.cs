@@ -1,11 +1,11 @@
-﻿using ShtrihM.Wattle3.Common.Interfaces;
-using ShtrihM.Wattle3.Primitives;
+﻿using Acme.Wattle.Common.Interfaces;
+using Acme.Wattle.Primitives;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
-namespace ShtrihM.DemoServer.Processing.Common;
+namespace Acme.DemoServer.Processing.Common;
 
 /// <summary>
 /// Общие значения снимка состояния мониторинга инфраструктуры.

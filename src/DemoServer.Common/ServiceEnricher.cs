@@ -2,7 +2,7 @@
 using Serilog.Events;
 using System;
 
-namespace ShtrihM.DemoServer.Common;
+namespace Acme.DemoServer.Common;
 
 public class ServiceEnricher : ILogEventEnricher
 {

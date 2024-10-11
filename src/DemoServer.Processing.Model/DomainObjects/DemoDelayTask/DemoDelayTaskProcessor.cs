@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using ShtrihM.DemoServer.Processing.Generated.Interface;
-using ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios;
-using ShtrihM.DemoServer.Processing.Model.Implements;
-using ShtrihM.DemoServer.Processing.Model.Interfaces;
-using ShtrihM.Wattle3.DomainObjects.AsyncTasks;
+using Acme.DemoServer.Processing.Generated.Interface;
+using Acme.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios;
+using Acme.DemoServer.Processing.Model.Implements;
+using Acme.DemoServer.Processing.Model.Interfaces;
+using Acme.Wattle.DomainObjects.AsyncTasks;
 
-namespace ShtrihM.DemoServer.Processing.Model.DomainObjects.DemoDelayTask;
+namespace Acme.DemoServer.Processing.Model.DomainObjects.DemoDelayTask;
 
 public class DemoDelayTaskProcessor : BaseAsyncTaskServiceDefault<UnitOfWork, ICustomEntryPoint, WorkflowExceptionPolicy, DomainObjectDemoDelayTask.Template, IDomainObjectDemoDelayTask, DemoDelayTaskDtoActual>, IDemoDelayTaskProcessor
 {
