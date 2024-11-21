@@ -60,7 +60,7 @@ public class AppHost : IDisposable
         m_dbName = dbName ?? $"test_{Constants.ProductTag.ToLower()}_" + DateTime.Now.ToString("yyyMMddhhmmss") + "_" + Guid.NewGuid().ToString("N");
         m_tag = tag ?? Environment.StackTrace;
         configuration ??= Testing.BaseTests.Configuration;
-        m_appPath = ProviderProjectBasePath.GetFullPath($@"src\DemoServer.Processing.Application\bin\{configuration}\net8.0-windows\win-x64");
+        m_appPath = ProviderProjectBasePath.GetFullPath($@"src\DemoServer.Processing.Application\bin\{configuration}\net9.0-windows\win-x64");
         m_directoryLogs = new TestDirectory(Path.Combine(m_appPath, "Logs"), m_buildEnviroment == false);
         m_portApiProcessing = Constants.DefaultPortApiProcessing;
         m_portApiMonitoring = Constants.DefaultPortApiProcessingMonitoring;

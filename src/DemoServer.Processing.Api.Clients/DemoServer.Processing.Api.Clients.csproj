@@ -3,7 +3,7 @@
 	<Import Project="..\..\Tools\MSBuild\Acme.MSBuild.Common.targets" />
 
 	<PropertyGroup>
-		<TargetFramework>net8.0</TargetFramework>
+		<TargetFramework>net9.0</TargetFramework>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<AnalysisLevel>latest</AnalysisLevel>
 		<AssemblyName>Acme.DemoServer.Processing.Api.Clients</AssemblyName>
@@ -19,8 +19,8 @@
 	<ItemGroup>
 		<PackageReference Include="RestSharp" Version="112.1.0" />
 		<PackageReference Include="RestSharp.Serializers.NewtonsoftJson" Version="112.1.0" />
-		<PackageReference Include="Acme.Wattle.Common" Version="1.0.0.4111" />
-		<PackageReference Include="Acme.Wattle.Json" Version="1.0.0.4111" />
+		<PackageReference Include="Acme.Wattle.Common" Version="1.0.0.4115" />
+		<PackageReference Include="Acme.Wattle.Json" Version="1.0.0.4115" />
 	</ItemGroup>
 
 	<ItemGroup>

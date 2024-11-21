@@ -36,7 +36,7 @@ public class Telegram : ITelegram
 
         try
         {
-            await m_bot.SendTextMessageAsync(
+            await m_bot.SendMessage(
                     new ChatId(m_entryPoint.SystemSettings.TelegramSettings.Value.ChatId.Value),
                     EscapeTextMarkdownV2(message),
                     parseMode: ParseMode.MarkdownV2,
@@ -63,7 +63,7 @@ public class Telegram : ITelegram
         try
         {
             using var stream = new MemoryStream(fileContent);
-            await m_bot.SendDocumentAsync(
+            await m_bot.SendDocument(
                     new ChatId(m_entryPoint.SystemSettings.TelegramSettings.Value.ChatId.Value),
                     new InputFileStream(stream, fileName),
                     caption: EscapeTextMarkdownV2(message),

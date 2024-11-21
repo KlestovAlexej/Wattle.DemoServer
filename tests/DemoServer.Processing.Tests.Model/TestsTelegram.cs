@@ -21,7 +21,7 @@ public class TestsTelegram : BaseTestsDomainObjects
         result.ExceptionPolicySettings.Value.UnexpectedExceptionSendToTelegram.Value = true;
         result.TelegramSettings.Value.Enabled.Value = true;
 
-        // Указать реальные токен бота и ID чата.
+        // TODO Указать реальные токен бота и ID чата.
         result.TelegramSettings.Value.ApiKey.Value = "0:0";
         result.TelegramSettings.Value.ChatId.Value = -1;
 
