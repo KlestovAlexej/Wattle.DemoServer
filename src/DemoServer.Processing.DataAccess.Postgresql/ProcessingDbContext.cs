@@ -38,7 +38,7 @@ public partial class ProcessingDbContext : IDbContext
 
 #if DEBUG
         var dependencies = (((IDatabaseFacadeDependenciesAccessor)Database).Dependencies as IRelationalDatabaseFacadeDependencies);
-        Debug.Assert(dependencies != null, "dependencies != null");
+        Debug.Assert(dependencies != null);
         Debug.Assert(ReferenceEquals(dependencies.RelationalConnection.DbConnection, connection), "dependencies.RelationalConnection.ConnectionString != null");
 
         if (transaction != null)
@@ -48,7 +48,7 @@ public partial class ProcessingDbContext : IDbContext
         }
         else
         {
-            Debug.Assert(dependencies.RelationalConnection.CurrentTransaction == null, "dependencies.RelationalConnection.CurrentTransaction == null");
+            Debug.Assert(dependencies.RelationalConnection.CurrentTransaction == null);
         }
 #endif
     }
