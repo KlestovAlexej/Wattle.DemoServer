@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
 
-public class PdDemoDelayTask
+public partial class PdDemoDelayTask
 {
     public long Id { get; set; }
 

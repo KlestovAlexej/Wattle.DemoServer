@@ -13,7 +13,7 @@ namespace Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModelsOptimized
     public partial class ProcessingDbContextModel
     {
         private ProcessingDbContextModel()
-            : base(skipDetectChanges: false, modelId: new Guid("29d157ab-6f0f-458a-8234-43f8c1703ea5"), entityTypeCount: 7)
+            : base(skipDetectChanges: false, modelId: new Guid("c5a3f827-0d7d-420d-a0c8-c04043e7f6f7"), entityTypeCount: 7)
         {
         }
 
@@ -80,7 +80,7 @@ namespace Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModelsOptimized
 
             AddAnnotation("Relational:Sequences", sequences);
             AddAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-            AddAnnotation("ProductVersion", "9.0.0");
+            AddAnnotation("ProductVersion", "9.0.1");
             AddAnnotation("Relational:MaxIdentifierLength", 63);
         }
     }

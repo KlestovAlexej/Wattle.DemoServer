@@ -56,7 +56,7 @@ public class TestsCreateEntityFrameworkDbContext : BaseAutoTestsMapper
         text.AppendLine("$ErrorActionPreference = \"Stop\"");
         text.AppendLine($"Rename-Item -Path \"{Path.Combine(pathDataAccess, "EfModels")}\" -NewName EfModels_old");
         text.AppendLine($"Rename-Item -Path \"{Path.Combine(pathDataAccess, "EfModelsOptimized")}\" -NewName EfModelsOptimized_old");
-        text.AppendLine($@"Scaffold-DbContext -Connection ""{m_dbConnectionString}"" -Provider ""Npgsql.EntityFrameworkCore.PostgreSQL"" -OutputDir ""EfModels"" -ContextDir ""EfModels"" -Namespace ""Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModels"" -ContextNamespace ""Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModels"" -Context ""{nameof(ProcessingDbContext)}"" -NoOnConfiguring -Force -StartupProject DemoServer.Processing.DataAccess.Postgresql -Project DemoServer.Processing.DataAccess.Postgresql -NoPluralize");
+        text.AppendLine(@$"dotnet ef dbcontext scaffold ""{m_dbConnectionString}"" ""Npgsql.EntityFrameworkCore.PostgreSQL"" --output-dir ""EfModels"" --context-dir ""EfModels"" --namespace ""Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModels"" --context-namespace ""Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModels"" --context ""{nameof(ProcessingDbContext)}"" --no-onconfiguring --force --startup-project ""src\DemoServer.Processing.DataAccess.Postgresql"" --project ""src\DemoServer.Processing.DataAccess.Postgresql"" --no-pluralize");
         text.AppendLine($"Remove-Item -LiteralPath \"{Path.Combine(pathDataAccess, "EfModels_old")}\" -Force -Recurse");
         text.AppendLine($"Remove-Item -LiteralPath \"{Path.Combine(pathDataAccess, "EfModelsOptimized_old")}\" -Force -Recurse");
 
@@ -69,7 +69,7 @@ public class TestsCreateEntityFrameworkDbContext : BaseAutoTestsMapper
         text.AppendLine($"(Get-Content \"{fileNameProcessingDbContext}\").Replace('entity.ToTable(\"', 'entity.ToTableLowerCase(\"') | Set-Content \"{fileNameProcessingDbContext}\"");
         text.AppendLine($"(Get-Content \"{fileNameProcessingDbContext}\").Replace('entity.HasKey(', '// entity.HasKey(') | Set-Content \"{fileNameProcessingDbContext}\"");
         text.AppendLine($"(Get-Content \"{fileNameProcessingDbContext}\").Replace('entity.HasIndex(', '// entity.HasIndex(') | Set-Content \"{fileNameProcessingDbContext}\"");
-        text.AppendLine($"Optimize-DbContext -OutputDir EfModelsOptimized -Verbose -Context {nameof(ProcessingDbContext)} -StartupProject DemoServer.Processing.DataAccess.Postgresql -Project DemoServer.Processing.DataAccess.Postgresql");
+        text.AppendLine(@$"dotnet ef dbcontext optimize --output-dir EfModelsOptimized --verbose --context {nameof(ProcessingDbContext)} --startup-project ""src\DemoServer.Processing.DataAccess.Postgresql"" --project ""src\DemoServer.Processing.DataAccess.Postgresql""");
         text.AppendLine($"(Get-Content \"{fileNameEntryPointExtensions}\").Replace('// using DbContextModel', 'using DbContextModel') | Set-Content \"{fileNameEntryPointExtensions}\"");
         text.AppendLine($"(Get-Content \"{fileNameEntryPointExtensions}\").Replace('// o.UseModel(DbContextModel.Instance);', 'o.UseModel(DbContextModel.Instance);') | Set-Content \"{fileNameEntryPointExtensions}\"");
         text.AppendLine($"Remove-Item -Path \"{fileNameScrirpt}\"");

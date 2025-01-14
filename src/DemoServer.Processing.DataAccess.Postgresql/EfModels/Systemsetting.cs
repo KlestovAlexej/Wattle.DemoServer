@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
 
-public class Systemsetting
+public partial class Systemsetting
 {
     public Guid Id { get; set; }
 

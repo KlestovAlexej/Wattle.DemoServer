@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
 
-public class PdTablePartition
+public partial class PdTablePartition
 {
     public long Id { get; set; }
 
