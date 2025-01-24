@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿namespace Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
 
-namespace Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
-
-public partial class PdChangeTracker
+public class PdChangeTracker
 {
     public long Id { get; set; }
 }
