@@ -36,7 +36,7 @@ public static class WellknownDomainObjectFields
     {
         var mainType = MethodBase.GetCurrentMethod()!.DeclaringType;
         var types = mainType!.GetNestedTypes();
-        var displayNames = new Dictionary<Guid, string>(CommonDomainObjectValues.DisplayNames);
+        var displayNames = new Dictionary<Guid, string>(CommonDomainObjectValues.DisplayNames!);
         foreach (var type in types)
         {
             WellknowConstantsHelper.CollectDisplayNames(displayNames, type);

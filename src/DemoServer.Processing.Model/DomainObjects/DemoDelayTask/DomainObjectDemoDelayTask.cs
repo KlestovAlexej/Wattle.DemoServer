@@ -166,7 +166,7 @@ public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutableWithUpdat
     public string ScenarioState
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => m_scenarioState.Value;
+        get => m_scenarioState.Value!;
     }
 
     public DateTimeOffset? StartDate

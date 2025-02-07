@@ -14,6 +14,7 @@ namespace Acme.DemoServer.Processing.Model.Implements.SystemSettings;
 /// </summary>
 [Description("Настройки реестров доменных объектов")]
 [SuppressMessage("ReSharper", "AutoPropertyCanBeMadeGetOnly.Global")]
+[SuppressMessage("ReSharper", "PreferConcreteValueOverDefault")]
 public sealed class DomainObjectRegistersSettings
 {
     private static readonly int MemoryCacheMaxItems = 10_000;
@@ -25,7 +26,7 @@ public sealed class DomainObjectRegistersSettings
         MemoryCacheDemoObjectX =
             new SettingValue<MemoryCacheSettings>(
                 default!,
-                $"Настройки кэширования реестра доменных объектов - {WellknownDomainObjectDisplayNames.DisplayNamesProvider(WellknownDomainObjects.DemoObjectX)}");
+                $"Настройки кэширования реестра доменных объектов - {WellknownDomainObjectDisplayNames.DisplayNamesProvider!(WellknownDomainObjects.DemoObjectX)}");
 
         UseIdentitiesServices =
             new SettingValue<bool>(

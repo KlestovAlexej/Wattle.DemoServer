@@ -57,7 +57,7 @@ public static class WebApplicationBuilderExtensions
 
     static WebApplicationBuilderExtensions()
     {
-        XmlCommentsText = new List<string>();
+        XmlCommentsText = [];
         foreach (var assembly in Wattle.Utils.ExtensionsReflection.GetAssemblies())
         {
             var filename = Path.Combine(AppContext.BaseDirectory, $"{assembly.GetName().Name}.xml");

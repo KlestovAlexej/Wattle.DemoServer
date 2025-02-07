@@ -6,6 +6,10 @@
 * Генератор - Acme.Wattle.CodeGeneration.Generators.Mappers.MappersInterfacesCodeGenerator
 *
 */
+
+#nullable enable
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
+
 // ReSharper disable RedundantUsingDirective
 using System;
 using System.Collections.Generic;
@@ -38,7 +42,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <summary>
         /// Идентити.
         /// </summary>
-        public long Id { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
+        public required long Id { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
 
     }
 
@@ -53,32 +57,32 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <summary>
         /// Идентити.
         /// </summary>
-        public long Id { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
+        public required long Id { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
 
         /// <summary>
         /// Дата создания
         /// </summary>
-        public DateTimeOffset CreateDate;
+        public required DateTimeOffset CreateDate;
 
         /// <summary>
         /// Код записи
         /// </summary>
-        public int Code;
+        public required int Code;
 
         /// <summary>
         /// Тип записи
         /// </summary>
-        public int Type;
+        public required int Type;
 
         /// <summary>
         /// Сообщение
         /// </summary>
-        public string Message;
+        public required string Message;
 
         /// <summary>
         /// Данные
         /// </summary>
-        public string Data;
+        public required string Data;
 
     }
 
@@ -93,47 +97,47 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <summary>
         /// Идентити.
         /// </summary>
-        public long Id { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
+        public required long Id { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
 
         /// <summary>
         /// Дата создания
         /// </summary>
-        public DateTimeOffset CreateDate;
+        public required DateTimeOffset CreateDate;
 
         /// <summary>
         /// Имя таблицы БД
         /// </summary>
-        public string TableName;
+        public required string TableName;
 
         /// <summary>
         /// Имя партиции таблицы БД
         /// </summary>
-        public string PartitionName;
+        public required string PartitionName;
 
         /// <summary>
         /// День партиции таблицы БД
         /// </summary>
-        public DateTime Day;
+        public required DateTime Day;
 
         /// <summary>
         /// Минимальный идентификатор группы идентити хранимый в партиции
         /// </summary>
-        public long MinGroupId;
+        public required long MinGroupId;
 
         /// <summary>
         /// Максимальный идентификатор группы идентити не хранимый в партиции
         /// </summary>
-        public long MaxNotIncludeGroupId;
+        public required long MaxNotIncludeGroupId;
 
         /// <summary>
         /// Минимальный идентити хранимый в партиции
         /// </summary>
-        public long MinId;
+        public required long MinId;
 
         /// <summary>
         /// Максимальный идентити не хранимый в партиции
         /// </summary>
-        public long MaxNotIncludeId;
+        public required long MaxNotIncludeId;
 
     }
 
@@ -148,27 +152,27 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <summary>
         /// Идентити.
         /// </summary>
-        public long Id { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
+        public required long Id { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
 
         /// <summary>
         /// Дата создания
         /// </summary>
-        public DateTime CreateDate;
+        public required DateTime CreateDate;
 
         /// <summary>
         /// Дата модификации
         /// </summary>
-        public DateTime ModificationDate;
+        public required DateTime ModificationDate;
 
         /// <summary>
         /// Название
         /// </summary>
-        public string Name;
+        public required string Name;
 
         /// <summary>
         /// Признак разрешения работы
         /// </summary>
-        public bool Enabled;
+        public required bool Enabled;
 
     }
 
@@ -183,42 +187,42 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <summary>
         /// Идентити.
         /// </summary>
-        public long Id { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
+        public required long Id { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
 
         /// <summary>
         /// Дата создания
         /// </summary>
-        public DateTimeOffset CreateDate;
+        public required DateTimeOffset CreateDate;
 
         /// <summary>
         /// Дата модификации
         /// </summary>
-        public DateTimeOffset ModificationDate;
+        public required DateTimeOffset ModificationDate;
 
         /// <summary>
         /// Название
         /// </summary>
-        public string Name;
+        public required string Name;
 
         /// <summary>
         /// Признак разрешения работы
         /// </summary>
-        public bool Enabled;
+        public required bool Enabled;
 
         /// <summary>
         /// Альтернативный ключ - часть №1
         /// </summary>
-        public Guid Key1;
+        public required Guid Key1;
 
         /// <summary>
         /// Альтернативный ключ - часть №2
         /// </summary>
-        public string Key2;
+        public required string Key2;
 
         /// <summary>
         /// Номер группы
         /// </summary>
-        public long Group;
+        public required long Group;
 
     }
 
@@ -233,37 +237,37 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <summary>
         /// Идентити.
         /// </summary>
-        public long Id { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
+        public required long Id { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
 
         /// <summary>
         /// Доступность.
         /// </summary>
-        public bool Available;
+        public required bool Available;
 
         /// <summary>
         /// Дата создания
         /// </summary>
-        public DateTimeOffset CreateDate;
+        public required DateTimeOffset CreateDate;
 
         /// <summary>
         /// Дата модификации
         /// </summary>
-        public DateTimeOffset ModificationDate;
+        public required DateTimeOffset ModificationDate;
 
         /// <summary>
         /// Сценарий
         /// </summary>
-        public string Scenario;
+        public required string Scenario;
 
         /// <summary>
         /// Состояние сценария
         /// </summary>
-        public string ScenarioState;
+        public required string ScenarioState;
 
         /// <summary>
         /// Дата запуска
         /// </summary>
-        public DateTimeOffset? StartDate;
+        public required DateTimeOffset? StartDate;
 
     }
 
@@ -581,32 +585,32 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <summary>
         /// Идентити.
         /// </summary>
-        public long Id { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
+        public required long Id { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
 
         /// <summary>
         /// Номер ревизии данных.
         /// </summary>
-        public long Revision { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
+        public required long Revision { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
 
         /// <summary>
         /// Дата создания
         /// </summary>
-        public DateTime CreateDate;
+        public required DateTime CreateDate;
 
         /// <summary>
         /// Дата модификации
         /// </summary>
-        public DateTime ModificationDate;
+        public required DateTime ModificationDate;
 
         /// <summary>
         /// Название
         /// </summary>
-        public MapperChangedStateDtoField<string> Name;
+        public required MapperChangedStateDtoField<string> Name;
 
         /// <summary>
         /// Признак разрешения работы
         /// </summary>
-        public MapperChangedStateDtoField<bool> Enabled;
+        public required MapperChangedStateDtoField<bool> Enabled;
 
     }
 
@@ -621,47 +625,47 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <summary>
         /// Идентити.
         /// </summary>
-        public long Id { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
+        public required long Id { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
 
         /// <summary>
         /// Номер ревизии данных.
         /// </summary>
-        public long Revision { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
+        public required long Revision { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
 
         /// <summary>
         /// Дата создания
         /// </summary>
-        public DateTimeOffset CreateDate;
+        public required DateTimeOffset CreateDate;
 
         /// <summary>
         /// Дата модификации
         /// </summary>
-        public DateTimeOffset ModificationDate;
+        public required DateTimeOffset ModificationDate;
 
         /// <summary>
         /// Название
         /// </summary>
-        public MapperChangedStateDtoField<string> Name;
+        public required MapperChangedStateDtoField<string> Name;
 
         /// <summary>
         /// Признак разрешения работы
         /// </summary>
-        public MapperChangedStateDtoField<bool> Enabled;
+        public required MapperChangedStateDtoField<bool> Enabled;
 
         /// <summary>
         /// Альтернативный ключ - часть №1
         /// </summary>
-        public Guid Key1;
+        public required Guid Key1;
 
         /// <summary>
         /// Альтернативный ключ - часть №2
         /// </summary>
-        public string Key2;
+        public required string Key2;
 
         /// <summary>
         /// Номер группы
         /// </summary>
-        public long Group;
+        public required long Group;
 
     }
 
@@ -671,47 +675,42 @@ namespace Acme.DemoServer.Processing.Generated.Interface
     /// </summary>
     // ReSharper disable once PartialTypeWithSinglePart
     [MapperDtoUpdate(WellknownMappersAsText.DemoDelayTask)]
-    public sealed partial class DemoDelayTaskDtoChanged : IMapperDtoVersion
+    public sealed partial class DemoDelayTaskDtoChanged : IMapperDto
     {
         /// <summary>
         /// Идентити.
         /// </summary>
-        public long Id { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
-
-        /// <summary>
-        /// Номер ревизии данных.
-        /// </summary>
-        public long Revision { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
+        public required long Id { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
 
         /// <summary>
         /// Доступность.
         /// </summary>
-        public bool Available;
+        public required bool Available;
 
         /// <summary>
         /// Дата создания
         /// </summary>
-        public DateTimeOffset CreateDate;
+        public required DateTimeOffset CreateDate;
 
         /// <summary>
         /// Дата модификации
         /// </summary>
-        public DateTimeOffset ModificationDate;
+        public required DateTimeOffset ModificationDate;
 
         /// <summary>
         /// Сценарий
         /// </summary>
-        public string Scenario;
+        public required string Scenario;
 
         /// <summary>
         /// Состояние сценария
         /// </summary>
-        public string ScenarioState;
+        public required string ScenarioState;
 
         /// <summary>
         /// Дата запуска
         /// </summary>
-        public DateTimeOffset? StartDate;
+        public required DateTimeOffset? StartDate;
 
     }
 
@@ -726,12 +725,12 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <summary>
         /// Идентити.
         /// </summary>
-        public long Id { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
+        public required long Id { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
 
         /// <summary>
         /// Номер ревизии данных.
         /// </summary>
-        public long Revision { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
+        public required long Revision { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
 
     }
 
@@ -911,7 +910,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="mappersSession">Сессия БД.</param>
         /// <param name="id">Идентити записи.</param>
         /// <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует.</returns>
-         ChangeTrackerDtoActual Get(IMappersSession mappersSession, long id);
+         ChangeTrackerDtoActual? Get(IMappersSession mappersSession, long id);
 
         /// <summary>
         /// Получить запись с указаным идентити.
@@ -920,7 +919,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="id">Идентити записи.</param>
         /// <param name="cancellationToken">Токен отмены.</param>
         /// <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует.</returns>
-         ValueTask<IMapperDto> GetAsync(IMappersSession mappersSession, long id, CancellationToken cancellationToken = default);
+         ValueTask<IMapperDto?> GetAsync(IMappersSession mappersSession, long id, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Получить запись с указаным идентити.
@@ -928,7 +927,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="session">Сессия БД.</param>
         /// <param name="id">Идентити записи.</param>
         /// <returns>Возвращает значение если запись существует иначе если запись не существует возвращает <see langword="null" />.</returns>
-        ChangeTrackerDtoActual GetRaw(IMappersSession session, long id);
+        ChangeTrackerDtoActual? GetRaw(IMappersSession session, long id);
 
         /// <summary>
         /// Получить запись с указаным идентити.
@@ -937,7 +936,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="id">Идентити записи.</param>
         /// <param name="cancellationToken">Токен отмены.</param>
         /// <returns>Возвращает значение если запись существует иначе если запись не существует возвращает <see langword="null" />.</returns>
-        ValueTask<ChangeTrackerDtoActual> GetRawAsync(IMappersSession session, long id, CancellationToken cancellationToken = default);
+        ValueTask<ChangeTrackerDtoActual?> GetRawAsync(IMappersSession session, long id, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Массовое создание записей.
@@ -977,7 +976,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="session">Сессия БД.</param>
         /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
         /// <returns>Возвращает итератор всех выбраных записей.</returns>
-        new IEnumerable<ChangeTrackerDtoActual> GetEnumerator(IMappersSession session, IMapperSelectFilter selectFilter = null);
+        new IEnumerable<ChangeTrackerDtoActual> GetEnumerator(IMappersSession session, IMapperSelectFilter? selectFilter = null);
 
         /// <summary>
         /// Получить итератор всех записей выбранных с учётом фильтра.
@@ -986,7 +985,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
         /// <param name="cancellationToken">Токен отмены.</param>
         /// <returns>Возвращает итератор всех выбраных записей.</returns>
-        IAsyncEnumerable<ChangeTrackerDtoActual> GetEnumeratorAsync(IMappersSession session, IMapperSelectFilter selectFilter = null, CancellationToken cancellationToken = default);
+        IAsyncEnumerable<ChangeTrackerDtoActual> GetEnumeratorAsync(IMappersSession session, IMapperSelectFilter? selectFilter = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Получить итератор всех записей выбранных с учётом фильтра.
@@ -994,7 +993,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="session">Сессия БД.</param>
         /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
         /// <returns>Возвращает итератор всех выбраных записей.</returns>
-        IEnumerable<ChangeTrackerDtoActual> GetEnumeratorRaw(IMappersSession session, IMapperSelectFilter selectFilter = null);
+        IEnumerable<ChangeTrackerDtoActual> GetEnumeratorRaw(IMappersSession session, IMapperSelectFilter? selectFilter = null);
 
         /// <summary>
         /// Получить итератор записей выбранных с учётом фильтра для заданной страницы указанного размера.
@@ -1004,7 +1003,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="pageSize">Размер страницы. Минимальный размер страницы 1. Максимальный размер страницы 1000.</param>
         /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
         /// <returns>Возвращает итератор всех выбраных записей.</returns>
-        IEnumerable<ChangeTrackerDtoActual> GetEnumeratorPage(IMappersSession session, int pageIndex, int pageSize, IMapperSelectFilter selectFilter = null);
+        IEnumerable<ChangeTrackerDtoActual> GetEnumeratorPage(IMappersSession session, int pageIndex, int pageSize, IMapperSelectFilter? selectFilter = null);
 
         /// <summary>
         /// Получить итератор идентити записей выбранных с учётом фильтра для заданной страницы указанного размера.
@@ -1014,7 +1013,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="pageSize">Размер страницы. Минимальный размер страницы 1. Максимальный размер страницы 1000.</param>
         /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
         /// <returns>Возвращает итератор всех выбраных идентити записей.</returns>
-        IEnumerable<long> GetEnumeratorIdentitiesPage(IMappersSession session, int pageIndex, int pageSize, IMapperSelectFilter selectFilter = null);
+        IEnumerable<long> GetEnumeratorIdentitiesPage(IMappersSession session, int pageIndex, int pageSize, IMapperSelectFilter? selectFilter = null);
 
         /// <summary>
         /// Получить количество записей удовлетворяющих фильтру выборки.
@@ -1022,7 +1021,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="session">Сессия БД.</param>
         /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
         /// <returns>Возвращает количество записей удовлетворяющих фильтру выборки.</returns>
-        long GetCount(IMappersSession session, IMapperSelectFilter selectFilter = null);
+        long GetCount(IMappersSession session, IMapperSelectFilter? selectFilter = null);
         /// <summary>
         /// Получить количество записей удовлетворяющих фильтру выборки.
         /// </summary>
@@ -1030,7 +1029,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
         /// <param name="cancellationToken">Кокен отмены.</param>
         /// <returns>Возвращает количество записей удовлетворяющих фильтру выборки.</returns>
-        ValueTask<long> GetCountAsync(IMappersSession session, IMapperSelectFilter selectFilter = null, CancellationToken cancellationToken = default);
+        ValueTask<long> GetCountAsync(IMappersSession session, IMapperSelectFilter? selectFilter = null, CancellationToken cancellationToken = default);
     }
 
     /// <summary>
@@ -1110,7 +1109,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="mappersSession">Сессия БД.</param>
         /// <param name="id">Идентити записи.</param>
         /// <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует.</returns>
-         SystemLogDtoActual Get(IMappersSession mappersSession, long id);
+         SystemLogDtoActual? Get(IMappersSession mappersSession, long id);
 
         /// <summary>
         /// Получить запись с указаным идентити.
@@ -1119,7 +1118,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="id">Идентити записи.</param>
         /// <param name="cancellationToken">Токен отмены.</param>
         /// <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует.</returns>
-         ValueTask<IMapperDto> GetAsync(IMappersSession mappersSession, long id, CancellationToken cancellationToken = default);
+         ValueTask<IMapperDto?> GetAsync(IMappersSession mappersSession, long id, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Получить запись с указаным идентити.
@@ -1127,7 +1126,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="session">Сессия БД.</param>
         /// <param name="id">Идентити записи.</param>
         /// <returns>Возвращает значение если запись существует иначе если запись не существует возвращает <see langword="null" />.</returns>
-        SystemLogDtoActual GetRaw(IMappersSession session, long id);
+        SystemLogDtoActual? GetRaw(IMappersSession session, long id);
 
         /// <summary>
         /// Получить запись с указаным идентити.
@@ -1136,7 +1135,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="id">Идентити записи.</param>
         /// <param name="cancellationToken">Токен отмены.</param>
         /// <returns>Возвращает значение если запись существует иначе если запись не существует возвращает <see langword="null" />.</returns>
-        ValueTask<SystemLogDtoActual> GetRawAsync(IMappersSession session, long id, CancellationToken cancellationToken = default);
+        ValueTask<SystemLogDtoActual?> GetRawAsync(IMappersSession session, long id, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Массовое создание записей.
@@ -1176,7 +1175,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="session">Сессия БД.</param>
         /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
         /// <returns>Возвращает итератор всех выбраных записей.</returns>
-        new IEnumerable<SystemLogDtoActual> GetEnumerator(IMappersSession session, IMapperSelectFilter selectFilter = null);
+        new IEnumerable<SystemLogDtoActual> GetEnumerator(IMappersSession session, IMapperSelectFilter? selectFilter = null);
 
         /// <summary>
         /// Получить итератор всех записей выбранных с учётом фильтра.
@@ -1185,7 +1184,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
         /// <param name="cancellationToken">Токен отмены.</param>
         /// <returns>Возвращает итератор всех выбраных записей.</returns>
-        IAsyncEnumerable<SystemLogDtoActual> GetEnumeratorAsync(IMappersSession session, IMapperSelectFilter selectFilter = null, CancellationToken cancellationToken = default);
+        IAsyncEnumerable<SystemLogDtoActual> GetEnumeratorAsync(IMappersSession session, IMapperSelectFilter? selectFilter = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Получить итератор всех записей выбранных с учётом фильтра.
@@ -1193,7 +1192,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="session">Сессия БД.</param>
         /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
         /// <returns>Возвращает итератор всех выбраных записей.</returns>
-        IEnumerable<SystemLogDtoActual> GetEnumeratorRaw(IMappersSession session, IMapperSelectFilter selectFilter = null);
+        IEnumerable<SystemLogDtoActual> GetEnumeratorRaw(IMappersSession session, IMapperSelectFilter? selectFilter = null);
 
         /// <summary>
         /// Получить итератор записей выбранных с учётом фильтра для заданной страницы указанного размера.
@@ -1203,7 +1202,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="pageSize">Размер страницы. Минимальный размер страницы 1. Максимальный размер страницы 1000.</param>
         /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
         /// <returns>Возвращает итератор всех выбраных записей.</returns>
-        IEnumerable<SystemLogDtoActual> GetEnumeratorPage(IMappersSession session, int pageIndex, int pageSize, IMapperSelectFilter selectFilter = null);
+        IEnumerable<SystemLogDtoActual> GetEnumeratorPage(IMappersSession session, int pageIndex, int pageSize, IMapperSelectFilter? selectFilter = null);
 
         /// <summary>
         /// Получить итератор идентити записей выбранных с учётом фильтра для заданной страницы указанного размера.
@@ -1213,7 +1212,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="pageSize">Размер страницы. Минимальный размер страницы 1. Максимальный размер страницы 1000.</param>
         /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
         /// <returns>Возвращает итератор всех выбраных идентити записей.</returns>
-        IEnumerable<long> GetEnumeratorIdentitiesPage(IMappersSession session, int pageIndex, int pageSize, IMapperSelectFilter selectFilter = null);
+        IEnumerable<long> GetEnumeratorIdentitiesPage(IMappersSession session, int pageIndex, int pageSize, IMapperSelectFilter? selectFilter = null);
 
         /// <summary>
         /// Получить количество записей удовлетворяющих фильтру выборки.
@@ -1221,7 +1220,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="session">Сессия БД.</param>
         /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
         /// <returns>Возвращает количество записей удовлетворяющих фильтру выборки.</returns>
-        long GetCount(IMappersSession session, IMapperSelectFilter selectFilter = null);
+        long GetCount(IMappersSession session, IMapperSelectFilter? selectFilter = null);
         /// <summary>
         /// Получить количество записей удовлетворяющих фильтру выборки.
         /// </summary>
@@ -1229,7 +1228,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
         /// <param name="cancellationToken">Кокен отмены.</param>
         /// <returns>Возвращает количество записей удовлетворяющих фильтру выборки.</returns>
-        ValueTask<long> GetCountAsync(IMappersSession session, IMapperSelectFilter selectFilter = null, CancellationToken cancellationToken = default);
+        ValueTask<long> GetCountAsync(IMappersSession session, IMapperSelectFilter? selectFilter = null, CancellationToken cancellationToken = default);
     }
 
     /// <summary>
@@ -1309,7 +1308,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="mappersSession">Сессия БД.</param>
         /// <param name="id">Идентити записи.</param>
         /// <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует.</returns>
-         TablePartitionDtoActual Get(IMappersSession mappersSession, long id);
+         TablePartitionDtoActual? Get(IMappersSession mappersSession, long id);
 
         /// <summary>
         /// Получить запись с указаным идентити.
@@ -1318,7 +1317,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="id">Идентити записи.</param>
         /// <param name="cancellationToken">Токен отмены.</param>
         /// <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует.</returns>
-         ValueTask<IMapperDto> GetAsync(IMappersSession mappersSession, long id, CancellationToken cancellationToken = default);
+         ValueTask<IMapperDto?> GetAsync(IMappersSession mappersSession, long id, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Получить запись с указаным идентити.
@@ -1326,7 +1325,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="session">Сессия БД.</param>
         /// <param name="id">Идентити записи.</param>
         /// <returns>Возвращает значение если запись существует иначе если запись не существует возвращает <see langword="null" />.</returns>
-        TablePartitionDtoActual GetRaw(IMappersSession session, long id);
+        TablePartitionDtoActual? GetRaw(IMappersSession session, long id);
 
         /// <summary>
         /// Получить запись с указаным идентити.
@@ -1335,7 +1334,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="id">Идентити записи.</param>
         /// <param name="cancellationToken">Токен отмены.</param>
         /// <returns>Возвращает значение если запись существует иначе если запись не существует возвращает <see langword="null" />.</returns>
-        ValueTask<TablePartitionDtoActual> GetRawAsync(IMappersSession session, long id, CancellationToken cancellationToken = default);
+        ValueTask<TablePartitionDtoActual?> GetRawAsync(IMappersSession session, long id, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Массовое создание записей.
@@ -1375,7 +1374,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="session">Сессия БД.</param>
         /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
         /// <returns>Возвращает итератор всех выбраных записей.</returns>
-        new IEnumerable<TablePartitionDtoActual> GetEnumerator(IMappersSession session, IMapperSelectFilter selectFilter = null);
+        new IEnumerable<TablePartitionDtoActual> GetEnumerator(IMappersSession session, IMapperSelectFilter? selectFilter = null);
 
         /// <summary>
         /// Получить итератор всех записей выбранных с учётом фильтра.
@@ -1384,7 +1383,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
         /// <param name="cancellationToken">Токен отмены.</param>
         /// <returns>Возвращает итератор всех выбраных записей.</returns>
-        IAsyncEnumerable<TablePartitionDtoActual> GetEnumeratorAsync(IMappersSession session, IMapperSelectFilter selectFilter = null, CancellationToken cancellationToken = default);
+        IAsyncEnumerable<TablePartitionDtoActual> GetEnumeratorAsync(IMappersSession session, IMapperSelectFilter? selectFilter = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Получить итератор всех записей выбранных с учётом фильтра.
@@ -1392,7 +1391,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="session">Сессия БД.</param>
         /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
         /// <returns>Возвращает итератор всех выбраных записей.</returns>
-        IEnumerable<TablePartitionDtoActual> GetEnumeratorRaw(IMappersSession session, IMapperSelectFilter selectFilter = null);
+        IEnumerable<TablePartitionDtoActual> GetEnumeratorRaw(IMappersSession session, IMapperSelectFilter? selectFilter = null);
 
         /// <summary>
         /// Получить итератор записей выбранных с учётом фильтра для заданной страницы указанного размера.
@@ -1402,7 +1401,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="pageSize">Размер страницы. Минимальный размер страницы 1. Максимальный размер страницы 1000.</param>
         /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
         /// <returns>Возвращает итератор всех выбраных записей.</returns>
-        IEnumerable<TablePartitionDtoActual> GetEnumeratorPage(IMappersSession session, int pageIndex, int pageSize, IMapperSelectFilter selectFilter = null);
+        IEnumerable<TablePartitionDtoActual> GetEnumeratorPage(IMappersSession session, int pageIndex, int pageSize, IMapperSelectFilter? selectFilter = null);
 
         /// <summary>
         /// Получить итератор идентити записей выбранных с учётом фильтра для заданной страницы указанного размера.
@@ -1412,7 +1411,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="pageSize">Размер страницы. Минимальный размер страницы 1. Максимальный размер страницы 1000.</param>
         /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
         /// <returns>Возвращает итератор всех выбраных идентити записей.</returns>
-        IEnumerable<long> GetEnumeratorIdentitiesPage(IMappersSession session, int pageIndex, int pageSize, IMapperSelectFilter selectFilter = null);
+        IEnumerable<long> GetEnumeratorIdentitiesPage(IMappersSession session, int pageIndex, int pageSize, IMapperSelectFilter? selectFilter = null);
 
         /// <summary>
         /// Получить количество записей удовлетворяющих фильтру выборки.
@@ -1420,7 +1419,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="session">Сессия БД.</param>
         /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
         /// <returns>Возвращает количество записей удовлетворяющих фильтру выборки.</returns>
-        long GetCount(IMappersSession session, IMapperSelectFilter selectFilter = null);
+        long GetCount(IMappersSession session, IMapperSelectFilter? selectFilter = null);
         /// <summary>
         /// Получить количество записей удовлетворяющих фильтру выборки.
         /// </summary>
@@ -1428,7 +1427,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
         /// <param name="cancellationToken">Кокен отмены.</param>
         /// <returns>Возвращает количество записей удовлетворяющих фильтру выборки.</returns>
-        ValueTask<long> GetCountAsync(IMappersSession session, IMapperSelectFilter selectFilter = null, CancellationToken cancellationToken = default);
+        ValueTask<long> GetCountAsync(IMappersSession session, IMapperSelectFilter? selectFilter = null, CancellationToken cancellationToken = default);
     }
 
     /// <summary>
@@ -1527,7 +1526,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="mappersSession">Сессия БД.</param>
         /// <param name="id">Идентити записи.</param>
         /// <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует.</returns>
-         DemoObjectDtoActual Get(IMappersSession mappersSession, long id);
+         DemoObjectDtoActual? Get(IMappersSession mappersSession, long id);
 
         /// <summary>
         /// Получить запись с указаным идентити.
@@ -1536,7 +1535,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="id">Идентити записи.</param>
         /// <param name="cancellationToken">Токен отмены.</param>
         /// <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует.</returns>
-         ValueTask<IMapperDto> GetAsync(IMappersSession mappersSession, long id, CancellationToken cancellationToken = default);
+         ValueTask<IMapperDto?> GetAsync(IMappersSession mappersSession, long id, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Получить запись с указаным идентити.
@@ -1544,7 +1543,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="session">Сессия БД.</param>
         /// <param name="id">Идентити записи.</param>
         /// <returns>Возвращает значение если запись существует иначе если запись не существует возвращает <see langword="null" />.</returns>
-        DemoObjectDtoActual GetRaw(IMappersSession session, long id);
+        DemoObjectDtoActual? GetRaw(IMappersSession session, long id);
 
         /// <summary>
         /// Получить запись с указаным идентити.
@@ -1553,7 +1552,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="id">Идентити записи.</param>
         /// <param name="cancellationToken">Токен отмены.</param>
         /// <returns>Возвращает значение если запись существует иначе если запись не существует возвращает <see langword="null" />.</returns>
-        ValueTask<DemoObjectDtoActual> GetRawAsync(IMappersSession session, long id, CancellationToken cancellationToken = default);
+        ValueTask<DemoObjectDtoActual?> GetRawAsync(IMappersSession session, long id, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Обновить запись.
@@ -1610,7 +1609,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="session">Сессия БД.</param>
         /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
         /// <returns>Возвращает итератор всех выбраных записей.</returns>
-        new IEnumerable<DemoObjectDtoActual> GetEnumerator(IMappersSession session, IMapperSelectFilter selectFilter = null);
+        new IEnumerable<DemoObjectDtoActual> GetEnumerator(IMappersSession session, IMapperSelectFilter? selectFilter = null);
 
         /// <summary>
         /// Получить итератор всех записей выбранных с учётом фильтра.
@@ -1619,7 +1618,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
         /// <param name="cancellationToken">Токен отмены.</param>
         /// <returns>Возвращает итератор всех выбраных записей.</returns>
-        IAsyncEnumerable<DemoObjectDtoActual> GetEnumeratorAsync(IMappersSession session, IMapperSelectFilter selectFilter = null, CancellationToken cancellationToken = default);
+        IAsyncEnumerable<DemoObjectDtoActual> GetEnumeratorAsync(IMappersSession session, IMapperSelectFilter? selectFilter = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Получить итератор всех записей выбранных с учётом фильтра.
@@ -1627,7 +1626,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="session">Сессия БД.</param>
         /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
         /// <returns>Возвращает итератор всех выбраных записей.</returns>
-        IEnumerable<DemoObjectDtoActual> GetEnumeratorRaw(IMappersSession session, IMapperSelectFilter selectFilter = null);
+        IEnumerable<DemoObjectDtoActual> GetEnumeratorRaw(IMappersSession session, IMapperSelectFilter? selectFilter = null);
 
         /// <summary>
         /// Получить итератор записей выбранных с учётом фильтра для заданной страницы указанного размера.
@@ -1637,7 +1636,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="pageSize">Размер страницы. Минимальный размер страницы 1. Максимальный размер страницы 1000.</param>
         /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
         /// <returns>Возвращает итератор всех выбраных записей.</returns>
-        IEnumerable<DemoObjectDtoActual> GetEnumeratorPage(IMappersSession session, int pageIndex, int pageSize, IMapperSelectFilter selectFilter = null);
+        IEnumerable<DemoObjectDtoActual> GetEnumeratorPage(IMappersSession session, int pageIndex, int pageSize, IMapperSelectFilter? selectFilter = null);
 
         /// <summary>
         /// Получить итератор идентити записей выбранных с учётом фильтра для заданной страницы указанного размера.
@@ -1647,7 +1646,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="pageSize">Размер страницы. Минимальный размер страницы 1. Максимальный размер страницы 1000.</param>
         /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
         /// <returns>Возвращает итератор всех выбраных идентити записей.</returns>
-        IEnumerable<long> GetEnumeratorIdentitiesPage(IMappersSession session, int pageIndex, int pageSize, IMapperSelectFilter selectFilter = null);
+        IEnumerable<long> GetEnumeratorIdentitiesPage(IMappersSession session, int pageIndex, int pageSize, IMapperSelectFilter? selectFilter = null);
 
         /// <summary>
         /// Получить количество записей удовлетворяющих фильтру выборки.
@@ -1655,7 +1654,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="session">Сессия БД.</param>
         /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
         /// <returns>Возвращает количество записей удовлетворяющих фильтру выборки.</returns>
-        long GetCount(IMappersSession session, IMapperSelectFilter selectFilter = null);
+        long GetCount(IMappersSession session, IMapperSelectFilter? selectFilter = null);
         /// <summary>
         /// Получить количество записей удовлетворяющих фильтру выборки.
         /// </summary>
@@ -1663,7 +1662,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
         /// <param name="cancellationToken">Кокен отмены.</param>
         /// <returns>Возвращает количество записей удовлетворяющих фильтру выборки.</returns>
-        ValueTask<long> GetCountAsync(IMappersSession session, IMapperSelectFilter selectFilter = null, CancellationToken cancellationToken = default);
+        ValueTask<long> GetCountAsync(IMappersSession session, IMapperSelectFilter? selectFilter = null, CancellationToken cancellationToken = default);
     }
 
     /// <summary>
@@ -1781,7 +1780,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="mappersSession">Сессия БД.</param>
         /// <param name="id">Идентити записи.</param>
         /// <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует.</returns>
-         DemoObjectXDtoActual Get(IMappersSession mappersSession, long id);
+         DemoObjectXDtoActual? Get(IMappersSession mappersSession, long id);
 
         /// <summary>
         /// Получить запись записи по альтернативному ключу 'Уникальность по 'Альтернативный ключ - часть №1 и №2''.
@@ -1790,7 +1789,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="argKey1">Альтернативный ключ - часть №1</param>
         /// <param name="argKey2">Альтернативный ключ - часть №2</param>
         /// <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует.</returns>
-         DemoObjectXDtoActual GetByKey(IMappersSession mappersSession, Guid argKey1, string argKey2);
+         DemoObjectXDtoActual? GetByKey(IMappersSession mappersSession, Guid argKey1, string argKey2);
 
         /// <summary>
         /// Получить запись с указаным идентити.
@@ -1799,7 +1798,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="id">Идентити записи.</param>
         /// <param name="cancellationToken">Токен отмены.</param>
         /// <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует.</returns>
-         ValueTask<IMapperDto> GetAsync(IMappersSession mappersSession, long id, CancellationToken cancellationToken = default);
+         ValueTask<IMapperDto?> GetAsync(IMappersSession mappersSession, long id, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Получить запись по альтернативному ключу 'Уникальность по 'Альтернативный ключ - часть №1 и №2''.
@@ -1809,7 +1808,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="argKey2">Альтернативный ключ - часть №2</param>
         /// <param name="cancellationToken">Токен отмены.</param>
         /// <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует.</returns>
-         ValueTask<IMapperDto> GetByKeyAsync(IMappersSession mappersSession, Guid argKey1, string argKey2, CancellationToken cancellationToken = default);
+         ValueTask<IMapperDto?> GetByKeyAsync(IMappersSession mappersSession, Guid argKey1, string argKey2, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Получить запись с указаным идентити.
@@ -1817,7 +1816,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="session">Сессия БД.</param>
         /// <param name="id">Идентити записи.</param>
         /// <returns>Возвращает значение если запись существует иначе если запись не существует возвращает <see langword="null" />.</returns>
-        DemoObjectXDtoActual GetRaw(IMappersSession session, long id);
+        DemoObjectXDtoActual? GetRaw(IMappersSession session, long id);
 
         /// <summary>
         /// Получить запись с указаным идентити.
@@ -1826,7 +1825,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="id">Идентити записи.</param>
         /// <param name="cancellationToken">Токен отмены.</param>
         /// <returns>Возвращает значение если запись существует иначе если запись не существует возвращает <see langword="null" />.</returns>
-        ValueTask<DemoObjectXDtoActual> GetRawAsync(IMappersSession session, long id, CancellationToken cancellationToken = default);
+        ValueTask<DemoObjectXDtoActual?> GetRawAsync(IMappersSession session, long id, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Обновить запись.
@@ -1898,7 +1897,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="session">Сессия БД.</param>
         /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
         /// <returns>Возвращает итератор всех выбраных записей.</returns>
-        new IEnumerable<DemoObjectXDtoActual> GetEnumerator(IMappersSession session, IMapperSelectFilter selectFilter = null);
+        new IEnumerable<DemoObjectXDtoActual> GetEnumerator(IMappersSession session, IMapperSelectFilter? selectFilter = null);
 
         /// <summary>
         /// Получить итератор всех записей коллекции 'Группировка по 'Номер группы''.
@@ -1915,7 +1914,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
         /// <param name="cancellationToken">Токен отмены.</param>
         /// <returns>Возвращает итератор всех выбраных записей.</returns>
-        IAsyncEnumerable<DemoObjectXDtoActual> GetEnumeratorAsync(IMappersSession session, IMapperSelectFilter selectFilter = null, CancellationToken cancellationToken = default);
+        IAsyncEnumerable<DemoObjectXDtoActual> GetEnumeratorAsync(IMappersSession session, IMapperSelectFilter? selectFilter = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Получить итератор всех записей коллекции 'Группировка по 'Номер группы''.
@@ -1932,7 +1931,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="session">Сессия БД.</param>
         /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
         /// <returns>Возвращает итератор всех выбраных записей.</returns>
-        IEnumerable<DemoObjectXDtoActual> GetEnumeratorRaw(IMappersSession session, IMapperSelectFilter selectFilter = null);
+        IEnumerable<DemoObjectXDtoActual> GetEnumeratorRaw(IMappersSession session, IMapperSelectFilter? selectFilter = null);
 
         /// <summary>
         /// Получить итератор записей выбранных с учётом фильтра для заданной страницы указанного размера.
@@ -1942,7 +1941,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="pageSize">Размер страницы. Минимальный размер страницы 1. Максимальный размер страницы 1000.</param>
         /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
         /// <returns>Возвращает итератор всех выбраных записей.</returns>
-        IEnumerable<DemoObjectXDtoActual> GetEnumeratorPage(IMappersSession session, int pageIndex, int pageSize, IMapperSelectFilter selectFilter = null);
+        IEnumerable<DemoObjectXDtoActual> GetEnumeratorPage(IMappersSession session, int pageIndex, int pageSize, IMapperSelectFilter? selectFilter = null);
 
         /// <summary>
         /// Получить итератор идентити записей выбранных с учётом фильтра для заданной страницы указанного размера.
@@ -1952,7 +1951,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="pageSize">Размер страницы. Минимальный размер страницы 1. Максимальный размер страницы 1000.</param>
         /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
         /// <returns>Возвращает итератор всех выбраных идентити записей.</returns>
-        IEnumerable<long> GetEnumeratorIdentitiesPage(IMappersSession session, int pageIndex, int pageSize, IMapperSelectFilter selectFilter = null);
+        IEnumerable<long> GetEnumeratorIdentitiesPage(IMappersSession session, int pageIndex, int pageSize, IMapperSelectFilter? selectFilter = null);
 
         /// <summary>
         /// Получить количество записей удовлетворяющих фильтру выборки.
@@ -1960,7 +1959,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="session">Сессия БД.</param>
         /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
         /// <returns>Возвращает количество записей удовлетворяющих фильтру выборки.</returns>
-        long GetCount(IMappersSession session, IMapperSelectFilter selectFilter = null);
+        long GetCount(IMappersSession session, IMapperSelectFilter? selectFilter = null);
         /// <summary>
         /// Получить количество записей коллекции 'Группировка по 'Номер группы''.
         /// </summary>
@@ -1976,7 +1975,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
         /// <param name="cancellationToken">Кокен отмены.</param>
         /// <returns>Возвращает количество записей удовлетворяющих фильтру выборки.</returns>
-        ValueTask<long> GetCountAsync(IMappersSession session, IMapperSelectFilter selectFilter = null, CancellationToken cancellationToken = default);
+        ValueTask<long> GetCountAsync(IMappersSession session, IMapperSelectFilter? selectFilter = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Получить количество записей коллекции 'Группировка по 'Номер группы''.
         /// </summary>
@@ -2068,7 +2067,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="mappersSession">Сессия БД.</param>
         /// <param name="id">Идентити записи.</param>
         /// <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует или скрыта.</returns>
-         DemoDelayTaskDtoActual Get(IMappersSession mappersSession, long id);
+         DemoDelayTaskDtoActual? Get(IMappersSession mappersSession, long id);
 
         /// <summary>
         /// Получить запись с указаным идентити.
@@ -2078,7 +2077,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="id">Идентити записи.</param>
         /// <param name="cancellationToken">Токен отмены.</param>
         /// <returns>Возвращает значение если запись существует иначе возвращает <see langword="null" /> если запись не существует или скрыта.</returns>
-         ValueTask<IMapperDto> GetAsync(IMappersSession mappersSession, long id, CancellationToken cancellationToken = default);
+         ValueTask<IMapperDto?> GetAsync(IMappersSession mappersSession, long id, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Получить запись с указаным идентити.
@@ -2086,7 +2085,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="session">Сессия БД.</param>
         /// <param name="id">Идентити записи.</param>
         /// <returns>Возвращает значение если запись существует иначе если запись не существует возвращает <see langword="null" />.</returns>
-        DemoDelayTaskDtoActual GetRaw(IMappersSession session, long id);
+        DemoDelayTaskDtoActual? GetRaw(IMappersSession session, long id);
 
         /// <summary>
         /// Получить запись с указаным идентити.
@@ -2095,7 +2094,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="id">Идентити записи.</param>
         /// <param name="cancellationToken">Токен отмены.</param>
         /// <returns>Возвращает значение если запись существует иначе если запись не существует возвращает <see langword="null" />.</returns>
-        ValueTask<DemoDelayTaskDtoActual> GetRawAsync(IMappersSession session, long id, CancellationToken cancellationToken = default);
+        ValueTask<DemoDelayTaskDtoActual?> GetRawAsync(IMappersSession session, long id, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Обновить запись.
@@ -2155,7 +2154,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="session">Сессия БД.</param>
         /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
         /// <returns>Возвращает итератор всех выбраных записей кроме скрытых записей.</returns>
-        new IEnumerable<DemoDelayTaskDtoActual> GetEnumerator(IMappersSession session, IMapperSelectFilter selectFilter = null);
+        new IEnumerable<DemoDelayTaskDtoActual> GetEnumerator(IMappersSession session, IMapperSelectFilter? selectFilter = null);
 
         /// <summary>
         /// Получить итератор всех записей выбранных с учётом фильтра.
@@ -2165,7 +2164,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
         /// <param name="cancellationToken">Токен отмены.</param>
         /// <returns>Возвращает итератор всех выбраных записей кроме скрытых записей.</returns>
-        IAsyncEnumerable<DemoDelayTaskDtoActual> GetEnumeratorAsync(IMappersSession session, IMapperSelectFilter selectFilter = null, CancellationToken cancellationToken = default);
+        IAsyncEnumerable<DemoDelayTaskDtoActual> GetEnumeratorAsync(IMappersSession session, IMapperSelectFilter? selectFilter = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Получить итератор всех записей выбранных с учётом фильтра.
@@ -2173,7 +2172,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="session">Сессия БД.</param>
         /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
         /// <returns>Возвращает итератор всех выбраных записей.</returns>
-        IEnumerable<DemoDelayTaskDtoActual> GetEnumeratorRaw(IMappersSession session, IMapperSelectFilter selectFilter = null);
+        IEnumerable<DemoDelayTaskDtoActual> GetEnumeratorRaw(IMappersSession session, IMapperSelectFilter? selectFilter = null);
 
         /// <summary>
         /// Получить итератор записей выбранных с учётом фильтра для заданной страницы указанного размера.
@@ -2184,7 +2183,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="pageSize">Размер страницы. Минимальный размер страницы 1. Максимальный размер страницы 1000.</param>
         /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
         /// <returns>Возвращает итератор всех выбраных записей кроме скрытых записей.</returns>
-        IEnumerable<DemoDelayTaskDtoActual> GetEnumeratorPage(IMappersSession session, int pageIndex, int pageSize, IMapperSelectFilter selectFilter = null);
+        IEnumerable<DemoDelayTaskDtoActual> GetEnumeratorPage(IMappersSession session, int pageIndex, int pageSize, IMapperSelectFilter? selectFilter = null);
 
         /// <summary>
         /// Получить итератор идентити записей выбранных с учётом фильтра для заданной страницы указанного размера.
@@ -2195,7 +2194,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="pageSize">Размер страницы. Минимальный размер страницы 1. Максимальный размер страницы 1000.</param>
         /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
         /// <returns>Возвращает итератор всех выбраных идентити записей кроме скрытых записей.</returns>
-        IEnumerable<long> GetEnumeratorIdentitiesPage(IMappersSession session, int pageIndex, int pageSize, IMapperSelectFilter selectFilter = null);
+        IEnumerable<long> GetEnumeratorIdentitiesPage(IMappersSession session, int pageIndex, int pageSize, IMapperSelectFilter? selectFilter = null);
 
         /// <summary>
         /// Получить количество записей удовлетворяющих фильтру выборки.
@@ -2204,7 +2203,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="session">Сессия БД.</param>
         /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
         /// <returns>Возвращает количество записей удовлетворяющих фильтру выборки кроме скрытых записей.</returns>
-        long GetCount(IMappersSession session, IMapperSelectFilter selectFilter = null);
+        long GetCount(IMappersSession session, IMapperSelectFilter? selectFilter = null);
         /// <summary>
         /// Получить количество записей удовлетворяющих фильтру выборки.
         /// ВАЖНО : Выбор не учитывает скрытые записи.
@@ -2213,7 +2212,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
         /// <param name="cancellationToken">Кокен отмены.</param>
         /// <returns>Возвращает количество записей удовлетворяющих фильтру выборки кроме скрытых записей.</returns>
-        ValueTask<long> GetCountAsync(IMappersSession session, IMapperSelectFilter selectFilter = null, CancellationToken cancellationToken = default);
+        ValueTask<long> GetCountAsync(IMappersSession session, IMapperSelectFilter? selectFilter = null, CancellationToken cancellationToken = default);
     }
 
 }

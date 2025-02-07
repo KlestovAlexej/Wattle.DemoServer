@@ -47,7 +47,7 @@ public sealed class DemoObjectController : BaseProcessingController
         Summary = "Создание объекта.",
         Description = "Создание объекта.",
         OperationId = DemoObjectControllerConstants.MethodCreate.Name,
-        Tags = new[] { Tag })]
+        Tags = [Tag])]
     [SwaggerRequestExample(typeof(DemoObjectCreate), typeof(ExamplesDemoObjectCreate))]
     [SwaggerResponseExample(StatusCodes.Status200OK, typeof(ExamplesDemoObjectInfo))]
     [SwaggerResponse(StatusCodes.Status200OK, "Данные объекта.", typeof(DemoObjectInfo))]
@@ -73,7 +73,7 @@ public sealed class DemoObjectController : BaseProcessingController
         Summary = "Обновление объекта.",
         Description = "Обновление объекта.",
         OperationId = DemoObjectControllerConstants.MethodUpdate.Name,
-        Tags = new[] { Tag })]
+        Tags = [Tag])]
     [SwaggerRequestExample(typeof(DemoObjectUpdate), typeof(ExamplesDemoObjectUpdate))]
     [SwaggerResponseExample(StatusCodes.Status200OK, typeof(ExamplesDemoObjectInfo))]
     [SwaggerResponse(StatusCodes.Status200OK, "Данные объекта.", typeof(DemoObjectInfo))]
@@ -99,7 +99,7 @@ public sealed class DemoObjectController : BaseProcessingController
         Summary = "Чтение объекта.",
         Description = "Чтение объекта.",
         OperationId = DemoObjectControllerConstants.MethodRead.Name,
-        Tags = new[] { Tag })]
+        Tags = [Tag])]
     [SwaggerResponseExample(StatusCodes.Status200OK, typeof(ExamplesDemoObjectInfo))]
     [SwaggerResponse(StatusCodes.Status200OK, "Данные объекта.", typeof(DemoObjectInfo))]
     public async Task<IActionResult> Read(

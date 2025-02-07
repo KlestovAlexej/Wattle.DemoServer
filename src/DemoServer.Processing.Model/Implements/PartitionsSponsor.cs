@@ -57,7 +57,7 @@ public class PartitionsSponsor : BaseServiceScheduled
             loggerFactory?.CreateLogger<PartitionsSponsor>())
     {
         m_entryPoint = entryPoint;
-        m_managers = new List<(Guid Id, IPartitionsManager Manager)>();
+        m_managers = [];
         foreach (var manager in GetAllPartitionsManagers(m_entryPoint.Mappers))
         {
             if (manager.Mapper.MapperId == WellknownMappers.TablePartition)

@@ -31,9 +31,9 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.1" />
 		<PackageReference Include="Serilog.Settings.Configuration" Version="9.0.0" />
-		<PackageReference Include="Acme.Wattle.Testing" Version="1.0.0.4521" />
-		<PackageReference Include="Acme.Wattle.Testing.Databases.PostgreSql" Version="1.0.0.4521" />
-		<PackageReference Include="Acme.Wattle.CodeGeneration.Generator.Path" Version="1.0.0.4521">
+		<PackageReference Include="Acme.Wattle.Testing" Version="1.0.0.4690" />
+		<PackageReference Include="Acme.Wattle.Testing.Databases.PostgreSql" Version="1.0.0.4690" />
+		<PackageReference Include="Acme.Wattle.CodeGeneration.Generator.Path" Version="1.0.0.4690">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 			<TreatAsUsed>true</TreatAsUsed>

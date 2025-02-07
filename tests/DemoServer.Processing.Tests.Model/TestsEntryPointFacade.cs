@@ -90,7 +90,7 @@ public class TestsEntryPointFacade : BaseTestsDomainObjects
                 .ConfigureAwait(false);
             Assert.IsNotNull(demoObject);
 
-            await demoObject.UpdateAsync(
+            await demoObject!.UpdateAsync(
                 new DemoObjectUpdate
                 {
                     Id = info.Id,

@@ -22,11 +22,10 @@ public class DbMappersSchemaXmlBuilder
     static DbMappersSchemaXmlBuilder()
     {
         Cached =
-            new HashSet<Guid>
-            {
-                WellknownDomainObjects.DemoObject,
-                WellknownDomainObjects.DemoObjectX,
-            };
+        [
+            WellknownDomainObjects.DemoObject,
+            WellknownDomainObjects.DemoObjectX
+        ];
     }
 
     // ReSharper disable once ConvertConstructorToMemberInitializers
@@ -41,11 +40,10 @@ public class DbMappersSchemaXmlBuilder
             };
 
         m_optimisticConcurrency =
-            new HashSet<Guid>
-            {
-                WellknownDomainObjects.DemoObject,
-                WellknownDomainObjects.DemoObjectX,
-            };
+        [
+            WellknownDomainObjects.DemoObject,
+            WellknownDomainObjects.DemoObjectX
+        ];
     }
 
     [Test]

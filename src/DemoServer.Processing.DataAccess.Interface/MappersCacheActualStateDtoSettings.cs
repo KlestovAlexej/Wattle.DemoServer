@@ -14,6 +14,7 @@ namespace Acme.DemoServer.Processing.DataAccess.Interface;
 /// </summary>
 [Description("Настройки кэшей актуальных данных состояний доменнй объектов в БД")]
 [SuppressMessage("ReSharper", "AutoPropertyCanBeMadeGetOnly.Global")]
+[SuppressMessage("ReSharper", "PreferConcreteValueOverDefault")]
 public class MappersCacheActualStateDtoSettings
 {
     public static readonly TimeSpan DefaultExpirationTimeout = TimeSpan.FromMinutes(20);
@@ -31,7 +32,7 @@ public class MappersCacheActualStateDtoSettings
         DemoObject =
             new SettingValue<MemoryCacheSettings>(
                 default!,
-                $"Маппер '{WellknownDomainObjectDisplayNames.DisplayNamesProvider(WellknownDomainObjects.DemoObject)}'");
+                $"Маппер '{WellknownDomainObjectDisplayNames.DisplayNamesProvider!(WellknownDomainObjects.DemoObject)}'");
 
         DemoObjectX =
             new SettingValue<MemoryCacheSettings>(

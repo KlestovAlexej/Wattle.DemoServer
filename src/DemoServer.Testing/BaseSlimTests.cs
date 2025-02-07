@@ -51,6 +51,6 @@ public abstract class BaseSlimTests : BaseTests
     [TearDown]
     public void BaseSlimTests_TearDown()
     {
-        CommonWattleExtensions.SilentDisposeAndFree(ref m_loggerFactory);
+        CommonWattleExtensions.SilentDisposeAndFree(ref m_loggerFactory!);
     }
 }

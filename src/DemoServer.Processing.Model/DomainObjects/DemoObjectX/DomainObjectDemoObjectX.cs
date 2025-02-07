@@ -161,7 +161,7 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutableWithUpdateL
     public string Name
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => m_name.Value;
+        get => m_name.Value!;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         set

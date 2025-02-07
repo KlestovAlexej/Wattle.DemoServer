@@ -73,7 +73,7 @@ public sealed class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
         public IUnitOfWorkCommitVerifyingFactory UnitOfWorkCommitVerifyingFactory => m_entryPoint.m_unitOfWorkCommitVerifyingFactory;
         ICustomEntryPoint IEntryPointContext<ICustomEntryPoint>.EntryPoint => m_entryPoint;
 
-        public string GetDisplayNameDomainObject(Guid typeId) => WellknownDomainObjectDisplayNames.DisplayNamesProvider(typeId);
+        public string GetDisplayNameDomainObject(Guid typeId) => WellknownDomainObjectDisplayNames.DisplayNamesProvider!(typeId);
     }
 
     #endregion
@@ -136,7 +136,7 @@ public sealed class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
             ITimeService timeService,
             Guid serviceInstanceId)
             : base(
-                null,
+                null!,
                 timeStatisticsStep,
                 timeService)
         {
@@ -372,7 +372,7 @@ public sealed class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
 
     protected override ValueTask<IUnitOfWork> DoCreateUnitOfWorkAsync(
         IUnitOfWorkVisitor visitor,
-        object context,
+        object? context,
         CancellationToken cancellationToken = default)
     {
         var result = new UnitOfWork((UnitOfWorkFullContext<ProcessingDbContext, IMapperChangeTracker>)m_unitOfWorkContext, m_registersFactory, visitor);
@@ -400,7 +400,7 @@ public sealed class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
         }
     }
 
-    protected override IUnitOfWork DoCreateUnitOfWork(IUnitOfWorkVisitor visitor, object context)
+    protected override IUnitOfWork DoCreateUnitOfWork(IUnitOfWorkVisitor visitor, object? context)
     {
         var result = new UnitOfWork((UnitOfWorkFullContext<ProcessingDbContext, IMapperChangeTracker>)m_unitOfWorkContext, m_registersFactory, visitor);
 
@@ -409,8 +409,8 @@ public sealed class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
 
     protected override void Dispose(bool disposing)
     {
-        CommonWattleExtensions.SilentDisposeAndFree(ref m_queueEmergencyDomainBehaviour);
-        CommonWattleExtensions.SilentDisposeAndFree(ref m_partitionsSponsor);
+        CommonWattleExtensions.SilentDisposeAndFree(ref m_queueEmergencyDomainBehaviour!);
+        CommonWattleExtensions.SilentDisposeAndFree(ref m_partitionsSponsor!);
 
 #pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
         {

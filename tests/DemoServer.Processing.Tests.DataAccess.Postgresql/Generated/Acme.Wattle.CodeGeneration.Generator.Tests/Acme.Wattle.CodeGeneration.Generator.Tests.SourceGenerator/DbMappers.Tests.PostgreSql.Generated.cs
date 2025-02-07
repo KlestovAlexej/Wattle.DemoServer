@@ -751,11 +751,10 @@ namespace Acme.DemoServer.Processing.Generated.Tests
 
         public static ChangeTrackerDtoNew GetRandomNew(object context)
         {
-#pragma warning disable IDE0017 // Simplify object initialization
-            // ReSharper disable once UseObjectOrCollectionInitializer
-            var result = new ChangeTrackerDtoNew();
-#pragma warning restore IDE0017 // Simplify object initialization
-
+            var result = new ChangeTrackerDtoNew
+            {
+                Id = long.MinValue,
+            };
 
             DoGetRandomNew(result, context);
 
@@ -1063,16 +1062,15 @@ namespace Acme.DemoServer.Processing.Generated.Tests
 
         public static SystemLogDtoNew GetRandomNew(object context)
         {
-#pragma warning disable IDE0017 // Simplify object initialization
-            // ReSharper disable once UseObjectOrCollectionInitializer
-            var result = new SystemLogDtoNew();
-#pragma warning restore IDE0017 // Simplify object initialization
-
-            result.CreateDate = PostgreSqlRandomValuesProvider.GetRandomValue<DateTimeOffset>(NpgsqlDbType.TimestampTz);
-            result.Code = PostgreSqlRandomValuesProvider.GetRandomValue<int>(NpgsqlDbType.Integer);
-            result.Type = PostgreSqlRandomValuesProvider.GetRandomValue<int>(NpgsqlDbType.Integer);
-            result.Message = PostgreSqlRandomValuesProvider.GetRandomValue<string>(NpgsqlDbType.Varchar, size: 1024);
-            result.Data = PostgreSqlRandomValuesProvider.GetRandomValue<string>(NpgsqlDbType.Text);
+            var result = new SystemLogDtoNew
+            {
+                Id = long.MinValue,
+                CreateDate = PostgreSqlRandomValuesProvider.GetRandomValue<DateTimeOffset>(LocalNpgsqlDbType.TimestampTz),
+                Code = PostgreSqlRandomValuesProvider.GetRandomValue<int>(LocalNpgsqlDbType.Integer),
+                Type = PostgreSqlRandomValuesProvider.GetRandomValue<int>(LocalNpgsqlDbType.Integer),
+                Message = PostgreSqlRandomValuesProvider.GetRandomValue<string>(LocalNpgsqlDbType.Varchar, size: 1024),
+                Data = PostgreSqlRandomValuesProvider.GetRandomValue<string>(LocalNpgsqlDbType.Text),
+            };
 
             DoGetRandomNew(result, context);
 
@@ -1425,19 +1423,18 @@ namespace Acme.DemoServer.Processing.Generated.Tests
 
         public static TablePartitionDtoNew GetRandomNew(object context)
         {
-#pragma warning disable IDE0017 // Simplify object initialization
-            // ReSharper disable once UseObjectOrCollectionInitializer
-            var result = new TablePartitionDtoNew();
-#pragma warning restore IDE0017 // Simplify object initialization
-
-            result.CreateDate = PostgreSqlRandomValuesProvider.GetRandomValue<DateTimeOffset>(NpgsqlDbType.TimestampTz);
-            result.TableName = PostgreSqlRandomValuesProvider.GetRandomValue<string>(NpgsqlDbType.Text);
-            result.PartitionName = PostgreSqlRandomValuesProvider.GetRandomValue<string>(NpgsqlDbType.Text);
-            result.Day = PostgreSqlRandomValuesProvider.GetRandomValue<DateTime>(NpgsqlDbType.Date);
-            result.MinGroupId = PostgreSqlRandomValuesProvider.GetRandomValue<long>(NpgsqlDbType.Bigint);
-            result.MaxNotIncludeGroupId = PostgreSqlRandomValuesProvider.GetRandomValue<long>(NpgsqlDbType.Bigint);
-            result.MinId = PostgreSqlRandomValuesProvider.GetRandomValue<long>(NpgsqlDbType.Bigint);
-            result.MaxNotIncludeId = PostgreSqlRandomValuesProvider.GetRandomValue<long>(NpgsqlDbType.Bigint);
+            var result = new TablePartitionDtoNew
+            {
+                Id = long.MinValue,
+                CreateDate = PostgreSqlRandomValuesProvider.GetRandomValue<DateTimeOffset>(LocalNpgsqlDbType.TimestampTz),
+                TableName = PostgreSqlRandomValuesProvider.GetRandomValue<string>(LocalNpgsqlDbType.Text),
+                PartitionName = PostgreSqlRandomValuesProvider.GetRandomValue<string>(LocalNpgsqlDbType.Text),
+                Day = PostgreSqlRandomValuesProvider.GetRandomValue<DateTime>(LocalNpgsqlDbType.Date),
+                MinGroupId = PostgreSqlRandomValuesProvider.GetRandomValue<long>(LocalNpgsqlDbType.Bigint),
+                MaxNotIncludeGroupId = PostgreSqlRandomValuesProvider.GetRandomValue<long>(LocalNpgsqlDbType.Bigint),
+                MinId = PostgreSqlRandomValuesProvider.GetRandomValue<long>(LocalNpgsqlDbType.Bigint),
+                MaxNotIncludeId = PostgreSqlRandomValuesProvider.GetRandomValue<long>(LocalNpgsqlDbType.Bigint),
+            };
 
             DoGetRandomNew(result, context);
 
@@ -1761,15 +1758,14 @@ namespace Acme.DemoServer.Processing.Generated.Tests
 
         public static DemoObjectDtoNew GetRandomNew(object context)
         {
-#pragma warning disable IDE0017 // Simplify object initialization
-            // ReSharper disable once UseObjectOrCollectionInitializer
-            var result = new DemoObjectDtoNew();
-#pragma warning restore IDE0017 // Simplify object initialization
-
-            result.CreateDate = PostgreSqlRandomValuesProvider.GetRandomValue<DateTime>(NpgsqlDbType.Timestamp);
-            result.ModificationDate = PostgreSqlRandomValuesProvider.GetRandomValue<DateTime>(NpgsqlDbType.Timestamp);
-            result.Name = PostgreSqlRandomValuesProvider.GetRandomValue<string>(NpgsqlDbType.Varchar, size: 1024);
-            result.Enabled = PostgreSqlRandomValuesProvider.GetRandomValue<bool>(NpgsqlDbType.Boolean);
+            var result = new DemoObjectDtoNew
+            {
+                Id = long.MinValue,
+                CreateDate = PostgreSqlRandomValuesProvider.GetRandomValue<DateTime>(LocalNpgsqlDbType.Timestamp),
+                ModificationDate = PostgreSqlRandomValuesProvider.GetRandomValue<DateTime>(LocalNpgsqlDbType.Timestamp),
+                Name = PostgreSqlRandomValuesProvider.GetRandomValue<string>(LocalNpgsqlDbType.Varchar, size: 1024),
+                Enabled = PostgreSqlRandomValuesProvider.GetRandomValue<bool>(LocalNpgsqlDbType.Boolean),
+            };
 
             DoGetRandomNew(result, context);
 
@@ -2112,18 +2108,17 @@ namespace Acme.DemoServer.Processing.Generated.Tests
 
         public static DemoObjectXDtoNew GetRandomNew(object context)
         {
-#pragma warning disable IDE0017 // Simplify object initialization
-            // ReSharper disable once UseObjectOrCollectionInitializer
-            var result = new DemoObjectXDtoNew();
-#pragma warning restore IDE0017 // Simplify object initialization
-
-            result.CreateDate = PostgreSqlRandomValuesProvider.GetRandomValue<DateTimeOffset>(NpgsqlDbType.TimestampTz);
-            result.ModificationDate = PostgreSqlRandomValuesProvider.GetRandomValue<DateTimeOffset>(NpgsqlDbType.TimestampTz);
-            result.Name = PostgreSqlRandomValuesProvider.GetRandomValue<string>(NpgsqlDbType.Varchar, size: 1024);
-            result.Enabled = PostgreSqlRandomValuesProvider.GetRandomValue<bool>(NpgsqlDbType.Boolean);
-            result.Key1 = PostgreSqlRandomValuesProvider.GetRandomValue<Guid>(NpgsqlDbType.Uuid);
-            result.Key2 = PostgreSqlRandomValuesProvider.GetRandomValue<string>(NpgsqlDbType.Varchar, size: 10);
-            result.Group = PostgreSqlRandomValuesProvider.GetRandomValue<long>(NpgsqlDbType.Bigint);
+            var result = new DemoObjectXDtoNew
+            {
+                Id = long.MinValue,
+                CreateDate = PostgreSqlRandomValuesProvider.GetRandomValue<DateTimeOffset>(LocalNpgsqlDbType.TimestampTz),
+                ModificationDate = PostgreSqlRandomValuesProvider.GetRandomValue<DateTimeOffset>(LocalNpgsqlDbType.TimestampTz),
+                Name = PostgreSqlRandomValuesProvider.GetRandomValue<string>(LocalNpgsqlDbType.Varchar, size: 1024),
+                Enabled = PostgreSqlRandomValuesProvider.GetRandomValue<bool>(LocalNpgsqlDbType.Boolean),
+                Key1 = PostgreSqlRandomValuesProvider.GetRandomValue<Guid>(LocalNpgsqlDbType.Uuid),
+                Key2 = PostgreSqlRandomValuesProvider.GetRandomValue<string>(LocalNpgsqlDbType.Varchar, size: 10),
+                Group = PostgreSqlRandomValuesProvider.GetRandomValue<long>(LocalNpgsqlDbType.Bigint),
+            };
 
             DoGetRandomNew(result, context);
 
@@ -2468,17 +2463,16 @@ namespace Acme.DemoServer.Processing.Generated.Tests
 
         public static DemoDelayTaskDtoNew GetRandomNew(object context)
         {
-#pragma warning disable IDE0017 // Simplify object initialization
-            // ReSharper disable once UseObjectOrCollectionInitializer
-            var result = new DemoDelayTaskDtoNew();
-#pragma warning restore IDE0017 // Simplify object initialization
-
-            result.CreateDate = PostgreSqlRandomValuesProvider.GetRandomValue<DateTimeOffset>(NpgsqlDbType.TimestampTz);
-            result.ModificationDate = PostgreSqlRandomValuesProvider.GetRandomValue<DateTimeOffset>(NpgsqlDbType.TimestampTz);
-            result.Scenario = PostgreSqlRandomValuesProvider.GetRandomValue<string>(NpgsqlDbType.Text);
-            result.ScenarioState = PostgreSqlRandomValuesProvider.GetRandomValue<string>(NpgsqlDbType.Text);
-            result.StartDate = PostgreSqlRandomValuesProvider.GetRandomValue<DateTimeOffset?>(NpgsqlDbType.TimestampTz, true);
-            result.Available = true;
+            var result = new DemoDelayTaskDtoNew
+            {
+                Id = long.MinValue,
+                CreateDate = PostgreSqlRandomValuesProvider.GetRandomValue<DateTimeOffset>(LocalNpgsqlDbType.TimestampTz),
+                ModificationDate = PostgreSqlRandomValuesProvider.GetRandomValue<DateTimeOffset>(LocalNpgsqlDbType.TimestampTz),
+                Scenario = PostgreSqlRandomValuesProvider.GetRandomValue<string>(LocalNpgsqlDbType.Text),
+                ScenarioState = PostgreSqlRandomValuesProvider.GetRandomValue<string>(LocalNpgsqlDbType.Text),
+                StartDate = PostgreSqlRandomValuesProvider.GetRandomValue<DateTimeOffset?>(LocalNpgsqlDbType.TimestampTz, true),
+                Available = true,
+            };
 
             DoGetRandomNew(result, context);
 

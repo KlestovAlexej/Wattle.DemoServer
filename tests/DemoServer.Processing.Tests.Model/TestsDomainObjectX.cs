@@ -79,7 +79,7 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
                                 entity => entity.Id == id1)
                             ?.ToMapperDto(m_entryPoint.AutoMapper));
                 Assert.IsNotNull(instance);
-                Assert.AreEqual(id1, instance.Identity);
+                Assert.AreEqual(id1, instance!.Identity);
 
                 instance =
                     register.FindAsync(async ct =>
@@ -89,7 +89,7 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
                             ?.ToMapperDto(m_entryPoint.AutoMapper))
                         .SafeGetResult();
                 Assert.IsNotNull(instance);
-                Assert.AreEqual(id1, instance.Identity);
+                Assert.AreEqual(id1, instance!.Identity);
 
                 instance =
                     register.FindAsync(async ct =>
@@ -192,7 +192,7 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
                                 entity => entity.Id == id1)
                             ?.ToMapperDto(m_entryPoint.AutoMapper));
                 Assert.IsNotNull(instance);
-                Assert.AreEqual(id1, instance.Identity);
+                Assert.AreEqual(id1, instance!.Identity);
 
                 instance =
                     register.FindAsync(async ct =>
@@ -202,7 +202,7 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
                             ?.ToMapperDto(m_entryPoint.AutoMapper))
                         .SafeGetResult();
                 Assert.IsNotNull(instance);
-                Assert.AreEqual(id1, instance.Identity);
+                Assert.AreEqual(id1, instance!.Identity);
 
                 instance =
                     register.FindAsync(async ct =>
@@ -575,7 +575,7 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
             var register = unitOfWork.Registers.GetRegister<IDomainObjectRegisterDemoObjectX>();
             var instance = register.Find<IDomainObjectDemoObjectX>(id);
             Assert.IsNotNull(instance);
-            Assert.AreEqual(template.Group, instance.Group);
+            Assert.AreEqual(template.Group, instance!.Group);
             Assert.AreEqual(template.Enabled, instance.Enabled);
             Assert.AreEqual(template.Key2, instance.Key2);
             Assert.AreEqual(template.Key1, instance.Key1);
@@ -714,7 +714,7 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
                 var register = unitOfWork.Registers.GetRegister<IDomainObjectRegisterDemoObjectX>();
                 var instance = register.Find<IDomainObjectDemoObjectX>(id);
                 Assert.IsNotNull(instance);
-                Assert.AreEqual(template.Group, instance.Group);
+                Assert.AreEqual(template.Group, instance!.Group);
                 Assert.AreEqual(template.Enabled, instance.Enabled);
                 Assert.AreEqual(template.Key2, instance.Key2);
                 Assert.AreEqual(template.Key1, instance.Key1);
@@ -824,7 +824,7 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
                     var instance = register.Find<IDomainObjectDemoObjectX>(id);
                     Assert.IsNotNull(instance);
 
-                    instance.Enabled = false;
+                    instance!.Enabled = false;
                 });
         Assert.AreEqual($"Для объекта '11edfd22-32bf-4d00-847d-4023118b11df' для пула лок-объектов типа '{typeof(long).AssemblyQualifiedName}' для ключа '{id}' не создан лок-объект.", internalException!.Message, internalException.Message);
 
@@ -854,7 +854,7 @@ public class TestsDomainObjectX : BaseTestsDomainObjects
             var register = unitOfWork.Registers.GetRegister<IDomainObjectRegisterDemoObjectX>();
             var instance = register.Find<IDomainObjectDemoObjectX>(id);
             Assert.IsNotNull(instance);
-            Assert.AreEqual(false, instance.Enabled);
+            Assert.AreEqual(false, instance!.Enabled);
             Assert.AreEqual("Name2", instance.Name);
 
             unitOfWork.Commit();

@@ -16,7 +16,7 @@ public static class WellknownCommonSnapShotInfrastructureMonitorValues
 
     static WellknownCommonSnapShotInfrastructureMonitorValues()
     {
-        DisplayDescriptions = WellknownSnapShotInfrastructureMonitorValuesHelpers.CollectDescriptions(MethodBase.GetCurrentMethod()!.DeclaringType);
+        DisplayDescriptions = WellknownSnapShotInfrastructureMonitorValuesHelpers.CollectDescriptions(MethodBase.GetCurrentMethod()!.DeclaringType!);
     }
 
     #region CustomEntryPoint
@@ -52,6 +52,7 @@ public static class WellknownCommonSnapShotInfrastructureMonitorValues
 
         ThrowsHelper.ThrowInvalidOperationException($"Описание '{id}' не найдено.");
 
+        // ReSharper disable once PreferConcreteValueOverDefault
         return default!;
     }
 }

@@ -13,12 +13,12 @@ public interface IDomainObjectRegisterDemoObjectX : IDomainObjectRegisterWithCon
     IEnumerable<IDomainObjectDemoObjectX> GetCollectionByDemoGroup(long group);
     IAsyncEnumerable<IDomainObjectDemoObjectX> GetCollectionByDemoGroupAsync(long group, CancellationToken cancellationToken = default);
 
-    IDomainObjectDemoObjectX FindByDemoAlternativeKey(DomainObjectDemoObjectX.AlternativeKey alternativeKey);
-    ValueTask<IDomainObjectDemoObjectX> FindByDemoAlternativeKeyAsync(DomainObjectDemoObjectX.AlternativeKey alternativeKey, CancellationToken cancellationToken = default);
+    IDomainObjectDemoObjectX? FindByDemoAlternativeKey(DomainObjectDemoObjectX.AlternativeKey alternativeKey);
+    ValueTask<IDomainObjectDemoObjectX?> FindByDemoAlternativeKeyAsync(DomainObjectDemoObjectX.AlternativeKey alternativeKey, CancellationToken cancellationToken = default);
 
     IEnumerable<IDomainObjectDemoObjectX> GetCollectionByNameSize(int size);
     IAsyncEnumerable<IDomainObjectDemoObjectX> GetCollectionByNameSizeAsync(int size, CancellationToken cancellationToken = default);
 
-    IDomainObjectDemoObjectX GetByName(string name);
-    ValueTask<IDomainObjectDemoObjectX> GetByNameAsync(string name, CancellationToken cancellationToken = default);
+    IDomainObjectDemoObjectX? GetByName(string name);
+    ValueTask<IDomainObjectDemoObjectX?> GetByNameAsync(string name, CancellationToken cancellationToken = default);
 }

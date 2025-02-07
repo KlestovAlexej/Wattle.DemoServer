@@ -185,7 +185,7 @@ public sealed class PartitionsSponsorSettings
                 new DomainObjectTablespaceEntry
                 {
                     DomainObjectType = manager.Mapper.MapperId,
-                    Comment = WellknownDomainObjectDisplayNames.DisplayNamesProvider(manager.Mapper.MapperId),
+                    Comment = WellknownDomainObjectDisplayNames.DisplayNamesProvider!(manager.Mapper.MapperId),
                     Tablespaces = [],
                 });
         }

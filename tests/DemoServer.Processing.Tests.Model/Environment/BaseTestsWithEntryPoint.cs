@@ -51,7 +51,7 @@ public abstract class BaseTestsWithEntryPoint : BaseDbTests
     protected BaseTestsWithEntryPoint()
 #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
     {
-        EnvironmentVariablesHelpers.Define(Array.Empty<string>(), Path.GetDirectoryName(typeof(BaseTestsWithEntryPoint).Assembly.Location)!);
+        EnvironmentVariablesHelpers.Define([], Path.GetDirectoryName(typeof(BaseTestsWithEntryPoint).Assembly.Location)!);
 
         m_useMappersFeatures = true;
     }
@@ -69,8 +69,8 @@ public abstract class BaseTestsWithEntryPoint : BaseDbTests
         m_nameTablespace1 = $"tests_{Constants.ProductTag.ToLower()}_tablespace1";
         m_nameTablespace2 = $"tests_{Constants.ProductTag.ToLower()}_tablespace2";
 
-        CommonWattleExtensions.SilentDisposeAndFree(ref m_entryPoint);
-        CommonWattleExtensions.SilentDisposeAndFree(ref m_entryPointServiceProvider);
+        CommonWattleExtensions.SilentDisposeAndFree(ref m_entryPoint!);
+        CommonWattleExtensions.SilentDisposeAndFree(ref m_entryPointServiceProvider!);
 
         DomainEnviromentConfigurator.DisposeAll();
 
@@ -103,11 +103,11 @@ public abstract class BaseTestsWithEntryPoint : BaseDbTests
         m_entryPoint?.Stop();
         CommonWattleExtensions.SilentDisposeAndFree(ref m_entryPoint!);
 
-        CommonWattleExtensions.SilentDisposeAndFree(ref m_entryPointServiceProvider);
+        CommonWattleExtensions.SilentDisposeAndFree(ref m_entryPointServiceProvider!);
 
         DomainEnviromentConfigurator.DisposeAll();
 
-        CommonWattleExtensions.SilentDisposeAndFree(ref m_mappers);
+        CommonWattleExtensions.SilentDisposeAndFree(ref m_mappers!);
 
         m_logger.LogDebug($@"
 
@@ -245,7 +245,7 @@ public abstract class BaseTestsWithEntryPoint : BaseDbTests
         m_entryPoint?.Stop();
         CommonWattleExtensions.SilentDisposeAndFree(ref m_entryPoint!);
 
-        CommonWattleExtensions.SilentDisposeAndFree(ref m_entryPointServiceProvider);
+        CommonWattleExtensions.SilentDisposeAndFree(ref m_entryPointServiceProvider!);
 
         DomainEnviromentConfigurator.DisposeAll();
     }
@@ -316,7 +316,7 @@ public abstract class BaseTestsWithEntryPoint : BaseDbTests
         catch (Exception exception)
         {
             CommonWattleExtensions.SilentDisposeAndFree(ref m_entryPoint!);
-            CommonWattleExtensions.SilentDisposeAndFree(ref m_entryPointServiceProvider);
+            CommonWattleExtensions.SilentDisposeAndFree(ref m_entryPointServiceProvider!);
 
             ExceptionDispatchInfo.Capture(exception).Throw();
         }
@@ -373,7 +373,7 @@ public abstract class BaseTestsWithEntryPoint : BaseDbTests
                         new PartitionsSponsorSettings.DomainObjectTablespaceEntry
                         {
                             DomainObjectType = manager.Mapper.MapperId,
-                            Comment = WellknownDomainObjectDisplayNames.DisplayNamesProvider(manager.Mapper.MapperId),
+                            Comment = WellknownDomainObjectDisplayNames.DisplayNamesProvider!(manager.Mapper.MapperId),
                             Tablespaces =
                             [
                                 new()
@@ -397,7 +397,7 @@ public abstract class BaseTestsWithEntryPoint : BaseDbTests
                         new PartitionsSponsorSettings.DomainObjectTablespaceEntry
                         {
                             DomainObjectType = manager.Mapper.MapperId,
-                            Comment = WellknownDomainObjectDisplayNames.DisplayNamesProvider(manager.Mapper.MapperId),
+                            Comment = WellknownDomainObjectDisplayNames.DisplayNamesProvider!(manager.Mapper.MapperId),
                             Tablespaces = []
                         });
                 }

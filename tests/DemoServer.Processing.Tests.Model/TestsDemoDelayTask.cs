@@ -63,7 +63,7 @@ public class TestsDemoDelayTask : BaseTestsDomainObjects
                 Assert.IsNotNull(dto);
                 var scenarioState =
                     (DemoCycleTaskScenarioStateAsCycle)m_entryPoint.JsonDeserializer
-                        .DeserializeReadOnly<DemoCycleTaskScenarioState>(dto.ScenarioState);
+                        .DeserializeReadOnly<DemoCycleTaskScenarioState>(dto!.ScenarioState);
                 Assert.AreEqual(3, scenarioState.Index);
                 Assert.AreEqual(3, scenarioState.RunDate.Count);
                 foreach (var runDate in scenarioState.RunDate)
@@ -163,7 +163,7 @@ public class TestsDemoDelayTask : BaseTestsDomainObjects
                 var mapper = unitOfWork.MappersSession.Mappers.GetMapper<IMapperDemoDelayTask>();
                 var dto = await mapper.GetRawAsync(unitOfWork.MappersSession, taskId, cancellationToken);
                 Assert.IsNotNull(dto);
-                Assert.IsTrue(dto.Available);
+                Assert.IsTrue(dto!.Available);
             },
             autoCommit: true);
 
@@ -178,7 +178,7 @@ public class TestsDemoDelayTask : BaseTestsDomainObjects
                 var mapper = unitOfWork.MappersSession.Mappers.GetMapper<IMapperDemoDelayTask>();
                 var dto = await mapper.GetRawAsync(unitOfWork.MappersSession, taskId, cancellationToken);
                 Assert.IsNotNull(dto);
-                Assert.IsFalse(dto.Available);
+                Assert.IsFalse(dto!.Available);
             },
             autoCommit: true);
     }
@@ -231,7 +231,7 @@ public class TestsDemoDelayTask : BaseTestsDomainObjects
                 var mapper = unitOfWork.MappersSession.Mappers.GetMapper<IMapperDemoDelayTask>();
                 var dto = await mapper.GetRawAsync(unitOfWork.MappersSession, taskId, cancellationToken);
                 Assert.IsNotNull(dto);
-                Assert.IsFalse(dto.Available);
+                Assert.IsFalse(dto!.Available);
             },
             autoCommit: true);
 
@@ -284,7 +284,7 @@ public class TestsDemoDelayTask : BaseTestsDomainObjects
                 var mapper = unitOfWork.MappersSession.Mappers.GetMapper<IMapperDemoDelayTask>();
                 var dto = await mapper.GetRawAsync(unitOfWork.MappersSession, taskId, cancellationToken);
                 Assert.IsNotNull(dto);
-                Assert.IsTrue(dto.Available);
+                Assert.IsTrue(dto!.Available);
             },
         autoCommit: true);
 
@@ -309,7 +309,7 @@ public class TestsDemoDelayTask : BaseTestsDomainObjects
                 var mapper = unitOfWork.MappersSession.Mappers.GetMapper<IMapperDemoDelayTask>();
                 var dto = await mapper.GetRawAsync(unitOfWork.MappersSession, taskId, cancellationToken);
                 Assert.IsNotNull(dto);
-                Assert.IsFalse(dto.Available);
+                Assert.IsFalse(dto!.Available);
             },
             autoCommit: true);
     }

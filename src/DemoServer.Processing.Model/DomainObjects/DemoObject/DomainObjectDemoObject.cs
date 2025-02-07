@@ -108,7 +108,7 @@ public sealed class DomainObjectDemoObject : BaseDomainObjectMutableWithUpdateLo
     public string Name
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => m_name.Value;
+        get => m_name.Value!;
     }
 
     [DomainObjectFieldValue]

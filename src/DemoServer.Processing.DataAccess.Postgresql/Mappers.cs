@@ -21,7 +21,7 @@ namespace Acme.DemoServer.Processing.Generated.PostgreSql.Implements;
 
 public partial class Mappers : ICustomMappers
 {
-    partial void OnExitConstructor(object context)
+    partial void OnExitConstructor(object? context)
     {
         // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
         if (context is null)
@@ -81,13 +81,12 @@ public partial class Mappers : ICustomMappers
         var constructorInfo =
             typeof(TMapper)
                 .GetConstructor(
-                    new[]
-                    {
-                        typeof(IMappersExceptionPolicy),
-                        typeof(IPostgreSqlMapperSelectFilterFactory),
-                        typeof(IInfrastructureMonitorMapper),
-                        typeof(IMemoryCache<TMapperActualStateDto, long>)
-                    });
+                [
+                    typeof(IMappersExceptionPolicy),
+                    typeof(IPostgreSqlMapperSelectFilterFactory),
+                    typeof(IInfrastructureMonitorMapper),
+                    typeof(IMemoryCache<TMapperActualStateDto, long>)
+                ]);
         if (constructorInfo == null)
         {
             throw new InvalidOperationException(
@@ -96,13 +95,12 @@ public partial class Mappers : ICustomMappers
 
         var result =
             (TMapper)constructorInfo.Invoke(
-                new object[]
-                {
-                    exceptionPolicy,
+            [
+                exceptionPolicy,
                     selectFilterFactory,
                     infrastructureMonitor,
                     actualDtoMemoryCache
-                });
+            ]);
 
         return (result);
     }

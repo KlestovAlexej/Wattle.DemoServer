@@ -192,10 +192,7 @@ public sealed class ExceptionPolicy : BaseExceptionPolicy
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     private void DoWorkflowExceptionLogger(WorkflowException exception)
     {
-        if (m_logger.IsInformationEnabled())
-        {
-            m_logger.LogInformation(exception, "Исключение поведения доменных объектов.");
-        }
+        m_logger?.LogInformation(exception, "Исключение поведения доменных объектов.");
 
         if (m_tracer != null)
         {
@@ -208,10 +205,7 @@ public sealed class ExceptionPolicy : BaseExceptionPolicy
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     private void DoInternalExceptionLogger(InternalException exception)
     {
-        if (m_logger.IsCriticalEnabled())
-        {
-            m_logger.LogCritical(exception, "Не предвиденная ошибка поведения доменных объектов.");
-        }
+        m_logger?.LogCritical(exception, "Не предвиденная ошибка поведения доменных объектов.");
 
         if (m_tracer != null)
         {
@@ -245,9 +239,9 @@ public sealed class ExceptionPolicy : BaseExceptionPolicy
         }
         catch (Exception exception2)
         {
-            if (m_logger.IsCriticalEnabled())
+            if (m_logger?.IsCriticalEnabled() ?? false)
             {
-                m_logger.LogCritical(exception2, "Ошибка логирования не предвиденной ошибки поведения доменных объектов." + Environment.NewLine + exception);
+                m_logger?.LogCritical(exception2, "Ошибка логирования не предвиденной ошибки поведения доменных объектов." + Environment.NewLine + exception);
             }
         }
 
@@ -266,18 +260,12 @@ public sealed class ExceptionPolicy : BaseExceptionPolicy
 
         if (exception is OperationCanceledException)
         {
-            if (m_logger.IsDebugEnabled())
-            {
-                m_logger.LogDebug(exception, "Не предвиденная ошибка.");
-            }
+            m_logger?.LogDebug(exception, "Не предвиденная ошибка.");
 
             return false;
         }
 
-        if (m_logger.IsWarningEnabled())
-        {
-            m_logger.LogWarning(exception, "Не предвиденная ошибка.");
-        }
+        m_logger?.LogWarning(exception, "Не предвиденная ошибка.");
 
         if (m_settings.ControllersEnabledUnexpectedException.Value == false)
         {
@@ -313,9 +301,9 @@ public sealed class ExceptionPolicy : BaseExceptionPolicy
         }
         catch (Exception exception2)
         {
-            if (m_logger.IsCriticalEnabled())
+            if (m_logger?.IsCriticalEnabled() ?? false)
             {
-                m_logger.LogCritical(exception2, "Ошибка логирования не предвиденной ошибки." + Environment.NewLine + exception);
+                m_logger?.LogCritical(exception2, "Ошибка логирования не предвиденной ошибки." + Environment.NewLine + exception);
             }
         }
 
@@ -327,10 +315,7 @@ public sealed class ExceptionPolicy : BaseExceptionPolicy
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     private void DoMappersExceptionLogger(MappersException exception)
     {
-        if (m_logger.IsWarningEnabled())
-        {
-            m_logger.LogWarning(exception, "Ошибка мапперов данных состояний доменный объектов в БД.");
-        }
+        m_logger?.LogWarning(exception, "Ошибка мапперов данных состояний доменный объектов в БД.");
 
         if (m_tracer != null)
         {
@@ -364,9 +349,9 @@ public sealed class ExceptionPolicy : BaseExceptionPolicy
         }
         catch (Exception exception2)
         {
-            if (m_logger.IsCriticalEnabled())
+            if (m_logger?.IsCriticalEnabled() ?? false)
             {
-                m_logger.LogCritical(exception2, "Ошибка логирования не предвиденной ошибки мапперов БД." + Environment.NewLine + exception);
+                m_logger?.LogCritical(exception2, "Ошибка логирования не предвиденной ошибки мапперов БД." + Environment.NewLine + exception);
             }
         }
 
@@ -382,9 +367,9 @@ public sealed class ExceptionPolicy : BaseExceptionPolicy
             mainSpan.SetAttribute(OpenTelemetryAttibutes.AttributeErrorMessage, notfication.ToString());
         }
 
-        if (m_logger.IsEnabled(notfication.Level))
+        if (m_logger?.IsEnabled(notfication.Level) ?? false)
         {
-            m_logger.Log(notfication.Level, $"Неожиданное уведомление.{Environment.NewLine}{notfication}");
+            m_logger?.Log(notfication.Level, $"Неожиданное уведомление.{Environment.NewLine}{notfication}");
         }
 
         UnexpectedExceptionSendToTelegram(notfication);
@@ -434,9 +419,9 @@ public sealed class ExceptionPolicy : BaseExceptionPolicy
         }
         catch (Exception exception2)
         {
-            if (m_logger.IsCriticalEnabled())
+            if (m_logger?.IsCriticalEnabled() ?? false)
             {
-                m_logger.LogCritical(exception2, "Ошибка логирования неожиданного уведомления." + Environment.NewLine + notfication);
+                m_logger?.LogCritical(exception2, "Ошибка логирования неожиданного уведомления." + Environment.NewLine + notfication);
             }
         }
     }

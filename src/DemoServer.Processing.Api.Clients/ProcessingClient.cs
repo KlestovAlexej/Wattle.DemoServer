@@ -158,7 +158,7 @@ public sealed class ProcessingClient : IProcessingClient
     {
         if (m_disposeRestClient)
         {
-            CommonWattleExtensions.SilentDisposeAndFree(ref m_restClient);
+            CommonWattleExtensions.SilentDisposeAndFree(ref m_restClient!);
         }
     }
 }

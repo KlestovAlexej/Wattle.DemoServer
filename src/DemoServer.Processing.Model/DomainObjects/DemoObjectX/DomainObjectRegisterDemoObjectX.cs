@@ -44,7 +44,7 @@ public sealed class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithCo
             return result;
         }
 
-        public ValueTask<IDomainObjectDemoObjectX> GetByNameAsync(
+        public ValueTask<IDomainObjectDemoObjectX?> GetByNameAsync(
             string name,
             CancellationToken cancellationToken = default)
         {
@@ -112,7 +112,7 @@ public sealed class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithCo
             return result;
         }
 
-        public IDomainObjectDemoObjectX FindByDemoAlternativeKey(
+        public IDomainObjectDemoObjectX? FindByDemoAlternativeKey(
             DomainObjectDemoObjectX.AlternativeKey alternativeKey)
         {
             using var span = EntryPoint.Tracer?.StartActiveSpan(nameof(FindByDemoAlternativeKey), SpanKind.Server);
@@ -122,7 +122,7 @@ public sealed class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithCo
             return result;
         }
 
-        public ValueTask<IDomainObjectDemoObjectX> FindByDemoAlternativeKeyAsync(
+        public ValueTask<IDomainObjectDemoObjectX?> FindByDemoAlternativeKeyAsync(
             DomainObjectDemoObjectX.AlternativeKey alternativeKey,
             CancellationToken cancellationToken = default)
         {
@@ -161,13 +161,13 @@ public sealed class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithCo
                                 .Where(dtoSelector)
                                 .Select(entity => entity.ToMapperDto(EntryPoint.AutoMapper))
                                 .AsAsyncEnumerable(),
-                        (domainObjects, _) =>
-                            (domainObjectSelector != null)
-                                ? domainObjects
+                        (domainObjectSelector != null)
+                            ? (domainObjects, _) =>
+                                domainObjects
                                     .Cast<IDomainObjectDemoObjectX>()
                                     .Where(domainObjectSelector)
                                     .ToAsyncEnumerable()
-                                : null,
+                            : null,
                         cancellationToken)
                     .Cast<IDomainObjectDemoObjectX>();
 
@@ -236,10 +236,10 @@ public sealed class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithCo
                                 .FirstOrDefault(domainObjectSelector)
                         : null);
 
-            return (IDomainObjectDemoObjectX)result;
+            return (IDomainObjectDemoObjectX)result!;
         }
 
-        private async ValueTask<IDomainObjectDemoObjectX> DoFindAsync(
+        private async ValueTask<IDomainObjectDemoObjectX?> DoFindAsync(
             Expression<Func<Demoobjectx, bool>> dtoSelector,
             Func<IDomainObjectDemoObjectX, bool>? domainObjectSelector = null,
             CancellationToken cancellationToken = default,
@@ -269,7 +269,7 @@ public sealed class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithCo
                         cancellationToken)
                     .ConfigureAwait(false);
 
-            return (IDomainObjectDemoObjectX)result;
+            return (IDomainObjectDemoObjectX)result!;
         }
 
         #endregion

@@ -51,7 +51,7 @@ public class TestsApiServer : BaseSlimTests
         CommonWattleExtensions.SilentDisposeAndFree(ref m_appHost!);
 
         m_httpClient.SilentDispose();
-        CommonWattleExtensions.SilentDisposeAndFree(ref m_httpClient);
+        CommonWattleExtensions.SilentDisposeAndFree(ref m_httpClient!);
     }
 
     [Test]

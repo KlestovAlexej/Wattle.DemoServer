@@ -34,7 +34,7 @@ public sealed class ServerController : BaseProcessingController
         Summary = "Получить описание сервера",
         Description = "Получить описание сервера.",
         OperationId = ServerControllerConstants.MethodDescription.Name,
-        Tags = new[] { Tag })]
+        Tags = [Tag])]
     [SwaggerResponseExample(StatusCodes.Status200OK, typeof(ExamplesMetaServerDescription))]
     [SwaggerResponse(StatusCodes.Status200OK, "Описание сервера", typeof(MetaServerDescription))]
     public IActionResult Description()

@@ -13,6 +13,7 @@ namespace Acme.DemoServer.Processing.Model.Implements.SystemSettings;
 /// </summary>
 [Description("Настройки кэширующих провайдеров идентити объектов")]
 [SuppressMessage("ReSharper", "AutoPropertyCanBeMadeGetOnly.Global")]
+[SuppressMessage("ReSharper", "PreferConcreteValueOverDefault")]
 public sealed class IdentityCachesSettings
 {
     // ReSharper disable once MemberCanBePrivate.Global
@@ -22,7 +23,7 @@ public sealed class IdentityCachesSettings
         SystemLog =
             new SettingValue<IdentityCacheSettings>(
                 default!,
-                $"Маппер '{WellknownDomainObjectDisplayNames.DisplayNamesProvider(WellknownDomainObjects.SystemLog)}'");
+                $"Маппер '{WellknownDomainObjectDisplayNames.DisplayNamesProvider!(WellknownDomainObjects.SystemLog)}'");
 
         ChangeTracker =
             new SettingValue<IdentityCacheSettings>(
