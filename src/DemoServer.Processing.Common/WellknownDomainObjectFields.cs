@@ -72,35 +72,35 @@ public static class WellknownDomainObjectFields
         /// Дата создания.
         /// </summary>
         [Description("Дата создания")]
-        [SchemaMapperField(typeof(DateTimeOffset), Where = true, Order = true)]
+        [SchemaMapperField<DateTimeOffset>(Where = true, Order = true)]
         public static readonly Guid CreateDate = new("FABB42ED-5C3A-4234-8BF6-0CFFA10BAA18");
 
         /// <summary>
         /// Код записи <seealso cref="WellknownSytemLogCodes"/>.
         /// </summary>
         [Description("Код записи")]
-        [SchemaMapperField(typeof(int), Where = true, Order = true)]
+        [SchemaMapperField<int>(Where = true, Order = true)]
         public static readonly Guid Code = new("E3D3D0F8-7E96-4979-BF73-B0B527E6F76C");
 
         /// <summary>
         /// Тип записи <seealso cref="WellknownSytemLogTypes"/>.
         /// </summary>
         [Description("Тип записи")]
-        [SchemaMapperField(typeof(int), Where = true, Order = true)]
+        [SchemaMapperField<int>(Where = true, Order = true)]
         public static readonly Guid Type = new("FF1C3D22-44DE-4488-8FD3-1E5925FFA40A");
 
         /// <summary>
         /// Сообщение.
         /// </summary>
         [Description("Сообщение")]
-        [SchemaMapperField(typeof(string), Where = true, Order = true, DbSize = Constants.SystemLogFieldMaxSizeMessage)]
+        [SchemaMapperField<string>(Where = true, Order = true, DbSize = Constants.SystemLogFieldMaxSizeMessage)]
         public static readonly Guid Message = new("B446C595-7046-42EC-8B51-D67AC42328BE");
 
         /// <summary>
         /// Данные.
         /// </summary>
         [Description("Данные")]
-        [SchemaMapperField(typeof(string), Where = true)]
+        [SchemaMapperField<string>(Where = true)]
         public static readonly Guid Data = new("E4E2C27A-124D-44DE-93E7-62B411C24D6A");
     }
     #endregion
@@ -119,56 +119,56 @@ public static class WellknownDomainObjectFields
         /// Дата создания.
         /// </summary>
         [Description("Дата создания")]
-        [SchemaMapperField(typeof(DateTimeOffset), Where = true, Order = true)]
+        [SchemaMapperField<DateTimeOffset>(Where = true, Order = true)]
         public static readonly Guid CreateDate = new("E2B3ECF0-17B5-4212-9DA0-3C05F17E5C3F");
 
         /// <summary>
         /// Имя таблицы БД.
         /// </summary>
         [Description("Имя таблицы БД")]
-        [SchemaMapperField(typeof(string), Where = true, Order = true)]
+        [SchemaMapperField<string>(Where = true, Order = true)]
         public static readonly Guid TableName = new("0617EEAF-95C0-4E62-ABC8-4F32FC81C0EF");
 
         /// <summary>
         /// Имя партиции таблицы БД.
         /// </summary>
         [Description("Имя партиции таблицы БД")]
-        [SchemaMapperField(typeof(string), Where = true, Order = true)]
+        [SchemaMapperField<string>(Where = true, Order = true)]
         public static readonly Guid PartitionName = new("1A062039-4A49-4D63-80C0-BCD0AC79B200");
 
         /// <summary>
         /// День партиции таблицы БД.
         /// </summary>
         [Description("День партиции таблицы БД")]
-        [SchemaMapperField(typeof(DateTime), Where = true, Order = true, DbColumnTypeName = nameof(NpgsqlDbType.Date))]
+        [SchemaMapperField<DateTime>(Where = true, Order = true, DbColumnTypeName = nameof(NpgsqlDbType.Date))]
         public static readonly Guid Day = new("840EDB69-C08F-4D64-A05A-440888CC7398");
 
         /// <summary>
         /// Минимальный идентификатор группы идентити хранимый в партиции.
         /// </summary>
         [Description("Минимальный идентификатор группы идентити хранимый в партиции")]
-        [SchemaMapperField(typeof(long), Where = true, Order = true)]
+        [SchemaMapperField<long>(Where = true, Order = true)]
         public static readonly Guid MinGroupId = new("72889C90-73C2-4D41-82C1-C36C27FFD0A8");
 
         /// <summary>
         /// Максимальный идентификатор группы идентити не хранимый в партиции.
         /// </summary>
         [Description("Максимальный идентификатор группы идентити не хранимый в партиции")]
-        [SchemaMapperField(typeof(long), Where = true, Order = true)]
+        [SchemaMapperField<long>(Where = true, Order = true)]
         public static readonly Guid MaxNotIncludeGroupId = new("408730B7-2FA1-4B3E-A6A8-74E7EFA0397B");
 
         /// <summary>
         /// Минимальный идентити хранимый в партиции.
         /// </summary>
         [Description("Минимальный идентити хранимый в партиции")]
-        [SchemaMapperField(typeof(long), Where = true, Order = true)]
+        [SchemaMapperField<long>(Where = true, Order = true)]
         public static readonly Guid MinId = new("087D9636-4846-400B-8882-8D10B22339FB");
 
         /// <summary>
         /// Максимальный идентити не хранимый в партиции.
         /// </summary>
         [Description("Максимальный идентити не хранимый в партиции")]
-        [SchemaMapperField(typeof(long), Where = true, Order = true)]
+        [SchemaMapperField<long>(Where = true, Order = true)]
         public static readonly Guid MaxNotIncludeId = new("621E6E67-B436-4767-B933-E4313B6CC80C");
     }
     #endregion
@@ -189,28 +189,28 @@ public static class WellknownDomainObjectFields
         /// Дата создания.
         /// </summary>
         [Description("Дата создания")]
-        [SchemaMapperField(typeof(DateTime), Where = true, Order = true)]
+        [SchemaMapperField<DateTime>(Where = true, Order = true)]
         public static readonly Guid CreateDate = new("19D14B24-D899-4AD9-B97B-AE7A7B12FFF8");
 
         /// <summary>
         /// Дата модификации.
         /// </summary>
         [Description("Дата модификации")]
-        [SchemaMapperField(typeof(DateTime), Where = true, Order = true, UpdateMode = SchemaMapperFieldUpdateMode.UpdateDirect)]
+        [SchemaMapperField<DateTime>(Where = true, Order = true, UpdateMode = SchemaMapperFieldUpdateMode.UpdateDirect)]
         public static readonly Guid ModificationDate = new("F69BAE78-0FBD-426A-971C-63DCC6D7F4F7");
 
         /// <summary>
         /// Название.
         /// </summary>
         [Description("Название")]
-        [SchemaMapperField(typeof(string), Where = true, Order = true, DbSize = FieldsConstants.DemoObjectNameMaxLength, UpdateMode = SchemaMapperFieldUpdateMode.Update)]
+        [SchemaMapperField<string>(Where = true, Order = true, DbSize = FieldsConstants.DemoObjectNameMaxLength, UpdateMode = SchemaMapperFieldUpdateMode.Update)]
         public static readonly Guid Name = new("C1DD6A57-D661-4487-9610-F6F35D78744F");
 
         /// <summary>
         /// Признак разрешения работы.
         /// </summary>
         [Description("Признак разрешения работы")]
-        [SchemaMapperField(typeof(bool), Where = true, Order = true, UpdateMode = SchemaMapperFieldUpdateMode.Update)]
+        [SchemaMapperField<bool>(Where = true, Order = true, UpdateMode = SchemaMapperFieldUpdateMode.Update)]
         public static readonly Guid Enabled = new("51DBEDEF-4206-473D-85D2-B189426F5456");
     }
     #endregion
@@ -237,35 +237,35 @@ public static class WellknownDomainObjectFields
         /// Дата создания.
         /// </summary>
         [Description("Дата создания")]
-        [SchemaMapperField(typeof(DateTimeOffset), Where = true, Order = true)]
+        [SchemaMapperField<DateTimeOffset>(Where = true, Order = true)]
         public static readonly Guid CreateDate = new("CD109655-1DC8-4E88-AA24-5C27E3EF778F");
 
         /// <summary>
         /// Дата модификации.
         /// </summary>
         [Description("Дата модификации")]
-        [SchemaMapperField(typeof(DateTimeOffset), Where = true, Order = true, UpdateMode = SchemaMapperFieldUpdateMode.UpdateDirect)]
+        [SchemaMapperField<DateTimeOffset>(Where = true, Order = true, UpdateMode = SchemaMapperFieldUpdateMode.UpdateDirect)]
         public static readonly Guid ModificationDate = new("6862D6BB-3405-48C1-864C-46601DA5726B");
 
         /// <summary>
         /// Название.
         /// </summary>
         [Description("Название")]
-        [SchemaMapperField(typeof(string), Where = true, Order = true, DbSize = FieldsConstants.DemoObjectXNameMaxLength, UpdateMode = SchemaMapperFieldUpdateMode.Update)]
+        [SchemaMapperField<string>(Where = true, Order = true, DbSize = FieldsConstants.DemoObjectXNameMaxLength, UpdateMode = SchemaMapperFieldUpdateMode.Update)]
         public static readonly Guid Name = new("0C54E3F8-3754-4B99-A144-A8C3D5E15958");
 
         /// <summary>
         /// Признак разрешения работы.
         /// </summary>
         [Description("Признак разрешения работы")]
-        [SchemaMapperField(typeof(bool), Where = true, Order = true, UpdateMode = SchemaMapperFieldUpdateMode.Update)]
+        [SchemaMapperField<bool>(Where = true, Order = true, UpdateMode = SchemaMapperFieldUpdateMode.Update)]
         public static readonly Guid Enabled = new("070EF35A-908F-450E-92B6-508E52DC5306");
 
         /// <summary>
         /// Альтернативный ключ - часть №1.
         /// </summary>
         [Description("Альтернативный ключ - часть №1")]
-        [SchemaMapperField(typeof(Guid), Where = true, Order = true)]
+        [SchemaMapperField<Guid>(Where = true, Order = true)]
         [SchemaMapperFieldAlternateKey(NameAlternateKey, IndexAlternateKeyValue1)]
         public static readonly Guid Key1 = new("14367E40-CC94-47A7-8FBD-47E81C62B9BD");
 
@@ -273,7 +273,7 @@ public static class WellknownDomainObjectFields
         /// Альтернативный ключ - часть №2.
         /// </summary>
         [Description("Альтернативный ключ - часть №2")]
-        [SchemaMapperField(typeof(string), Where = true, Order = true, DbSize = FieldsConstants.DemoObjectXKey2MaxLength)]
+        [SchemaMapperField<string>(Where = true, Order = true, DbSize = FieldsConstants.DemoObjectXKey2MaxLength)]
         [SchemaMapperFieldAlternateKey(NameAlternateKey, IndexAlternateKeyValue2)]
         public static readonly Guid Key2 = new("95D0BDF7-5420-4B5C-B89B-7C7979A05F99");
 
@@ -281,7 +281,7 @@ public static class WellknownDomainObjectFields
         /// Номер группы.
         /// </summary>
         [Description("Номер группы")]
-        [SchemaMapperField(typeof(long), Where = true, Order = true, Name = "group")]
+        [SchemaMapperField<long>(Where = true, Order = true, Name = "group")]
         [SchemaMapperFieldPostgreSql(IsQuotedName = true)]
         [SchemaMapperFieldCollection(NameCollection, 1)]
         public static readonly Guid Group = new("F8B8B8CE-11B8-4108-B811-A5FC7255238A");
@@ -305,14 +305,14 @@ public static class WellknownDomainObjectFields
         /// Дата создания.
         /// </summary>
         [Description("Дата создания")]
-        [SchemaMapperField(typeof(DateTimeOffset), Where = true, Order = true)]
+        [SchemaMapperField<DateTimeOffset>(Where = true, Order = true)]
         public static readonly Guid CreateDate = new("4437FA7D-5B09-4F22-9362-322C10E5A582");
 
         /// <summary>
         /// Дата модификации.
         /// </summary>
         [Description("Дата модификации")]
-        [SchemaMapperField(typeof(DateTimeOffset), Where = true, Order = true, UpdateMode = SchemaMapperFieldUpdateMode.UpdateDirect)]
+        [SchemaMapperField<DateTimeOffset>(Where = true, Order = true, UpdateMode = SchemaMapperFieldUpdateMode.UpdateDirect)]
         public static readonly Guid ModificationDate = new("83816A54-32EB-448F-A755-9D14ACCB048A");
 
         /// <summary>
@@ -326,14 +326,14 @@ public static class WellknownDomainObjectFields
         /// Состояние сценария.
         /// </summary>
         [Description("Состояние сценария")]
-        [SchemaMapperField(typeof(string), UpdateMode = SchemaMapperFieldUpdateMode.Update)]
+        [SchemaMapperField<string>(UpdateMode = SchemaMapperFieldUpdateMode.Update)]
         public static readonly Guid ScenarioState = new("2CE70876-F169-4129-AE06-DAC87C5E2686");
         
         /// <summary>
         /// Дата запуска.
         /// </summary>
         [Description("Дата запуска")]
-        [SchemaMapperField(typeof(DateTimeOffset?), DbIsNull = true, UpdateMode = SchemaMapperFieldUpdateMode.Update)]
+        [SchemaMapperField<DateTimeOffset?>(DbIsNull = true, UpdateMode = SchemaMapperFieldUpdateMode.Update)]
         public static readonly Guid StartDate = new("E2856719-2986-4958-8286-00EF8C2F254F");
     }
     #endregion
