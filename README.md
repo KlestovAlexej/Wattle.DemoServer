@@ -21,11 +21,9 @@
 
 # Содержание
 - [Общее](#общее)
-- [Доменный объект **DemoDelayTask** - хранимая в БД задача для фонового исполнения](#доменный-объект-demodelaytask---хранимая-в-бд-задача-для-фонового-исполнения)
-- [Доменный объект **DemoObject**](#доменный-объект-demoobject)
-- [Доменный объект **DemoObjectX**](#доменный-объект-demoobjectx)
-
-
+- [Доменный объект **DemoDelayTask**](#доменный-объект-demodelaytask---хранимая-в-бд-задача-для-фонового-исполнения) - хранимая в БД задача [для фонового исполнения](https://github.com/KlestovAlexej/Wattle.DemoServer/blob/0f113c3b2a6fddca3894b25ece0f4281a28dc849/src/DemoServer.Processing.Model/DomainObjects/DemoDelayTask/DomainObjectDemoDelayTask.cs#L210).
+- [Доменный объект **DemoObject**](#доменный-объект-demoobject) - доступен по [REST интерфейсу](https://github.com/KlestovAlexej/Wattle.DemoServer/blob/55d5eee9d820668b8a98b54f2616801c9fe67691/src/DemoServer.Processing.Api.Clients/ProcessingClient.cs#L76).
+- [Доменный объект **DemoObjectX**](#доменный-объект-demoobjectx) - имеет составной [альтернативный ключ](https://github.com/KlestovAlexej/Wattle.DemoServer/blob/55d5eee9d820668b8a98b54f2616801c9fe67691/src/DemoServer.Processing.Model/Interfaces/IDomainObjectRegisterDemoObjectX.cs#L16).
 
 ## В демонстрации сервера показаны.
 
