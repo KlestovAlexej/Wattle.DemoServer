@@ -36,7 +36,6 @@ using System.Linq;
 using System.Net.Mime;
 using System.Reflection;
 using System.Threading;
-using System.Xml.XPath;
 using Asp.Versioning;
 using Microsoft.OpenApi.Models;
 using Acme.Wattle.Utils;
@@ -344,7 +343,12 @@ public static class WebApplicationBuilderExtensions
             {
                 options.ExampleFilters();
                 options.EnableAnnotations(enableAnnotationsForInheritance: true, enableAnnotationsForPolymorphism: true);
-                options.UseAllOfToExtendReferenceSchemas();
+                options.SchemaFilter<SwaggerDefineDescriptionSchemaFilter>();
+
+                options.SelectSubTypesUsing(
+                    baseType =>
+                        typeof(WorkflowErrorCodes).Assembly.GetTypes().Where(
+                            type => type.IsSubclassOf(baseType) && !type.IsAbstract));
 
                 options.SwaggerDoc("v1", new OpenApiInfo
                 {
@@ -355,18 +359,21 @@ public static class WebApplicationBuilderExtensions
 
                 foreach (var text in XmlCommentsText)
                 {
-                    options.IncludeXmlComments(() => new XPathDocument(new StringReader(text)), true);
+                    options.IncludeXmlComments(() => new(new StringReader(text)), true);
                 }
 
-                options.SchemaFilter<SwaggerDefineDescriptionSchemaFilter>();
+                {
+                    var remarks = WorkflowErrorCodeDataKeysAttribute.GetRemarks(
+                        typeof(WorkflowExceptionPolicy),
+                        WellknownWorkflowExceptionDataKeys.GetDisplayName, 
+                        WorkflowErrorCodes.Remarks);
 
-                var remarks = WorkflowErrorCodeDataKeysAttribute.GetRemarks(typeof(WorkflowExceptionPolicy), WellknownWorkflowExceptionDataKeys.GetDisplayName, WorkflowErrorCodes.Remarks);
-
-                options.SchemaFilter<WorkflowErrorCodesSchemaFilter>(
-                    new WorkflowErrorCodesSchemaFilter.Parameters(
-                        WorkflowErrorCodes.DisplayNames,
-                        remarks,
-                        WorkflowErrorCodes.Severities));
+                    options.SchemaFilter<WorkflowErrorCodesSchemaFilter>(
+                        new WorkflowErrorCodesSchemaFilter.Parameters(
+                            WorkflowErrorCodes.DisplayNames,
+                            remarks,
+                            WorkflowErrorCodes.Severities));
+                }
             });
 
         builder.Services.AddSwaggerExamplesFromAssemblyOf(typeof(BaseProcessingController));
