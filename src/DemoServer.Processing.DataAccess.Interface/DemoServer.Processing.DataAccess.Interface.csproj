@@ -12,7 +12,6 @@
 		<PackageTags>Acme DemoServer Processing DataAccess Interface</PackageTags>
 		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
 		<CompilerGeneratedFilesOutputPath>Generated</CompilerGeneratedFilesOutputPath>
-		<NoWarn>$(NoWarn);1701;1702;CS1591</NoWarn>
 		<DocumentationFile>$(AssemblyName).xml</DocumentationFile>
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
@@ -28,13 +27,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Acme.Wattle.CodeGeneration.Generator.Interfaces" Version="1.0.0.4716">
+		<PackageReference Include="Acme.Wattle.CodeGeneration.Generator.Interfaces" Version="1.0.0.4809">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 			<TreatAsUsed>true</TreatAsUsed>
 		</PackageReference>
-		<PackageReference Include="Acme.Wattle.Mappers.Interfaces" Version="1.0.0.4716" />
-		<PackageReference Include="Acme.Wattle.Mappers.PostgreSql" Version="1.0.0.4716" />
+		<PackageReference Include="Acme.Wattle.Mappers.Interfaces" Version="1.0.0.4809" />
+		<PackageReference Include="Acme.Wattle.Mappers.PostgreSql" Version="1.0.0.4809" />
 	</ItemGroup>
 
 	<ItemGroup>

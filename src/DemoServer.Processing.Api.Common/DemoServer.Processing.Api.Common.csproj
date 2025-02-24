@@ -10,14 +10,13 @@
 		<RootNamespace>Acme.DemoServer.Processing.Api.Common</RootNamespace>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageTags>Acme DemoServer Processing Api Common</PackageTags>
-		<NoWarn>$(NoWarn);1701;1702;CS1591;CS8032;CS8784</NoWarn>
 		<DocumentationFile>$(AssemblyName).xml</DocumentationFile>
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<PackageReference Include="JsonSubTypes" Version="2.0.1" />
-		<PackageReference Include="Acme.Wattle.Json" Version="1.0.0.4716" />
+		<PackageReference Include="Acme.Wattle.Json" Version="1.0.0.4809" />
 		<PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="7.2.0" />
 	</ItemGroup>
 

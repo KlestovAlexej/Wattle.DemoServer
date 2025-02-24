@@ -2,7 +2,6 @@
 using Acme.DemoServer.Common;
 using Acme.DemoServer.Processing.DataAccess.PostgreSql;
 using Acme.Wattle.Testing.Databases.PostgreSql;
-using System;
 using System.Diagnostics.CodeAnalysis;
 using Acme.DemoServer.Testing;
 
@@ -24,7 +23,7 @@ public abstract partial class BaseAutoTestsMapper
     partial void DoBase_BeginSetUp()
     {
         m_dropDb = true;
-        m_dbName = $"test_{Constants.ProductTag.ToLower()}_" + Guid.NewGuid().ToString("N") + "_" + DateTime.Now.ToString("yyyMMddhhmmss");
+        m_dbName = $"test_{Constants.ProductTag.ToLower()}_" + BaseDbTests.UniqueMark();
         var sqlScript = Deploy.GetSqlScript();
 
         DoPreCreateDb();
@@ -48,7 +47,9 @@ public abstract partial class BaseAutoTestsMapper
             tag: m_addTags ? TestContext.CurrentContext.Test.FullName : null,
             sqlScript: sqlScript,
             serverConnectionString: m_serverConnectionString,
-            databaseConnectionString: m_dbConnectionString);
+            databaseConnectionString: m_dbConnectionString,
+            lcCollate: null,
+            lcType: null);
     }
 
     partial void DoBase_TearDown()

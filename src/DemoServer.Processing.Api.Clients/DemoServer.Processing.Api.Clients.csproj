@@ -11,7 +11,6 @@
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageTags>Acme DemoServer Processing Api Clients</PackageTags>
 		<DocumentationFile>$(AssemblyName).xml</DocumentationFile>
-		<NoWarn>$(NoWarn);1701;1702;CS1591;CS8032;CS8784</NoWarn>
 		<DocumentationFile>$(AssemblyName).xml</DocumentationFile>
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
@@ -19,8 +18,8 @@
 	<ItemGroup>
 		<PackageReference Include="RestSharp" Version="112.1.0" />
 		<PackageReference Include="RestSharp.Serializers.NewtonsoftJson" Version="112.1.0" />
-		<PackageReference Include="Acme.Wattle.Common" Version="1.0.0.4716" />
-		<PackageReference Include="Acme.Wattle.Json" Version="1.0.0.4716" />
+		<PackageReference Include="Acme.Wattle.Common" Version="1.0.0.4809" />
+		<PackageReference Include="Acme.Wattle.Json" Version="1.0.0.4809" />
 	</ItemGroup>
 
 	<ItemGroup>

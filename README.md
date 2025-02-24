@@ -5,12 +5,9 @@
 <details><summary>Примечания.</summary><br/>
 
 - Сервер написан 100% на [C#](https://ru.wikipedia.org/wiki/C_Sharp) под [.NET 9](https://dotnet.microsoft.com/en-us/download/dotnet/9.0).
-- **Сборка и запуск тестов**
-	- Проект [DemoServer.Processing.Application.csproj](src/DemoServer.Processing.Application/DemoServer.Processing.Application.csproj) при сборке использует [PowerShell](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell?view=powershell-7.3).
-<br/>Из командной строки должен быть доступен запуск [PWSH.exe](https://learn.microsoft.com/ru-ru/powershell/module/microsoft.powershell.core/about/about_pwsh?view=powershell-7.3)
-	- Для запуска тестов в классе [Acme.DemoServer.Testing.BaseDbTests](src/DemoServer.Testing/BaseDbTests.cs) надо определить параметры подключения к PostgreSQL.
 - Все [автоматические тесты сервера](tests) оформлены как [NUnit](https://nunit.org/)-тесты для запуска в ОС Windows из-под [Visual Studio 2022](https://visualstudio.microsoft.com/ru/vs/) (версии не ниже 17.8.1).
 - Все БД [PostgreSQL](https://www.postgresql.org/) (версии не ниже 15) [создаются](https://github.com/KlestovAlexej/Wattle.DemoServer/blob/8044b55f05c8702e2f7d91f2a4143a5406eda034/src/DemoServer.Testing/BaseDbTests.cs#L57) и [уничтожаются](https://github.com/KlestovAlexej/Wattle.DemoServer/blob/8044b55f05c8702e2f7d91f2a4143a5406eda034/src/DemoServer.Testing/BaseDbTests.cs#L72) автоматически при запуске тестов.
+	- **Для запуска тестов** в классе [Acme.DemoServer.Testing.BaseDbTests](src/DemoServer.Testing/BaseDbTests.cs) надо определить параметры подключения к PostgreSQL.
 - [SQL-скрипт](src/DemoServer.Processing.DataAccess.Postgresql/DemoServer.Processing.sql) БД PostgreSQL создан из [модели](src/DemoServer.Processing.DataAccess.Postgresql/DemoServer.Processing.dmm) спроектированной с использованием [Luna Modeler](https://www.datensen.com/data-modeling/luna-modeler-for-relational-databases.html).
 <br/>
 Модель БД PostgreSQL :<br/>

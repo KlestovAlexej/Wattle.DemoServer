@@ -12,7 +12,6 @@
 		<PackageTags>Acme DemoServer Processing Api</PackageTags>
 		<OutputType>Library</OutputType>
 		<IsPackable>true</IsPackable>
-		<NoWarn>$(NoWarn);1701;1702;CS1591;NU5104</NoWarn>
 		<DocumentationFile>$(AssemblyName).xml</DocumentationFile>
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
@@ -20,8 +19,8 @@
 	<ItemGroup>
 		<PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" Version="8.1.0" />
 		<PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
-		<PackageReference Include="Acme.Wattle.DomainObjects" Version="1.0.0.4716" />
-		<PackageReference Include="Acme.Wattle.QueueProcessors" Version="1.0.0.4716" />
+		<PackageReference Include="Acme.Wattle.DomainObjects" Version="1.0.0.4809" />
+		<PackageReference Include="Acme.Wattle.QueueProcessors" Version="1.0.0.4809" />
 		<PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="8.0.2" />
 		<PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="7.2.0" />
 	</ItemGroup>

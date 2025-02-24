@@ -19,6 +19,7 @@ using Acme.Wattle.Testing;
 using Acme.Wattle.Utils;
 using System;
 using System.Globalization;
+using System.IO;
 using System.Text;
 using System.Threading;
 using Unity;
@@ -33,8 +34,6 @@ public class Program
 {
     private static bool IsWindowsService;
     public static readonly string FileNameOfAppSettings = "appsettings.json";
-    private static readonly string AppSettingsOfSystemSettings = "-S:" + SystemSettings.SectionName;
-    private static readonly string AppSettingsOfOpenTelemetrySettings = "-S:" + OpenTelemetrySettings.SectionName;
 
     // ReSharper disable once InconsistentNaming
     private static ILogger? Logger;
@@ -74,99 +73,16 @@ public class Program
                     return 0;
                 }
 
-                if (args[0].ToUpper() == AppSettingsOfSystemSettings.ToUpper())
+                if (args[0].ToUpper() == "-S")
                 {
-                    Console.WriteLine(SystemSettings.GetDefault().ToJsonText(true));
+                    var text = File.ReadAllText(FileNameOfAppSettings);
+                    var model = text.FromJson<dynamic>();
+                    
+                    model.SystemSettings = SystemSettings.GetDefault().ToJsonText().FromJson<dynamic>();
+                    model.OpenTelemetry = GetOpenTelemetrySettings().ToJsonText().FromJson<dynamic>();
 
-                    return 0;
-                }
-
-                if (args[0].ToUpper() == AppSettingsOfOpenTelemetrySettings.ToUpper())
-                {
-                    var lightstepAccessToken = "ENTER_TOKEN";
-
-                    Console.WriteLine(
-                        new OpenTelemetrySettings
-                        {
-                            Enabled = true,
-                            Wattle = 
-                                new WattleInstrumentationSettings
-                                {
-                                    Enabled = true,
-                                    UseMetics = true,
-                                    UseTracing = true,
-                                },
-                            Tracing =
-                                    new OpenTelemetryTracingSettings
-                                    {
-                                        Enabled = true,
-                                        Npgsql =
-                                            new NpgsqlSettings
-                                            {
-                                                Enabled = true,
-                                            },
-                                        HttpClientInstrumentation =
-                                            new HttpClientInstrumentationSettings
-                                            {
-                                                Enabled = true,
-                                                DisplayNameWithUrl = true,
-                                                RecordException = true,
-                                                RecordHttpResponse = true,
-                                            },
-                                        AspNetCoreInstrumentation =
-                                            new AspNetCoreInstrumentationSettings
-                                            {
-                                                Enabled = true,
-                                                RecordException = true,
-                                                RecordHttpResponse = true,
-                                                RecordHttpRequest = true,
-                                            },
-                                        Otlp =
-                                            new OtlpSettings
-                                            {
-                                                Enabled = true,
-                                                Headers = $"lightstep-access-token={lightstepAccessToken}",
-                                                Endpoint = "https://ingest.lightstep.com:443",
-                                            },
-                                        EntityFrameworkCoreInstrumentation =
-                                            new EntityFrameworkCoreInstrumentationSettings
-                                            {
-                                                Enabled = true,
-                                            },
-                                    },
-                            Metics =
-                                    new OpenTelemetryMeticsSettings
-                                    {
-                                        Enabled = true,
-                                        UseHttpClientInstrumentation = true,
-                                        UseAspNetCoreInstrumentation = true,
-                                        UseRuntimeInstrumentation = true,
-                                        Otlp =
-                                            new OtlpSettings
-                                            {
-                                                Enabled = true,
-                                                Headers = $"lightstep-access-token={lightstepAccessToken}",
-                                                Endpoint = "https://ingest.lightstep.com:443",
-                                            },
-                                        Prometheus =
-                                            new PrometheusSettings
-                                            {
-                                                Enabled = true,
-                                                SwaggerTag = ServerController.Tag,
-                                            },
-                                        EventCounters =
-                                        [
-                                            "Microsoft.AspNetCore.Hosting",
-                                            "Microsoft.AspNetCore.Http.Connections",
-                                            "Microsoft-AspNetCore-Server-Kestrel",
-                                            "System.Net.Http",
-                                            "System.Net.NameResolution",
-                                            "System.Net.Security",
-                                            "System.Net.Socket"
-                                        ],
-                                    },
-                        }
-                            .ToJsonText(true));
+                    text = ((object)model).ToJsonText(true);
+                    File.WriteAllText(FileNameOfAppSettings, text);
 
                     return 0;
                 }
@@ -352,5 +268,92 @@ public class Program
         {
             /* NONE */
         }
+    }
+
+    private static OpenTelemetrySettings GetOpenTelemetrySettings()
+    {
+        var lightstepAccessToken = "ENTER_TOKEN";
+
+        return
+            new OpenTelemetrySettings
+            {
+                Enabled = true,
+                Wattle =
+                    new WattleInstrumentationSettings
+                    {
+                        Enabled = true,
+                        UseMetics = true,
+                        UseTracing = true,
+                    },
+                Tracing =
+                    new OpenTelemetryTracingSettings
+                    {
+                        Enabled = true,
+                        Npgsql =
+                            new NpgsqlSettings
+                            {
+                                Enabled = true,
+                            },
+                        HttpClientInstrumentation =
+                            new HttpClientInstrumentationSettings
+                            {
+                                Enabled = true,
+                                DisplayNameWithUrl = true,
+                                RecordException = true,
+                                RecordHttpResponse = true,
+                            },
+                        AspNetCoreInstrumentation =
+                            new AspNetCoreInstrumentationSettings
+                            {
+                                Enabled = true,
+                                RecordException = true,
+                                RecordHttpResponse = true,
+                                RecordHttpRequest = true,
+                            },
+                        Otlp =
+                            new OtlpSettings
+                            {
+                                Enabled = true,
+                                Headers = $"lightstep-access-token={lightstepAccessToken}",
+                                Endpoint = "https://ingest.lightstep.com:443",
+                            },
+                        EntityFrameworkCoreInstrumentation =
+                            new EntityFrameworkCoreInstrumentationSettings
+                            {
+                                Enabled = true,
+                            },
+                    },
+                Metics =
+                    new OpenTelemetryMeticsSettings
+                    {
+                        Enabled = true,
+                        UseHttpClientInstrumentation = true,
+                        UseAspNetCoreInstrumentation = true,
+                        UseRuntimeInstrumentation = true,
+                        Otlp =
+                            new OtlpSettings
+                            {
+                                Enabled = true,
+                                Headers = $"lightstep-access-token={lightstepAccessToken}",
+                                Endpoint = "https://ingest.lightstep.com:443",
+                            },
+                        Prometheus =
+                            new PrometheusSettings
+                            {
+                                Enabled = true,
+                                SwaggerTag = ServerController.Tag,
+                            },
+                        EventCounters =
+                        [
+                            "Microsoft.AspNetCore.Hosting",
+                            "Microsoft.AspNetCore.Http.Connections",
+                            "Microsoft-AspNetCore-Server-Kestrel",
+                            "System.Net.Http",
+                            "System.Net.NameResolution",
+                            "System.Net.Security",
+                            "System.Net.Socket"
+                        ],
+                    },
+            };
     }
 }

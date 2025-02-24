@@ -1,6 +1,8 @@
 ﻿using NUnit.Framework;
 using Acme.Wattle.Testing.Databases.PostgreSql;
 using System;
+using Acme.Wattle.Testing;
+using System.Globalization;
 
 // ReSharper disable MemberCanBePrivate.Global
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
@@ -30,12 +32,19 @@ public abstract class BaseDbTests : BaseSlimTests
     protected bool m_dropDb;
     protected bool m_addTags;
 
+    public static string UniqueMark()
+    {
+        var result = DateTime.Now.ToString("yyyMMddhhmmss") + "_" + ProviderRandomValues.GetUInt16().ToString(CultureInfo.InvariantCulture);
+
+        return result;
+    }
+
     [SetUp]
     public void BaseDbTests_SetUp()
     {
         m_dropDb = true;
         m_addTags = true;
-        m_dbName = DoGetDbName() + "_" + DateTime.Now.ToString("yyyMMddhhmmss") + "_" + Guid.NewGuid().ToString("N");
+        m_dbName = DoGetDbName() + UniqueMark();
         var sqlScript = DoGetSqlScript();
 
         /*
@@ -59,7 +68,9 @@ public abstract class BaseDbTests : BaseSlimTests
             tag: m_addTags ? TestContext.CurrentContext.Test.FullName : null,
             sqlScript: sqlScript,
             serverConnectionString: m_serverConnectionString,
-            databaseConnectionString: m_dbConnectionString);
+            databaseConnectionString: m_dbConnectionString,
+            lcCollate: null,
+            lcType: null);
 
         DoPostCreateDb();
     }

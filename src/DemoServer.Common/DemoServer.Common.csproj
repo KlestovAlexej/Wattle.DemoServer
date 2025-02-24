@@ -10,13 +10,12 @@
 		<RootNamespace>Acme.DemoServer.Common</RootNamespace>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageTags>Acme DemoServer Common</PackageTags>
-		<NoWarn>$(NoWarn);1701;1702;CS1591;CS8784</NoWarn>
 		<DocumentationFile>$(AssemblyName).xml</DocumentationFile>
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Acme.Wattle.Primitives" Version="1.0.0.4716" />
+		<PackageReference Include="Acme.Wattle.Primitives" Version="1.0.0.4809" />
 	</ItemGroup>
 
 </Project>

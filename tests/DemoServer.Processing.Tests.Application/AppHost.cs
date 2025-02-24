@@ -57,7 +57,7 @@ public class AppHost : IDisposable
         m_dropDb = dropDb;
         m_buildEnviroment = buildEnviroment;
         m_buildDb = buildDb;
-        m_dbName = dbName ?? $"test_{Constants.ProductTag.ToLower()}_" + DateTime.Now.ToString("yyyMMddhhmmss") + "_" + Guid.NewGuid().ToString("N");
+        m_dbName = dbName ?? $"test_{Constants.ProductTag.ToLower()}_" + BaseDbTests.UniqueMark();
         m_tag = tag ?? Environment.StackTrace;
         configuration ??= Testing.BaseTests.Configuration;
         m_appPath = ProviderProjectBasePath.GetFullPath($@"src\DemoServer.Processing.Application\bin\{configuration}\net9.0-windows\win-x64");
@@ -115,7 +115,7 @@ public class AppHost : IDisposable
                 try
                 {
                     PostgreSqlDbHelper.DropDb(
-                        m_dbName,
+                        m_dbName!,
                         serverConnectionString: m_serverConnectionString);
                 }
                 catch
@@ -125,11 +125,13 @@ public class AppHost : IDisposable
 
                 var sqlScript = Deploy.GetSqlScript();
                 PostgreSqlDbHelper.CreateDb(
-                    m_dbName, 
+                    m_dbName!, 
                     tag: m_tag, 
                     sqlScript: sqlScript,
                     serverConnectionString: m_serverConnectionString,
-                    databaseConnectionString: m_dbConnectionString);
+                    databaseConnectionString: m_dbConnectionString,
+                    lcCollate: null,
+                    lcType: null);
 
                 Model.Environment.BaseDbTests.DefineRandomDbSequences(m_dbConnectionString);
             }
@@ -248,7 +250,7 @@ public class AppHost : IDisposable
             try
             {
                 PostgreSqlDbHelper.DropDb(
-                    m_dbName,
+                    m_dbName!,
                     serverConnectionString: m_serverConnectionString);
             }
             catch

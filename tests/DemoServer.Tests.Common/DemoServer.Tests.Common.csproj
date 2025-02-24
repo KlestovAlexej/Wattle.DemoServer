@@ -6,7 +6,6 @@
 		<AssemblyName>Acme.DemoServer.Tests.Common</AssemblyName>
 		<RootNamespace>Acme.DemoServer.Tests.Common</RootNamespace>
 		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
-		<NoWarn>$(NoWarn);CS8032;CS8784</NoWarn>
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 

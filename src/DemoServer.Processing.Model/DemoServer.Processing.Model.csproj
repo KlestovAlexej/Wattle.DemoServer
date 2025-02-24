@@ -12,7 +12,6 @@
 		<PackageTags>Acme DemoServer Processing Model</PackageTags>
 		<OutputType>Library</OutputType>
 		<IsPackable>true</IsPackable>
-		<NoWarn>$(NoWarn);1701;1702;CS1591;NU5104;CS8032;CS8784</NoWarn>
 		<DocumentationFile>$(AssemblyName).xml</DocumentationFile>
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
@@ -26,18 +25,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="AutoMapper" Version="13.0.1" />
+		<PackageReference Include="AutoMapper" Version="14.0.0" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.2" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="9.0.2" />
 		<PackageReference Include="Nito.AsyncEx" Version="5.1.2" />
-		<PackageReference Include="Acme.Wattle.OpenTelemetry" Version="1.0.0.4716" />
-		<PackageReference Include="Acme.Wattle.QueueProcessors" Version="1.0.0.4716" />
-		<PackageReference Include="Acme.Wattle.Services" Version="1.0.0.4716" />
-		<PackageReference Include="Acme.Wattle.Swashbuckle.AspNetCore" Version="1.0.0.4716" />
-		<PackageReference Include="Acme.Wattle.Triggers" Version="1.0.0.4716" />
-		<PackageReference Include="Acme.Wattle.UniqueRegisters" Version="1.0.0.4716" />
+		<PackageReference Include="Acme.Wattle.OpenTelemetry" Version="1.0.0.4809" />
+		<PackageReference Include="Acme.Wattle.QueueProcessors" Version="1.0.0.4809" />
+		<PackageReference Include="Acme.Wattle.Services" Version="1.0.0.4809" />
+		<PackageReference Include="Acme.Wattle.Swashbuckle.AspNetCore" Version="1.0.0.4809" />
+		<PackageReference Include="Acme.Wattle.Triggers" Version="1.0.0.4809" />
+		<PackageReference Include="Acme.Wattle.UniqueRegisters" Version="1.0.0.4809" />
 		<PackageReference Include="System.Linq.Async" Version="6.0.1" />
-		<PackageReference Include="Telegram.Bot" Version="22.3.0" />
+		<PackageReference Include="Telegram.Bot" Version="22.4.4" />
 		<PackageReference Include="Unity" Version="5.11.10" />
 	</ItemGroup>
 

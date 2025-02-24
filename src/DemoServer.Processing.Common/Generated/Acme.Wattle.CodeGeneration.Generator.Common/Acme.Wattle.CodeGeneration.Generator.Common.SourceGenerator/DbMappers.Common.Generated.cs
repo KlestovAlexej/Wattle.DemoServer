@@ -857,6 +857,15 @@ namespace Acme.DemoServer.Processing.Generated.Common
         }
 
         /// <summary>
+        /// Создание конструктора текста запроса доменных объектов ChangeTracker.
+        /// </summary>
+        [MapperQueryBuilder("cff5c7be-9f43-4c15-9038-55ce28e2c810")]
+        public static QueryBuilder QueryForChangeTracker()
+        {
+            return QueryBuilder.New(Schema, new Guid("cff5c7be-9f43-4c15-9038-55ce28e2c810"));
+        }
+
+        /// <summary>
         /// Создание конструктора текста запроса доменных объектов SystemLog.
         /// </summary>
         /// <param name="query">Запрос.</param>
@@ -869,6 +878,15 @@ namespace Acme.DemoServer.Processing.Generated.Common
             }
 
             return QueryBuilder.New(Schema, new Guid("4f3f6ccb-47c7-4ad8-b0ff-c8cbc1af003f"), query);
+        }
+
+        /// <summary>
+        /// Создание конструктора текста запроса доменных объектов SystemLog.
+        /// </summary>
+        [MapperQueryBuilder("4f3f6ccb-47c7-4ad8-b0ff-c8cbc1af003f")]
+        public static QueryBuilder QueryForSystemLog()
+        {
+            return QueryBuilder.New(Schema, new Guid("4f3f6ccb-47c7-4ad8-b0ff-c8cbc1af003f"));
         }
 
         /// <summary>
@@ -887,6 +905,15 @@ namespace Acme.DemoServer.Processing.Generated.Common
         }
 
         /// <summary>
+        /// Создание конструктора текста запроса доменных объектов TablePartition.
+        /// </summary>
+        [MapperQueryBuilder("b426ed4e-b645-4c26-8edd-63b1e89e899c")]
+        public static QueryBuilder QueryForTablePartition()
+        {
+            return QueryBuilder.New(Schema, new Guid("b426ed4e-b645-4c26-8edd-63b1e89e899c"));
+        }
+
+        /// <summary>
         /// Создание конструктора текста запроса доменных объектов DemoObject.
         /// </summary>
         /// <param name="query">Запрос.</param>
@@ -899,6 +926,15 @@ namespace Acme.DemoServer.Processing.Generated.Common
             }
 
             return QueryBuilder.New(Schema, new Guid("86347ca3-b1ef-4c32-a9c0-e38e3b1d1c5d"), query);
+        }
+
+        /// <summary>
+        /// Создание конструктора текста запроса доменных объектов DemoObject.
+        /// </summary>
+        [MapperQueryBuilder("86347ca3-b1ef-4c32-a9c0-e38e3b1d1c5d")]
+        public static QueryBuilder QueryForDemoObject()
+        {
+            return QueryBuilder.New(Schema, new Guid("86347ca3-b1ef-4c32-a9c0-e38e3b1d1c5d"));
         }
 
         /// <summary>
@@ -917,6 +953,15 @@ namespace Acme.DemoServer.Processing.Generated.Common
         }
 
         /// <summary>
+        /// Создание конструктора текста запроса доменных объектов DemoObjectX.
+        /// </summary>
+        [MapperQueryBuilder("322d2242-c942-4643-ba8c-9e2e1e8a7828")]
+        public static QueryBuilder QueryForDemoObjectX()
+        {
+            return QueryBuilder.New(Schema, new Guid("322d2242-c942-4643-ba8c-9e2e1e8a7828"));
+        }
+
+        /// <summary>
         /// Создание конструктора текста запроса доменных объектов DemoDelayTask.
         /// </summary>
         /// <param name="query">Запрос.</param>
@@ -929,6 +974,15 @@ namespace Acme.DemoServer.Processing.Generated.Common
             }
 
             return QueryBuilder.New(Schema, new Guid("5f729000-5139-469f-90b8-74301e342df3"), query);
+        }
+
+        /// <summary>
+        /// Создание конструктора текста запроса доменных объектов DemoDelayTask.
+        /// </summary>
+        [MapperQueryBuilder("5f729000-5139-469f-90b8-74301e342df3")]
+        public static QueryBuilder QueryForDemoDelayTask()
+        {
+            return QueryBuilder.New(Schema, new Guid("5f729000-5139-469f-90b8-74301e342df3"));
         }
     }
 
