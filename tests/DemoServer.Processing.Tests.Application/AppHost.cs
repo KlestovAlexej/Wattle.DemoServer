@@ -131,7 +131,7 @@ public class AppHost : IDisposable
                     serverConnectionString: m_serverConnectionString,
                     databaseConnectionString: m_dbConnectionString,
                     lcCollate: null,
-                    lcType: null);
+                    lcCtype: null);
 
                 Model.Environment.BaseDbTests.DefineRandomDbSequences(m_dbConnectionString);
             }

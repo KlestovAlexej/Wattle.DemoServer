@@ -70,7 +70,7 @@ public abstract class BaseDbTests : BaseSlimTests
             serverConnectionString: m_serverConnectionString,
             databaseConnectionString: m_dbConnectionString,
             lcCollate: null,
-            lcType: null);
+            lcCtype: null);
 
         DoPostCreateDb();
     }

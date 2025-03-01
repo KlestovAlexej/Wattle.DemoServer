@@ -49,7 +49,7 @@ public abstract partial class BaseAutoTestsMapper
             serverConnectionString: m_serverConnectionString,
             databaseConnectionString: m_dbConnectionString,
             lcCollate: null,
-            lcType: null);
+            lcCtype: null);
     }
 
     partial void DoBase_TearDown()
