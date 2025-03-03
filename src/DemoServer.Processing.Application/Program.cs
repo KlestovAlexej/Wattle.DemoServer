@@ -75,14 +75,16 @@ public class Program
 
                 if (args[0].ToUpper() == "-S")
                 {
-                    var text = File.ReadAllText(FileNameOfAppSettings);
+                    var basePath = new DirectoryInfo(Path.GetDirectoryName(typeof(Program).Assembly.Location)!).FullName;
+                    var path = Path.Combine(basePath, FileNameOfAppSettings);
+                    var text = File.ReadAllText(path);
                     var model = text.FromJson<dynamic>();
                     
                     model.SystemSettings = SystemSettings.GetDefault().ToJsonText().FromJson<dynamic>();
                     model.OpenTelemetry = GetOpenTelemetrySettings().ToJsonText().FromJson<dynamic>();
 
                     text = ((object)model).ToJsonText(true);
-                    File.WriteAllText(FileNameOfAppSettings, text);
+                    File.WriteAllText(path, text);
 
                     return 0;
                 }

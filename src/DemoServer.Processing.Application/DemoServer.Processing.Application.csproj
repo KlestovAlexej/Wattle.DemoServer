@@ -47,6 +47,10 @@
 	</ItemGroup>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<Message Importance="High" Text="-----------------------------------" />
+		<Message Importance="High" Text="$(OutputPath)$(AssemblyName).exe -S" />
+		<Message Importance="High" Text="-----------------------------------" />
+
 		<Exec Command="$(OutputPath)$(AssemblyName).exe -S" />
 	</Target>
 </Project>
