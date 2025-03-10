@@ -58,7 +58,7 @@ public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutableWithUpdat
     private readonly MutableFieldNullable<DateTimeOffset> m_startDate;
 
     [DomainObjectFieldValue]
-    private readonly FieldWithModel<string, DemoCycleTaskScenarioState> m_scenarioState;
+    private readonly StringFieldWithModel<DemoCycleTaskScenarioState> m_scenarioState;
 
     #endregion
 
@@ -83,9 +83,9 @@ public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutableWithUpdat
                 DbTypesCorrector.DateTimeOffset(data.StartDate));
 
         m_scenarioState =
-            new FieldWithModel<string, DemoCycleTaskScenarioState>(
+            new StringFieldWithModel<DemoCycleTaskScenarioState>(
                 m_entryPointContext.EntryPoint.JsonDeserializer,
-                new MutableField<string>(data.ScenarioState));
+                data.ScenarioState);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -104,7 +104,11 @@ public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutableWithUpdat
         m_startDate = new MutableFieldNullable<DateTimeOffset>(template.StartDate);
 
         var scenario = m_entryPointContext.EntryPoint.JsonDeserializer.DeserializeReadOnly<DemoDelayTaskScenario>(Scenario);
-        var scenarioState = string.Empty;
+
+        m_scenarioState =
+            new StringFieldWithModel<DemoCycleTaskScenarioState>(
+                m_entryPointContext.EntryPoint.JsonDeserializer,
+                string.Empty);
 
         switch (scenario)
         {
@@ -121,7 +125,7 @@ public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutableWithUpdat
                         Index = 0,
                         RunDate = [],
                     };
-                scenarioState = m_entryPointContext.EntryPoint.JsonDeserializer.SerializeReadOnly(scenarioStateAsCycle);
+                m_scenarioState.SetValue(scenarioStateAsCycle, ModelUseMode.ReadOnly);
 
                 break;
             }
@@ -129,11 +133,6 @@ public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutableWithUpdat
             default:
                 throw new InternalException($"Неизвестный тип сценария '{scenario.GetType().Assembly}'.");
         }
-
-        m_scenarioState =
-            new FieldWithModel<string, DemoCycleTaskScenarioState>(
-                m_entryPointContext.EntryPoint.JsonDeserializer,
-                new MutableField<string>(scenarioState));
     }
 
     #endregion
@@ -231,7 +230,7 @@ public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutableWithUpdat
                 throw new InternalException("Что-то сломалось, задача исполняется слишком много раз.");
             }
 
-            var scenariostate = (DemoCycleTaskScenarioStateAsCycle)m_scenarioState.AsWrite;
+            var scenariostate = m_scenarioState.GetAsWrite<DemoCycleTaskScenarioStateAsCycle>();
 
             Console.WriteLine($"[{m_entryPointContext.TimeService.NowDateTime:O}] DemoDelayTask.Id:{Identity} ({scenarioAsCycle.Type}) - Начало исполнения '{scenariostate.Index}' ...");
 
