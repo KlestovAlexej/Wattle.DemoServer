@@ -15,7 +15,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Acme.Wattle.Primitives" Version="1.0.0.4901" />
+		<PackageReference Include="Acme.Wattle.Primitives" Version="1.0.0.5040" />
 	</ItemGroup>
 
 </Project>

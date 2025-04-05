@@ -26,6 +26,8 @@ using Acme.Wattle.Json.Extensions;
 using Unity;
 using Constants = Acme.DemoServer.Common.Constants;
 using System.Threading;
+using Acme.DemoServer.Processing.DataAccess.Interface;
+using Acme.Wattle.DomainObjects.DomainObjects;
 
 // ReSharper disable MemberCanBePrivate.Global
 
@@ -59,6 +61,8 @@ public abstract class BaseTestsWithEntryPoint : BaseDbTests
     [SetUp]
     public void BaseTestsWithEntryPoint_SetUp()
     {
+        DomainObjectDataTargetsFactory.ExactlyMapperDtoTypesAssemblies = [typeof(ICustomMappers).Assembly];
+
         TestsMappersFeatures.SetValidateUpdateResults(m_useMappersFeatures);
 
         EntryPointStartUpExtensions.RegisterGlobals();
@@ -99,6 +103,8 @@ public abstract class BaseTestsWithEntryPoint : BaseDbTests
     [TearDown]
     public void BaseTestsWithEntryPoint_TearDown()
     {
+        DomainObjectDataTargetsFactory.ExactlyMapperDtoTypesAssemblies = null;
+
         // ReSharper disable once ConditionalAccessQualifierIsNonNullableAccordingToAPIContract
         m_entryPoint?.Stop();
         CommonWattleExtensions.SilentDisposeAndFree(ref m_entryPoint!);

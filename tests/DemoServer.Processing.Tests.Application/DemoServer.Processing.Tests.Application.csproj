@@ -13,7 +13,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />
-		<PackageReference Include="Acme.Wattle.Infrastructures.Rest.Clients" Version="1.0.0.4901" />
+		<PackageReference Include="Acme.Wattle.Infrastructures.Rest.Clients" Version="1.0.0.5040" />
 		<PackageReference Include="System.Private.Uri" Version="4.3.2" />
 	</ItemGroup>
 

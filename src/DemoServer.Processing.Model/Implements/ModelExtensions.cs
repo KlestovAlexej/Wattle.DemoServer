@@ -1,9 +1,8 @@
 ﻿using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 using System.Threading;
+using System.Threading.Tasks;
 using Acme.DemoServer.Processing.Model.Interfaces;
 using Acme.Wattle.Common.Exceptions;
-using Acme.Wattle.DomainObjects;
 using Acme.Wattle.DomainObjects.Interfaces;
 
 namespace Acme.DemoServer.Processing.Model.Implements;
@@ -44,7 +43,6 @@ public static class ModelExtensions
 
         return result;
     }
-
     /// <summary>
     /// Найти доменный объект по идентитити.
     /// </summary>
