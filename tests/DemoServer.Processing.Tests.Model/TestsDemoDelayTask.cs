@@ -25,7 +25,6 @@ public class TestsDemoDelayTask : BaseTestsDomainObjects
 {
     private static readonly TimeSpan Magic = TimeSpan.FromSeconds(2);
 
-
     [Test]
     [Timeout(TestTimeout.Unit)]
     [Category(TestCategory.Unit)]
@@ -37,14 +36,10 @@ public class TestsDemoDelayTask : BaseTestsDomainObjects
         {
             var taskId =
                 await m_entryPoint.CreateAndUsingUnitOfWorkAsync(
-                    async (_, cancellationToken) =>
+                    async (_, _) =>
                         await m_entryPoint.DemoDelayTaskProcessor.AddAsync(
-                            new DemoDelayTaskScenarioAsPoisoned(),
-                            cancellationToken: cancellationToken),
+                            new DemoDelayTaskScenarioAsPoisoned()),
                     autoCommit: true);
-
-            var sw = Stopwatch.StartNew();
-
             Assert.IsTrue(m_entryPoint.DemoDelayTaskProcessor.TryGet(taskId, out var taskWaitHandler));
             Assert.IsTrue(await taskWaitHandler!.WaitAsync());
         }
@@ -54,10 +49,9 @@ public class TestsDemoDelayTask : BaseTestsDomainObjects
         {
             var taskId =
                 await m_entryPoint.CreateAndUsingUnitOfWorkAsync(
-                    async (_, cancellationToken) =>
+                    async (_, _) =>
                         await m_entryPoint.DemoDelayTaskProcessor.AddAsync(
-                            new DemoDelayTaskScenarioAsEmpty(),
-                            cancellationToken: cancellationToken),
+                            new DemoDelayTaskScenarioAsEmpty()),
                     autoCommit: true);
 
             Assert.IsTrue(m_entryPoint.DemoDelayTaskProcessor.TryGet(taskId, out var taskWaitHandler));
@@ -85,10 +79,9 @@ public class TestsDemoDelayTask : BaseTestsDomainObjects
 
         var taskId =
             await m_entryPoint.CreateAndUsingUnitOfWorkAsync(
-                async (_, cancellationToken) =>
+                async (_, _) =>
                     await m_entryPoint.DemoDelayTaskProcessor.AddAsync(
-                        new DemoDelayTaskScenarioAsEmpty(),
-                        cancellationToken: cancellationToken),
+                        new DemoDelayTaskScenarioAsEmpty()),
                 autoCommit: true);
 
         var sw = Stopwatch.StartNew();
