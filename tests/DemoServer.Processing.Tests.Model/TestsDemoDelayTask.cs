@@ -25,6 +25,95 @@ public class TestsDemoDelayTask : BaseTestsDomainObjects
 {
     private static readonly TimeSpan Magic = TimeSpan.FromSeconds(2);
 
+
+    [Test]
+    [Timeout(TestTimeout.Unit)]
+    [Category(TestCategory.Unit)]
+    [Description("Исполнение отравленной задачи что приостанавливает обработка всех задач. Ручное возобновление исполнения задач.")]
+    public async Task Test_Task_Poisoned()
+    {
+        Assert.IsFalse(m_entryPoint.DemoDelayTaskProcessor.IsSuspended);
+
+        {
+            var taskId =
+                await m_entryPoint.CreateAndUsingUnitOfWorkAsync(
+                    async (_, cancellationToken) =>
+                        await m_entryPoint.DemoDelayTaskProcessor.AddAsync(
+                            new DemoDelayTaskScenarioAsPoisoned(),
+                            cancellationToken: cancellationToken),
+                    autoCommit: true);
+
+            var sw = Stopwatch.StartNew();
+
+            Assert.IsTrue(m_entryPoint.DemoDelayTaskProcessor.TryGet(taskId, out var taskWaitHandler));
+            Assert.IsTrue(await taskWaitHandler!.WaitAsync());
+        }
+
+        Assert.IsTrue(m_entryPoint.DemoDelayTaskProcessor.IsSuspended);
+
+        {
+            var taskId =
+                await m_entryPoint.CreateAndUsingUnitOfWorkAsync(
+                    async (_, cancellationToken) =>
+                        await m_entryPoint.DemoDelayTaskProcessor.AddAsync(
+                            new DemoDelayTaskScenarioAsEmpty(),
+                            cancellationToken: cancellationToken),
+                    autoCommit: true);
+
+            Assert.IsTrue(m_entryPoint.DemoDelayTaskProcessor.TryGet(taskId, out var taskWaitHandler));
+            Assert.IsFalse(await taskWaitHandler!.WaitAsync());
+
+            Console.WriteLine($"[{m_entryPoint.TimeService.NowDateTime:O}] Исполнение задач возобновлено.");
+            Assert.IsTrue(m_entryPoint.DemoDelayTaskProcessor.Resume());
+            Assert.IsFalse(m_entryPoint.DemoDelayTaskProcessor.IsSuspended);
+
+            Assert.IsTrue(await taskWaitHandler.WaitAsync());
+        }
+    }
+
+    [Test]
+    [Timeout(TestTimeout.Unit)]
+    [Category(TestCategory.Unit)]
+    [Description("Исполнение задачи в обработчике в котором приостановлена обработка всех задач.")]
+    public async Task Test_Task_For_Suspended_Processor()
+    {
+        Assert.IsFalse(m_entryPoint.DemoDelayTaskProcessor.IsSuspended);
+        Assert.IsTrue(m_entryPoint.DemoDelayTaskProcessor.Suspend());
+        Assert.IsTrue(m_entryPoint.DemoDelayTaskProcessor.IsSuspended);
+
+        var waitTimeout = TimeSpan.FromSeconds(5);
+
+        var taskId =
+            await m_entryPoint.CreateAndUsingUnitOfWorkAsync(
+                async (_, cancellationToken) =>
+                    await m_entryPoint.DemoDelayTaskProcessor.AddAsync(
+                        new DemoDelayTaskScenarioAsEmpty(),
+                        cancellationToken: cancellationToken),
+                autoCommit: true);
+
+        var sw = Stopwatch.StartNew();
+
+        Assert.IsTrue(m_entryPoint.DemoDelayTaskProcessor.TryGet(taskId, out var taskWaitHandler));
+        Assert.IsFalse(await taskWaitHandler!.WaitAsync(waitTimeout));
+
+        sw.Stop();
+        Assert.Less(waitTimeout - Magic, sw.Elapsed);
+        Assert.Greater(waitTimeout + Magic, sw.Elapsed);
+
+        sw = Stopwatch.StartNew();
+
+        Console.WriteLine($"[{m_entryPoint.TimeService.NowDateTime:O}] Исполнение задач возобновлено.");
+        Assert.IsTrue(m_entryPoint.DemoDelayTaskProcessor.Resume());
+        Assert.IsFalse(m_entryPoint.DemoDelayTaskProcessor.IsSuspended);
+
+        Assert.IsTrue(await taskWaitHandler.WaitAsync(waitTimeout));
+
+        sw.Stop();
+        Assert.Greater(waitTimeout / 2, sw.Elapsed);
+
+        Assert.IsFalse(m_entryPoint.DemoDelayTaskProcessor.Exists(taskId));
+    }
+
     [Test]
     [Timeout(TestTimeout.Unit)]
     [Category(TestCategory.Unit)]
@@ -39,9 +128,7 @@ public class TestsDemoDelayTask : BaseTestsDomainObjects
                         {
                             Count = 3,
                             NextRunTimeout = TimeSpan.FromSeconds(4),
-                        },
-                        null,
-                        false),
+                        }),
                 autoCommit: true);
 
         Assert.IsTrue(m_entryPoint.DemoDelayTaskProcessor.TryGet(taskId, out var taskWaitHandler));
@@ -89,9 +176,7 @@ public class TestsDemoDelayTask : BaseTestsDomainObjects
                         {
                             Delay = scenarioDelay,
                         },
-                        null,
-                        false,
-                        cancellationToken),
+                        cancellationToken: cancellationToken),
                 autoCommit: true);
 
         var sw = Stopwatch.StartNew();
@@ -366,9 +451,7 @@ public class TestsDemoDelayTask : BaseTestsDomainObjects
                         {
                             Delay = scenarioDelay,
                         },
-                        null,
-                        false,
-                        cancellationToken),
+                        cancellationToken: cancellationToken),
                 autoCommit: true);
         var taskId2 =
             await m_entryPoint.CreateAndUsingUnitOfWorkAsync(
@@ -378,9 +461,7 @@ public class TestsDemoDelayTask : BaseTestsDomainObjects
                         {
                             Delay = scenarioDelay,
                         },
-                        null,
-                        false,
-                        cancellationToken),
+                        cancellationToken: cancellationToken),
                 autoCommit: true);
         var taskId3 =
             await m_entryPoint.CreateAndUsingUnitOfWorkAsync(
@@ -390,9 +471,7 @@ public class TestsDemoDelayTask : BaseTestsDomainObjects
                         {
                             Delay = scenarioDelay,
                         },
-                        null,
-                        false,
-                        cancellationToken),
+                        cancellationToken: cancellationToken),
                 autoCommit: true);
 
         Assert.IsTrue(m_entryPoint.DemoDelayTaskProcessor.TryGet(taskId1, out var taskWaitHandler1));
@@ -416,9 +495,7 @@ public class TestsDemoDelayTask : BaseTestsDomainObjects
                             {
                                 Delay = scenarioDelay,
                             },
-                            null,
-                            false,
-                            cancellationToken),
+                            cancellationToken: cancellationToken),
                     autoCommit: true));
         Assert.AreEqual(CommonWorkflowExceptionErrorCodes.ServiceTemporarilyUnavailable, workflowException!.Code, workflowException.ToJsonText());
         Assert.AreEqual("Слишком много активных задач.", workflowException.Message, workflowException.ToJsonText());
@@ -452,9 +529,7 @@ public class TestsDemoDelayTask : BaseTestsDomainObjects
                         {
                             Delay = scenarioDelay,
                         },
-                        null,
-                        false,
-                        cancellationToken),
+                        cancellationToken: cancellationToken),
                 autoCommit: true);
 
         // Контроль внутреннего состояния.
@@ -493,9 +568,7 @@ public class TestsDemoDelayTask : BaseTestsDomainObjects
                         {
                             Delay = scenarioDelay,
                         },
-                        null,
-                        false,
-                        cancellationToken),
+                        cancellationToken: cancellationToken),
                 autoCommit: true);
         var taskId2 =
             await m_entryPoint.CreateAndUsingUnitOfWorkAsync(
@@ -505,9 +578,7 @@ public class TestsDemoDelayTask : BaseTestsDomainObjects
                         {
                             Delay = scenarioDelay,
                         },
-                        null,
-                        false,
-                        cancellationToken),
+                        cancellationToken: cancellationToken),
                 autoCommit: true);
         var taskId3 =
             await m_entryPoint.CreateAndUsingUnitOfWorkAsync(
@@ -517,9 +588,7 @@ public class TestsDemoDelayTask : BaseTestsDomainObjects
                         {
                             Delay = scenarioDelay,
                         },
-                        null,
-                        false,
-                        cancellationToken),
+                        cancellationToken: cancellationToken),
                 autoCommit: true);
 
         Assert.IsTrue(m_entryPoint.DemoDelayTaskProcessor.TryGet(taskId1, out var taskWaitHandler1));
@@ -543,9 +612,7 @@ public class TestsDemoDelayTask : BaseTestsDomainObjects
                             {
                                 Delay = scenarioDelay,
                             },
-                            null,
-                            false,
-                            cancellationToken),
+                            cancellationToken: cancellationToken),
                     autoCommit: true));
         Assert.AreEqual(CommonWorkflowExceptionErrorCodes.ServiceTemporarilyUnavailable, workflowException!.Code, workflowException.ToJsonText());
         Assert.AreEqual("Слишком много активных задач.", workflowException.Message, workflowException.ToJsonText());
@@ -561,7 +628,7 @@ public class TestsDemoDelayTask : BaseTestsDomainObjects
                             Delay = scenarioDelay,
                         },
                         null,
-                        true, // Игнорированием лимита.
+                        skipValidationMaxActiveTasks: true, // Игнорированием лимита.
                         cancellationToken),
                 autoCommit: true);
         Assert.IsTrue(m_entryPoint.DemoDelayTaskProcessor.TryGet(taskId4, out var taskWaitHandler4));
@@ -575,9 +642,7 @@ public class TestsDemoDelayTask : BaseTestsDomainObjects
                             {
                                 Delay = scenarioDelay,
                             },
-                            null,
-                            false,
-                            cancellationToken),
+                            cancellationToken: cancellationToken),
                     autoCommit: true));
         Assert.AreEqual(CommonWorkflowExceptionErrorCodes.ServiceTemporarilyUnavailable, workflowException!.Code, workflowException.ToJsonText());
         Assert.AreEqual("Слишком много активных задач.", workflowException.Message, workflowException.ToJsonText());

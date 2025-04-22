@@ -15,6 +15,8 @@ namespace Acme.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios
 [JsonConverter(typeof(JsonSubtypes), nameof(Type))]
 [JsonSubtypes.KnownSubType(typeof(DemoDelayTaskScenarioAsDelay), DemoDelayTaskScenariosType.Delay)]
 [JsonSubtypes.KnownSubType(typeof(DemoDelayTaskScenarioAsCycle), DemoDelayTaskScenariosType.Cycle)]
+[JsonSubtypes.KnownSubType(typeof(DemoDelayTaskScenarioAsPoisoned), DemoDelayTaskScenariosType.Poisoned)]
+[JsonSubtypes.KnownSubType(typeof(DemoDelayTaskScenarioAsEmpty), DemoDelayTaskScenariosType.Empty)]
 [Description("Сценарий задачи с отложенным запуском")]
 [SmartJsonDeserializerBase(typeof(DemoDelayTaskScenario))]
 public abstract class DemoDelayTaskScenario : ICloneable

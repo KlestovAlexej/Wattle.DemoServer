@@ -8,5 +8,5 @@ namespace Acme.DemoServer.Processing.Model.Interfaces;
 
 public interface IDemoDelayTaskProcessor : IAsyncTaskService
 {
-    ValueTask<long> AddAsync(DemoDelayTaskScenario scenario, DateTimeOffset? startDate, bool skipValidationMaxActiveTasks, CancellationToken cancellationToken = default);
+    ValueTask<long> AddAsync(DemoDelayTaskScenario scenario, DateTimeOffset? startDate = null, bool skipValidationMaxActiveTasks = false, CancellationToken cancellationToken = default);
 }

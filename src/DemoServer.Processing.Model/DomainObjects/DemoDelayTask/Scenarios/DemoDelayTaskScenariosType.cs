@@ -19,4 +19,16 @@ public enum DemoDelayTaskScenariosType
     /// </summary>
     [Description("Циклическое исполнение")]
     Cycle = 2,
+
+    /// <summary>
+    /// Отравленный сценарий - приводит к остановке обработке всех задач.
+    /// </summary>
+    [Description("Отравленный сценарий - приводит к остановке обработке всех задач")]
+    Poisoned = 3,
+
+    /// <summary>
+    /// Пустая задача.
+    /// </summary>
+    [Description("Пустая задача")]
+    Empty = 4,
 }

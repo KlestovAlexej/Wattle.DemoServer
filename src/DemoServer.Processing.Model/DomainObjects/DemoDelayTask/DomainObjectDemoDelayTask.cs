@@ -110,14 +110,16 @@ public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutableWithUpdat
                 m_entryPointContext.EntryPoint.JsonDeserializer,
                 string.Empty);
 
-        switch (scenario)
+        switch (scenario.Type)
         {
-            case DemoDelayTaskScenarioAsDelay:
+            case DemoDelayTaskScenariosType.Empty:
+            case DemoDelayTaskScenariosType.Poisoned:
+            case DemoDelayTaskScenariosType.Delay:
                 /* NONE */
 
                 break;
 
-            case DemoDelayTaskScenarioAsCycle:
+            case DemoDelayTaskScenariosType.Cycle:
             {
                 var scenarioStateAsCycle =
                     new DemoCycleTaskScenarioStateAsCycle
@@ -220,6 +222,30 @@ public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutableWithUpdat
             Console.WriteLine($"[{m_entryPointContext.TimeService.NowDateTime:O}] DemoDelayTask.Id:{Identity} ({scenarioAsDelay.Type}) - Начало ожидания '{scenarioAsDelay.Delay}' ...");
             await Task.Delay(scenarioAsDelay.Delay, cancellationToken).ConfigureAwait(false);
             Console.WriteLine($"[{m_entryPointContext.TimeService.NowDateTime:O}] DemoDelayTask.Id:{Identity} ({scenarioAsDelay.Type}) - Конец ожидания.");
+
+            m_available.SetValue(false);
+        }
+        else if (scenario is DemoDelayTaskScenarioAsEmpty scenarioAsEmpty)
+        {
+            if (count > 1)
+            {
+                throw new InternalException("Что-то сломалось, задача исполняется несколько раз.");
+            }
+
+            Console.WriteLine($"[{m_entryPointContext.TimeService.NowDateTime:O}] DemoDelayTask.Id:{Identity} ({scenarioAsEmpty.Type}) - Исполнена.");
+
+            m_available.SetValue(false);
+        }
+        else if (scenario is DemoDelayTaskScenarioAsPoisoned scenarioAsPoisoned)
+        {
+            if (count > 1)
+            {
+                throw new InternalException("Что-то сломалось, задача исполняется несколько раз.");
+            }
+
+            Console.WriteLine($"[{m_entryPointContext.TimeService.NowDateTime:O}] DemoDelayTask.Id:{Identity} ({scenarioAsPoisoned.Type}) - Начало исполнения 'IsSuspended: {m_entryPointContext.EntryPoint.DemoDelayTaskProcessor.IsSuspended}' ...");
+            m_entryPointContext.EntryPoint.DemoDelayTaskProcessor.Suspend();
+            Console.WriteLine($"[{m_entryPointContext.TimeService.NowDateTime:O}] DemoDelayTask.Id:{Identity} ({scenarioAsPoisoned.Type}) - Конец исполнения 'IsSuspended: {m_entryPointContext.EntryPoint.DemoDelayTaskProcessor.IsSuspended}'.");
 
             m_available.SetValue(false);
         }
