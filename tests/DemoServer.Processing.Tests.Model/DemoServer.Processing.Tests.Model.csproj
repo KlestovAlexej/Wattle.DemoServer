@@ -11,7 +11,7 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />
 		<PackageReference Include="NUnit3TestAdapter" Version="5.0.0" />
-		<PackageReference Include="Acme.Wattle.Testing.DomainObjects" Version="1.0.0.5210" />
+		<PackageReference Include="Acme.Wattle.Testing.DomainObjects" Version="1.0.0.5269" />
 		<PackageReference Include="System.Linq.Async" Version="6.0.1" />
 	</ItemGroup>
 

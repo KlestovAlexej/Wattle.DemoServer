@@ -19,9 +19,9 @@
 	<ItemGroup>
 		<PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" Version="8.1.0" />
 		<PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
-		<PackageReference Include="Acme.Wattle.DomainObjects" Version="1.0.0.5210" />
-		<PackageReference Include="Acme.Wattle.QueueProcessors" Version="1.0.0.5210" />
-		<PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="8.0.2" />
+		<PackageReference Include="Acme.Wattle.DomainObjects" Version="1.0.0.5269" />
+		<PackageReference Include="Acme.Wattle.QueueProcessors" Version="1.0.0.5269" />
+		<PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="8.0.3" />
 		<PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="8.1.1" />
 	</ItemGroup>
 
