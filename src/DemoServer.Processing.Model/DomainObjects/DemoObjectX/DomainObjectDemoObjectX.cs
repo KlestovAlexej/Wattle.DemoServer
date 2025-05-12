@@ -239,7 +239,7 @@ public sealed class DomainObjectDemoObjectX : BaseDomainObjectMutableWithUpdateL
     public void PostCreate()
     {
         var unitOfWork = m_entryPointContext.EntryPoint.CurrentUnitOfWork;
-        var domainBehaviour = unitOfWork.CreateDomainBehaviourWithСonfirmation();
+        var domainBehaviour = unitOfWork.CreateDomainBehaviourWithConfirmation();
         unitOfWork.AddBehaviour(domainBehaviour);
 
         var identity = Identity;

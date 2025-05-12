@@ -219,11 +219,11 @@ public class TestsUnitOfWork : BaseTestsDomainObjects
             {
                 var internalException =
                     Assert.Throws<InternalException>(
-                        () => m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithСonfirmation());
+                        () => m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithConfirmation());
                 Assert.AreEqual("Стратегия проверки успешности завершения IUnitOfWork не определена.", internalException!.Message, internalException.Message);
 
                 var domainBehaviour =
-                    m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithСonfirmation(false)
+                    m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithConfirmation(false)
                         .SetSuccessful(
                             () => commitState1.IsSuccessful = true,
                             () =>
@@ -247,7 +247,7 @@ public class TestsUnitOfWork : BaseTestsDomainObjects
 
             {
                 var domainBehaviour =
-                    m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithСonfirmation()
+                    m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithConfirmation()
                         .SetSuccessful(
                             () => commitState2.IsSuccessful = true,
                             () =>
@@ -277,7 +277,7 @@ public class TestsUnitOfWork : BaseTestsDomainObjects
 
             {
                 var domainBehaviour =
-                    m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithСonfirmation<IMapperDemoObject>(-1)
+                    m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithConfirmation<IMapperDemoObject>(-1)
                         .SetSuccessful(
                             () => commitState3.IsSuccessful = true,
                             () =>
@@ -302,7 +302,7 @@ public class TestsUnitOfWork : BaseTestsDomainObjects
 
             {
                 var domainBehaviour =
-                    m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithСonfirmation<IMapperDemoObjectX>(-2)
+                    m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithConfirmation<IMapperDemoObjectX>(-2)
                         .SetSuccessful(
                             () => commitState4.IsSuccessful = true,
                             () =>
@@ -366,7 +366,7 @@ public class TestsUnitOfWork : BaseTestsDomainObjects
 
             {
                 var domainBehaviour =
-                    m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithСonfirmation<IMapperDemoObject>(-1)
+                    m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithConfirmation<IMapperDemoObject>(-1)
                         .SetSuccessful(
                             () => commitState1.IsSuccessful = true,
                             () =>
@@ -388,7 +388,7 @@ public class TestsUnitOfWork : BaseTestsDomainObjects
 
             {
                 var domainBehaviour =
-                    m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithСonfirmation()
+                    m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithConfirmation()
                         .SetSuccessful(
                             () => commitState2.IsSuccessful = true,
                             () =>
@@ -410,7 +410,7 @@ public class TestsUnitOfWork : BaseTestsDomainObjects
 
             {
                 var domainBehaviour =
-                    m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithСonfirmation<IMapperDemoObjectX>(-2)
+                    m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithConfirmation<IMapperDemoObjectX>(-2)
                         .SetSuccessful(
                             () => commitState3.IsSuccessful = true,
                             () =>
@@ -466,11 +466,11 @@ public class TestsUnitOfWork : BaseTestsDomainObjects
             {
                 var internalException =
                     Assert.Throws<InternalException>(
-                        () => m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithСonfirmation());
+                        () => m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithConfirmation());
                 Assert.AreEqual("Стратегия проверки успешности завершения IUnitOfWork не определена.", internalException!.Message, internalException.Message);
 
                 var domainBehaviour =
-                    m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithСonfirmation(false)
+                    m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithConfirmation(false)
                         .SetSuccessful(
                             () => commitState1.IsSuccessful = true,
                             () =>
@@ -494,7 +494,7 @@ public class TestsUnitOfWork : BaseTestsDomainObjects
 
             {
                 var domainBehaviour =
-                    m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithСonfirmation()
+                    m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithConfirmation()
                         .SetSuccessful(
                             () => commitState2.IsSuccessful = true,
                             () =>
@@ -524,7 +524,7 @@ public class TestsUnitOfWork : BaseTestsDomainObjects
 
             {
                 var domainBehaviour =
-                    m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithСonfirmation<IMapperDemoObject>(-1)
+                    m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithConfirmation<IMapperDemoObject>(-1)
                         .SetSuccessful(
                             () => commitState3.IsSuccessful = true,
                             () =>
@@ -549,7 +549,7 @@ public class TestsUnitOfWork : BaseTestsDomainObjects
 
             {
                 var domainBehaviour =
-                    m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithСonfirmation<IMapperDemoObjectX>(-2)
+                    m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithConfirmation<IMapperDemoObjectX>(-2)
                         .SetSuccessful(
                             () => commitState4.IsSuccessful = true,
                             () =>
@@ -604,7 +604,7 @@ public class TestsUnitOfWork : BaseTestsDomainObjects
         using (var unitOfWork = m_entryPoint.CreateUnitOfWork())
         {
             var domainBehaviour =
-                m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithСonfirmation(false)
+                m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithConfirmation(false)
                     .SetSuccessful(
                         () => commitState.IsSuccessful = true,
                         () =>
@@ -650,7 +650,7 @@ public class TestsUnitOfWork : BaseTestsDomainObjects
         using (var unitOfWork = m_entryPoint.CreateUnitOfWork())
         {
             var domainBehaviour =
-                m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithСonfirmation(false)
+                m_entryPoint.CurrentUnitOfWork.CreateDomainBehaviourWithConfirmation(false)
                     .SetSuccessful(
                         () => commitState.IsSuccessful = true,
                         () =>

@@ -16,9 +16,9 @@ public sealed class UnitOfWorkLocksHub : BaseUnitOfWorkLocksHub<UnitOfWorkLocksH
     {
     }
 
-    protected override IDomainBehaviourWithСonfirmation CreateDomainBehaviourWithСonfirmation()
+    protected override IDomainBehaviourWithConfirmation CreateDomainBehaviourWithConfirmation()
     {
-        var result = ((UnitOfWork)m_entryPointContext.EntryPoint.UnitOfWorkProvider.Instance).CreateDomainBehaviourWithСonfirmation(false);
+        var result = ((UnitOfWork)m_entryPointContext.EntryPoint.UnitOfWorkProvider.Instance).CreateDomainBehaviourWithConfirmation(false);
 
         return result;
     }
