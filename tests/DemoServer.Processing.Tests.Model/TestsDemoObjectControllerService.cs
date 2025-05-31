@@ -31,11 +31,11 @@ public class TestsDemoObjectControllerService : BaseTestsDomainObjects
 
         if (false == m_skipCountInternalException)
         {
-            Assert.AreEqual(0, snapShot.CountInternalException, GetDbLogs());
+            Assert.AreEqual(0, snapShot.CountInternalException, GetDbLogs(m_mappers));
         }
 
-        Assert.AreEqual(0, snapShot.CountMapperException, GetDbLogs());
-        Assert.AreEqual(0, snapShot.CountUnexpectedException, GetDbLogs());
+        Assert.AreEqual(0, snapShot.CountMapperException, GetDbLogs(m_mappers));
+        Assert.AreEqual(0, snapShot.CountUnexpectedException, GetDbLogs(m_mappers));
     }
 
     [Test]

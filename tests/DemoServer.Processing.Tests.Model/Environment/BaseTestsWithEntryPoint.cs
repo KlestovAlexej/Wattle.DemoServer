@@ -193,15 +193,15 @@ public abstract class BaseTestsWithEntryPoint : BaseDbTests
         }
     }
 
-    protected string GetDbLogs(int maxEntries = 100)
+    public static string GetDbLogs(ICustomMappers mappers, int maxEntries = 100)
     {
         var countEntries = 0;
         {
             var result = new StringBuilder();
             result.AppendLine();
             result.AppendLine("-- { SystemLog -------------------------");
-            using var session = m_mappers.OpenSession();
-            var mapper = m_mappers.GetMapper<IMapperSystemLog>();
+            using var session = mappers.OpenSession();
+            var mapper = mappers.GetMapper<IMapperSystemLog>();
             foreach (var dto in mapper.GetEnumeratorRaw(session).OrderByDescending(i => i.Id))
             {
                 result.AppendLine(dto.ToJsonText(true));
@@ -226,8 +226,8 @@ public abstract class BaseTestsWithEntryPoint : BaseDbTests
             var result = new StringBuilder();
             result.AppendLine();
             result.AppendLine("-- { SystemLog -------------------------");
-            using var session = m_mappers.OpenSession();
-            var mapper = m_mappers.GetMapper<IMapperSystemLog>();
+            using var session = mappers.OpenSession();
+            var mapper = mappers.GetMapper<IMapperSystemLog>();
             foreach (var dto in mapper.GetEnumeratorRaw(session).OrderByDescending(i => i.Id))
             {
                 result.AppendLine(dto.ToJsonText(true));
@@ -269,8 +269,8 @@ public abstract class BaseTestsWithEntryPoint : BaseDbTests
         {
             m_entryPoint.Start();
 
-            WaitHelpers.TimeOut(() => m_entryPoint.IsReady, WaitTimeout, () => GetDbLogs());
-            WaitHelpers.TimeOut(() => m_entryPoint.GlobalIsReady, WaitTimeout, () => GetDbLogs());
+            WaitHelpers.TimeOut(() => m_entryPoint.IsReady, WaitTimeout, () => GetDbLogs(m_mappers));
+            WaitHelpers.TimeOut(() => m_entryPoint.GlobalIsReady, WaitTimeout, () => GetDbLogs(m_mappers));
         }
     }
 

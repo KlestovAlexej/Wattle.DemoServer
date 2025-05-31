@@ -29,6 +29,11 @@ public class TestsAppHost : BaseSlimTests
             using var client = new ProcessingClient(httpClient, true);
             var description = await client.GetDescriptionAsync();
             Assert.IsNotNull(description);
+
+            var snapShot = appHost.GetExceptionPolicyInfrastructureMonitorValues();
+            Assert.AreEqual(0, snapShot.CountInternalException, appHost.GetDbLogs());
+            Assert.AreEqual(0, snapShot.CountMapperException, appHost.GetDbLogs());
+            Assert.AreEqual(0, snapShot.CountUnexpectedException, appHost.GetDbLogs());
         }
         catch (Exception exception)
         {

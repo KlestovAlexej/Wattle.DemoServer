@@ -46,12 +46,25 @@ public class TestsApiServer : BaseSlimTests
     [TearDown]
     public void TearDown()
     {
-        // ReSharper disable once ConditionalAccessQualifierIsNonNullableAccordingToAPIContract
-        m_appHost?.Stop();
-        CommonWattleExtensions.SilentDisposeAndFree(ref m_appHost!);
+        try
+        {
+            if (m_appHost != null!)
+            {
+                var snapShot = m_appHost.GetExceptionPolicyInfrastructureMonitorValues();
+                Assert.AreEqual(0, snapShot.CountInternalException, m_appHost.GetDbLogs());
+                Assert.AreEqual(0, snapShot.CountMapperException, m_appHost.GetDbLogs());
+                Assert.AreEqual(0, snapShot.CountUnexpectedException, m_appHost.GetDbLogs());
+            }
+        }
+        finally
+        {
+            // ReSharper disable once ConditionalAccessQualifierIsNonNullableAccordingToAPIContract
+            m_appHost?.Stop();
+            CommonWattleExtensions.SilentDisposeAndFree(ref m_appHost!);
 
-        m_httpClient.SilentDispose();
-        CommonWattleExtensions.SilentDisposeAndFree(ref m_httpClient!);
+            m_httpClient.SilentDispose();
+            CommonWattleExtensions.SilentDisposeAndFree(ref m_httpClient!);
+        }
     }
 
     [Test]

@@ -164,9 +164,5 @@ public partial class ProcessingDbContext : DbContext
         modelBuilder.HasSequence("sequence_demoobjectx");
         modelBuilder.HasSequence("sequence_systemlog");
         modelBuilder.HasSequence("sequence_tablepartition");
-
-        OnModelCreatingPartial(modelBuilder);
     }
-
-    partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }

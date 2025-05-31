@@ -14,7 +14,7 @@ public class TestsEntryPoint : BaseTestsWithEntryPoint
     {
         m_entryPoint.Start();
 
-        WaitHelpers.TimeOut(() => m_entryPoint.IsReady, WaitTimeout, () => GetDbLogs());
-        WaitHelpers.TimeOut(() => m_entryPoint.GlobalIsReady, WaitTimeout, () => GetDbLogs());
+        WaitHelpers.TimeOut(() => m_entryPoint.IsReady, WaitTimeout, () => GetDbLogs(m_mappers));
+        WaitHelpers.TimeOut(() => m_entryPoint.GlobalIsReady, WaitTimeout, () => GetDbLogs(m_mappers));
     }
 }

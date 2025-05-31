@@ -1,17 +1,19 @@
-﻿using Newtonsoft.Json;
-using NUnit.Framework;
-using Acme.DemoServer.Common;
-using Acme.DemoServer.Processing.Application;
+﻿using Acme.DemoServer.Processing.Application;
 using Acme.DemoServer.Processing.Application.Startups;
 using Acme.DemoServer.Processing.DataAccess.PostgreSql;
 using Acme.DemoServer.Processing.Model.Implements.SystemSettings;
+using Acme.DemoServer.Processing.Tests.Model.Environment;
 using Acme.DemoServer.Testing;
 using Acme.Wattle.Common.Interfaces;
+using Acme.Wattle.DomainObjects.Common;
 using Acme.Wattle.Infrastructures.Rest.Clients.Monitors;
 using Acme.Wattle.Json.Extensions;
+using Acme.Wattle.Mappers;
 using Acme.Wattle.Testing;
 using Acme.Wattle.Testing.Databases.PostgreSql;
 using Acme.Wattle.Utils;
+using Newtonsoft.Json;
+using NUnit.Framework;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -19,6 +21,9 @@ using System.Linq;
 using System.Runtime.ExceptionServices;
 using System.Runtime.InteropServices;
 using System.Text;
+using Acme.DemoServer.Processing.Generated.PostgreSql.Implements;
+using BaseDbTests = Acme.DemoServer.Testing.BaseDbTests;
+using Constants = Acme.DemoServer.Common.Constants;
 using Path = System.IO.Path;
 
 #pragma warning disable SYSLIB1054
@@ -43,6 +48,7 @@ public class AppHost : IDisposable
     private readonly int m_portApiMonitoring;
 
     public readonly Uri UrlApiProcessing;
+    public readonly Mappers Mappers;
 
     public AppHost(
         string? configuration = null,
@@ -79,6 +85,33 @@ public class AppHost : IDisposable
         src\DemoServer.Testing\WindowsRegisterTestingEnvirioment.reg
         */
         m_dbConnectionString = PostgreSqlDbHelper.GetDatabaseConnectionString(m_dbName, userCredentials: BaseDbTests.PostgreSqlUserCredentials, serverAdress: BaseDbTests.PostgreSqlServerAdress);
+
+        Mappers =
+            new Mappers(
+                new MappersExceptionPolicy(),
+                m_dbConnectionString,
+                new TimeService(),
+                Guid.NewGuid(),
+                "Mappers",
+                "Mappers");
+    }
+
+    public string GetDbLogs()
+    {
+        return BaseTestsWithEntryPoint.GetDbLogs(Mappers);
+    }
+
+    public (long CountMapperException, long CountInternalException, long CountWorkflowException, long CountUnexpectedException) GetExceptionPolicyInfrastructureMonitorValues()
+    {
+        using var monitorsClient = new InfrastructureMonitorClient(port: m_portApiMonitoring);
+
+        var snapshot = monitorsClient.GetInfrastructureMonitorSnapshot(WellknownInfrastructureMonitors.ExceptionPolicy);
+        var countMapperException = (long)snapshot.Values.Single(o => o.Id == WellknownSnapShotInfrastructureMonitorValues.BaseExceptionPolicy.CountMapperException).Data.Value;
+        var countInternalException = (long)snapshot.Values.Single(o => o.Id == WellknownSnapShotInfrastructureMonitorValues.BaseExceptionPolicy.CountInternalException).Data.Value;
+        var countWorkflowException = (long)snapshot.Values.Single(o => o.Id == WellknownSnapShotInfrastructureMonitorValues.BaseExceptionPolicy.CountWorkflowException).Data.Value;
+        var countUnexpectedException = (long)snapshot.Values.Single(o => o.Id == WellknownSnapShotInfrastructureMonitorValues.BaseExceptionPolicy.CountUnexpectedException).Data.Value;
+
+        return (countMapperException, countInternalException, countWorkflowException, countUnexpectedException);
     }
 
     public void Start(
@@ -269,6 +302,8 @@ public class AppHost : IDisposable
 
     private void FreeAll()
     {
+        Mappers.SilentDispose();
+
         if (false == m_freeAll)
         {
             return;
