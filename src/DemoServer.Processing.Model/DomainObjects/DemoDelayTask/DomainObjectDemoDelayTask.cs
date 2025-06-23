@@ -198,6 +198,10 @@ public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutableWithUpdat
             return (false, null);
         }
 
+        // Явная очистка памяти. Это не обязательно т.к. данные по времени будут удаленны из кэша.
+        m_entryPointContext.EntryPoint.JsonDeserializer.Release<DemoDelayTaskScenario>(Scenario);
+        m_scenarioState.ReleaseSmartDeserializer();
+
         return (true, null);
     }
 

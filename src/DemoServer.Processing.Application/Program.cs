@@ -324,6 +324,16 @@ public class Program
                             {
                                 Enabled = true,
                             },
+                        Sampler = 
+                            new OpenTelemetryTracingSamplerSettings
+                            {
+                                Sampler = OpenTelemetryTracingSamplers.TraceIdRatioBased,
+                                TraceIdRatioBased = 
+                                    new OpenTelemetryTracingSamplerAsTraceIdRatioBasedSettings
+                                    {
+                                        Probability = 0.3, // 30% Спанов уходят на сайт.
+                                    }
+                            }
                     },
                 Metics =
                     new OpenTelemetryMeticsSettings
