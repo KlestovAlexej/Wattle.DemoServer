@@ -1,20 +1,21 @@
-﻿using System;
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
-using NUnit.Framework;
-using Acme.DemoServer.Processing.Tests.Model.Environment;
-using Acme.Wattle.DomainObjects.Interfaces;
-using Acme.Wattle.Testing;
-using System.Threading.Tasks;
-using Acme.DemoServer.Processing.Generated.Interface;
+﻿using Acme.DemoServer.Processing.Generated.Interface;
+using Acme.DemoServer.Processing.Model.DomainObjects.DemoDelayTask;
 using Acme.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios;
-using Acme.Wattle.Common.Exceptions;
-using Acme.Wattle.Json.Extensions;
-using Acme.Wattle.Utils;
 using Acme.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.ScenarioStates;
 using Acme.DemoServer.Processing.Model.Implements;
 using Acme.DemoServer.Processing.Model.Interfaces;
+using Acme.DemoServer.Processing.Tests.Model.Environment;
+using Acme.Wattle.Common.Exceptions;
+using Acme.Wattle.DomainObjects.Interfaces;
+using Acme.Wattle.Json.Extensions;
+using Acme.Wattle.Testing;
+using Acme.Wattle.Utils;
+using NUnit.Framework;
+using System;
+using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Acme.DemoServer.Processing.Tests.Model;
 
@@ -391,6 +392,51 @@ public class TestsDemoDelayTask : BaseTestsDomainObjects
             },
             autoCommit: true);
     }
+
+#if DEBUG
+    [Test]
+    [Timeout(TestTimeout.Unit)]
+    [Category(TestCategory.Unit)]
+    [Description("Перезагрузка сервера.")]
+    public async Task Test_Restart()
+    {
+        // Задача сохраняется в БД но не попадает в обработку.
+        ((DemoDelayTaskProcessor)m_entryPoint.DemoDelayTaskProcessor).RunTasks = false;
+
+        var scenarioDelay = TimeSpan.FromSeconds(30);
+        var taskId =
+            await m_entryPoint.CreateAndUsingUnitOfWorkAsync(
+                async (_, cancellationToken) =>
+                    await m_entryPoint.DemoDelayTaskProcessor.AddAsync(
+                        new DemoDelayTaskScenarioAsDelay
+                        {
+                            Delay = scenarioDelay,
+                        },
+                        m_entryPoint.TimeService.Now,
+                        false,
+                        cancellationToken),
+                autoCommit: true);
+
+        Assert.IsFalse(m_entryPoint.DemoDelayTaskProcessor.Exists(taskId));
+
+        var snapShot = m_entryPoint.DemoDelayTaskProcessor.InfrastructureMonitor.GetSnapShot();
+        Assert.AreEqual(0, snapShot.CountActive);
+        Assert.AreEqual(0, snapShot.CountLoad);
+
+        // Пересоздание сервера.
+        Console.WriteLine($"[{DateTime.Now}] Пересоздание сервера...");
+        ReCreateEntryPoint();
+        Console.WriteLine($"[{DateTime.Now}] Пересоздание сервера выполнено.");
+
+        snapShot = m_entryPoint.DemoDelayTaskProcessor.InfrastructureMonitor.GetSnapShot();
+        Assert.AreEqual(1, snapShot.CountActive);
+        Assert.AreEqual(1, snapShot.CountLoad);
+
+        Assert.IsTrue(m_entryPoint.DemoDelayTaskProcessor.Exists(taskId));
+        Assert.IsTrue(m_entryPoint.DemoDelayTaskProcessor.TryGet(taskId, out var taskWaitHandler));
+        Assert.IsTrue(await taskWaitHandler!.WaitAsync(2 * scenarioDelay));
+    }
+#endif
 
     [Test]
     [Timeout(TestTimeout.Unit)]

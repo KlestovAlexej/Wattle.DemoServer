@@ -22,10 +22,10 @@
 		<PackageReference Include="Serilog.AspNetCore" Version="9.0.0" />
 		<PackageReference Include="Serilog.Enrichers.Thread" Version="4.0.0" />
 		<PackageReference Include="Serilog.Sinks.Logz.Io" Version="7.2.0" />
-		<PackageReference Include="Acme.Wattle.Infrastructures.Rest.Controllers" Version="1.0.0.5714" />
-		<PackageReference Include="Acme.Wattle.OpenTelemetry" Version="1.0.0.5714" />
-		<PackageReference Include="Acme.Wattle.Swashbuckle.AspNetCore" Version="1.0.0.5714" />
-		<PackageReference Include="Acme.Wattle.Testing" Version="1.0.0.5714" />
+		<PackageReference Include="Acme.Wattle.Infrastructures.Rest.Controllers" Version="1.0.0.5717" />
+		<PackageReference Include="Acme.Wattle.OpenTelemetry" Version="1.0.0.5717" />
+		<PackageReference Include="Acme.Wattle.Swashbuckle.AspNetCore" Version="1.0.0.5717" />
+		<PackageReference Include="Acme.Wattle.Testing" Version="1.0.0.5717" />
 		<PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="9.0.0" />
 		<PackageReference Include="Swashbuckle.AspNetCore.ReDoc" Version="9.0.1" />
 		<PackageReference Include="System.Private.Uri" Version="4.3.2" />

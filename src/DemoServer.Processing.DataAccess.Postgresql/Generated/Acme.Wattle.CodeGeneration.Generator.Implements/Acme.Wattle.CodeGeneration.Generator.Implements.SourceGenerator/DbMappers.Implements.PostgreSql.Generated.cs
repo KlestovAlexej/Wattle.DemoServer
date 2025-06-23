@@ -1873,6 +1873,18 @@ VALUES
         }
 
         /// <summary>
+        /// Получить итератор всех записей выбранных с учётом фильтра.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+        /// <param name="cancellationToken">Токен отмены.</param>
+        /// <returns>Возвращает итератор всех выбраных записей.</returns>
+        IAsyncEnumerable<TMapperDto> IAbstractMapper.GetEnumeratorAsync<TMapperDto>(IMappersSession session, IMapperSelectFilter? selectFilter, CancellationToken cancellationToken)
+        {
+            return System.Linq.AsyncEnumerable.Cast<TMapperDto>(GetEnumeratorAsync(session, selectFilter, cancellationToken));
+        }
+
+        /// <summary>
         /// Обработка исключения мапппера в методе <see cref="GetEnumerator"/>.
         /// </summary>
         /// <param name="session">Сессия БД.</param>
@@ -3939,6 +3951,18 @@ VALUES
         IEnumerable<TMapperDto> IAbstractMapper.GetEnumerator<TMapperDto>(IMappersSession session, IMapperSelectFilter? selectFilter)
         {
             return GetEnumerator(session, selectFilter).Cast<TMapperDto>();
+        }
+
+        /// <summary>
+        /// Получить итератор всех записей выбранных с учётом фильтра.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+        /// <param name="cancellationToken">Токен отмены.</param>
+        /// <returns>Возвращает итератор всех выбраных записей.</returns>
+        IAsyncEnumerable<TMapperDto> IAbstractMapper.GetEnumeratorAsync<TMapperDto>(IMappersSession session, IMapperSelectFilter? selectFilter, CancellationToken cancellationToken)
+        {
+            return System.Linq.AsyncEnumerable.Cast<TMapperDto>(GetEnumeratorAsync(session, selectFilter, cancellationToken));
         }
 
         /// <summary>
@@ -6211,6 +6235,18 @@ VALUES
         IEnumerable<TMapperDto> IAbstractMapper.GetEnumerator<TMapperDto>(IMappersSession session, IMapperSelectFilter? selectFilter)
         {
             return GetEnumerator(session, selectFilter).Cast<TMapperDto>();
+        }
+
+        /// <summary>
+        /// Получить итератор всех записей выбранных с учётом фильтра.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+        /// <param name="cancellationToken">Токен отмены.</param>
+        /// <returns>Возвращает итератор всех выбраных записей.</returns>
+        IAsyncEnumerable<TMapperDto> IAbstractMapper.GetEnumeratorAsync<TMapperDto>(IMappersSession session, IMapperSelectFilter? selectFilter, CancellationToken cancellationToken)
+        {
+            return System.Linq.AsyncEnumerable.Cast<TMapperDto>(GetEnumeratorAsync(session, selectFilter, cancellationToken));
         }
 
         /// <summary>
@@ -8899,6 +8935,18 @@ VALUES
         IEnumerable<TMapperDto> IAbstractMapper.GetEnumerator<TMapperDto>(IMappersSession session, IMapperSelectFilter? selectFilter)
         {
             return GetEnumerator(session, selectFilter).Cast<TMapperDto>();
+        }
+
+        /// <summary>
+        /// Получить итератор всех записей выбранных с учётом фильтра.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+        /// <param name="cancellationToken">Токен отмены.</param>
+        /// <returns>Возвращает итератор всех выбраных записей.</returns>
+        IAsyncEnumerable<TMapperDto> IAbstractMapper.GetEnumeratorAsync<TMapperDto>(IMappersSession session, IMapperSelectFilter? selectFilter, CancellationToken cancellationToken)
+        {
+            return System.Linq.AsyncEnumerable.Cast<TMapperDto>(GetEnumeratorAsync(session, selectFilter, cancellationToken));
         }
 
         /// <summary>
@@ -12139,6 +12187,18 @@ VALUES
         }
 
         /// <summary>
+        /// Получить итератор всех записей выбранных с учётом фильтра.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+        /// <param name="cancellationToken">Токен отмены.</param>
+        /// <returns>Возвращает итератор всех выбраных записей.</returns>
+        IAsyncEnumerable<TMapperDto> IAbstractMapper.GetEnumeratorAsync<TMapperDto>(IMappersSession session, IMapperSelectFilter? selectFilter, CancellationToken cancellationToken)
+        {
+            return System.Linq.AsyncEnumerable.Cast<TMapperDto>(GetEnumeratorAsync(session, selectFilter, cancellationToken));
+        }
+
+        /// <summary>
         /// Обработка исключения мапппера в методе <see cref="GetEnumerator"/>.
         /// </summary>
         /// <param name="session">Сессия БД.</param>
@@ -15197,6 +15257,19 @@ VALUES
         IEnumerable<TMapperDto> IAbstractMapper.GetEnumerator<TMapperDto>(IMappersSession session, IMapperSelectFilter? selectFilter)
         {
             return GetEnumerator(session, selectFilter).Cast<TMapperDto>();
+        }
+
+        /// <summary>
+        /// Получить итератор всех записей выбранных с учётом фильтра.
+        /// ВАЖНО : Выбор не учитывает скрытые записи.
+        /// </summary>
+        /// <param name="session">Сессия БД.</param>
+        /// <param name="selectFilter">Фильтр выбора записий. Если указан <see langword="null" /> то выбираются все записи.</param>
+        /// <param name="cancellationToken">Токен отмены.</param>
+        /// <returns>Возвращает итератор всех выбраных записей кроме скрытых записей.</returns>
+        IAsyncEnumerable<TMapperDto> IAbstractMapper.GetEnumeratorAsync<TMapperDto>(IMappersSession session, IMapperSelectFilter? selectFilter, CancellationToken cancellationToken)
+        {
+            return System.Linq.AsyncEnumerable.Cast<TMapperDto>(GetEnumeratorAsync(session, selectFilter, cancellationToken));
         }
 
         /// <summary>

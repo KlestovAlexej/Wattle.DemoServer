@@ -11,6 +11,10 @@ namespace Acme.DemoServer.Processing.Model.DomainObjects.DemoDelayTask;
 
 public class DemoDelayTaskProcessor : BaseAsyncTaskServiceDefault<UnitOfWork, ICustomEntryPoint, WorkflowExceptionPolicy, DomainObjectDemoDelayTask.Template, IDomainObjectDemoDelayTask, DemoDelayTaskDtoActual>, IDemoDelayTaskProcessor
 {
+#if DEBUG
+    public bool RunTasks = true;
+#endif
+
     // ReSharper disable once ConvertToPrimaryConstructor
     public DemoDelayTaskProcessor(ICustomEntryPoint customEntryPoint)
         : base(
@@ -21,6 +25,18 @@ public class DemoDelayTaskProcessor : BaseAsyncTaskServiceDefault<UnitOfWork, IC
             hub: customEntryPoint.UnitOfWorkLocks)
     {
     }
+
+#if DEBUG
+    protected override void DoTaskRegisterAndRun(AsyncTaskProcessor asyncTaskProcessor, (long TaskId, DateTimeOffset? RunDateTime) task)
+    {
+        if (false == RunTasks)
+        {
+            return;
+        }
+
+        base.DoTaskRegisterAndRun(asyncTaskProcessor, task);
+    }
+#endif
 
     public async ValueTask<long> AddAsync(
         DemoDelayTaskScenario scenario,
