@@ -21,7 +21,7 @@ IF %ERRORLEVEL% NEQ 0 EXIT 1
 rmdir src\DemoServer.Processing.Application\obj /s /q
 IF %ERRORLEVEL% NEQ 0 EXIT 1
 
-dotnet build Tools\MSBuild\Publish.csproj "/p:BuildProfile=/p:DefineConstants=BUILD_TEST" "/p:DefineConstants=BUILD_TEST"
+dotnet build Tools\MSBuild\Publish.csproj "/p:BuildProfile=/p:CustomDefineConstants=BUILD_TEST" "/p:CustomDefineConstants=BUILD_TEST"
 IF %ERRORLEVEL% NEQ 0 EXIT 1
 
 xcopy src\DemoServer.Processing.Application\WindowsRegister.txt Deploy\Test\Processing\
@@ -44,7 +44,7 @@ IF %ERRORLEVEL% NEQ 0 EXIT 1
 rmdir src\DemoServer.Processing.Application\obj /s /q
 IF %ERRORLEVEL% NEQ 0 EXIT 1
 
-dotnet build Tools\MSBuild\Publish.csproj "/p:BuildProfile=/p:DefineConstants=BUILD_PROD" "/p:DefineConstants=BUILD_PROD"
+dotnet build Tools\MSBuild\Publish.csproj "/p:BuildProfile=/p:CustomDefineConstants=BUILD_PROD" "/p:CustomDefineConstants=BUILD_PROD"
 IF %ERRORLEVEL% NEQ 0 EXIT 1
 
 rem Публикация пакетов nuget
