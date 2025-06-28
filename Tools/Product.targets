@@ -16,14 +16,7 @@
                 <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
                 <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
 		<NoWarn>$(NoWarn);CS1591</NoWarn>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)'=='Debug'">
-	  <DefineConstants>$(DefineConstants);$(CustomDefineConstants)</DefineConstants>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)'=='Release'">
-	  <DefineConstants>$(DefineConstants);$(CustomDefineConstants)</DefineConstants>
+	        <DefineConstants>$(DefineConstants);$(CustomDefineConstants)</DefineConstants>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(DefineConstants.Contains(BUILD_PROD))'">
