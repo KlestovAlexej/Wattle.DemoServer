@@ -16,8 +16,8 @@
 
 	<ItemGroup>
 		<PackageReference Include="JsonSubTypes" Version="2.0.1" />
-		<PackageReference Include="Acme.Wattle.Json" Version="1.0.0.5717" />
-		<PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="9.0.1" />
+		<PackageReference Include="Acme.Wattle.Json" Version="1.0.0.5762" />
+		<PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="9.0.3" />
 	</ItemGroup>
 
 </Project>
