@@ -66,6 +66,7 @@ public static class WellknownDomainObjectFields
     [SchemaMapper(MapperId = WellknownDomainObjects.Text.SystemLog)]
     [SchemaMapperIdentityFieldPostgreSql(PartitionsLevel = Constants.MappersComplexIdentityLevel, PartitionsExpandInterface = true)]
     [SchemaMapperIdentityField(DbSequenceName = "Sequence_%ObjectName%")]
+    [UseDefaultCreatePartitionOptions]
     public static class SystemLog
     {
         /// <summary>
