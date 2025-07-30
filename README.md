@@ -50,6 +50,7 @@
 ---
 ### Доменный объект DemoDelayTask - хранимая в БД задача для фонового исполнения
 
+- [Пример](https://github.com/KlestovAlexej/Wattle.DemoServer/blob/52e77134b9ef8a883de77072f0b738968d052035/src/DemoServer.Processing.Model/DomainObjects/DemoDelayTask/DomainObjectDemoDelayTask.cs#L114) использования [MessagePack](https://msgpack.org/index.html) и [Json.NET](https://www.newtonsoft.com/json) для хранения моделей в БД в бинарном виде и JSON.
 - [На пример](tests/DemoServer.Processing.Tests.Model/TestsDemoDelayTask.cs) доменного объекта [DemoDelayTask](src/DemoServer.Processing.Model/DomainObjects/DemoDelayTask/DomainObjectDemoDelayTask.cs) показана реализаци хранимой в БД задачи для фонового исполнения
 	- Показан пример полиморфного [сценария выполнения задачи](https://github.com/KlestovAlexej/Wattle.DemoServer/blob/3229448fcb474d627585c7260578a5524e573620/src/DemoServer.Processing.Model/DomainObjects/DemoDelayTask/DomainObjectDemoDelayTask.cs#L121)
 	- Показан пример остановки обработки всех задач из-за к примеру [отравленных задач](https://github.com/KlestovAlexej/Wattle.DemoServer/blob/9eca9e35c92d15e498ca48722944870007b89adf/src/DemoServer.Processing.Model/DomainObjects/DemoDelayTask/DomainObjectDemoDelayTask.cs#L247).
