@@ -1,12 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using OpenTelemetry.Trace;
-using Acme.DemoServer.Processing.Common;
+﻿using Acme.DemoServer.Processing.Common;
 using Acme.DemoServer.Processing.DataAccess.Interface;
 using Acme.DemoServer.Processing.DataAccess.PostgreSql;
 using Acme.DemoServer.Processing.DataAccess.PostgreSql.EfModels;
+using Acme.DemoServer.Processing.Generated.Interface;
 using Acme.DemoServer.Processing.Generated.PostgreSql.Implements;
+using Acme.DemoServer.Processing.Model.DomainObjects.ChangeTracker;
+using Acme.DemoServer.Processing.Model.DomainObjects.DemoDelayTask;
 using Acme.DemoServer.Processing.Model.Implements.SystemSettings;
 using Acme.DemoServer.Processing.Model.Implements.UnitOfWorkLocks;
 using Acme.DemoServer.Processing.Model.Interfaces;
@@ -16,9 +15,12 @@ using Acme.Wattle.DomainObjects;
 using Acme.Wattle.DomainObjects.Common;
 using Acme.Wattle.DomainObjects.DomainObjectDataMappers;
 using Acme.Wattle.DomainObjects.DomainObjectIntergrators;
+using Acme.Wattle.DomainObjects.DomainObjects;
 using Acme.Wattle.DomainObjects.DomainObjectsRegisters;
 using Acme.Wattle.DomainObjects.EntryPoints;
 using Acme.Wattle.DomainObjects.Interfaces;
+using Acme.Wattle.DomainObjects.Serializers.Binary;
+using Acme.Wattle.DomainObjects.Serializers.Json;
 using Acme.Wattle.DomainObjects.UnitOfWorks;
 using Acme.Wattle.Infrastructures.Interfaces.Monitors;
 using Acme.Wattle.Infrastructures.Monitors;
@@ -32,19 +34,18 @@ using Acme.Wattle.QueueProcessors;
 using Acme.Wattle.QueueProcessors.Interfaces;
 using Acme.Wattle.Triggers;
 using Acme.Wattle.Utils;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using OpenTelemetry.Trace;
 using System;
 using System.Collections.Generic;
 using System.Runtime.ExceptionServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Acme.DemoServer.Processing.Generated.Interface;
-using Acme.DemoServer.Processing.Model.DomainObjects.ChangeTracker;
 using Unity;
 using Status = OpenTelemetry.Trace.Status;
-using Acme.DemoServer.Processing.Model.DomainObjects.DemoDelayTask;
-using Acme.Wattle.DomainObjects.DomainObjects;
-using Acme.Wattle.DomainObjects.Serializers.Json;
 
 [assembly: SchemaModelResource("DbMappers.Schema.xml")]
 
@@ -264,6 +265,7 @@ public sealed class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
     public AutoMapper.IMapper AutoMapper { get; private set; }
     public IDemoDelayTaskProcessor DemoDelayTaskProcessor { get; private set; }
     public ISmartJsonDeserializer JsonDeserializer { get; private set; }
+    public ISmartBinaryDeserializer BinaryDeserializer { get; private set; }
     public SystemSettingsLocal SystemSettingsLocal => m_systemSettingsLocal;
 
     public MetaServerDescription ServerDescription
@@ -428,6 +430,12 @@ public sealed class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
         {
             var temp = JsonDeserializer;
             JsonDeserializer = null;
+            temp.SilentDispose();
+        }
+
+        {
+            var temp = BinaryDeserializer;
+            BinaryDeserializer = null;
             temp.SilentDispose();
         }
         
@@ -610,11 +618,17 @@ public sealed class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
         result.Metrics = metrics;
         result.UnitOfWorkLocks = new UnitOfWorkLocksHubTyped(result.Context);
         result.DemoDelayTaskProcessor = new DemoDelayTaskProcessor(result);
+
         result.JsonDeserializer = 
             new SmartJsonDeserializer(
                 result.Context,
                 result.SystemSettings.SmartJsonDeserializer.Value,
                 result.SystemSettings.DebugMode.Value);
+        
+        result.BinaryDeserializer =
+            new SmartBinaryDeserializer(
+                result.Context,
+                result.SystemSettings.SmartBinaryDeserializer.Value);
 
         result.Facade =
             container.ResolveWithDefault(
@@ -661,7 +675,8 @@ public sealed class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
         infrastructureMonitor.AddSubMonitor(result.m_partitionsSponsor.InfrastructureMonitor);
         infrastructureMonitor.AddSubMonitor(result.DemoDelayTaskProcessor.InfrastructureMonitor);
         infrastructureMonitor.AddSubMonitor(result.JsonDeserializer.InfrastructureMonitor);
-        
+        infrastructureMonitor.AddSubMonitor(result.BinaryDeserializer.InfrastructureMonitor);
+
         foreach (var iMonitor in result.UnitOfWorkLocks.Hub.InfrastructureMonitorLocksPools)
         {
             infrastructureMonitor.AddSubMonitor(iMonitor);

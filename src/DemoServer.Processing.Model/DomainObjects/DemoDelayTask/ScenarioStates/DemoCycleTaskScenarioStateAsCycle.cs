@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using MessagePack;
 using Newtonsoft.Json;
 
 namespace Acme.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.ScenarioStates;
@@ -12,6 +13,7 @@ namespace Acme.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.ScenarioS
 /// Состояние сценария задачи с отложенным запуском - циклическое исполнение.
 /// </summary>
 [Description("Состояние сценария задачи с отложенным запуском - циклическое исполнение")]
+[MessagePackObject]
 public sealed class DemoCycleTaskScenarioStateAsCycle : DemoCycleTaskScenarioState
 {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -32,14 +34,14 @@ public sealed class DemoCycleTaskScenarioStateAsCycle : DemoCycleTaskScenarioSta
     /// <summary>
     /// Индекс.
     /// </summary>
-    [JsonProperty(Required = Required.Always)]
+    [Key(KeyStart + 1), JsonProperty(Required = Required.Always)]
     [Description("Индекс")]
     public int Index;
 
     /// <summary>
     /// Дата-время запуска циклов.
     /// </summary>
-    [JsonProperty(Required = Required.Always)]
+    [Key(KeyStart + 2), JsonProperty(Required = Required.Always)]
     [Description("Дата-время запуска циклов")]
     public List<DateTimeOffset> RunDate;
 

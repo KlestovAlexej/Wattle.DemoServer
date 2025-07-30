@@ -45,10 +45,14 @@ CREATE TABLE demodelaytask(
   modificationdate timestamptz NOT NULL,
   available boolean NOT NULL,
   startdate timestamptz,
-  scenario text NOT NULL,
-  scenariostate text NOT NULL,
+  scenario text COMPRESSION PGLZ NOT NULL,
+  scenariostate bytea COMPRESSION PGLZ NOT NULL,
   CONSTRAINT gw_incomingcallbackеtask_pkey PRIMARY KEY(id)
 ) PARTITION BY RANGE (id);
+
+ALTER TABLE demodelaytask ALTER scenario SET STORAGE MAIN;
+
+ALTER TABLE demodelaytask ALTER scenariostate SET STORAGE MAIN;
 
 CREATE TABLE systemlog(
   id bigint NOT NULL,

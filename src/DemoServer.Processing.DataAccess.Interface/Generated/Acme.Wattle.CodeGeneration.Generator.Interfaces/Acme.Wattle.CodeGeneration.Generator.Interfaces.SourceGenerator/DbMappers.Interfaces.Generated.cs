@@ -262,7 +262,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <summary>
         /// Состояние сценария
         /// </summary>
-        public required string ScenarioState;
+        public required byte[] ScenarioState;
 
         /// <summary>
         /// Дата запуска
@@ -564,7 +564,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// Состояние сценария
         /// </summary>
         [DataMember(Order = 7)]
-        public string ScenarioState;
+        public byte[] ScenarioState;
 
         /// <summary>
         /// Дата запуска
@@ -705,7 +705,7 @@ namespace Acme.DemoServer.Processing.Generated.Interface
         /// <summary>
         /// Состояние сценария
         /// </summary>
-        public required string ScenarioState;
+        public required byte[] ScenarioState;
 
         /// <summary>
         /// Дата запуска

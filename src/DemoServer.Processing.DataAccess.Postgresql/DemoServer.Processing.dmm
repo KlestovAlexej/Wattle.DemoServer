@@ -1130,15 +1130,15 @@
 					"pg": {
 						"generatedIdentity": "no",
 						"generated": "",
-						"storage": "",
-						"compression": ""
+						"storage": "main",
+						"compression": "pglz"
 					},
 					"estimatedSize": ""
 				},
 				{
 					"id": "fe58a4e0-32f4-4a12-850b-f50d01538719",
 					"name": "scenariostate",
-					"datatype": "text",
+					"datatype": "bytea",
 					"param": "",
 					"pk": false,
 					"nn": true,
@@ -1151,8 +1151,8 @@
 					"pg": {
 						"generatedIdentity": "no",
 						"generated": "",
-						"storage": "",
-						"compression": ""
+						"storage": "main",
+						"compression": "pglz"
 					},
 					"estimatedSize": ""
 				}
@@ -1410,7 +1410,7 @@
 		"pg": {
 			"schema": ""
 		},
-		"lastSaved": 1705839857581,
+		"lastSaved": 1743887519263,
 		"writeFileParam": true,
 		"activeDiagram": "f1669b85-a87c-45bc-806a-d4c1a20593bc",
 		"sqlSettings": {

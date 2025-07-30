@@ -13564,7 +13564,7 @@ FROM DemoObjectX";
             await binaryImport.WriteAsync(instance.CreateDate.ToUniversalTime(), NpgsqlDbType.TimestampTz, cancellationToken).ConfigureAwait(false);
             await binaryImport.WriteAsync(instance.ModificationDate.ToUniversalTime(), NpgsqlDbType.TimestampTz, cancellationToken).ConfigureAwait(false);
             await binaryImport.WriteAsync(instance.Scenario, NpgsqlDbType.Text, cancellationToken).ConfigureAwait(false);
-            await binaryImport.WriteAsync(instance.ScenarioState, NpgsqlDbType.Text, cancellationToken).ConfigureAwait(false);
+            await binaryImport.WriteAsync(instance.ScenarioState, NpgsqlDbType.Bytea, cancellationToken).ConfigureAwait(false);
             {
                 if (instance.StartDate.HasValue == false)
                 {
@@ -13585,7 +13585,7 @@ FROM DemoObjectX";
             binaryImport.Write(instance.CreateDate.ToUniversalTime(), NpgsqlDbType.TimestampTz);
             binaryImport.Write(instance.ModificationDate.ToUniversalTime(), NpgsqlDbType.TimestampTz);
             binaryImport.Write(instance.Scenario, NpgsqlDbType.Text);
-            binaryImport.Write(instance.ScenarioState, NpgsqlDbType.Text);
+            binaryImport.Write(instance.ScenarioState, NpgsqlDbType.Bytea);
             {
                 if (instance.StartDate.HasValue == false)
                 {
@@ -14202,7 +14202,7 @@ StartDate) FROM STDIN (FORMAT BINARY)
             result.CreateDate = reader.GetFieldValue<DateTimeOffset>(indexCreateDate);
             result.ModificationDate = reader.GetFieldValue<DateTimeOffset>(indexModificationDate);
             result.Scenario = reader.GetString(indexScenario);
-            result.ScenarioState = reader.GetString(indexScenarioState);
+            result.ScenarioState = (byte[])(reader.GetValue(indexScenarioState));
             // ReSharper disable once ConvertIfStatementToConditionalTernaryExpression
             if (reader.IsDBNull(indexStartDate))
             {
@@ -14250,7 +14250,7 @@ StartDate) FROM STDIN (FORMAT BINARY)
             result.CreateDate = reader.GetFieldValue<DateTimeOffset>(indexCreateDate);
             result.ModificationDate = reader.GetFieldValue<DateTimeOffset>(indexModificationDate);
             result.Scenario = reader.GetString(indexScenario);
-            result.ScenarioState = reader.GetString(indexScenarioState);
+            result.ScenarioState = (byte[])(reader.GetValue(indexScenarioState));
             // ReSharper disable once ConvertIfStatementToConditionalTernaryExpression
             if (reader.IsDBNull(indexStartDate))
             {
@@ -14720,7 +14720,7 @@ AND (Available = @Old_Available)";
                         var parameter = new NpgsqlParameter<DateTimeOffset>("@ModificationDate", NpgsqlDbType.TimestampTz) { TypedValue = result.ModificationDate.ToUniversalTime() };
                         command.Parameters.Add(parameter);
                     }
-                    command.Parameters.Add("@ScenarioState", NpgsqlDbType.Text).Value = result.ScenarioState;
+                    command.Parameters.Add("@ScenarioState", NpgsqlDbType.Bytea).Value = result.ScenarioState;
                     if (result.StartDate == null)
                     {
                         command.Parameters.Add("@StartDate", NpgsqlDbType.TimestampTz).Value = DBNull.Value;
@@ -14845,7 +14845,7 @@ AND (Available = @Old_Available)";
                         var parameter = new NpgsqlParameter<DateTimeOffset>("@ModificationDate", NpgsqlDbType.TimestampTz) { TypedValue = result.ModificationDate.ToUniversalTime() };
                         command.Parameters.Add(parameter);
                     }
-                    command.Parameters.Add("@ScenarioState", NpgsqlDbType.Text).Value = result.ScenarioState;
+                    command.Parameters.Add("@ScenarioState", NpgsqlDbType.Bytea).Value = result.ScenarioState;
                     if (result.StartDate == null)
                     {
                         command.Parameters.Add("@StartDate", NpgsqlDbType.TimestampTz).Value = DBNull.Value;
@@ -15080,7 +15080,7 @@ VALUES
                         command.Parameters.Add(parameter);
                     }
                     command.Parameters.Add(@"@Scenario", NpgsqlDbType.Text).Value = result.Scenario;
-                    command.Parameters.Add(@"@ScenarioState", NpgsqlDbType.Text).Value = result.ScenarioState;
+                    command.Parameters.Add(@"@ScenarioState", NpgsqlDbType.Bytea).Value = result.ScenarioState;
                     if (result.StartDate == null)
                     {
                         command.Parameters.Add("@StartDate", NpgsqlDbType.TimestampTz).Value = DBNull.Value;
@@ -15194,7 +15194,7 @@ VALUES
                         command.Parameters.Add(parameter);
                     }
                     command.Parameters.Add(@"@Scenario", NpgsqlDbType.Text).Value = result.Scenario;
-                    command.Parameters.Add(@"@ScenarioState", NpgsqlDbType.Text).Value = result.ScenarioState;
+                    command.Parameters.Add(@"@ScenarioState", NpgsqlDbType.Bytea).Value = result.ScenarioState;
                     if (result.StartDate == null)
                     {
                         command.Parameters.Add("@StartDate", NpgsqlDbType.TimestampTz).Value = DBNull.Value;

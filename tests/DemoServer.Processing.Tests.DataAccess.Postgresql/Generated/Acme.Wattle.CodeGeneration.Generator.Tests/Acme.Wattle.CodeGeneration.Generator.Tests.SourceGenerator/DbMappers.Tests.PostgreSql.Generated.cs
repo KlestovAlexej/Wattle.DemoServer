@@ -2469,7 +2469,7 @@ namespace Acme.DemoServer.Processing.Generated.Tests
                 CreateDate = PostgreSqlRandomValuesProvider.GetRandomValue<DateTimeOffset>(LocalNpgsqlDbType.TimestampTz),
                 ModificationDate = PostgreSqlRandomValuesProvider.GetRandomValue<DateTimeOffset>(LocalNpgsqlDbType.TimestampTz),
                 Scenario = PostgreSqlRandomValuesProvider.GetRandomValue<string>(LocalNpgsqlDbType.Text),
-                ScenarioState = PostgreSqlRandomValuesProvider.GetRandomValue<string>(LocalNpgsqlDbType.Text),
+                ScenarioState = PostgreSqlRandomValuesProvider.GetRandomValue<byte[]>(LocalNpgsqlDbType.Bytea),
                 StartDate = PostgreSqlRandomValuesProvider.GetRandomValue<DateTimeOffset?>(LocalNpgsqlDbType.TimestampTz, true),
                 Available = true,
             };

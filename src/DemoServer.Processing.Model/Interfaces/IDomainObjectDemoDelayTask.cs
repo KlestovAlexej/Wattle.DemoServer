@@ -3,6 +3,8 @@ using Acme.Wattle.DomainObjects.AsyncTasks;
 using Acme.Wattle.DomainObjects.Interfaces;
 using System;
 using System.Diagnostics.CodeAnalysis;
+using Acme.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios;
+using Acme.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.ScenarioStates;
 
 namespace Acme.DemoServer.Processing.Model.Interfaces;
 
@@ -24,14 +26,14 @@ public interface IDomainObjectDemoDelayTask : IDomainObject, IDomainObjectVersio
     DateTimeOffset ModificationDate { get; }
 
     /// <summary>
-    /// Сценарий.
+    /// Сценарий <seealso cref="DemoDelayTaskScenario"/>.
     /// </summary>
     string Scenario { get; }
 
     /// <summary>
-    /// Состояние сценария.
+    /// Состояние сценария <seealso cref="DemoCycleTaskScenarioState"/>.
     /// </summary>
-    string ScenarioState { get; }
+    ReadOnlyMemory<byte> ScenarioState { get; }
 
     /// <summary>
     /// Дата запуска.

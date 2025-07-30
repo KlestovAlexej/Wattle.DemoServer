@@ -143,7 +143,7 @@ public class TestsDemoDelayTask : BaseTestsDomainObjects
                 var dto = await mapper.GetRawAsync(unitOfWork.MappersSession, taskId);
                 Assert.IsNotNull(dto);
                 var scenarioState =
-                    (DemoCycleTaskScenarioStateAsCycle)m_entryPoint.JsonDeserializer
+                    (DemoCycleTaskScenarioStateAsCycle)m_entryPoint.BinaryDeserializer
                         .DeserializeReadOnly<DemoCycleTaskScenarioState, DemoCycleTaskScenarioState>(dto!.ScenarioState);
                 Assert.AreEqual(3, scenarioState.Index);
                 Assert.AreEqual(3, scenarioState.RunDate.Count);

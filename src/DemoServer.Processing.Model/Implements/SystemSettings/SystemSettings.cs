@@ -2,6 +2,7 @@
 using Acme.DemoServer.Processing.DataAccess.Interface;
 using Acme.Wattle.DomainObjects.AsyncTasks;
 using Acme.Wattle.DomainObjects.Interfaces;
+using Acme.Wattle.DomainObjects.Serializers.Binary;
 using Acme.Wattle.DomainObjects.Serializers.Json;
 using Acme.Wattle.DomainObjects.UnitOfWorkLocks;
 using Acme.Wattle.Json;
@@ -111,6 +112,11 @@ public sealed class SystemSettings
                 default!,
                 "Настройки умного десериализации JSON");
 
+        SmartBinaryDeserializer =
+            new SettingValue<SmartBinaryDeserializerSettings>(
+                default!,
+                "Настройки умного десериализации массива байт");
+
         Telegram =
             new SettingValue<TelegramSettings>(
                 default!,
@@ -145,6 +151,13 @@ public sealed class SystemSettings
     [Description("Настройки умного десериализации JSON")]
     [JsonRequired]
     public SettingValue<SmartJsonDeserializerSettings> SmartJsonDeserializer { get; set; }
+
+    /// <summary>
+    /// Настройки умного десериализации массива байт.
+    /// </summary>
+    [Description("Настройки умного десериализации массива байт")]
+    [JsonRequired]
+    public SettingValue<SmartBinaryDeserializerSettings> SmartBinaryDeserializer { get; set; }
 
     /// <summary>
     /// Настройки службы обработки задач с отложенным запуском.
@@ -360,6 +373,11 @@ public sealed class SystemSettings
                 SmartJsonDeserializer =
                 {
                     Value = SmartJsonDeserializerSettings.GetDefault(),
+                },
+
+                SmartBinaryDeserializer =
+                {
+                    Value = SmartBinaryDeserializerSettings.GetDefault(),
                 },
 
                 Telegram =

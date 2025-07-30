@@ -329,7 +329,7 @@ public static class WellknownDomainObjectFields
         /// Состояние сценария.
         /// </summary>
         [Description("Состояние сценария")]
-        [SchemaMapperField<string>(UpdateMode = SchemaMapperFieldUpdateMode.Update)]
+        [SchemaMapperField<byte[]>(UpdateMode = SchemaMapperFieldUpdateMode.Update)]
         public static readonly Guid ScenarioState = new("2CE70876-F169-4129-AE06-DAC87C5E2686");
         
         /// <summary>

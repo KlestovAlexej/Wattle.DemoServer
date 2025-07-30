@@ -7,6 +7,7 @@ using Acme.DemoServer.Processing.Model.Implements.UnitOfWorkLocks;
 using Acme.Wattle.Common.Interfaces;
 using Acme.Wattle.DomainObjects.Interfaces;
 using System;
+using Acme.Wattle.DomainObjects.Serializers.Binary;
 using Acme.Wattle.DomainObjects.Serializers.Json;
 using Acme.Wattle.Mappers.Interfaces;
 using IMapper = AutoMapper.IMapper;
@@ -39,4 +40,5 @@ public interface ICustomEntryPoint : IEntryPoint
     IMapper AutoMapper { get; }
     IDemoDelayTaskProcessor DemoDelayTaskProcessor { get; }
     ISmartJsonDeserializer JsonDeserializer { get; }
+    ISmartBinaryDeserializer BinaryDeserializer { get; }
 }

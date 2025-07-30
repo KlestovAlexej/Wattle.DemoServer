@@ -199,8 +199,8 @@
               <Storage Name="%FieldName%" IsNull="false" Type="Text" IsQuotedName="false" />
               <Query Id="5cd4e196-ad21-4d0a-88e0-514f7f7874ad" Order="false" Where="false" />
             </Field>
-            <Field Name="ScenarioState" Type="string" Description="Состояние сценария" UseHide="false" UpdateKey="false" UpdateMode="Update" NotUseNew="false">
-              <Storage Name="%FieldName%" IsNull="false" Type="Text" IsQuotedName="false" />
+            <Field Name="ScenarioState" Type="byte[]" Description="Состояние сценария" UseHide="false" UpdateKey="false" UpdateMode="Update" NotUseNew="false">
+              <Storage Name="%FieldName%" IsNull="false" Type="Bytea" IsQuotedName="false" />
               <Query Id="2ce70876-f169-4129-ae06-dac87c5e2686" Order="false" Where="false" />
             </Field>
             <Field Name="StartDate" Type="DateTimeOffset?" Description="Дата запуска" UseHide="false" UpdateKey="false" UpdateMode="Update" NotUseNew="false">

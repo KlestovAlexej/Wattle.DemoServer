@@ -1,8 +1,4 @@
-﻿using System;
-using System.Runtime.CompilerServices;
-using System.Threading;
-using System.Threading.Tasks;
-using Acme.DemoServer.Processing.Common;
+﻿using Acme.DemoServer.Processing.Common;
 using Acme.DemoServer.Processing.Generated.Interface;
 using Acme.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.Scenarios;
 using Acme.DemoServer.Processing.Model.DomainObjects.DemoDelayTask.ScenarioStates;
@@ -13,9 +9,14 @@ using Acme.Wattle.DomainObjects.DomainObjects;
 using Acme.Wattle.DomainObjects.DomainObjects.BaseDomainObjects;
 using Acme.Wattle.DomainObjects.Interfaces;
 using Acme.Wattle.DomainObjects.Serializers;
+using Acme.Wattle.DomainObjects.Serializers.Binary;
 using Acme.Wattle.DomainObjects.Serializers.Json;
 using Acme.Wattle.DomainObjects.UnitOfWorkLocks;
 using Acme.Wattle.Mappers.Primitives.MutableFields;
+using System;
+using System.Runtime.CompilerServices;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Acme.DemoServer.Processing.Model.DomainObjects.DemoDelayTask;
 
@@ -59,7 +60,10 @@ public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutableWithUpdat
     private readonly MutableFieldNullable<DateTimeOffset> m_startDate;
 
     [DomainObjectFieldValue]
-    private readonly StringFieldWithModel<DemoCycleTaskScenarioState> m_scenarioState;
+    private readonly BinaryFieldWithModel<DemoCycleTaskScenarioState> m_scenarioState;
+
+    [DomainObjectFieldValue]
+    private readonly StringFieldWithModel<DemoDelayTaskScenario> m_scenario;
 
     #endregion
 
@@ -76,7 +80,6 @@ public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutableWithUpdat
         m_available = new MutableField<bool>(data.Available);
         CreateDate = data.CreateDate;
         ModificationDate = data.ModificationDate;
-        Scenario = data.Scenario;
 
         m_startDate = 
             new MutableFieldNullable<DateTimeOffset>(
@@ -84,9 +87,14 @@ public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutableWithUpdat
                 DbTypesCorrector.DateTimeOffset(data.StartDate));
 
         m_scenarioState =
-            new StringFieldWithModel<DemoCycleTaskScenarioState>(
-                m_entryPointContext.EntryPoint.JsonDeserializer,
+            new BinaryFieldWithModel<DemoCycleTaskScenarioState>(
+                m_entryPointContext.EntryPoint.BinaryDeserializer,
                 data.ScenarioState);
+
+        m_scenario =
+            new StringFieldWithModel<DemoDelayTaskScenario>(
+                m_entryPointContext.EntryPoint.JsonDeserializer,
+                data.Scenario);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -101,15 +109,19 @@ public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutableWithUpdat
         m_available = new MutableField<bool>(true);
         CreateDate = m_entryPointContext.TimeService.Now;
         ModificationDate = CreateDate;
-        Scenario = template.Scenario;
         m_startDate = new MutableFieldNullable<DateTimeOffset>(template.StartDate);
 
-        var scenario = m_entryPointContext.EntryPoint.JsonDeserializer.DeserializeReadOnly<DemoDelayTaskScenario, DemoDelayTaskScenario>(Scenario);
-
         m_scenarioState =
-            new StringFieldWithModel<DemoCycleTaskScenarioState>(
+            new BinaryFieldWithModel<DemoCycleTaskScenarioState>(
+                m_entryPointContext.EntryPoint.BinaryDeserializer, 
+                Array.Empty<byte>());
+
+        m_scenario =
+            new StringFieldWithModel<DemoDelayTaskScenario>(
                 m_entryPointContext.EntryPoint.JsonDeserializer,
-                string.Empty);
+                template.Scenario);
+
+        var scenario = m_scenario.AsRead;
 
         switch (scenario.Type)
         {
@@ -158,14 +170,13 @@ public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutableWithUpdat
         private set;
     }
 
-    [DomainObjectFieldValue]
     public string Scenario
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get;
+        get => m_scenario.Value;
     }
 
-    public string ScenarioState
+    public ReadOnlyMemory<byte> ScenarioState
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         get => m_scenarioState.Value;
@@ -200,7 +211,7 @@ public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutableWithUpdat
         }
 
         // Явная очистка памяти. Это не обязательно т.к. данные по времени будут удаленны из кэша.
-        m_entryPointContext.EntryPoint.JsonDeserializer.Release<DemoDelayTaskScenario>(Scenario);
+        m_scenario.ReleaseSmartDeserializer();
         m_scenarioState.ReleaseSmartDeserializer();
 
         return (true, null);
@@ -215,7 +226,7 @@ public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutableWithUpdat
 
     private async ValueTask DoRunScenarioAsync(long count, CancellationToken cancellationToken)
     {
-        var scenario = m_entryPointContext.EntryPoint.JsonDeserializer.DeserializeReadOnly<DemoDelayTaskScenario, DemoDelayTaskScenario>(Scenario);
+        var scenario = m_scenario.AsRead;
 
         if (scenario is DemoDelayTaskScenarioAsDelay scenarioAsDelay)
         {
