@@ -18,7 +18,7 @@ public sealed class DomainObjectIntergratorDemoObject : BaseDomainObjectIntergra
         var dataMapper =
             DomainObjectDataMapperNoDeleteDefaultFactory.Create<IMapperDemoObject>(
                     entryPoint.Context,
-                    entryPoint.SystemSettings.IdentityCachesSettings.Value.DemoObject.Value,
+                    entryPoint.SystemSettings.IdentityCaches.Value.DemoObject.Value,
                     identityGroupId: entryPoint.PartitionsDay);
         container.Resolve<DomainObjectDataMappers>().AddMapper(dataMapper);
 

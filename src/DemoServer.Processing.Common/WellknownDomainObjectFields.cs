@@ -1,16 +1,16 @@
-﻿using NpgsqlTypes;
-using Acme.DemoServer.Common;
+﻿using Acme.DemoServer.Common;
 using Acme.DemoServer.Processing.Api.Common;
 using Acme.Wattle.CodeGeneration.Common;
 using Acme.Wattle.Common;
+using Acme.Wattle.Common.DomainObjects;
 using Acme.Wattle.Primitives;
+using NpgsqlTypes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using Acme.Wattle.Common.DomainObjects;
 
 namespace Acme.DemoServer.Processing.Common;
 
@@ -299,6 +299,8 @@ public static class WellknownDomainObjectFields
     [SchemaMapperRevisionField]
     [SchemaMapperAvailableField]
     [DomainObjectLockUpdate("EA5953E9-EEE7-4639-8748-558DD532FD7C")]
+    [UseDefaultCreatePartitionOptions]
+    [CreatePartitionOptions(FillFactor = 90)]
     public static class DemoDelayTask
     {
         /// <summary>

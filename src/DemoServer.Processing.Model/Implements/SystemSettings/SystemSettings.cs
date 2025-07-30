@@ -1,17 +1,19 @@
-﻿using Newtonsoft.Json;
+﻿using Acme.DemoServer.Processing.Common;
 using Acme.DemoServer.Processing.DataAccess.Interface;
+using Acme.Wattle.DomainObjects.AsyncTasks;
+using Acme.Wattle.DomainObjects.Interfaces;
+using Acme.Wattle.DomainObjects.Serializers.Json;
+using Acme.Wattle.DomainObjects.UnitOfWorkLocks;
 using Acme.Wattle.Json;
+using Newtonsoft.Json;
 using System;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
-using Acme.Wattle.DomainObjects.Interfaces;
-using Acme.Wattle.DomainObjects.UnitOfWorkLocks;
-using Acme.Wattle.DomainObjects.AsyncTasks;
-using Acme.Wattle.DomainObjects.Json;
 
 namespace Acme.DemoServer.Processing.Model.Implements.SystemSettings;
 
 [SuppressMessage("ReSharper", "PropertyCanBeMadeInitOnly.Global")]
+[SuppressMessage("ReSharper", "PreferConcreteValueOverDefault")]
 public sealed class SystemSettings
 {
     public static readonly string SectionName = "SystemSettings";
@@ -34,22 +36,22 @@ public sealed class SystemSettings
                 default!,
                 "Текстовый идентификатор экземпляра сервера");
 
-        UnitOfWorkLocksSettings =
+        UnitOfWorkLocks =
             new SettingValue<UnitOfWorkLocksSettings>(
                 default!,
                 "Настройки пулов лок-объектов уровня IUnitOfWork");
 
-        ExceptionPolicySettings =
+        ExceptionPolicy =
             new SettingValue<ExceptionPolicySettings>(
                 default!,
                 "Настройки уведомления об исключениях системы");
 
-        IdentityCachesSettings =
+        IdentityCaches =
             new SettingValue<IdentityCachesSettings>(
                 default!,
                 "Настройки кэширующих провайдеров идентити объектов");
 
-        MappersCacheActualStateDtoSettings =
+        MappersCacheActualStateDto =
             new SettingValue<MappersCacheActualStateDtoSettings>(
                 default!,
                 "Настройки кэшей актуальных данных состояний доменнй объектов в БД");
@@ -84,38 +86,38 @@ public sealed class SystemSettings
                 default!,
                 "Строка подключения к БД");
 
-        PartitionsSponsorSettings =
+        PartitionsSponsor =
             new SettingValue<PartitionsSponsorSettings>(
                 default!,
                 "Настройки создателя партиций БД");
 
-        DomainObjectRegistersSettings =
+        DomainObjectRegisters =
             new SettingValue<DomainObjectRegistersSettings>(
                 default!,
                 "Настройки реестров доменных объектов");
 
         UpdateKeyExpirationTimeout =
-            new(
+            new SettingValue<TimeSpan>(
                 default,
                 "Интервал действия ключа контроля изменений");
 
-        DemoDelayTaskProcessorSettings =
-            new(
+        DemoDelayTaskProcessor =
+            new SettingValue<AsyncTaskServiceSettings>(
                 default!,
                 "Настройки службы обработки задач с отложенным запуском");
 
-        SmartJsonDeserializerSettings =
-            new(
+        SmartJsonDeserializer =
+            new SettingValue<SmartJsonDeserializerSettings>(
                 default!,
                 "Настройки умного десериализации JSON");
 
-        TelegramSettings =
+        Telegram =
             new SettingValue<TelegramSettings>(
                 default!,
                 "Настройки Telegram");
 
         UseLoggingProxy =
-            new(
+            new SettingValue<bool>(
                 default,
                 "Использовать прокси логирующий все вызовы методов с логированием параметров и результатов вызовов методов");
 
@@ -135,20 +137,20 @@ public sealed class SystemSettings
     /// Настройки Telegram.
     /// </summary>
     [Description("Настройки Telegram")]
-    public SettingValue<TelegramSettings> TelegramSettings { get; set; }
+    public SettingValue<TelegramSettings> Telegram { get; set; }
 
     /// <summary>
     /// Настройки умного десериализации JSON.
     /// </summary>
     [Description("Настройки умного десериализации JSON")]
     [JsonRequired]
-    public SettingValue<SmartJsonDeserializerSettings> SmartJsonDeserializerSettings { get; set; }
+    public SettingValue<SmartJsonDeserializerSettings> SmartJsonDeserializer { get; set; }
 
     /// <summary>
     /// Настройки службы обработки задач с отложенным запуском.
     /// </summary>
     [Description("Настройки службы обработки задач с отложенным запуском")]
-    public SettingValue<AsyncTaskServiceSettings> DemoDelayTaskProcessorSettings { get; set; }
+    public SettingValue<AsyncTaskServiceSettings> DemoDelayTaskProcessor { get; set; }
     
     /// <summary>
     /// Интервал действия ключа контроля изменений.
@@ -161,13 +163,13 @@ public sealed class SystemSettings
     /// </summary>
     [Description("Настройки реестров доменных объектов")]
     [JsonRequired]
-    public SettingValue<DomainObjectRegistersSettings> DomainObjectRegistersSettings { get; set; }
+    public SettingValue<DomainObjectRegistersSettings> DomainObjectRegisters { get; set; }
 
     /// <summary>
     /// Настройки создателя партиций БД.
     /// </summary>
     [Description("Настройки создателя партиций БД")]
-    public SettingValue<PartitionsSponsorSettings> PartitionsSponsorSettings { get; set; }
+    public SettingValue<PartitionsSponsorSettings> PartitionsSponsor { get; set; }
 
     /// <summary>
     /// Идентификатор экземпляра сервера.
@@ -185,19 +187,19 @@ public sealed class SystemSettings
     /// Настройки пулов лок-объектов уровня <see cref="IUnitOfWork"/>.
     /// </summary>
     [JsonRequired]
-    public SettingValue<UnitOfWorkLocksSettings> UnitOfWorkLocksSettings { get; set; }
+    public SettingValue<UnitOfWorkLocksSettings> UnitOfWorkLocks { get; set; }
 
     /// <summary>
     /// Настройки уведомления об исключениях системы.
     /// </summary>
     [JsonRequired]
-    public SettingValue<ExceptionPolicySettings> ExceptionPolicySettings { get; set; }
+    public SettingValue<ExceptionPolicySettings> ExceptionPolicy { get; set; }
 
     /// <summary>
     /// Настройки кэшей актуальных данных состояний доменнй объектов в БД.
     /// </summary>
     [JsonRequired]
-    public SettingValue<MappersCacheActualStateDtoSettings> MappersCacheActualStateDtoSettings { get; set; }
+    public SettingValue<MappersCacheActualStateDtoSettings> MappersCacheActualStateDto { get; set; }
 
     /// <summary>
     /// Очередь обработки аварийных ситуаций доменного поведения - количество потоков обработки.
@@ -215,7 +217,7 @@ public sealed class SystemSettings
     /// Настройки кэширующих провайдеров идентити объектов.
     /// </summary>
     [JsonRequired]
-    public SettingValue<IdentityCachesSettings> IdentityCachesSettings { get; set; }
+    public SettingValue<IdentityCachesSettings> IdentityCaches { get; set; }
 
     /// <summary>
     /// Строка подключения к БД.
@@ -258,24 +260,24 @@ public sealed class SystemSettings
         var result =
             new SystemSettings
             {
-                UnitOfWorkLocksSettings =
+                UnitOfWorkLocks =
                 {
-                    Value = Wattle.DomainObjects.UnitOfWorkLocks.UnitOfWorkLocksSettings.GetDefault()
+                    Value = UnitOfWorkLocksSettings.GetDefault()
                 },
 
-                ExceptionPolicySettings =
+                ExceptionPolicy =
                 {
-                    Value = Implements.SystemSettings.ExceptionPolicySettings.GetDefault()
+                    Value = ExceptionPolicySettings.GetDefault()
                 },
 
-                IdentityCachesSettings =
+                IdentityCaches =
                 {
-                    Value = Implements.SystemSettings.IdentityCachesSettings.GetDefault()
+                    Value = IdentityCachesSettings.GetDefault()
                 },
 
-                MappersCacheActualStateDtoSettings =
+                MappersCacheActualStateDto =
                 {
-                    Value = DataAccess.Interface.MappersCacheActualStateDtoSettings.GetDefault()
+                    Value = MappersCacheActualStateDtoSettings.GetDefault()
                 },
 
                 QueueThreadsSizeEmergencyDomainBehaviour =
@@ -330,9 +332,9 @@ public sealed class SystemSettings
 #endif
                 },
 
-                PartitionsSponsorSettings =
+                PartitionsSponsor =
                 {
-                    Value = Implements.SystemSettings.PartitionsSponsorSettings.GetDefault(),
+                    Value = PartitionsSponsorSettings.GetDefault(EntryPoint.GetMappers(), typeof(WellknownDomainObjectFields)),
                 },
 
                 MappersFeaturesValidateUpdateResults =
@@ -340,9 +342,9 @@ public sealed class SystemSettings
                     Value = true,
                 },
 
-                DomainObjectRegistersSettings =
+                DomainObjectRegisters =
                 {
-                    Value = Implements.SystemSettings.DomainObjectRegistersSettings.GetDefault(),
+                    Value = DomainObjectRegistersSettings.GetDefault(),
                 },
 
                 UpdateKeyExpirationTimeout =
@@ -350,19 +352,19 @@ public sealed class SystemSettings
                     Value = TimeSpan.FromMinutes(5),
                 },
 
-                DemoDelayTaskProcessorSettings =
+                DemoDelayTaskProcessor =
                 {
                     Value = AsyncTaskServiceSettings.GetDefault(),
                 },
 
-                SmartJsonDeserializerSettings =
+                SmartJsonDeserializer =
                 {
-                    Value = Wattle.DomainObjects.Json.SmartJsonDeserializerSettings.GetDefault(),
+                    Value = SmartJsonDeserializerSettings.GetDefault(),
                 },
 
-                TelegramSettings =
+                Telegram =
                 {
-                    Value = Implements.SystemSettings.TelegramSettings.GetDefault(),
+                    Value = TelegramSettings.GetDefault(),
                 },
 
                 UseLoggingProxy =
@@ -377,7 +379,7 @@ public sealed class SystemSettings
             };
 
         // Для нужд тестов. По умолчанию значение 1_000_000.
-        result.DemoDelayTaskProcessorSettings.Value.MaxActive.Value = 3;
+        result.DemoDelayTaskProcessor.Value.MaxActive.Value = 3;
 
         return result;
     }

@@ -18,7 +18,7 @@ public sealed class DomainObjectIntergratorChangeTracker : BaseDomainObjectInter
         var dataMapper =
             DomainObjectDataMapperNoDeleteUpdateDefaultFactory.Create<IMapperChangeTracker>(
                     entryPoint.Context,
-                    entryPoint.SystemSettings.IdentityCachesSettings.Value.ChangeTracker.Value,
+                    entryPoint.SystemSettings.IdentityCaches.Value.ChangeTracker.Value,
                     identityGroupId: entryPoint.PartitionsDay);
         container.Resolve<DomainObjectDataMappers>().AddMapper(dataMapper);
 

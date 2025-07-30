@@ -35,11 +35,11 @@ public class DocumentFilterHealthCheck : IDocumentFilter
                         {
                             {
                                 StatusCodes.Status200OK.ToString(CultureInfo.InvariantCulture),
-                                new() { Content = null, Description = "Сервер жизнеспособен" }
+                                new OpenApiResponse { Content = null, Description = "Сервер жизнеспособен" }
                             },
                             {
                                 StatusCodes.Status503ServiceUnavailable.ToString(CultureInfo.InvariantCulture),
-                                new() { Content = null, Description = "Сервер не жизнеспособен" }
+                                new OpenApiResponse { Content = null, Description = "Сервер не жизнеспособен" }
                             },
                         },
                         Security = null,
@@ -73,11 +73,11 @@ public class DocumentFilterHealthCheck : IDocumentFilter
                         {
                             {
                                 StatusCodes.Status200OK.ToString(CultureInfo.InvariantCulture),
-                                new() { Content = null, Description = "Сервер работоспособен" }
+                                new OpenApiResponse { Content = null, Description = "Сервер работоспособен" }
                             },
                             {
                                 StatusCodes.Status503ServiceUnavailable.ToString(CultureInfo.InvariantCulture),
-                                new() { Content = null, Description = "Сервер не работоспособен" }
+                                new OpenApiResponse { Content = null, Description = "Сервер не работоспособен" }
                             },
                         },
                         Security = null,
@@ -111,11 +111,11 @@ public class DocumentFilterHealthCheck : IDocumentFilter
                         {
                             {
                                 StatusCodes.Status200OK.ToString(CultureInfo.InvariantCulture),
-                                new() { Content = null, Description = "Сервер полностью работоспособен" }
+                                new OpenApiResponse { Content = null, Description = "Сервер полностью работоспособен" }
                             },
                             {
                                 StatusCodes.Status503ServiceUnavailable.ToString(CultureInfo.InvariantCulture),
-                                new() { Content = null, Description = "Сервер не работоспособен" }
+                                new OpenApiResponse { Content = null, Description = "Сервер не работоспособен" }
                             },
                         },
                         Security = null,

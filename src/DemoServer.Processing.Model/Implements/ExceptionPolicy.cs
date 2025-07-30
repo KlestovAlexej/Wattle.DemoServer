@@ -65,7 +65,7 @@ public sealed class ExceptionPolicy : BaseExceptionPolicy
     {
         m_systemSettings = systemSettings;
         m_workflowExceptionPolicy = workflowExceptionPolicy;
-        m_settings = systemSettings.ExceptionPolicySettings.Value;
+        m_settings = systemSettings.ExceptionPolicy.Value;
         m_debugMode = systemSettings.DebugMode.Value;
         m_tracer = tracer;
         m_metrics = metrics;

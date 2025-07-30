@@ -335,22 +335,22 @@ public abstract class BaseTestsWithEntryPoint : BaseDbTests
 
         result.ConnectionString.Value = m_dbConnectionString;
         result.QueueEmergencyTimeoutEmergencyDomainBehaviour.Value = TimeSpan.FromMilliseconds(100);
-        result.PartitionsSponsorSettings.Value.ActivateTimeout.Value = TimeSpan.FromSeconds(1);
+        result.PartitionsSponsor.Value.ActivateTimeout.Value = TimeSpan.FromSeconds(1);
 
         if (m_useTablespaces)
         {
-            result.PartitionsSponsorSettings.Value.TablespaceNames.Value =
+            result.PartitionsSponsor.Value.TablespaceNames.Value =
                 new PartitionsSponsorSettings.TablespacesEntry
                 {
                     Tablespaces =
                     [
-                        new()
+                        new PartitionsSponsorSettings.TablespaceEntry
                         {
                             Index = 0,
                             TablespaceName = m_nameTablespace1
                         },
 
-                        new()
+                        new PartitionsSponsorSettings.TablespaceEntry
                         {
                             Index = 1,
                             TablespaceName = m_nameTablespace2
@@ -359,7 +359,7 @@ public abstract class BaseTestsWithEntryPoint : BaseDbTests
                     ]
                 };
 
-            result.PartitionsSponsorSettings.Value.DomainObjectsTablespaceNames.Value =
+            result.PartitionsSponsor.Value.DomainObjectsTablespaceNames.Value =
                 new PartitionsSponsorSettings.DomainObjectsEntry();
 
             var flag = 0;
@@ -375,20 +375,20 @@ public abstract class BaseTestsWithEntryPoint : BaseDbTests
             {
                 if (flag == 0)
                 {
-                    result.PartitionsSponsorSettings.Value.DomainObjectsTablespaceNames.Value.DomainObjects.Add(
+                    result.PartitionsSponsor.Value.DomainObjectsTablespaceNames.Value.DomainObjects.Add(
                         new PartitionsSponsorSettings.DomainObjectTablespaceEntry
                         {
                             DomainObjectType = manager.Mapper.MapperId,
                             Comment = WellknownDomainObjectDisplayNames.DisplayNamesProvider!(manager.Mapper.MapperId),
                             Tablespaces =
                             [
-                                new()
+                                new PartitionsSponsorSettings.TablespaceEntry
                                 {
                                     Index = 0,
                                     TablespaceName = m_nameTablespace1
                                 },
 
-                                new()
+                                new PartitionsSponsorSettings.TablespaceEntry
                                 {
                                     Index = 1,
                                     TablespaceName = m_nameTablespace2
@@ -399,7 +399,7 @@ public abstract class BaseTestsWithEntryPoint : BaseDbTests
                 }
                 else if (flag == 1)
                 {
-                    result.PartitionsSponsorSettings.Value.DomainObjectsTablespaceNames.Value.DomainObjects.Add(
+                    result.PartitionsSponsor.Value.DomainObjectsTablespaceNames.Value.DomainObjects.Add(
                         new PartitionsSponsorSettings.DomainObjectTablespaceEntry
                         {
                             DomainObjectType = manager.Mapper.MapperId,
@@ -420,10 +420,10 @@ public abstract class BaseTestsWithEntryPoint : BaseDbTests
         }
         else
         {
-            result.PartitionsSponsorSettings.Value.TablespaceNames.Value =
+            result.PartitionsSponsor.Value.TablespaceNames.Value =
                 new PartitionsSponsorSettings.TablespacesEntry();
 
-            result.PartitionsSponsorSettings.Value.DomainObjectsTablespaceNames.Value =
+            result.PartitionsSponsor.Value.DomainObjectsTablespaceNames.Value =
                 new PartitionsSponsorSettings.DomainObjectsEntry();
         }
 

@@ -18,7 +18,7 @@ public class DomainObjectIntergratorDemoDelayTask : BaseDomainObjectIntergrator<
         var dataMapper =
             DomainObjectDataMapperNoDeleteDefaultFactory.Create<IMapperDemoDelayTask>(
                 entryPoint.Context,
-                entryPoint.SystemSettings.IdentityCachesSettings.Value.DemoDelayTask.Value,
+                entryPoint.SystemSettings.IdentityCaches.Value.DemoDelayTask.Value,
                 identityGroupId: entryPoint.PartitionsDay);
         container.Resolve<DomainObjectDataMappers>().AddMapper(dataMapper);
 

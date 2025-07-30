@@ -19,7 +19,7 @@ public class DemoDelayTaskProcessor : BaseAsyncTaskServiceDefault<UnitOfWork, IC
     public DemoDelayTaskProcessor(ICustomEntryPoint customEntryPoint)
         : base(
             customEntryPoint.Context,
-            customEntryPoint.SystemSettings.DemoDelayTaskProcessorSettings.Value,
+            customEntryPoint.SystemSettings.DemoDelayTaskProcessor.Value,
             supportSuspend: true,
             tracer: customEntryPoint.Tracer,
             hub: customEntryPoint.UnitOfWorkLocks)
@@ -46,7 +46,7 @@ public class DemoDelayTaskProcessor : BaseAsyncTaskServiceDefault<UnitOfWork, IC
     {
         DoCheckIsReady();
 
-        var scenarioText = m_entryPoint.JsonDeserializer.SerializeVolatile(scenario);
+        var scenarioText = m_entryPoint.JsonDeserializer.SerializeVolatile<DemoDelayTaskScenario, DemoDelayTaskScenario>(scenario);
         var template = new DomainObjectDemoDelayTask.Template(scenarioText, startDate);
         var taskId =
             await DoAddAsync(

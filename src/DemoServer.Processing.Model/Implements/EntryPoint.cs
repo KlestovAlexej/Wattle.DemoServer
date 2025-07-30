@@ -44,7 +44,7 @@ using Unity;
 using Status = OpenTelemetry.Trace.Status;
 using Acme.DemoServer.Processing.Model.DomainObjects.DemoDelayTask;
 using Acme.Wattle.DomainObjects.DomainObjects;
-using Acme.Wattle.DomainObjects.Json;
+using Acme.Wattle.DomainObjects.Serializers.Json;
 
 [assembly: SchemaModelResource("DbMappers.Schema.xml")]
 
@@ -572,7 +572,7 @@ public sealed class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
                     context:
                     new MappersContext(
                         timeService,
-                        systemSettings.MappersCacheActualStateDtoSettings.Value,
+                        systemSettings.MappersCacheActualStateDto.Value,
                         systemSettings.TimeStatisticsStep.Value,
                         exceptionPolicy)),
                 exceptionPolicy,
@@ -592,7 +592,7 @@ public sealed class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
         {
             var partitionsSponsorTrigger =
                 new ScheduledService(
-                    result.SystemSettings.PartitionsSponsorSettings.Value.ActivateTimeout.Value,
+                    result.SystemSettings.PartitionsSponsor.Value.ActivateTimeout.Value,
                     WellknownCommonInfrastructureMonitors.GetDisplayName(WellknownCommonInfrastructureMonitors.ActivatePartitionsSponsor),
                     result.ExceptionPolicy,
                     result.TimeService,
@@ -603,8 +603,7 @@ public sealed class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
             result.m_partitionsSponsor =
                 new PartitionsSponsor(
                     result,
-                    partitionsSponsorTrigger,
-                    loggerFactory);
+                    partitionsSponsorTrigger);
             container.RegisterInstance(result.m_partitionsSponsor, InstanceLifetime.External);
         }
 
@@ -614,7 +613,7 @@ public sealed class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
         result.JsonDeserializer = 
             new SmartJsonDeserializer(
                 result.Context,
-                result.SystemSettings.SmartJsonDeserializerSettings.Value,
+                result.SystemSettings.SmartJsonDeserializer.Value,
                 result.SystemSettings.DebugMode.Value);
 
         result.Facade =
@@ -671,7 +670,7 @@ public sealed class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
         result.InfrastructureMonitorRegisters.AddMonitor(infrastructureMonitor);
         result.InfrastructureMonitorRegisters.AddFavorit(infrastructureMonitor.Id);
 
-        result.m_partitionsSponsor.Create(tracer);
+        result.m_partitionsSponsor.Create();
 
         result.m_unitOfWorkContext =
             new UnitOfWorkFullContext<ProcessingDbContext, IMapperChangeTracker>(
@@ -695,20 +694,26 @@ public sealed class EntryPoint : BaseEntryPointEx, ICustomEntryPoint
 
     private static SystemSettingsLocal GetSystemSettingsLocal(string connectionString)
     {
-        var mappersExceptionPolicy = new MappersExceptionPolicy();
-        using ICustomMappers mappers =
+        using var mappers = GetMappers(connectionString);
+        using var mappersSession = mappers.OpenSession();
+        var systemSettings = mappers.GetSystemSettings(mappersSession);
+        var result = new SystemSettingsLocal(systemSettings);
+
+        return (result);
+    }
+
+    public static ICustomMappers GetMappers(string connectionString = "")
+    {
+        var result =
             new Mappers(
-                mappersExceptionPolicy,
+                new MappersExceptionPolicy(),
                 connectionString,
                 new TimeService(),
                 WellknownInfrastructureMonitors.Mappers,
                 WellknownInfrastructureMonitors.GetDisplayName(WellknownInfrastructureMonitors.Mappers),
                 WellknownInfrastructureMonitors.GetDisplayName(WellknownInfrastructureMonitors.Mappers),
                 15000);
-        using var mappersSession = mappers.OpenSession();
-        var systemSettings = mappers.GetSystemSettings(mappersSession);
-        var result = new SystemSettingsLocal(systemSettings);
 
-        return (result);
+        return result;
     }
 }

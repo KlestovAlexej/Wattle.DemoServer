@@ -18,12 +18,12 @@ public class TestsTelegram : BaseTestsDomainObjects
     {
         var result = base.CreateSystemSettings();
 
-        result.ExceptionPolicySettings.Value.UnexpectedExceptionSendToTelegram.Value = true;
-        result.TelegramSettings.Value.Enabled.Value = true;
+        result.ExceptionPolicy.Value.UnexpectedExceptionSendToTelegram.Value = true;
+        result.Telegram.Value.Enabled.Value = true;
 
         // TODO Указать реальные токен бота и ID чата.
-        result.TelegramSettings.Value.ApiKey.Value = "0:0";
-        result.TelegramSettings.Value.ChatId.Value = -1;
+        result.Telegram.Value.ApiKey.Value = "0:0";
+        result.Telegram.Value.ChatId.Value = -1;
 
         return result;
     }

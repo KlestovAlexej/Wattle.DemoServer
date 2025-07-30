@@ -50,7 +50,7 @@ public class TelegramSettings
     /// </summary>
     public static TelegramSettings GetDefault()
     {
-        return new()
+        return new TelegramSettings
         {
             ApiKey =
             {

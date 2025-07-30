@@ -23,7 +23,7 @@ public sealed class ExceptionPolicySettings
                 @"Разрешение уведомлять о неожиданных исключениях в Telegram");
 
         TimeoutUnexpectedExceptionSendToTelegram =
-            new(default,
+            new SettingValue<TimeSpan>(default,
                 "Интервал отправки уведомлений о неожиданных исключениях в Telegram");
     }
 

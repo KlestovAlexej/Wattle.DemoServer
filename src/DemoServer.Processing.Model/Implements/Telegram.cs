@@ -21,7 +21,7 @@ public class Telegram : ITelegram
     public Telegram(ICustomEntryPoint entryPoint)
     {
         m_entryPoint = entryPoint;
-        m_bot = new TelegramBotClient(m_entryPoint.SystemSettings.TelegramSettings.Value.ApiKey.Value);
+        m_bot = new TelegramBotClient(m_entryPoint.SystemSettings.Telegram.Value.ApiKey.Value);
         m_logger = entryPoint.LoggerFactory.CreateLogger<Telegram>();
     }
 
@@ -29,7 +29,7 @@ public class Telegram : ITelegram
         string message,
         CancellationToken cancellationToken = default)
     {
-        if (false == m_entryPoint.SystemSettings.TelegramSettings.Value.Enabled.Value)
+        if (false == m_entryPoint.SystemSettings.Telegram.Value.Enabled.Value)
         {
             return;
         }
@@ -37,7 +37,7 @@ public class Telegram : ITelegram
         try
         {
             await m_bot.SendMessage(
-                    new ChatId(m_entryPoint.SystemSettings.TelegramSettings.Value.ChatId.Value),
+                    new ChatId(m_entryPoint.SystemSettings.Telegram.Value.ChatId.Value),
                     EscapeTextMarkdownV2(message),
                     parseMode: ParseMode.MarkdownV2,
                     cancellationToken: cancellationToken)
@@ -55,7 +55,7 @@ public class Telegram : ITelegram
         byte[] fileContent,
         CancellationToken cancellationToken = default)
     {
-        if (false == m_entryPoint.SystemSettings.TelegramSettings.Value.Enabled.Value)
+        if (false == m_entryPoint.SystemSettings.Telegram.Value.Enabled.Value)
         {
             return;
         }
@@ -64,7 +64,7 @@ public class Telegram : ITelegram
         {
             using var stream = new MemoryStream(fileContent);
             await m_bot.SendDocument(
-                    new ChatId(m_entryPoint.SystemSettings.TelegramSettings.Value.ChatId.Value),
+                    new ChatId(m_entryPoint.SystemSettings.Telegram.Value.ChatId.Value),
                     new InputFileStream(stream, fileName),
                     caption: EscapeTextMarkdownV2(message),
                     parseMode: ParseMode.MarkdownV2,

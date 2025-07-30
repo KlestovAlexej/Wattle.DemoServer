@@ -144,7 +144,7 @@ public class TestsDemoDelayTask : BaseTestsDomainObjects
                 Assert.IsNotNull(dto);
                 var scenarioState =
                     (DemoCycleTaskScenarioStateAsCycle)m_entryPoint.JsonDeserializer
-                        .DeserializeReadOnly<DemoCycleTaskScenarioState>(dto!.ScenarioState);
+                        .DeserializeReadOnly<DemoCycleTaskScenarioState, DemoCycleTaskScenarioState>(dto!.ScenarioState);
                 Assert.AreEqual(3, scenarioState.Index);
                 Assert.AreEqual(3, scenarioState.RunDate.Count);
                 foreach (var runDate in scenarioState.RunDate)
@@ -230,8 +230,8 @@ public class TestsDemoDelayTask : BaseTestsDomainObjects
         sw.Stop();
 
         // Проверяем что ожидание входа в критическую секцию соответствует сконфигурированному времени.
-        Assert.Less(sw.Elapsed, m_entryPoint.SystemSettings.UnitOfWorkLocksSettings.Value.UpdateTimeout.Value + Magic);
-        Assert.Greater(sw.Elapsed, m_entryPoint.SystemSettings.UnitOfWorkLocksSettings.Value.UpdateTimeout.Value - Magic);
+        Assert.Less(sw.Elapsed, m_entryPoint.SystemSettings.UnitOfWorkLocks.Value.UpdateTimeout.Value + Magic);
+        Assert.Greater(sw.Elapsed, m_entryPoint.SystemSettings.UnitOfWorkLocks.Value.UpdateTimeout.Value - Magic);
 
         Console.WriteLine($"[{m_entryPoint.TimeService.NowDateTime:O}] DemoDelayTask.Id:{taskId} - После удаления.");
 

@@ -12,7 +12,8 @@ using Acme.Wattle.Common.Exceptions;
 using Acme.Wattle.DomainObjects.DomainObjects;
 using Acme.Wattle.DomainObjects.DomainObjects.BaseDomainObjects;
 using Acme.Wattle.DomainObjects.Interfaces;
-using Acme.Wattle.DomainObjects.Json;
+using Acme.Wattle.DomainObjects.Serializers;
+using Acme.Wattle.DomainObjects.Serializers.Json;
 using Acme.Wattle.DomainObjects.UnitOfWorkLocks;
 using Acme.Wattle.Mappers.Primitives.MutableFields;
 
@@ -103,7 +104,7 @@ public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutableWithUpdat
         Scenario = template.Scenario;
         m_startDate = new MutableFieldNullable<DateTimeOffset>(template.StartDate);
 
-        var scenario = m_entryPointContext.EntryPoint.JsonDeserializer.DeserializeReadOnly<DemoDelayTaskScenario>(Scenario);
+        var scenario = m_entryPointContext.EntryPoint.JsonDeserializer.DeserializeReadOnly<DemoDelayTaskScenario, DemoDelayTaskScenario>(Scenario);
 
         m_scenarioState =
             new StringFieldWithModel<DemoCycleTaskScenarioState>(
@@ -167,7 +168,7 @@ public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutableWithUpdat
     public string ScenarioState
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => m_scenarioState.Value!;
+        get => m_scenarioState.Value;
     }
 
     public DateTimeOffset? StartDate
@@ -214,7 +215,7 @@ public sealed class DomainObjectDemoDelayTask : BaseDomainObjectMutableWithUpdat
 
     private async ValueTask DoRunScenarioAsync(long count, CancellationToken cancellationToken)
     {
-        var scenario = m_entryPointContext.EntryPoint.JsonDeserializer.DeserializeReadOnly<DemoDelayTaskScenario>(Scenario);
+        var scenario = m_entryPointContext.EntryPoint.JsonDeserializer.DeserializeReadOnly<DemoDelayTaskScenario, DemoDelayTaskScenario>(Scenario);
 
         if (scenario is DemoDelayTaskScenarioAsDelay scenarioAsDelay)
         {

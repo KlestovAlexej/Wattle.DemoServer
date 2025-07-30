@@ -18,7 +18,7 @@ public sealed class DomainObjectIntergratorSystemLog : BaseDomainObjectIntergrat
         var dataMapper =
             DomainObjectDataMapperNoDeleteUpdateDefaultFactory.Create<IMapperSystemLog>(
                     entryPoint.Context,
-                    entryPoint.SystemSettings.IdentityCachesSettings.Value.SystemLog.Value,
+                    entryPoint.SystemSettings.IdentityCaches.Value.SystemLog.Value,
                     identityGroupId: entryPoint.PartitionsDay);
         container.Resolve<DomainObjectDataMappers>().AddMapper(dataMapper);
 

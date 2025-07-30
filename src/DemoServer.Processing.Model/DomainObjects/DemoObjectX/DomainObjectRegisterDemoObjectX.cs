@@ -288,7 +288,7 @@ public sealed class DomainObjectRegisterDemoObjectX : DomainObjectRegisterWithCo
             dataMapper,
             dataActivator,
             activator,
-            entryPoint.SystemSettings.DomainObjectRegistersSettings.Value.MemoryCacheDemoObjectX.Value,
+            entryPoint.SystemSettings.DomainObjectRegisters.Value.MemoryCacheDemoObjectX.Value,
             DemoObjectXIdentitiesService.New(entryPoint),
             WellknownDomainObjectFields.DemoObjectX.NameAlternateKey,
             WellknownDomainObjectFields.DemoObjectX.NameCollection,

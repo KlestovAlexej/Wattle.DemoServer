@@ -7,9 +7,9 @@ using Acme.DemoServer.Processing.Model.Implements.UnitOfWorkLocks;
 using Acme.Wattle.Common.Interfaces;
 using Acme.Wattle.DomainObjects.Interfaces;
 using System;
+using Acme.Wattle.DomainObjects.Serializers.Json;
 using Acme.Wattle.Mappers.Interfaces;
 using IMapper = AutoMapper.IMapper;
-using Acme.Wattle.DomainObjects.Json;
 
 namespace Acme.DemoServer.Processing.Model.Interfaces;
 

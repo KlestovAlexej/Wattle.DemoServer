@@ -20,7 +20,7 @@ public sealed class DomainObjectIntergratorDemoObjectX : BaseDomainObjectIntergr
         var dataMapper =
             DomainObjectDataMapperFullDefaultFactory.Create<IMapperDemoObjectX>(
                 entryPoint.Context,
-                entryPoint.SystemSettings.IdentityCachesSettings.Value.DemoObjectX.Value);
+                entryPoint.SystemSettings.IdentityCaches.Value.DemoObjectX.Value);
         container.Resolve<DomainObjectDataMappers>().AddMapper(dataMapper);
 
         var lockUpdate = entryPoint.UnitOfWorkLocks.GetLockService<IDomainObjectDemoObjectX>();

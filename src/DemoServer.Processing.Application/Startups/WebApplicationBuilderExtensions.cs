@@ -36,6 +36,7 @@ using System.Linq;
 using System.Net.Mime;
 using System.Reflection;
 using System.Threading;
+using System.Xml.XPath;
 using Asp.Versioning;
 using Microsoft.OpenApi.Models;
 using Acme.Wattle.Utils;
@@ -359,7 +360,7 @@ public static class WebApplicationBuilderExtensions
 
                 foreach (var text in XmlCommentsText)
                 {
-                    options.IncludeXmlComments(() => new(new StringReader(text)), true);
+                    options.IncludeXmlComments(() => new XPathDocument(new StringReader(text)), true);
                 }
 
                 {
