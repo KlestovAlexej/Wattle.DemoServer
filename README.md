@@ -26,6 +26,7 @@
 
 ### Общее
 
+- [Пример](https://github.com/KlestovAlexej/Wattle.DemoServer/blob/36e8c37e021fc3f52bf8b011aec2c30cbeeff557/src/DemoServer.Processing.Common/WellknownDomainObjectFields.cs#L303) автоматического указания параметра [fillfactor](https://www.postgresql.org/docs/current/sql-createtable.html#RELOPTION-FILLFACTOR) для партиционированных таблиц PostgreSQL.
 - [Реализован](src/DemoServer.Processing.Model/Implements/UnitOfWork.cs) паттерн [Unit of Work](https://martinfowler.com/eaaCatalog/unitOfWork.html)
 - [Пример 3-х видов](https://github.com/KlestovAlexej/Wattle.DemoServer/blob/deac469a39d933a82a04b099b904ac5b4999d0c1/src/DemoServer.Processing.Application/Startups/HealthChecks/HealthCheckExtensions.cs#L58) проверки работоспособности сервера на основе шатного механизма [Health checks in ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/health-checks?view=aspnetcore-8.0)
 	- Пример как делать проверки [без нагрузки на сервер](https://github.com/KlestovAlexej/Wattle.DemoServer/blob/e2df8ebe3fb198f9fde28b1205f462d224ec5278/src/DemoServer.Processing.Application/Startups/HealthChecks/EntryPointGlobalReadyBackgroundService.cs#L29) при частых проверках.
