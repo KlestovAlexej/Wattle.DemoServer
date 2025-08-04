@@ -34,7 +34,6 @@ public sealed class ExceptionPolicy : BaseExceptionPolicy
     // ReSharper disable once NotAccessedField.Local
     private readonly bool m_debugMode;
 
-    private readonly IWorkflowExceptionPolicy m_workflowExceptionPolicy;
     private readonly ExceptionPolicySettings m_settings;
     private readonly Tracer? m_tracer;
     private readonly Metrics? m_metrics;
@@ -52,7 +51,7 @@ public sealed class ExceptionPolicy : BaseExceptionPolicy
     // ReSharper disable once ConvertToPrimaryConstructor
     public ExceptionPolicy(
         SystemSettings.SystemSettings systemSettings,
-        IWorkflowExceptionPolicy workflowExceptionPolicy,
+        WorkflowExceptionPolicy workflowExceptionPolicy,
         ITimeService timeService,
         ILogger logger,
         Tracer? tracer,
@@ -64,7 +63,7 @@ public sealed class ExceptionPolicy : BaseExceptionPolicy
             logger)
     {
         m_systemSettings = systemSettings;
-        m_workflowExceptionPolicy = workflowExceptionPolicy;
+        WorkflowExceptionPolicy = workflowExceptionPolicy;
         m_settings = systemSettings.ExceptionPolicy.Value;
         m_debugMode = systemSettings.DebugMode.Value;
         m_tracer = tracer;
@@ -74,6 +73,7 @@ public sealed class ExceptionPolicy : BaseExceptionPolicy
         m_serviceProvider = serviceProvider;
     }
 
+    public readonly WorkflowExceptionPolicy WorkflowExceptionPolicy;
     public ICustomEntryPoint EntryPoint;
 
     protected override WorkflowException DoApplyWorkflowException(WorkflowException exception)
@@ -126,7 +126,7 @@ public sealed class ExceptionPolicy : BaseExceptionPolicy
         DoMappersExceptionLogger(exception);
 
         var result =
-            m_workflowExceptionPolicy.Create(
+            WorkflowExceptionPolicy.Create(
                 CommonWorkflowException.ServiceTemporarilyUnavailable,
                 "Неожиданная ошибка БД.");
 
@@ -149,7 +149,7 @@ public sealed class ExceptionPolicy : BaseExceptionPolicy
         DoInternalExceptionLogger(exception);
 
         var result =
-            m_workflowExceptionPolicy.Create(
+            WorkflowExceptionPolicy.Create(
                 CommonWorkflowException.Unexpected,
                 "Неожиданная ошибка сервера.");
 
@@ -173,7 +173,7 @@ public sealed class ExceptionPolicy : BaseExceptionPolicy
         }
 
         var result =
-            m_workflowExceptionPolicy.Create(
+            WorkflowExceptionPolicy.Create(
                 CommonWorkflowException.Unexpected,
                 "Неожиданная ошибка.");
 
