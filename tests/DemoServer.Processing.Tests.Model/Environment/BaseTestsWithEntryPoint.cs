@@ -371,7 +371,7 @@ public abstract class BaseTestsWithEntryPoint : BaseDbTests
                     WellknownInfrastructureMonitors.Mappers,
                     WellknownInfrastructureMonitors.GetDisplayName(WellknownInfrastructureMonitors.Mappers),
                     WellknownInfrastructureMonitors.GetDisplayName(WellknownInfrastructureMonitors.Mappers));
-            foreach (var manager in PartitionsSponsor.GetAllPartitionsManagers(mappers))
+            foreach (var manager in BasePartitionsSponsor.GetAllPartitionsManagers(mappers))
             {
                 if (flag == 0)
                 {

@@ -415,6 +415,7 @@ public static class WebApplicationBuilderExtensions
                     options.SerializerSettings.DateFormatHandling = settings.DateFormatHandling;
                     options.SerializerSettings.DateTimeZoneHandling = settings.DateTimeZoneHandling;
                     options.SerializerSettings.DateParseHandling = settings.DateParseHandling;
+                    options.SerializerSettings.ContractResolver = settings.ContractResolver;
                     options.SerializerSettings.Converters.Add(new StringEnumConverter());
                 });
 
