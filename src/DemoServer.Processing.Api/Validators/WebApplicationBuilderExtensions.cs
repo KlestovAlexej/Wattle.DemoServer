@@ -13,7 +13,7 @@ public static class WebApplicationBuilderExtensions
     {
         builder.Services.AddFluentValidationAutoValidation();
 
-        builder.Services.AddScoped<IValidator<DemoObjectUpdate>, ValidatorDemoObjectUpdate>();
+        builder.Services.AddSingleton<IValidator<DemoObjectUpdate>, ValidatorDemoObjectUpdate>();
 
         return builder;
     }

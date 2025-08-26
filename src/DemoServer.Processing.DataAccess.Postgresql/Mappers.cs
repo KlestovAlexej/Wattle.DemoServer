@@ -118,7 +118,7 @@ public partial class Mappers : ICustomMappers
         var cacheName = "Кэш актуальных данных состояния доменного объекта в БД";
         var mapperCacheIdInfrastructureMonitor = GuidGenerator.New(typeof(TMapper).FullName);
         var actualDtoMemoryCache =
-            new MemoryCacheMapperActualStateDto<TMapperActualStateDto>(
+            new MemoryCacheMapperActualStateDtoSlim<TMapperActualStateDto>(
                 mappersContext.TimeService,
                 memoryCacheSettings,
                 cacheName,
@@ -127,7 +127,6 @@ public partial class Mappers : ICustomMappers
                     $"Пул лок-объектов '{cacheName}'.",
                     $"Пул лок-объектов '{cacheName}'.",
                     mappersContext.TimeService),
-                new BinarySerializerAsMessagePack<TMapperActualStateDto>(),
                 mappersContext.ExceptionPolicy,
                 cacheName,
                 mapperCacheIdInfrastructureMonitor,
